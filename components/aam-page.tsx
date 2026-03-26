@@ -281,17 +281,24 @@ const AAMPage = () => {
   }, []);
 
   useEffect(() => {
-    const reveals = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-    );
-    reveals.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const timer = setTimeout(() => {
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.05, rootMargin: "0px 0px 50px 0px" }
+      );
+      reveals.forEach((el) => observer.observe(el));
+      (window as unknown as Record<string, unknown>).__aamObserver = observer;
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+      const obs = (window as unknown as Record<string, unknown>).__aamObserver as IntersectionObserver | undefined;
+      if (obs) obs.disconnect();
+    };
   }, []);
 
   useEffect(() => {
