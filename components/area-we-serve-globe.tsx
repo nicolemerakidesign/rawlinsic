@@ -103,9 +103,9 @@ export default function AreaWeServeGlobe() {
     const ZOOM_MIN = 3.4;
     const ZOOM_MAX = 7.0;
     const ZOOM_DEFAULT = 5.0;
-    const GOLD_LIGHT = 0xe8d5a0;
-    const GOLD_MID = 0xd4b878;
-    const GOLD_DEEP = 0xc9a84c;
+    const GOLD_LIGHT = 0xf0dca8;
+    const GOLD_MID = 0xc9a84c;
+    const GOLD_DEEP = 0xb8963e;
 
     const currentLocations = [
       { name: "Tennessee, USA", lat: 36.2, lng: -86.8 },
@@ -521,10 +521,10 @@ export default function AreaWeServeGlobe() {
           font-family: var(--font-dm-sans, 'DM Sans'), sans-serif;
         }
 
-        /* Globe fills the viewport, fixed behind content */
+        /* Globe fills the viewport, fixed behind content — nudged down */
         #globe-container {
           position: fixed;
-          top: 0;
+          top: 40px;
           left: 0;
           width: 100vw;
           height: 100vh;
@@ -534,7 +534,7 @@ export default function AreaWeServeGlobe() {
         #globe-container:active { cursor: none; }
         #globe-canvas { width: 100%; height: 100%; display: block; }
 
-        /* Content overlay — text on the LEFT */
+        /* Content overlay — text TOP RIGHT */
         .globe-content-section {
           position: relative;
           z-index: 1;
@@ -542,12 +542,14 @@ export default function AreaWeServeGlobe() {
           min-height: 100vh;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          padding: 120px 60px 60px;
+          align-items: flex-end;
+          justify-content: flex-start;
+          padding: 180px 60px 60px;
           pointer-events: none;
         }
         .globe-content-inner {
-          max-width: 480px;
+          max-width: 460px;
+          text-align: left;
         }
         .globe-eyebrow {
           font-size: 13px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
@@ -560,7 +562,13 @@ export default function AreaWeServeGlobe() {
           font-size: clamp(32px, 5vw, 52px);
           font-weight: 300; color: #fff; margin-bottom: 16px; line-height: 1.15;
         }
-        .globe-heading em { font-style: italic; }
+        .globe-heading em {
+          font-style: italic;
+          background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
         .globe-subtext {
           font-size: 16px; color: rgba(232,224,208,0.6); max-width: 440px;
           line-height: 1.6; margin-bottom: 28px;
@@ -574,12 +582,12 @@ export default function AreaWeServeGlobe() {
         .globe-legend-item { display: flex; align-items: center; gap: 10px; }
         .globe-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
         .globe-legend-dot.current {
-          background: linear-gradient(145deg, #c9a84c, #e8d5a0);
-          box-shadow: 0 0 10px rgba(201,168,76,0.7);
+          background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+          box-shadow: 0 0 12px rgba(201,168,76,0.8);
         }
         .globe-legend-dot.expansion {
-          background: transparent; border: 1.5px solid #d4b878;
-          box-shadow: 0 0 8px rgba(212,184,120,0.4);
+          background: transparent; border: 1.5px solid #c9a84c;
+          box-shadow: 0 0 10px rgba(201,168,76,0.5);
         }
         .globe-zoom-hint {
           font-size: 12px; color: rgba(232,224,208,0.25); letter-spacing: 0.5px;
@@ -625,10 +633,14 @@ export default function AreaWeServeGlobe() {
         }
 
         /* ── Responsive ── */
+        @media (max-width: 1024px) {
+          .globe-content-section { padding: 160px 40px 40px; }
+        }
         @media (max-width: 768px) {
-          .globe-content-section { padding: 140px 24px 40px; }
+          .globe-content-section { padding: 140px 24px 40px; align-items: flex-start; }
           .globe-legend { gap: 20px; flex-wrap: wrap; }
           .globe-content-inner { max-width: 100%; }
+          #globe-container { top: 60px; }
         }
       `}</style>
 
