@@ -1,0 +1,23 @@
+{
+  "/": {
+    "title": "Rawlins | Strategy, Operations & Technology Consulting",
+    "description": "Rawlins is a global management consulting firm partnering with public and private organizations to navigate complex challenges at the intersection of strategy, operations, and technology."
+  },
+  "/contact": {
+    "title": "Contact Rawlins | Get In Touch",
+    "description": "Connect with the Rawlins team to discuss your program needs, advisory services, or partnership opportunities."
+  },
+  "/about/our-people": {
+    "title": "Our People | Rawlins",
+    "description": "Meet the Rawlins team — a diverse group of strategists, engineers, operators, and policy experts committed to delivering real-world results."
+  },
+  "/technology/advanced-air-mobility": {
+    "title": "Advanced Air Mobility & UAS | Rawlins",
+    "description": "Rawlins helps public and private sector clients plan, enable, and deliver Advanced Air Mobility (AAM) and Uncrewed Aircraft Systems (UAS) programs — from policy and regulation through implementation and scale.",
+    "openGraph": {
+      "title": "Advanced Air Mobility & UAS | Rawlins",
+      "description": "Partnering to turn AAM and UAS concepts into community transport solutions. Rawlins provides comprehensive advisory services across the full AAM and UAS program lifecycle.",
+      "images": "https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    }
+  }
+}

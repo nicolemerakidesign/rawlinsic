@@ -1,0 +1,659 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import SiteNav from "@/components/site-nav";
+import SiteFooter from "@/components/site-footer";
+
+
+
+const LOGO_URL =
+  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/cfZ06kEF6A_pOkuifk_rD.webp";
+
+const VIDEO_URL =
+  "https://assets.macaly-user-data.dev/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/FcdPEVCgjerLEpW3aFWTa.mp4";
+
+// Intro images
+const DRONE2_URL =
+  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/kxedm-m1_g6tpXjxTFt4c.webp";
+const PEOPLECULTURE_URL =
+  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/P9ho_XURvnAgxJEfA0Udc.webp";
+const GLOBE_URL =
+  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/XcgZrQTfqkjshzJlBSqBM.webp";
+const GLOBALFOOTPRINT_URL =
+  "https://assets.macaly-user-data.dev/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/AiS-o8mCLd3aTE3QobCPS.webp";
+
+const BUILDINGSCONNECT_VIDEO_URL =
+  "https://assets.macaly-user-data.dev/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/ebVr1DG4WZ2SE_BTTn1be.mp4";
+
+const TRANSPORTATIONROADS_URL =
+  "https://assets.macaly-user-data.dev/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/EJE7sqnj5M3frq1GEc6Bb.png";
+
+
+
+const pillars = [
+  {
+    num: "",
+    name: "Strategy",
+    tags: "Decision systems · Planning · Organizational Design",
+    desc: "We help leaders see clearly, decide wisely, and act with confidence. From governance frameworks to strategic program planning, we translate organizational priorities into actionable plans that drive sustainable transformation.",
+    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/gNTqxQESyZzn0S1NPC6S2.webp",
+  },
+  {
+    num: "",
+    name: "Operations",
+    tags: "people · process · culture · workforce",
+    desc: "We create sustainable high-performance strategies that foster collaboration, accountability, and organizational health. Our proficiency programs empower teams to deliver their best work.",
+    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/P9ho_XURvnAgxJEfA0Udc.webp",
+  },
+  {
+    num: "",
+    name: "Technology",
+    tags: "human-centric AI integration · digital systems · analytics · data",
+    desc: "From establishing trustworthy data foundations to deploying intelligent automation, we help organizations harness the information layer. Our specialists streamline workflows so your people can focus on what machines can't do.",
+    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/aJz_dR6Ty4KJ0pskjhA86.webp",
+  },
+];
+
+const journey = [
+  {
+    phase: "Foundation",
+    title: "Deep Public Agency Expertise",
+    text: "Having worked successfully within complex public agencies for many years, our team applies deep insights gained from overcoming project and program constraints, navigating decision-making dynamics, and fostering organizational cultures that support collaboration and accountability.",
+    bg: "https://images.pexels.com/photos/775482/pexels-photo-775482.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+  },
+  {
+    phase: "Evolution",
+    title: "Expanded Advisory Capabilities",
+    text: "We partner with enterprises to modernize processes, empower team members, and embrace new technologies—coordinating these actions to achieve meaningful results. We pride ourselves on establishing long-term relationships with our family of clients.",
+    bg: "https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+  },
+  {
+    phase: "Innovation",
+    title: "Automation, Integration, & AI",
+    text: "Today, we help agencies navigate governance structures, improve data practices, incorporate analytics, and use emerging tools such as AI. Our automation and integration specialists streamline workflows, enabling people to focus on the uniquely human work that matters most for organizational success.",
+    bg: "https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+  },
+  {
+    phase: "Frontier",
+    title: "Advanced Air Mobility",
+    text: "We guide the planning, implementation, and integration of advanced air mobility and uncrewed aircraft systems within existing transport networks, supporting the development of multimodal connected communities.",
+    bg: "https://images.pexels.com/photos/51943/bomber-vulcan-aircraft-aeroplane-51943.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+  },
+];
+
+const exploreBottomCards = [
+  {
+      title: "Insights",
+    desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
+    cta: "See how we transform →",
+    bg: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=500&h=400&fit=crop",
+  },
+  {
+      title: "Case Studies",
+    desc: "Discover how our work has transformed organizations across public and private sectors.",
+    cta: "Explore our impact →",
+    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/AiS-o8mCLd3aTE3QobCPS.webp",
+  },
+  ];
+
+const exploreTopCards = [
+  {
+    title: "Capabilities",
+    desc: "Explore our practice areas and how we tailor solutions to your unique organizational challenges.",
+    cta: "Explore our services →",
+    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/1L1yKR0QRSVmw-qsuceL_.webp",
+  },
+  {
+      title: "Insights",
+    desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
+    cta: "Explore insights →",
+    bg: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=500&h=400&fit=crop",
+  },
+  {
+      title: "Case Studies",
+    desc: "Discover how our work has transformed organizations across public and private sectors.",
+    cta: "discover our impact →",
+    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/AiS-o8mCLd3aTE3QobCPS.webp",
+  },
+];
+
+
+export default function HomePage() {
+  const [introOpen, setIntroOpen] = useState(false);
+  const [openJourneys, setOpenJourneys] = useState<number[]>([]);
+  const [activePillar, setActivePillar] = useState<string | null>(null);
+  const [storyProgress, setStoryProgress] = useState(0);
+  const [pillarsProgress, setPillarsProgress] = useState(0);
+
+  const toggleJourney = (idx: number) => {
+    setOpenJourneys((prev) =>
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    );
+  };
+
+  // Story horizontal scroll
+  const storyTrackRef = useRef<HTMLDivElement>(null);
+  const storyDragging = useRef(false);
+  const storyDragStart = useRef(0);
+  const storyScrollStart = useRef(0);
+
+  const onStoryScroll = () => {
+    const el = storyTrackRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setStoryProgress(max > 0 ? el.scrollLeft / max : 0);
+  };
+  const onStoryMouseDown = (e: React.MouseEvent) => {
+    storyDragging.current = true;
+    storyDragStart.current = e.clientX;
+    storyScrollStart.current = storyTrackRef.current?.scrollLeft ?? 0;
+  };
+  const onStoryMouseMove = (e: React.MouseEvent) => {
+    if (!storyDragging.current || !storyTrackRef.current) return;
+    e.preventDefault();
+    const dx = e.clientX - storyDragStart.current;
+    storyTrackRef.current.scrollLeft = storyScrollStart.current - dx;
+  };
+  const onStoryMouseUp = () => { storyDragging.current = false; };
+  const storyScrollPrev = () => storyTrackRef.current?.scrollBy({ left: -420, behavior: "smooth" });
+  const storyScrollNext = () => storyTrackRef.current?.scrollBy({ left: 420, behavior: "smooth" });
+
+  // Pillars horizontal scroll
+  const pillarsTrackRef = useRef<HTMLDivElement>(null);
+  const pillarsDragging = useRef(false);
+  const pillarsDragStart = useRef(0);
+  const pillarsScrollStart = useRef(0);
+  const onPillarsScroll = () => {
+    const el = pillarsTrackRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setPillarsProgress(max > 0 ? el.scrollLeft / max : 0);
+  };
+  const onPillarsMouseDown = (e: React.MouseEvent) => {
+    pillarsDragging.current = true;
+    pillarsDragStart.current = e.clientX;
+    pillarsScrollStart.current = pillarsTrackRef.current?.scrollLeft ?? 0;
+  };
+  const onPillarsMouseMove = (e: React.MouseEvent) => {
+    if (!pillarsDragging.current || !pillarsTrackRef.current) return;
+    e.preventDefault();
+    const dx = e.clientX - pillarsDragStart.current;
+    pillarsTrackRef.current.scrollLeft = pillarsScrollStart.current - dx;
+  };
+  const onPillarsMouseUp = () => { pillarsDragging.current = false; };
+  const pillarsScrollPrev = () => pillarsTrackRef.current?.scrollBy({ left: -420, behavior: "smooth" });
+  const pillarsScrollNext = () => pillarsTrackRef.current?.scrollBy({ left: 420, behavior: "smooth" });
+
+  // Intro section parallax
+  const introImgRef = useRef<HTMLVideoElement>(null);
+  const introWrapRef = useRef<HTMLDivElement>(null);
+  const handleIntroParallax = (e: React.MouseEvent<HTMLDivElement>) => {
+    const wrap = introWrapRef.current;
+    const img = introImgRef.current;
+    if (!wrap || !img) return;
+    const rect = wrap.getBoundingClientRect();
+    const cx = (e.clientX - rect.left) / rect.width - 0.5;
+    const cy = (e.clientY - rect.top) / rect.height - 0.5;
+    img.style.transform = `translate(calc(-5% + ${cx * -10}px), calc(-5% + ${cy * -8}px))`;
+  };
+  const resetIntroParallax = () => {
+    const img = introImgRef.current;
+    if (img) img.style.transform = "translate(-5%, -5%)";
+  };
+
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const mouseX = useRef(0);
+  const mouseY = useRef(0);
+  const ringX = useRef(0);
+  const ringY = useRef(0);
+  const animFrame = useRef<number | null>(null);
+
+  // Custom cursor
+  useEffect(() => {
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
+
+    const onMouseMove = (e: MouseEvent) => {
+      mouseX.current = e.clientX;
+      mouseY.current = e.clientY;
+      dot.style.left = e.clientX - 4 + "px";
+      dot.style.top = e.clientY - 4 + "px";
+    };
+
+    const animateRing = () => {
+      ringX.current += (mouseX.current - ringX.current) * 0.12;
+      ringY.current += (mouseY.current - ringY.current) * 0.12;
+      ring.style.left = ringX.current - 20 + "px";
+      ring.style.top = ringY.current - 20 + "px";
+      animFrame.current = requestAnimationFrame(animateRing);
+    };
+
+    document.addEventListener("mousemove", onMouseMove);
+    animFrame.current = requestAnimationFrame(animateRing);
+
+    const hoverEls = document.querySelectorAll("a, button, .nav-item, .back-to-top, .pillar-card, .explore-card");
+    hoverEls.forEach((el) => {
+      el.addEventListener("mouseenter", () => ring.classList.add("hover"));
+      el.addEventListener("mouseleave", () => ring.classList.remove("hover"));
+    });
+
+    return () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      if (animFrame.current) cancelAnimationFrame(animFrame.current);
+    };
+  }, []);
+
+  // Micro particles
+  useEffect(() => {
+    const container = document.getElementById("microParticles");
+    if (!container) return;
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement("div");
+      p.className = "micro-particle";
+      p.style.left = Math.random() * 100 + "%";
+      p.style.animationDuration = 8 + Math.random() * 14 + "s";
+      p.style.animationDelay = Math.random() * 12 + "s";
+      const size = 1.5 + Math.random() * 2.5 + "px";
+      p.style.width = size;
+      p.style.height = size;
+      p.style.opacity = String(0.15 + Math.random() * 0.25);
+      container.appendChild(p);
+    }
+    return () => { container.innerHTML = ""; };
+  }, []);
+
+  // Nav scroll + back-to-top
+  useEffect(() => {
+    const nav = document.getElementById("mainNav");
+    const backToTop = document.getElementById("backToTop");
+    const onScroll = () => {
+      if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+      if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll reveal
+  useEffect(() => {
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    reveals.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  console.log("HomePage rendered");
+
+  return (
+    <>
+      {/* Ambient Background */}
+      <div className="ambient-bg" />
+      <div className="ambient-orbs">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+        <div className="orb orb-4" />
+      </div>
+      <div className="micro-particles" id="microParticles" />
+
+      {/* Custom Cursor */}
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
+
+      {/* Back to Top */}
+      <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+      </a>
+
+      <SiteNav ctaHref="/contact" />
+
+      {/* ── Hero ── */}
+      <section className="hero" id="top">
+        <div className="hero-video-wrap">
+          <video className="hero-video" autoPlay muted loop playsInline>
+            <source src={VIDEO_URL} type="video/mp4" />
+          </video>
+        </div>
+        <div className="hero-bg-overlay" />
+        <div className="hero-depth" />
+        <div className="hero-grid" />
+        <div className="hero-content">
+          <span className="hero-label"><span className="gold-text">Trusted Advisor &bull; Global Consultancy</span></span>
+          <h1 className="hero-title">
+            Providing trusted advice at the intersection of <em>strategy, operations,</em> and <em>technology</em>
+          </h1>
+          <p className="hero-sub">
+            We partner to strengthen the capabilities essential for high-performing enterprises and modern transportation systems.
+          </p>
+          <a href="#pillars" className="hero-cta-btn"><span>consider our solutions</span></a>
+        </div>
+        <div className="hero-scroll">
+          <span>Scroll</span>
+          <div className="scroll-line" />
+        </div>
+      </section>
+
+
+      {/* Divider */}
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      {/* Divider */}
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      {/* ── Why Rawlins ── */}
+      <section className="new-intro" id="intro">
+        <div className="new-intro-wrap">
+          {/* Images on LEFT — cinematic with parallax + metrics */}
+          <div
+            className="new-intro-images reveal"
+          >
+            <div className="intro-cinematic-wrap" ref={introWrapRef}>
+              <img
+                className="intro-cinematic-img"
+                ref={introImgRef}
+                src={TRANSPORTATIONROADS_URL}
+              />
+              <div className="intro-cinematic-overlay" />
+              <div className="intro-metrics">
+                <div className="intro-metric">
+                  <span className="intro-metric-num">2017</span>
+                  <span className="intro-metric-label">Established</span>
+                </div>
+                <div className="intro-metric-divider" />
+                <div className="intro-metric">
+                  <span className="intro-metric-num">US+</span>
+                  <span className="intro-metric-label">Global Reach</span>
+                </div>
+                <div className="intro-metric-divider" />
+                <div className="intro-metric">
+                  <span className="intro-metric-num">30+</span>
+                  <span className="intro-metric-label">Transportation Agencies Served</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Text on RIGHT */}
+          <div className="intro-text reveal rd1">
+            <p className="section-label">
+              <span className="gold-text">Why Rawlins</span>
+            </p>
+            <h2 className="section-title">
+              Navigating complexity with <em>proven, adaptable</em> solutions
+            </h2>
+            <button
+              className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
+              aria-label="Learn more about Rawlins"
+              onClick={() => setIntroOpen((o) => !o)}
+            >
+              <span className="intro-expand-icon">
+                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 1.5l7 7 7-7" />
+                </svg>
+              </span>
+            </button>
+            <div className={`intro-expandable${introOpen ? " expanded" : ""}`}>
+              <p className="section-text">
+                Like many organizations today, yours may be facing complex, interconnected challenges such as technology-driven transformation, resource constraints, and regulatory demands. While other organizations encounter similar pressures, unique priorities shape how you respond and the choices you make.
+              </p>
+              <p className="section-text" style={{ marginTop: "16px" }}>
+                This is where we add value—helping you navigate these challenges with practical solutions, established methods, and strategies designed for your organization.
+              </p>
+              <p style={{ marginTop: "20px", fontWeight: 600, color: "#d0b86c" }}>
+                We bring clarity to complexity to deliver measurable long-term outcomes.
+              </p>
+              <a href="#pillars" className="btn-text-link" style={{ marginTop: "28px" }}>
+                ABOUT US
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+              {/* Parallax Quote 1 */}
+      <div className="parallax-panel">
+        <p className="parallax-text reveal">
+          We translate your organizational and strategic priorities into <em>practical actions</em> to achieve your goals in a fast-changing world.
+        </p>
+      </div>
+
+
+      {/* ── Pillars of Impact ── */}
+      <section className="section-pillars" id="pillars">
+        <div className="pillars-header">
+          <div className="reveal">
+            <p className="section-label">
+              <span className="gold-text">areas of impact</span>
+            </p>
+            <h2 className="section-title">Where We Deliver</h2>
+          </div>
+        </div>
+        {/* Progress bar + arrow controls above the cards */}
+        <div className="pillars-scroll-controls">
+          <div className="pillars-scroll-progress-bar">
+            <div
+              className="pillars-scroll-progress-fill"
+              style={{ width: `${pillarsProgress * 100}%` }}
+            />
+          </div>
+          <div className="story-scroll-arrows">
+            <button className="story-arrow-btn" onClick={pillarsScrollPrev} aria-label="Previous practice area">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button className="story-arrow-btn" onClick={pillarsScrollNext} aria-label="Next practice area">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          className="pillars-track"
+          ref={pillarsTrackRef}
+          onScroll={onPillarsScroll}
+          onMouseDown={onPillarsMouseDown}
+          onMouseMove={onPillarsMouseMove}
+          onMouseUp={onPillarsMouseUp}
+          onMouseLeave={onPillarsMouseUp}
+        >
+          {pillars.map((p) => (
+            <div
+              className={`pillar-card${activePillar === p.name ? " active" : ""}`}
+              key={p.name}
+              onClick={() => setActivePillar((prev) => (prev === p.name ? null : p.name))}
+            >
+              <div className="pillar-card-img" style={{ backgroundImage: `url(${p.bg})` }} />
+              <div className="pillar-card-overlay" />
+              <div className="pillar-card-content">
+                <span className="pillar-number">{p.num}</span>
+                <h3 className="pillar-name">{p.name}</h3>
+                <div className="pillar-tags">{p.tags}</div>
+                <p className="pillar-desc">{p.desc}</p>
+                <Link
+                  href="#"
+                  className="pillar-link"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <span>Explore &#8594;</span>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+
+      {/* ── Our Journey ── */}
+      <section className="section-story" id="story">
+        <div className="story-header reveal">
+          <p className="section-label">
+            <span className="gold-text">from our story to yours</span>
+          </p>
+          <h2 className="section-title">
+            <em>Evolving</em> Impact
+          </h2>
+          <p className="section-text" style={{ marginTop: "20px" }}>
+            Anchored by a vision to serve as a trusted advisor to transportation agencies across the United States, our firm has continued to evolve since 2017 into a global consultancy.
+          </p>
+        </div>
+            {/* Progress bar + arrow controls */}
+          <div className="story-scroll-controls">
+            <div className="story-scroll-progress-bar">
+              <div
+                className="story-scroll-progress-fill"
+                style={{ width: `${storyProgress * 100}%` }}
+              />
+            </div>
+            <div className="story-scroll-arrows">
+              <button className="story-arrow-btn" onClick={storyScrollPrev} aria-label="Previous">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button className="story-arrow-btn" onClick={storyScrollNext} aria-label="Next">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        <div className="story-scroll-outer">
+          <div
+            className="story-scroll-track"
+            ref={storyTrackRef}
+            onScroll={onStoryScroll}
+            onMouseDown={onStoryMouseDown}
+            onMouseMove={onStoryMouseMove}
+            onMouseUp={onStoryMouseUp}
+            onMouseLeave={onStoryMouseUp}
+          >
+            {journey.map((item, i) => (
+              <div className="story-card" key={item.phase}>
+                <div className="story-card-bg" style={{ backgroundImage: `url(${item.bg})` }} />
+                <div className="story-card-overlay" />
+                <div className="story-card-header">
+                  <span className="story-card-num">0{i + 1}</span>
+                  <span className="timeline-phase">{item.phase}</span>
+                </div>
+                <div className="story-card-divider" />
+                <h4 className="story-card-title">{item.title}</h4>
+                <div className="story-card-body-wrap">
+                  <p className="story-card-body">{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+      
+        </div>
+      </section>
+      <br></br><br></br>
+
+         {/* Divider */}
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      {/* ── Go Deeper ── */}
+      <section className="section-explore" id="explore">
+        <div className="explore-wrapper">
+          <div className="explore-header reveal">
+            <p className="section-label">
+          <span className="gold-text">ways we serve you</span>
+            </p>
+            <h2 className="section-title">Dive Deeper</h2>
+
+          </div>
+          <div className="explore-grid">
+            {exploreTopCards.map((card, i) => (
+              <Link
+                href="#"
+                className={`explore-card reveal${i > 0 ? ` rd${i}` : ""}`}
+                key={card.title}
+              >
+                <div className="explore-card-bg" style={{ backgroundImage: `url(${card.bg})` }} />
+                <div className="explore-card-overlay" />
+                <div className="explore-card-inner">
+                  <h3 className="explore-card-title">{card.title}</h3>
+                  <p className="explore-card-desc">{card.desc}</p>
+                  <span className="explore-card-arrow">{card.cta}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="explore-bottom">
+            {exploreBottomCards.map((card, i) => (
+              <Link
+                href="#"
+                className={`explore-card reveal${i > 0 ? " rd1" : ""}`}
+                key={card.title}
+              >
+                <div className="explore-card-bg" style={{ backgroundImage: `url(${card.bg})` }} />
+                <div className="explore-card-overlay" />
+                <div className="explore-card-inner">
+                  <h3 className="explore-card-title">{card.title}</h3>
+                  <p className="explore-card-desc">{card.desc}</p>
+                  <span className="explore-card-arrow">{card.cta}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      {/* ── Meet the Team ── */}
+      <section className="section-team" id="team">
+        <div className="team-content reveal">
+          <p className="section-label">
+            <span className="gold-text">Our People</span>
+          </p>
+          <h2 className="section-title">
+            Meet the Team
+          </h2>
+          <p className="team-desc">
+            Our team of professionals bring decades of combined experience working within and alongside complex organizations. We pride ourselves on establishing long-term relationships with our family of clients.
+          </p>
+          <Link href="#" className="btn-team"><span>View Our Team</span></Link>
+        </div>
+      </section>
+
+
+      {/* Divider */}
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <SiteFooter />
+    </>
+  );
+}
