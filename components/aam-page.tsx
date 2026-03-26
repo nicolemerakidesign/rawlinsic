@@ -239,9 +239,9 @@ const AAMPage = () => {
         <div className="aam-hero-bg" style={{ backgroundImage: `url(${DRONE_IMG})` }} />
         <div className="aam-hero-overlay" />
         <div className="aam-hero-content">
-          <span className="hero-label"><span className="gold-text">Technology · Advanced Air Mobility</span></span>
-          <h1 className="hero-title">Advanced Air Mobility <em>&amp; UAS</em></h1>
-          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community transport solutions</p>
+          <span className="hero-label"><span className="gold-text"></span></span>
+          <h1 className="hero-title">Advanced Air Mobility <em>&amp; Uncrewed Aircraft Systems</em></h1>
+          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community transport solutions. <br>Are you ready for the next major phase in transportation’s evolution?</br></p>
           <a href="#intro" className="hero-cta-btn"><span>explore our approach</span></a>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
