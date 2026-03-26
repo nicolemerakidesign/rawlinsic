@@ -18,18 +18,18 @@ export default function SiteFooter() {
         <div>
           <h4 className="footer-heading">Capabilities</h4>
           <ul className="footer-links">
-            <li><a href="#">View All</a></li>
             <li><a href="#">Strategy</a></li>
             <li><a href="#">Operations</a></li>
-            <li><a href="#">Technology</a></li>
+            <li><a href="/technology/advanced-air-mobility">Advanced Air Mobility</a></li>
           </ul>
         </div>
         <div>
           <h4 className="footer-heading">Company</h4>
           <ul className="footer-links">
             <li><a href="#">About</a></li>
-            <li><Link href="#">Our People</Link></li>
-            <li><a href="#">Areas We Serve</a></li>
+            <li><Link href="/about/our-people">Our People</Link></li>
+            <li><a href="/about/areas-we-serve">Areas We Serve</a></li>
+            <li><Link href="/contact">Contact Us</Link></li>
           </ul>
         </div>
         <div>
