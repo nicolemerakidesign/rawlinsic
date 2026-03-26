@@ -513,21 +513,41 @@ export default function AreaWeServeGlobe() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap');
 
-        .globe-page {
+        .globe-page-wrapper {
           position: relative;
           width: 100%;
-          background: var(--rawlins-bg, #060c16);
+          background: #0a1628;
           color: #e8e0d0;
           font-family: var(--font-dm-sans, 'DM Sans'), sans-serif;
         }
 
-        /* ── Header section (above globe) ── */
-        .globe-header-section {
+        /* Globe fills the viewport, fixed behind content */
+        #globe-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          z-index: 0;
+          cursor: none;
+        }
+        #globe-container:active { cursor: none; }
+        #globe-canvas { width: 100%; height: 100%; display: block; }
+
+        /* Content overlay — text on the LEFT */
+        .globe-content-section {
           position: relative;
-          z-index: 2;
-          padding: 180px 60px 60px;
-          text-align: center;
-          pointer-events: auto;
+          z-index: 1;
+          width: 100%;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 120px 60px 60px;
+          pointer-events: none;
+        }
+        .globe-content-inner {
+          max-width: 480px;
         }
         .globe-eyebrow {
           font-size: 13px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
@@ -542,14 +562,14 @@ export default function AreaWeServeGlobe() {
         }
         .globe-heading em { font-style: italic; }
         .globe-subtext {
-          font-size: 16px; color: rgba(232,224,208,0.6); max-width: 560px;
-          margin: 0 auto 24px; line-height: 1.6;
+          font-size: 16px; color: rgba(232,224,208,0.6); max-width: 440px;
+          line-height: 1.6; margin-bottom: 28px;
         }
         .globe-legend {
-          display: flex; gap: 32px; justify-content: center;
+          display: flex; gap: 28px;
           font-size: 13px; color: rgba(232,224,208,0.5);
           letter-spacing: 1px; text-transform: uppercase;
-          margin-bottom: 12px;
+          margin-bottom: 16px;
         }
         .globe-legend-item { display: flex; align-items: center; gap: 10px; }
         .globe-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -564,22 +584,6 @@ export default function AreaWeServeGlobe() {
         .globe-zoom-hint {
           font-size: 12px; color: rgba(232,224,208,0.25); letter-spacing: 0.5px;
         }
-
-        /* ── Globe area ── */
-        .globe-sticky-area {
-          position: relative;
-          height: 100vh;
-        }
-        #globe-container {
-          position: sticky;
-          top: 0;
-          width: 100%;
-          height: 100vh;
-          z-index: 1;
-          cursor: none;
-        }
-        #globe-container:active { cursor: none; }
-        #globe-canvas { width: 100%; height: 100%; display: block; }
 
         /* Tooltip */
         .globe-tooltip {
@@ -605,7 +609,15 @@ export default function AreaWeServeGlobe() {
         }
         .globe-tooltip.visible { opacity: 1; }
 
-        /* ── Footer wrapper: solid bg, sits above globe ── */
+        /* Spacer: enough height so user can scroll past globe to footer */
+        .globe-scroll-spacer {
+          position: relative;
+          z-index: 1;
+          height: 20vh;
+          pointer-events: none;
+        }
+
+        /* Footer wrapper: solid bg above globe */
         .globe-footer-wrapper {
           position: relative;
           z-index: 5;
@@ -614,36 +626,40 @@ export default function AreaWeServeGlobe() {
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-          .globe-header-section { padding: 140px 24px 40px; }
-          .globe-legend { gap: 20px; }
+          .globe-content-section { padding: 140px 24px 40px; }
+          .globe-legend { gap: 20px; flex-wrap: wrap; }
+          .globe-content-inner { max-width: 100%; }
         }
       `}</style>
 
-      <div className="globe-page" id="top">
-        {/* Text header ABOVE the globe */}
-        <section className="globe-header-section">
-          <div className="globe-eyebrow">Areas We Serve</div>
-          <h2 className="globe-heading">Global Reach, Local <em>Impact</em></h2>
-          <p className="globe-subtext">
-            Delivering solutions across the U.S. and expanding our global footprint across
-            industries and borders.
-          </p>
-          <div className="globe-legend">
-            <div className="globe-legend-item"><div className="globe-legend-dot current"></div><span>Current</span></div>
-            <div className="globe-legend-item"><div className="globe-legend-dot expansion"></div><span>Expanding</span></div>
-          </div>
-          <div className="globe-zoom-hint">Scroll to zoom · Drag to rotate · Hover pins for details</div>
-        </section>
-
-        {/* Globe section */}
-        <div className="globe-sticky-area">
-          <div id="globe-container">
-            <canvas id="globe-canvas"></canvas>
-            <div className="globe-tooltip" id="globe-tooltip"></div>
-          </div>
+      <div className="globe-page-wrapper" id="top">
+        {/* Globe (fixed behind everything) */}
+        <div id="globe-container">
+          <canvas id="globe-canvas"></canvas>
+          <div className="globe-tooltip" id="globe-tooltip"></div>
         </div>
 
-        {/* Footer with solid background to cover globe */}
+        {/* Text content overlaying the globe — LEFT aligned */}
+        <section className="globe-content-section">
+          <div className="globe-content-inner">
+            <div className="globe-eyebrow">Areas We Serve</div>
+            <h2 className="globe-heading">Global Reach, Local <em>Impact</em></h2>
+            <p className="globe-subtext">
+              Delivering solutions across the U.S. and expanding our global footprint across
+              industries and borders.
+            </p>
+            <div className="globe-legend">
+              <div className="globe-legend-item"><div className="globe-legend-dot current"></div><span>Current</span></div>
+              <div className="globe-legend-item"><div className="globe-legend-dot expansion"></div><span>Expanding</span></div>
+            </div>
+            <div className="globe-zoom-hint">Scroll to zoom · Drag to rotate · Hover pins for details</div>
+          </div>
+        </section>
+
+        {/* Extra scroll space so user can scroll past the globe */}
+        <div className="globe-scroll-spacer" />
+
+        {/* Footer with solid background to hide globe */}
         <div className="globe-footer-wrapper">
           <div className="section-divider"><div className="gold-line" /></div>
           <SiteFooter />
