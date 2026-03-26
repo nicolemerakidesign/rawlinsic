@@ -3026,55 +3026,59 @@ font-size: 15px;
   .service-tabs { flex-direction: column; }
   .hero-parallax-bg, .parallax-panel-img, .cta-parallax-bg { background-attachment: scroll; }
 }
+
 /* ══════════════════════════════════════════════════════════
-   AAM PAGE — CSS ADDITIONS
-   Add this to the END of your globals.css file
+   AAM PAGE — ADDITIONAL STYLES
    ══════════════════════════════════════════════════════════ */
 
-/* ── Intro Read More Expand ─────────────────────────────── */
-.intro-expand-btn {
+/* ── Intro expand: match home page circle arrow, white ──── */
+.aam-intro-expand-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-top: 20px;
-  padding: 0;
-  transition: all 0.3s;
+  gap: 14px;
+  margin-top: 28px;
+  margin-bottom: 30px;
 }
-.intro-expand-label {
+.aam-intro-expand-text {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   font-size: 0.75rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #c9a84c;
-  font-weight: 500;
-}
-.intro-expand-icon {
-  display: flex;
-  align-items: center;
-  color: #c9a84c;
-  transition: transform 0.3s;
-}
-.intro-expand-btn:hover {
-  opacity: 0.8;
-}
-.intro-expand-btn.expanded .intro-expand-icon {
-  transform: rotate(180deg);
-}
-.intro-expandable {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.intro-expandable.expanded {
-  max-height: 600px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 400;
 }
 
-/* ── Alternative Phases: Horizontal Scroll Cards ────────── */
+/* Override intro-expand-btn for AAM page — white border like home */
+.aam-overview-section .intro-expand-btn {
+  border-color: rgba(255,255,255,0.3);
+}
+.aam-overview-section .intro-expand-btn:hover {
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.05);
+}
+.aam-overview-section .intro-expand-btn.expanded {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.08);
+}
+.aam-overview-section .intro-expand-icon {
+  color: rgba(255,255,255,0.7);
+}
+.aam-overview-section .intro-expand-btn.expanded .intro-expand-icon {
+  color: #fff;
+}
+
+/* ── Body text normalization for AAM ────────────────────── */
+.aam-section-lead {
+  color: rgba(232,230,225,0.75);
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+/* ── Alternative Phases: Full-width Horizontal Scroll ───── */
 .aam-phases-alt-section {
-  overflow: hidden;
+  overflow: visible;
 }
 .aam-alt-scroll-outer {
   margin-top: 40px;
@@ -3083,23 +3087,16 @@ font-size: 15px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: rgba(201,168,76,0.3) transparent;
-  padding-bottom: 16px;
+  padding: 0 60px 16px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 }
-.aam-alt-scroll-outer::-webkit-scrollbar {
-  height: 4px;
-}
-.aam-alt-scroll-outer::-webkit-scrollbar-track {
-  background: rgba(201,168,76,0.05);
-  border-radius: 2px;
-}
-.aam-alt-scroll-outer::-webkit-scrollbar-thumb {
-  background: rgba(201,168,76,0.25);
-  border-radius: 2px;
-}
+.aam-alt-scroll-outer::-webkit-scrollbar { height: 4px; }
+.aam-alt-scroll-outer::-webkit-scrollbar-track { background: rgba(201,168,76,0.05); border-radius: 2px; }
+.aam-alt-scroll-outer::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 2px; }
 .aam-alt-scroll-track {
   display: flex;
   gap: 24px;
-  padding: 0 4px;
   min-width: min-content;
 }
 .aam-alt-card {
@@ -3116,233 +3113,136 @@ font-size: 15px;
   cursor: default;
   transition: transform 0.35s;
 }
-.aam-alt-card:hover {
-  transform: translateY(-4px);
-}
+.aam-alt-card:hover { transform: translateY(-4px); }
 .aam-alt-card-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
   transition: transform 0.6s;
 }
-.aam-alt-card:hover .aam-alt-card-bg {
-  transform: scale(1.05);
-}
+.aam-alt-card:hover .aam-alt-card-bg { transform: scale(1.05); }
 .aam-alt-card-overlay {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(6,12,22,0.2) 0%, rgba(6,12,22,0.85) 60%, rgba(6,12,22,0.95) 100%);
 }
 .aam-alt-card-header {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
+  position: relative; z-index: 1;
+  display: flex; align-items: baseline; gap: 12px;
   margin-bottom: 8px;
 }
 .aam-alt-card-num {
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  font-size: 2.2rem;
-  font-weight: 300;
+  font-size: 2.2rem; font-weight: 300;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
 }
 .aam-alt-card-phase {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
   color: rgba(201,168,76,0.6);
 }
 .aam-alt-card-divider {
-  position: relative;
-  z-index: 1;
-  width: 40px;
-  height: 1px;
+  position: relative; z-index: 1;
+  width: 40px; height: 1px;
   background: linear-gradient(90deg, #c9a84c, transparent);
   margin-bottom: 16px;
 }
 .aam-alt-card-title {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: #fff;
+  font-size: 1.35rem; font-weight: 400; color: #fff;
   margin-bottom: 10px;
 }
 .aam-alt-card-body {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   color: rgba(232,230,225,0.65);
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.7;
-  font-weight: 300;
+  font-size: 0.88rem; line-height: 1.7; font-weight: 300;
 }
 
-/* ── Service Portfolio Redesign: Tabbed Showcase ────────── */
+/* ── Service Portfolio: Tabbed Showcase ──────────────────── */
 .aam-svc-tabs {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-  justify-content: center;
+  display: flex; gap: 12px; margin-bottom: 24px; justify-content: center;
 }
 .aam-svc-tab {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex; align-items: center; gap: 10px;
   padding: 14px 28px;
   border: 1px solid rgba(201,168,76,0.12);
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 6px; cursor: pointer;
   transition: all 0.3s;
   background: rgba(201,168,76,0.03);
 }
-.aam-svc-tab:hover {
-  border-color: rgba(201,168,76,0.3);
-}
+.aam-svc-tab:hover { border-color: rgba(201,168,76,0.3); }
 .aam-svc-tab.active {
   border-color: rgba(201,168,76,0.5);
   background: rgba(201,168,76,0.08);
 }
 .aam-svc-tab-name {
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.15rem;
-  color: #fff;
-  font-weight: 400;
+  font-size: 1.15rem; color: #fff; font-weight: 400;
 }
 .aam-svc-tab-count {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  color: #c9a84c;
+  font-size: 0.7rem; color: #c9a84c;
   background: rgba(201,168,76,0.1);
-  padding: 2px 8px;
-  border-radius: 20px;
-  letter-spacing: 0.5px;
+  padding: 2px 8px; border-radius: 20px; letter-spacing: 0.5px;
 }
 .aam-svc-panel {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  display: grid; grid-template-columns: 1fr 1.4fr;
   border: 1px solid rgba(201,168,76,0.12);
-  border-radius: 10px;
-  overflow: hidden;
-  min-height: 420px;
+  border-radius: 10px; overflow: hidden; min-height: 420px;
 }
 .aam-svc-panel-img {
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  min-height: 300px;
+  background-size: cover; background-position: center;
+  position: relative; min-height: 300px;
 }
 .aam-svc-panel-img::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+  content: ''; position: absolute; inset: 0;
   background: linear-gradient(90deg, transparent 50%, rgba(6,12,22,0.95) 100%);
 }
 .aam-svc-panel-content {
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 48px; display: flex; flex-direction: column; justify-content: center;
   background: rgba(6,12,22,0.95);
 }
 .aam-svc-panel-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.8rem;
-  font-weight: 300;
-  color: #fff;
-  margin-bottom: 8px;
+  font-size: 1.8rem; font-weight: 300; color: #fff; margin-bottom: 8px;
 }
 .aam-svc-panel-subtitle {
   color: #c9a84c;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  margin-bottom: 28px;
+  font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 28px;
 }
 .aam-svc-panel-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 24px;
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px;
 }
 .aam-svc-panel-list li {
   color: rgba(232,230,225,0.75);
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  font-weight: 300;
-  padding-left: 16px;
-  position: relative;
+  font-size: 0.88rem; line-height: 1.6; font-weight: 300;
+  padding-left: 16px; position: relative;
 }
 .aam-svc-panel-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 9px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #c9a84c;
+  content: ''; position: absolute; left: 0; top: 9px;
+  width: 5px; height: 5px; border-radius: 50%; background: #c9a84c;
 }
 
 /* ── Parallax Backgrounds ───────────────────────────────── */
-.aam-hero-bg {
-  background-attachment: fixed;
-}
-.aam-parallax-bg {
-  background-attachment: fixed;
-}
-.aam-cta-bg {
-  background-attachment: fixed;
-}
+.aam-hero-bg { background-attachment: fixed; }
+.aam-parallax-bg { background-attachment: fixed; }
+.aam-cta-bg { background-attachment: fixed; }
 
-/* ── Body Text Normalization ────────────────────────────── */
-.aam-section-lead {
-  color: rgba(232,230,225,0.75);
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.85;
-}
-
-/* ── Responsive ─────────────────────────────────────────── */
+/* ── AAM Responsive ─────────────────────────────────────── */
 @media (max-width: 900px) {
-  .aam-svc-panel {
-    grid-template-columns: 1fr;
-  }
-  .aam-svc-panel-img {
-    min-height: 200px;
-  }
-  .aam-svc-panel-content {
-    padding: 32px 24px;
-  }
-  .aam-svc-panel-list {
-    grid-template-columns: 1fr;
-  }
-  .aam-alt-card {
-    min-width: 280px;
-    max-width: 280px;
-    min-height: 340px;
-  }
+  .aam-svc-panel { grid-template-columns: 1fr; }
+  .aam-svc-panel-img { min-height: 200px; }
+  .aam-svc-panel-content { padding: 32px 24px; }
+  .aam-svc-panel-list { grid-template-columns: 1fr; }
+  .aam-alt-card { min-width: 280px; max-width: 280px; min-height: 340px; }
+  .aam-alt-scroll-outer { padding: 0 24px 16px; }
 }
 @media (max-width: 768px) {
-  .aam-svc-tabs {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .aam-hero-bg,
-  .aam-parallax-bg,
-  .aam-cta-bg {
-    background-attachment: scroll;
-  }
+  .aam-svc-tabs { flex-direction: column; align-items: stretch; }
+  .aam-hero-bg, .aam-parallax-bg, .aam-cta-bg { background-attachment: scroll; }
 }

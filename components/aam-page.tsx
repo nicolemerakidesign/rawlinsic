@@ -258,17 +258,20 @@ const AAMPage = () => {
             <div className="aam-overview-left">
               <p className="section-label"><span className="gold-text">are you ready?</span></p>
               <h2 className="section-title">The next major phase in transportation’s <em>evolution</em></h2>
-              <button
-                className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
-                onClick={() => setIntroOpen(o => !o)}
-              >
-                <span className="intro-expand-label">{introOpen ? "Read Less" : "Read More"}</span>
-                <span className="intro-expand-icon">
-                  <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M1 1.5l7 7 7-7" />
-                  </svg>
-                </span>
-              </button>
+              <div className="aam-intro-expand-row">
+                <button
+                  className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
+                  aria-label="Read more"
+                  onClick={() => setIntroOpen(o => !o)}
+                >
+                  <span className="intro-expand-icon">
+                    <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M1 1.5l7 7 7-7" />
+                    </svg>
+                  </span>
+                </button>
+                <span className="aam-intro-expand-text">{introOpen ? "Read Less" : "Read More"}</span>
+              </div>
               <div className={`intro-expandable${introOpen ? " expanded" : ""}`}>
                 <p className="aam-section-lead">
 Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly part of modern mobility ecosystems. Together, these systems and associated technologies are expected to transform transportation by enhancing connectivity, improving cargo logistics, expediting emergency response, and assisting infrastructure inspection.               </p>
@@ -335,7 +338,7 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
                       {chevronSvg(openPillars.has(i))}
                     </button>
                   </div>
-                  <p className="aam-pillar-desc">{card.desc}</p>
+                  {card.desc && <p className="aam-pillar-desc">{card.desc}</p>}
                   <div className={`aam-pillar-expand${openPillars.has(i) ? " open" : ""}`}>
                     <ul className="aam-bullet-list">
                       {card.bullets.map((b) => <li key={b}>{b}</li>)}
@@ -414,22 +417,23 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
               Our structured approach guides communities through seven phases of AAM and UAS integration.
             </p>
           </div>
-          <div className="aam-alt-scroll-outer">
-            <div className="aam-alt-scroll-track">
-              {phaseData.map((phase, i) => (
-                <div className="aam-alt-card" key={phase.num}>
-                  <div className="aam-alt-card-bg" style={{ backgroundImage: `url(${phase.img})` }} />
-                  <div className="aam-alt-card-overlay" />
-                  <div className="aam-alt-card-header">
-                    <span className="aam-alt-card-num">{phase.num}</span>
-                    <span className="aam-alt-card-phase">Phase {i + 1}</span>
-                  </div>
-                  <div className="aam-alt-card-divider" />
-                  <h4 className="aam-alt-card-title">{phase.label}</h4>
-                  <p className="aam-alt-card-body">{phase.body}</p>
+        </div>
+        {/* Full-width scroll area — breaks out of aam-container */}
+        <div className="aam-alt-scroll-outer">
+          <div className="aam-alt-scroll-track">
+            {phaseData.map((phase, i) => (
+              <div className="aam-alt-card" key={phase.num}>
+                <div className="aam-alt-card-bg" style={{ backgroundImage: `url(${phase.img})` }} />
+                <div className="aam-alt-card-overlay" />
+                <div className="aam-alt-card-header">
+                  <span className="aam-alt-card-num">{phase.num}</span>
+                  <span className="aam-alt-card-phase">Phase {i + 1}</span>
                 </div>
-              ))}
-            </div>
+                <div className="aam-alt-card-divider" />
+                <h4 className="aam-alt-card-title">{phase.label}</h4>
+                <p className="aam-alt-card-body">{phase.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
