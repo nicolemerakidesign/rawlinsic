@@ -1,1097 +1,1063 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import SiteNav from '@/components/site-nav';
 import SiteFooter from '@/components/site-footer';
 
+const DRONE_IMG = "https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const CITY_AERIAL_IMG = "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const INFRASTRUCTURE_IMG = "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const TECH_NETWORK_IMG = "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const LOGISTICS_IMG = "https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const PLANNING_IMG = "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const SKYLINE_IMG = "https://images.pexels.com/photos/1519088/pexels-photo-1519088.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const AERIAL_VIEW_IMG = "https://images.pexels.com/photos/2026324/pexels-photo-2026324.jpeg?auto=compress&cs=tinysrgb&w=1200";
+
 const AAMPage = () => {
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
-  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
-  const containerRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const mouseX = useRef(0);
+  const mouseY = useRef(0);
+  const ringX = useRef(0);
+  const ringY = useRef(0);
+  const animFrame = useRef<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const [expandedApproach, setExpandedApproach] = useState<Set<number>>(new Set());
+  const [activeTab, setActiveTab] = useState(0);
+  const [showAllAAM, setShowAllAAM] = useState(false);
+  const [showAllUAS, setShowAllUAS] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const phaseData = [
+    {
+      phase: "Phase 1",
+      title: "Policy & System Planning",
+      desc: "Develop policy, system plans, and standardized guidance for local implementation.",
+      bg: PLANNING_IMG,
+    },
+    {
+      phase: "Phase 2",
+      title: "Regulatory Navigation",
+      desc: "Provide regulatory understanding for compliance and guide regulatory coordination.",
+      bg: INFRASTRUCTURE_IMG,
+    },
+    {
+      phase: "Phase 3",
+      title: "Infrastructure Planning",
+      desc: "Plan for infrastructure, including vertiports, including technical research and validation.",
+      bg: SKYLINE_IMG,
+    },
+    {
+      phase: "Phase 4",
+      title: "Functional Frameworks",
+      desc: "Establish functional frameworks that support scalable program delivery and operational readiness.",
+      bg: PLANNING_IMG,
+    },
+    {
+      phase: "Phase 5",
+      title: "Data & Safety Integration",
+      desc: "Integrate data and safety policies into transportation systems.",
+      bg: INFRASTRUCTURE_IMG,
+    },
+    {
+      phase: "Phase 6",
+      title: "Implementation & Scaling",
+      desc: "Support implementation, deployment, and the scaling of AAM and UAS services.",
+      bg: SKYLINE_IMG,
+    },
+    {
+      phase: "Phase 7",
+      title: "Community Engagement",
+      desc: "Facilitate ongoing community engagement and public trust-building.",
+      bg: PLANNING_IMG,
+    },
+  ];
+
+  const approachData = [
+    {
+      title: "Define",
+      desc: "Establish clear vision, objectives, and operational parameters for your AAM and UAS program.",
+      bullets: [
+        "Community needs assessment",
+        "Vision and goals definition",
+        "Program scope and timeline",
+      ],
+    },
+    {
+      title: "Enable",
+      desc: "Build the infrastructure, policies, and partnerships required for successful deployment.",
+      bullets: [
+        "Policy framework development",
+        "Stakeholder coordination",
+        "Infrastructure planning",
+      ],
+    },
+    {
+      title: "Deliver",
+      desc: "Implement, operate, and scale your AAM and UAS services with continuous optimization.",
+      bullets: [
+        "Operational deployment",
+        "Safety and compliance monitoring",
+        "Performance optimization",
+      ],
+    },
+  ];
+
+  const valueDeliveryTabs = [
+    {
+      label: "Air Taxis",
+      img: CITY_AERIAL_IMG,
+      title: "Urban Air Mobility Solutions",
+      desc: "Transform passenger transportation through electric vertical takeoff and landing aircraft, enabling rapid point-to-point connectivity across metropolitan areas.",
+      useCases: [
+        "Urban air mobility solutions",
+        "Vertiport integration planning",
+        "Passenger safety and operations",
+        "Multi-modal transportation integration",
+      ],
+    },
+    {
+      label: "Data Collection",
+      img: TECH_NETWORK_IMG,
+      title: "Geographic Intelligence & Insights",
+      desc: "Harness unmanned aircraft systems to gather real-time aerial data for infrastructure monitoring, environmental assessment, and strategic planning.",
+      useCases: [
+        "Airborne data acquisition",
+        "Infrastructure monitoring",
+        "Environmental assessment",
+        "Precision mapping and analytics",
+      ],
+    },
+    {
+      label: "Package Delivery",
+      img: LOGISTICS_IMG,
+      title: "Last-Mile Logistics Innovation",
+      desc: "Revolutionize supply chain operations with autonomous delivery systems, enabling faster response times and expanding service areas.",
+      useCases: [
+        "Last-mile delivery optimization",
+        "Supply chain resilience",
+        "Emergency response capability",
+        "Rapid goods distribution",
+      ],
+    },
+  ];
+
+  const stakeholderCategories = [
+    {
+      name: "Aviation Authorities",
+      items: ["FAA", "ICAO", "NASAO"],
+      icon: "shield",
+    },
+    {
+      name: "Government Agencies",
+      items: ["DOTs", "Security", "Emergency"],
+      icon: "building",
+    },
+    {
+      name: "Standards Organizations",
+      items: ["ACRA", "AASHTO", "NCHRP"],
+      icon: "book",
+    },
+    {
+      name: "Academic Institutions",
+      items: ["Research Centers", "Universities", "Labs"],
+      icon: "compass",
+    },
+    {
+      name: "Air Navigation Providers",
+      items: ["UTM Operators", "ATM Providers", "Traffic Mgmt"],
+      icon: "radar",
+    },
+    {
+      name: "Operators & Services",
+      items: ["Drone Operators", "Delivery Services", "Providers"],
+      icon: "airplane",
+    },
+    {
+      name: "Industry Partners",
+      items: ["Manufacturers", "Tech Providers", "Integrators"],
+      icon: "gear",
+    },
+    {
+      name: "Cities & MPOs",
+      items: ["Municipal Gov", "Planning Offices", "Transit Agencies"],
+      icon: "map-pin",
+    },
+  ];
+
+  const aamServices = [
+    "Feasibility studies",
+    "Vertiport planning",
+    "Air traffic management",
+    "Policy framework development",
+    "Community outreach",
+    "Pilot program design",
+    "Economic impact analysis",
+    "Safety case development",
+    "Multimodal integration",
+    "Regulatory compliance",
+  ];
+
+  const uasServices = [
+    "Operational design domain development",
+    "Drone delivery corridor planning",
+    "Data governance frameworks",
+    "BVLOS operations support",
+    "Safety management systems",
+    "Ground transportation integration",
+    "Workforce training programs",
+    "Airspace deconfliction",
+    "Environmental impact assessments",
+    "Procurement support",
+  ];
 
   useEffect(() => {
-    const reveals = document.querySelectorAll('.reveal');
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
+
+    const onMouseMove = (e: MouseEvent) => {
+      mouseX.current = e.clientX;
+      mouseY.current = e.clientY;
+      dot.style.left = e.clientX - 4 + "px";
+      dot.style.top = e.clientY - 4 + "px";
+    };
+
+    const animateRing = () => {
+      ringX.current += (mouseX.current - ringX.current) * 0.12;
+      ringY.current += (mouseY.current - ringY.current) * 0.12;
+      ring.style.left = ringX.current - 20 + "px";
+      ring.style.top = ringY.current - 20 + "px";
+      animFrame.current = requestAnimationFrame(animateRing);
+    };
+
+    document.addEventListener("mousemove", onMouseMove);
+    animFrame.current = requestAnimationFrame(animateRing);
+
+    const hoverEls = document.querySelectorAll("a, button, .nav-item, .back-to-top");
+    hoverEls.forEach((el) => {
+      el.addEventListener("mouseenter", () => ring.classList.add("hover"));
+      el.addEventListener("mouseleave", () => ring.classList.remove("hover"));
+    });
+
+    return () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      if (animFrame.current) cancelAnimationFrame(animFrame.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const container = document.getElementById("microParticles");
+    if (!container) return;
+
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement("div");
+      p.className = "micro-particle";
+      p.style.left = Math.random() * 100 + "%";
+      p.style.animationDuration = 8 + Math.random() * 14 + "s";
+      p.style.animationDelay = Math.random() * 12 + "s";
+      const size = 1.5 + Math.random() * 2.5 + "px";
+      p.style.width = size;
+      p.style.height = size;
+      p.style.opacity = String(0.15 + Math.random() * 0.25);
+      container.appendChild(p);
+    }
+
+    return () => {
+      container.innerHTML = "";
+    };
+  }, []);
+
+  useEffect(() => {
+    const backToTop = document.getElementById("backToTop");
+    const onScroll = () => {
+      if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const reveals = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
+          if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
     reveals.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
-  const toggleSection = (sectionId: string) => {
-    setExpandedSections((prev) => {
+  useEffect(() => {
+    const track = scrollRef.current;
+    if (!track) return;
+
+    const onScroll = () => {
+      const scrollLeft = track.scrollLeft;
+      const scrollWidth = track.scrollWidth - track.clientWidth;
+      const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
+      setScrollProgress(progress);
+    };
+
+    track.addEventListener("scroll", onScroll);
+    return () => track.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const toggleApproach = (index: number) => {
+    setExpandedApproach((prev) => {
       const newSet = new Set(prev);
-      if (newSet.has(sectionId)) {
-        newSet.delete(sectionId);
+      if (newSet.has(index)) {
+        newSet.delete(index);
       } else {
-        newSet.add(sectionId);
+        newSet.add(index);
       }
       return newSet;
     });
   };
 
-  const toggleCard = (cardId: string) => {
-    setExpandedCards((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(cardId)) {
-        newSet.delete(cardId);
+  const scrollPhases = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const amount = 400;
+      if (direction === 'left') {
+        scrollRef.current.scrollBy({ left: -amount, behavior: 'smooth' });
       } else {
-        newSet.add(cardId);
+        scrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
       }
-      return newSet;
-    });
-  };
-
-  const scrollContainer = (containerId: string, direction: 'prev' | 'next') => {
-    const container = document.getElementById(containerId);
-    if (container) {
-      const scrollAmount = 420;
-      container.scrollBy({
-        left: direction === 'prev' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      });
     }
   };
 
+  const renderStakeholderIcon = (iconType: string) => {
+    const iconMap: { [key: string]: string } = {
+      shield: "M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z",
+      building: "M5 9.2V19h14V9.2M9 9V5h6v4M11 13h2v4h-2z",
+      book: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 9h6v2H9V9z",
+      compass: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.6 8.7l-4.5 6.3-4.5-6.3H12z",
+      radar: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c0-1.93-1.57-3.5-3.5-3.5S8.5 10.07 8.5 12s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5z",
+      airplane: "M19.35 10.04C18.67 6.59 15.64 4 12 4c-1.48 0-2.85.43-4.01 1.17l1.46 1.46C10.21 5.23 11.08 5 12 5c3.04 0 5.5 2.46 5.5 5.5v.04C17.52 10.65 19 12.37 19 14.5V21h2V14.5c0-2.02-1.1-3.78-2.65-4.46z",
+      gear: "M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.18.24-.46.12-.71l-2-3.46c-.12-.29-.39-.43-.69-.43-.29 0-.56.14-.69.43l-1.97 3.23c-.45-.32-.95-.58-1.49-.78l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.54.2-1.04.46-1.49.78l-1.97-3.23c-.13-.29-.4-.43-.69-.43-.3 0-.57.14-.69.43l-2 3.46c-.13.25-.07.53.12.71l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.18-.24.46-.12.71l2 3.46c.12.29.39.43.69.43.29 0 .56-.14.69-.43l1.97-3.23c.45.32.95.58 1.49.78l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.54-.2 1.04-.46 1.49-.78l1.97 3.23c.13.29.4.43.69.43.3 0 .57-.14.69-.43l2-3.46c.12-.29.07-.57-.12-.71l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z",
+      "map-pin": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z",
+    };
+
+    return iconMap[iconType] || iconMap.shield;
+  };
+
   return (
-    <div ref={containerRef} className="min-h-screen bg-[var(--rawlins-bg)] text-white overflow-hidden relative">
-      <style>{`
-        /* AAM-Specific Styles Only */
-
-        .aam-svg-illustration {
-          width: 100%;
-          max-width: 400px;
-          height: auto;
-          margin: 0 auto;
-        }
-
-        .aam-value-card {
-          position: relative;
-          border-radius: 6px;
-          overflow: hidden;
-          border: 1px solid rgba(229, 203, 135, 0.07);
-          background: rgba(10, 21, 40, 0.4);
-          backdrop-filter: blur(10px);
-          padding: 40px 32px;
-          transition: all 0.3s ease;
-        }
-
-        .aam-value-card:hover {
-          border-color: rgba(201, 168, 76, 0.2);
-          transform: translateY(-4px);
-          box-shadow: 0 12px 40px rgba(201, 168, 76, 0.1);
-        }
-
-        .aam-value-visual {
-          width: 100%;
-          height: 150px;
-          border-radius: 4px;
-          margin-bottom: 24px;
-          background-size: cover;
-          background-position: center;
-          transition: transform 0.3s ease;
-        }
-
-        .aam-value-card:hover .aam-value-visual {
-          transform: scale(1.02);
-        }
-
-        .aam-value-title {
-          font-family: var(--font-cormorant);
-          font-size: 24px;
-          font-weight: 400;
-          margin-bottom: 12px;
-          color: #fff;
-        }
-
-        .aam-value-desc {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.7);
-          margin-bottom: 16px;
-          line-height: 1.6;
-        }
-
-        .aam-expand-btn {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          border: 1px solid rgba(201, 168, 76, 0.3);
-          background: rgba(201, 168, 76, 0.05);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          margin-top: 12px;
-        }
-
-        .aam-expand-btn:hover {
-          border-color: rgba(201, 168, 76, 0.6);
-          background: rgba(201, 168, 76, 0.1);
-        }
-
-        .aam-expand-btn svg {
-          width: 20px;
-          height: 20px;
-          color: #c9a84c;
-          transition: transform 0.3s ease;
-        }
-
-        .aam-expand-btn.expanded svg {
-          transform: rotate(180deg);
-        }
-
-        .aam-expandable {
-          max-height: 0;
-          opacity: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease, opacity 0.3s ease;
-        }
-
-        .aam-expandable.expanded {
-          max-height: 500px;
-          opacity: 1;
-        }
-
-        .aam-bullet-list {
-          list-style: none;
-          margin: 16px 0 0 0;
-          padding: 0;
-        }
-
-        .aam-bullet-list li {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.65);
-          padding: 8px 0;
-          padding-left: 20px;
-          position: relative;
-          line-height: 1.6;
-        }
-
-        .aam-bullet-list li::before {
-          content: '→';
-          position: absolute;
-          left: 0;
-          color: #c9a84c;
-          font-weight: 600;
-        }
-
-        .aam-phase-card {
-          flex: 0 0 clamp(320px, 28vw, 380px);
-          border: 1px solid rgba(201, 168, 76, 0.1);
-          border-left: 3px solid rgba(201, 168, 76, 0.3);
-          border-radius: 6px;
-          padding: 32px 28px;
-          background: rgba(10, 21, 40, 0.2);
-          transition: all 0.3s ease;
-        }
-
-        .aam-phase-card:hover {
-          border-color: rgba(201, 168, 76, 0.2);
-          border-left-color: rgba(201, 168, 76, 0.5);
-          transform: translateY(-6px);
-        }
-
-        .aam-phase-number {
-          font-family: var(--font-cormorant);
-          font-size: 48px;
-          font-weight: 300;
-          color: rgba(201, 168, 76, 0.3);
-          margin-bottom: 8px;
-        }
-
-        .aam-phase-title {
-          font-family: var(--font-cormorant);
-          font-size: 20px;
-          font-weight: 400;
-          margin-bottom: 12px;
-          color: #fff;
-        }
-
-        .aam-phase-desc {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.65);
-          line-height: 1.7;
-        }
-
-        .aam-scroll-track {
-          display: flex;
-          gap: 20px;
-          overflow-x: auto;
-          scroll-behavior: smooth;
-          padding: 0;
-          scrollbar-width: thin;
-        }
-
-        .aam-scroll-track::-webkit-scrollbar {
-          height: 6px;
-        }
-
-        .aam-scroll-track::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        .aam-scroll-track::-webkit-scrollbar-thumb {
-          background: rgba(201, 168, 76, 0.2);
-          border-radius: 3px;
-        }
-
-        .aam-scroll-track::-webkit-scrollbar-thumb:hover {
-          background: rgba(201, 168, 76, 0.4);
-        }
-
-        .aam-scroll-controls {
-          display: flex;
-          gap: 12px;
-          margin-top: 32px;
-          justify-content: center;
-        }
-
-        .aam-scroll-btn {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          border: 1px solid rgba(201, 168, 76, 0.3);
-          background: rgba(201, 168, 76, 0.05);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .aam-scroll-btn:hover {
-          border-color: rgba(201, 168, 76, 0.6);
-          background: rgba(201, 168, 76, 0.1);
-        }
-
-        .aam-scroll-btn svg {
-          width: 18px;
-          height: 18px;
-          color: #c9a84c;
-        }
-
-        .aam-service-card {
-          flex: 1;
-          min-height: 400px;
-          border-radius: 6px;
-          overflow: hidden;
-          border: 1px solid rgba(201, 168, 76, 0.1);
-          padding: 48px 40px;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          transition: all 0.3s ease;
-        }
-
-        .aam-service-card:hover {
-          border-color: rgba(201, 168, 76, 0.2);
-          transform: translateY(-4px);
-        }
-
-        .aam-service-badge {
-          display: inline-block;
-          font-size: 12px;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          padding: 8px 16px;
-          border-radius: 4px;
-          background: rgba(201, 168, 76, 0.1);
-          color: #c9a84c;
-          margin-bottom: 20px;
-          width: fit-content;
-        }
-
-        .aam-service-title {
-          font-family: var(--font-cormorant);
-          font-size: 32px;
-          font-weight: 400;
-          margin-bottom: 16px;
-          color: #fff;
-        }
-
-        .aam-service-desc {
-          font-size: 15px;
-          color: rgba(255, 255, 255, 0.7);
-          line-height: 1.8;
-          margin-bottom: 24px;
-          flex-grow: 1;
-        }
-
-        .aam-capability-list {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          max-height: 0;
-          opacity: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease, opacity 0.3s ease;
-        }
-
-        .aam-capability-list.expanded {
-          max-height: 600px;
-          opacity: 1;
-        }
-
-        .aam-capability-list li {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.65);
-          padding: 8px 0;
-          padding-left: 20px;
-          position: relative;
-          line-height: 1.6;
-        }
-
-        .aam-capability-list li::before {
-          content: '•';
-          position: absolute;
-          left: 0;
-          color: #c9a84c;
-        }
-
-        .aam-stakeholder-section {
-          display: grid;
-          grid-template-columns: 1fr auto 1fr;
-          gap: 60px;
-          align-items: start;
-          margin-top: 60px;
-        }
-
-        .aam-stakeholder-column {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .aam-stakeholder-title {
-          font-family: var(--font-cormorant);
-          font-size: 20px;
-          font-weight: 400;
-          margin-bottom: 24px;
-          color: #fff;
-        }
-
-        .aam-stakeholder-list {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          max-height: 0;
-          opacity: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease, opacity 0.3s ease;
-        }
-
-        .aam-stakeholder-list.expanded {
-          max-height: 500px;
-          opacity: 1;
-        }
-
-        .aam-stakeholder-list li {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.7);
-          padding: 12px 0;
-          border-bottom: 1px solid rgba(201, 168, 76, 0.05);
-        }
-
-        .aam-stakeholder-hub {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-start;
-        }
-
-        .aam-hub-center {
-          position: relative;
-          width: 120px;
-          height: 120px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 40px;
-        }
-
-        .aam-hub-ring {
-          position: absolute;
-          border: 1px solid rgba(201, 168, 76, 0.2);
-          border-radius: 50%;
-          animation: pulse 2s ease-in-out infinite;
-        }
-
-        .aam-hub-ring:nth-child(1) {
-          width: 120px;
-          height: 120px;
-        }
-
-        .aam-hub-ring:nth-child(2) {
-          width: 160px;
-          height: 160px;
-          animation-delay: 0.2s;
-        }
-
-        .aam-hub-ring:nth-child(3) {
-          width: 200px;
-          height: 200px;
-          animation-delay: 0.4s;
-        }
-
-        .aam-hub-text {
-          position: relative;
-          z-index: 2;
-          text-align: center;
-          font-family: var(--font-cormorant);
-          font-size: 16px;
-          font-weight: 400;
-          color: #c9a84c;
-        }
-
-        @keyframes pulse {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(1.05); }
-        }
-
-        .aam-video-placeholder {
-          width: 100%;
-          aspect-ratio: 16 / 9;
-          background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(74, 144, 226, 0.1));
-          border: 1px solid rgba(201, 168, 76, 0.2);
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          overflow: hidden;
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-
-        .aam-video-placeholder:hover {
-          border-color: rgba(201, 168, 76, 0.4);
-          box-shadow: 0 0 40px rgba(201, 168, 76, 0.15);
-        }
-
-        .aam-play-button {
-          width: 80px;
-          height: 80px;
-          border: 2px solid #c9a84c;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          transition: all 0.3s ease;
-        }
-
-        .aam-video-placeholder:hover .aam-play-button {
-          transform: scale(1.1);
-          box-shadow: 0 0 30px rgba(201, 168, 76, 0.4);
-        }
-
-        .aam-play-button::after {
-          content: '';
-          width: 0;
-          height: 0;
-          border-left: 20px solid #c9a84c;
-          border-top: 12px solid transparent;
-          border-bottom: 12px solid transparent;
-          margin-left: 4px;
-        }
-
-        .aam-cta-section {
-          text-align: center;
-          padding: 100px 40px;
-        }
-
-        .aam-cta-title {
-          font-family: var(--font-cormorant);
-          font-size: clamp(2.2rem, 3vw, 3rem);
-          font-weight: 300;
-          margin-bottom: 20px;
-          background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
-          -webkit-background-clip: text;
-          color: transparent;
-        }
-
-        .aam-cta-subtitle {
-          font-size: 16px;
-          color: rgba(255, 255, 255, 0.7);
-          margin-bottom: 40px;
-          max-width: 600px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .aam-cta-btn {
-          display: inline-block;
-          padding: 14px 40px;
-          border: 1px solid rgba(201, 168, 76, 0.5);
-          border-radius: 4px;
-          background: transparent;
-          color: #fff;
-          font-family: var(--font-dm-sans);
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .aam-cta-btn:hover {
-          border-color: #c9a84c;
-          background: rgba(201, 168, 76, 0.1);
-          box-shadow: 0 0 30px rgba(201, 168, 76, 0.15);
-        }
-
-        @media (max-width: 768px) {
-          .aam-stakeholder-section {
-            grid-template-columns: 1fr;
-            gap: 40px;
-          }
-
-          .aam-phase-card {
-            flex: 0 0 clamp(280px, 80vw, 400px);
-          }
-
-          .aam-service-card {
-            min-height: 300px;
-            padding: 32px 24px;
-          }
-
-          .aam-cta-section {
-            padding: 60px 20px;
-          }
-        }
-      `}</style>
+    <>
+      <div className="ambient-bg" />
+      <div className="ambient-orbs">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+        <div className="orb orb-4" />
+      </div>
+      <div className="micro-particles" id="microParticles" />
+
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
+
+      <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+      </a>
 
       <SiteNav />
 
-      <div className="content-wrapper">
-        {/* Hero Section */}
-        <section className="aam-hero min-h-screen flex flex-col justify-center items-center px-6 py-20 relative overflow-hidden">
-          <div className="reveal rd1 text-center max-w-5xl">
-            <div className="text-sm uppercase tracking-widest text-[#c9a84c] mb-8 font-semibold">
-              Technology · Advanced Air Mobility
-            </div>
-            <h1 className="section-title mb-6">
-              Advanced Air Mobility <em>&amp; UAS</em>
-            </h1>
-            <p className="section-text mx-auto mb-12 text-base">
-              Translating next-generation aerial capabilities into integrated mobility solutions for communities and regions worldwide.
-            </p>
-          </div>
-
-          {/* Video Placeholder */}
-          <div className="reveal rd2 w-full max-w-2xl">
-            <div className="aam-video-placeholder">
-              <div className="aam-play-button" />
-            </div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce">
-            <span className="text-xs uppercase tracking-widest text-[#c9a84c] font-semibold">Scroll</span>
-            <div className="w-1 h-8 bg-gradient-to-b from-[#c9a84c] to-transparent rounded-full" />
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="section-divider py-12">
-          <div className="gold-line" />
+      <section className="hero" id="top">
+        <div className="hero-content">
+          <span className="hero-label">
+            <span className="gold-text">Technology · Advanced Air Mobility</span>
+          </span>
+          <h1 className="hero-title">
+            Advanced Air Mobility <em>&amp; UAS</em>
+          </h1>
+          <p className="hero-sub">
+            Partnering to turn AAM and UAS concepts into community transport solutions
+          </p>
+          <a href="#intro" className="hero-cta-btn">
+            <span>explore our approach</span>
+          </a>
         </div>
-
-        {/* Overview Section */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              {/* Left: SVG Illustration */}
-              <div className="reveal rd1">
-                <svg
-                  className="aam-svg-illustration"
-                  viewBox="0 0 400 400"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* Connected network visualization */}
-                  <defs>
-                    <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#e8d5a0" stopOpacity="0.4" />
-                    </linearGradient>
-                  </defs>
-
-                  {/* Connecting lines */}
-                  <line x1="80" y1="80" x2="320" y2="320" stroke="#c9a84c" strokeWidth="1" opacity="0.3" />
-                  <line x1="320" y1="80" x2="80" y2="320" stroke="#c9a84c" strokeWidth="1" opacity="0.3" />
-                  <line x1="200" y1="50" x2="200" y2="350" stroke="#c9a84c" strokeWidth="1" opacity="0.3" />
-                  <line x1="50" y1="200" x2="350" y2="200" stroke="#c9a84c" strokeWidth="1" opacity="0.3" />
-
-                  {/* Nodes */}
-                  <circle cx="200" cy="200" r="12" fill="url(#nodeGradient)" />
-                  <circle cx="80" cy="80" r="8" fill="#c9a84c" opacity="0.6" />
-                  <circle cx="320" cy="80" r="8" fill="#c9a84c" opacity="0.6" />
-                  <circle cx="80" cy="320" r="8" fill="#c9a84c" opacity="0.6" />
-                  <circle cx="320" cy="320" r="8" fill="#c9a84c" opacity="0.6" />
-                  <circle cx="200" cy="50" r="8" fill="#c9a84c" opacity="0.6" />
-                  <circle cx="200" cy="350" r="8" fill="#c9a84c" opacity="0.6" />
-                  <circle cx="50" cy="200" r="8" fill="#c9a84c" opacity="0.6" />
-                  <circle cx="350" cy="200" r="8" fill="#c9a84c" opacity="0.6" />
-
-                  {/* Center glow */}
-                  <circle cx="200" cy="200" r="20" fill="#c9a84c" opacity="0.1" />
-                </svg>
-              </div>
-
-              {/* Right: Content with Expand */}
-              <div className="reveal rd2">
-                <div className="section-label gold-text">Our Focus</div>
-                <h2 className="section-title mb-6">Unlocking Aerial Mobility Potential</h2>
-                <p className="section-text mb-6">
-                  We partner with government agencies, municipalities, and private enterprises to navigate the complex landscape of advanced air mobility. Our expertise spans regulatory frameworks, infrastructure planning, and operational integration.
-                </p>
-
-                {/* Expand Button */}
-                <button
-                  onClick={() => toggleSection('overview')}
-                  className={`aam-expand-btn ${expandedSections.has('overview') ? 'expanded' : ''}`}
-                  aria-expanded={expandedSections.has('overview')}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {/* Expandable Content */}
-                <div className={`aam-expandable ${expandedSections.has('overview') ? 'expanded' : ''}`}>
-                  <ul className="aam-bullet-list">
-                    <li>Regulatory and policy advisory</li>
-                    <li>Infrastructure and airspace integration planning</li>
-                    <li>Community engagement and stakeholder coordination</li>
-                    <li>Technology assessment and operational readiness</li>
-                    <li>Business model and economic feasibility analysis</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Parallax Quote Panel */}
-        <section className="py-20 px-6 bg-gradient-to-b from-transparent via-[rgba(14,30,60,0.2)] to-transparent">
-          <div className="max-width-5xl mx-auto text-center reveal">
-            <p className="section-title text-center">
-              We translate <em>next-generation aerial capabilities</em> into integrated mobility solutions for communities and regions.
-            </p>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="section-divider py-12">
-          <div className="gold-line" />
+        <div className="hero-scroll">
+          <span>Scroll</span>
+          <div className="scroll-line" />
         </div>
+      </section>
 
-        {/* Value Delivery Cards */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-16 reveal">
-              <div className="section-label gold-text">Our Approach</div>
-              <h2 className="section-title">Value Delivery Across Three Domains</h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Card 1: Air Taxis & Passenger Mobility */}
-              <div className="reveal rd1 aam-value-card">
-                <div
-                  className="aam-value-visual"
-                  style={{
-                    background: 'radial-gradient(ellipse at 60% 40%, rgba(201, 168, 76, 0.2), transparent), linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(201, 168, 76, 0.05))',
-                  }}
-                />
-                <h3 className="aam-value-title">Air Taxis & Passenger Mobility</h3>
-                <p className="aam-value-desc">
-                  Enabling safe, efficient urban and regional air transportation.
-                </p>
-                <button
-                  onClick={() => toggleCard('card-1')}
-                  className={`aam-expand-btn ${expandedCards.has('card-1') ? 'expanded' : ''}`}
-                  aria-expanded={expandedCards.has('card-1')}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div className={`aam-expandable ${expandedCards.has('card-1') ? 'expanded' : ''}`}>
-                  <ul className="aam-bullet-list">
-                    <li>Vertiport site selection and design</li>
-                    <li>Operational integration with existing transport</li>
-                    <li>Safety and certification frameworks</li>
-                    <li>Market demand and feasibility studies</li>
-                    <li>Community engagement strategies</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Card 2: Data Collection & Inspection */}
-              <div className="reveal rd2 aam-value-card">
-                <div
-                  className="aam-value-visual"
-                  style={{
-                    background: 'linear-gradient(45deg, rgba(201, 168, 76, 0.15) 25%, transparent 25%, transparent 50%, rgba(201, 168, 76, 0.15) 50%, rgba(201, 168, 76, 0.15) 75%, transparent 75%, transparent), linear-gradient(-45deg, rgba(74, 144, 226, 0.1) 25%, transparent 25%, transparent 50%, rgba(74, 144, 226, 0.1) 50%, rgba(74, 144, 226, 0.1) 75%, transparent 75%, transparent)',
-                    backgroundSize: '40px 40px',
-                    backgroundPosition: '0 0, 20px 20px',
-                  }}
-                />
-                <h3 className="aam-value-title">Data Collection & Inspection</h3>
-                <p className="aam-value-desc">
-                  Leveraging UAS for efficient infrastructure monitoring.
-                </p>
-                <button
-                  onClick={() => toggleCard('card-2')}
-                  className={`aam-expand-btn ${expandedCards.has('card-2') ? 'expanded' : ''}`}
-                  aria-expanded={expandedCards.has('card-2')}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div className={`aam-expandable ${expandedCards.has('card-2') ? 'expanded' : ''}`}>
-                  <ul className="aam-bullet-list">
-                    <li>Regulatory compliance and waivers</li>
-                    <li>Sensor technology integration</li>
-                    <li>Data processing and analytics</li>
-                    <li>Infrastructure asset management</li>
-                    <li>Cost-benefit analysis vs. traditional methods</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Card 3: Package Delivery & Logistics */}
-              <div className="reveal rd3 aam-value-card">
-                <div
-                  className="aam-value-visual"
-                  style={{
-                    background: 'radial-gradient(circle at 30% 50%, rgba(201, 168, 76, 0.15) 0%, transparent 30%), radial-gradient(circle at 70% 50%, rgba(74, 144, 226, 0.1) 0%, transparent 35%)',
-                  }}
-                />
-                <h3 className="aam-value-title">Package Delivery & Logistics</h3>
-                <p className="aam-value-desc">
-                  Scaling autonomous delivery networks for last-mile optimization.
-                </p>
-                <button
-                  onClick={() => toggleCard('card-3')}
-                  className={`aam-expand-btn ${expandedCards.has('card-3') ? 'expanded' : ''}`}
-                  aria-expanded={expandedCards.has('card-3')}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div className={`aam-expandable ${expandedCards.has('card-3') ? 'expanded' : ''}`}>
-                  <ul className="aam-bullet-list">
-                    <li>Logistics hub and delivery zone planning</li>
-                    <li>Fleet management systems</li>
-                    <li>Route optimization algorithms</li>
-                    <li>Environmental impact assessment</li>
-                    <li>Economic modeling for operator viability</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="section-divider py-12">
-          <div className="gold-line" />
-        </div>
-
-        {/* How We Serve - Horizontal Scrolling Phases */}
-        <section className="py-20 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-12 reveal">
-              <div className="section-label gold-text">Our Journey</div>
-              <h2 className="section-title">How We Serve</h2>
-            </div>
-
-            {/* Horizontal Scroll Container */}
-            <div className="overflow-hidden">
-              <div className="aam-scroll-track" id="phaseScroll">
-                <div className="reveal rd1 aam-phase-card">
-                  <div className="aam-phase-number">01</div>
-                  <h3 className="aam-phase-title">Discovery</h3>
-                  <p className="aam-phase-desc">Understanding your region's unique needs, constraints, and opportunities for advanced air mobility integration.</p>
-                </div>
-                <div className="reveal rd2 aam-phase-card">
-                  <div className="aam-phase-number">02</div>
-                  <h3 className="aam-phase-title">Assessment</h3>
-                  <p className="aam-phase-desc">Evaluating regulatory frameworks, airspace capacity, infrastructure readiness, and economic viability.</p>
-                </div>
-                <div className="reveal rd3 aam-phase-card">
-                  <div className="aam-phase-number">03</div>
-                  <h3 className="aam-phase-title">Strategy</h3>
-                  <p className="aam-phase-desc">Developing comprehensive roadmaps that align with regional goals and stakeholder interests.</p>
-                </div>
-                <div className="reveal rd1 aam-phase-card">
-                  <div className="aam-phase-number">04</div>
-                  <h3 className="aam-phase-title">Planning</h3>
-                  <p className="aam-phase-desc">Creating detailed implementation plans including infrastructure, operations, and governance structures.</p>
-                </div>
-                <div className="reveal rd2 aam-phase-card">
-                  <div className="aam-phase-number">05</div>
-                  <h3 className="aam-phase-title">Coordination</h3>
-                  <p className="aam-phase-desc">Facilitating dialogue between government agencies, operators, and community stakeholders.</p>
-                </div>
-                <div className="reveal rd3 aam-phase-card">
-                  <div className="aam-phase-number">06</div>
-                  <h3 className="aam-phase-title">Integration</h3>
-                  <p className="aam-phase-desc">Supporting operational integration and continuous improvement as systems mature and scale.</p>
-                </div>
-                <div className="reveal rd1 aam-phase-card">
-                  <div className="aam-phase-number">07</div>
-                  <h3 className="aam-phase-title">Scaling</h3>
-                  <p className="aam-phase-desc">Replicating successful models across additional communities and expanding service capabilities.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Scroll Controls */}
-            <div className="aam-scroll-controls">
-              <button
-                onClick={() => scrollContainer('phaseScroll', 'prev')}
-                className="aam-scroll-btn"
-                aria-label="Scroll phases left"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-              </button>
-              <button
-                onClick={() => scrollContainer('phaseScroll', 'next')}
-                className="aam-scroll-btn"
-                aria-label="Scroll phases right"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="section-divider py-12">
-          <div className="gold-line" />
-        </div>
-
-        {/* Service Approach - Three Cards */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-16 reveal">
-              <div className="section-label gold-text">Our Method</div>
-              <h2 className="section-title">Three Pillars of Service</h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Define Card */}
-              <div className="reveal rd1 aam-service-card" style={{ background: 'linear-gradient(135deg, rgba(14,30,60,0.3), rgba(201,168,76,0.05))' }}>
-                <div className="aam-service-badge">Phase 01</div>
-                <h3 className="aam-service-title">Define</h3>
-                <p className="aam-service-desc">
-                  We clarify your objectives, analyze existing conditions, and establish success metrics for advanced air mobility initiatives.
-                </p>
-                <button
-                  onClick={() => toggleCard('define')}
-                  className={`aam-expand-btn ${expandedCards.has('define') ? 'expanded' : ''}`}
-                  aria-expanded={expandedCards.has('define')}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <ul className={`aam-capability-list ${expandedCards.has('define') ? 'expanded' : ''}`}>
-                  <li>Vision and goal setting</li>
-                  <li>Stakeholder analysis</li>
-                  <li>Baseline assessment</li>
-                  <li>Requirement definition</li>
-                  <li>Success metrics</li>
-                </ul>
-              </div>
-
-              {/* Enable Card */}
-              <div className="reveal rd2 aam-service-card" style={{ background: 'linear-gradient(135deg, rgba(20,40,70,0.3), rgba(201,168,76,0.05))' }}>
-                <div className="aam-service-badge">Phase 02</div>
-                <h3 className="aam-service-title">Enable</h3>
-                <p className="aam-service-desc">
-                  We build the organizational, regulatory, and operational foundations required for successful deployment.
-                </p>
-                <button
-                  onClick={() => toggleCard('enable')}
-                  className={`aam-expand-btn ${expandedCards.has('enable') ? 'expanded' : ''}`}
-                  aria-expanded={expandedCards.has('enable')}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <ul className={`aam-capability-list ${expandedCards.has('enable') ? 'expanded' : ''}`}>
-                  <li>Policy framework development</li>
-                  <li>Infrastructure planning</li>
-                  <li>Organizational design</li>
-                  <li>Training and capacity building</li>
-                  <li>System integration</li>
-                </ul>
-              </div>
-
-              {/* Deliver Card */}
-              <div className="reveal rd3 aam-service-card" style={{ background: 'linear-gradient(135deg, rgba(10,25,50,0.3), rgba(201,168,76,0.08))' }}>
-                <div className="aam-service-badge">Phase 03</div>
-                <h3 className="aam-service-title">Deliver</h3>
-                <p className="aam-service-desc">
-                  We support implementation, manage stakeholder engagement, and optimize operations for sustained success.
-                </p>
-                <button
-                  onClick={() => toggleCard('deliver')}
-                  className={`aam-expand-btn ${expandedCards.has('deliver') ? 'expanded' : ''}`}
-                  aria-expanded={expandedCards.has('deliver')}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <ul className={`aam-capability-list ${expandedCards.has('deliver') ? 'expanded' : ''}`}>
-                  <li>Project management</li>
-                  <li>Change management</li>
-                  <li>Performance monitoring</li>
-                  <li>Continuous improvement</li>
-                  <li>Scaling support</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="section-divider py-12">
-          <div className="gold-line" />
-        </div>
-
-        {/* Parallax Quote Panel 2 */}
-        <section className="py-20 px-6 bg-gradient-to-b from-transparent via-[rgba(14,30,60,0.2)] to-transparent">
-          <div className="max-width-5xl mx-auto text-center reveal">
-            <p className="section-title text-center">
-              Advanced air mobility is not a distant future—it's an <em>emerging reality</em> that requires thoughtful planning today.
-            </p>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="section-divider py-12">
-          <div className="gold-line" />
-        </div>
-
-        {/* Stakeholder Ecosystem */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-16 reveal">
-              <div className="section-label gold-text">Our Network</div>
-              <h2 className="section-title">Stakeholder Ecosystem</h2>
-              <p className="section-text mt-6">
-                We work across a diverse network of government agencies, private operators, technology providers, and community organizations.
-              </p>
-            </div>
-
-            <div className="aam-stakeholder-section">
-              {/* Public Sector */}
-              <div className="reveal rd1 aam-stakeholder-column">
-                <h3 className="aam-stakeholder-title">Public Sector</h3>
-                <button
-                  onClick={() => toggleCard('public-sector')}
-                  className="text-left mb-4 flex items-center gap-2 text-[#c9a84c] hover:text-[#e8d5a0] transition"
-                >
-                  <span className={`transform transition ${expandedCards.has('public-sector') ? 'rotate-180' : ''}`}>▼</span>
-                  <span className="text-sm uppercase tracking-widest font-semibold">View Stakeholders</span>
-                </button>
-                <ul className={`aam-stakeholder-list ${expandedCards.has('public-sector') ? 'expanded' : ''}`}>
-                  <li>Federal Aviation Administration (FAA)</li>
-                  <li>State Transportation Departments</li>
-                  <li>Municipal Government Agencies</li>
-                  <li>Urban Development Authorities</li>
-                  <li>Environmental Protection Agencies</li>
-                </ul>
-              </div>
-
-              {/* Hub Center */}
-              <div className="reveal aam-stakeholder-hub">
-                <div className="aam-hub-center">
-                  <div className="aam-hub-ring" />
-                  <div className="aam-hub-ring" />
-                  <div className="aam-hub-ring" />
-                  <div className="aam-hub-text">Rawlins<br />Aero Team</div>
-                </div>
-              </div>
-
-              {/* Private Sector */}
-              <div className="reveal rd3 aam-stakeholder-column">
-                <h3 className="aam-stakeholder-title">Private Sector</h3>
-                <button
-                  onClick={() => toggleCard('private-sector')}
-                  className="text-left mb-4 flex items-center gap-2 text-[#c9a84c] hover:text-[#e8d5a0] transition"
-                >
-                  <span className={`transform transition ${expandedCards.has('private-sector') ? 'rotate-180' : ''}`}>▼</span>
-                  <span className="text-sm uppercase tracking-widest font-semibold">View Stakeholders</span>
-                </button>
-                <ul className={`aam-stakeholder-list ${expandedCards.has('private-sector') ? 'expanded' : ''}`}>
-                  <li>Aircraft Manufacturers</li>
-                  <li>UAS Technology Providers</li>
-                  <li>Logistics & Delivery Companies</li>
-                  <li>Air Mobility Operators</li>
-                  <li>Infrastructure Developers</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="section-divider py-12">
-          <div className="gold-line" />
-        </div>
-
-        {/* Large Video Section */}
-        <section className="py-20 px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="reveal">
-              <div className="aam-video-placeholder">
-                <div className="aam-play-button" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="aam-cta-section">
-          <div className="reveal rd1">
-            <h2 className="aam-cta-title">Ready to Explore Advanced Air Mobility?</h2>
-            <p className="aam-cta-subtitle">
-              Let's discuss how your community can benefit from next-generation aerial capabilities.
-            </p>
-            <Link href="/contact">
-              <button className="aam-cta-btn">Get in Touch</button>
-            </Link>
-          </div>
-        </section>
-
-        {/* Section Divider */}
-        <div className="section-divider py-12">
-          <div className="gold-line" />
-        </div>
+      <div className="section-divider">
+        <div className="gold-line" />
       </div>
 
+      <section className="new-intro" id="intro">
+        <div className="new-intro-wrap">
+          <div className="new-intro-images">
+            <div className="intro-cinematic-wrap">
+              <img
+                src={DRONE_IMG}
+                alt="Advanced Air Mobility drone technology"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+          </div>
+          <div className="new-intro-content reveal rd1">
+            <p className="section-label">
+              <span className="gold-text">Our Foundation</span>
+            </p>
+            <h2 className="section-title">
+              Why <em>AAM & UAS</em> Matter
+            </h2>
+            <p className="section-text">
+              Advanced Air Mobility and Unmanned Aircraft Systems represent a fundamental shift in how communities can connect, serve, and innovate. These technologies offer unprecedented opportunities for urban planning, emergency response, logistics, and citizen well-being.
+            </p>
+            <button
+              className="intro-expand-btn"
+              onClick={() => toggleApproach(-1)}
+            >
+              <svg
+                className="intro-expand-icon"
+                style={{
+                  transform: expandedApproach.has(-1) ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path d="M7 10l5 5 5-5" stroke="currentColor" fill="none" />
+              </svg>
+            </button>
+            <div
+              style={{
+                maxHeight: expandedApproach.has(-1) ? "500px" : "0",
+                overflow: "hidden",
+                transition: "max-height 0.3s ease",
+              }}
+            >
+              <div style={{ paddingTop: "20px", lineHeight: 1.8 }}>
+                <p className="section-text">
+                  By partnering with communities, Rawlins supports the full lifecycle of AAM and UAS adoption—from initial policy development through implementation and scaling. Our expertise spans regulatory frameworks, infrastructure planning, stakeholder coordination, and operational readiness, ensuring your region is prepared to thrive in this emerging mobility ecosystem.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <div className="parallax-panel">
+        <p className="parallax-text reveal">
+          Next-generation aerial capabilities strengthen <em>multimodal transportation</em> and enable communities to benefit from a more connected, resilient mobility ecosystem.
+        </p>
+      </div>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <section
+        style={{
+          padding: "100px 60px",
+          borderTop: "1px solid rgba(201,168,76,0.2)",
+          borderBottom: "1px solid rgba(201,168,76,0.2)",
+          background: "var(--rawlins-bg)",
+        }}
+      >
+        <div style={{ maxWidth: "1400px", margin: "0 auto", textAlign: "center" }}>
+          <p className="section-label reveal">
+            <span className="gold-text">Key Metrics</span>
+          </p>
+          <h2 className="section-title reveal">
+            Our <em>Scale</em> &amp; Reach
+          </h2>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "flex-start",
+            marginTop: "80px",
+            maxWidth: "1200px",
+            margin: "80px auto 0",
+            flexWrap: "wrap",
+            gap: "60px",
+          }}
+        >
+          {[
+            { number: "3", label: "Core Service Areas" },
+            { number: "7", label: "Program Phases" },
+            { number: "50+", label: "Stakeholder Types" },
+            { number: "28+", label: "States Served" },
+          ].map((stat, idx) => (
+            <div key={idx} style={{ textAlign: "center", flex: "1 1 150px", minWidth: "150px" }}>
+              <div
+                className="gold-text reveal"
+                style={{
+                  fontSize: "clamp(3rem, 5vw, 5rem)",
+                  fontFamily: "var(--font-cormorant)",
+                  fontWeight: 300,
+                  marginBottom: "16px",
+                  background: "linear-gradient(135deg, #c9a84c, #d4b878)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                {stat.number}
+              </div>
+              <p
+                className="section-label reveal"
+                style={{
+                  fontSize: "12px",
+                  letterSpacing: "2px",
+                  color: "#e8d5a0",
+                }}
+              >
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <section style={{ padding: "80px 60px", background: "var(--rawlins-bg)" }}>
+        <div className="explore-header reveal" style={{ marginBottom: "60px" }}>
+          <p className="section-label">
+            <span className="gold-text">Value Delivery</span>
+          </p>
+          <h2 className="section-title">
+            Advanced <em>Applications</em>
+          </h2>
+        </div>
+
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              marginBottom: "60px",
+              borderBottom: "1px solid rgba(201,168,76,0.2)",
+              paddingBottom: "24px",
+              justifyContent: "center",
+            }}
+          >
+            {valueDeliveryTabs.map((tab, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveTab(idx)}
+                style={{
+                  padding: "12px 32px",
+                  background: "transparent",
+                  border: "none",
+                  borderBottom: activeTab === idx ? "2px solid #c9a84c" : "none",
+                  color: activeTab === idx ? "#e8d5a0" : "#a0a0a0",
+                  fontSize: "14px",
+                  fontFamily: "var(--font-dm-sans)",
+                  fontWeight: 600,
+                  letterSpacing: "2px",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  textTransform: "uppercase",
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }}>
+            <div className="intro-cinematic-wrap reveal" style={{ height: "400px" }}>
+              <img
+                src={valueDeliveryTabs[activeTab].img}
+                alt={valueDeliveryTabs[activeTab].label}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+
+            <div className="reveal rd2">
+              <h3
+                style={{
+                  fontSize: "clamp(1.8rem, 3vw, 2.2rem)",
+                  fontFamily: "var(--font-cormorant)",
+                  fontWeight: 300,
+                  color: "#fff",
+                  marginBottom: "20px",
+                }}
+              >
+                {valueDeliveryTabs[activeTab].title}
+              </h3>
+              <p className="section-text" style={{ marginBottom: "30px" }}>
+                {valueDeliveryTabs[activeTab].desc}
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {valueDeliveryTabs[activeTab].useCases.map((useCase, idx) => (
+                  <li
+                    key={idx}
+                    className="section-text"
+                    style={{ marginBottom: "12px", display: "flex", gap: "12px" }}
+                  >
+                    <span style={{ color: "#c9a84c", flexShrink: 0 }}>▪</span>
+                    <span>{useCase}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <section className="section-story" id="phases" style={{ padding: "80px 60px" }}>
+        <div className="story-header reveal">
+          <p className="section-label">
+            <span className="gold-text">program lifecycle</span>
+          </p>
+          <h2 className="section-title">
+            Program <em>Phases</em>
+          </h2>
+        </div>
+
+        <div className="story-scroll-outer">
+          <div className="story-scroll-track" ref={scrollRef}>
+            {phaseData.map((phase, i) => (
+              <div key={i} className="story-card">
+                <div
+                  className="story-card-bg"
+                  style={{ backgroundImage: `url(${phase.bg})` }}
+                />
+                <div className="story-card-overlay" />
+                <div className="story-card-header">
+                  <span className="story-card-num">0{i + 1}</span>
+                  <span className="timeline-phase">{phase.phase}</span>
+                </div>
+                <div className="story-card-divider" />
+                <h4 className="story-card-title">{phase.title}</h4>
+                <div className="story-card-body-wrap">
+                  <p className="story-card-body">{phase.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="story-scroll-controls">
+          <button
+            className="story-arrow-btn"
+            onClick={() => scrollPhases('left')}
+            aria-label="Scroll left"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" strokeWidth="2" />
+            </svg>
+          </button>
+          <div className="story-scroll-progress-bar">
+            <div
+              className="story-scroll-progress-fill"
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </div>
+          <button
+            className="story-arrow-btn"
+            onClick={() => scrollPhases('right')}
+            aria-label="Scroll right"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" strokeWidth="2" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <section style={{ padding: "100px 60px", background: "var(--rawlins-bg)" }}>
+        <div className="explore-header reveal" style={{ marginBottom: "80px", textAlign: "center" }}>
+          <p className="section-label">
+            <span className="gold-text">Strategic Methodology</span>
+          </p>
+          <h2 className="section-title">
+            Service <em>Approach</em>
+          </h2>
+        </div>
+
+        <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative", paddingLeft: "120px" }}>
+          {approachData.map((step, idx) => (
+            <div
+              key={idx}
+              className="reveal"
+              style={{
+                display: "flex",
+                gap: "40px",
+                marginBottom: "80px",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  left: "30px",
+                  top: 0,
+                  width: "60px",
+                  height: "60px",
+                  borderRadius: "50%",
+                  border: "2px solid #c9a84c",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: "var(--font-cormorant)",
+                  fontSize: "1.5rem",
+                  color: "#c9a84c",
+                  background: "var(--rawlins-bg)",
+                  zIndex: 2,
+                }}
+              >
+                {idx + 1}
+              </div>
+
+              <div style={{ flex: 1 }}>
+                <h3
+                  style={{
+                    fontSize: "clamp(1.5rem, 2.5vw, 1.8rem)",
+                    fontFamily: "var(--font-cormorant)",
+                    fontWeight: 300,
+                    color: "#fff",
+                    marginBottom: "16px",
+                  }}
+                >
+                  {step.title}
+                </h3>
+                <p className="section-text" style={{ marginBottom: "20px" }}>
+                  {step.desc}
+                </p>
+                <button
+                  className="intro-expand-btn"
+                  onClick={() => toggleApproach(idx)}
+                  style={{ marginBottom: "12px" }}
+                >
+                  <svg
+                    className="intro-expand-icon"
+                    style={{
+                      transform: expandedApproach.has(idx) ? "rotate(180deg)" : "rotate(0deg)",
+                    }}
+                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                  >
+                    <path d="M7 10l5 5 5-5" stroke="currentColor" fill="none" />
+                  </svg>
+                </button>
+                <div
+                  style={{
+                    maxHeight: expandedApproach.has(idx) ? "300px" : "0",
+                    overflow: "hidden",
+                    transition: "max-height 0.3s ease",
+                  }}
+                >
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: "0",
+                      margin: "0",
+                      fontSize: "15px",
+                      lineHeight: 1.8,
+                      color: "#b0b0b0",
+                    }}
+                  >
+                    {step.bullets.map((bullet, bi) => (
+                      <li key={bi} style={{ marginBottom: "10px", paddingLeft: "20px", position: "relative" }}>
+                        <span style={{ position: "absolute", left: 0, color: "#c9a84c" }}>▪</span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <div className="parallax-panel">
+        <p className="parallax-text reveal">
+          Successful AAM and UAS integration requires <em>coordinated planning</em>, stakeholder alignment, and a commitment to continuous innovation and community benefit.
+        </p>
+      </div>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <section style={{ padding: "100px 60px", background: "var(--rawlins-bg)" }}>
+        <div className="explore-header reveal" style={{ marginBottom: "80px", textAlign: "center" }}>
+          <p className="section-label">
+            <span className="gold-text">Stakeholder Ecosystem</span>
+          </p>
+          <h2 className="section-title">
+            Who We <em>Partner</em> With
+          </h2>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+            gap: "24px",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {stakeholderCategories.map((category, idx) => (
+            <div
+              key={idx}
+              className="reveal"
+              style={{
+                border: "1px solid rgba(201,168,76,0.15)",
+                padding: "30px",
+                background: "rgba(10, 21, 40, 0.5)",
+                borderRadius: "8px",
+                transition: "all 0.3s ease",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                target.style.borderColor = "rgba(201,168,76,0.4)";
+                target.style.background = "rgba(10, 21, 40, 0.8)";
+                target.style.transform = "translateY(-4px)";
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                target.style.borderColor = "rgba(201,168,76,0.15)";
+                target.style.background = "rgba(10, 21, 40, 0.5)";
+                target.style.transform = "translateY(0)";
+              }}
+            >
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                style={{ marginBottom: "16px", display: "block" }}
+              >
+                <path d={renderStakeholderIcon(category.icon)} stroke="#c9a84c" fill="none" strokeWidth="1.5" />
+              </svg>
+              <h4
+                style={{
+                  fontSize: "16px",
+                  fontFamily: "var(--font-dm-sans)",
+                  fontWeight: 600,
+                  color: "#e8d5a0",
+                  marginBottom: "12px",
+                }}
+              >
+                {category.name}
+              </h4>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: "0",
+                  margin: "0",
+                  fontSize: "13px",
+                  lineHeight: 1.7,
+                  color: "#9a9a9a",
+                }}
+              >
+                {category.items.map((item, iidx) => (
+                  <li key={iidx} style={{ marginBottom: "6px" }}>
+                    • {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <section style={{ padding: "100px 60px", background: "var(--rawlins-bg)" }}>
+        <div className="explore-header reveal" style={{ marginBottom: "80px", textAlign: "center" }}>
+          <p className="section-label">
+            <span className="gold-text">Service Portfolio</span>
+          </p>
+          <h2 className="section-title">
+            AAM &amp; <em>UAS</em> Services
+          </h2>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "100px",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          <div className="reveal rd1">
+            <h3
+              style={{
+                fontSize: "clamp(1.4rem, 2.5vw, 1.6rem)",
+                fontFamily: "var(--font-cormorant)",
+                fontWeight: 300,
+                color: "#e8d5a0",
+                marginBottom: "30px",
+              }}
+            >
+              AAM Services
+            </h3>
+            <ul style={{ listStyle: "none", padding: "0", margin: "0" }}>
+              {aamServices.slice(0, showAllAAM ? aamServices.length : 4).map((service, idx) => (
+                <li
+                  key={idx}
+                  className="section-text"
+                  style={{
+                    marginBottom: "14px",
+                    display: "flex",
+                    gap: "12px",
+                    fontSize: "15px",
+                  }}
+                >
+                  <span style={{ color: "#c9a84c", flexShrink: 0 }}>▪</span>
+                  <span>{service}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setShowAllAAM(!showAllAAM)}
+              style={{
+                marginTop: "24px",
+                padding: "12px 24px",
+                background: "transparent",
+                border: "1px solid rgba(201,168,76,0.3)",
+                color: "#c9a84c",
+                fontFamily: "var(--font-dm-sans)",
+                fontSize: "13px",
+                fontWeight: 600,
+                letterSpacing: "1px",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                target.style.borderColor = "#c9a84c";
+                target.style.backgroundColor = "rgba(201,168,76,0.1)";
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                target.style.borderColor = "rgba(201,168,76,0.3)";
+                target.style.backgroundColor = "transparent";
+              }}
+            >
+              {showAllAAM ? "Show Less" : "View all 10 services"}
+            </button>
+          </div>
+
+          <div className="reveal rd2">
+            <h3
+              style={{
+                fontSize: "clamp(1.4rem, 2.5vw, 1.6rem)",
+                fontFamily: "var(--font-cormorant)",
+                fontWeight: 300,
+                color: "#e8d5a0",
+                marginBottom: "30px",
+              }}
+            >
+              UAS Services
+            </h3>
+            <ul style={{ listStyle: "none", padding: "0", margin: "0" }}>
+              {uasServices.slice(0, showAllUAS ? uasServices.length : 4).map((service, idx) => (
+                <li
+                  key={idx}
+                  className="section-text"
+                  style={{
+                    marginBottom: "14px",
+                    display: "flex",
+                    gap: "12px",
+                    fontSize: "15px",
+                  }}
+                >
+                  <span style={{ color: "#c9a84c", flexShrink: 0 }}>▪</span>
+                  <span>{service}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setShowAllUAS(!showAllUAS)}
+              style={{
+                marginTop: "24px",
+                padding: "12px 24px",
+                background: "transparent",
+                border: "1px solid rgba(201,168,76,0.3)",
+                color: "#c9a84c",
+                fontFamily: "var(--font-dm-sans)",
+                fontSize: "13px",
+                fontWeight: 600,
+                letterSpacing: "1px",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                target.style.borderColor = "#c9a84c";
+                target.style.backgroundColor = "rgba(201,168,76,0.1)";
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                target.style.borderColor = "rgba(201,168,76,0.3)";
+                target.style.backgroundColor = "transparent";
+              }}
+            >
+              {showAllUAS ? "Show Less" : "View all 10 services"}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider">
+        <div className="gold-line" />
+      </div>
+
+      <section className="section-team" id="cta">
+        <div className="team-content reveal">
+          <p className="section-label">
+            <span className="gold-text">Get Started</span>
+          </p>
+          <h2 className="section-title">
+            Ready to <em>Transform</em> Your Region?
+          </h2>
+          <p className="team-desc">
+            Partner with Rawlins to unlock the potential of Advanced Air Mobility and UAS technology. Our experts are ready to guide your community toward innovation, resilience, and growth.
+          </p>
+          <Link href="/contact" className="btn-team">
+            <span>Start a Conversation</span>
+          </Link>
+        </div>
+      </section>
+
       <SiteFooter />
-    </div>
+    </>
   );
 };
 
