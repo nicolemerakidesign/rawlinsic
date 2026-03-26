@@ -1,12 +1,83 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 
 export default function AreaWeServeGlobe() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const mouseX = useRef(0);
+  const mouseY = useRef(0);
+  const ringXRef = useRef(0);
+  const ringYRef = useRef(0);
+  const animFrame = useRef<number | null>(null);
 
+  /* ── Custom cursor ── */
+  useEffect(() => {
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
+    const onMouseMove = (e: MouseEvent) => {
+      mouseX.current = e.clientX;
+      mouseY.current = e.clientY;
+      dot.style.left = e.clientX - 4 + "px";
+      dot.style.top = e.clientY - 4 + "px";
+    };
+    const animateRing = () => {
+      ringXRef.current += (mouseX.current - ringXRef.current) * 0.12;
+      ringYRef.current += (mouseY.current - ringYRef.current) * 0.12;
+      ring.style.left = ringXRef.current - 20 + "px";
+      ring.style.top = ringYRef.current - 20 + "px";
+      animFrame.current = requestAnimationFrame(animateRing);
+    };
+    document.addEventListener("mousemove", onMouseMove);
+    animFrame.current = requestAnimationFrame(animateRing);
+    const hoverEls = document.querySelectorAll("a, button, .nav-item, .back-to-top");
+    hoverEls.forEach((el) => {
+      el.addEventListener("mouseenter", () => ring.classList.add("hover"));
+      el.addEventListener("mouseleave", () => ring.classList.remove("hover"));
+    });
+    return () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      if (animFrame.current) cancelAnimationFrame(animFrame.current);
+    };
+  }, []);
+
+  /* ── Nav scroll + back-to-top ── */
+  useEffect(() => {
+    const nav = document.getElementById("mainNav");
+    const backToTop = document.getElementById("backToTop");
+    const onScroll = () => {
+      if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+      if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
+    };
+    window.addEventListener("scroll", onScroll);
+    onScroll(); // run once
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  /* ── Micro particles ── */
+  useEffect(() => {
+    const container = document.getElementById("microParticles");
+    if (!container) return;
+    for (let i = 0; i < 15; i++) {
+      const p = document.createElement("div");
+      p.className = "micro-particle";
+      p.style.left = Math.random() * 100 + "%";
+      p.style.animationDuration = 8 + Math.random() * 14 + "s";
+      p.style.animationDelay = Math.random() * 12 + "s";
+      const size = 1.5 + Math.random() * 2.5 + "px";
+      p.style.width = size;
+      p.style.height = size;
+      p.style.opacity = String(0.15 + Math.random() * 0.25);
+      container.appendChild(p);
+    }
+    return () => { container.innerHTML = ""; };
+  }, []);
+
+  /* ── Globe ── */
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
@@ -312,6 +383,8 @@ export default function AreaWeServeGlobe() {
 
     // Interaction
     let isDragging=false, prevMouse={x:0,y:0}, dragVel=0, isOverPin=false, zoomTarget=ZOOM_DEFAULT;
+    // Track whether globe is at max zoom-out, to allow page scroll
+    let atMaxZoomOut = false;
 
     container.addEventListener("mousedown",(e: MouseEvent)=>{isDragging=true;prevMouse.x=e.clientX;prevMouse.y=e.clientY;dragVel=0;});
     window.addEventListener("mouseup",()=>{isDragging=false;});
@@ -333,19 +406,37 @@ export default function AreaWeServeGlobe() {
       const hits=raycaster.intersectObjects(pinObjects);
       if(hits.length>0){
         const h=hits[0].object, d=h.userData;
-        isOverPin=true; container.style.cursor="pointer";
+        isOverPin=true; container.style.cursor="none";
         const wp=new T.Vector3(); h.getWorldPosition(wp); wp.project(camera);
         const sx=(wp.x*0.5+0.5)*rect.width, sy=(-wp.y*0.5+0.5)*rect.height;
         tooltip.innerHTML='<span class="tooltip-label">'+(d.isCurrent?"Active":"Expanding")+'</span><span class="tooltip-name">'+d.name+"</span>";
         tooltip.style.left=sx+"px"; tooltip.style.top=sy+"px";
         tooltip.className="globe-tooltip visible "+(d.isCurrent?"active-location":"expansion-location");
       } else {
-        isOverPin=false; container.style.cursor=isDragging?"grabbing":"grab";
+        isOverPin=false; container.style.cursor="none";
         tooltip.classList.remove("visible");
       }
     });
 
-    container.addEventListener("wheel",(e: WheelEvent)=>{e.preventDefault();zoomTarget+=e.deltaY*0.003;zoomTarget=Math.max(ZOOM_MIN,Math.min(ZOOM_MAX,zoomTarget));},{passive:false});
+    // Wheel: zoom globe first, then allow page scroll when at limits
+    container.addEventListener("wheel",(e: WheelEvent)=>{
+      const newZoom = zoomTarget + e.deltaY * 0.003;
+      // Scrolling down (zoom out) and at max → let the page scroll
+      if (e.deltaY > 0 && zoomTarget >= ZOOM_MAX - 0.05) {
+        atMaxZoomOut = true;
+        // Don't prevent default — let the page scroll naturally
+        return;
+      }
+      // Scrolling up (zoom in) and at min → let the page scroll up
+      if (e.deltaY < 0 && zoomTarget <= ZOOM_MIN + 0.05) {
+        // Don't prevent default — let page scroll up naturally
+        return;
+      }
+      // Otherwise, zoom the globe
+      e.preventDefault();
+      atMaxZoomOut = false;
+      zoomTarget = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, newZoom));
+    },{passive:false});
 
     // Touch support
     let touchStart={x:0,y:0},lastTouchDist=0;
@@ -398,36 +489,110 @@ export default function AreaWeServeGlobe() {
 
   return (
     <>
+      {/* Ambient Background */}
+      <div className="ambient-bg" />
+      <div className="ambient-orbs">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+        <div className="orb orb-4" />
+      </div>
+      <div className="micro-particles" id="microParticles" />
+
+      {/* Custom Cursor */}
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
+
+      {/* Back to Top */}
+      <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+      </a>
+
       <SiteNav />
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap');
-        .globe-page-wrapper {
+
+        .globe-page {
           position: relative;
           width: 100%;
-          min-height: 100vh;
-          overflow: hidden;
-          background: #0a1628;
+          background: var(--rawlins-bg, #060c16);
           color: #e8e0d0;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans, 'DM Sans'), sans-serif;
+        }
+
+        /* ── Header section (above globe) ── */
+        .globe-header-section {
+          position: relative;
+          z-index: 2;
+          padding: 180px 60px 60px;
+          text-align: center;
+          pointer-events: auto;
+        }
+        .globe-eyebrow {
+          font-size: 13px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
+          background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+          margin-bottom: 16px;
+        }
+        .globe-heading {
+          font-family: var(--font-cormorant, 'Cormorant Garamond'), serif;
+          font-size: clamp(32px, 5vw, 52px);
+          font-weight: 300; color: #fff; margin-bottom: 16px; line-height: 1.15;
+        }
+        .globe-heading em { font-style: italic; }
+        .globe-subtext {
+          font-size: 16px; color: rgba(232,224,208,0.6); max-width: 560px;
+          margin: 0 auto 24px; line-height: 1.6;
+        }
+        .globe-legend {
+          display: flex; gap: 32px; justify-content: center;
+          font-size: 13px; color: rgba(232,224,208,0.5);
+          letter-spacing: 1px; text-transform: uppercase;
+          margin-bottom: 12px;
+        }
+        .globe-legend-item { display: flex; align-items: center; gap: 10px; }
+        .globe-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .globe-legend-dot.current {
+          background: linear-gradient(145deg, #c9a84c, #e8d5a0);
+          box-shadow: 0 0 10px rgba(201,168,76,0.7);
+        }
+        .globe-legend-dot.expansion {
+          background: transparent; border: 1.5px solid #d4b878;
+          box-shadow: 0 0 8px rgba(212,184,120,0.4);
+        }
+        .globe-zoom-hint {
+          font-size: 12px; color: rgba(232,224,208,0.25); letter-spacing: 0.5px;
+        }
+
+        /* ── Globe area ── */
+        .globe-sticky-area {
+          position: relative;
+          height: 100vh;
         }
         #globe-container {
-          position: fixed;
+          position: sticky;
           top: 0;
-          left: 0;
-          width: 100vw;
+          width: 100%;
           height: 100vh;
-          z-index: 0;
-          cursor: grab;
+          z-index: 1;
+          cursor: none;
         }
-        #globe-container:active { cursor: grabbing; }
+        #globe-container:active { cursor: none; }
         #globe-canvas { width: 100%; height: 100%; display: block; }
+
+        /* Tooltip */
         .globe-tooltip {
           position: absolute; pointer-events: none; padding: 10px 16px; border-radius: 8px;
-          font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+          font-family: var(--font-dm-sans, 'DM Sans'), sans-serif;
+          font-size: 13px; font-weight: 500;
           white-space: nowrap; opacity: 0; transition: opacity 0.2s ease;
           z-index: 10; transform: translate(-50%, -140%); line-height: 1.4;
         }
-        .globe-tooltip .tooltip-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.7; display: block; margin-bottom: 2px; }
+        .globe-tooltip .tooltip-label {
+          font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+          opacity: 0.7; display: block; margin-bottom: 2px;
+        }
         .globe-tooltip .tooltip-name { font-size: 14px; font-weight: 600; display: block; }
         .globe-tooltip.active-location {
           background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878); color: #0a1628;
@@ -439,54 +604,26 @@ export default function AreaWeServeGlobe() {
           box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
         .globe-tooltip.visible { opacity: 1; }
-        .globe-content-section {
+
+        /* ── Footer wrapper: solid bg, sits above globe ── */
+        .globe-footer-wrapper {
           position: relative;
-          z-index: 1;
-          width: 100%;
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 60px 20px;
-          pointer-events: none;
+          z-index: 5;
+          background: var(--rawlins-bg, #060c16);
         }
-        .globe-eyebrow {
-          font-size: 13px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
-          background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-          margin-bottom: 16px; text-align: center;
-        }
-        .globe-heading {
-          font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px);
-          font-weight: 300; color: #fff; margin-bottom: 16px; text-align: center; line-height: 1.15;
-        }
-        .globe-subtext {
-          font-size: 16px; color: rgba(232,224,208,0.6); max-width: 560px;
-          text-align: center; line-height: 1.6; margin-bottom: 20px;
-        }
-        .globe-legend {
-          display: flex; gap: 32px; margin-bottom: 24px; font-size: 13px;
-          color: rgba(232,224,208,0.5); letter-spacing: 1px; text-transform: uppercase;
-        }
-        .globe-legend-item { display: flex; align-items: center; gap: 10px; }
-        .globe-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .globe-legend-dot.current { background: linear-gradient(145deg, #c9a84c, #e8d5a0); box-shadow: 0 0 10px rgba(201,168,76,0.7); }
-        .globe-legend-dot.expansion { background: transparent; border: 1.5px solid #d4b878; box-shadow: 0 0 8px rgba(212,184,120,0.4); }
-        .globe-zoom-hint {
-          font-size: 12px; color: rgba(232,224,208,0.25); margin-top: 12px; letter-spacing: 0.5px;
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+          .globe-header-section { padding: 140px 24px 40px; }
+          .globe-legend { gap: 20px; }
         }
       `}</style>
 
-      <div className="globe-page-wrapper">
-        <div id="globe-container">
-          <canvas id="globe-canvas"></canvas>
-          <div className="globe-tooltip" id="globe-tooltip"></div>
-        </div>
-
-        <section className="globe-content-section">
+      <div className="globe-page" id="top">
+        {/* Text header ABOVE the globe */}
+        <section className="globe-header-section">
           <div className="globe-eyebrow">Areas We Serve</div>
-          <h2 className="globe-heading">Global Reach, Local Impact</h2>
+          <h2 className="globe-heading">Global Reach, Local <em>Impact</em></h2>
           <p className="globe-subtext">
             Delivering solutions across the U.S. and expanding our global footprint across
             industries and borders.
@@ -497,9 +634,21 @@ export default function AreaWeServeGlobe() {
           </div>
           <div className="globe-zoom-hint">Scroll to zoom · Drag to rotate · Hover pins for details</div>
         </section>
-      </div>
 
-      <SiteFooter />
+        {/* Globe section */}
+        <div className="globe-sticky-area">
+          <div id="globe-container">
+            <canvas id="globe-canvas"></canvas>
+            <div className="globe-tooltip" id="globe-tooltip"></div>
+          </div>
+        </div>
+
+        {/* Footer with solid background to cover globe */}
+        <div className="globe-footer-wrapper">
+          <div className="section-divider"><div className="gold-line" /></div>
+          <SiteFooter />
+        </div>
+      </div>
     </>
   );
 }
