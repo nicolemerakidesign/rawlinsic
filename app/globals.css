@@ -2125,6 +2125,7 @@ font-size: 15px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  align-items: start;
 }
 .aam-pillar-card {
   background: rgba(255,255,255,0.03);
