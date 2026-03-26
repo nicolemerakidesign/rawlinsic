@@ -25,21 +25,21 @@ const TEAM_MEETING_IMG = "https://images.pexels.com/photos/3184291/pexels-photo-
 
 const pillarCards = [
   {
-    title: "Urban Air Mobility",
-    desc: "Transform passenger transportation through electric vertical takeoff and landing aircraft, enabling rapid point-to-point connectivity across metropolitan areas.",
-    bullets: ["Urban air mobility solutions", "Vertiport integration planning", "Passenger safety and operations", "Multi-modal transportation integration"],
+    title: "AAM (Air Taxis)",
+    desc: "",
+    bullets: ["Urban mobility", "Business travel", "Emergency medical transport", "Regional Connectivity", "Tourism & sightseeing"],
     img: CITY_AERIAL_IMG,
   },
   {
-    title: "Geographic Intelligence",
-    desc: "Harness unmanned aircraft systems to gather real-time aerial data for infrastructure monitoring, environmental assessment, and strategic planning.",
-    bullets: ["Airborne data acquisition", "Infrastructure monitoring", "Environmental assessment", "Precision mapping and analytics"],
+    title: "UAS Data Collection",
+    desc: "",
+    bullets: ["Infrastructure inspection", "Construction inspection & monitoring", "Environmental monitoring", "Aerial surveying & mapping", "Disaster response"],
     img: DRONE_FLIGHT_IMG,
   },
   {
-    title: "Last-Mile Logistics",
-    desc: "Revolutionize supply chain operations with autonomous delivery systems, enabling faster response times and expanding service areas.",
-    bullets: ["Last-mile delivery optimization", "Supply chain resilience", "Emergency response capability", "Rapid goods distribution"],
+    title: "UAS Package Delivery",
+    desc: "",
+    bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support", "Air Taxis (AAM)", "Urban mobility", "Business travel", "Emergency medical transport", "Regional connectivity", "Tourism & sightseeing" ],
     img: LOGISTICS_IMG,
   },
 ];
@@ -240,8 +240,8 @@ const AAMPage = () => {
         <div className="aam-hero-overlay" />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text"></span></span>
-          <h1 className="hero-title">Advanced Air Mobility <em>&amp; Uncrewed Aircraft Systems</em></h1>
-          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community transport solutions. Are you ready for the next major phase in transportation’s evolution?</p>
+          <h1 className="hero-title">Advanced Air Mobility &amp; Uncrewed Aircraft Systems</h1>
+          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community transport solutions. <br /><br />Are you ready for the next major phase in transportation’s evolution?</p>
           <a href="#intro" className="hero-cta-btn"><span>explore our approach</span></a>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
@@ -254,14 +254,12 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-overview-grid">
             <div className="aam-overview-left">
-              <p className="section-label"><span className="gold-text">Our Foundation</span></p>
-              <h2 className="section-title">Why <em>AAM &amp; UAS</em> Matter</h2>
+              <p className="section-label"><span className="gold-text">Overview</span></p>
+              <h2 className="section-title">The next major phase in transportation’s <em>evolution</em></h2>
               <p className="aam-section-lead">
-                Advanced Air Mobility and Unmanned Aircraft Systems represent a fundamental shift in how communities connect, serve, and innovate—offering unprecedented opportunities for urban planning, emergency response, logistics, and citizen well-being.
-              </p>
+Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly part of modern mobility ecosystems. Together, these systems and associated technologies are expected to transform transportation by enhancing connectivity, improving cargo logistics, expediting emergency response, and assisting infrastructure inspection.               </p>
               <p className="aam-section-lead">
-                By partnering with communities, Rawlins supports the full lifecycle of AAM and UAS adoption—from initial policy development through implementation and scaling.
-              </p>
+Next-generation aerial capabilities, integrated into existing mobility systems, complement ground, rail, and maritime transport networks. They strengthen multimodal transportation and enable urban, rural, and regional areas to benefit from a more connected, resilient, and adaptable mobility ecosystem.              </p>
             </div>
             <div className="aam-overview-right">
               <div className="intro-cinematic-wrap">
@@ -303,10 +301,9 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-section-header">
             <p className="section-label"><span className="gold-text">Value Delivery</span></p>
-            <h2 className="section-title">Advanced <em>Applications</em></h2>
+            <h2 className="section-title">Where AAM and UAS deliver value</em></h2>
             <p className="aam-section-lead">
-              From passenger air taxis to aerial data collection and autonomous delivery, our advisory services span the full spectrum of advanced air mobility.
-            </p>
+The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.            </p>
           </div>
           <div className="aam-pillars-grid">
             {pillarCards.map((card, i) => (
