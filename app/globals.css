@@ -2551,6 +2551,119 @@ font-size: 15px;
   margin-bottom: 44px;
 }
 
+/* ── Interactive Ecosystem Visualization ─────────────────────────── */
+.aam-ecosystem-section {
+  padding: 110px 0 80px;
+  overflow: visible;
+}
+.eco-vis-wrapper {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.eco-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* Detail panel */
+.eco-detail-panel {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(6,12,22,0.92);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 16px;
+  padding: 24px 28px 20px;
+  max-width: 420px;
+  width: 90%;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.06);
+  animation: ecoDetailIn 0.35s cubic-bezier(0.16,1,0.3,1);
+  z-index: 10;
+}
+@keyframes ecoDetailIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.eco-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.eco-detail-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 10px;
+}
+.eco-detail-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #e8d5a0;
+  line-height: 1.2;
+  margin: 0 0 2px;
+}
+.eco-detail-short {
+  font-size: 0.78rem;
+  color: rgba(232,230,225,0.45);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+.eco-detail-close {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: rgba(232,230,225,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  transition: all 0.2s;
+}
+.eco-detail-close:hover {
+  background: rgba(255,255,255,0.08);
+  color: #e8d5a0;
+  border-color: rgba(201,168,76,0.3);
+}
+.eco-detail-desc {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: rgba(232,230,225,0.7);
+  margin: 0 0 16px;
+}
+.eco-detail-connector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eco-detail-connector-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25), transparent);
+}
+.eco-detail-connector-label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.5);
+  white-space: nowrap;
+}
+
 /* ── AAM Responsive ──────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .aam-container { padding: 0 40px; }
@@ -2565,6 +2678,8 @@ font-size: 15px;
   .aam-rawlins-hub { width: 140px; height: 140px; }
   .aam-hub-inner { width: 120px; height: 120px; }
   .aam-portfolio-grid { grid-template-columns: 1fr; gap: 56px; }
+  .eco-vis-wrapper { max-width: 500px; }
+  .eco-detail-panel { bottom: -40px; padding: 20px 22px 16px; }
 }
 @media (max-width: 768px) {
   .aam-section { padding: 72px 0; }
