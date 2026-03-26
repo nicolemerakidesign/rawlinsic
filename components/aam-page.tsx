@@ -6,11 +6,12 @@ import SiteNav from '@/components/site-nav';
 import SiteFooter from '@/components/site-footer';
 
 const AAMPage = () => {
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
-  const [expandedAccordion, setExpandedAccordion] = useState<number | null>(null);
-  const [expandedService, setExpandedService] = useState<'aam' | 'uas' | null>(null);
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  const [scrollPosition, setScrollPosition] = useState(0);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -47,93 +48,199 @@ const AAMPage = () => {
     });
   }, [visibleElements]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleSection = (sectionId: string) => {
+    setExpandedSections((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(sectionId)) {
+        newSet.delete(sectionId);
+      } else {
+        newSet.add(sectionId);
+      }
+      return newSet;
+    });
+  };
+
   const toggleCard = (cardId: string) => {
-    setExpandedCard(expandedCard === cardId ? null : cardId);
+    setExpandedCards((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(cardId)) {
+        newSet.delete(cardId);
+      } else {
+        newSet.add(cardId);
+      }
+      return newSet;
+    });
   };
-
-  const toggleAccordion = (index: number) => {
-    setExpandedAccordion(expandedAccordion === index ? null : index);
-  };
-
-  const aamServices = [
-    'Feasibility studies and site assessments',
-    'Vertiport planning and design guidance',
-    'Air traffic management integration support',
-    'Policy and governance framework development',
-    'Community outreach and public engagement',
-    'Pilot program design and oversight',
-    'Economic impact and cost-benefit analysis',
-    'Safety case development and risk assessment',
-    'Multimodal integration planning',
-    'Regulatory compliance and certification support',
-  ];
-
-  const uasServices = [
-    'Operational design domain (ODD) development',
-    'Drone delivery corridor planning',
-    'Data governance and privacy frameworks',
-    'Beyond visual line of sight (BVLOS) operations support',
-    'Safety management system development',
-    'Integration with ground transportation networks',
-    'Workforce training and UAS operator programs',
-    'Airspace deconfliction and UTM integration',
-    'Environmental and community impact assessments',
-    'Procurement support and vendor evaluation',
-  ];
 
   return (
-    <main style={{ backgroundColor: '#0a1628', color: '#ffffff', minHeight: '100vh' }}>
-      <SiteNav />
-
+    <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-[#0a1628] via-[#0d1f3c] to-[#0a1628] text-white overflow-hidden relative">
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap');
+
         * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
+          scrollbar-width: thin;
+          scrollbar-color: rgba(201, 168, 76, 0.3) transparent;
+        }
+
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: rgba(201, 168, 76, 0.3);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: rgba(201, 168, 76, 0.5);
         }
 
         body {
-          font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          color: #ffffff;
-          background-color: #0a1628;
+          font-family: 'DM Sans', sans-serif;
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="%23c9a84c" opacity="0.6"/></svg>') 10 10, auto;
         }
 
-        .aam-container {
-          background-color: #0a1628;
-          position: relative;
+        .reveal {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'Cormorant Garamond', serif;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+        }
+
+        /* Ambient Orbs */
+        .ambient-orbs {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 0;
           overflow: hidden;
         }
 
-        /* Background ambient orbs */
-        .aam-container::before {
-          content: '';
-          position: fixed;
-          top: -40%;
-          right: -10%;
-          width: 600px;
-          height: 600px;
-          background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+        .orb {
+          position: absolute;
           border-radius: 50%;
-          pointer-events: none;
-          z-index: 0;
+          filter: blur(80px);
+          opacity: 0.08;
+          animation: float 15s ease-in-out infinite;
         }
 
-        .aam-container::after {
-          content: '';
-          position: fixed;
-          bottom: -20%;
-          left: -10%;
-          width: 500px;
-          height: 500px;
-          background: radial-gradient(circle, rgba(212, 184, 120, 0.06) 0%, transparent 70%);
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 0;
+        .orb-1 {
+          width: 400px;
+          height: 400px;
+          background: radial-gradient(circle, rgba(201, 168, 76, 0.3), transparent);
+          top: -100px;
+          left: -100px;
+          animation-duration: 20s;
         }
 
+        .orb-2 {
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(74, 144, 226, 0.2), transparent);
+          top: 50%;
+          right: -50px;
+          animation-duration: 25s;
+          animation-delay: -5s;
+        }
+
+        .orb-3 {
+          width: 350px;
+          height: 350px;
+          background: radial-gradient(circle, rgba(138, 97, 193, 0.2), transparent);
+          bottom: -100px;
+          left: 20%;
+          animation-duration: 30s;
+          animation-delay: -10s;
+        }
+
+        .orb-4 {
+          width: 280px;
+          height: 280px;
+          background: radial-gradient(circle, rgba(201, 168, 76, 0.25), transparent);
+          top: 30%;
+          left: 50%;
+          animation-duration: 22s;
+          animation-delay: -8s;
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          33% {
+            transform: translate(-30px, -40px);
+          }
+          66% {
+            transform: translate(30px, 20px);
+          }
+        }
+
+        /* Micro Particles */
+        .particles {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 1;
+          overflow: hidden;
+        }
+
+        .particle {
+          position: absolute;
+          background: rgba(201, 168, 76, 0.4);
+          border-radius: 50%;
+          animation: rise 20s infinite;
+        }
+
+        @keyframes rise {
+          0% {
+            opacity: 0;
+            transform: translateY(0) translateX(0);
+          }
+          10% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-100vh) translateX(100px);
+          }
+        }
+
+        /* Main Content */
         .content-wrapper {
           position: relative;
-          z-index: 1;
+          z-index: 10;
         }
 
         /* Hero Section */
@@ -141,9 +248,9 @@ const AAMPage = () => {
           min-height: 100vh;
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
-          padding: 180px 60px 100px;
-          background: linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, rgba(20, 35, 60, 0.9) 100%);
+          justify-content: center;
+          align-items: center;
+          padding: 40px 20px;
           position: relative;
           overflow: hidden;
         }
@@ -155,20 +262,20 @@ const AAMPage = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background:
-            radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(212, 184, 120, 0.08) 0%, transparent 50%);
+          background: radial-gradient(ellipse at 50% 30%, rgba(201, 168, 76, 0.1), transparent 60%);
           pointer-events: none;
         }
 
         .hero-content {
           position: relative;
           z-index: 2;
-          max-width: 900px;
+          text-align: center;
+          max-width: 1200px;
+          width: 100%;
         }
 
         .breadcrumb {
-          font-size: 13px;
+          font-size: 12px;
           letter-spacing: 2px;
           text-transform: uppercase;
           color: #c9a84c;
@@ -177,1400 +284,1800 @@ const AAMPage = () => {
         }
 
         .hero-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 64px;
-          font-weight: 600;
-          line-height: 1.2;
-          margin-bottom: 24px;
-          color: #ffffff;
+          font-size: clamp(3rem, 8vw, 5rem);
+          line-height: 1.1;
+          margin-bottom: 20px;
+          background: linear-gradient(135deg, #ffffff 0%, #e8d5a0 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
 
-        .hero-title-italic {
-          font-style: italic;
+        .hero-title .gold {
           color: #c9a84c;
+          font-style: italic;
         }
 
         .hero-subtitle {
-          font-size: 24px;
+          font-size: clamp(1rem, 2vw, 1.25rem);
+          color: #b0b8c1;
+          margin-bottom: 60px;
           font-weight: 300;
-          line-height: 1.4;
-          color: #d4b878;
-          margin-bottom: 80px;
-          max-width: 700px;
+          letter-spacing: 0.5px;
         }
 
+        /* SVG Aircraft Illustration */
+        .aircraft-illustration {
+          width: 100%;
+          max-width: 500px;
+          height: auto;
+          margin: 40px 0;
+          animation: float-aircraft 4s ease-in-out infinite;
+        }
+
+        @keyframes float-aircraft {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+
+        /* Video Placeholder */
         .video-placeholder {
           width: 100%;
-          max-width: 600px;
+          max-width: 800px;
           aspect-ratio: 16 / 9;
-          background: rgba(30, 40, 60, 0.6);
-          border: 1px solid rgba(201, 168, 76, 0.3);
-          border-radius: 8px;
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(74, 144, 226, 0.1));
+          border: 1px solid rgba(201, 168, 76, 0.2);
+          border-radius: 12px;
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
-          margin-bottom: 100px;
-          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          margin-top: 40px;
           transition: all 0.3s ease;
+          cursor: pointer;
         }
 
         .video-placeholder:hover {
-          border-color: rgba(201, 168, 76, 0.6);
-          background: rgba(30, 40, 60, 0.8);
+          border-color: rgba(201, 168, 76, 0.4);
+          box-shadow: 0 0 40px rgba(201, 168, 76, 0.15);
         }
 
-        .play-icon {
+        .play-button {
           width: 80px;
           height: 80px;
-          margin-bottom: 20px;
+          border: 2px solid #c9a84c;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          transition: all 0.3s ease;
         }
 
-        .video-text {
-          font-size: 16px;
-          font-weight: 600;
-          color: #c9a84c;
+        .video-placeholder:hover .play-button {
+          transform: scale(1.1);
+          box-shadow: 0 0 30px rgba(201, 168, 76, 0.4);
         }
 
-        .video-subtext {
-          font-size: 13px;
-          color: #999;
-          margin-top: 8px;
+        .play-button::after {
+          content: '';
+          width: 0;
+          height: 0;
+          border-left: 20px solid #c9a84c;
+          border-top: 12px solid transparent;
+          border-bottom: 12px solid transparent;
+          margin-left: 4px;
         }
 
+        /* Scroll Indicator */
         .scroll-indicator {
           position: absolute;
-          bottom: 40px;
+          bottom: 30px;
           left: 50%;
           transform: translateX(-50%);
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
           animation: bounce 2s infinite;
         }
 
-        @keyframes bounce {
-          0%, 100% { transform: translateX(-50%) translateY(0); }
-          50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        .scroll-text {
+        .scroll-indicator-text {
           font-size: 12px;
           letter-spacing: 1px;
           text-transform: uppercase;
           color: #c9a84c;
+          font-weight: 600;
         }
 
-        .scroll-line {
-          width: 2px;
-          height: 30px;
-          background: linear-gradient(to bottom, #c9a84c, transparent);
+        .scroll-indicator-dot {
+          width: 8px;
+          height: 8px;
+          border: 2px solid #c9a84c;
+          border-radius: 50%;
         }
 
-        /* Section Structure */
+        @keyframes bounce {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+            transform: translateX(-50%) translateY(10px);
+          }
+        }
+
+        /* Section */
         .section {
-          padding: 120px 60px;
+          padding: 80px 40px;
+          position: relative;
+          z-index: 10;
+        }
+
+        .section-label {
+          font-size: 11px;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          color: #c9a84c;
+          margin-bottom: 15px;
+          font-weight: 700;
+          display: block;
+        }
+
+        .section-title {
+          font-size: clamp(2rem, 5vw, 3.5rem);
+          line-height: 1.2;
+          margin-bottom: 50px;
+          color: #ffffff;
+        }
+
+        /* Divider */
+        .divider {
+          height: 1px;
+          background: linear-gradient(to right, transparent, #c9a84c, transparent);
+          margin: 60px 0;
+          opacity: 0.5;
+        }
+
+        /* Overview Section */
+        .overview-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
+          align-items: center;
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+
+        .overview-visual {
+          position: relative;
+          height: 400px;
+        }
+
+        .connected-nodes {
+          width: 100%;
+          height: 100%;
+        }
+
+        .overview-content {
           position: relative;
           z-index: 2;
         }
 
-        .section-label {
-          font-size: 13px;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          color: #c9a84c;
-          margin-bottom: 20px;
-          font-weight: 600;
-        }
-
-        .section-heading {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 48px;
-          font-weight: 600;
-          margin-bottom: 40px;
+        .overview-heading {
+          font-size: 2rem;
+          margin-bottom: 25px;
           color: #ffffff;
         }
 
-        .gold-divider {
-          height: 2px;
-          background: linear-gradient(to right, #c9a84c, transparent);
-          margin: 60px 0;
-        }
-
-        /* Overview Section */
-        .overview-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 80px;
-          align-items: start;
-        }
-
-        .overview-left h3 {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 42px;
-          font-weight: 600;
-          line-height: 1.2;
-          margin-bottom: 40px;
-          color: #e8d5a0;
-        }
-
-        .overview-right p {
-          font-size: 16px;
+        .expandable-text {
+          max-height: 100px;
+          overflow: hidden;
+          transition: max-height 0.4s ease;
+          color: #b0b8c1;
           line-height: 1.8;
-          margin-bottom: 24px;
-          color: #ccc;
+          font-size: 1.05rem;
         }
 
-        /* Value Cards Section */
-        .value-intro {
-          font-size: 16px;
-          line-height: 1.8;
-          color: #d4b878;
-          margin-bottom: 60px;
-          max-width: 900px;
-        }
-
-        .cards-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 40px;
-        }
-
-        .value-card {
-          background: rgba(20, 35, 60, 0.6);
-          border: 1px solid rgba(201, 168, 76, 0.2);
-          border-radius: 8px;
-          padding: 40px;
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-
-        .value-card:hover {
-          border-color: rgba(201, 168, 76, 0.5);
-          background: rgba(20, 35, 60, 0.8);
-          transform: translateY(-4px);
-        }
-
-        .card-icon {
-          width: 60px;
-          height: 60px;
-          margin-bottom: 24px;
-        }
-
-        .gold-accent-bar {
-          width: 40px;
-          height: 4px;
-          background: #c9a84c;
-          margin-bottom: 20px;
-        }
-
-        .card-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 24px;
-          font-weight: 600;
-          margin-bottom: 12px;
-          color: #e8d5a0;
-        }
-
-        .card-description {
-          font-size: 14px;
-          line-height: 1.6;
-          color: #aaa;
-          margin-bottom: 24px;
+        .expandable-text.expanded {
+          max-height: 800px;
         }
 
         .expand-button {
           background: none;
           border: none;
           color: #c9a84c;
-          font-size: 14px;
-          font-weight: 600;
           cursor: pointer;
-          padding: 0;
+          padding: 20px 0;
+          font-size: 24px;
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 10px;
           transition: all 0.3s ease;
+          font-weight: 600;
         }
 
         .expand-button:hover {
+          transform: translateX(5px);
+        }
+
+        .expand-button svg {
+          transition: transform 0.3s ease;
+        }
+
+        .expand-button.expanded svg {
+          transform: rotate(180deg);
+        }
+
+        /* Parallax Quote */
+        .parallax-quote {
+          margin: 120px 0;
+          padding: 80px 40px;
+          background: linear-gradient(135deg, rgba(13, 31, 60, 0.8), rgba(10, 22, 40, 0.9));
+          border-top: 1px solid rgba(201, 168, 76, 0.2);
+          border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+          position: relative;
+          overflow: hidden;
+          z-index: 10;
+        }
+
+        .parallax-quote::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at ${scrollPosition * 0.3}px 50%, rgba(201, 168, 76, 0.05), transparent);
+          pointer-events: none;
+        }
+
+        .quote-content {
+          position: relative;
+          z-index: 2;
+          max-width: 900px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .quote-text {
+          font-size: clamp(1.5rem, 4vw, 2.2rem);
+          font-style: italic;
+          line-height: 1.6;
+          color: #e8d5a0;
+          margin-bottom: 20px;
+        }
+
+        .quote-attribution {
+          font-size: 0.95rem;
+          color: #c9a84c;
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
+
+        /* Value Cards Section */
+        .value-cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 40px;
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+
+        .value-card {
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), rgba(74, 144, 226, 0.05));
+          border: 1px solid rgba(201, 168, 76, 0.15);
+          border-radius: 12px;
+          padding: 40px;
+          transition: all 0.4s ease;
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        .value-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 30% 30%, rgba(201, 168, 76, 0.1), transparent);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+        }
+
+        .value-card:hover {
+          border-color: rgba(201, 168, 76, 0.4);
+          transform: translateY(-4px);
+          box-shadow: 0 20px 60px rgba(201, 168, 76, 0.1);
+        }
+
+        .value-card:hover::before {
+          opacity: 1;
+        }
+
+        .card-visual {
+          width: 100%;
+          height: 150px;
+          margin-bottom: 30px;
+          border-radius: 8px;
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(74, 144, 226, 0.15));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .card-visual-aircraft {
+          font-size: 60px;
+          opacity: 0.6;
+        }
+
+        .card-visual-grid {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
+        .grid-dot {
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          background: #c9a84c;
+          border-radius: 50%;
+          opacity: 0.7;
+          animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.7;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.5);
+          }
+        }
+
+        .card-visual-delivery {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          padding: 0 20px;
+        }
+
+        .delivery-node {
+          width: 16px;
+          height: 16px;
+          background: #c9a84c;
+          border-radius: 50%;
+          position: relative;
+        }
+
+        .delivery-line {
+          position: absolute;
+          height: 2px;
+          background: linear-gradient(to right, transparent, #c9a84c, transparent);
+          top: 50%;
+          left: 10%;
+          right: 10%;
+          opacity: 0.5;
+        }
+
+        .card-title {
+          font-size: 1.4rem;
+          margin-bottom: 15px;
+          color: #ffffff;
+        }
+
+        .card-description {
+          color: #b0b8c1;
+          line-height: 1.7;
+          font-size: 0.95rem;
+          margin-bottom: 20px;
+        }
+
+        .card-expand {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #c9a84c;
+          font-weight: 600;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .card-expand:hover {
           gap: 12px;
         }
 
-        .expand-icon {
-          display: inline-block;
+        .card-expand svg {
           transition: transform 0.3s ease;
         }
 
-        .expand-button.expanded .expand-icon {
+        .card-expand.expanded svg {
           transform: rotate(180deg);
         }
 
-        .card-bullets {
+        .card-details {
           max-height: 0;
           overflow: hidden;
-          transition: max-height 0.3s ease;
-        }
-
-        .card-bullets.expanded {
-          max-height: 400px;
-          margin-top: 20px;
+          transition: max-height 0.4s ease;
+          margin-top: 15px;
+          padding-top: 15px;
           border-top: 1px solid rgba(201, 168, 76, 0.2);
-          padding-top: 20px;
         }
 
-        .card-bullets ul {
+        .card-details.expanded {
+          max-height: 300px;
+        }
+
+        .card-details ul {
           list-style: none;
-        }
-
-        .card-bullets li {
-          font-size: 13px;
-          line-height: 1.8;
-          color: #999;
-          margin-bottom: 12px;
-          padding-left: 20px;
-          position: relative;
-        }
-
-        .card-bullets li::before {
-          content: '▪';
-          position: absolute;
-          left: 0;
-          color: #c9a84c;
-        }
-
-        /* How We Serve Section */
-        .serve-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 80px;
-          align-items: start;
-        }
-
-        .serve-left h3 {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 42px;
-          font-weight: 600;
-          line-height: 1.2;
-          margin-bottom: 24px;
-          color: #e8d5a0;
-        }
-
-        .serve-left p {
-          font-size: 16px;
-          line-height: 1.8;
-          color: #ccc;
-          margin-bottom: 20px;
-        }
-
-        .accordion-item {
-          border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-          padding: 24px 0;
-        }
-
-        .accordion-item:first-child {
-          padding-top: 0;
-        }
-
-        .accordion-header {
-          background: none;
-          border: none;
-          width: 100%;
-          text-align: left;
-          color: #e8d5a0;
-          font-size: 16px;
-          font-weight: 600;
-          cursor: pointer;
           padding: 0;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 20px;
-          transition: color 0.3s ease;
+          margin: 0;
         }
 
-        .accordion-header:hover {
-          color: #c9a84c;
-        }
-
-        .accordion-number {
-          color: #c9a84c;
-          font-weight: 700;
-          flex-shrink: 0;
-        }
-
-        .accordion-toggle {
-          color: #c9a84c;
-          font-size: 20px;
-          flex-shrink: 0;
-          transition: transform 0.3s ease;
-        }
-
-        .accordion-toggle.expanded {
-          transform: rotate(180deg);
-        }
-
-        .accordion-content {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease;
-          color: #999;
-          font-size: 14px;
-          line-height: 1.8;
-        }
-
-        .accordion-content.expanded {
-          max-height: 200px;
-          margin-top: 16px;
-        }
-
-        /* Service Categories */
-        .categories-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 40px;
-        }
-
-        .category-card {
-          background: rgba(20, 35, 60, 0.6);
-          border: 1px solid rgba(201, 168, 76, 0.2);
-          border-radius: 8px;
-          padding: 40px;
-          transition: all 0.3s ease;
-          cursor: pointer;
-        }
-
-        .category-card:hover {
-          border-color: rgba(201, 168, 76, 0.5);
-          background: rgba(20, 35, 60, 0.8);
-          transform: translateY(-4px);
-        }
-
-        .category-badge {
-          display: inline-block;
-          padding: 8px 16px;
-          border-radius: 4px;
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          margin-bottom: 24px;
-        }
-
-        .category-badge-define {
-          background: rgba(201, 168, 76, 0.2);
-          color: #c9a84c;
-        }
-
-        .category-badge-enable {
-          background: rgba(212, 184, 120, 0.2);
-          color: #d4b878;
-        }
-
-        .category-badge-deliver {
-          background: rgba(232, 213, 160, 0.2);
-          color: #e8d5a0;
-        }
-
-        .category-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 28px;
-          font-weight: 600;
-          margin-bottom: 20px;
-          color: #e8d5a0;
-        }
-
-        .category-bullets {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease;
-        }
-
-        .category-bullets.expanded {
-          max-height: 500px;
-        }
-
-        .category-bullets ul {
-          list-style: none;
-          margin-top: 20px;
-          border-top: 1px solid rgba(201, 168, 76, 0.2);
-          padding-top: 20px;
-        }
-
-        .category-bullets li {
-          font-size: 13px;
-          line-height: 1.8;
-          color: #999;
-          margin-bottom: 12px;
+        .card-details li {
+          color: #b0b8c1;
+          margin-bottom: 10px;
           padding-left: 20px;
           position: relative;
+          font-size: 0.95rem;
+          line-height: 1.6;
         }
 
-        .category-bullets li::before {
-          content: '▪';
+        .card-details li::before {
+          content: '▸';
           position: absolute;
           left: 0;
           color: #c9a84c;
+          font-size: 1.2rem;
         }
 
-        /* Service Portfolio */
-        .portfolio-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 60px;
+        /* Horizontal Scroll Section */
+        .horizontal-scroll-wrapper {
+          position: relative;
+          overflow: hidden;
+          padding: 40px 0;
+          max-width: 100%;
         }
 
-        .portfolio-column h3 {
-          font-size: 20px;
-          font-weight: 600;
-          color: #e8d5a0;
+        .scroll-progress {
+          height: 3px;
+          background: linear-gradient(to right, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.5), rgba(201, 168, 76, 0.2));
           margin-bottom: 30px;
-          font-family: 'DM Sans', sans-serif;
         }
 
-        .portfolio-items {
+        .scroll-progress-bar {
+          height: 100%;
+          background: linear-gradient(to right, #c9a84c, #d4b878);
+          width: 0%;
+          transition: width 0.3s ease;
+        }
+
+        .scroll-controls {
           display: flex;
-          flex-direction: column;
-          gap: 16px;
+          gap: 15px;
+          justify-content: center;
+          margin-bottom: 30px;
         }
 
-        .portfolio-item {
-          padding: 16px;
-          background: rgba(20, 35, 60, 0.4);
-          border-left: 3px solid #c9a84c;
-          border-radius: 4px;
-          font-size: 14px;
-          line-height: 1.6;
-          color: #ccc;
+        .scroll-button {
+          width: 44px;
+          height: 44px;
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.05));
+          border: 1px solid rgba(201, 168, 76, 0.3);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: #c9a84c;
           transition: all 0.3s ease;
+          font-weight: 600;
         }
 
-        .portfolio-item:hover {
-          background: rgba(20, 35, 60, 0.6);
-          border-left-color: #e8d5a0;
+        .scroll-button:hover {
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.25), rgba(201, 168, 76, 0.1));
+          border-color: rgba(201, 168, 76, 0.5);
+          transform: scale(1.05);
         }
 
-        .portfolio-item.hidden {
+        .scroll-button:active {
+          transform: scale(0.95);
+        }
+
+        .scroll-container {
+          display: flex;
+          gap: 30px;
+          overflow-x: auto;
+          padding: 0 20px;
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+
+        .scroll-container::-webkit-scrollbar {
           display: none;
         }
 
-        .view-all-button {
-          background: none;
-          border: 1px solid #c9a84c;
-          color: #c9a84c;
-          padding: 12px 24px;
-          border-radius: 4px;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 1px;
-          text-transform: uppercase;
+        .phase-card {
+          flex: 0 0 320px;
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(74, 144, 226, 0.08));
+          border: 1px solid rgba(201, 168, 76, 0.2);
+          border-radius: 12px;
+          padding: 35px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          transition: all 0.4s ease;
           cursor: pointer;
-          margin-top: 24px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .phase-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(201, 168, 76, 0.1), transparent);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+        }
+
+        .phase-card:hover {
+          border-color: rgba(201, 168, 76, 0.4);
+          transform: translateY(-4px);
+          box-shadow: 0 15px 40px rgba(201, 168, 76, 0.15);
+        }
+
+        .phase-card:hover::before {
+          opacity: 1;
+        }
+
+        .phase-number {
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(135deg, #c9a84c, #e8d5a0);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .phase-title {
+          font-size: 1.2rem;
+          color: #ffffff;
+          font-weight: 600;
+        }
+
+        .phase-description {
+          font-size: 0.9rem;
+          color: #b0b8c1;
+          line-height: 1.6;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease;
+        }
+
+        .phase-card.expanded .phase-description {
+          max-height: 200px;
+        }
+
+        .phase-expand {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #c9a84c;
+          font-weight: 600;
+          font-size: 0.85rem;
+          margin-top: 10px;
+          cursor: pointer;
           transition: all 0.3s ease;
         }
 
-        .view-all-button:hover {
-          background: rgba(201, 168, 76, 0.1);
-          border-color: #e8d5a0;
-          color: #e8d5a0;
+        .phase-expand:hover {
+          gap: 12px;
         }
 
-        /* Stakeholders Section */
-        .stakeholders-intro {
-          max-width: 900px;
-          margin-bottom: 80px;
+        .phase-expand svg {
+          transition: transform 0.3s ease;
         }
 
-        .stakeholders-intro p {
-          font-size: 16px;
-          line-height: 1.8;
-          color: #d4b878;
+        .phase-card.expanded .phase-expand svg {
+          transform: rotate(180deg);
         }
 
-        .stakeholder-diagram {
+        /* Service Approach Cards */
+        .service-cards {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 60px;
-          align-items: start;
-          background: rgba(20, 35, 60, 0.4);
-          border: 1px solid rgba(201, 168, 76, 0.2);
-          border-radius: 8px;
-          padding: 60px 40px;
-          margin-bottom: 60px;
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+          gap: 40px;
+          max-width: 1400px;
+          margin: 0 auto;
         }
 
-        .stakeholder-column {
+        .service-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(201, 168, 76, 0.2);
+          transition: all 0.4s ease;
+          cursor: pointer;
+          min-height: 450px;
           display: flex;
           flex-direction: column;
-          gap: 40px;
         }
 
-        .stakeholder-group {
-          background: rgba(30, 45, 70, 0.8);
-          border-left: 3px solid #c9a84c;
-          padding: 20px;
-          border-radius: 4px;
+        .service-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 0;
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(74, 144, 226, 0.1));
+          pointer-events: none;
         }
 
-        .stakeholder-group-title {
-          font-size: 13px;
+        .service-card-content {
+          position: relative;
+          z-index: 2;
+          padding: 40px;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+
+        .service-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.05));
+          border: 1px solid rgba(201, 168, 76, 0.3);
+          border-radius: 50%;
+          margin-bottom: 25px;
+          font-size: 11px;
           font-weight: 700;
           letter-spacing: 1px;
-          text-transform: uppercase;
           color: #c9a84c;
-          margin-bottom: 12px;
-        }
-
-        .stakeholder-items {
-          list-style: none;
-          font-size: 13px;
-          line-height: 1.8;
-          color: #aaa;
-        }
-
-        .stakeholder-items li {
-          margin-bottom: 8px;
-        }
-
-        .stakeholder-center {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-
-        .hub-circle {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 200px;
-          height: 200px;
-          margin-bottom: 40px;
-        }
-
-        .hub-pulse-ring {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          border: 2px solid rgba(201, 168, 76, 0.4);
-          border-radius: 50%;
-          animation: pulse-ring 3s ease-in-out infinite;
-        }
-
-        .hub-pulse-ring:nth-child(1) {
-          width: 200px;
-          height: 200px;
-          animation-delay: 0s;
-        }
-
-        .hub-pulse-ring:nth-child(2) {
-          width: 240px;
-          height: 240px;
-          animation-delay: 0.5s;
-          border-color: rgba(201, 168, 76, 0.2);
-        }
-
-        .hub-pulse-ring:nth-child(3) {
-          width: 280px;
-          height: 280px;
-          animation-delay: 1s;
-          border-color: rgba(201, 168, 76, 0.1);
-        }
-
-        @keyframes pulse-ring {
-          0% {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(1.2);
-            opacity: 0;
-          }
-        }
-
-        .hub-center {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
           text-align: center;
-          z-index: 2;
+          padding: 10px;
+          transition: all 0.3s ease;
         }
 
-        .hub-logo {
-          width: 60px;
-          height: 60px;
-          margin: 0 auto 12px;
+        .service-card:hover .service-badge {
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.3), rgba(201, 168, 76, 0.1));
+          transform: scale(1.1);
+        }
+
+        .service-title {
+          font-size: 1.8rem;
+          color: #ffffff;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+
+        .service-description {
+          color: #b0b8c1;
+          line-height: 1.8;
+          font-size: 0.95rem;
+          margin-bottom: 25px;
+          flex: 1;
+        }
+
+        .service-items {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease;
+          padding-top: 0;
+          margin-top: 0;
+          border-top: 0 solid rgba(201, 168, 76, 0.2);
+        }
+
+        .service-card.expanded .service-items {
+          max-height: 250px;
+          padding-top: 20px;
+          margin-top: 20px;
+          border-top: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .service-items ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .service-items li {
+          color: #b0b8c1;
+          margin-bottom: 10px;
+          padding-left: 20px;
+          position: relative;
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .service-items li::before {
+          content: '▸';
+          position: absolute;
+          left: 0;
+          color: #c9a84c;
+          font-size: 1.2rem;
+        }
+
+        .service-expand {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #c9a84c;
+          font-weight: 600;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          align-self: flex-start;
+          margin-top: auto;
+        }
+
+        .service-expand:hover {
+          gap: 12px;
+        }
+
+        .service-expand svg {
+          transition: transform 0.3s ease;
+        }
+
+        .service-card.expanded .service-expand svg {
+          transform: rotate(180deg);
+        }
+
+        .service-card:hover {
+          border-color: rgba(201, 168, 76, 0.4);
+          transform: translateY(-4px);
+          box-shadow: 0 20px 60px rgba(201, 168, 76, 0.1);
+        }
+
+        /* Stakeholder Ecosystem */
+        .ecosystem-container {
+          max-width: 800px;
+          margin: 0 auto;
+          position: relative;
+        }
+
+        .ecosystem-diagram {
+          width: 100%;
+          aspect-ratio: 1;
+          position: relative;
+          margin: 40px 0;
+        }
+
+        .ecosystem-center {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100px;
+          height: 100px;
           background: linear-gradient(135deg, #c9a84c, #e8d5a0);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
+          font-size: 0.7rem;
           font-weight: 700;
-          font-size: 24px;
-          color: #0a1628;
-        }
-
-        .hub-text {
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          color: #c9a84c;
-          margin-bottom: 8px;
-        }
-
-        .hub-subtitle {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 14px;
-          color: #e8d5a0;
-        }
-
-        .hub-roles {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          margin-top: 30px;
-        }
-
-        .hub-role {
-          font-size: 11px;
-          color: #999;
-          padding: 8px 12px;
-          background: rgba(201, 168, 76, 0.1);
-          border-radius: 4px;
           text-align: center;
+          color: #0a1628;
+          padding: 10px;
+          box-shadow: 0 0 50px rgba(201, 168, 76, 0.3);
+          animation: pulse-glow 3s ease-in-out infinite;
+          z-index: 2;
         }
 
-        /* Video Section */
-        .video-section {
-          background: rgba(20, 35, 60, 0.6);
-          border: 1px solid rgba(201, 168, 76, 0.2);
-          border-radius: 8px;
-          padding: 80px 60px;
+        @keyframes pulse-glow {
+          0%, 100% {
+            box-shadow: 0 0 50px rgba(201, 168, 76, 0.3);
+            transform: translate(-50%, -50%) scale(1);
+          }
+          50% {
+            box-shadow: 0 0 80px rgba(201, 168, 76, 0.5);
+            transform: translate(-50%, -50%) scale(1.05);
+          }
+        }
+
+        .ecosystem-ring {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border: 2px solid rgba(201, 168, 76, 0.2);
+          border-radius: 50%;
+          animation: ring-pulse 4s ease-in-out infinite;
+        }
+
+        .ecosystem-ring-1 {
+          width: 250px;
+          height: 250px;
+        }
+
+        .ecosystem-ring-2 {
+          width: 400px;
+          height: 400px;
+          animation-delay: 1s;
+        }
+
+        @keyframes ring-pulse {
+          0%, 100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.1;
+          }
+        }
+
+        .ecosystem-node {
+          position: absolute;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
-          min-height: 500px;
+          gap: 10px;
           cursor: pointer;
           transition: all 0.3s ease;
         }
 
-        .video-section:hover {
-          border-color: rgba(201, 168, 76, 0.5);
-          background: rgba(20, 35, 60, 0.8);
+        .ecosystem-node-circle {
+          width: 60px;
+          height: 60px;
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(74, 144, 226, 0.2));
+          border: 2px solid rgba(201, 168, 76, 0.4);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          transition: all 0.3s ease;
         }
 
-        .video-play-icon {
-          width: 100px;
-          height: 100px;
-          margin-bottom: 30px;
+        .ecosystem-node:hover .ecosystem-node-circle {
+          background: linear-gradient(135deg, rgba(201, 168, 76, 0.4), rgba(74, 144, 226, 0.3));
+          border-color: rgba(201, 168, 76, 0.7);
+          transform: scale(1.15);
+          box-shadow: 0 0 30px rgba(201, 168, 76, 0.3);
         }
 
-        .video-section-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 36px;
+        .ecosystem-node-label {
+          font-size: 0.8rem;
+          color: #b0b8c1;
+          text-align: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          max-width: 80px;
+        }
+
+        .ecosystem-node:hover .ecosystem-node-label {
+          opacity: 1;
+        }
+
+        .ecosystem-details {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          margin-top: 40px;
+        }
+
+        .ecosystem-expand {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          color: #c9a84c;
           font-weight: 600;
-          color: #e8d5a0;
-          margin-bottom: 12px;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
         }
 
-        .video-section-subtitle {
-          font-size: 14px;
-          color: #999;
+        .ecosystem-expand:hover {
+          gap: 12px;
+        }
+
+        .ecosystem-expand svg {
+          transition: transform 0.3s ease;
+        }
+
+        .ecosystem-expand.expanded svg {
+          transform: rotate(180deg);
+        }
+
+        .ecosystem-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease;
+          margin-top: 0;
+          padding-top: 0;
+          border-top: 0 solid rgba(201, 168, 76, 0.2);
+        }
+
+        .ecosystem-expand.expanded ~ .ecosystem-content {
+          max-height: 400px;
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .ecosystem-lists {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
+        }
+
+        .ecosystem-list h4 {
+          font-size: 0.95rem;
+          color: #c9a84c;
+          margin-bottom: 15px;
+          font-weight: 600;
+        }
+
+        .ecosystem-list ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .ecosystem-list li {
+          color: #b0b8c1;
+          margin-bottom: 8px;
+          padding-left: 20px;
+          position: relative;
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .ecosystem-list li::before {
+          content: '▸';
+          position: absolute;
+          left: 0;
+          color: #c9a84c;
         }
 
         /* CTA Section */
         .cta-section {
           text-align: center;
+          padding: 80px 40px;
           max-width: 800px;
           margin: 0 auto;
         }
 
-        .cta-section h2 {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 48px;
-          font-weight: 600;
-          margin-bottom: 24px;
-          color: #e8d5a0;
+        .cta-heading {
+          font-size: 2.5rem;
+          margin-bottom: 20px;
+          color: #ffffff;
         }
 
-        .cta-section p {
-          font-size: 16px;
-          line-height: 1.8;
-          color: #ccc;
+        .cta-text {
+          color: #b0b8c1;
           margin-bottom: 40px;
+          font-size: 1.05rem;
+          line-height: 1.8;
         }
 
         .cta-button {
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
           padding: 16px 40px;
-          background: linear-gradient(135deg, #c9a84c, #d4b878);
+          background: linear-gradient(135deg, #c9a84c, #e8d5a0);
           color: #0a1628;
-          border: none;
-          border-radius: 4px;
-          font-size: 14px;
+          text-decoration: none;
+          border-radius: 8px;
           font-weight: 700;
           letter-spacing: 1px;
-          text-transform: uppercase;
-          cursor: pointer;
           transition: all 0.3s ease;
-          text-decoration: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1rem;
+          text-transform: uppercase;
         }
 
         .cta-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 24px rgba(201, 168, 76, 0.3);
+          box-shadow: 0 15px 40px rgba(201, 168, 76, 0.3);
+          background: linear-gradient(135deg, #e8d5a0, #c9a84c);
         }
 
-        /* Reveal Animation */
-        .reveal {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .reveal.visible {
-          opacity: 1;
+        .cta-button:active {
           transform: translateY(0);
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
-          .hero {
-            padding: 140px 40px 80px;
-          }
-
-          .hero-title {
-            font-size: 48px;
-          }
-
-          .hero-subtitle {
-            font-size: 20px;
-          }
-
           .section {
-            padding: 80px 40px;
+            padding: 60px 30px;
           }
 
-          .section-heading {
-            font-size: 36px;
-          }
-
-          .overview-grid,
-          .serve-grid {
+          .overview-container {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 50px;
           }
 
-          .cards-grid,
-          .categories-grid {
+          .overview-visual {
+            height: 300px;
+          }
+
+          .parallax-quote {
+            padding: 60px 30px;
+            margin: 80px 0;
+          }
+
+          .value-cards {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .service-cards {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .ecosystem-lists {
             grid-template-columns: 1fr;
           }
 
-          .stakeholder-diagram {
-            grid-template-columns: 1fr;
-            gap: 40px;
+          .scroll-container {
+            padding: 0 10px;
           }
 
-          .portfolio-grid {
-            grid-template-columns: 1fr;
+          .phase-card {
+            flex: 0 0 280px;
+            padding: 25px;
           }
         }
 
         @media (max-width: 768px) {
           .hero {
-            padding: 100px 24px 60px;
+            padding: 30px 20px;
+            min-height: 80vh;
           }
 
           .hero-title {
-            font-size: 36px;
+            font-size: 2rem;
           }
 
           .hero-subtitle {
-            font-size: 18px;
+            font-size: 1rem;
+          }
+
+          .aircraft-illustration {
+            max-width: 300px;
           }
 
           .section {
-            padding: 60px 24px;
+            padding: 50px 20px;
           }
 
-          .section-heading {
-            font-size: 28px;
+          .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
           }
 
-          .overview-left h3,
-          .serve-left h3 {
-            font-size: 28px;
+          .parallax-quote {
+            padding: 40px 20px;
+            margin: 60px 0;
+          }
+
+          .quote-text {
+            font-size: 1.3rem;
+          }
+
+          .overview-visual {
+            height: 250px;
+          }
+
+          .value-cards {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+
+          .value-card {
+            padding: 30px;
+          }
+
+          .card-visual {
+            height: 120px;
+            margin-bottom: 20px;
+          }
+
+          .service-cards {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+
+          .service-card {
+            min-height: 350px;
+          }
+
+          .service-card-content {
+            padding: 30px;
+          }
+
+          .service-badge {
+            width: 70px;
+            height: 70px;
+            font-size: 10px;
+          }
+
+          .service-title {
+            font-size: 1.4rem;
+          }
+
+          .scroll-container {
+            padding: 0 10px;
+          }
+
+          .phase-card {
+            flex: 0 0 260px;
+            padding: 20px;
+          }
+
+          .phase-number {
+            font-size: 2rem;
+          }
+
+          .phase-title {
+            font-size: 1rem;
+          }
+
+          .ecosystem-ring-1 {
+            width: 200px;
+            height: 200px;
+          }
+
+          .ecosystem-ring-2 {
+            width: 320px;
+            height: 320px;
+          }
+
+          .ecosystem-center {
+            width: 80px;
+            height: 80px;
+            font-size: 0.65rem;
+          }
+
+          .ecosystem-node-circle {
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+          }
+
+          .cta-section {
+            padding: 60px 20px;
+          }
+
+          .cta-heading {
+            font-size: 1.8rem;
+          }
+
+          .cta-button {
+            padding: 14px 32px;
+            font-size: 0.9rem;
           }
         }
       `}</style>
 
-      <div className="aam-container">
-        <div className="content-wrapper">
-          {/* Hero Section */}
-          <section className="hero" id="hero-reveal">
-            <div className="hero-content">
-              <div className="breadcrumb">Technology · Advanced Air Mobility & UAS</div>
-              <h1 className="hero-title">
-                Partnering to turn AAM and UAS concepts into{' '}
-                <span className="hero-title-italic">community transport solutions</span>
-              </h1>
-              <p className="hero-subtitle">
-                Are you ready for the next major phase in transportation's evolution?
-              </p>
-              <div className="video-placeholder">
-                <svg className="play-icon" viewBox="0 0 80 80" fill="none">
-                  <circle cx="40" cy="40" r="39" stroke="#c9a84c" strokeWidth="2" />
-                  <polygon points="35,25 35,55 60,40" fill="#c9a84c" />
-                </svg>
-                <div className="video-text">Video Coming Soon</div>
-              </div>
-            </div>
-            <div className="scroll-indicator">
-              <div className="scroll-text">Scroll</div>
-              <div className="scroll-line" />
-            </div>
-          </section>
-
-          {/* Overview Section */}
-          <section className="section" id="overview-reveal">
-            <div className="reveal" id="overview-content">
-              <div className="section-label">Overview</div>
-              <div className="overview-grid">
-                <div className="overview-left">
-                  <h2 className="section-heading">
-                    The next major phase in transportation's evolution
-                  </h2>
-                </div>
-                <div className="overview-right">
-                  <p>
-                    Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are
-                    increasingly part of modern mobility ecosystems. Together, these systems and
-                    associated technologies are expected to transform transportation by enhancing
-                    connectivity, improving cargo logistics, expediting emergency response, and
-                    assisting infrastructure inspection.
-                  </p>
-                  <p>
-                    Next-generation aerial capabilities, integrated into existing mobility
-                    systems, complement ground, rail, and maritime transport networks. They
-                    strengthen multimodal transportation and enable urban, rural, and regional
-                    areas to benefit from a more connected, resilient, and adaptable mobility
-                    ecosystem.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div className="gold-divider" />
-
-          {/* Value Section */}
-          <section className="section" id="value-reveal">
-            <div className="reveal" id="value-content">
-              <div className="section-label">Where AAM and UAS deliver value</div>
-              <h2 className="section-heading">Capabilities that underpin the future of mobility</h2>
-              <p className="value-intro">
-                The capabilities pioneered by UAS technologies underpin the development of AAM,
-                which extends UAS applications into full-scale mobility solutions. UAS refers to
-                all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM
-                represents a new vision of mobility, expanding transportation options for
-                passengers, cargo, and emergency services across communities and regions.
-              </p>
-
-              <div className="cards-grid">
-                {[
-                  {
-                    id: 'aam-taxis',
-                    title: 'AAM (Air Taxis)',
-                    desc: 'Expanding passenger mobility through electric vertical takeoff and landing (eVTOL) aircraft for urban and regional transport.',
-                    bullets: [
-                      'Urban mobility',
-                      'Business travel',
-                      'Emergency medical transport',
-                      'Regional connectivity',
-                      'Tourism & sightseeing',
-                    ],
-                  },
-                  {
-                    id: 'uas-data',
-                    title: 'UAS Data Collection',
-                    desc: 'Harnessing drone technology to gather critical infrastructure, environmental, and operational data at scale.',
-                    bullets: [
-                      'Infrastructure inspection',
-                      'Construction inspection & monitoring',
-                      'Environmental monitoring',
-                      'Aerial surveying & mapping',
-                      'Disaster response',
-                    ],
-                  },
-                  {
-                    id: 'uas-delivery',
-                    title: 'UAS Package Delivery',
-                    desc: 'Enabling efficient, scalable last-mile and specialized delivery operations across diverse geographies.',
-                    bullets: [
-                      'Last-mile delivery',
-                      'Medical supply delivery',
-                      'Rural & remote delivery',
-                      'Inter-community delivery',
-                      'Retail & e-commerce support',
-                    ],
-                  },
-                ].map((card) => (
-                  <div
-                    key={card.id}
-                    className="value-card reveal"
-                    id={`card-${card.id}`}
-                    onClick={() => toggleCard(card.id)}
-                  >
-                    <svg className="card-icon" viewBox="0 0 60 60" fill="none">
-                      {card.id === 'aam-taxis' && (
-                        <>
-                          <circle cx="30" cy="15" r="8" fill="#c9a84c" />
-                          <path
-                            d="M 30 23 L 15 50 L 20 50 L 28 35 L 32 35 L 40 50 L 45 50 Z"
-                            fill="#c9a84c"
-                          />
-                        </>
-                      )}
-                      {card.id === 'uas-data' && (
-                        <>
-                          <rect x="10" y="10" width="40" height="40" fill="none" stroke="#c9a84c" strokeWidth="2" />
-                          <circle cx="30" cy="30" r="6" fill="#c9a84c" />
-                          <path d="M 20 15 L 40 45 M 40 15 L 20 45" stroke="#c9a84c" strokeWidth="2" />
-                        </>
-                      )}
-                      {card.id === 'uas-delivery' && (
-                        <>
-                          <path
-                            d="M 15 40 L 30 15 L 45 40 Z"
-                            fill="none"
-                            stroke="#c9a84c"
-                            strokeWidth="2"
-                          />
-                          <line x1="30" y1="15" x2="30" y2="40" stroke="#c9a84c" strokeWidth="2" />
-                          <circle cx="30" cy="48" r="5" fill="none" stroke="#c9a84c" strokeWidth="2" />
-                        </>
-                      )}
-                    </svg>
-                    <div className="gold-accent-bar" />
-                    <h3 className="card-title">{card.title}</h3>
-                    <p className="card-description">{card.desc}</p>
-                    <button
-                      className={`expand-button ${expandedCard === card.id ? 'expanded' : ''}`}
-                    >
-                      <span>{expandedCard === card.id ? 'Show Less' : 'Learn More'}</span>
-                      <span className="expand-icon">▼</span>
-                    </button>
-                    <div className={`card-bullets ${expandedCard === card.id ? 'expanded' : ''}`}>
-                      <ul>
-                        {card.bullets.map((bullet, idx) => (
-                          <li key={idx}>{bullet}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <div className="gold-divider" />
-
-          {/* How We Serve Section */}
-          <section className="section" id="serve-reveal">
-            <div className="reveal" id="serve-content">
-              <div className="section-label">How we serve our clients</div>
-              <div className="serve-grid">
-                <div className="serve-left">
-                  <h2 className="section-heading">Guiding programs from concept through sustained operation</h2>
-                  <p>
-                    Our team brings together regulatory guidance, operational expertise, and
-                    program strategy to deliver real-world results. We support AAM and UAS
-                    initiatives throughout the program lifecycle.
-                  </p>
-                </div>
-                <div className="serve-right">
-                  <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '30px', color: '#e8d5a0' }}>
-                    Essential phases
-                  </h3>
-                  {[
-                    {
-                      title: 'Policy & System Planning',
-                      desc: 'Develop policy, system plans, and standardized guidance for local implementation.',
-                    },
-                    {
-                      title: 'Regulatory Navigation',
-                      desc: 'Provide regulatory understanding for compliance and guide regulatory coordination.',
-                    },
-                    {
-                      title: 'Infrastructure Planning',
-                      desc: 'Plan for infrastructure, including vertiports, including technical research and validation.',
-                    },
-                    {
-                      title: 'Functional Frameworks',
-                      desc: 'Establish functional frameworks that support scalable program delivery and operational readiness.',
-                    },
-                    {
-                      title: 'Data & Safety Integration',
-                      desc: 'Integrate data and safety policies into transportation systems to ensure safe, reliable operations.',
-                    },
-                    {
-                      title: 'Implementation & Scaling',
-                      desc: 'Support implementation, deployment, and the scaling of AAM and UAS services across communities.',
-                    },
-                    {
-                      title: 'Community Engagement',
-                      desc: 'Facilitate ongoing community engagement and public trust-building throughout the program lifecycle.',
-                    },
-                  ].map((item, idx) => (
-                    <div key={idx} className="accordion-item reveal" id={`accordion-${idx}`}>
-                      <button
-                        className="accordion-header"
-                        onClick={() => toggleAccordion(idx)}
-                      >
-                        <span className="accordion-number">{idx + 1}</span>
-                        <span style={{ flex: 1 }}>{item.title}</span>
-                        <span className={`accordion-toggle ${expandedAccordion === idx ? 'expanded' : ''}`}>
-                          ▼
-                        </span>
-                      </button>
-                      <div
-                        className={`accordion-content ${expandedAccordion === idx ? 'expanded' : ''}`}
-                      >
-                        {item.desc}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div className="gold-divider" />
-
-          {/* Service Categories Section */}
-          <section className="section" id="categories-reveal">
-            <div className="reveal" id="categories-content">
-              <div className="section-label">Our Service Categories</div>
-              <h2 className="section-heading">Our approach across the program lifecycle</h2>
-
-              <div className="cards-grid">
-                {[
-                  {
-                    id: 'define',
-                    badge: 'Define',
-                    title: 'Develop Policy',
-                    items: [
-                      'National aviation policy framework development',
-                      'Translating emerging use cases into policy considerations',
-                      'Inter-ministerial and cross-border coordination',
-                      'Evidence-based policy sequencing',
-                    ],
-                  },
-                  {
-                    id: 'enable',
-                    badge: 'Enable',
-                    title: 'Navigate Regulations',
-                    items: [
-                      'Regulatory gap assessments',
-                      'Certification and approval pathways',
-                      'BVLOS and advanced operations support',
-                      'Standards alignment and participation',
-                      'Audit-ready, defensible regulatory programs',
-                    ],
-                  },
-                  {
-                    id: 'deliver',
-                    badge: 'Deliver',
-                    title: 'Integrate and Implement',
-                    items: [
-                      'Airspace integration',
-                      'Aviation infrastructure readiness and planning',
-                      'Multi-stakeholder coordination and governance',
-                      'Risk-informed implementation pilots',
-                      'Sustainable authority capacity building',
-                    ],
-                  },
-                ].map((cat) => (
-                  <div
-                    key={cat.id}
-                    className="category-card reveal"
-                    id={`category-${cat.id}`}
-                    onClick={() =>
-                      setExpandedCard(
-                        expandedCard === `cat-${cat.id}` ? null : `cat-${cat.id}`
-                      )
-                    }
-                  >
-                    <div className={`category-badge category-badge-${cat.id}`}>
-                      {cat.badge}
-                    </div>
-                    <h3 className="category-title">{cat.title}</h3>
-                    <button
-                      className={`expand-button ${
-                        expandedCard === `cat-${cat.id}` ? 'expanded' : ''
-                      }`}
-                    >
-                      <span>{expandedCard === `cat-${cat.id}` ? 'Show Less' : 'View Details'}</span>
-                      <span className="expand-icon">▼</span>
-                    </button>
-                    <div
-                      className={`category-bullets ${
-                        expandedCard === `cat-${cat.id}` ? 'expanded' : ''
-                      }`}
-                    >
-                      <ul>
-                        {cat.items.map((item, idx) => (
-                          <li key={idx}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <div className="gold-divider" />
-
-          {/* Service Portfolio Section */}
-          <section className="section" id="portfolio-reveal">
-            <div className="reveal" id="portfolio-content">
-              <div className="section-label">Our Service Portfolio</div>
-              <h2 className="section-heading">Comprehensive AAM & UAS capabilities</h2>
-
-              <div className="portfolio-grid">
-                <div>
-                  <h3>AAM Services</h3>
-                  <div className="portfolio-items">
-                    {aamServices.map((service, idx) => (
-                      <div
-                        key={idx}
-                        className={`portfolio-item ${
-                          expandedService === 'aam' ? '' : idx >= 4 ? 'hidden' : ''
-                        } reveal`}
-                        id={`aam-service-${idx}`}
-                      >
-                        {service}
-                      </div>
-                    ))}
-                  </div>
-                  {expandedService !== 'aam' && (
-                    <button
-                      className="view-all-button"
-                      onClick={() => setExpandedService('aam')}
-                    >
-                      View all {aamServices.length} services
-                    </button>
-                  )}
-                  {expandedService === 'aam' && (
-                    <button
-                      className="view-all-button"
-                      onClick={() => setExpandedService(null)}
-                    >
-                      Show less
-                    </button>
-                  )}
-                </div>
-
-                <div>
-                  <h3>UAS Services</h3>
-                  <div className="portfolio-items">
-                    {uasServices.map((service, idx) => (
-                      <div
-                        key={idx}
-                        className={`portfolio-item ${
-                          expandedService === 'uas' ? '' : idx >= 4 ? 'hidden' : ''
-                        } reveal`}
-                        id={`uas-service-${idx}`}
-                      >
-                        {service}
-                      </div>
-                    ))}
-                  </div>
-                  {expandedService !== 'uas' && (
-                    <button
-                      className="view-all-button"
-                      onClick={() => setExpandedService('uas')}
-                    >
-                      View all {uasServices.length} services
-                    </button>
-                  )}
-                  {expandedService === 'uas' && (
-                    <button
-                      className="view-all-button"
-                      onClick={() => setExpandedService(null)}
-                    >
-                      Show less
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div className="gold-divider" />
-
-          {/* Stakeholders Section */}
-          <section className="section" id="stakeholders-reveal">
-            <div className="reveal" id="stakeholders-content">
-              <div className="section-label">Stakeholders we engage</div>
-              <h2 className="section-heading">Connecting policy to operations across the ecosystem</h2>
-
-              <div className="stakeholders-intro">
-                <p>
-                  We engage multiple stakeholders in the public and private sectors across AAM
-                  and UAS to align policy, regulation, operations, and technology; integrate
-                  systems and infrastructure; implement, deploy, and scale services.
-                </p>
-              </div>
-
-              <div className="stakeholder-diagram">
-                {/* Public Sector */}
-                <div className="stakeholder-column">
-                  <div className="stakeholder-group">
-                    <div className="stakeholder-group-title">Aviation Authorities</div>
-                    <ul className="stakeholder-items">
-                      <li>Federal Aviation Administration</li>
-                      <li>International Civil Aviation Organization</li>
-                      <li>NASAO</li>
-                    </ul>
-                  </div>
-                  <div className="stakeholder-group">
-                    <div className="stakeholder-group-title">Government Agencies</div>
-                    <ul className="stakeholder-items">
-                      <li>Departments of Transportation</li>
-                      <li>Security Agencies</li>
-                      <li>Emergency Management</li>
-                    </ul>
-                  </div>
-                  <div className="stakeholder-group">
-                    <div className="stakeholder-group-title">Standards Organizations</div>
-                    <ul className="stakeholder-items">
-                      <li>ACRA</li>
-                      <li>AASHTO</li>
-                      <li>NCHRP</li>
-                      <li>FHWA</li>
-                    </ul>
-                  </div>
-                  <div className="stakeholder-group">
-                    <div className="stakeholder-group-title">Academic Institutions</div>
-                    <ul className="stakeholder-items">
-                      <li>Research universities</li>
-                      <li>Transportation research centers</li>
-                      <li>Engineering programs</li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Center Hub */}
-                <div className="stakeholder-center">
-                  <div className="hub-circle">
-                    <div className="hub-pulse-ring" />
-                    <div className="hub-pulse-ring" />
-                    <div className="hub-pulse-ring" />
-                    <div className="hub-center">
-                      <div className="hub-logo">R</div>
-                      <div className="hub-text">Rawlins</div>
-                      <div className="hub-text">Aero Team</div>
-                      <div className="hub-subtitle">Connecting Policy to Operations</div>
-                    </div>
-                  </div>
-                  <div className="hub-roles">
-                    <div className="hub-role">Policy & Standards Development</div>
-                    <div className="hub-role">Regulatory Translation</div>
-                    <div className="hub-role">Technical Research & Validation</div>
-                    <div className="hub-role">Integration & Deployment Support</div>
-                  </div>
-                </div>
-
-                {/* Private Sector */}
-                <div className="stakeholder-column">
-                  <div className="stakeholder-group">
-                    <div className="stakeholder-group-title">Air Navigation Service Providers</div>
-                    <ul className="stakeholder-items">
-                      <li>UTM operators</li>
-                      <li>Air traffic management providers</li>
-                      <li>Data service providers</li>
-                    </ul>
-                  </div>
-                  <div className="stakeholder-group">
-                    <div className="stakeholder-group-title">Operators & Service Providers</div>
-                    <ul className="stakeholder-items">
-                      <li>Drone operators (data collection)</li>
-                      <li>Package delivery services</li>
-                      <li>Air taxi operators</li>
-                    </ul>
-                  </div>
-                  <div className="stakeholder-group">
-                    <div className="stakeholder-group-title">Industry</div>
-                    <ul className="stakeholder-items">
-                      <li>Aircraft manufacturers</li>
-                      <li>Technology providers</li>
-                      <li>Infrastructure developers</li>
-                    </ul>
-                  </div>
-                  <div className="stakeholder-group">
-                    <div className="stakeholder-group-title">Cities & MPOs</div>
-                    <ul className="stakeholder-items">
-                      <li>Metropolitan planning organizations</li>
-                      <li>Municipal governments</li>
-                      <li>Regional transit authorities</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div className="gold-divider" />
-
-          {/* Video Placeholder Section */}
-          <section className="section" id="video-section-reveal">
-            <div className="reveal" id="video-section-content">
-              <div className="video-section">
-                <svg className="video-play-icon" viewBox="0 0 100 100" fill="none">
-                  <circle cx="50" cy="50" r="49" stroke="#c9a84c" strokeWidth="2" />
-                  <polygon points="40,30 40,70 75,50" fill="#c9a84c" />
-                </svg>
-                <h2 className="video-section-title">See AAM & UAS in Action</h2>
-                <p className="video-section-subtitle">Video coming soon</p>
-              </div>
-            </div>
-          </section>
-
-          <div className="gold-divider" />
-
-          {/* CTA Section */}
-          <section className="section" id="cta-reveal">
-            <div className="reveal" id="cta-content">
-              <div className="section-label">Ready to get started?</div>
-              <div className="cta-section">
-                <h2>
-                  Whether you are just beginning or well along on your journey, we can provide
-                  guidance and support.
-                </h2>
-                <p>
-                  To learn more about our service portfolio and how we can help you deliver
-                  successful AAM and UAS outcomes for your community, reach out to our team.
-                </p>
-                <Link href="/contact" className="cta-button">
-                  Get in touch
-                </Link>
-              </div>
-            </div>
-          </section>
-        </div>
+      <div className="ambient-orbs">
+        <div className="orb orb-1"></div>
+        <div className="orb orb-2"></div>
+        <div className="orb orb-3"></div>
+        <div className="orb orb-4"></div>
       </div>
 
-      <SiteFooter />
-    </main>
+      <div className="particles">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className="particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              width: `${2 + Math.random() * 4}px`,
+              height: `${2 + Math.random() * 4}px`,
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${15 + Math.random() * 10}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      <div className="content-wrapper">
+        <SiteNav />
+
+        {/* HERO SECTION */}
+        <section className="hero">
+          <div className="hero-content">
+            <span className="breadcrumb">Technology · Advanced Air Mobility & UAS</span>
+
+            <h1 className="hero-title">
+              Advanced Air Mobility <span className="gold">&amp; UAS</span>
+            </h1>
+
+            <p className="hero-subtitle">Transforming the future of urban and regional transportation through innovative autonomous solutions</p>
+
+            <svg className="aircraft-illustration" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="aircraftGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#e8d5a0" stopOpacity="0.6" />
+                </linearGradient>
+              </defs>
+              <g opacity="0.7">
+                <ellipse cx="200" cy="100" rx="80" ry="40" fill="url(#aircraftGradient)" />
+                <path d="M 180 100 L 160 90 L 160 110 Z" fill="url(#aircraftGradient)" />
+                <path d="M 220 100 L 240 95 L 240 105 Z" fill="url(#aircraftGradient)" />
+                <circle cx="170" cy="100" r="4" fill="#e8d5a0" />
+                <circle cx="190" cy="100" r="4" fill="#e8d5a0" />
+                <circle cx="210" cy="100" r="4" fill="#e8d5a0" />
+                <circle cx="230" cy="100" r="4" fill="#e8d5a0" />
+                <path d="M 140 105 Q 150 120 160 115" stroke="url(#aircraftGradient)" strokeWidth="2" fill="none" />
+                <path d="M 240 105 Q 250 120 260 115" stroke="url(#aircraftGradient)" strokeWidth="2" fill="none" />
+              </g>
+            </svg>
+
+            <div className="video-placeholder">
+              <div className="play-button"></div>
+            </div>
+          </div>
+
+          <div className="scroll-indicator">
+            <span className="scroll-indicator-text">Scroll to explore</span>
+            <div className="scroll-indicator-dot"></div>
+          </div>
+        </section>
+
+        {/* OVERVIEW SECTION */}
+        <section className="section" id="overview-section" style={{ position: 'relative', zIndex: 10 }}>
+          <span className="section-label">About the Future</span>
+          <h2 className="section-title">What Is Advanced Air Mobility?</h2>
+
+          <div className="overview-container">
+            <div className="overview-visual reveal" id="overview-visual">
+              <svg className="connected-nodes" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#4a90e2" stopOpacity="0.6" />
+                  </linearGradient>
+                </defs>
+                <g opacity="0.8">
+                  <line x1="50" y1="50" x2="350" y2="350" stroke="url(#nodeGradient)" strokeWidth="1" opacity="0.4" />
+                  <line x1="50" y1="350" x2="350" y2="50" stroke="url(#nodeGradient)" strokeWidth="1" opacity="0.4" />
+                  <line x1="200" y1="50" x2="200" y2="350" stroke="url(#nodeGradient)" strokeWidth="1" opacity="0.4" />
+                  <line x1="50" y1="200" x2="350" y2="200" stroke="url(#nodeGradient)" strokeWidth="1" opacity="0.4" />
+                  <line x1="100" y1="100" x2="300" y2="300" stroke="url(#nodeGradient)" strokeWidth="1" opacity="0.3" />
+                  <line x1="100" y1="300" x2="300" y2="100" stroke="url(#nodeGradient)" strokeWidth="1" opacity="0.3" />
+
+                  <circle cx="200" cy="200" r="16" fill="#c9a84c" opacity="0.9" />
+                  <circle cx="50" cy="50" r="10" fill="#4a90e2" opacity="0.7" />
+                  <circle cx="350" cy="350" r="10" fill="#4a90e2" opacity="0.7" />
+                  <circle cx="50" cy="350" r="10" fill="#4a90e2" opacity="0.7" />
+                  <circle cx="350" cy="50" r="10" fill="#4a90e2" opacity="0.7" />
+                  <circle cx="200" cy="50" r="8" fill="#8a61c1" opacity="0.6" />
+                  <circle cx="200" cy="350" r="8" fill="#8a61c1" opacity="0.6" />
+                  <circle cx="50" cy="200" r="8" fill="#8a61c1" opacity="0.6" />
+                  <circle cx="350" cy="200" r="8" fill="#8a61c1" opacity="0.6" />
+
+                  <circle cx="200" cy="200" r="20" fill="none" stroke="#c9a84c" strokeWidth="1" opacity="0.3" />
+                  <circle cx="200" cy="200" r="28" fill="none" stroke="#c9a84c" strokeWidth="1" opacity="0.2" />
+                </g>
+              </svg>
+            </div>
+
+            <div className="overview-content reveal" id="overview-content">
+              <h3 className="overview-heading">Multimodal Urban Mobility</h3>
+
+              <div className="expandable-text" id="overview-text">
+                Advanced Air Mobility (AAM) and Uncrewed Aircraft Systems (UAS) represent the convergence of cutting-edge aerospace technology with urban planning, creating a transformative transportation ecosystem. These solutions address critical infrastructure challenges and open entirely new possibilities for how people and goods move through our cities.
+              </div>
+
+              <button
+                className="expand-button"
+                onClick={() => {
+                  const text = document.getElementById('overview-text');
+                  const btn = document.currentTarget;
+                  text?.classList.toggle('expanded');
+                  btn.classList.toggle('expanded');
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Learn More
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* PARALLAX QUOTE 1 */}
+        <div className="parallax-quote" id="quote-1">
+          <div className="quote-content reveal" id="quote-1-content">
+            <p className="quote-text">
+              "The future of transportation isn't just about moving faster—it's about moving smarter, safer, and more sustainably in a connected urban ecosystem."
+            </p>
+            <p className="quote-attribution">— Rawlins Group</p>
+          </div>
+        </div>
+
+        {/* VALUE DELIVERY SECTION */}
+        <section className="section" id="value-section">
+          <span className="section-label">Market Potential</span>
+          <h2 className="section-title">Where AAM & UAS Deliver Value</h2>
+
+          <div className="value-cards">
+            {/* Air Taxis Card */}
+            <div className="value-card reveal" id="air-taxis-card">
+              <div className="card-visual">
+                <div className="card-visual-aircraft">🚁</div>
+              </div>
+              <h3 className="card-title">Air Taxis</h3>
+              <p className="card-description">Urban air mobility solutions that bypass surface congestion</p>
+
+              <div
+                className="card-expand"
+                onClick={() => {
+                  const card = document.getElementById('air-taxis-card');
+                  const details = card?.querySelector('.card-details');
+                  const btn = card?.querySelector('.card-expand');
+                  details?.classList.toggle('expanded');
+                  btn?.classList.toggle('expanded');
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 6L8 11L13 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Expand
+              </div>
+
+              <div className="card-details">
+                <ul>
+                  <li>Point-to-point urban transportation</li>
+                  <li>Congestion reduction in major metros</li>
+                  <li>Fast intra-city connectivity</li>
+                  <li>Premium last-mile solutions</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Data Collection Card */}
+            <div className="value-card reveal" id="data-collection-card">
+              <div className="card-visual card-visual-grid">
+                <div className="delivery-line"></div>
+                {[10, 30, 50, 70, 90].map((pos) =>
+                  [20, 40, 60, 80].map((top) => (
+                    <div
+                      key={`dot-${pos}-${top}`}
+                      className="grid-dot"
+                      style={{
+                        left: `${pos}%`,
+                        top: `${top}%`,
+                        animationDelay: `${(pos + top) * 0.01}s`,
+                      }}
+                    ></div>
+                  ))
+                )}
+              </div>
+              <h3 className="card-title">Data Collection</h3>
+              <p className="card-description">Real-time intelligence and infrastructure insights</p>
+
+              <div
+                className="card-expand"
+                onClick={() => {
+                  const card = document.getElementById('data-collection-card');
+                  const details = card?.querySelector('.card-details');
+                  const btn = card?.querySelector('.card-expand');
+                  details?.classList.toggle('expanded');
+                  btn?.classList.toggle('expanded');
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 6L8 11L13 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Expand
+              </div>
+
+              <div className="card-details">
+                <ul>
+                  <li>Agricultural monitoring & crop analysis</li>
+                  <li>Infrastructure inspection & surveying</li>
+                  <li>Environmental data collection</li>
+                  <li>Real-time traffic & mobility analytics</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Package Delivery Card */}
+            <div className="value-card reveal" id="package-delivery-card">
+              <div className="card-visual card-visual-delivery">
+                <div className="delivery-line"></div>
+                <div className="delivery-node"></div>
+                <div className="delivery-node"></div>
+                <div className="delivery-node"></div>
+              </div>
+              <h3 className="card-title">Package Delivery</h3>
+              <p className="card-description">Fast, efficient last-mile and remote delivery</p>
+
+              <div
+                className="card-expand"
+                onClick={() => {
+                  const card = document.getElementById('package-delivery-card');
+                  const details = card?.querySelector('.card-details');
+                  const btn = card?.querySelector('.card-expand');
+                  details?.classList.toggle('expanded');
+                  btn?.classList.toggle('expanded');
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 6L8 11L13 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Expand
+              </div>
+
+              <div className="card-details">
+                <ul>
+                  <li>Same-day delivery acceleration</li>
+                  <li>Rural and remote area access</li>
+                  <li>Reduced logistics costs</li>
+                  <li>Supply chain optimization</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PARALLAX QUOTE 2 */}
+        <div className="parallax-quote" id="quote-2">
+          <div className="quote-content reveal" id="quote-2-content">
+            <p className="quote-text">
+              "Success in AAM requires more than technology—it demands collaboration across government, industry, and communities to build the infrastructure and trust that enables innovation."
+            </p>
+            <p className="quote-attribution">— Rawlins Group</p>
+          </div>
+        </div>
+
+        {/* HOW WE SERVE SECTION */}
+        <section className="section" id="how-we-serve">
+          <span className="section-label">Our Methodology</span>
+          <h2 className="section-title">How We Serve AAM & UAS Programs</h2>
+
+          <div className="horizontal-scroll-wrapper">
+            <div className="scroll-progress">
+              <div className="scroll-progress-bar" id="progress-bar"></div>
+            </div>
+
+            <div className="scroll-controls">
+              <button
+                className="scroll-button"
+                onClick={() => {
+                  const container = document.querySelector('.scroll-container');
+                  if (container) {
+                    container.scrollBy({ left: -350, behavior: 'smooth' });
+                  }
+                }}
+              >
+                ←
+              </button>
+              <button
+                className="scroll-button"
+                onClick={() => {
+                  const container = document.querySelector('.scroll-container');
+                  if (container) {
+                    container.scrollBy({ left: 350, behavior: 'smooth' });
+                  }
+                }}
+              >
+                →
+              </button>
+            </div>
+
+            <div
+              className="scroll-container"
+              onScroll={(e) => {
+                const scrollLeft = e.currentTarget.scrollLeft;
+                const scrollWidth = e.currentTarget.scrollWidth - e.currentTarget.clientWidth;
+                const progress = (scrollLeft / scrollWidth) * 100;
+                const bar = document.getElementById('progress-bar');
+                if (bar) {
+                  bar.style.width = `${progress}%`;
+                }
+              }}
+            >
+              {[
+                {
+                  number: '01',
+                  title: 'Policy & System Planning',
+                  description: 'Strategic framework development and stakeholder alignment to establish foundational AAM infrastructure and governance models.',
+                },
+                {
+                  number: '02',
+                  title: 'Regulatory Navigation',
+                  description: 'Expert guidance through complex FAA and state regulatory requirements, certification pathways, and compliance frameworks.',
+                },
+                {
+                  number: '03',
+                  title: 'Infrastructure Planning',
+                  description: 'Identification and development of vertiports, charging stations, and ground support facilities for operational networks.',
+                },
+                {
+                  number: '04',
+                  title: 'Functional Frameworks',
+                  description: 'Design of air traffic management systems, safety protocols, and operational procedures tailored to AAM environments.',
+                },
+                {
+                  number: '05',
+                  title: 'Data & Safety Integration',
+                  description: 'Implementation of real-time data systems, cybersecurity measures, and safety monitoring across the AAM ecosystem.',
+                },
+                {
+                  number: '06',
+                  title: 'Implementation & Scaling',
+                  description: 'Deployment of pilot programs and gradual scaling strategies with continuous performance optimization.',
+                },
+                {
+                  number: '07',
+                  title: 'Community Engagement',
+                  description: 'Public education, stakeholder outreach, and social acceptance programs to ensure sustainable adoption.',
+                },
+              ].map((phase) => (
+                <div
+                  key={phase.number}
+                  className="phase-card reveal"
+                  id={`phase-${phase.number}`}
+                  onClick={() => {
+                    const card = document.getElementById(`phase-${phase.number}`);
+                    const desc = card?.querySelector('.phase-description');
+                    const expand = card?.querySelector('.phase-expand');
+                    card?.classList.toggle('expanded');
+                    desc?.classList.toggle('expanded');
+                    expand?.classList.toggle('expanded');
+                  }}
+                >
+                  <span className="phase-number">{phase.number}</span>
+                  <h3 className="phase-title">{phase.title}</h3>
+                  <p className="phase-description">{phase.description}</p>
+                  <div className="phase-expand">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 6L8 11L13 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Details
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICE APPROACH SECTION */}
+        <section className="section" id="service-approach">
+          <span className="section-label">Our Capabilities</span>
+          <h2 className="section-title">Our Service Approach</h2>
+
+          <div className="service-cards">
+            {[
+              {
+                id: 'define',
+                badge: 'DEFINE',
+                title: 'Define',
+                description: 'We begin by understanding your vision, market opportunity, and strategic objectives for AAM integration.',
+                items: [
+                  'Market analysis and opportunity assessment',
+                  'Stakeholder identification and engagement',
+                  'Strategic roadmap development',
+                  'Feasibility and business case analysis',
+                  'Partnership framework design',
+                ],
+              },
+              {
+                id: 'enable',
+                badge: 'ENABLE',
+                title: 'Enable',
+                description: 'We equip programs with the policies, frameworks, and infrastructure required for successful AAM deployment.',
+                items: [
+                  'Regulatory navigation and compliance',
+                  'Infrastructure planning and site selection',
+                  'Technology integration and system design',
+                  'Workforce development and training',
+                  'Safety and security protocols',
+                ],
+              },
+              {
+                id: 'deliver',
+                badge: 'DELIVER',
+                title: 'Deliver',
+                description: 'We guide implementation, manage pilots, and scale operations while ensuring measurable outcomes and community support.',
+                items: [
+                  'Pilot program design and execution',
+                  'Performance monitoring and analytics',
+                  'Public and stakeholder communication',
+                  'Operational optimization',
+                  'Scaling and market expansion strategies',
+                ],
+              },
+            ].map((service) => (
+              <div
+                key={service.id}
+                className="service-card reveal"
+                id={`service-${service.id}`}
+                onClick={() => {
+                  const card = document.getElementById(`service-${service.id}`);
+                  const items = card?.querySelector('.service-items');
+                  const expand = card?.querySelector('.service-expand');
+                  card?.classList.toggle('expanded');
+                  items?.classList.toggle('expanded');
+                  expand?.classList.toggle('expanded');
+                }}
+              >
+                <div className="service-card-content">
+                  <div className="service-badge">{service.badge}</div>
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+
+                  <div className="service-items">
+                    <ul>
+                      {service.items.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="service-expand">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 6L8 11L13 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Capabilities
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* STAKEHOLDER ECOSYSTEM SECTION */}
+        <section className="section" id="ecosystem-section">
+          <span className="section-label">Our Network</span>
+          <h2 className="section-title">Stakeholder Ecosystem</h2>
+
+          <div className="ecosystem-container">
+            <div className="ecosystem-diagram">
+              <div className="ecosystem-ring ecosystem-ring-1"></div>
+              <div className="ecosystem-ring ecosystem-ring-2"></div>
+
+              <div className="ecosystem-center">Rawlins Hub</div>
+
+              {/* Left Side - Public Sector */}
+              <div className="ecosystem-node" style={{ top: '20%', left: '5%' }}>
+                <div className="ecosystem-node-circle">🏛️</div>
+                <div className="ecosystem-node-label">Federal Agencies</div>
+              </div>
+
+              <div className="ecosystem-node" style={{ top: '50%', left: '8%' }}>
+                <div className="ecosystem-node-circle">🏢</div>
+                <div className="ecosystem-node-label">State Government</div>
+              </div>
+
+              <div className="ecosystem-node" style={{ top: '80%', left: '15%' }}>
+                <div className="ecosystem-node-circle">🏙️</div>
+                <div className="ecosystem-node-label">Local Government</div>
+              </div>
+
+              {/* Right Side - Private Sector */}
+              <div className="ecosystem-node" style={{ top: '20%', right: '5%' }}>
+                <div className="ecosystem-node-circle">✈️</div>
+                <div className="ecosystem-node-label">Aerospace Companies</div>
+              </div>
+
+              <div className="ecosystem-node" style={{ top: '50%', right: '8%' }}>
+                <div className="ecosystem-node-circle">💼</div>
+                <div className="ecosystem-node-label">Technology Partners</div>
+              </div>
+
+              <div className="ecosystem-node" style={{ top: '80%', right: '15%' }}>
+                <div className="ecosystem-node-circle">🚚</div>
+                <div className="ecosystem-node-label">Logistics & Operators</div>
+              </div>
+            </div>
+
+            <div className="ecosystem-details" style={{ marginTop: '40px', position: 'relative', zIndex: 3 }}>
+              <div
+                className="ecosystem-expand"
+                onClick={() => {
+                  const btn = document.querySelector('.ecosystem-expand');
+                  const content = btn?.nextElementSibling as HTMLElement;
+                  btn?.classList.toggle('expanded');
+                  if (content) {
+                    content.style.maxHeight = btn?.classList.contains('expanded') ? '400px' : '0px';
+                    content.style.marginTop = btn?.classList.contains('expanded') ? '20px' : '0px';
+                    content.style.paddingTop = btn?.classList.contains('expanded') ? '20px' : '0px';
+                    content.style.borderTop = btn?.classList.contains('expanded') ? '1px solid rgba(201, 168, 76, 0.2)' : '0px solid rgba(201, 168, 76, 0.2)';
+                  }
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 6L8 11L13 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                View Stakeholders
+              </div>
+
+              <div style={{ maxHeight: 0, overflow: 'hidden', transition: 'all 0.4s ease' }}>
+                <div className="ecosystem-lists">
+                  <div className="ecosystem-list">
+                    <h4>Public Sector Partners</h4>
+                    <ul>
+                      <li>Federal Aviation Administration (FAA)</li>
+                      <li>Department of Transportation</li>
+                      <li>State Aviation Boards</li>
+                      <li>Municipal Planning & Zoning</li>
+                      <li>Infrastructure Authorities</li>
+                    </ul>
+                  </div>
+                  <div className="ecosystem-list">
+                    <h4>Private Sector Partners</h4>
+                    <ul>
+                      <li>eVTOL Manufacturers</li>
+                      <li>Drone & UAS Operators</li>
+                      <li>Software & Data Platforms</li>
+                      <li>Insurance & Risk Management</li>
+                      <li>Logistics & Delivery Networks</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FULL-WIDTH VIDEO SECTION */}
+        <section style={{ padding: '80px 40px', position: 'relative', zIndex: 10 }}>
+          <div className="video-placeholder" style={{ margin: '0 auto' }}>
+            <div className="play-button"></div>
+          </div>
+        </section>
+
+        {/* CTA SECTION */}
+        <section className="cta-section" id="cta">
+          <div className="reveal" id="cta-content">
+            <h2 className="cta-heading">Ready to Transform Your Region?</h2>
+            <p className="cta-text">
+              Let's explore how Advanced Air Mobility and UAS solutions can create new economic opportunities, improve infrastructure, and enhance quality of life in your community.
+            </p>
+            <Link href="/contact" className="cta-button">
+              Start a Conversation
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 10H15M15 10L10 5M15 10L10 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </div>
+        </section>
+
+        <SiteFooter />
+      </div>
+    </div>
   );
 };
 
