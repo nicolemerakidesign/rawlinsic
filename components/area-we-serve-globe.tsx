@@ -40,7 +40,8 @@ export default function AreaWeServeGlobe() {
   };
 
   const initGlobe = () => {
-    if (!containerRef.current) return;
+    const canvasElement = document.getElementById("globe-canvas") as HTMLCanvasElement;
+    if (!canvasElement) return;
 
     const THREE = (window as any).THREE;
 
@@ -96,28 +97,28 @@ export default function AreaWeServeGlobe() {
       { name: "Uman, Ukraine", lat: 48.7, lng: 30.2 },
     ];
 
-    const canvas = containerRef.current?.querySelector("canvas") as HTMLCanvasElement;
-    if (!canvas) return;
-
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.z = ZOOM_DEFAULT;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ canvas: canvasElement, antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
     const globeGroup = new THREE.Group();
     globeGroup.rotation.x = 0.25;
     scene.add(globeGroup);
 
-    // Globe layers
+    // Globe core
     globeGroup.add(
       new THREE.Mesh(
         new THREE.SphereGeometry(GLOBE_RADIUS * 0.98, 64, 64),
         new THREE.MeshBasicMaterial({ color: 0x030810 })
       )
     );
+
+    // Globe surface
     globeGroup.add(
       new THREE.Mesh(
         new THREE.SphereGeometry(GLOBE_RADIUS, 64, 64),
@@ -150,11 +151,11 @@ export default function AreaWeServeGlobe() {
         const sphere = new THREE.Mesh(geometry, material);
         pinGroup.add(sphere);
 
-        const glowGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+        const glowGeometry = new THREE.SphereGeometry(0.11, 16, 16);
         const glowMaterial = new THREE.MeshBasicMaterial({
           color: 0xe8d5a0,
           transparent: true,
-          opacity: 0.4,
+          opacity: 0.3,
         });
         const glow = new THREE.Mesh(glowGeometry, glowMaterial);
         pinGroup.add(glow);
@@ -163,7 +164,7 @@ export default function AreaWeServeGlobe() {
         const material = new THREE.MeshBasicMaterial({
           color: 0xd4b878,
           transparent: true,
-          opacity: 0.6,
+          opacity: 0.7,
         });
         const sphere = new THREE.Mesh(geometry, material);
         pinGroup.add(sphere);
@@ -184,8 +185,10 @@ export default function AreaWeServeGlobe() {
     let isOverPin = false;
     let zoomTarget = ZOOM_DEFAULT;
 
-    const handleMouseDown = () => {
+    const handleMouseDown = (e: MouseEvent) => {
       isDragging = true;
+      prevMouse.x = e.clientX;
+      prevMouse.y = e.clientY;
       dragVel = 0;
     };
 
@@ -212,33 +215,27 @@ export default function AreaWeServeGlobe() {
       zoomTarget = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, zoomTarget));
     };
 
-    canvas.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("wheel", handleWheel, { passive: false });
-
     const handleResize = () => {
-      const rect = containerRef.current?.getBoundingClientRect();
-      if (rect) {
-        renderer.setSize(rect.width, rect.height);
-        camera.aspect = rect.width / rect.height;
-        camera.updateProjectionMatrix();
-      }
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
     };
 
+    canvasElement.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+    canvasElement.addEventListener("mousemove", handleMouseMove);
+    canvasElement.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("resize", handleResize);
-    handleResize();
 
-    // Animation
-    const clock = new THREE.Clock();
+    // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
 
       if (!isOverPin && !isDragging) {
         dragVel *= 0.96;
         globeGroup.rotation.y += AUTO_SPEED + dragVel;
-      } else if (isOverPin) {
-        dragVel = 0;
       }
 
       camera.position.z += (zoomTarget - camera.position.z) * 0.08;
@@ -247,54 +244,154 @@ export default function AreaWeServeGlobe() {
 
     animate();
 
-    sceneRef.current = { scene, renderer, camera, globeGroup };
+    sceneRef.current = { renderer, camera, scene };
   };
 
   return (
     <>
       <SiteNav />
-      <div className="w-full bg-slate-950">
-        <div className="flex flex-col items-center justify-center w-full px-5 py-20">
-          <div className="mb-6 text-sm font-medium tracking-widest text-center uppercase bg-gradient-to-r from-[#c9a84c] via-[#e8d5a0] to-[#d4b878] bg-clip-text text-transparent">
-            Areas We Serve
-          </div>
-          <h1 className="mb-4 text-4xl font-light text-center text-white font-serif md:text-5xl">
-            Global Reach, Local Impact
-          </h1>
-          <p className="mb-16 text-base text-center text-gray-400 max-w-2xl">
+      <style>{`
+        .globe-wrapper {
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+          overflow: hidden;
+          background: #0a1628;
+        }
+
+        #globe-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          z-index: -1;
+          cursor: grab;
+        }
+
+        #globe-container:active {
+          cursor: grabbing;
+        }
+
+        #globe-canvas {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+
+        .globe-section {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 60px 20px;
+        }
+
+        .section-eyebrow {
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 16px;
+          text-align: center;
+        }
+
+        .section-heading {
+          font-family: 'Cormorant Garamond', 'Georgia', serif;
+          font-size: clamp(32px, 5vw, 52px);
+          font-weight: 300;
+          color: #fff;
+          margin-bottom: 16px;
+          text-align: center;
+          line-height: 1.15;
+        }
+
+        .section-subtext {
+          font-size: 16px;
+          color: rgba(232, 224, 208, 0.6);
+          max-width: 560px;
+          text-align: center;
+          line-height: 1.6;
+          margin-bottom: 20px;
+        }
+
+        .legend {
+          display: flex;
+          gap: 32px;
+          margin-bottom: 24px;
+          font-size: 13px;
+          color: rgba(232, 224, 208, 0.5);
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+
+        .legend-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .legend-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+        }
+
+        .legend-dot.current {
+          background: linear-gradient(145deg, #c9a84c, #e8d5a0);
+          box-shadow: 0 0 10px rgba(201, 168, 76, 0.7);
+        }
+
+        .legend-dot.expansion {
+          background: transparent;
+          border: 1.5px solid #d4b878;
+          box-shadow: 0 0 8px rgba(212, 184, 120, 0.4);
+        }
+
+        .zoom-hint {
+          font-size: 12px;
+          color: rgba(232, 224, 208, 0.25);
+          margin-top: 12px;
+          letter-spacing: 0.5px;
+        }
+      `}</style>
+
+      <div className="globe-wrapper">
+        <div id="globe-container">
+          <canvas id="globe-canvas"></canvas>
+        </div>
+
+        <section className="globe-section">
+          <div className="section-eyebrow">Areas We Serve</div>
+          <h2 className="section-heading">Global Reach, Local Impact</h2>
+          <p className="section-subtext">
             Delivering solutions across the U.S. and expanding our global footprint across
             industries and borders.
           </p>
 
-          <div className="flex gap-8 mb-8 text-xs font-medium tracking-wider text-center uppercase text-gray-500">
-            <div className="flex items-center gap-3">
-              <div
-                className="w-2.5 h-2.5 rounded-full"
-                style={{
-                  background: `linear-gradient(145deg, #c9a84c, #e8d5a0)`,
-                  boxShadow: "0 0 10px rgba(201,168,76,0.7)",
-                }}
-              ></div>
+          <div className="legend">
+            <div className="legend-item">
+              <div className="legend-dot current"></div>
               <span>Current</span>
             </div>
-            <div className="flex items-center gap-3">
-              <div
-                className="w-2.5 h-2.5 rounded-full border border-[#d4b878]"
-                style={{ boxShadow: "0 0 8px rgba(212,184,120,0.4)" }}
-              ></div>
+            <div className="legend-item">
+              <div className="legend-dot expansion"></div>
               <span>Expanding</span>
             </div>
           </div>
 
-          <div ref={containerRef} className="w-full max-w-3xl aspect-square">
-            <canvas style={{ width: "100%", height: "100%" }}></canvas>
-          </div>
-
-          <p className="mt-6 text-xs text-center text-gray-600">
-            Scroll to zoom · Drag to rotate
-          </p>
-        </div>
+          <div className="zoom-hint">Scroll to zoom · Drag to rotate · Hover pins for details</div>
+        </section>
       </div>
+
       <SiteFooter />
     </>
   );
