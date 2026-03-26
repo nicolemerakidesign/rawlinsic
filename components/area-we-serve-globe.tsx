@@ -6,17 +6,15 @@ import SiteFooter from "@/components/site-footer";
 
 export default function AreaWeServeGlobe() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<any>(null);
 
   useEffect(() => {
-    // Dynamically load Three.js and initialize globe
     const loadGlobe = async () => {
       const script = document.createElement("script");
-      script.src =
-        "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+      script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
       script.async = true;
 
       script.onload = () => {
-        // Initialize globe code here
         initGlobe();
       };
 
@@ -24,7 +22,22 @@ export default function AreaWeServeGlobe() {
     };
 
     loadGlobe();
+
+    return () => {
+      if (sceneRef.current?.renderer) {
+        sceneRef.current.renderer.dispose();
+      }
+    };
   }, []);
+
+  const latLngToXyz = (lat: number, lng: number, radius: number) => {
+    const phi = (lat * Math.PI) / 180;
+    const theta = ((lng + 180) * Math.PI) / 180;
+    const x = -radius * Math.cos(phi) * Math.cos(theta);
+    const y = radius * Math.sin(phi);
+    const z = radius * Math.cos(phi) * Math.sin(theta);
+    return { x, y, z };
+  };
 
   const initGlobe = () => {
     if (!containerRef.current) return;
@@ -37,9 +50,6 @@ export default function AreaWeServeGlobe() {
     const ZOOM_MIN = 3.4;
     const ZOOM_MAX = 7.0;
     const ZOOM_DEFAULT = 5.0;
-    const GOLD_LIGHT = 0xe8d5a0;
-    const GOLD_MID = 0xd4b878;
-    const GOLD_DEEP = 0xc9a84c;
 
     const currentLocations = [
       { name: "Tennessee, USA", lat: 36.2, lng: -86.8 },
@@ -86,8 +96,8 @@ export default function AreaWeServeGlobe() {
       { name: "Uman, Ukraine", lat: 48.7, lng: 30.2 },
     ];
 
-    const canvas = containerRef.current.querySelector("canvas") as HTMLCanvasElement;
-    const tooltip = containerRef.current.querySelector("#tooltip") as HTMLDivElement;
+    const canvas = containerRef.current?.querySelector("canvas") as HTMLCanvasElement;
+    if (!canvas) return;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
@@ -101,7 +111,7 @@ export default function AreaWeServeGlobe() {
     globeGroup.rotation.x = 0.25;
     scene.add(globeGroup);
 
-    // Add globe layers
+    // Globe layers
     globeGroup.add(
       new THREE.Mesh(
         new THREE.SphereGeometry(GLOBE_RADIUS * 0.98, 64, 64),
@@ -115,7 +125,7 @@ export default function AreaWeServeGlobe() {
       )
     );
 
-    // Grids
+    // Grid
     globeGroup.add(
       new THREE.Mesh(
         new THREE.SphereGeometry(GLOBE_RADIUS + 0.001, 72, 36),
@@ -128,17 +138,54 @@ export default function AreaWeServeGlobe() {
       )
     );
 
-    // Interaction setup
+    // Create pins
+    const createPin = (location: any, isCurrent: boolean) => {
+      const { x, y, z } = latLngToXyz(location.lat, location.lng, GLOBE_RADIUS);
+      const pinGroup = new THREE.Group();
+      pinGroup.position.set(x, y, z);
+
+      if (isCurrent) {
+        const geometry = new THREE.SphereGeometry(0.08, 16, 16);
+        const material = new THREE.MeshBasicMaterial({ color: 0xc9a84c });
+        const sphere = new THREE.Mesh(geometry, material);
+        pinGroup.add(sphere);
+
+        const glowGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+        const glowMaterial = new THREE.MeshBasicMaterial({
+          color: 0xe8d5a0,
+          transparent: true,
+          opacity: 0.4,
+        });
+        const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+        pinGroup.add(glow);
+      } else {
+        const geometry = new THREE.SphereGeometry(0.06, 16, 16);
+        const material = new THREE.MeshBasicMaterial({
+          color: 0xd4b878,
+          transparent: true,
+          opacity: 0.6,
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        pinGroup.add(sphere);
+      }
+
+      pinGroup.userData = { name: location.name, isCurrent };
+      globeGroup.add(pinGroup);
+      return pinGroup;
+    };
+
+    currentLocations.forEach((loc) => createPin(loc, true));
+    expansionLocations.forEach((loc) => createPin(loc, false));
+
+    // Interaction
     let isDragging = false;
     let prevMouse = { x: 0, y: 0 };
     let dragVel = 0;
     let isOverPin = false;
     let zoomTarget = ZOOM_DEFAULT;
 
-    const handleMouseDown = (e: MouseEvent) => {
+    const handleMouseDown = () => {
       isDragging = true;
-      prevMouse.x = e.clientX;
-      prevMouse.y = e.clientY;
       dragVel = 0;
     };
 
@@ -154,9 +201,9 @@ export default function AreaWeServeGlobe() {
         globeGroup.rotation.x += dy * DRAG_SENSITIVITY * 0.5;
         globeGroup.rotation.x = Math.max(-0.8, Math.min(0.8, globeGroup.rotation.x));
         dragVel = dx * DRAG_SENSITIVITY;
-        prevMouse.x = e.clientX;
-        prevMouse.y = e.clientY;
       }
+      prevMouse.x = e.clientX;
+      prevMouse.y = e.clientY;
     };
 
     const handleWheel = (e: WheelEvent) => {
@@ -165,12 +212,11 @@ export default function AreaWeServeGlobe() {
       zoomTarget = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, zoomTarget));
     };
 
-    containerRef.current.addEventListener("mousedown", handleMouseDown);
+    canvas.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
-    containerRef.current.addEventListener("mousemove", handleMouseMove);
-    containerRef.current.addEventListener("wheel", handleWheel, { passive: false });
+    canvas.addEventListener("mousemove", handleMouseMove);
+    canvas.addEventListener("wheel", handleWheel, { passive: false });
 
-    // Resize handler
     const handleResize = () => {
       const rect = containerRef.current?.getBoundingClientRect();
       if (rect) {
@@ -183,11 +229,10 @@ export default function AreaWeServeGlobe() {
     window.addEventListener("resize", handleResize);
     handleResize();
 
-    // Animation loop
+    // Animation
     const clock = new THREE.Clock();
     const animate = () => {
       requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
 
       if (!isOverPin && !isDragging) {
         dragVel *= 0.96;
@@ -201,6 +246,8 @@ export default function AreaWeServeGlobe() {
     };
 
     animate();
+
+    sceneRef.current = { scene, renderer, camera, globeGroup };
   };
 
   return (
@@ -239,19 +286,12 @@ export default function AreaWeServeGlobe() {
             </div>
           </div>
 
-          <div
-            ref={containerRef}
-            className="w-full max-w-3xl aspect-square"
-          >
-            <canvas
-              id="globe-canvas"
-              style={{ width: "100%", height: "100%" }}
-            ></canvas>
-            <div id="tooltip" className="absolute pointer-events-none"></div>
+          <div ref={containerRef} className="w-full max-w-3xl aspect-square">
+            <canvas style={{ width: "100%", height: "100%" }}></canvas>
           </div>
 
           <p className="mt-6 text-xs text-center text-gray-600">
-            Scroll to zoom · Drag to rotate · Hover pins for details
+            Scroll to zoom · Drag to rotate
           </p>
         </div>
       </div>
