@@ -23,7 +23,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           &times;
         </button>
         <a href="/" onClick={close}>Home</a>
-        <a href="/technology/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
+        <a href="/capabilities/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
         <a href="/about/our-people" onClick={close}>Our People</a>
         <a href="/about/areas-we-serve" onClick={close}>Areas We Serve</a>
         <a href="#" onClick={close}>Insights</a>
@@ -57,7 +57,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
                   </svg>
                 </span>
                 <div className="nav-sub-dropdown">
-                  <a href="/technology/advanced-air-mobility">Advanced Air Mobility</a>
+                  <a href="/capabilities/advanced-air-mobility">Advanced Air Mobility</a>
                   <a href="#">Automation &amp; Integration</a>
                 </div>
               </div>
