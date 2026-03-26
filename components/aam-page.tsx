@@ -104,7 +104,6 @@ const AAMPage = () => {
   const ringY = useRef(0);
   const animFrame = useRef<number | null>(null);
 
-  const [introOpen, setIntroOpen] = useState(false);
   const [openPillars, setOpenPillars] = useState<Set<number>>(new Set());
   const [openPhases, setOpenPhases] = useState<Set<number>>(new Set());
   const [openFrameworks, setOpenFrameworks] = useState<Set<number>>(new Set());
@@ -181,28 +180,6 @@ const AAMPage = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll reveal
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const reveals = document.querySelectorAll(".reveal");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("visible");
-          });
-        },
-        { threshold: 0.05, rootMargin: "0px 0px 50px 0px" }
-      );
-      reveals.forEach((el) => observer.observe(el));
-      (window as unknown as Record<string, unknown>).__aamObserver = observer;
-    }, 300);
-    return () => {
-      clearTimeout(timer);
-      const obs = (window as unknown as Record<string, unknown>).__aamObserver as IntersectionObserver | undefined;
-      if (obs) obs.disconnect();
-    };
-  }, []);
-
   const chevronSvg = (rotated: boolean) => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "transform 0.3s", transform: rotated ? "rotate(180deg)" : "rotate(0)" }}>
       <path d="M6 9l6 6 6-6" />
@@ -233,71 +210,55 @@ const AAMPage = () => {
       <SiteNav ctaHref="/contact" />
 
       {/* ── Hero ── */}
-      <section className="hero" id="top">
-        <div className="hero-content">
-          <span className="hero-label">
-            <span className="gold-text">Technology · Advanced Air Mobility</span>
-          </span>
-          <h1 className="hero-title">
-            Advanced Air Mobility <em>&amp; UAS</em>
-          </h1>
-          <p className="hero-sub">
-            Partnering to turn AAM and UAS concepts into community transport solutions
-          </p>
+      <section className="aam-hero" id="top">
+        <div className="aam-hero-bg" style={{ backgroundImage: `url(${DRONE_IMG})` }} />
+        <div className="aam-hero-overlay" />
+        <div className="aam-hero-content">
+          <span className="hero-label"><span className="gold-text">Technology · Advanced Air Mobility</span></span>
+          <h1 className="hero-title">Advanced Air Mobility <em>&amp; UAS</em></h1>
+          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community transport solutions</p>
           <a href="#intro" className="hero-cta-btn"><span>explore our approach</span></a>
         </div>
-        <div className="hero-scroll">
-          <span>Scroll</span>
-          <div className="scroll-line" />
-        </div>
+        <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
       </section>
 
       <div className="section-divider"><div className="gold-line" /></div>
-      <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── Intro: Why AAM & UAS ── */}
-      <section className="new-intro" id="intro">
-        <div className="new-intro-wrap">
-          <div className="new-intro-images reveal">
-            <div className="intro-cinematic-wrap">
-              <img className="intro-cinematic-img" src={DRONE_IMG} alt="Advanced Air Mobility drone" />
-              <div className="intro-cinematic-overlay" />
-              <div className="intro-metrics">
-                <div className="intro-metric">
-                  <span className="intro-metric-num">3</span>
-                  <span className="intro-metric-label">Core Service Areas</span>
-                </div>
-                <div className="intro-metric-divider" />
-                <div className="intro-metric">
-                  <span className="intro-metric-num">7</span>
-                  <span className="intro-metric-label">Program Phases</span>
-                </div>
-                <div className="intro-metric-divider" />
-                <div className="intro-metric">
-                  <span className="intro-metric-num">28+</span>
-                  <span className="intro-metric-label">States Served</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="intro-text reveal rd1">
-            <p className="section-label"><span className="gold-text">Our Foundation</span></p>
-            <h2 className="section-title">Why <em>AAM &amp; UAS</em> Matter</h2>
-            <button className={`intro-expand-btn${introOpen ? " expanded" : ""}`} onClick={() => setIntroOpen(o => !o)}>
-              <span className="intro-expand-icon">
-                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
-              </span>
-            </button>
-            <div className={`intro-expandable${introOpen ? " expanded" : ""}`}>
-              <p className="section-text">
+      <section className="aam-section aam-overview-section" id="intro">
+        <div className="aam-container">
+          <div className="aam-overview-grid">
+            <div className="aam-overview-left">
+              <p className="section-label"><span className="gold-text">Our Foundation</span></p>
+              <h2 className="section-title">Why <em>AAM &amp; UAS</em> Matter</h2>
+              <p className="aam-section-lead">
                 Advanced Air Mobility and Unmanned Aircraft Systems represent a fundamental shift in how communities connect, serve, and innovate—offering unprecedented opportunities for urban planning, emergency response, logistics, and citizen well-being.
               </p>
-              <p className="section-text" style={{ marginTop: "16px" }}>
-                By partnering with communities, Rawlins supports the full lifecycle of AAM and UAS adoption—from initial policy development through implementation and scaling. Our expertise spans regulatory frameworks, infrastructure planning, stakeholder coordination, and operational readiness.
+              <p className="aam-section-lead">
+                By partnering with communities, Rawlins supports the full lifecycle of AAM and UAS adoption—from initial policy development through implementation and scaling.
               </p>
-              <p style={{ marginTop: "20px", fontWeight: 600, color: "#d0b86c" }}>
-                We help your region prepare to thrive in this emerging mobility ecosystem.
-              </p>
+            </div>
+            <div className="aam-overview-right">
+              <div className="intro-cinematic-wrap">
+                <img className="intro-cinematic-img" src={AERIAL_VIEW_IMG} alt="Aerial view" />
+                <div className="intro-cinematic-overlay" />
+                <div className="intro-metrics">
+                  <div className="intro-metric">
+                    <span className="intro-metric-num">3</span>
+                    <span className="intro-metric-label">Core Service Areas</span>
+                  </div>
+                  <div className="intro-metric-divider" />
+                  <div className="intro-metric">
+                    <span className="intro-metric-num">7</span>
+                    <span className="intro-metric-label">Program Phases</span>
+                  </div>
+                  <div className="intro-metric-divider" />
+                  <div className="intro-metric">
+                    <span className="intro-metric-num">28+</span>
+                    <span className="intro-metric-label">States Served</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -305,7 +266,7 @@ const AAMPage = () => {
 
       {/* Parallax Quote */}
       <div className="parallax-panel">
-        <p className="parallax-text reveal">
+        <p className="parallax-text">
           Next-generation aerial capabilities strengthen <em>multimodal transportation</em> and enable communities to benefit from a more connected, resilient mobility ecosystem.
         </p>
       </div>
@@ -313,7 +274,7 @@ const AAMPage = () => {
       {/* ── Value Delivery: Pillar Cards ── */}
       <section className="aam-section" id="value">
         <div className="aam-container">
-          <div className="aam-section-header reveal">
+          <div className="aam-section-header">
             <p className="section-label"><span className="gold-text">Value Delivery</span></p>
             <h2 className="section-title">Advanced <em>Applications</em></h2>
             <p className="aam-section-lead">
@@ -322,7 +283,7 @@ const AAMPage = () => {
           </div>
           <div className="aam-pillars-grid">
             {pillarCards.map((card, i) => (
-              <div className={`aam-pillar-card reveal${openPillars.has(i) ? " open" : ""}${i > 0 ? ` rd${i}` : ""}`} key={card.title}>
+              <div className={`aam-pillar-card${openPillars.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-pillar-bar" />
                 <div className="aam-pillar-inner">
                   <div className="aam-pillar-title-row">
@@ -350,14 +311,14 @@ const AAMPage = () => {
       <section className="aam-section aam-serve-section" id="phases">
         <div className="aam-container">
           <div className="aam-serve-grid">
-            <div className="aam-serve-left reveal">
+            <div className="aam-serve-left">
               <p className="section-label"><span className="gold-text">How We Serve</span></p>
               <h2 className="section-title">Essential <em>Phases</em></h2>
               <p className="aam-section-lead" style={{ marginTop: "24px" }}>
                 Our structured approach guides communities through seven phases of AAM and UAS integration—from initial policy development to full-scale implementation and community engagement.
               </p>
             </div>
-            <div className="reveal rd1">
+            <div>
               <p className="aam-phases-label">Program Lifecycle</p>
               <div className="aam-phases-list">
                 {phaseData.map((phase, i) => (
@@ -383,13 +344,13 @@ const AAMPage = () => {
       {/* ── Strategic Methodology: Define / Enable / Deliver ── */}
       <section className="aam-section" id="methodology">
         <div className="aam-container">
-          <div className="aam-section-header reveal">
+          <div className="aam-section-header">
             <p className="section-label"><span className="gold-text">Strategic Methodology</span></p>
             <h2 className="section-title">Our <em>Approach</em></h2>
           </div>
           <div className="aam-framework-grid">
             {frameworkCards.map((card, i) => (
-              <div className={`aam-framework-card reveal${openFrameworks.has(i) ? " open" : ""}${i > 0 ? ` rd${i}` : ""}`} key={card.title}>
+              <div className={`aam-framework-card${openFrameworks.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-framework-accent" style={{ background: card.accent }} />
                 <div className="aam-framework-inner">
                   <h3 className="aam-framework-phase">{card.title}</h3>
@@ -414,7 +375,7 @@ const AAMPage = () => {
 
       {/* Parallax Quote 2 */}
       <div className="parallax-panel">
-        <p className="parallax-text reveal">
+        <p className="parallax-text">
           Successful AAM and UAS integration requires <em>coordinated planning</em>, stakeholder alignment, and a commitment to continuous innovation and community benefit.
         </p>
       </div>
@@ -422,11 +383,11 @@ const AAMPage = () => {
       {/* ── Stakeholder Ecosystem with Hub ── */}
       <section className="aam-section" id="stakeholders">
         <div className="aam-container">
-          <div className="aam-section-header reveal" style={{ textAlign: "center", margin: "0 auto 64px" }}>
+          <div className="aam-section-header" style={{ textAlign: "center", margin: "0 auto 64px" }}>
             <p className="section-label"><span className="gold-text">Stakeholder Ecosystem</span></p>
             <h2 className="section-title">Who We <em>Partner</em> With</h2>
           </div>
-          <div className="aam-stakeholders-layout reveal">
+          <div className="aam-stakeholders-layout">
             {/* Left column */}
             <div>
               <p className="aam-stakeholders-col-label">Public Sector</p>
@@ -485,11 +446,11 @@ const AAMPage = () => {
       {/* ── Service Portfolio ── */}
       <section className="aam-section aam-portfolio-section" id="portfolio">
         <div className="aam-container">
-          <div className="aam-section-header reveal" style={{ textAlign: "center", margin: "0 auto 64px" }}>
+          <div className="aam-section-header" style={{ textAlign: "center", margin: "0 auto 64px" }}>
             <p className="section-label"><span className="gold-text">Service Portfolio</span></p>
             <h2 className="section-title">AAM &amp; <em>UAS</em> Services</h2>
           </div>
-          <div className="aam-portfolio-grid reveal">
+          <div className="aam-portfolio-grid">
             {/* AAM column */}
             <div className="aam-portfolio-col">
               <h3 className="aam-portfolio-col-title">AAM Services</h3>
@@ -531,7 +492,7 @@ const AAMPage = () => {
       {/* ── CTA ── */}
       <section className="aam-section aam-cta-section">
         <div className="aam-container">
-          <div className="aam-cta-wrap reveal" style={{ textAlign: "center", margin: "0 auto" }}>
+          <div className="aam-cta-wrap" style={{ textAlign: "center", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Get Started</span></p>
             <h2 className="section-title">Ready to <em>Transform</em> Your Region?</h2>
             <p className="aam-cta-body">
