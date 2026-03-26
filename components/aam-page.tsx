@@ -240,8 +240,8 @@ const AAMPage = () => {
         <div className="aam-hero-overlay" />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text"></span></span>
-          <h1 className="hero-title">Advanced Air Mobility &amp; Uncrewed Aircraft Systems</h1>
-          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community transport solutions. <br /><br />Are you ready for the next major phase in transportation’s evolution?</p>
+          <h1 className="hero-title"><em>Advanced Air Mobility</em> &amp; Uncrewed Aircraft Systems</h1>
+          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community transport solutions.</p>
           <a href="#intro" className="hero-cta-btn"><span>explore our approach</span></a>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
@@ -254,7 +254,7 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-overview-grid">
             <div className="aam-overview-left">
-              <p className="section-label"><span className="gold-text">Overview</span></p>
+              <p className="section-label"><span className="gold-text">are you ready?</span></p>
               <h2 className="section-title">The next major phase in transportation’s <em>evolution</em></h2>
               <p className="aam-section-lead">
 Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly part of modern mobility ecosystems. Together, these systems and associated technologies are expected to transform transportation by enhancing connectivity, improving cargo logistics, expediting emergency response, and assisting infrastructure inspection.               </p>
