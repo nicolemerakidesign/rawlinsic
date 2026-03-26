@@ -15,6 +15,11 @@ const SKYLINE_IMG = "https://images.pexels.com/photos/1519088/pexels-photo-15190
 const AERIAL_VIEW_IMG = "https://images.pexels.com/photos/2026324/pexels-photo-2026324.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const HELICOPTER_IMG = "https://images.pexels.com/photos/210199/pexels-photo-210199.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const CONTROL_ROOM_IMG = "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const DRONE_FLIGHT_IMG = "https://images.pexels.com/photos/2050718/pexels-photo-2050718.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const BLUEPRINT_IMG = "https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const DATA_CENTER_IMG = "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const HIGHWAY_AERIAL_IMG = "https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const TEAM_MEETING_IMG = "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200";
 
 /* ──── Data ──── */
 
@@ -23,27 +28,30 @@ const pillarCards = [
     title: "Urban Air Mobility",
     desc: "Transform passenger transportation through electric vertical takeoff and landing aircraft, enabling rapid point-to-point connectivity across metropolitan areas.",
     bullets: ["Urban air mobility solutions", "Vertiport integration planning", "Passenger safety and operations", "Multi-modal transportation integration"],
+    img: CITY_AERIAL_IMG,
   },
   {
     title: "Geographic Intelligence",
     desc: "Harness unmanned aircraft systems to gather real-time aerial data for infrastructure monitoring, environmental assessment, and strategic planning.",
     bullets: ["Airborne data acquisition", "Infrastructure monitoring", "Environmental assessment", "Precision mapping and analytics"],
+    img: DRONE_FLIGHT_IMG,
   },
   {
     title: "Last-Mile Logistics",
     desc: "Revolutionize supply chain operations with autonomous delivery systems, enabling faster response times and expanding service areas.",
     bullets: ["Last-mile delivery optimization", "Supply chain resilience", "Emergency response capability", "Rapid goods distribution"],
+    img: LOGISTICS_IMG,
   },
 ];
 
 const phaseData = [
-  { num: "01", label: "Policy & System Planning", body: "Develop policy, system plans, and standardized guidance for local implementation." },
-  { num: "02", label: "Regulatory Navigation", body: "Provide regulatory understanding for compliance and guide regulatory coordination." },
-  { num: "03", label: "Infrastructure Planning", body: "Plan for infrastructure, including vertiports, including technical research and validation." },
-  { num: "04", label: "Functional Frameworks", body: "Establish functional frameworks that support scalable program delivery and operational readiness." },
-  { num: "05", label: "Data & Safety Integration", body: "Integrate data and safety policies into transportation systems." },
-  { num: "06", label: "Implementation & Scaling", body: "Support implementation, deployment, and the scaling of AAM and UAS services." },
-  { num: "07", label: "Community Engagement", body: "Facilitate ongoing community engagement and public trust-building." },
+  { num: "01", label: "Policy & System Planning", body: "Develop policy, system plans, and standardized guidance for local implementation.", img: BLUEPRINT_IMG },
+  { num: "02", label: "Regulatory Navigation", body: "Provide regulatory understanding for compliance and guide regulatory coordination.", img: PLANNING_IMG },
+  { num: "03", label: "Infrastructure Planning", body: "Plan for infrastructure, including vertiports, including technical research and validation.", img: INFRASTRUCTURE_IMG },
+  { num: "04", label: "Functional Frameworks", body: "Establish functional frameworks that support scalable program delivery and operational readiness.", img: TECH_NETWORK_IMG },
+  { num: "05", label: "Data & Safety Integration", body: "Integrate data and safety policies into transportation systems.", img: DATA_CENTER_IMG },
+  { num: "06", label: "Implementation & Scaling", body: "Support implementation, deployment, and the scaling of AAM and UAS services.", img: DRONE_FLIGHT_IMG },
+  { num: "07", label: "Community Engagement", body: "Facilitate ongoing community engagement and public trust-building.", img: TEAM_MEETING_IMG },
 ];
 
 const frameworkCards = [
@@ -52,18 +60,21 @@ const frameworkCards = [
     tagline: "Vision & Scope",
     accent: "linear-gradient(90deg, #c9a84c, #e8d5a0)",
     bullets: ["Community needs assessment", "Vision and goals definition", "Program scope and timeline", "Stakeholder identification"],
+    img: PLANNING_IMG,
   },
   {
     title: "Enable",
     tagline: "Infrastructure & Policy",
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
     bullets: ["Policy framework development", "Stakeholder coordination", "Infrastructure planning", "Regulatory alignment"],
+    img: INFRASTRUCTURE_IMG,
   },
   {
     title: "Deliver",
     tagline: "Operations & Scale",
     accent: "linear-gradient(90deg, #e8d5a0, #c9a84c)",
     bullets: ["Operational deployment", "Safety and compliance monitoring", "Performance optimization", "Continuous improvement"],
+    img: CONTROL_ROOM_IMG,
   },
 ];
 
@@ -278,9 +289,11 @@ const AAMPage = () => {
         </div>
       </section>
 
-      {/* Parallax Quote */}
-      <div className="parallax-panel">
-        <p className="parallax-text">
+      {/* Parallax Quote with Image */}
+      <div className="parallax-panel aam-parallax-img-panel">
+        <div className="aam-parallax-bg" style={{ backgroundImage: `url(${SKYLINE_IMG})` }} />
+        <div className="aam-parallax-overlay" />
+        <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
           Next-generation aerial capabilities strengthen <em>multimodal transportation</em> and enable communities to benefit from a more connected, resilient mobility ecosystem.
         </p>
       </div>
@@ -298,6 +311,10 @@ const AAMPage = () => {
           <div className="aam-pillars-grid">
             {pillarCards.map((card, i) => (
               <div className={`aam-pillar-card${openPillars.has(i) ? " open" : ""}`} key={card.title}>
+                <div className="aam-pillar-img-wrap">
+                  <img src={card.img} alt={card.title} className="aam-pillar-img" loading="lazy" />
+                  <div className="aam-pillar-img-overlay" />
+                </div>
                 <div className="aam-pillar-bar" />
                 <div className="aam-pillar-inner">
                   <div className="aam-pillar-title-row">
@@ -321,17 +338,37 @@ const AAMPage = () => {
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── How We Serve: Phases Accordion + Overview ── */}
+      {/* ── How We Serve: Phases Accordion + Contextual Image ── */}
       <section className="aam-section aam-serve-section" id="phases">
         <div className="aam-container">
+          <div className="aam-section-header">
+            <p className="section-label"><span className="gold-text">How We Serve</span></p>
+            <h2 className="section-title">Essential <em>Phases</em></h2>
+            <p className="aam-section-lead">
+              Our structured approach guides communities through seven phases of AAM and UAS integration—from initial policy development to full-scale implementation.
+            </p>
+          </div>
           <div className="aam-serve-grid">
-            <div className="aam-serve-left">
-              <p className="section-label"><span className="gold-text">How We Serve</span></p>
-              <h2 className="section-title">Essential <em>Phases</em></h2>
-              <p className="aam-section-lead" style={{ marginTop: "24px" }}>
-                Our structured approach guides communities through seven phases of AAM and UAS integration—from initial policy development to full-scale implementation and community engagement.
-              </p>
+            {/* Left: contextual image */}
+            <div className="aam-serve-img-col">
+              <div className="aam-serve-img-wrap">
+                {phaseData.map((phase, i) => (
+                  <img
+                    key={phase.num}
+                    src={phase.img}
+                    alt={phase.label}
+                    className={`aam-serve-img${openPhases.has(i) || (openPhases.size === 0 && i === 0) ? " active" : ""}`}
+                    loading="lazy"
+                  />
+                ))}
+                <div className="aam-serve-img-overlay" />
+                <div className="aam-serve-img-label">
+                  <span className="aam-serve-img-num">{openPhases.size > 0 ? phaseData[[...openPhases].slice(-1)[0]]?.num : "01"}</span>
+                  <span className="aam-serve-img-name">{openPhases.size > 0 ? phaseData[[...openPhases].slice(-1)[0]]?.label : phaseData[0].label}</span>
+                </div>
+              </div>
             </div>
+            {/* Right: accordion */}
             <div>
               <p className="aam-phases-label">Program Lifecycle</p>
               <div className="aam-phases-list">
@@ -365,6 +402,10 @@ const AAMPage = () => {
           <div className="aam-framework-grid">
             {frameworkCards.map((card, i) => (
               <div className={`aam-framework-card${openFrameworks.has(i) ? " open" : ""}`} key={card.title}>
+                <div className="aam-framework-img-wrap">
+                  <img src={card.img} alt={card.title} className="aam-framework-img" loading="lazy" />
+                  <div className="aam-framework-img-overlay" />
+                </div>
                 <div className="aam-framework-accent" style={{ background: card.accent }} />
                 <div className="aam-framework-inner">
                   <h3 className="aam-framework-phase">{card.title}</h3>
@@ -387,9 +428,11 @@ const AAMPage = () => {
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* Parallax Quote 2 */}
-      <div className="parallax-panel">
-        <p className="parallax-text">
+      {/* Parallax Quote 2 with Image */}
+      <div className="parallax-panel aam-parallax-img-panel">
+        <div className="aam-parallax-bg" style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }} />
+        <div className="aam-parallax-overlay" />
+        <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
           Successful AAM and UAS integration requires <em>coordinated planning</em>, stakeholder alignment, and a commitment to continuous innovation and community benefit.
         </p>
       </div>
@@ -689,9 +732,11 @@ const AAMPage = () => {
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── CTA ── */}
+      {/* ── CTA with Background ── */}
       <section className="aam-section aam-cta-section">
-        <div className="aam-container">
+        <div className="aam-cta-bg" style={{ backgroundImage: `url(${HELICOPTER_IMG})` }} />
+        <div className="aam-cta-overlay" />
+        <div className="aam-container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="aam-cta-wrap" style={{ textAlign: "center", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Get Started</span></p>
             <h2 className="section-title">Ready to <em>Transform</em> Your Region?</h2>

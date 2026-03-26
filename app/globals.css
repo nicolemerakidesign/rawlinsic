@@ -2121,6 +2121,26 @@ font-size: 15px;
   transform: translateY(-4px);
   box-shadow: 0 24px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,168,76,0.1);
 }
+/* Pillar card image */
+.aam-pillar-img-wrap {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+.aam-pillar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.aam-pillar-card:hover .aam-pillar-img {
+  transform: scale(1.08);
+}
+.aam-pillar-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(6,12,22,0.95) 100%);
+}
 .aam-pillar-bar {
   height: 3px;
   background: linear-gradient(90deg, #c9a84c, #e8d5a0, #c9a84c);
@@ -2181,10 +2201,65 @@ font-size: 15px;
 .aam-serve-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
+  gap: 60px;
   align-items: start;
 }
 .aam-serve-left { padding-top: 8px; }
+/* Phase contextual image */
+.aam-serve-img-col {
+  position: sticky;
+  top: 120px;
+}
+.aam-serve-img-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: rgba(6,12,22,0.5);
+}
+.aam-serve-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: scale(1.05);
+}
+.aam-serve-img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.aam-serve-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(6,12,22,0.85) 100%);
+  pointer-events: none;
+}
+.aam-serve-img-label {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.aam-serve-img-num {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #c9a84c;
+  line-height: 1;
+}
+.aam-serve-img-name {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(232,230,225,0.8);
+}
 .aam-phases-label {
   font-size: 0.75rem;
   letter-spacing: 4px;
@@ -2261,6 +2336,28 @@ font-size: 15px;
 .aam-framework-card.open {
   border-color: rgba(201,168,76,0.25);
   transform: translateY(-4px);
+}
+/* Framework card image */
+.aam-framework-img-wrap {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+.aam-framework-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  filter: brightness(0.7) saturate(0.8);
+}
+.aam-framework-card:hover .aam-framework-img {
+  transform: scale(1.08);
+  filter: brightness(0.8) saturate(0.9);
+}
+.aam-framework-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(6,12,22,0.9) 100%);
 }
 .aam-framework-accent {
   height: 3px;
@@ -2540,8 +2637,40 @@ font-size: 15px;
   opacity: 0.85;
 }
 
+/* AAM Parallax image panel */
+.aam-parallax-img-panel {
+  position: relative;
+  overflow: hidden;
+}
+.aam-parallax-bg {
+  position: absolute;
+  inset: -20%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: brightness(0.25) saturate(0.6);
+}
+.aam-parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6,12,22,0.55);
+}
+
 /* CTA section */
-.aam-cta-section { padding: 120px 0 140px; }
+.aam-cta-section { padding: 120px 0 140px; position: relative; overflow: hidden; }
+.aam-cta-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.2) saturate(0.5);
+}
+.aam-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(6,12,22,0.7) 0%, rgba(6,12,22,0.5) 50%, rgba(6,12,22,0.8) 100%);
+}
 .aam-cta-wrap { max-width: 820px; }
 .aam-cta-body {
   font-size: 1.05rem;
@@ -2669,8 +2798,10 @@ font-size: 15px;
   .aam-container { padding: 0 40px; }
   .aam-pillars-grid { grid-template-columns: 1fr 1fr; }
   .aam-framework-grid { grid-template-columns: 1fr 1fr; }
-  .aam-serve-grid { grid-template-columns: 1fr; gap: 56px; }
+  .aam-serve-grid { grid-template-columns: 1fr; gap: 40px; }
   .aam-overview-grid { grid-template-columns: 1fr; gap: 48px; }
+  .aam-serve-img-col { position: static; }
+  .aam-serve-img-wrap { max-height: 320px; }
 }
 @media (max-width: 900px) {
   .aam-stakeholders-layout { grid-template-columns: 1fr; gap: 40px; }
@@ -2680,6 +2811,8 @@ font-size: 15px;
   .aam-portfolio-grid { grid-template-columns: 1fr; gap: 56px; }
   .eco-vis-wrapper { max-width: 500px; }
   .eco-detail-panel { bottom: -40px; padding: 20px 22px 16px; }
+  .aam-pillar-img-wrap { height: 160px; }
+  .aam-framework-img-wrap { height: 140px; }
 }
 @media (max-width: 768px) {
   .aam-section { padding: 72px 0; }
@@ -2688,6 +2821,7 @@ font-size: 15px;
   .aam-pillars-grid { grid-template-columns: 1fr; gap: 20px; }
   .aam-framework-grid { grid-template-columns: 1fr; gap: 20px; }
   .section-divider { padding: 0 24px; }
+  .aam-parallax-bg { background-attachment: scroll; }
 }
 
 /* Responsive — team page */
