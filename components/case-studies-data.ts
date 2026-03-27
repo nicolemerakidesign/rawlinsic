@@ -61,7 +61,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Nevada",
     subtitle: "Infrastructure & Fleet",
     image: "https://rawlinsic.com/wp-content/uploads/2024/09/nv.webp",
-    heroImage: "https://images.unsplash.com/photo-1674242190596-20dc0f49cb8f?w=1920&q=80",
+    heroImage: "https://images.unsplash.com/photo-1645237448975-68f57e840a03?w=1920&q=80",
     description:
       "Nevada\u2019s transportation network is vital for both economic development and community connectivity. Rawlins Infra Consult has played a significant role in modernizing infrastructure planning and maintenance across the state. Our work with the Nevada Department of Transportation (NDOT) has focused on strategic planning, asset management, and fleet optimization to ensure a more efficient, reliable, and cost-effective transportation system.",
     sectionHeading: "Key Projects & Initiatives",

@@ -77,23 +77,30 @@ export default function AreaWeServeGlobe() {
     return () => { container.innerHTML = ""; };
   }, []);
 
-  /* ── Globe ── */
+  /* ── Globe (deferred to reduce TBT) ── */
+  const [globeReady, setGlobeReady] = useState(false);
   useEffect(() => {
-    const threeScript = document.createElement("script");
-    threeScript.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-    threeScript.async = true;
-    const topoScript = document.createElement("script");
-    topoScript.src = "https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js";
-    topoScript.async = true;
+    const loadGlobe = () => {
+      const threeScript = document.createElement("script");
+      threeScript.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+      threeScript.async = true;
+      const topoScript = document.createElement("script");
+      topoScript.src = "https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js";
+      topoScript.async = true;
 
-    let loaded = 0;
-    const onBothLoaded = () => { loaded++; if (loaded === 2) initGlobe(); };
-    threeScript.onload = onBothLoaded;
-    topoScript.onload = onBothLoaded;
-    document.body.appendChild(threeScript);
-    document.body.appendChild(topoScript);
-
-    return () => { threeScript.remove(); topoScript.remove(); };
+      let loaded = 0;
+      const onBothLoaded = () => { loaded++; if (loaded === 2) { setGlobeReady(true); initGlobe(); } };
+      threeScript.onload = onBothLoaded;
+      topoScript.onload = onBothLoaded;
+      document.body.appendChild(threeScript);
+      document.body.appendChild(topoScript);
+    };
+    // Defer globe loading to after first paint
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      (window as any).requestIdleCallback(loadGlobe, { timeout: 2000 });
+    } else {
+      setTimeout(loadGlobe, 100);
+    }
   }, []);
 
   const initGlobe = () => {
@@ -150,12 +157,15 @@ export default function AreaWeServeGlobe() {
       { name: "Uman, Ukraine", lat: 48.7, lng: 30.2 },
     ];
 
+    // Device check for performance tuning
+    const isMobile = window.innerWidth <= 768;
+
     // Scene
     const scene = new T.Scene();
     const camera = new T.PerspectiveCamera(45, 1, 0.1, 100);
     camera.position.z = ZOOM_DEFAULT;
     const renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
     const globeGroup = new T.Group();
     globeGroup.rotation.x = 0.25;
@@ -193,8 +203,8 @@ export default function AreaWeServeGlobe() {
       new T.MeshBasicMaterial({ color: 0x1a3a60, transparent: true, opacity: 0.03, side: T.BackSide })
     ));
 
-    // Particles
-    const pCount = 1500;
+    // Particles — fewer on mobile for performance
+    const pCount = isMobile ? 500 : 1500;
     const pGeo = new T.BufferGeometry();
     const pPos = new Float32Array(pCount * 3);
     const pCol = new Float32Array(pCount * 3);
@@ -279,8 +289,8 @@ export default function AreaWeServeGlobe() {
           })));
         }
 
-        // Dense fill dots inside land using bounding box sampling
-        const STEP = 2.0;
+        // Dense fill dots inside land — coarser on mobile
+        const STEP = isMobile ? 3.5 : 2.0;
         land.features.forEach((feat: any) => {
           const geom = feat.geometry;
           const rings = geom.type === "Polygon" ? [geom.coordinates] : geom.coordinates;
@@ -515,7 +525,6 @@ export default function AreaWeServeGlobe() {
       <SiteNav />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap');
 
         .globe-page-wrapper {
           position: relative;
@@ -651,21 +660,33 @@ export default function AreaWeServeGlobe() {
           .globe-content-section { padding: 160px 40px 40px; }
         }
         @media (max-width: 768px) {
-          .globe-content-section { padding: 140px 24px 40px; align-items: flex-start; }
-          .globe-legend { gap: 20px; flex-wrap: wrap; }
-          .globe-content-inner { max-width: 100%; }
-          #globe-container { top: 60px; left: 0; }
+          .globe-content-section {
+            padding: 120px 24px 24px;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: auto;
+          }
+          .globe-content-inner {
+            max-width: 100%;
+            text-align: center;
+            padding-right: 0;
+          }
+          .globe-subtext { margin-left: auto; margin-right: auto; }
+          .globe-legend { gap: 20px; flex-wrap: wrap; justify-content: center; }
+          .globe-zoom-hint { text-align: center; }
+          #globe-container {
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw;
+            height: 80vh;
+          }
+          .globe-scroll-spacer { height: 0; }
         }
       `}</style>
 
       <div className="globe-page-wrapper" id="top">
-        {/* Globe (fixed behind everything) */}
-        <div id="globe-container">
-          <canvas id="globe-canvas"></canvas>
-          <div className="globe-tooltip" id="globe-tooltip"></div>
-        </div>
-
-        {/* Text content overlaying the globe — LEFT aligned */}
+        {/* Text content — renders first in DOM for mobile stacking */}
         <section className="globe-content-section">
           <div className="globe-content-inner">
             <div className="globe-eyebrow">Areas We Serve</div>
@@ -681,6 +702,12 @@ export default function AreaWeServeGlobe() {
             <div className="globe-zoom-hint">Scroll to zoom · Drag to rotate · Hover pins for details</div>
           </div>
         </section>
+
+        {/* Globe — fixed on desktop, stacked below text on mobile */}
+        <div id="globe-container">
+          <canvas id="globe-canvas"></canvas>
+          <div className="globe-tooltip" id="globe-tooltip"></div>
+        </div>
 
         {/* Extra scroll space so user can scroll past the globe */}
         <div className="globe-scroll-spacer" />
