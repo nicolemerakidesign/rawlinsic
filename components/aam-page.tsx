@@ -322,60 +322,55 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
         </p>
       </div>
 
-      {/* ── Value Delivery: Side-by-side layout ── */}
+      {/* ── Value Delivery: Pillar Cards ── */}
       <section className="aam-section" id="value">
         <div className="aam-container">
-          <div className="aam-value-layout">
-            {/* Left: title + description */}
-            <div className="aam-value-text">
-              <div className="aam-section-header" style={{ marginBottom: 0 }}>
-                <p className="section-label"><span className="gold-text">Value Delivery</span></p>
-                <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
-                <button
-                  className={`intro-expand-btn${valueOpen ? " expanded" : ""}`}
-                  aria-label="Learn more"
-                  onClick={() => setValueOpen(o => !o)}
-                >
-                  <span className="intro-expand-icon">
-                    <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M1 1.5l7 7 7-7" />
-                    </svg>
-                  </span>
-                </button>
-                <div className={`intro-expandable${valueOpen ? " expanded" : ""}`}>
-                  <p className="aam-section-lead">
+          <div className="aam-section-header">
+            <p className="section-label"><span className="gold-text">Value Delivery</span></p>
+            <div className="aam-value-title-row">
+              <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
+              <button
+                className={`aam-value-arrow-btn${valueOpen ? " expanded" : ""}`}
+                aria-label="Learn more"
+                onClick={() => setValueOpen(o => !o)}
+              >
+                <span className="aam-value-arrow-icon">
+                  <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1.5 1l7 7-7 7" />
+                  </svg>
+                </span>
+              </button>
+              <div className={`aam-value-expand${valueOpen ? " expanded" : ""}`}>
+                <p className="aam-section-lead">
 The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.
-                  </p>
-                </div>
+                </p>
               </div>
             </div>
-
-            {/* Right: pillar cards stacked */}
-            <div className="aam-value-cards">
-              {pillarCards.map((card, i) => (
-                <div className={`aam-pillar-card${openPillars.has(i) ? " open" : ""}`} key={card.title}>
-                  <div className="aam-pillar-img-wrap">
-                    <img src={card.img} alt={card.title} className="aam-pillar-img" loading="lazy" />
-                    <div className="aam-pillar-img-overlay" />
+          </div>
+          <div className="aam-pillars-grid">
+            {pillarCards.map((card, i) => (
+              <div className={`aam-pillar-card${openPillars.has(i) ? " open" : ""}`} key={card.title}>
+                <div className="aam-pillar-img-wrap">
+                  <img src={card.img} alt={card.title} className="aam-pillar-img" loading="lazy" />
+                  <div className="aam-pillar-img-overlay" />
+                </div>
+                <div className="aam-pillar-bar" />
+                <div className="aam-pillar-inner">
+                  <div className="aam-pillar-title-row">
+                    <h3 className="aam-pillar-title">{card.title}</h3>
+                    <button className="aam-expand-btn" onClick={() => toggleSet(setOpenPillars, i)}>
+                      {chevronSvg(openPillars.has(i))}
+                    </button>
                   </div>
-                  <div className="aam-pillar-bar" />
-                  <div className="aam-pillar-inner">
-                    <div className="aam-pillar-title-row">
-                      <h3 className="aam-pillar-title">{card.title}</h3>
-                      <button className="aam-expand-btn" onClick={() => toggleSet(setOpenPillars, i)}>
-                        {chevronSvg(openPillars.has(i))}
-                      </button>
-                    </div>
-                    {card.desc && <p className="aam-pillar-desc">{card.desc}</p>}
-                    <div className={`aam-pillar-expand${openPillars.has(i) ? " open" : ""}`}>
-                      <ul className="aam-bullet-list">
-                        {card.bullets.map((b) => <li key={b}>{b}</li>)}
-                      </ul>
-                    </div>
+                  {card.desc && <p className="aam-pillar-desc">{card.desc}</p>}
+                  <div className={`aam-pillar-expand${openPillars.has(i) ? " open" : ""}`}>
+                    <ul className="aam-bullet-list">
+                      {card.bullets.map((b) => <li key={b}>{b}</li>)}
+                    </ul>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -566,11 +561,11 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                   <circle cx="400" cy="400" r="68" fill="none" stroke="#c9a84c" strokeWidth="0.8" className="eco-center-pulse" opacity="0.2" />
 
                   {/* Center hub — clean minimal style */}
-                  <circle cx="400" cy="400" r="60" fill="rgba(6,12,22,0.95)" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
-                  <text x="400" y="390" textAnchor="middle" fill="#e8d5a0" fontFamily="'Cormorant Garamond', Georgia, serif" fontSize="15" fontWeight="500" letterSpacing="2">RAWLINS</text>
-                  <text x="400" y="408" textAnchor="middle" fill="rgba(201,168,76,0.6)" fontFamily="'DM Sans', sans-serif" fontSize="9" fontWeight="500" letterSpacing="3" style={{ textTransform: 'uppercase' }}>AERO TEAM</text>
+                  <circle cx="400" cy="400" r="72" fill="rgba(6,12,22,0.95)" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
+                  <text x="400" y="392" textAnchor="middle" fill="#e8d5a0" fontFamily="'Cormorant Garamond', Georgia, serif" fontSize="20" fontWeight="500" letterSpacing="3">RAWLINS</text>
+                  <text x="400" y="414" textAnchor="middle" fill="rgba(201,168,76,0.6)" fontFamily="'DM Sans', sans-serif" fontSize="11" fontWeight="500" letterSpacing="3" style={{ textTransform: 'uppercase' }}>AERO TEAM</text>
 
-                  {/* Stakeholder nodes — SVG icons, no circle backgrounds */}
+                  {/* Stakeholder nodes — SVG icons */}
                   {ecosystemNodes.map((node) => {
                     const rad = (node.angle * Math.PI) / 180;
                     const nx = 400 + Math.cos(rad) * 280;
@@ -579,26 +574,26 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                     const isHovered = hoveredNode === node.id;
                     const highlighted = isActive || isHovered;
                     const iconPath = ecoIcons[node.id] || '';
-                    const iconSize = highlighted ? 32 : 26;
+                    const iconSize = highlighted ? 48 : 40;
 
                     return (
                       <g key={node.id} style={{ cursor: 'none' }} onClick={() => setActiveNode(activeNode === node.id ? null : node.id)} onMouseEnter={() => setHoveredNode(node.id)} onMouseLeave={() => setHoveredNode(null)}>
                         {/* Hit area */}
-                        <circle cx={nx} cy={ny} r="50" fill="transparent" />
+                        <circle cx={nx} cy={ny} r="60" fill="transparent" />
                         {/* SVG icon */}
                         <g transform={`translate(${nx - iconSize / 2}, ${ny - iconSize / 2})`} style={{ transition: 'all 0.3s' }}>
                           <svg width={iconSize} height={iconSize} viewBox="0 0 24 24">
-                            <path d={iconPath} fill={highlighted ? "#e8d5a0" : "rgba(201,168,76,0.65)"} style={{ filter: highlighted ? 'drop-shadow(0 0 6px rgba(201,168,76,0.5))' : 'none' }} />
+                            <path d={iconPath} fill={highlighted ? "#e8d5a0" : "rgba(201,168,76,0.65)"} style={{ filter: highlighted ? 'drop-shadow(0 0 8px rgba(201,168,76,0.5))' : 'none' }} />
                           </svg>
                         </g>
                         {/* Label */}
                         {node.label.split('\n').map((line, li) => (
-                          <text key={li} x={nx} y={ny + (highlighted ? 28 : 24) + li * 16} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.6)"} fontFamily="'DM Sans', sans-serif" fontSize={highlighted ? "12" : "11"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
+                          <text key={li} x={nx} y={ny + (highlighted ? 38 : 32) + li * 18} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.65)"} fontFamily="'DM Sans', sans-serif" fontSize={highlighted ? "14" : "13"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
                             {line}
                           </text>
                         ))}
                         {highlighted && (
-                          <text x={nx} y={ny + 64} textAnchor="middle" fill="rgba(201,168,76,0.55)" fontFamily="'DM Sans', sans-serif" fontSize="9" letterSpacing="0.5">{node.short}</text>
+                          <text x={nx} y={ny + 76} textAnchor="middle" fill="rgba(201,168,76,0.55)" fontFamily="'DM Sans', sans-serif" fontSize="11" letterSpacing="0.5">{node.short}</text>
                         )}
                       </g>
                     );
