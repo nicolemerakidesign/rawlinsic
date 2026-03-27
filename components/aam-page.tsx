@@ -595,20 +595,31 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                     );
                   })}
 
-                  {/* Particles */}
-                  {ecosystemNodes.map((node, i) => {
-                    const rad = (node.angle * Math.PI) / 180;
-                    return (
-                      <circle key={`particle-${i}`} r="2" fill="#c9a84c" className="eco-data-particle" style={{ animationDelay: `${i * 0.5}s` }}>
-                        <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"><mpath href={`#path-${i}`} /></animateMotion>
-                      </circle>
-                    );
-                  })}
+                  {/* Particles — outbound (center → icon) */}
+                  {ecosystemNodes.map((node, i) => (
+                    <circle key={`particle-out-${i}`} r="2" fill="#c9a84c" className="eco-data-particle" style={{ animationDelay: `${i * 0.5}s` }}>
+                      <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"><mpath href={`#path-out-${i}`} /></animateMotion>
+                    </circle>
+                  ))}
+                  {/* Particles — inbound (icon → center) */}
+                  {ecosystemNodes.map((node, i) => (
+                    <circle key={`particle-in-${i}`} r="2" fill="#c9a84c" className="eco-data-particle" style={{ animationDelay: `${i * 0.5 + 1.5}s` }}>
+                      <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"><mpath href={`#path-in-${i}`} /></animateMotion>
+                    </circle>
+                  ))}
+                  {/* Paths — outbound (center → icon) */}
                   {ecosystemNodes.map((node, i) => {
                     const rad = (node.angle * Math.PI) / 180;
                     const nx = 400 + Math.cos(rad) * 280;
                     const ny = 400 + Math.sin(rad) * 280;
-                    return <path key={`path-${i}`} id={`path-${i}`} d={`M400,400 L${nx},${ny}`} fill="none" stroke="none" />;
+                    return <path key={`path-out-${i}`} id={`path-out-${i}`} d={`M400,400 L${nx},${ny}`} fill="none" stroke="none" />;
+                  })}
+                  {/* Paths — inbound (icon → center) */}
+                  {ecosystemNodes.map((node, i) => {
+                    const rad = (node.angle * Math.PI) / 180;
+                    const nx = 400 + Math.cos(rad) * 280;
+                    const ny = 400 + Math.sin(rad) * 280;
+                    return <path key={`path-in-${i}`} id={`path-in-${i}`} d={`M${nx},${ny} L400,400`} fill="none" stroke="none" />;
                   })}
                 </svg>
 
