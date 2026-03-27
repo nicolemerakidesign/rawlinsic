@@ -318,7 +318,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
         <div className="aam-parallax-bg" style={{ backgroundImage: `url(${SKYLINE_IMG})` }} />
         <div className="aam-parallax-overlay" />
         <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
-          Strategic Multi-Modal Integration | <em>Built on Real-World Success</em>
+          Strategic Multi-Modal Integration |<br /><em>Built on Real-World Success</em>
         </p>
       </div>
 
@@ -464,7 +464,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                 <p className="aam-section-lead" style={{ marginTop: '20px' }}>
                   We engage multiple stakeholders in the public and private sectors across AAM and UAS to align policy, regulation, operations, and technology; integrate systems and infrastructure; implement/deploy and scale services.
                 </p>
-                <p className="aam-section-lead" style={{ marginTop: '12px', opacity: 0.5, fontSize: '14px' }}>
+                <p className="aam-section-lead" style={{ fontStyle: 'italic'}}>
                   Click any stakeholder to learn more.
                 </p>
               </div>
