@@ -2165,6 +2165,23 @@ color: #fff;
 .aam-overview-left { padding-top: 8px; }
 .aam-overview-right {}
 
+/* Value delivery side-by-side layout */
+.aam-value-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: start;
+}
+.aam-value-text {
+  position: sticky;
+  top: 120px;
+}
+.aam-value-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 /* Value pillar cards */
 .aam-pillars-grid {
   display: grid;
@@ -2855,6 +2872,8 @@ color: #fff;
 /* ── AAM Responsive ──────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .aam-container { padding: 0 40px; }
+  .aam-value-layout { grid-template-columns: 1fr; gap: 40px; }
+  .aam-value-text { position: static; }
   .aam-pillars-grid { grid-template-columns: 1fr 1fr; }
   .aam-framework-grid { grid-template-columns: 1fr 1fr; }
   .aam-serve-grid { grid-template-columns: 1fr; gap: 40px; }

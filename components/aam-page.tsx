@@ -322,52 +322,60 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
         </p>
       </div>
 
-      {/* ── Value Delivery: Pillar Cards ── */}
+      {/* ── Value Delivery: Side-by-side layout ── */}
       <section className="aam-section" id="value">
         <div className="aam-container">
-          <div className="aam-section-header">
-            <p className="section-label"><span className="gold-text">Value Delivery</span></p>
-            <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
-            <button
-              className={`intro-expand-btn${valueOpen ? " expanded" : ""}`}
-              aria-label="Learn more"
-              onClick={() => setValueOpen(o => !o)}
-            >
-              <span className="intro-expand-icon">
-                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M1 1.5l7 7 7-7" />
-                </svg>
-              </span>
-            </button>
-            <div className={`intro-expandable${valueOpen ? " expanded" : ""}`}>
-              <p className="aam-section-lead">
-The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.              </p>
-            </div>
-          </div>
-          <div className="aam-pillars-grid">
-            {pillarCards.map((card, i) => (
-              <div className={`aam-pillar-card${openPillars.has(i) ? " open" : ""}`} key={card.title}>
-                <div className="aam-pillar-img-wrap">
-                  <img src={card.img} alt={card.title} className="aam-pillar-img" loading="lazy" />
-                  <div className="aam-pillar-img-overlay" />
-                </div>
-                <div className="aam-pillar-bar" />
-                <div className="aam-pillar-inner">
-                  <div className="aam-pillar-title-row">
-                    <h3 className="aam-pillar-title">{card.title}</h3>
-                    <button className="aam-expand-btn" onClick={() => toggleSet(setOpenPillars, i)}>
-                      {chevronSvg(openPillars.has(i))}
-                    </button>
-                  </div>
-                  {card.desc && <p className="aam-pillar-desc">{card.desc}</p>}
-                  <div className={`aam-pillar-expand${openPillars.has(i) ? " open" : ""}`}>
-                    <ul className="aam-bullet-list">
-                      {card.bullets.map((b) => <li key={b}>{b}</li>)}
-                    </ul>
-                  </div>
+          <div className="aam-value-layout">
+            {/* Left: title + description */}
+            <div className="aam-value-text">
+              <div className="aam-section-header" style={{ marginBottom: 0 }}>
+                <p className="section-label"><span className="gold-text">Value Delivery</span></p>
+                <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
+                <button
+                  className={`intro-expand-btn${valueOpen ? " expanded" : ""}`}
+                  aria-label="Learn more"
+                  onClick={() => setValueOpen(o => !o)}
+                >
+                  <span className="intro-expand-icon">
+                    <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M1 1.5l7 7 7-7" />
+                    </svg>
+                  </span>
+                </button>
+                <div className={`intro-expandable${valueOpen ? " expanded" : ""}`}>
+                  <p className="aam-section-lead">
+The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.
+                  </p>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Right: pillar cards stacked */}
+            <div className="aam-value-cards">
+              {pillarCards.map((card, i) => (
+                <div className={`aam-pillar-card${openPillars.has(i) ? " open" : ""}`} key={card.title}>
+                  <div className="aam-pillar-img-wrap">
+                    <img src={card.img} alt={card.title} className="aam-pillar-img" loading="lazy" />
+                    <div className="aam-pillar-img-overlay" />
+                  </div>
+                  <div className="aam-pillar-bar" />
+                  <div className="aam-pillar-inner">
+                    <div className="aam-pillar-title-row">
+                      <h3 className="aam-pillar-title">{card.title}</h3>
+                      <button className="aam-expand-btn" onClick={() => toggleSet(setOpenPillars, i)}>
+                        {chevronSvg(openPillars.has(i))}
+                      </button>
+                    </div>
+                    {card.desc && <p className="aam-pillar-desc">{card.desc}</p>}
+                    <div className={`aam-pillar-expand${openPillars.has(i) ? " open" : ""}`}>
+                      <ul className="aam-bullet-list">
+                        {card.bullets.map((b) => <li key={b}>{b}</li>)}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
