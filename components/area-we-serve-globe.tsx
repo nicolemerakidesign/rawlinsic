@@ -552,8 +552,9 @@ export default function AreaWeServeGlobe() {
           pointer-events: none;
         }
         .globe-content-inner {
-          max-width: 540px;
+          max-width: 596px;
           text-align: left;
+          padding-right:48px;
         }
         .globe-eyebrow {
           font-size: 13px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
@@ -574,15 +575,24 @@ export default function AreaWeServeGlobe() {
           background-clip: text;
         }
         .globe-subtext {
-          font-size: 16px; color: rgba(232,224,208,0.6); max-width: 440px;
-          line-height: 1.6; margin-bottom: 28px;
-        }
+         font-size: 17px;
+  color: #fff;
+  max-width: 440px;
+  line-height: 1.85;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
         .globe-legend {
-          display: flex; gap: 28px;
-          font-size: 13px; color: rgba(232,224,208,0.5);
-          letter-spacing: 1px; text-transform: uppercase;
-          margin-bottom: 16px;
-        }
+  display: flex;
+  gap: 28px;
+  font-size: 15px;
+  color: rgba(232,224,208,0.75);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
         .globe-legend-item { display: flex; align-items: center; gap: 10px; }
         .globe-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
         .globe-legend-dot.current {
@@ -594,7 +604,7 @@ export default function AreaWeServeGlobe() {
           box-shadow: 0 0 10px rgba(201,168,76,0.5);
         }
         .globe-zoom-hint {
-          font-size: 12px; color: rgba(232,224,208,0.25); letter-spacing: 0.5px;
+          font-size: 15px; color: rgba(255,255,255,0.25); letter-spacing: 0.5px font-style:italic;
         }
 
         /* Tooltip */
