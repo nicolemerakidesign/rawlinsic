@@ -2100,9 +2100,6 @@ font-size: 15px;
 .aam-section-header {
   max-width: 760px;
   margin-bottom: 64px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 .aam-section-lead {
 color: #fff;
@@ -2122,9 +2119,7 @@ color: #fff;
   gap: 80px;
   align-items: start;
 }
-.aam-overview-left { padding-top: 8px; text-align: center; }
-.aam-overview-left .intro-expand-btn { margin-left: auto; margin-right: auto; }
-.aam-overview-left .intro-expandable { text-align: left; }
+.aam-overview-left { padding-top: 8px; }
 .aam-overview-right {}
 
 /* Value pillar cards */
@@ -3057,37 +3052,6 @@ color: #fff;
   font-weight: 400;
 }
 
-/* Override intro-expand-btn for AAM page — white border like home */
-.aam-overview-section .intro-expand-btn {
-  border-color: rgba(255,255,255,0.3);
-}
-.aam-overview-section .intro-expand-btn:hover {
-  border-color: rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.05);
-}
-.aam-overview-section .intro-expand-btn.expanded {
-  border-color: rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.08);
-}
-.aam-overview-section .intro-expand-icon {
-  color: rgba(255,255,255,0.7);
-}
-.aam-overview-section .intro-expand-btn.expanded .intro-expand-icon {
-  color: #fff;
-}
-
-/* Center expand buttons inside section headers */
-.aam-section-header .intro-expand-btn {
-  margin-left: auto;
-  margin-right: auto;
-}
-.aam-section-header .intro-expandable {
-  text-align: left;
-}
-.aam-section-header .aam-section-lead {
-  margin-left: auto;
-  margin-right: auto;
-}
 
 /* ── Alternative Phases: Full-width Horizontal Scroll ───── */
 .aam-phases-alt-section {
