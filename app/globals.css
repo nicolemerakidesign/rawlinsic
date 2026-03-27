@@ -3159,9 +3159,12 @@ color: #fff;
   background-clip: text; line-height: 1;
 }
 .aam-alt-card-phase {
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(201,168,76,0.6);
+ font-family: var(--font-dm-sans),"DM Sans",sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c9a84c;
+  font-size: .7rem;
+  font-weight: 400;
 }
 .aam-alt-card-divider {
   position: relative; z-index: 1;
@@ -3173,7 +3176,7 @@ color: #fff;
 .aam-alt-card-title {
   position: relative; z-index: 1;
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.35rem; font-weight: 400; color: #fff;
+  font-size: 27px; font-weight: 400; color: #fff;
   margin-bottom: 10px;
 }
 .aam-alt-card-body {
