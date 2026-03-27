@@ -2802,8 +2802,8 @@ color: #fff;
   overflow-wrap: break-word;
 }
 @keyframes ecoDetailIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 .eco-detail-header {
   display: flex;
