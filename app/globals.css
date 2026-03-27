@@ -2728,7 +2728,7 @@ color: #fff;
 }
 
 /* CTA section */
-.aam-cta-section { padding: 140px 0 140px; position: relative; overflow: hidden; }
+.aam-cta-section { padding: 100px 0 100px; position: relative; overflow: hidden; }
 .aam-cta-bg {
   position: absolute;
   inset: 0;
