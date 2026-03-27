@@ -330,11 +330,11 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
             <div className="aam-value-title-row">
               <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
               <button
-                className={`aam-value-arrow-btn${valueOpen ? " expanded" : ""}`}
+                className={`intro-expand-btn aam-value-arrow-btn${valueOpen ? " expanded" : ""}`}
                 aria-label="Learn more"
                 onClick={() => setValueOpen(o => !o)}
               >
-                <span className="aam-value-arrow-icon">
+                <span className="intro-expand-icon aam-value-arrow-icon">
                   <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M1.5 1l7 7-7 7" />
                   </svg>
@@ -560,12 +560,12 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                   <circle cx="400" cy="400" r="100" fill="url(#centerGrad)" />
                   <circle cx="400" cy="400" r="68" fill="none" stroke="#c9a84c" strokeWidth="0.8" className="eco-center-pulse" opacity="0.2" />
 
-                  {/* Center hub — clean minimal style */}
-                  <circle cx="400" cy="400" r="72" fill="rgba(6,12,22,0.95)" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
-                  <text x="400" y="392" textAnchor="middle" fill="#e8d5a0" fontFamily="'Cormorant Garamond', Georgia, serif" fontSize="20" fontWeight="500" letterSpacing="3">RAWLINS</text>
-                  <text x="400" y="414" textAnchor="middle" fill="rgba(201,168,76,0.6)" fontFamily="'DM Sans', sans-serif" fontSize="11" fontWeight="500" letterSpacing="3" style={{ textTransform: 'uppercase' }}>AERO TEAM</text>
+                  {/* Center hub */}
+                  <circle cx="400" cy="400" r="80" fill="rgba(6,12,22,0.95)" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
+                  <text x="400" y="390" textAnchor="middle" fill="url(#titleGoldGrad)" fontFamily="'DM Sans', sans-serif" fontSize="16" fontWeight="700" letterSpacing="4" style={{ textTransform: 'uppercase' }}>RAWLINS</text>
+                  <text x="400" y="412" textAnchor="middle" fill="url(#titleGoldGrad)" fontFamily="'DM Sans', sans-serif" fontSize="14" fontWeight="600" letterSpacing="3" style={{ textTransform: 'uppercase' }}>AERO TEAM</text>
 
-                  {/* Stakeholder nodes — SVG icons */}
+                  {/* Stakeholder nodes — SVG icons with gold gradient */}
                   {ecosystemNodes.map((node) => {
                     const rad = (node.angle * Math.PI) / 180;
                     const nx = 400 + Math.cos(rad) * 280;
@@ -574,26 +574,26 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                     const isHovered = hoveredNode === node.id;
                     const highlighted = isActive || isHovered;
                     const iconPath = ecoIcons[node.id] || '';
-                    const iconSize = highlighted ? 48 : 40;
+                    const iconSize = highlighted ? 56 : 48;
 
                     return (
                       <g key={node.id} style={{ cursor: 'none' }} onClick={() => setActiveNode(activeNode === node.id ? null : node.id)} onMouseEnter={() => setHoveredNode(node.id)} onMouseLeave={() => setHoveredNode(null)}>
                         {/* Hit area */}
-                        <circle cx={nx} cy={ny} r="60" fill="transparent" />
-                        {/* SVG icon */}
+                        <circle cx={nx} cy={ny} r="65" fill="transparent" />
+                        {/* SVG icon — gold gradient fill */}
                         <g transform={`translate(${nx - iconSize / 2}, ${ny - iconSize / 2})`} style={{ transition: 'all 0.3s' }}>
                           <svg width={iconSize} height={iconSize} viewBox="0 0 24 24">
-                            <path d={iconPath} fill={highlighted ? "#e8d5a0" : "rgba(201,168,76,0.65)"} style={{ filter: highlighted ? 'drop-shadow(0 0 8px rgba(201,168,76,0.5))' : 'none' }} />
+                            <path d={iconPath} fill={highlighted ? "url(#titleGoldGrad)" : "url(#titleGoldGrad)"} opacity={highlighted ? 1 : 0.7} style={{ filter: highlighted ? 'drop-shadow(0 0 10px rgba(201,168,76,0.6))' : 'none' }} />
                           </svg>
                         </g>
                         {/* Label */}
                         {node.label.split('\n').map((line, li) => (
-                          <text key={li} x={nx} y={ny + (highlighted ? 38 : 32) + li * 18} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.65)"} fontFamily="'DM Sans', sans-serif" fontSize={highlighted ? "14" : "13"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
+                          <text key={li} x={nx} y={ny + (highlighted ? 42 : 36) + li * 20} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.7)"} fontFamily="'DM Sans', sans-serif" fontSize={highlighted ? "15" : "14"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
                             {line}
                           </text>
                         ))}
                         {highlighted && (
-                          <text x={nx} y={ny + 76} textAnchor="middle" fill="rgba(201,168,76,0.55)" fontFamily="'DM Sans', sans-serif" fontSize="11" letterSpacing="0.5">{node.short}</text>
+                          <text x={nx} y={ny + 82} textAnchor="middle" fill="rgba(201,168,76,0.6)" fontFamily="'DM Sans', sans-serif" fontSize="12" letterSpacing="0.5">{node.short}</text>
                         )}
                       </g>
                     );
@@ -659,7 +659,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
       {/* ── Service Portfolio: Card Tiles (same style as Value Delivery) ── */}
       <section className="aam-section aam-portfolio-section" id="portfolio">
         <div className="aam-container">
-          <div className="aam-section-header">
+          <div className="aam-section-header" style={{ textAlign: 'center' }}>
             <p className="section-label"><span className="gold-text">Services</span></p>
             <h2 className="section-title">Our Service <em>Portfolio</em></h2>
           </div>
