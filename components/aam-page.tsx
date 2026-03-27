@@ -7,19 +7,21 @@ import SiteFooter from '@/components/site-footer';
 
 const DRONE_IMG = "https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const CITY_AERIAL_IMG = "https://images.unsplash.com/photo-1704912343381-99656b2a4ba3?auto=compress&cs=tinysrgb&w=1200";
-const INFRASTRUCTURE_IMG = "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const INFRASTRUCTURE_IMG = "https://images.pexels.com/photos/7381780/pexels-photo-7381780.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const TECH_NETWORK_IMG = "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const LOGISTICS_IMG = "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=compress&cs=tinysrgb&w=1200";
 const PLANNING_IMG = "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const SKYLINE_IMG = "https://images.pexels.com/photos/1519088/pexels-photo-1519088.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const AERIAL_VIEW_IMG = "https://images.pexels.com/photos/739410/pexels-photo-739410.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const HELICOPTER_IMG = "https://images.pexels.com/photos/210199/pexels-photo-210199.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const CONTROL_ROOM_IMG = "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const CONTROL_ROOM_IMG = "https://images.pexels.com/photos/36155852/pexels-photo-36155852.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const DRONE_FLIGHT_IMG = "https://rawlinsic.com/wp-content/uploads/2024/12/skylimit.webp?auto=compress&cs=tinysrgb&w=1200";
 const BLUEPRINT_IMG = "https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const DATA_CENTER_IMG = "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const HIGHWAY_AERIAL_IMG = "https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const TEAM_MEETING_IMG = "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const DEFINE_IMG = "https://rawlinsic.com/wp-content/uploads/2025/03/connectingdots.webp?auto=compress&cs=tinysrgb&w=1200";
+
 
 /* ──── Data ──── */
 
@@ -60,7 +62,7 @@ const frameworkCards = [
     tagline: "Vision & Scope",
     accent: "linear-gradient(90deg, #c9a84c, #e8d5a0)",
     bullets: ["Community needs assessment", "Vision and goals definition", "Program scope and timeline", "Stakeholder identification"],
-    img: PLANNING_IMG,
+    img: DEFINE_IMG,
   },
   {
     title: "Enable",
