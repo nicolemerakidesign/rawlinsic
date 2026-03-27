@@ -442,247 +442,192 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
       {/* ── Interactive Stakeholder Ecosystem ── */}
       <section className="aam-section aam-ecosystem-section" id="stakeholders">
         <div className="aam-container">
-          <div className="aam-section-header" style={{ textAlign: "center", margin: "0 auto 48px" }}>
-            <p className="section-label"><span className="gold-text">who we partner with</span></p>
-            <h2 className="section-title">Stakeholders We <em>Engage</em></h2>
-            <p className="section-text" style={{ textAlign: "center", margin: "20px auto 0" }}>
-              We engage multiple stakeholders in the public and private sectors across AAM and UAS to align policy, regulation, operations, and technology; integrate systems and infrastructure; implement/deploy and scale services.
-              <br />Tap any node to explore our partnerships across the AAM landscape.
-            </p>
-          </div>
+          <div className="eco-layout">
+            {/* Left: text */}
+            <div className="eco-layout-text">
+              <div className="aam-section-header">
+                <p className="section-label"><span className="gold-text">who we partner with</span></p>
+                <h2 className="section-title">Stakeholders We <em>Engage</em></h2>
+                <p className="aam-section-lead" style={{ marginTop: '20px' }}>
+                  We engage multiple stakeholders in the public and private sectors across AAM and UAS to align policy, regulation, operations, and technology; integrate systems and infrastructure; implement/deploy and scale services.
+                </p>
+                <p className="aam-section-lead" style={{ marginTop: '12px', opacity: 0.5, fontSize: '14px' }}>
+                  Click any stakeholder to learn more.
+                </p>
+              </div>
+            </div>
 
-          <div className="eco-vis-wrapper">
-            {/* SVG Visualization */}
-            <svg className="eco-svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                {/* Glow filter */}
-                <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur" />
-                  <feFlood floodColor="#c9a84c" floodOpacity="0.4" result="color" />
-                  <feComposite in="color" in2="blur" operator="in" result="shadow" />
-                  <feMerge>
-                    <feMergeNode in="shadow" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <filter id="goldGlowStrong" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="blur" />
-                  <feFlood floodColor="#c9a84c" floodOpacity="0.6" result="color" />
-                  <feComposite in="color" in2="blur" operator="in" result="shadow" />
-                  <feMerge>
-                    <feMergeNode in="shadow" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                {/* Gradient for lines */}
-                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.1" />
-                  <stop offset="50%" stopColor="#c9a84c" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#c9a84c" stopOpacity="0.1" />
-                </linearGradient>
-                {/* Radial gradient for center */}
-                <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.25" />
-                  <stop offset="60%" stopColor="#c9a84c" stopOpacity="0.08" />
-                  <stop offset="100%" stopColor="#c9a84c" stopOpacity="0" />
-                </radialGradient>
-                {/* Animated dash */}
-                <style>{`
-                  .eco-connection { stroke-dasharray: 6 8; animation: ecoDash 25s linear infinite; }
-                  .eco-connection-active { stroke-dasharray: 4 4; animation: ecoDash 8s linear infinite; stroke-width: 2; }
-                  @keyframes ecoDash { to { stroke-dashoffset: -200; } }
-                  .eco-orbit-ring { animation: ecoOrbitPulse 6s ease-in-out infinite; }
-                  .eco-orbit-ring-2 { animation: ecoOrbitPulse 6s ease-in-out infinite 2s; }
-                  .eco-orbit-ring-3 { animation: ecoOrbitPulse 6s ease-in-out infinite 4s; }
-                  @keyframes ecoOrbitPulse { 0%,100% { opacity: 0.15; } 50% { opacity: 0.35; } }
-                  .eco-center-pulse { animation: ecoCenterPulse 3s ease-in-out infinite; }
-                  @keyframes ecoCenterPulse { 0%,100% { r: 52; opacity: 0.2; } 50% { r: 58; opacity: 0.35; } }
-                  .eco-node-glow { animation: ecoNodeGlow 4s ease-in-out infinite; }
-                  @keyframes ecoNodeGlow { 0%,100% { opacity: 0.3; } 50% { opacity: 0.6; } }
-                  .eco-data-particle { animation: ecoParticle 4s linear infinite; opacity: 0; }
-                  @keyframes ecoParticle { 0% { opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { opacity: 0; } }
-                `}</style>
-              </defs>
+            {/* Right: interactive visualization */}
+            <div className="eco-layout-vis">
+              <div className="eco-vis-wrapper">
+                <svg className="eco-svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur" />
+                      <feFlood floodColor="#c9a84c" floodOpacity="0.4" result="color" />
+                      <feComposite in="color" in2="blur" operator="in" result="shadow" />
+                      <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                    </filter>
+                    <filter id="goldGlowStrong" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="blur" />
+                      <feFlood floodColor="#c9a84c" floodOpacity="0.6" result="color" />
+                      <feComposite in="color" in2="blur" operator="in" result="shadow" />
+                      <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                    </filter>
+                    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.1" />
+                      <stop offset="50%" stopColor="#c9a84c" stopOpacity="0.5" />
+                      <stop offset="100%" stopColor="#c9a84c" stopOpacity="0.1" />
+                    </linearGradient>
+                    <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.25" />
+                      <stop offset="60%" stopColor="#c9a84c" stopOpacity="0.08" />
+                      <stop offset="100%" stopColor="#c9a84c" stopOpacity="0" />
+                    </radialGradient>
+                    <linearGradient id="titleGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#c9a84c" />
+                      <stop offset="50%" stopColor="#e8d5a0" />
+                      <stop offset="100%" stopColor="#c9a84c" />
+                    </linearGradient>
+                    <style>{`
+                      .eco-connection { stroke-dasharray: 6 8; animation: ecoDash 25s linear infinite; }
+                      .eco-connection-active { stroke-dasharray: 4 4; animation: ecoDash 8s linear infinite; stroke-width: 2; }
+                      @keyframes ecoDash { to { stroke-dashoffset: -200; } }
+                      .eco-orbit-ring { animation: ecoOrbitPulse 6s ease-in-out infinite; }
+                      .eco-orbit-ring-2 { animation: ecoOrbitPulse 6s ease-in-out infinite 2s; }
+                      .eco-orbit-ring-3 { animation: ecoOrbitPulse 6s ease-in-out infinite 4s; }
+                      @keyframes ecoOrbitPulse { 0%,100% { opacity: 0.15; } 50% { opacity: 0.35; } }
+                      .eco-center-pulse { animation: ecoCenterPulse 3s ease-in-out infinite; }
+                      @keyframes ecoCenterPulse { 0%,100% { r: 52; opacity: 0.2; } 50% { r: 58; opacity: 0.35; } }
+                      .eco-node-glow { animation: ecoNodeGlow 4s ease-in-out infinite; }
+                      @keyframes ecoNodeGlow { 0%,100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+                      .eco-data-particle { animation: ecoParticle 4s linear infinite; opacity: 0; }
+                      @keyframes ecoParticle { 0% { opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { opacity: 0; } }
+                    `}</style>
+                  </defs>
 
-              {/* Background grid pattern */}
-              <g opacity="0.04">
-                {Array.from({ length: 17 }, (_, i) => (
-                  <React.Fragment key={`grid-${i}`}>
-                    <line x1={i * 50} y1="0" x2={i * 50} y2="800" stroke="#c9a84c" strokeWidth="0.5" />
-                    <line x1="0" y1={i * 50} x2="800" y2={i * 50} stroke="#c9a84c" strokeWidth="0.5" />
-                  </React.Fragment>
-                ))}
-              </g>
-
-              {/* Orbital rings */}
-              <circle cx="400" cy="400" r="200" fill="none" stroke="#c9a84c" strokeWidth="0.5" className="eco-orbit-ring" />
-              <circle cx="400" cy="400" r="270" fill="none" stroke="#c9a84c" strokeWidth="0.5" className="eco-orbit-ring-2" />
-              <circle cx="400" cy="400" r="340" fill="none" stroke="#c9a84c" strokeWidth="0.3" className="eco-orbit-ring-3" />
-
-              {/* Connection lines from center to each node */}
-              {ecosystemNodes.map((node) => {
-                const rad = (node.angle * Math.PI) / 180;
-                const nx = 400 + Math.cos(rad) * 280;
-                const ny = 400 + Math.sin(rad) * 280;
-                const isActive = activeNode === node.id || hoveredNode === node.id;
-                return (
-                  <line
-                    key={`line-${node.id}`}
-                    x1="400" y1="400"
-                    x2={nx} y2={ny}
-                    stroke="#c9a84c"
-                    strokeWidth={isActive ? 2 : 1}
-                    className={isActive ? "eco-connection-active" : "eco-connection"}
-                    opacity={isActive ? 0.8 : 0.2}
-                  />
-                );
-              })}
-
-              {/* Cross-connections between adjacent nodes */}
-              {ecosystemNodes.map((node, i) => {
-                const next = ecosystemNodes[(i + 1) % ecosystemNodes.length];
-                const rad1 = (node.angle * Math.PI) / 180;
-                const rad2 = (next.angle * Math.PI) / 180;
-                const x1 = 400 + Math.cos(rad1) * 280;
-                const y1 = 400 + Math.sin(rad1) * 280;
-                const x2 = 400 + Math.cos(rad2) * 280;
-                const y2 = 400 + Math.sin(rad2) * 280;
-                return (
-                  <line
-                    key={`cross-${i}`}
-                    x1={x1} y1={y1} x2={x2} y2={y2}
-                    stroke="#c9a84c" strokeWidth="0.5"
-                    className="eco-connection"
-                    opacity="0.08"
-                  />
-                );
-              })}
-
-              {/* Center glow */}
-              <circle cx="400" cy="400" r="80" fill="url(#centerGrad)" />
-              <circle cx="400" cy="400" r="52" fill="none" stroke="#c9a84c" strokeWidth="1" className="eco-center-pulse" opacity="0.2" />
-
-              {/* Center hub */}
-              <circle cx="400" cy="400" r="48" fill="rgba(6,12,22,0.9)" stroke="#c9a84c" strokeWidth="1.5" filter="url(#goldGlow)" />
-              <text x="400" y="393" textAnchor="middle" fill="#e8d5a0" fontFamily="'Cormorant Garamond', Georgia, serif" fontSize="16" fontWeight="500">RAWLINS</text>
-              <text x="400" y="412" textAnchor="middle" fill="rgba(232,230,225,0.45)" fontFamily="'DM Sans', sans-serif" fontSize="7" letterSpacing="2" textTransform="uppercase" style={{ textTransform: 'uppercase' }}>Integration Hub</text>
-
-              {/* Stakeholder nodes */}
-              {ecosystemNodes.map((node) => {
-                const rad = (node.angle * Math.PI) / 180;
-                const nx = 400 + Math.cos(rad) * 280;
-                const ny = 400 + Math.sin(rad) * 280;
-                const isActive = activeNode === node.id;
-                const isHovered = hoveredNode === node.id;
-                const highlighted = isActive || isHovered;
-
-                return (
-                  <g
-                    key={node.id}
-                    style={{ cursor: 'none' }}
-                    onClick={() => setActiveNode(activeNode === node.id ? null : node.id)}
-                    onMouseEnter={() => setHoveredNode(node.id)}
-                    onMouseLeave={() => setHoveredNode(null)}
-                  >
-                    {/* Node glow */}
-                    <circle cx={nx} cy={ny} r={highlighted ? 42 : 36} fill="none" stroke="#c9a84c" strokeWidth="0.5" className="eco-node-glow" opacity={highlighted ? 0.6 : 0.15} />
-                    {/* Node background */}
-                    <circle
-                      cx={nx} cy={ny}
-                      r={highlighted ? 36 : 30}
-                      fill={highlighted ? "rgba(201,168,76,0.12)" : "rgba(6,12,22,0.85)"}
-                      stroke={highlighted ? "#c9a84c" : "rgba(201,168,76,0.3)"}
-                      strokeWidth={highlighted ? 2 : 1}
-                      filter={highlighted ? "url(#goldGlowStrong)" : "url(#goldGlow)"}
-                      style={{ transition: 'all 0.35s ease' }}
-                    />
-                    {/* Node icon */}
-                    <text x={nx} y={ny - 4} textAnchor="middle" dominantBaseline="middle" fill={highlighted ? "#e8d5a0" : "#c9a84c"} fontSize={highlighted ? "18" : "15"} style={{ transition: 'all 0.3s' }}>
-                      {node.icon}
-                    </text>
-                    {/* Node label */}
-                    {node.label.split('\n').map((line, li) => (
-                      <text
-                        key={li}
-                        x={nx}
-                        y={ny + (highlighted ? 52 : 46) + li * 14}
-                        textAnchor="middle"
-                        fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.65)"}
-                        fontFamily="'DM Sans', sans-serif"
-                        fontSize={highlighted ? "10" : "9"}
-                        fontWeight={highlighted ? "600" : "500"}
-                        letterSpacing="1.2"
-                        style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}
-                      >
-                        {line}
-                      </text>
+                  {/* Background grid */}
+                  <g opacity="0.04">
+                    {Array.from({ length: 17 }, (_, i) => (
+                      <React.Fragment key={`grid-${i}`}>
+                        <line x1={i * 50} y1="0" x2={i * 50} y2="800" stroke="#c9a84c" strokeWidth="0.5" />
+                        <line x1="0" y1={i * 50} x2="800" y2={i * 50} stroke="#c9a84c" strokeWidth="0.5" />
+                      </React.Fragment>
                     ))}
-                    {/* Short entities on hover */}
-                    {highlighted && (
-                      <text
-                        x={nx} y={ny + 80}
-                        textAnchor="middle"
-                        fill="rgba(201,168,76,0.6)"
-                        fontFamily="'DM Sans', sans-serif"
-                        fontSize="8"
-                        letterSpacing="0.5"
-                      >
-                        {node.short}
-                      </text>
-                    )}
                   </g>
-                );
-              })}
 
-              {/* Floating data particles along connections */}
-              {ecosystemNodes.map((node, i) => {
-                const rad = (node.angle * Math.PI) / 180;
-                const nx = 400 + Math.cos(rad) * 280;
-                const ny = 400 + Math.sin(rad) * 280;
-                return (
-                  <circle key={`particle-${i}`} r="2" fill="#c9a84c" className="eco-data-particle" style={{ animationDelay: `${i * 0.5}s` }}>
-                    <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite">
-                      <mpath href={`#path-${i}`} />
-                    </animateMotion>
-                  </circle>
-                );
-              })}
-              {/* Hidden paths for particle animation */}
-              {ecosystemNodes.map((node, i) => {
-                const rad = (node.angle * Math.PI) / 180;
-                const nx = 400 + Math.cos(rad) * 280;
-                const ny = 400 + Math.sin(rad) * 280;
-                return (
-                  <path key={`path-${i}`} id={`path-${i}`} d={`M400,400 L${nx},${ny}`} fill="none" stroke="none" />
-                );
-              })}
-            </svg>
+                  {/* Orbital rings */}
+                  <circle cx="400" cy="400" r="200" fill="none" stroke="#c9a84c" strokeWidth="0.5" className="eco-orbit-ring" />
+                  <circle cx="400" cy="400" r="270" fill="none" stroke="#c9a84c" strokeWidth="0.5" className="eco-orbit-ring-2" />
+                  <circle cx="400" cy="400" r="340" fill="none" stroke="#c9a84c" strokeWidth="0.3" className="eco-orbit-ring-3" />
 
-            {/* Detail panel for active node */}
-            {activeNode && (() => {
-              const node = ecosystemNodes.find(n => n.id === activeNode);
-              if (!node) return null;
-              return (
-                <div className="eco-detail-panel">
-                  <div className="eco-detail-header">
-                    <span className="eco-detail-icon">{node.icon}</span>
-                    <div>
-                      <h4 className="eco-detail-title">{node.label.replace('\n', ' ')}</h4>
-                      <p className="eco-detail-short">{node.short}</p>
+                  {/* Connection lines */}
+                  {ecosystemNodes.map((node) => {
+                    const rad = (node.angle * Math.PI) / 180;
+                    const nx = 400 + Math.cos(rad) * 280;
+                    const ny = 400 + Math.sin(rad) * 280;
+                    const isActive = activeNode === node.id || hoveredNode === node.id;
+                    return (
+                      <line key={`line-${node.id}`} x1="400" y1="400" x2={nx} y2={ny} stroke="#c9a84c" strokeWidth={isActive ? 2 : 1} className={isActive ? "eco-connection-active" : "eco-connection"} opacity={isActive ? 0.8 : 0.2} />
+                    );
+                  })}
+
+                  {/* Cross-connections */}
+                  {ecosystemNodes.map((node, i) => {
+                    const next = ecosystemNodes[(i + 1) % ecosystemNodes.length];
+                    const rad1 = (node.angle * Math.PI) / 180;
+                    const rad2 = (next.angle * Math.PI) / 180;
+                    return (
+                      <line key={`cross-${i}`} x1={400 + Math.cos(rad1) * 280} y1={400 + Math.sin(rad1) * 280} x2={400 + Math.cos(rad2) * 280} y2={400 + Math.sin(rad2) * 280} stroke="#c9a84c" strokeWidth="0.5" className="eco-connection" opacity="0.08" />
+                    );
+                  })}
+
+                  {/* Center glow */}
+                  <circle cx="400" cy="400" r="80" fill="url(#centerGrad)" />
+                  <circle cx="400" cy="400" r="52" fill="none" stroke="#c9a84c" strokeWidth="1" className="eco-center-pulse" opacity="0.2" />
+
+                  {/* Center hub */}
+                  <circle cx="400" cy="400" r="48" fill="rgba(6,12,22,0.9)" stroke="#c9a84c" strokeWidth="1.5" filter="url(#goldGlow)" />
+                  <text x="400" y="388" textAnchor="middle" fill="url(#titleGoldGrad)" fontFamily="'DM Sans', sans-serif" fontSize="9" fontWeight="700" letterSpacing="3" style={{ textTransform: 'uppercase' }}>RAWLINS</text>
+                  <text x="400" y="404" textAnchor="middle" fill="url(#titleGoldGrad)" fontFamily="'DM Sans', sans-serif" fontSize="8" fontWeight="600" letterSpacing="2" style={{ textTransform: 'uppercase' }}>AERO</text>
+                  <text x="400" y="418" textAnchor="middle" fill="rgba(232,230,225,0.5)" fontFamily="'DM Sans', sans-serif" fontSize="7" fontWeight="500" letterSpacing="2" style={{ textTransform: 'uppercase' }}>TEAM</text>
+
+                  {/* Stakeholder nodes — icons only, no circles */}
+                  {ecosystemNodes.map((node) => {
+                    const rad = (node.angle * Math.PI) / 180;
+                    const nx = 400 + Math.cos(rad) * 280;
+                    const ny = 400 + Math.sin(rad) * 280;
+                    const isActive = activeNode === node.id;
+                    const isHovered = hoveredNode === node.id;
+                    const highlighted = isActive || isHovered;
+
+                    return (
+                      <g key={node.id} style={{ cursor: 'none' }} onClick={() => setActiveNode(activeNode === node.id ? null : node.id)} onMouseEnter={() => setHoveredNode(node.id)} onMouseLeave={() => setHoveredNode(null)}>
+                        {/* Transparent hit area */}
+                        <circle cx={nx} cy={ny} r="40" fill="transparent" />
+                        {/* Icon */}
+                        <text x={nx} y={ny} textAnchor="middle" dominantBaseline="middle" fill={highlighted ? "#e8d5a0" : "rgba(201,168,76,0.7)"} fontSize={highlighted ? "28" : "22"} style={{ transition: 'all 0.3s', filter: highlighted ? 'drop-shadow(0 0 8px rgba(201,168,76,0.5))' : 'none' }}>
+                          {node.icon}
+                        </text>
+                        {/* Label below icon */}
+                        {node.label.split('\n').map((line, li) => (
+                          <text key={li} x={nx} y={ny + 34 + li * 14} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.6)"} fontFamily="'DM Sans', sans-serif" fontSize={highlighted ? "10" : "9"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.2" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
+                            {line}
+                          </text>
+                        ))}
+                        {highlighted && (
+                          <text x={nx} y={ny + 68} textAnchor="middle" fill="rgba(201,168,76,0.6)" fontFamily="'DM Sans', sans-serif" fontSize="8" letterSpacing="0.5">{node.short}</text>
+                        )}
+                      </g>
+                    );
+                  })}
+
+                  {/* Particles */}
+                  {ecosystemNodes.map((node, i) => {
+                    const rad = (node.angle * Math.PI) / 180;
+                    return (
+                      <circle key={`particle-${i}`} r="2" fill="#c9a84c" className="eco-data-particle" style={{ animationDelay: `${i * 0.5}s` }}>
+                        <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"><mpath href={`#path-${i}`} /></animateMotion>
+                      </circle>
+                    );
+                  })}
+                  {ecosystemNodes.map((node, i) => {
+                    const rad = (node.angle * Math.PI) / 180;
+                    const nx = 400 + Math.cos(rad) * 280;
+                    const ny = 400 + Math.sin(rad) * 280;
+                    return <path key={`path-${i}`} id={`path-${i}`} d={`M400,400 L${nx},${ny}`} fill="none" stroke="none" />;
+                  })}
+                </svg>
+
+                {/* Detail panel — positioned near clicked node */}
+                {activeNode && (() => {
+                  const node = ecosystemNodes.find(n => n.id === activeNode);
+                  if (!node) return null;
+                  const rad = (node.angle * Math.PI) / 180;
+                  const pctX = 50 + Math.cos(rad) * 35;
+                  const pctY = 50 + Math.sin(rad) * 35;
+                  const panelLeft = pctX < 30 ? '0%' : pctX > 70 ? 'auto' : `${pctX}%`;
+                  const panelRight = pctX > 70 ? '0%' : 'auto';
+                  const panelTop = pctY < 30 ? '0%' : `${Math.min(pctY, 65)}%`;
+                  const panelTransform = pctX >= 30 && pctX <= 70 ? 'translateX(-50%)' : 'none';
+                  return (
+                    <div className="eco-detail-panel" style={{ left: panelLeft, right: panelRight, top: panelTop, bottom: 'auto', transform: panelTransform }}>
+                      <div className="eco-detail-header">
+                        <span className="eco-detail-icon">{node.icon}</span>
+                        <div>
+                          <h4 className="eco-detail-title">{node.label.replace('\n', ' ')}</h4>
+                          <p className="eco-detail-short">{node.short}</p>
+                        </div>
+                        <button className="eco-detail-close" onClick={() => setActiveNode(null)}>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                        </button>
+                      </div>
+                      <p className="eco-detail-desc">{node.desc}</p>
                     </div>
-                    <button className="eco-detail-close" onClick={() => setActiveNode(null)}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
-                    </button>
-                  </div>
-                  <p className="eco-detail-desc">{node.desc}</p>
-                  <div className="eco-detail-connector">
-                    <div className="eco-detail-connector-line" />
-                    <span className="eco-detail-connector-label">Connected via Rawlins</span>
-                    <div className="eco-detail-connector-line" />
-                  </div>
-                </div>
-              );
-            })()}
+                  );
+                })()}
+              </div>
+            </div>
           </div>
         </div>
       </section>
