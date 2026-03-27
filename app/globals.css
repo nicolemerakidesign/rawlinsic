@@ -373,11 +373,11 @@ font-size: 14px;
   line-height: 1.25;
 }
 .section-text {
-  color: rgba(232,230,225,0.75);
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+color: #fff;
   font-size: 17px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.85;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   max-width: 620px;
 }
 
@@ -2100,14 +2100,17 @@ font-size: 15px;
 .aam-section-header {
   max-width: 760px;
   margin-bottom: 64px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .aam-section-lead {
+color: #fff;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.85;
   margin-top: 1.5rem;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.85;
-  color: rgba(232,230,225,0.75);
   max-width: 760px;
 }
 
@@ -2119,7 +2122,9 @@ font-size: 15px;
   gap: 80px;
   align-items: start;
 }
-.aam-overview-left { padding-top: 8px; }
+.aam-overview-left { padding-top: 8px; text-align: center; }
+.aam-overview-left .intro-expand-btn { margin-left: auto; margin-right: auto; }
+.aam-overview-left .intro-expandable { text-align: left; }
 .aam-overview-right {}
 
 /* Value pillar cards */
@@ -2177,7 +2182,7 @@ font-size: 15px;
 }
 .aam-pillar-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.55rem;
+  font-size: 27px;
   font-weight: 400;
   line-height: 1.25;
   color: #fff;
@@ -2397,8 +2402,9 @@ font-size: 15px;
   font-size: 0.75rem;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: rgba(232,230,225,0.5);
+  color: lightgray;
   margin-bottom: 20px;
+  margin-top:10px;
   font-weight: 500;
 }
 .aam-framework-toggle {
@@ -2443,9 +2449,9 @@ font-size: 15px;
 .aam-bullet-list li {
   position: relative;
   padding: 8px 0 8px 20px;
-  font-size: 0.88rem;
+  font-size: 15px;
   line-height: 1.7;
-  color: rgba(232,230,225,0.75);
+  color: #fff;
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .aam-bullet-list li:last-child { border-bottom: none; }
@@ -3070,13 +3076,17 @@ font-size: 15px;
   color: #fff;
 }
 
-/* ── Body text normalization for AAM ────────────────────── */
-.aam-section-lead {
-  color: rgba(232,230,225,0.75);
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.85;
+/* Center expand buttons inside section headers */
+.aam-section-header .intro-expand-btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+.aam-section-header .intro-expandable {
+  text-align: left;
+}
+.aam-section-header .aam-section-lead {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ── Alternative Phases: Full-width Horizontal Scroll ───── */

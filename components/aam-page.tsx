@@ -135,7 +135,8 @@ const AAMPage = () => {
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [introOpen, setIntroOpen] = useState(false);
-  const [activeServiceTab, setActiveServiceTab] = useState(0);
+  const [valueOpen, setValueOpen] = useState(false);
+  const [openServices, setOpenServices] = useState<Set<number>>(new Set());
 
   const toggleSet = (setter: React.Dispatch<React.SetStateAction<Set<number>>>, idx: number) => {
     setter(prev => {
@@ -258,26 +259,22 @@ const AAMPage = () => {
             <div className="aam-overview-left">
               <p className="section-label"><span className="gold-text">are you ready?</span></p>
               <h2 className="section-title">The next major phase in transportation’s <em>evolution</em></h2>
-              <div className="aam-intro-expand-row">
-                <button
-                  className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
-                  aria-label="Read more"
-                  onClick={() => setIntroOpen(o => !o)}
-                >
-                  <span className="intro-expand-icon">
-                    <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M1 1.5l7 7 7-7" />
-                    </svg>
-                  </span>
-                </button>
-                <span className="aam-intro-expand-text">{introOpen ? "Read Less" : "Read More"}</span>
-              </div>
+              <button
+                className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
+                aria-label="Learn more"
+                onClick={() => setIntroOpen(o => !o)}
+              >
+                <span className="intro-expand-icon">
+                  <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 1.5l7 7 7-7" />
+                  </svg>
+                </span>
+              </button>
               <div className={`intro-expandable${introOpen ? " expanded" : ""}`}>
                 <p className="aam-section-lead">
 Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly part of modern mobility ecosystems. Together, these systems and associated technologies are expected to transform transportation by enhancing connectivity, improving cargo logistics, expediting emergency response, and assisting infrastructure inspection.               </p>
                 <p className="aam-section-lead">
-Next-generation aerial capabilities, integrated into existing mobility systems, complement ground, rail, and maritime transport networks. They strengthen multimodal transportation and enable urban, rural, and regional areas to benefit from a more connected, resilient, and adaptable mobility ecosystem.              </p>
-              </div>
+                  Next-generation aerial capabilities, integrated into existing mobility systems, complement ground, rail, and maritime transport networks. They strengthen multimodal transportation and enable urban, rural, and regional areas to benefit from a more connected, resilient, and adaptable mobility ecosystem.</p>          </div>
             </div>
             <div className="aam-overview-right">
               <div className="intro-cinematic-wrap">
@@ -310,7 +307,7 @@ Next-generation aerial capabilities, integrated into existing mobility systems, 
         <div className="aam-parallax-bg" style={{ backgroundImage: `url(${SKYLINE_IMG})` }} />
         <div className="aam-parallax-overlay" />
         <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
-          Next-generation aerial capabilities strengthen <em>multimodal transportation</em> and enable communities to benefit from a more connected, resilient mobility ecosystem.
+          Strategic Multi-Modal Integration | <em>Built on Real-World Success</em>
         </p>
       </div>
 
@@ -320,8 +317,21 @@ Next-generation aerial capabilities, integrated into existing mobility systems, 
           <div className="aam-section-header">
             <p className="section-label"><span className="gold-text">Value Delivery</span></p>
             <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
-            <p className="aam-section-lead">
-The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.            </p>
+            <button
+              className={`intro-expand-btn${valueOpen ? " expanded" : ""}`}
+              aria-label="Learn more"
+              onClick={() => setValueOpen(o => !o)}
+            >
+              <span className="intro-expand-icon">
+                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 1.5l7 7 7-7" />
+                </svg>
+              </span>
+            </button>
+            <div className={`intro-expandable${valueOpen ? " expanded" : ""}`}>
+              <p className="aam-section-lead">
+The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.              </p>
+            </div>
           </div>
           <div className="aam-pillars-grid">
             {pillarCards.map((card, i) => (
@@ -353,69 +363,14 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── How We Serve: Phases Accordion + Contextual Image ── */}
-      <section className="aam-section aam-serve-section" id="phases">
-        <div className="aam-container">
-          <div className="aam-section-header">
-            <p className="section-label"><span className="gold-text">How We Serve</span></p>
-            <h2 className="section-title">Essential <em>Phases</em></h2>
-            <p className="aam-section-lead">
-              Our structured approach guides communities through seven phases of AAM and UAS integration—from initial policy development to full-scale implementation.
-            </p>
-          </div>
-          <div className="aam-serve-grid">
-            {/* Left: contextual image */}
-            <div className="aam-serve-img-col">
-              <div className="aam-serve-img-wrap">
-                {phaseData.map((phase, i) => (
-                  <img
-                    key={phase.num}
-                    src={phase.img}
-                    alt={phase.label}
-                    className={`aam-serve-img${openPhases.has(i) || (openPhases.size === 0 && i === 0) ? " active" : ""}`}
-                    loading="lazy"
-                  />
-                ))}
-                <div className="aam-serve-img-overlay" />
-                <div className="aam-serve-img-label">
-                  <span className="aam-serve-img-num">{openPhases.size > 0 ? phaseData[[...openPhases].slice(-1)[0]]?.num : "01"}</span>
-                  <span className="aam-serve-img-name">{openPhases.size > 0 ? phaseData[[...openPhases].slice(-1)[0]]?.label : phaseData[0].label}</span>
-                </div>
-              </div>
-            </div>
-            {/* Right: accordion */}
-            <div>
-              <p className="aam-phases-label">Program Lifecycle</p>
-              <div className="aam-phases-list">
-                {phaseData.map((phase, i) => (
-                  <div className={`aam-phase-item${openPhases.has(i) ? " open" : ""}`} key={phase.num}>
-                    <button className="aam-phase-header" onClick={() => toggleSet(setOpenPhases, i)}>
-                      <span className="aam-phase-num">{phase.num}</span>
-                      <span className="aam-phase-label">{phase.label}</span>
-                      <span className="aam-phase-chevron">{chevronSvg(openPhases.has(i))}</span>
-                    </button>
-                    <div className="aam-phase-body">
-                      <p>{phase.body}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider"><div className="gold-line" /></div>
-
-      {/* ── Alternative Phases Layout: Horizontal Scroll Cards ── */}
+      {/* ── How we serve: Horizontal Scroll Cards ── */}
       <section className="aam-section aam-phases-alt-section" id="phases-alt">
         <div className="aam-container">
           <div className="aam-section-header">
-            <p className="section-label"><span className="gold-text">alternative view</span></p>
-            <h2 className="section-title">Program <em>Phases</em></h2>
-            <p className="aam-section-lead" style={{ marginTop: "20px" }}>
-              Our structured approach guides communities through seven phases of AAM and UAS integration.
-            </p>
+            <p className="section-label"><span className="gold-text">how we serve our clients</span></p>
+            <h2 className="section-title">Essential <em>Phases</em></h2>
+            <p className="section-text" style={{ marginTop: "20px" }}>
+Our team brings together regulatory guidance, operational expertise, and program strategy to deliver real-world results. We support AAM and UAS initiatives throughout the program lifecycle.            </p>
           </div>
         </div>
         {/* Full-width scroll area — breaks out of aam-container */}
@@ -481,18 +436,18 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
         <div className="aam-parallax-bg" style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }} />
         <div className="aam-parallax-overlay" />
         <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
-          Successful AAM and UAS integration requires <em>coordinated planning</em>, stakeholder alignment, and a commitment to continuous innovation and community benefit.
-        </p>
+Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviation</p>
       </div>
 
       {/* ── Interactive Stakeholder Ecosystem ── */}
       <section className="aam-section aam-ecosystem-section" id="stakeholders">
         <div className="aam-container">
           <div className="aam-section-header" style={{ textAlign: "center", margin: "0 auto 48px" }}>
-            <p className="section-label"><span className="gold-text">Stakeholder Ecosystem</span></p>
-            <h2 className="section-title">Who We <em>Partner</em> With</h2>
-            <p className="aam-section-lead" style={{ textAlign: "center", margin: "20px auto 0" }}>
-              Tap any node to explore our partnerships across the AAM landscape.
+            <p className="section-label"><span className="gold-text">who we partner with</span></p>
+            <h2 className="section-title">Stakeholders We <em>Engage</em></h2>
+            <p className="section-text" style={{ textAlign: "center", margin: "20px auto 0" }}>
+              We engage multiple stakeholders in the public and private sectors across AAM and UAS to align policy, regulation, operations, and technology; integrate systems and infrastructure; implement/deploy and scale services.
+              <br />Tap any node to explore our partnerships across the AAM landscape.
             </p>
           </div>
 
@@ -734,36 +689,39 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── Service Portfolio Redesign: Tabbed Showcase ── */}
+      {/* ── Service Portfolio: Card Tiles (same style as Value Delivery) ── */}
       <section className="aam-section aam-portfolio-section" id="portfolio">
         <div className="aam-container">
-          <div className="aam-section-header" style={{ textAlign: "center", margin: "0 auto 48px" }}>
-            <p className="section-label"><span className="gold-text">Service Portfolio</span></p>
-            <h2 className="section-title">AAM &amp; <em>UAS</em> Services</h2>
+          <div className="aam-section-header">
+            <p className="section-label"><span className="gold-text">Services</span></p>
+            <h2 className="section-title">Our Service <em>Portfolio</em></h2>
           </div>
-          {/* Tab buttons */}
-          <div className="aam-svc-tabs">
-            <button className={`aam-svc-tab${activeServiceTab === 0 ? " active" : ""}`} onClick={() => setActiveServiceTab(0)}>
-              <span className="aam-svc-tab-name">AAM Services</span>
-              <span className="aam-svc-tab-count">{aamServices.length}</span>
-            </button>
-            <button className={`aam-svc-tab${activeServiceTab === 1 ? " active" : ""}`} onClick={() => setActiveServiceTab(1)}>
-              <span className="aam-svc-tab-name">UAS Services</span>
-              <span className="aam-svc-tab-count">{uasServices.length}</span>
-            </button>
-          </div>
-          {/* Panel */}
-          <div className="aam-svc-panel">
-            <div className="aam-svc-panel-img" style={{ backgroundImage: `url(${activeServiceTab === 0 ? DRONE_IMG : DRONE_FLIGHT_IMG})` }} />
-            <div className="aam-svc-panel-content">
-              <h3 className="aam-svc-panel-title">{activeServiceTab === 0 ? "AAM Advisory & Integration" : "UAS Operations & Support"}</h3>
-              <p className="aam-svc-panel-subtitle">{activeServiceTab === 0 ? "End-to-end advisory for Advanced Air Mobility programs" : "Full-spectrum uncrewed aircraft systems support"}</p>
-              <ul className="aam-svc-panel-list">
-                {(activeServiceTab === 0 ? aamServices : uasServices).map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ul>
-            </div>
+          <div className="aam-pillars-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+            {[
+              { title: "AAM Services", img: DRONE_IMG, items: aamServices, idx: 0 },
+              { title: "UAS Services", img: DRONE_FLIGHT_IMG, items: uasServices, idx: 1 },
+            ].map((svc) => (
+              <div className={`aam-pillar-card${openServices.has(svc.idx) ? " open" : ""}`} key={svc.title}>
+                <div className="aam-pillar-img-wrap">
+                  <img src={svc.img} alt={svc.title} className="aam-pillar-img" loading="lazy" />
+                  <div className="aam-pillar-img-overlay" />
+                </div>
+                <div className="aam-pillar-bar" />
+                <div className="aam-pillar-inner">
+                  <div className="aam-pillar-title-row">
+                    <h3 className="aam-pillar-title">{svc.title}</h3>
+                    <button className="aam-expand-btn" onClick={() => toggleSet(setOpenServices, svc.idx)}>
+                      {chevronSvg(openServices.has(svc.idx))}
+                    </button>
+                  </div>
+                  <div className={`aam-pillar-expand${openServices.has(svc.idx) ? " open" : ""}`}>
+                    <ul className="aam-bullet-list">
+                      {svc.items.map((s) => <li key={s}>{s}</li>)}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
