@@ -260,7 +260,7 @@ export default function ContactPage() {
                       className="contact-detail-value"
                       style={{ color: "rgba(232,230,225,0.6)" }}
                     >
-                      United States &middot; International
+                      Based in Reno, NV, USA &middot; Working Internationally
                     </span>
                   </div>
                 </div>
@@ -268,14 +268,7 @@ export default function ContactPage() {
 
               <div className="contact-divider" />
 
-              <p className="contact-info-note reveal rd4">
-                We typically respond within one to two business days. For urgent
-                matters, reach us directly at{" "}
-                <a href="mailto:info@rawlinsic.com" className="gold-flat">
-                  info@rawlinsic.com
-                </a>
-                .
-              </p>
+        
             </div>
 
             {/* Right: Contact Form */}
