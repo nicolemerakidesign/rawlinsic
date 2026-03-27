@@ -587,7 +587,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                         </g>
                         {/* Label */}
                         {node.label.split('\n').map((line, li) => (
-                          <text key={li} x={nx} y={ny + (highlighted ? 42 : 36) + li * 20} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.7)"} fontFamily="'DM Sans', sans-serif" fontSize={highlighted ? "15" : "14"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
+                          <text key={li} x={nx} y={ny + (highlighted ? 42 : 36) + li * 20} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,1)"} fontFamily="'DM Sans', sans-serif" fontSize="16" fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
                             {line}
                           </text>
                         ))}
