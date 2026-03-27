@@ -107,15 +107,26 @@ const uasServices = [
 /* ──── Component ──── */
 
 /* ──── Stakeholder Ecosystem Data ──── */
+/* SVG icon paths (24x24 viewBox line-art style) */
+const ecoIcons: Record<string, string> = {
+  aviation: 'M12 2L4 14h4v6h8v-6h4L12 2z', // plane/arrow up
+  government: 'M3 21h18v-2H3v2zm0-4h18v-2H3v2zm2-6v4h3v-4H5zm5 0v4h4v-4h-4zm6 0v4h3v-4h-3zM4 9l8-6 8 6H4z', // capitol
+  standards: 'M9 3v2H5v14h14V5h-4V3H9zm0 2h6v2H9V5zM7 9h10v2H7V9zm0 4h10v2H7v-2z', // clipboard
+  academic: 'M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 12.18L4 11.1V16l8 4 8-4v-4.9l-8 4.08z', // mortarboard
+  ansp: 'M12 2a10 10 0 100 20 10 10 0 000-20zm0 4a2 2 0 110 4 2 2 0 010-4zm-1 6h2v2l3 5h-2.2l-1.8-3.5L10.2 19H8l3-5v-2z', // radar
+  operators: 'M12 2L8 8h3v4H7l-2 4h3v4h8v-4h3l-2-4h-4V8h3L12 2z', // drone shape
+  industry: 'M22 9l-4-4-4 4h2v4h-4V9l-4-4-4 4h2v4H2v8h20v-8h-2V9h2zm-6 10h-3v-4h3v4zm-5 0H8v-4h3v4z', // factory
+  cities: 'M3 21h18v-2H3v2zM5 13v6h4v-6H5zm6-4v10h4V9h-4zm6 2v8h4v-8h-4z', // bar chart / skyline
+};
 const ecosystemNodes = [
-  { id: 'aviation', label: 'Aviation\nAuthorities', short: 'FAA · ICAO · NASAO', desc: 'Federal and international aviation regulatory bodies shaping airspace policy and certification standards.', icon: '✈', angle: 0 },
-  { id: 'government', label: 'Government\nAgencies', short: 'DOTs · Security · Emergency', desc: 'State and federal departments of transportation, homeland security, and emergency management services.', icon: '⚙', angle: 45 },
-  { id: 'standards', label: 'Standards\nOrganizations', short: 'ACRA · AASHTO · NCHRP', desc: 'Industry standards bodies developing technical requirements, performance benchmarks, and interoperability frameworks.', icon: '◈', angle: 90 },
-  { id: 'academic', label: 'Academic\nInstitutions', short: 'Research · Universities · Labs', desc: 'Research centers and universities advancing AAM technology, safety analysis, and workforce development.', icon: '◉', angle: 135 },
-  { id: 'ansp', label: 'Air Navigation\nProviders', short: 'UTM · ATM · Traffic Mgmt', desc: 'Unmanned traffic management operators and air traffic management providers enabling safe airspace integration.', icon: '◎', angle: 180 },
-  { id: 'operators', label: 'Operators &\nServices', short: 'Drone Ops · Delivery · Providers', desc: 'Commercial drone operators, delivery service providers, and aerial operations companies.', icon: '▲', angle: 225 },
-  { id: 'industry', label: 'Industry\nPartners', short: 'OEMs · Tech · Integrators', desc: 'Aircraft manufacturers, technology providers, and systems integrators building the AAM ecosystem.', icon: '⬡', angle: 270 },
-  { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Metropolitan planning organizations, municipal governments, and transit agencies integrating AAM into community infrastructure.', icon: '▣', angle: 315 },
+  { id: 'aviation', label: 'Aviation\nAuthorities', short: 'FAA · ICAO · NASAO', desc: 'Federal and international aviation regulatory bodies shaping airspace policy and certification standards.', angle: 0 },
+  { id: 'government', label: 'Government\nAgencies', short: 'DOTs · Security · Emergency', desc: 'State and federal departments of transportation, homeland security, and emergency management services.', angle: 45 },
+  { id: 'standards', label: 'Standards\nOrganizations', short: 'ACRA · AASHTO · NCHRP', desc: 'Industry standards bodies developing technical requirements, performance benchmarks, and interoperability frameworks.', angle: 90 },
+  { id: 'academic', label: 'Academic\nInstitutions', short: 'Research · Universities · Labs', desc: 'Research centers and universities advancing AAM technology, safety analysis, and workforce development.', angle: 135 },
+  { id: 'ansp', label: 'Air Navigation\nProviders', short: 'UTM · ATM · Traffic Mgmt', desc: 'Unmanned traffic management operators and air traffic management providers enabling safe airspace integration.', angle: 180 },
+  { id: 'operators', label: 'Operators &\nServices', short: 'Drone Ops · Delivery · Providers', desc: 'Commercial drone operators, delivery service providers, and aerial operations companies.', angle: 225 },
+  { id: 'industry', label: 'Industry\nPartners', short: 'OEMs · Tech · Integrators', desc: 'Aircraft manufacturers, technology providers, and systems integrators building the AAM ecosystem.', angle: 270 },
+  { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Metropolitan planning organizations, municipal governments, and transit agencies integrating AAM into community infrastructure.', angle: 315 },
 ];
 
 const AAMPage = () => {
@@ -543,16 +554,15 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                   })}
 
                   {/* Center glow */}
-                  <circle cx="400" cy="400" r="80" fill="url(#centerGrad)" />
-                  <circle cx="400" cy="400" r="52" fill="none" stroke="#c9a84c" strokeWidth="1" className="eco-center-pulse" opacity="0.2" />
+                  <circle cx="400" cy="400" r="100" fill="url(#centerGrad)" />
+                  <circle cx="400" cy="400" r="68" fill="none" stroke="#c9a84c" strokeWidth="0.8" className="eco-center-pulse" opacity="0.2" />
 
-                  {/* Center hub */}
-                  <circle cx="400" cy="400" r="48" fill="rgba(6,12,22,0.9)" stroke="#c9a84c" strokeWidth="1.5" filter="url(#goldGlow)" />
-                  <text x="400" y="388" textAnchor="middle" fill="url(#titleGoldGrad)" fontFamily="'DM Sans', sans-serif" fontSize="9" fontWeight="700" letterSpacing="3" style={{ textTransform: 'uppercase' }}>RAWLINS</text>
-                  <text x="400" y="404" textAnchor="middle" fill="url(#titleGoldGrad)" fontFamily="'DM Sans', sans-serif" fontSize="8" fontWeight="600" letterSpacing="2" style={{ textTransform: 'uppercase' }}>AERO</text>
-                  <text x="400" y="418" textAnchor="middle" fill="rgba(232,230,225,0.5)" fontFamily="'DM Sans', sans-serif" fontSize="7" fontWeight="500" letterSpacing="2" style={{ textTransform: 'uppercase' }}>TEAM</text>
+                  {/* Center hub — clean minimal style */}
+                  <circle cx="400" cy="400" r="60" fill="rgba(6,12,22,0.95)" stroke="rgba(201,168,76,0.3)" strokeWidth="1" />
+                  <text x="400" y="390" textAnchor="middle" fill="#e8d5a0" fontFamily="'Cormorant Garamond', Georgia, serif" fontSize="15" fontWeight="500" letterSpacing="2">RAWLINS</text>
+                  <text x="400" y="408" textAnchor="middle" fill="rgba(201,168,76,0.6)" fontFamily="'DM Sans', sans-serif" fontSize="9" fontWeight="500" letterSpacing="3" style={{ textTransform: 'uppercase' }}>AERO TEAM</text>
 
-                  {/* Stakeholder nodes — icons only, no circles */}
+                  {/* Stakeholder nodes — SVG icons, no circle backgrounds */}
                   {ecosystemNodes.map((node) => {
                     const rad = (node.angle * Math.PI) / 180;
                     const nx = 400 + Math.cos(rad) * 280;
@@ -560,23 +570,27 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                     const isActive = activeNode === node.id;
                     const isHovered = hoveredNode === node.id;
                     const highlighted = isActive || isHovered;
+                    const iconPath = ecoIcons[node.id] || '';
+                    const iconSize = highlighted ? 32 : 26;
 
                     return (
                       <g key={node.id} style={{ cursor: 'none' }} onClick={() => setActiveNode(activeNode === node.id ? null : node.id)} onMouseEnter={() => setHoveredNode(node.id)} onMouseLeave={() => setHoveredNode(null)}>
-                        {/* Transparent hit area */}
-                        <circle cx={nx} cy={ny} r="40" fill="transparent" />
-                        {/* Icon */}
-                        <text x={nx} y={ny} textAnchor="middle" dominantBaseline="middle" fill={highlighted ? "#e8d5a0" : "rgba(201,168,76,0.7)"} fontSize={highlighted ? "28" : "22"} style={{ transition: 'all 0.3s', filter: highlighted ? 'drop-shadow(0 0 8px rgba(201,168,76,0.5))' : 'none' }}>
-                          {node.icon}
-                        </text>
-                        {/* Label below icon */}
+                        {/* Hit area */}
+                        <circle cx={nx} cy={ny} r="50" fill="transparent" />
+                        {/* SVG icon */}
+                        <g transform={`translate(${nx - iconSize / 2}, ${ny - iconSize / 2})`} style={{ transition: 'all 0.3s' }}>
+                          <svg width={iconSize} height={iconSize} viewBox="0 0 24 24">
+                            <path d={iconPath} fill={highlighted ? "#e8d5a0" : "rgba(201,168,76,0.65)"} style={{ filter: highlighted ? 'drop-shadow(0 0 6px rgba(201,168,76,0.5))' : 'none' }} />
+                          </svg>
+                        </g>
+                        {/* Label */}
                         {node.label.split('\n').map((line, li) => (
-                          <text key={li} x={nx} y={ny + 34 + li * 14} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.6)"} fontFamily="'DM Sans', sans-serif" fontSize={highlighted ? "10" : "9"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.2" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
+                          <text key={li} x={nx} y={ny + (highlighted ? 28 : 24) + li * 16} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.6)"} fontFamily="'DM Sans', sans-serif" fontSize={highlighted ? "12" : "11"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
                             {line}
                           </text>
                         ))}
                         {highlighted && (
-                          <text x={nx} y={ny + 68} textAnchor="middle" fill="rgba(201,168,76,0.6)" fontFamily="'DM Sans', sans-serif" fontSize="8" letterSpacing="0.5">{node.short}</text>
+                          <text x={nx} y={ny + 64} textAnchor="middle" fill="rgba(201,168,76,0.55)" fontFamily="'DM Sans', sans-serif" fontSize="9" letterSpacing="0.5">{node.short}</text>
                         )}
                       </g>
                     );
@@ -604,28 +618,33 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                   const node = ecosystemNodes.find(n => n.id === activeNode);
                   if (!node) return null;
                   const rad = (node.angle * Math.PI) / 180;
-                  const pctX = 50 + Math.cos(rad) * 35;
-                  const pctY = 50 + Math.sin(rad) * 35;
-                  const panelLeft = pctX < 30 ? '0%' : pctX > 70 ? 'auto' : `${pctX}%`;
-                  const panelRight = pctX > 70 ? '0%' : 'auto';
-                  const panelTop = pctY < 30 ? '0%' : `${Math.min(pctY, 65)}%`;
-                  const panelTransform = pctX >= 30 && pctX <= 70 ? 'translateX(-50%)' : 'none';
+                  const cosA = Math.cos(rad);
+                  const sinA = Math.sin(rad);
+                  /* Position panel near node but clamped inside wrapper */
+                  const rawX = 50 + cosA * 30;
+                  const rawY = 50 + sinA * 30;
+                  const clampX = Math.max(5, Math.min(95, rawX));
+                  const clampY = Math.max(5, Math.min(70, rawY));
                   return (
-                    <div className="eco-detail-panel" style={{ left: panelLeft, right: panelRight, top: panelTop, bottom: 'auto', transform: panelTransform }}>
+                    <div className="eco-detail-panel" style={{ left: `${clampX}%`, top: `${clampY}%`, transform: 'translate(-50%, -50%)' }}>
                       <div className="eco-detail-header">
-                        <span className="eco-detail-icon">{node.icon}</span>
                         <div>
                           <h4 className="eco-detail-title">{node.label.replace('\n', ' ')}</h4>
                           <p className="eco-detail-short">{node.short}</p>
                         </div>
                         <button className="eco-detail-close" onClick={() => setActiveNode(null)}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
                         </button>
                       </div>
                       <p className="eco-detail-desc">{node.desc}</p>
                     </div>
                   );
                 })()}
+
+                {/* Click-outside overlay to close panel */}
+                {activeNode && (
+                  <div className="eco-click-outside" onClick={() => setActiveNode(null)} />
+                )}
               </div>
             </div>
           </div>

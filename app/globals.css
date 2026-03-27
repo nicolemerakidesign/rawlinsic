@@ -2764,6 +2764,13 @@ color: #fff;
   position: relative;
   max-width: 700px;
   margin: 0 auto;
+  overflow: visible;
+}
+.eco-click-outside {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  cursor: none;
 }
 .eco-svg {
   width: 100%;
@@ -2775,15 +2782,16 @@ color: #fff;
   position: absolute;
   background: rgba(6,12,22,0.95);
   border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 16px;
-  padding: 24px 28px 20px;
-  max-width: 340px;
-  width: 340px;
+  border-radius: 12px;
+  padding: 20px 24px 18px;
+  width: 300px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.06);
-  animation: ecoDetailIn 0.35s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 16px 60px rgba(0,0,0,0.5), 0 0 30px rgba(201,168,76,0.06);
+  animation: ecoDetailIn 0.3s cubic-bezier(0.16,1,0.3,1);
   z-index: 10;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 @keyframes ecoDetailIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -2792,20 +2800,9 @@ color: #fff;
 .eco-detail-header {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 14px;
-}
-.eco-detail-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 10px;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 .eco-detail-title {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
@@ -2873,7 +2870,7 @@ color: #fff;
   .aam-portfolio-grid { grid-template-columns: 1fr; gap: 56px; }
   .eco-layout { grid-template-columns: 1fr; gap: 40px; }
   .eco-vis-wrapper { max-width: 500px; }
-  .eco-detail-panel { left: 50% !important; right: auto !important; top: auto !important; bottom: -40px !important; transform: translateX(-50%) !important; padding: 20px 22px 16px; width: 90%; max-width: 340px; }
+  .eco-detail-panel { left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; padding: 18px 20px 16px; width: 85%; max-width: 300px; }
   .aam-pillar-img-wrap { height: 160px; }
   .aam-framework-img-wrap { height: 140px; }
 }
