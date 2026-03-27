@@ -607,19 +607,23 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                       <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"><mpath href={`#path-in-${i}`} /></animateMotion>
                     </circle>
                   ))}
-                  {/* Paths — outbound (center → icon) */}
+                  {/* Paths — outbound (circle edge → icon) */}
                   {ecosystemNodes.map((node, i) => {
                     const rad = (node.angle * Math.PI) / 180;
-                    const nx = 400 + Math.cos(rad) * 280;
-                    const ny = 400 + Math.sin(rad) * 280;
-                    return <path key={`path-out-${i}`} id={`path-out-${i}`} d={`M400,400 L${nx},${ny}`} fill="none" stroke="none" />;
+                    const sx = 400 + Math.cos(rad) * 85;
+                    const sy = 400 + Math.sin(rad) * 85;
+                    const nx = 400 + Math.cos(rad) * 250;
+                    const ny = 400 + Math.sin(rad) * 250;
+                    return <path key={`path-out-${i}`} id={`path-out-${i}`} d={`M${sx},${sy} L${nx},${ny}`} fill="none" stroke="none" />;
                   })}
-                  {/* Paths — inbound (icon → center) */}
+                  {/* Paths — inbound (icon → circle edge) */}
                   {ecosystemNodes.map((node, i) => {
                     const rad = (node.angle * Math.PI) / 180;
-                    const nx = 400 + Math.cos(rad) * 280;
-                    const ny = 400 + Math.sin(rad) * 280;
-                    return <path key={`path-in-${i}`} id={`path-in-${i}`} d={`M${nx},${ny} L400,400`} fill="none" stroke="none" />;
+                    const sx = 400 + Math.cos(rad) * 85;
+                    const sy = 400 + Math.sin(rad) * 85;
+                    const nx = 400 + Math.cos(rad) * 250;
+                    const ny = 400 + Math.sin(rad) * 250;
+                    return <path key={`path-in-${i}`} id={`path-in-${i}`} d={`M${nx},${ny} L${sx},${sy}`} fill="none" stroke="none" />;
                   })}
                 </svg>
 
