@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
@@ -128,9 +129,13 @@ export default function CaseStudyDetail({ study }: Props) {
       <div className="content-wrapper">
         {/* ── Hero with image ── */}
         <section className="csd-hero" id="top">
-          <div
+          <Image
+            src={study.heroImage}
+            alt={study.title}
+            fill
+            priority
+            sizes="100vw"
             className="csd-hero-img"
-            style={{ backgroundImage: `url(${study.heroImage})` }}
           />
           <div className="csd-hero-overlay" />
           <div className="csd-hero-content">

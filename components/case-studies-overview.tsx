@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
@@ -147,9 +148,12 @@ export default function CaseStudiesOverview() {
                 href={`/insights/case-studies/${cs.slug}`}
                 className={`cs-card reveal rd${(i % 4) + 1}`}
               >
-                <div
+                <Image
+                  src={cs.image}
+                  alt={cs.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
                   className="cs-card-img"
-                  style={{ backgroundImage: `url(${cs.image})` }}
                 />
                 <div className="cs-card-overlay" />
                 <div className="cs-card-content">
