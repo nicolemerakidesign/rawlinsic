@@ -130,7 +130,7 @@ export default function CaseStudyDetail({ study }: Props) {
         <section className="csd-hero" id="top">
           <div
             className="csd-hero-img"
-            style={{ backgroundImage: `url(${study.image})` }}
+            style={{ backgroundImage: `url(${study.heroImage})` }}
           />
           <div className="csd-hero-overlay" />
           <div className="csd-hero-content">

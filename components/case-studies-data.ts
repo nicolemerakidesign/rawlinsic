@@ -11,6 +11,7 @@ export interface CaseStudy {
   subtitle?: string;
   description: string;
   image: string;
+  heroImage: string;
   sectionHeading?: string;
   projects: CaseStudyProject[];
   clientInfo?: {
@@ -28,6 +29,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Tennessee",
     subtitle: "Program Delivery & Workforce",
     image: "https://rawlinsic.com/wp-content/uploads/2024/09/tnbig.webp",
+    heroImage: "https://images.unsplash.com/photo-1590074072786-a66914d668f1?w=1920&q=80",
     description:
       "Tennessee has been a leader in modernizing transportation project delivery and organizational effectiveness. Our work with the Tennessee Department of Transportation (TDOT) has focused on enhancing program management, improving risk assessment, and fostering a culture of innovation and accountability.",
     sectionHeading: "Key Projects & Initiatives",
@@ -59,6 +61,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Nevada",
     subtitle: "Infrastructure & Fleet",
     image: "https://rawlinsic.com/wp-content/uploads/2024/09/nv.webp",
+    heroImage: "https://images.unsplash.com/photo-1581351123004-757df051db8e?w=1920&q=80",
     description:
       "Nevada\u2019s transportation network is vital for both economic development and community connectivity. Rawlins Infra Consult has played a significant role in modernizing infrastructure planning and maintenance across the state. Our work with the Nevada Department of Transportation (NDOT) has focused on strategic planning, asset management, and fleet optimization to ensure a more efficient, reliable, and cost-effective transportation system.",
     sectionHeading: "Key Projects & Initiatives",
@@ -100,6 +103,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "North Carolina",
     subtitle: "Asset Management & Program Delivery",
     image: "https://rawlinsic.com/wp-content/uploads/2024/09/nc.webp",
+    heroImage: "https://images.unsplash.com/photo-1569974507005-6dc61f97fb5c?w=1920&q=80",
     description:
       "North Carolina\u2019s Department of Transportation (NCDOT) has made significant strides in asset management and program delivery efficiency. Our work has supported integrated project delivery, federal grant applications, and data-driven infrastructure improvements.",
     sectionHeading: "Key Projects & Initiatives",
@@ -131,6 +135,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Virginia",
     subtitle: "Maintenance Contracts",
     image: "https://rawlinsic.com/wp-content/uploads/2025/03/virginia.webp",
+    heroImage: "https://images.unsplash.com/photo-1569974498163-6db643645e40?w=1920&q=80",
     description:
       "Virginia\u2019s transportation infrastructure is a key component of economic growth and mobility. Our work has focused on enhancing highway maintenance programs, improving contractor performance, and refining asset management strategies.",
     sectionHeading: "Key Projects & Initiatives",
@@ -152,6 +157,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Michigan",
     subtitle: "Performance-Based Operations",
     image: "https://rawlinsic.com/wp-content/uploads/2024/09/michigan.webp",
+    heroImage: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80",
     description:
       "Michigan has been at the forefront of performance-based infrastructure operations, and we have supported the state in implementing innovative maintenance models and asset management solutions.",
     sectionHeading: "Key Projects & Initiatives",
@@ -173,6 +179,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Utah",
     subtitle: "Long-term Asset Strategy",
     image: "https://rawlinsic.com/wp-content/uploads/2025/03/utah.webp",
+    heroImage: "https://images.unsplash.com/photo-1547700055-b61cacebece9?w=1920&q=80",
     description:
       "Utah\u2019s Department of Transportation (UDOT) has prioritized long-term asset management and cost reduction strategies. Our work has supported the development of sustainable infrastructure investment frameworks.",
     sectionHeading: "Key Projects & Initiatives",
@@ -194,6 +201,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Other States & Major Projects",
     subtitle: "Nationwide Impact",
     image: "https://rawlinsic.com/wp-content/uploads/2025/01/transportation.webp",
+    heroImage: "https://images.unsplash.com/photo-1545296664-39db56ad95bd?w=1920&q=80",
     description:
       "Rawlins Infra Consult has provided strategic consulting services across multiple states, delivering tailored solutions for transportation agencies with diverse operational needs.",
     sectionHeading: "Key Projects & Initiatives",
@@ -237,6 +245,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Major Transportation Infrastructure Projects",
     subtitle: "High-Impact Infrastructure",
     image: "https://rawlinsic.com/wp-content/uploads/2025/03/majortrans.webp",
+    heroImage: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&q=80",
     description:
       "Rawlins Infra Consult has supported some of the largest and most complex transportation infrastructure projects in the United States, providing expert project management, risk mitigation, and multi-agency coordination.",
     sectionHeading: "Key Projects",
@@ -278,6 +287,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Louisiana",
     subtitle: "Organizational Transformation",
     image: "https://rawlinsic.com/wp-content/uploads/2025/03/louisiana.webp",
+    heroImage: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=1920&q=80",
     description:
       "Rawlins Infra Consult is actively supporting the Louisiana Department of Transportation and Development (DOTD) through a comprehensive transformation initiative that aims to enhance organizational efficiency, program delivery, workforce development, and accountability.",
     sectionHeading: "Key Projects & Initiatives",
@@ -328,6 +338,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Delaware",
     subtitle: "Technology Strategy",
     image: "https://rawlinsic.com/wp-content/uploads/2025/03/delaware.webp",
+    heroImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80",
     description:
       "DelDOT\u2019s Division of Technology and Innovation Services plays a critical role in advancing the agency\u2019s mission through modern, efficient, and future-ready technology solutions. With a focus on smart infrastructure, data-driven decision-making, and customer-centric services, the division is committed to enabling innovation across all areas of transportation.",
     sectionHeading: "Key Projects & Initiatives",

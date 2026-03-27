@@ -3315,7 +3315,7 @@ color: #fff;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 140px 40px 80px;
+  padding: 140px 40px 0px;
 }
 .cs-hero::before {
   content: '';
@@ -3462,7 +3462,7 @@ color: #fff;
 .cs-cta-section {
   text-align: center;
   padding: 120px 60px;
-  max-width: 700px;
+  max-width: 792px;
   margin: 0 auto;
 }
 .cs-cta-label {
@@ -3482,13 +3482,16 @@ color: #fff;
   margin: 0 0 24px;
   line-height: 1.15;
 }
-.cs-cta-text {
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(232,230,225,0.6);
-  margin: 0 0 40px;
+.cs-cta-text {    
+    color: #fff;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.85;
+  font-family: var(--font-dm-sans),"DM Sans",sans-serif;
+  max-width: 760px;
+  margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+
 }
 .cs-cta-btn {
   display: inline-block;
@@ -3546,9 +3549,9 @@ color: #fff;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(6,12,22,0.55) 0%,
-    rgba(6,12,22,0.75) 50%,
-    rgba(6,12,22,0.95) 100%
+    rgba(6,12,22,0.7) 0%,
+    rgba(6,12,22,0.82) 50%,
+    rgba(6,12,22,0.96) 100%
   );
 }
 .csd-hero-content {
