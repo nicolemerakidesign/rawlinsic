@@ -327,24 +327,22 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
         <div className="aam-container">
           <div className="aam-section-header">
             <p className="section-label"><span className="gold-text">Value Delivery</span></p>
-            <div className="aam-value-title-row">
-              <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
-              <button
-                className={`intro-expand-btn aam-value-arrow-btn${valueOpen ? " expanded" : ""}`}
-                aria-label="Learn more"
-                onClick={() => setValueOpen(o => !o)}
-              >
-                <span className="intro-expand-icon aam-value-arrow-icon">
-                  <svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M1.5 1l7 7-7 7" />
-                  </svg>
-                </span>
-              </button>
-              <div className={`aam-value-expand${valueOpen ? " expanded" : ""}`}>
-                <p className="aam-section-lead">
+            <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
+            <button
+              className={`intro-expand-btn${valueOpen ? " expanded" : ""}`}
+              aria-label="Learn more"
+              onClick={() => setValueOpen(o => !o)}
+            >
+              <span className="intro-expand-icon">
+                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 1.5l7 7 7-7" />
+                </svg>
+              </span>
+            </button>
+            <div className={`intro-expandable${valueOpen ? " expanded" : ""}`}>
+              <p className="aam-section-lead">
 The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.
-                </p>
-              </div>
+              </p>
             </div>
           </div>
           <div className="aam-pillars-grid">
@@ -425,12 +423,13 @@ Our team brings together regulatory guidance, operational expertise, and program
                 </div>
                 <div className="aam-framework-accent" style={{ background: card.accent }} />
                 <div className="aam-framework-inner">
-                  <h3 className="aam-framework-phase">{card.title}</h3>
+                  <div className="aam-pillar-title-row">
+                    <h3 className="aam-framework-phase">{card.title}</h3>
+                    <button className="aam-expand-btn" onClick={() => toggleSet(setOpenFrameworks, i)}>
+                      {chevronSvg(openFrameworks.has(i))}
+                    </button>
+                  </div>
                   <p className="aam-framework-tagline">{card.tagline}</p>
-                  <button className="aam-framework-toggle" onClick={() => toggleSet(setOpenFrameworks, i)}>
-                    <span>{openFrameworks.has(i) ? "Hide details" : "View details"}</span>
-                    {chevronSvg(openFrameworks.has(i))}
-                  </button>
                   <div className={`aam-framework-expand${openFrameworks.has(i) ? " open" : ""}`}>
                     <ul className="aam-bullet-list">
                       {card.bullets.map((b) => <li key={b}>{b}</li>)}
@@ -592,9 +591,6 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
                             {line}
                           </text>
                         ))}
-                        {highlighted && (
-                          <text x={nx} y={ny + 82} textAnchor="middle" fill="rgba(201,168,76,0.6)" fontFamily="'DM Sans', sans-serif" fontSize="12" letterSpacing="0.5">{node.short}</text>
-                        )}
                       </g>
                     );
                   })}

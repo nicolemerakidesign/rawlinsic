@@ -2165,45 +2165,6 @@ color: #fff;
 .aam-overview-left { padding-top: 8px; }
 .aam-overview-right {}
 
-/* Value delivery — title row with inline arrow + expand right */
-.aam-value-title-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.aam-value-title-row .section-title {
-  flex-shrink: 0;
-}
-/* Override the intro-expand-btn to stay as circle but not add margin */
-.aam-value-arrow-btn {
-  margin-top: 0;
-  margin-bottom: 0;
-  flex-shrink: 0;
-}
-/* Arrow points right by default, rotates down when expanded */
-.aam-value-arrow-icon {
-  transform: rotate(-90deg);
-}
-.aam-value-arrow-btn.expanded .aam-value-arrow-icon {
-  transform: rotate(0deg);
-}
-/* Text expands to the right */
-.aam-value-expand {
-  flex: 1;
-  min-width: 0;
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-width 0.65s cubic-bezier(.4,0,.2,1), opacity 0.5s ease;
-}
-.aam-value-expand.expanded {
-  max-width: 700px;
-  opacity: 1;
-}
-.aam-value-expand .aam-section-lead {
-  white-space: normal;
-  min-width: 300px;
-}
 
 /* Value pillar cards */
 .aam-pillars-grid {
@@ -2213,7 +2174,7 @@ color: #fff;
   align-items: start;
 }
 .aam-pillar-card {
-  background: #070d17;
+  background: transparent;
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 16px;
   overflow: hidden;
@@ -2553,7 +2514,9 @@ color: #fff;
 }
 
 /* Service Portfolio */
-.aam-portfolio-section {}
+.aam-portfolio-section .aam-section-header {
+  text-align: center;
+}
 .aam-portfolio-tiles { grid-template-columns: repeat(2, 1fr); }
 .aam-portfolio-grid {
   display: grid;
@@ -2826,7 +2789,8 @@ color: #fff;
   border: 1px solid rgba(201,168,76,0.25);
   border-radius: 12px;
   padding: 20px 24px 18px;
-  width: 300px;
+  width: 280px;
+  max-width: 90vw;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 16px 60px rgba(0,0,0,0.5), 0 0 30px rgba(201,168,76,0.06);
