@@ -704,9 +704,9 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
             <p className="section-label"><span className="gold-text">Get Started</span></p>
             <h2 className="section-title">Ready to <em>Transform</em> Your Region?</h2>
             <p className="aam-cta-body">
-              Partner with Rawlins to unlock the potential of Advanced Air Mobility and UAS technology. Our experts are ready to guide your community toward innovation, resilience, and growth.
+              Whether you are just beginning or well along on your journey, we can provide guidance and support. To learn more about our service portfolio and how we can help you deliver successful AAM and UAS outcomes for your community, reach out.
             </p>
-            <Link href="/contact" className="hero-cta-btn" style={{ marginTop: "40px", display: "inline-block" }}>
+            <Link href="/contact" className="hero-cta-btn" style={{ marginTop: "20px", display: "inline-block" }}>
               <span>Start a Conversation</span>
             </Link>
           </div>

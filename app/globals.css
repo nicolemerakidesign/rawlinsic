@@ -2764,7 +2764,7 @@ color: #fff;
 }
 
 /* CTA section */
-.aam-cta-section { padding: 120px 0 140px; position: relative; overflow: hidden; }
+.aam-cta-section { padding: 140px 0 140px; position: relative; overflow: hidden; }
 .aam-cta-bg {
   position: absolute;
   inset: 0;
@@ -2780,11 +2780,13 @@ color: #fff;
 }
 .aam-cta-wrap { max-width: 820px; }
 .aam-cta-body {
-  font-size: 1.05rem;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
   line-height: 1.85;
-  color: rgba(232,230,225,0.72);
+  color: rgba(232,230,225,0.75);
   max-width: 620px;
-  margin-bottom: 44px;
+  margin: 20px auto 0;
 }
 
 /* ── Interactive Ecosystem Visualization ─────────────────────────── */
