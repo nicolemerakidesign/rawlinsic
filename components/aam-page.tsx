@@ -696,7 +696,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
             <p className="section-label"><span className="gold-text">Services</span></p>
             <h2 className="section-title">Our Service <em>Portfolio</em></h2>
           </div>
-          <div className="aam-pillars-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          <div className="aam-pillars-grid aam-portfolio-tiles">
             {[
               { title: "AAM Services", img: DRONE_IMG, items: aamServices, idx: 0 },
               { title: "UAS Services", img: DRONE_FLIGHT_IMG, items: uasServices, idx: 1 },

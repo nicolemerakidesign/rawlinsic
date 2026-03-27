@@ -13,7 +13,9 @@ interface SiteNavProps {
 
 export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const close = () => setMobileMenuOpen(false);
+  const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
+  const close = () => { setMobileMenuOpen(false); setMobileSubOpen(null); };
+  const toggleSub = (key: string) => setMobileSubOpen(prev => prev === key ? null : key);
 
   return (
     <>
@@ -23,12 +25,43 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           &times;
         </button>
         <a href="/" onClick={close}>Home</a>
-        <a href="/capabilities/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
-        <a href="/about/our-people" onClick={close}>Our People</a>
-        <a href="/about/areas-we-serve" onClick={close}>Areas We Serve</a>
-        <a href="#" onClick={close}>Insights</a>
+
+        {/* Capabilities */}
+        <button className="mobile-menu-parent" onClick={() => toggleSub("cap")}>
+          Capabilities
+          <svg className={`mobile-menu-chevron${mobileSubOpen === "cap" ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+        </button>
+        <div className={`mobile-menu-sub${mobileSubOpen === "cap" ? " open" : ""}`}>
+          <a href="#" onClick={close}>Strategy</a>
+          <a href="#" onClick={close}>Operations</a>
+          <a href="/capabilities/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
+          <a href="#" onClick={close}>Automation &amp; Integration</a>
+        </div>
+
+        {/* About */}
+        <button className="mobile-menu-parent" onClick={() => toggleSub("about")}>
+          About
+          <svg className={`mobile-menu-chevron${mobileSubOpen === "about" ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+        </button>
+        <div className={`mobile-menu-sub${mobileSubOpen === "about" ? " open" : ""}`}>
+          <a href="#" onClick={close}>Who We Are</a>
+          <a href="/about/our-people" onClick={close}>Our People</a>
+          <a href="/about/areas-we-serve" onClick={close}>Areas We Serve</a>
+        </div>
+
+        {/* Insights */}
+        <button className="mobile-menu-parent" onClick={() => toggleSub("insights")}>
+          Insights
+          <svg className={`mobile-menu-chevron${mobileSubOpen === "insights" ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+        </button>
+        <div className={`mobile-menu-sub${mobileSubOpen === "insights" ? " open" : ""}`}>
+          <a href="#" onClick={close}>Thought Leadership</a>
+          <a href="#" onClick={close}>Case Studies</a>
+          <a href="#" onClick={close}>Podcast</a>
+        </div>
+
         <a href="#" onClick={close}>Careers</a>
-        <Link href={ctaHref} onClick={close}>Get In Touch</Link>
+        <Link href={ctaHref} onClick={close} className="mobile-menu-cta">Get In Touch</Link>
       </div>
 
       {/* Navigation */}
