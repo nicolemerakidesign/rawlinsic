@@ -2141,7 +2141,7 @@ font-size: 15px;
 
 /* Section header block */
 .aam-section-header {
-  max-width: 760px;
+  max-width: 860px;
   margin-bottom: 64px;
 }
 .aam-section-lead {
@@ -2855,7 +2855,7 @@ color: #fff;
   line-height: 1.85;
   color: rgba(232,230,225,0.75);
   margin: 0;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 /* ── AAM Responsive ──────────────────────────────────────────────── */
