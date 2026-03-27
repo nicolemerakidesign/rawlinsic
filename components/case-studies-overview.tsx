@@ -147,20 +147,21 @@ export default function CaseStudiesOverview() {
                 href={`/insights/case-studies/${cs.slug}`}
                 className={`cs-card reveal rd${(i % 4) + 1}`}
               >
-                <div className="cs-card-number">
-                  {String(i + 1).padStart(2, "0")}
+                <div
+                  className="cs-card-img"
+                  style={{ backgroundImage: `url(${cs.image})` }}
+                />
+                <div className="cs-card-overlay" />
+                <div className="cs-card-content">
+                  <h3 className="cs-card-title">{cs.title}</h3>
+                  <div className="cs-card-divider" />
+                  <p className="cs-card-desc">{cs.description}</p>
+                  <div className="cs-card-arrow">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
-                <h3 className="cs-card-title">{cs.title}</h3>
-                {cs.subtitle && (
-                  <span className="cs-card-subtitle">{cs.subtitle}</span>
-                )}
-                <p className="cs-card-desc">{cs.description}</p>
-                <span className="cs-card-link">
-                  View Case Study
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </span>
               </Link>
             ))}
           </div>

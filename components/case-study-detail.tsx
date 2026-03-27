@@ -126,8 +126,13 @@ export default function CaseStudyDetail({ study }: Props) {
       <SiteNav />
 
       <div className="content-wrapper">
-        {/* ── Hero ── */}
+        {/* ── Hero with image ── */}
         <section className="csd-hero" id="top">
+          <div
+            className="csd-hero-img"
+            style={{ backgroundImage: `url(${study.image})` }}
+          />
+          <div className="csd-hero-overlay" />
           <div className="csd-hero-content">
             <Link href="/insights/case-studies" className="csd-back-link">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -136,15 +141,9 @@ export default function CaseStudyDetail({ study }: Props) {
               All Case Studies
             </Link>
             <p className="section-label">
-              <span className="gold-text">
-                Case Study {String(idx + 1).padStart(2, "0")} of{" "}
-                {String(CASE_STUDIES.length).padStart(2, "0")}
-              </span>
+              <span className="gold-text">{study.subtitle || "Case Study"}</span>
             </p>
             <h1 className="hero-title">{study.title}</h1>
-            {study.subtitle && (
-              <p className="csd-subtitle">{study.subtitle}</p>
-            )}
           </div>
         </section>
 
