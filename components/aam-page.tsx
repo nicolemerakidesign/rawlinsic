@@ -681,7 +681,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
           <div className="aam-pillars-grid aam-portfolio-tiles">
             {[
               { title: "AAM Services", img: DRONEMOUNTAINS_IMG, items: aamServices, idx: 0 },
-              { title: "UAS Services", img: DRONE_FLIGHT_IMG, items: uasServices, idx: 1 },
+              { title: "UAS Services", img: PLANNING2_IMG, items: uasServices, idx: 1 },
             ].map((svc) => (
               <div className={`aam-pillar-card${openServices.has(svc.idx) ? " open" : ""}`} key={svc.title}>
                 <div className="aam-pillar-img-wrap">
@@ -718,7 +718,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
           <div className="aam-cta-wrap" style={{ textAlign: "center", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Get Started</span></p>
             <h2 className="section-title">Ready to <em>Transform</em> Your Region?</h2>
-            <p className="aam-cta-body">
+            <p className="section-text">
               Whether you are just beginning or well along on your journey, we can provide guidance and support. To learn more about our service portfolio and how we can help you deliver successful AAM and UAS outcomes for your community, reach out.
             </p>
             <Link href="/contact" className="hero-cta-btn" style={{ marginTop: "20px", display: "inline-block" }}>
