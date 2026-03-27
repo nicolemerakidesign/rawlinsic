@@ -2744,11 +2744,11 @@ color: #fff;
 }
 .aam-cta-wrap { max-width: 820px; }
 .aam-cta-body {
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+    color: #fff;
   font-size: 17px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.85;
-  color: rgba(232,230,225,0.75);
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   max-width: 620px;
   margin: 20px auto 0;
 }

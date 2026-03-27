@@ -718,7 +718,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
           <div className="aam-cta-wrap" style={{ textAlign: "center", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Get Started</span></p>
             <h2 className="section-title">Ready to <em>Transform</em> Your Region?</h2>
-            <p className="section-text">
+            <p className="aam-cta-body">
               Whether you are just beginning or well along on your journey, we can provide guidance and support. To learn more about our service portfolio and how we can help you deliver successful AAM and UAS outcomes for your community, reach out.
             </p>
             <Link href="/contact" className="hero-cta-btn" style={{ marginTop: "20px", display: "inline-block" }}>
