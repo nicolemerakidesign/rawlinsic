@@ -79,15 +79,21 @@ export default function AreaWeServeGlobe() {
 
   /* ── Globe ── */
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-    script.async = true;
-    script.onload = () => initGlobe();
-    document.body.appendChild(script);
+    const threeScript = document.createElement("script");
+    threeScript.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+    threeScript.async = true;
+    const topoScript = document.createElement("script");
+    topoScript.src = "https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js";
+    topoScript.async = true;
 
-    return () => {
-      script.remove();
-    };
+    let loaded = 0;
+    const onBothLoaded = () => { loaded++; if (loaded === 2) initGlobe(); };
+    threeScript.onload = onBothLoaded;
+    topoScript.onload = onBothLoaded;
+    document.body.appendChild(threeScript);
+    document.body.appendChild(topoScript);
+
+    return () => { threeScript.remove(); topoScript.remove(); };
   }, []);
 
   const initGlobe = () => {
@@ -102,7 +108,7 @@ export default function AreaWeServeGlobe() {
     const DRAG_SENSITIVITY = 0.005;
     const ZOOM_MIN = 3.4;
     const ZOOM_MAX = 7.0;
-    const ZOOM_DEFAULT = 5.0;
+    const ZOOM_DEFAULT = 5.8;
     const GOLD_LIGHT = 0xf0dca8;
     const GOLD_MID = 0xc9a84c;
     const GOLD_DEEP = 0xb8963e;
@@ -229,90 +235,88 @@ export default function AreaWeServeGlobe() {
       return new T.Vector3(-(r*Math.sin(p)*Math.cos(t)), r*Math.cos(p), r*Math.sin(p)*Math.sin(t));
     }
 
-    // Continent paths
-    const CP: Record<string, number[][]> = {
-      na: [[49,-125],[48,-123],[47,-124],[45,-124],[43,-124],[41,-124],[39,-123],[37,-122],[35,-121],[34,-120],[33,-118],[32,-117],[31,-115],[30,-114],[28,-112],[26,-110],[24,-110],[22,-106],[20,-105],[18,-103],[16,-96],[17,-92],[18,-88],[20,-87],[21,-87],[23,-88],[25,-90],[27,-89],[29,-89],[30,-87],[30,-85],[29,-83],[28,-82],[27,-80],[26,-80],[25,-80],[26,-82],[28,-82],[30,-81],[31,-80],[32,-79],[33,-78],[34,-76],[35,-76],[36,-75],[37,-76],[38,-75],[39,-74],[40,-73],[41,-72],[42,-71],[42,-70],[43,-69],[44,-67],[45,-66],[46,-64],[47,-63],[47,-61],[46,-59],[45,-57],[47,-56],[49,-54],[51,-55],[52,-56],[53,-58],[54,-60],[55,-60],[56,-62],[58,-63],[59,-64],[60,-65],[61,-69],[62,-72],[63,-75],[64,-78],[62,-80],[60,-82],[58,-85],[57,-87],[55,-90],[53,-93],[52,-95],[49,-95],[49,-100],[49,-105],[49,-110],[49,-115],[49,-120],[50,-123],[52,-127],[54,-130],[56,-133],[58,-137],[59,-140],[60,-145],[60,-150],[60,-155],[61,-158],[62,-160],[63,-163],[64,-165],[65,-168]],
-      sa: [[12,-72],[11,-75],[10,-76],[8,-77],[6,-77],[4,-78],[2,-79],[0,-80],[-2,-80],[-4,-81],[-6,-81],[-8,-80],[-10,-78],[-12,-77],[-14,-76],[-16,-75],[-17,-72],[-18,-70],[-20,-70],[-22,-70],[-24,-70],[-26,-70],[-28,-70],[-30,-71],[-32,-71],[-34,-72],[-36,-73],[-38,-73],[-40,-72],[-42,-72],[-44,-73],[-46,-74],[-48,-74],[-50,-74],[-52,-72],[-54,-70],[-54,-68],[-54,-65],[-53,-62],[-52,-60],[-50,-58],[-48,-58],[-46,-58],[-44,-58],[-42,-57],[-40,-57],[-38,-56],[-35,-55],[-32,-52],[-30,-50],[-28,-48],[-25,-48],[-22,-42],[-20,-40],[-18,-39],[-15,-39],[-12,-38],[-10,-37],[-8,-35],[-5,-35],[-3,-40],[-2,-44],[0,-50],[2,-51],[4,-52],[6,-56],[7,-58],[8,-60],[9,-62],[10,-65],[11,-68],[12,-72]],
-      eu: [[36,-6],[37,-8],[38,-9],[39,-9],[40,-9],[41,-9],[42,-9],[43,-8],[43,-5],[44,-1],[45,0],[46,-1],[47,-2],[48,-5],[48,-3],[49,-2],[50,0],[51,2],[52,4],[53,5],[54,7],[55,8],[56,10],[57,11],[58,12],[59,10],[60,5],[61,5],[62,6],[63,8],[64,10],[65,12],[66,14],[68,15],[69,18],[70,20],[70,24],[70,28],[68,30],[66,30],[64,30],[62,30],[60,30],[58,28],[56,28],[54,28],[52,28],[50,30],[48,28],[47,28],[46,24],[45,22],[44,20],[42,20],[41,20],[40,20],[39,22],[38,24],[37,26],[36,28],[36,25],[37,20],[38,16],[39,15],[40,14],[41,13],[42,12],[43,10],[44,8],[45,7],[46,6]],
-      af: [[35,-1],[34,0],[33,0],[31,-2],[30,-5],[28,-8],[26,-13],[24,-15],[22,-17],[20,-17],[18,-16],[16,-17],[14,-17],[12,-16],[10,-15],[8,-13],[6,-10],[5,-8],[4,-5],[4,0],[4,5],[4,8],[4,10],[2,10],[0,10],[-2,10],[-4,12],[-6,12],[-8,13],[-10,14],[-12,14],[-14,13],[-16,12],[-18,14],[-20,15],[-22,16],[-24,17],[-26,18],[-28,17],[-30,17],[-32,18],[-34,19],[-34,22],[-34,26],[-33,28],[-31,30],[-29,32],[-27,33],[-25,35],[-22,35],[-20,35],[-18,38],[-15,40],[-12,41],[-10,40],[-8,40],[-5,40],[-2,41],[0,42],[2,43],[4,44],[6,45],[8,47],[10,50],[12,48],[12,44],[14,42],[16,40],[18,38],[20,37],[22,36],[24,35],[26,34],[28,33],[30,32],[32,32],[34,11],[35,10],[36,2],[36,-1]],
-      as: [[40,28],[41,30],[42,35],[42,40],[42,45],[41,48],[40,50],[39,53],[38,55],[36,53],[34,52],[32,50],[30,50],[28,48],[26,50],[25,55],[24,57],[22,58],[20,56],[18,55],[15,50],[13,45],[12,48],[14,52],[16,55],[18,56],[20,60],[22,62],[24,65],[26,68],[28,68],[27,70],[25,72],[23,70],[21,72],[20,73],[18,74],[15,74],[12,76],[10,77],[8,78],[10,79],[12,80],[15,80],[18,83],[20,86],[22,88],[24,90],[22,92],[20,95],[18,98],[15,100],[12,100],[10,102],[8,102],[4,104],[2,104],[1,108],[1,110],[3,112],[5,115],[8,117],[10,120],[12,121],[15,121],[18,121],[20,122],[22,121],[24,121],[26,121],[28,121],[30,122],[32,121],[34,120],[36,120],[38,118],[39,118],[40,120],[42,125],[42,130],[44,132],[46,135],[48,135],[50,140],[52,142],[54,140],[56,138],[58,140],[60,150],[62,158],[64,168],[66,178],[68,175],[70,160],[70,150],[70,140],[69,135],[68,130],[66,125],[64,120],[62,110],[60,100],[58,90],[56,82],[54,78],[52,70],[50,65],[50,60],[48,55],[47,48],[45,40],[42,35]],
-      au: [[-12,130],[-13,128],[-14,127],[-16,124],[-18,122],[-20,118],[-22,114],[-24,114],[-26,114],[-28,114],[-30,115],[-32,116],[-34,117],[-35,118],[-35,122],[-35,127],[-35,132],[-35,135],[-36,138],[-37,140],[-38,143],[-38,145],[-37,148],[-36,150],[-34,151],[-32,153],[-30,153],[-28,153],[-26,152],[-24,152],[-22,150],[-20,149],[-18,147],[-16,146],[-15,145],[-14,144],[-13,142],[-12,140],[-12,137],[-11,136],[-12,133],[-12,130]],
-    };
+    // Load accurate continent/country outlines from Natural Earth TopoJSON
+    const topojson = (window as any).topojson;
+    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json")
+      .then(r => r.json())
+      .then(world => {
+        const land = topojson.feature(world, world.objects.land);
+        const olMat = new T.LineBasicMaterial({ color: 0x4a98cc, transparent: true, opacity: 0.6 });
+        const fillArr: any[] = [];
+        const eDots: any[] = [];
 
-    // Continent outlines
-    const olMat = new T.LineBasicMaterial({ color: 0x4a98cc, transparent: true, opacity: 0.6 });
-    Object.values(CP).forEach((path: number[][]) => {
-      const pts = path.map(([la,ln]: number[]) => ll2v(la, ln, GLOBE_RADIUS+0.006));
-      globeGroup.add(new T.Line(new T.BufferGeometry().setFromPoints(pts), olMat));
-    });
+        land.features.forEach((feat: any) => {
+          const geom = feat.geometry;
+          const rings = geom.type === "Polygon" ? [geom.coordinates] : geom.coordinates;
 
-    // Point-in-polygon
-    function pip(tLat: number, tLng: number, poly: number[][]) {
+          rings.forEach((polygon: number[][][]) => {
+            polygon.forEach((ring: number[][]) => {
+              // Outline
+              const pts = ring.map(([lng, lat]: number[]) => ll2v(lat, lng, GLOBE_RADIUS + 0.006));
+              if (pts.length > 2) {
+                globeGroup.add(new T.Line(new T.BufferGeometry().setFromPoints(pts), olMat));
+              }
+              // Edge dots along outlines
+              for (let i = 0; i < ring.length - 1; i++) {
+                const [ln1, la1] = ring[i], [ln2, la2] = ring[i + 1];
+                for (let s = 0; s <= 2; s++) {
+                  const t = s / 2;
+                  eDots.push(ll2v(la1 + (la2 - la1) * t, ln1 + (ln2 - ln1) * t, GLOBE_RADIUS + 0.008));
+                }
+              }
+            });
+          });
+        });
+
+        // Edge dots
+        if (eDots.length > 0) {
+          const eGeo = new T.BufferGeometry();
+          const ePos = new Float32Array(eDots.length * 3);
+          eDots.forEach((v: any, i: number) => { ePos[i*3]=v.x; ePos[i*3+1]=v.y; ePos[i*3+2]=v.z; });
+          eGeo.setAttribute("position", new T.BufferAttribute(ePos, 3));
+          globeGroup.add(new T.Points(eGeo, new T.PointsMaterial({
+            color: 0x5aaddd, size: 0.01, transparent: true, opacity: 0.55, sizeAttenuation: true
+          })));
+        }
+
+        // Dense fill dots inside land using bounding box sampling
+        const STEP = 2.0;
+        land.features.forEach((feat: any) => {
+          const geom = feat.geometry;
+          const rings = geom.type === "Polygon" ? [geom.coordinates] : geom.coordinates;
+          rings.forEach((polygon: number[][][]) => {
+            const outer = polygon[0];
+            if (!outer || outer.length < 3) return;
+            let mnLa=90,mxLa=-90,mnLn=180,mxLn=-180;
+            outer.forEach(([ln,la]: number[]) => { if(la<mnLa)mnLa=la; if(la>mxLa)mxLa=la; if(ln<mnLn)mnLn=ln; if(ln>mxLn)mxLn=ln; });
+            for (let la=mnLa; la<=mxLa; la+=STEP) {
+              for (let ln=mnLn; ln<=mxLn; ln+=STEP) {
+                if (pipGeo(la, ln, outer)) fillArr.push(ll2v(la, ln, GLOBE_RADIUS + 0.005));
+              }
+            }
+          });
+        });
+
+        if (fillArr.length > 0) {
+          const fGeo = new T.BufferGeometry();
+          const fPos = new Float32Array(fillArr.length * 3);
+          fillArr.forEach((v: any, i: number) => { fPos[i*3]=v.x; fPos[i*3+1]=v.y; fPos[i*3+2]=v.z; });
+          fGeo.setAttribute("position", new T.BufferAttribute(fPos, 3));
+          globeGroup.add(new T.Points(fGeo, new T.PointsMaterial({
+            color: 0x1e6a9e, size: 0.02, transparent: true, opacity: 0.45, sizeAttenuation: true
+          })));
+        }
+      });
+
+    // Point-in-polygon for GeoJSON (lng,lat coords)
+    function pipGeo(tLat: number, tLng: number, ring: number[][]) {
       let inside = false;
-      for (let i=0,j=poly.length-1; i<poly.length; j=i++) {
-        const [yi,xi]=poly[i],[yj,xj]=poly[j];
-        if (((yi>tLat)!==(yj>tLat))&&(tLng<(xj-xi)*(tLat-yi)/(yj-yi)+xi)) inside=!inside;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        const [xi, yi] = ring[i], [xj, yj] = ring[j];
+        if (((yi > tLat) !== (yj > tLat)) && (tLng < (xj - xi) * (tLat - yi) / (yj - yi) + xi)) inside = !inside;
       }
       return inside;
     }
-
-    // Dense fill dots inside continents
-    const fillArr: any[] = [];
-    const STEP = 1.8;
-    Object.values(CP).forEach((path: number[][]) => {
-      let mnLa=90,mxLa=-90,mnLn=180,mxLn=-180;
-      path.forEach(([la,ln]: number[])=>{if(la<mnLa)mnLa=la;if(la>mxLa)mxLa=la;if(ln<mnLn)mnLn=ln;if(ln>mxLn)mxLn=ln;});
-      for(let la=mnLa;la<=mxLa;la+=STEP){
-        for(let ln=mnLn;ln<=mxLn;ln+=STEP){
-          if(pip(la,ln,path)) fillArr.push(ll2v(la,ln,GLOBE_RADIUS+0.005));
-        }
-      }
-    });
-    const fGeo = new T.BufferGeometry();
-    const fPos = new Float32Array(fillArr.length*3);
-    fillArr.forEach((v: any,i: number)=>{fPos[i*3]=v.x;fPos[i*3+1]=v.y;fPos[i*3+2]=v.z;});
-    fGeo.setAttribute("position", new T.BufferAttribute(fPos, 3));
-    globeGroup.add(new T.Points(fGeo, new T.PointsMaterial({
-      color: 0x1e6a9e, size: 0.02, transparent: true, opacity: 0.45, sizeAttenuation: true
-    })));
-
-    // Second fill layer
-    const f2Arr: any[] = [];
-    Object.values(CP).forEach((path: number[][]) => {
-      let mnLa=90,mxLa=-90,mnLn=180,mxLn=-180;
-      path.forEach(([la,ln]: number[])=>{if(la<mnLa)mnLa=la;if(la>mxLa)mxLa=la;if(ln<mnLn)mnLn=ln;if(ln>mxLn)mxLn=ln;});
-      for(let la=mnLa+0.9;la<=mxLa;la+=2.5){
-        for(let ln=mnLn+0.9;ln<=mxLn;ln+=2.5){
-          if(pip(la,ln,path)) f2Arr.push(ll2v(la,ln,GLOBE_RADIUS+0.009));
-        }
-      }
-    });
-    const f2Geo = new T.BufferGeometry();
-    const f2Pos = new Float32Array(f2Arr.length*3);
-    f2Arr.forEach((v: any,i: number)=>{f2Pos[i*3]=v.x;f2Pos[i*3+1]=v.y;f2Pos[i*3+2]=v.z;});
-    f2Geo.setAttribute("position", new T.BufferAttribute(f2Pos, 3));
-    globeGroup.add(new T.Points(f2Geo, new T.PointsMaterial({
-      color: 0x2a88bb, size: 0.013, transparent: true, opacity: 0.25, sizeAttenuation: true
-    })));
-
-    // Edge dots along outlines
-    const eDots: any[] = [];
-    Object.values(CP).forEach((path: number[][]) => {
-      for(let i=0;i<path.length-1;i++){
-        const [la1,ln1]=path[i],[la2,ln2]=path[i+1];
-        for(let s=0;s<=3;s++){
-          const t=s/3;
-          eDots.push(ll2v(la1+(la2-la1)*t, ln1+(ln2-ln1)*t, GLOBE_RADIUS+0.008));
-        }
-      }
-    });
-    const eGeo = new T.BufferGeometry();
-    const ePos = new Float32Array(eDots.length*3);
-    eDots.forEach((v: any,i: number)=>{ePos[i*3]=v.x;ePos[i*3+1]=v.y;ePos[i*3+2]=v.z;});
-    eGeo.setAttribute("position", new T.BufferAttribute(ePos, 3));
-    globeGroup.add(new T.Points(eGeo, new T.PointsMaterial({
-      color: 0x5aaddd, size: 0.01, transparent: true, opacity: 0.55, sizeAttenuation: true
-    })));
 
     // Latitude scan lines
     for(let lat=-60;lat<=70;lat+=20){
@@ -525,7 +529,7 @@ export default function AreaWeServeGlobe() {
         #globe-container {
           position: fixed;
           top: 40px;
-          left: 0;
+          left: -15vw;
           width: 100vw;
           height: 100vh;
           z-index: 0;
@@ -548,7 +552,7 @@ export default function AreaWeServeGlobe() {
           pointer-events: none;
         }
         .globe-content-inner {
-          max-width: 460px;
+          max-width: 540px;
           text-align: left;
         }
         .globe-eyebrow {
@@ -640,7 +644,7 @@ export default function AreaWeServeGlobe() {
           .globe-content-section { padding: 140px 24px 40px; align-items: flex-start; }
           .globe-legend { gap: 20px; flex-wrap: wrap; }
           .globe-content-inner { max-width: 100%; }
-          #globe-container { top: 60px; }
+          #globe-container { top: 60px; left: 0; }
         }
       `}</style>
 

@@ -418,7 +418,7 @@ export default function HomePage() {
               <p style={{ marginTop: "20px", fontWeight: 600, color: "#d0b86c" }}>
                 We bring clarity to complexity to deliver measurable long-term outcomes.
               </p>
-              <a href="#pillars" className="btn-text-link" style={{ marginTop: "28px" }}>
+              <a href="#story" className="btn-text-link" style={{ marginTop: "28px" }}>
                 ABOUT US
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7" />

@@ -55,7 +55,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           <svg className={`mobile-menu-chevron${mobileSubOpen.has("about") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
         </button>
         <div className={`mobile-menu-sub${mobileSubOpen.has("about") ? " open" : ""}`}>
-          <a href="#" onClick={close}>Who We Are</a>
+          <a href="#story" onClick={close}>Who We Are</a>
           <a href="/about/our-people" onClick={close}>Our People</a>
           <a href="/about/areas-we-serve" onClick={close}>Areas We Serve</a>
         </div>
@@ -116,7 +116,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
               </svg>
             </span>
             <div className="nav-dropdown">
-              <a href="#">Who We Are</a>
+              <a href="#story">Who We Are</a>
               <a href="/about/our-people">Our People</a>
               <a href="/about/areas-we-serve">Areas We Serve</a>
             </div>

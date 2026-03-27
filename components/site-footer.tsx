@@ -27,10 +27,9 @@ export default function SiteFooter() {
         <div>
           <h4 className="footer-heading">Company</h4>
           <ul className="footer-links">
-            <li><a href="#">About</a></li>
+            <li><a href="/#story">About</a></li>
             <li><Link href="/about/our-people">Our People</Link></li>
             <li><a href="/about/areas-we-serve">Areas We Serve</a></li>
-            <li><Link href="/contact">Contact Us</Link></li>
           </ul>
         </div>
         <div>
