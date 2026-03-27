@@ -18,9 +18,10 @@ export default function SiteFooter() {
         <div>
           <h4 className="footer-heading">Capabilities</h4>
           <ul className="footer-links">
+            <li><a href="#">View All</a></li>
             <li><a href="#">Strategy</a></li>
             <li><a href="#">Operations</a></li>
-            <li><a href="/capabilities/advanced-air-mobility">Advanced Air Mobility</a></li>
+            <li><a href="#">Technology</a></li>
           </ul>
         </div>
         <div>
