@@ -21,7 +21,7 @@ export default function SiteFooter() {
             <li><a href="#">View All</a></li>
             <li><a href="#">Strategy</a></li>
             <li><a href="#">Operations</a></li>
-            <li><a href="#">Technology</a></li>
+            <li><a href="/capabilities/technology/advanced-air-mobility">Technology</a></li>
           </ul>
         </div>
         <div>

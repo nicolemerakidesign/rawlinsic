@@ -13,9 +13,13 @@ interface SiteNavProps {
 
 export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
-  const close = () => { setMobileMenuOpen(false); setMobileSubOpen(null); };
-  const toggleSub = (key: string) => setMobileSubOpen(prev => prev === key ? null : key);
+  const [mobileSubOpen, setMobileSubOpen] = useState<Set<string>>(new Set());
+  const close = () => { setMobileMenuOpen(false); setMobileSubOpen(new Set()); };
+  const toggleSub = (key: string) => setMobileSubOpen(prev => {
+    const next = new Set(prev);
+    next.has(key) ? next.delete(key) : next.add(key);
+    return next;
+  });
 
   return (
     <>
@@ -29,21 +33,28 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
         {/* Capabilities */}
         <button className="mobile-menu-parent" onClick={() => toggleSub("cap")}>
           Capabilities
-          <svg className={`mobile-menu-chevron${mobileSubOpen === "cap" ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+          <svg className={`mobile-menu-chevron${mobileSubOpen.has("cap") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
         </button>
-        <div className={`mobile-menu-sub${mobileSubOpen === "cap" ? " open" : ""}`}>
+        <div className={`mobile-menu-sub${mobileSubOpen.has("cap") ? " open" : ""}`}>
+          <a href="#" onClick={close}>View All</a>
           <a href="#" onClick={close}>Strategy</a>
           <a href="#" onClick={close}>Operations</a>
-          <a href="/capabilities/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
-          <a href="#" onClick={close}>Automation &amp; Integration</a>
+          <button className="mobile-menu-parent mobile-menu-nested" onClick={() => toggleSub("tech")}>
+            Technology
+            <svg className={`mobile-menu-chevron${mobileSubOpen.has("tech") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+          </button>
+          <div className={`mobile-menu-sub mobile-menu-sub-nested${mobileSubOpen.has("tech") ? " open" : ""}`}>
+            <a href="/capabilities/technology/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
+            <a href="#" onClick={close}>Automation &amp; Integration</a>
+          </div>
         </div>
 
         {/* About */}
         <button className="mobile-menu-parent" onClick={() => toggleSub("about")}>
           About
-          <svg className={`mobile-menu-chevron${mobileSubOpen === "about" ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+          <svg className={`mobile-menu-chevron${mobileSubOpen.has("about") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
         </button>
-        <div className={`mobile-menu-sub${mobileSubOpen === "about" ? " open" : ""}`}>
+        <div className={`mobile-menu-sub${mobileSubOpen.has("about") ? " open" : ""}`}>
           <a href="#" onClick={close}>Who We Are</a>
           <a href="/about/our-people" onClick={close}>Our People</a>
           <a href="/about/areas-we-serve" onClick={close}>Areas We Serve</a>
@@ -52,9 +63,9 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
         {/* Insights */}
         <button className="mobile-menu-parent" onClick={() => toggleSub("insights")}>
           Insights
-          <svg className={`mobile-menu-chevron${mobileSubOpen === "insights" ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+          <svg className={`mobile-menu-chevron${mobileSubOpen.has("insights") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
         </button>
-        <div className={`mobile-menu-sub${mobileSubOpen === "insights" ? " open" : ""}`}>
+        <div className={`mobile-menu-sub${mobileSubOpen.has("insights") ? " open" : ""}`}>
           <a href="#" onClick={close}>Thought Leadership</a>
           <a href="#" onClick={close}>Case Studies</a>
           <a href="#" onClick={close}>Podcast</a>
@@ -90,7 +101,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
                   </svg>
                 </span>
                 <div className="nav-sub-dropdown">
-                  <a href="/capabilities/advanced-air-mobility">Advanced Air Mobility</a>
+                  <a href="/capabilities/technology/advanced-air-mobility">Advanced Air Mobility</a>
                   <a href="#">Automation &amp; Integration</a>
                 </div>
               </div>
