@@ -8,7 +8,29 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  images: { unoptimized: true },
+  images: {
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "rawlinsic.com",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.macaly-user-data.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
+    ],
+  },
   devIndicators: false,
   allowedDevOrigins: [
     "*.macaly.dev",

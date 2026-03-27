@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
@@ -368,6 +369,8 @@ export default function HomePage() {
                 className="intro-cinematic-img"
                 ref={introImgRef}
                 src={TRANSPORTATIONROADS_URL}
+                alt="Transportation infrastructure"
+                loading="lazy"
               />
               <div className="intro-cinematic-overlay" />
               <div className="intro-metrics">
@@ -483,7 +486,7 @@ export default function HomePage() {
               key={p.name}
               onClick={() => setActivePillar((prev) => (prev === p.name ? null : p.name))}
             >
-              <div className="pillar-card-img" style={{ backgroundImage: `url(${p.bg})` }} />
+              <Image src={p.bg} alt={p.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="pillar-card-img" />
               <div className="pillar-card-overlay" />
               <div className="pillar-card-content">
                 <span className="pillar-number">{p.num}</span>
@@ -555,7 +558,7 @@ export default function HomePage() {
           >
             {journey.map((item, i) => (
               <div className="story-card" key={item.phase}>
-                <div className="story-card-bg" style={{ backgroundImage: `url(${item.bg})` }} />
+                <Image src={item.bg} alt={item.phase} fill sizes="(max-width: 768px) 80vw, 400px" className="story-card-bg" />
                 <div className="story-card-overlay" />
                 <div className="story-card-header">
                   <span className="story-card-num">0{i + 1}</span>
@@ -596,7 +599,7 @@ export default function HomePage() {
                 className={`explore-card reveal${i > 0 ? ` rd${i}` : ""}`}
                 key={card.title}
               >
-                <div className="explore-card-bg" style={{ backgroundImage: `url(${card.bg})` }} />
+                <Image src={card.bg} alt={card.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" className="explore-card-bg" />
                 <div className="explore-card-overlay" />
                 <div className="explore-card-inner">
                   <h3 className="explore-card-title">{card.title}</h3>
@@ -613,7 +616,7 @@ export default function HomePage() {
                 className={`explore-card reveal${i > 0 ? " rd1" : ""}`}
                 key={card.title}
               >
-                <div className="explore-card-bg" style={{ backgroundImage: `url(${card.bg})` }} />
+                <Image src={card.bg} alt={card.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" className="explore-card-bg" />
                 <div className="explore-card-overlay" />
                 <div className="explore-card-inner">
                   <h3 className="explore-card-title">{card.title}</h3>

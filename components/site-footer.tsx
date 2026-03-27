@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const LOGO_URL =
@@ -8,7 +9,7 @@ export default function SiteFooter() {
     <footer className="footer">
       <div className="footer-grid">
         <div>
-          <img src={LOGO_URL} alt="Rawlins" className="footer-logo-img" />
+          <Image src={LOGO_URL} alt="Rawlins" width={160} height={40} className="footer-logo-img" />
           <p className="footer-brand-desc">
             Global management consulting firm that partners with public and
             private organizations to navigate complex challenges at the

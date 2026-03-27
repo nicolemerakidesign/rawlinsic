@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
@@ -260,11 +261,13 @@ export default function TeamPage() {
                 aria-label={`View profile of ${member.name}`}
               >
                 <div className="team-card-photo-wrap">
-                  <img
+                  <Image
                     src={member.photo}
                     alt={member.name}
+                    width={400}
+                    height={500}
                     className="team-card-photo"
-                    loading="lazy"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1100px) 33vw, 25vw"
                   />
                   <div className="team-card-overlay">
                     <span className="team-card-view">View Profile</span>
@@ -321,10 +324,13 @@ export default function TeamPage() {
             {/* Left Panel */}
             <div className="team-popup-left">
               <div className="team-popup-photo-ring">
-                <img
+                <Image
                   src={selectedMember.photo}
                   alt={selectedMember.name}
+                  width={300}
+                  height={375}
                   className="team-popup-photo"
+                  sizes="300px"
                 />
               </div>
               {selectedMember.title && (

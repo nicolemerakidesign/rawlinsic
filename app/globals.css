@@ -1212,8 +1212,7 @@ font-size: 11px;
 }
 /* Actual background image layer — scales on hover */
 .pillar-card-img {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
+  object-fit: cover; object-position: center;
   transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .pillar-card:hover .pillar-card-img { transform: scale(1.06); }
@@ -1297,10 +1296,7 @@ font-size: 11px;
 /* ── Story Cards ──────────────────────────────── */
 /* Background image layer */
 .story-card-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover; object-position: center;
   border-radius: 6px;
   opacity: 0.22;
   z-index: 0;
@@ -1545,8 +1541,7 @@ font-size: 11px;
 }
 /* Background image layer with zoom */
 .explore-card-bg {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
+  object-fit: cover; object-position: center;
   transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .explore-card:hover .explore-card-bg { transform: scale(1.05); }
@@ -2131,10 +2126,7 @@ font-size: 15px;
   overflow: hidden;
 }
 .aam-hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover; object-position: center;
   filter: brightness(0.3) saturate(0.7);
 }
 .aam-hero-overlay {
@@ -2204,9 +2196,7 @@ color: #fff;
   overflow: hidden;
 }
 .aam-pillar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  object-fit: cover; object-position: center;
   transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
 }
 .aam-pillar-card:hover .aam-pillar-img {
@@ -2421,9 +2411,7 @@ color: #fff;
   overflow: hidden;
 }
 .aam-framework-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  object-fit: cover; object-position: center;
   transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
   filter: brightness(0.7) saturate(0.8);
 }
@@ -2725,11 +2713,7 @@ color: #fff;
   overflow: hidden;
 }
 .aam-parallax-bg {
-  position: absolute;
-  inset: -20%;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  object-fit: cover; object-position: center;
   filter: brightness(0.25) saturate(0.6);
 }
 .aam-parallax-overlay {
@@ -2741,10 +2725,7 @@ color: #fff;
 /* CTA section */
 .aam-cta-section { padding: 100px 0 100px; position: relative; overflow: hidden; }
 .aam-cta-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover; object-position: center;
   filter: brightness(0.2) saturate(0.5);
 }
 .aam-cta-overlay {
@@ -2906,7 +2887,7 @@ color: #fff;
   .aam-portfolio-tiles { grid-template-columns: 1fr; }
   .aam-framework-grid { grid-template-columns: 1fr; gap: 20px; }
   .section-divider { padding: 0 24px; }
-  .aam-parallax-bg { background-attachment: scroll; }
+  /* parallax handled by next/image */
 }
 
 /* Responsive — team page */
@@ -3154,8 +3135,7 @@ color: #fff;
 }
 .aam-alt-card:hover { transform: translateY(-4px); }
 .aam-alt-card-bg {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
+  object-fit: cover; object-position: center;
   transition: transform 0.6s;
 }
 .aam-alt-card:hover .aam-alt-card-bg { transform: scale(1.05); }
@@ -3283,9 +3263,7 @@ color: #fff;
 }
 
 /* ── Parallax Backgrounds ───────────────────────────────── */
-.aam-hero-bg { background-attachment: fixed; }
-.aam-parallax-bg { background-attachment: fixed; }
-.aam-cta-bg { background-attachment: fixed; }
+/* parallax handled by next/image */
 
 /* ── AAM Responsive ─────────────────────────────────────── */
 @media (max-width: 900px) {
@@ -3298,7 +3276,7 @@ color: #fff;
 }
 @media (max-width: 768px) {
   .aam-svc-tabs { flex-direction: column; align-items: stretch; }
-  .aam-hero-bg, .aam-parallax-bg, .aam-cta-bg { background-attachment: scroll; }
+  /* parallax handled by next/image */
 }
 
 

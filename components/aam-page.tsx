@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import SiteNav from '@/components/site-nav';
 import SiteFooter from '@/components/site-footer';
@@ -254,7 +255,7 @@ const AAMPage = () => {
 
       {/* ── Hero ── */}
       <section className="aam-hero" id="top">
-        <div className="aam-hero-bg" style={{ backgroundImage: `url(${DRONE_IMG})` }} />
+        <Image src={DRONE_IMG} alt="Drone aerial" fill priority sizes="100vw" className="aam-hero-bg" />
         <div className="aam-hero-overlay" />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text"></span></span>
@@ -293,7 +294,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
             </div>
             <div className="aam-overview-right">
               <div className="intro-cinematic-wrap">
-                <img className="intro-cinematic-img" src={AERIAL_VIEW_IMG} alt="Aerial view" />
+                <Image className="intro-cinematic-img" src={AERIAL_VIEW_IMG} alt="Aerial view" fill sizes="(max-width: 768px) 100vw, 50vw" />
                 <div className="intro-cinematic-overlay" />
                 <div className="intro-metrics">
                   <div className="intro-metric">
@@ -319,7 +320,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
 
       {/* Parallax Quote with Image */}
       <div className="parallax-panel aam-parallax-img-panel">
-        <div className="aam-parallax-bg" style={{ backgroundImage: `url(${SKYLINE_IMG})` }} />
+        <Image src={SKYLINE_IMG} alt="City skyline" fill sizes="100vw" className="aam-parallax-bg" />
         <div className="aam-parallax-overlay" />
         <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
           Strategic Multi-Modal Integration |<br /><em>Built on Real-World Success</em>
@@ -353,7 +354,7 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
             {pillarCards.map((card, i) => (
               <div className={`aam-pillar-card${openPillars.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-pillar-img-wrap">
-                  <img src={card.img} alt={card.title} className="aam-pillar-img" loading="lazy" />
+                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-pillar-img" />
                   <div className="aam-pillar-img-overlay" />
                 </div>
                 <div className="aam-pillar-bar" />
@@ -394,7 +395,7 @@ Our team brings together regulatory guidance, operational expertise, and program
           <div className="aam-alt-scroll-track">
             {phaseData.map((phase, i) => (
               <div className="aam-alt-card" key={phase.num}>
-                <div className="aam-alt-card-bg" style={{ backgroundImage: `url(${phase.img})` }} />
+                <Image src={phase.img} alt={phase.label} fill sizes="(max-width: 768px) 80vw, 400px" className="aam-alt-card-bg" />
                 <div className="aam-alt-card-overlay" />
                 <div className="aam-alt-card-header">
                   <span className="aam-alt-card-num">{phase.num}</span>
@@ -422,7 +423,7 @@ Our team brings together regulatory guidance, operational expertise, and program
             {frameworkCards.map((card, i) => (
               <div className={`aam-framework-card${openFrameworks.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-framework-img-wrap">
-                  <img src={card.img} alt={card.title} className="aam-framework-img" loading="lazy" />
+                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-framework-img" />
                   <div className="aam-framework-img-overlay" />
                 </div>
                 <div className="aam-framework-accent" style={{ background: card.accent }} />
@@ -450,7 +451,7 @@ Our team brings together regulatory guidance, operational expertise, and program
 
       {/* Parallax Quote 2 with Image */}
       <div className="parallax-panel aam-parallax-img-panel">
-        <div className="aam-parallax-bg" style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }} />
+        <Image src={HIGHWAY_AERIAL_IMG} alt="Highway aerial" fill sizes="100vw" className="aam-parallax-bg" />
         <div className="aam-parallax-overlay" />
         <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
 Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviation</p>
@@ -685,7 +686,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
             ].map((svc) => (
               <div className={`aam-pillar-card${openServices.has(svc.idx) ? " open" : ""}`} key={svc.title}>
                 <div className="aam-pillar-img-wrap">
-                  <img src={svc.img} alt={svc.title} className="aam-pillar-img" loading="lazy" />
+                  <Image src={svc.img} alt={svc.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="aam-pillar-img" />
                   <div className="aam-pillar-img-overlay" />
                 </div>
                 <div className="aam-pillar-bar" />
@@ -712,7 +713,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
 
       {/* ── CTA with Background ── */}
       <section className="aam-section aam-cta-section">
-        <div className="aam-cta-bg" style={{ backgroundImage: `url(${HELICOPTER_IMG})` }} />
+        <Image src={HELICOPTER_IMG} alt="Helicopter" fill sizes="100vw" className="aam-cta-bg" />
         <div className="aam-cta-overlay" />
         <div className="aam-container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="aam-cta-wrap" style={{ textAlign: "center", margin: "0 auto" }}>

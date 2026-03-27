@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -78,7 +79,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
       {/* Navigation */}
       <nav className="nav" id="mainNav">
         <a href="/" className="nav-logo" aria-label="Rawlins home">
-          <img src={LOGO_URL} alt="Rawlins" className="nav-logo-img" />
+          <Image src={LOGO_URL} alt="Rawlins" width={160} height={40} className="nav-logo-img" priority />
         </a>
 
         <div className="nav-center">
