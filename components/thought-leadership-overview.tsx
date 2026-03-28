@@ -196,7 +196,6 @@ export default function ThoughtLeadershipOverview() {
                 </Link>
               </h2>
               <p className="tl-featured-subtitle">{articles[0].subtitle}</p>
-              <p className="tl-featured-excerpt">{articles[0].excerpt}</p>
               <div className="tl-featured-author-row">
                 {articles[0].authorImage && (
                   <Image
@@ -273,7 +272,6 @@ export default function ThoughtLeadershipOverview() {
                     <span className="tl-date">{article.dateLabel}</span>
                   </div>
                   <h3 className="tl-card-title">{article.title}</h3>
-                  <p className="tl-card-excerpt">{article.excerpt}</p>
                   <div className="tl-card-footer">
                     <span className="tl-card-author">{article.author}</span>
                     <span className="tl-card-read-more">
