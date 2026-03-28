@@ -112,18 +112,21 @@ export default function InsightsPage() {
   useEffect(() => {
     let ob: IntersectionObserver;
     const raf = requestAnimationFrame(() => {
-      const els = document.querySelectorAll(".reveal");
-      ob = new IntersectionObserver(
-        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
-        { threshold: 0.08 }
-      );
-      els.forEach((el) => ob.observe(el));
-      setTimeout(() => {
-        els.forEach((el) => {
-          const r = el.getBoundingClientRect();
-          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
-        });
-      }, 150);
+      requestAnimationFrame(() => {
+        const els = document.querySelectorAll(".reveal");
+        els.forEach((el) => { void (el as HTMLElement).offsetHeight; });
+        ob = new IntersectionObserver(
+          (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+          { threshold: 0.08 }
+        );
+        els.forEach((el) => ob.observe(el));
+        setTimeout(() => {
+          els.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
+          });
+        }, 100);
+      });
     });
     return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };
   }, []);

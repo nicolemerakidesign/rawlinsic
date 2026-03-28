@@ -86,22 +86,25 @@ export default function ThoughtLeadershipOverview() {
   useEffect(() => {
     let observer: IntersectionObserver;
     const raf = requestAnimationFrame(() => {
-      const reveals = document.querySelectorAll(".reveal");
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("visible");
+      requestAnimationFrame(() => {
+        const reveals = document.querySelectorAll(".reveal");
+        reveals.forEach((el) => { void (el as HTMLElement).offsetHeight; });
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("visible");
+            });
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+        );
+        reveals.forEach((el) => observer.observe(el));
+        setTimeout(() => {
+          reveals.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
           });
-        },
-        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
-      );
-      reveals.forEach((el) => observer.observe(el));
-      setTimeout(() => {
-        reveals.forEach((el) => {
-          const r = el.getBoundingClientRect();
-          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
-        });
-      }, 150);
+        }, 100);
+      });
     });
     return () => { cancelAnimationFrame(raf); if (observer) observer.disconnect(); };
   }, []);

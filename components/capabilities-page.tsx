@@ -158,23 +158,28 @@ export default function CapabilitiesPage() {
     return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
   }, []);
 
-  /* scroll reveal — delayed to ensure DOM is painted after PasswordGate */
+  /* scroll reveal — double-rAF ensures browser has painted initial state before transitioning */
   useEffect(() => {
     let ob: IntersectionObserver;
+    /* First rAF: browser commits the DOM. Second rAF: initial styles are painted. */
     const raf = requestAnimationFrame(() => {
-      const els = document.querySelectorAll(".reveal");
-      ob = new IntersectionObserver(
-        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
-        { threshold: 0.08 }
-      );
-      els.forEach((el) => ob.observe(el));
-      /* fallback: force-check elements already in viewport */
-      setTimeout(() => {
-        els.forEach((el) => {
-          const r = el.getBoundingClientRect();
-          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
-        });
-      }, 150);
+      requestAnimationFrame(() => {
+        const els = document.querySelectorAll(".reveal");
+        /* Force reflow so the browser has computed opacity:0 before we add visible */
+        els.forEach((el) => { void (el as HTMLElement).offsetHeight; });
+        ob = new IntersectionObserver(
+          (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+          { threshold: 0.08 }
+        );
+        els.forEach((el) => ob.observe(el));
+        /* fallback: force-check elements already in viewport */
+        setTimeout(() => {
+          els.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
+          });
+        }, 100);
+      });
     });
     return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };
   }, []);
