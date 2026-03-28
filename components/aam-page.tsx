@@ -225,6 +225,36 @@ const AAMPage = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Scroll reveal
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const ob = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      { threshold: 0.12 }
+    );
+    els.forEach((el) => ob.observe(el));
+    return () => ob.disconnect();
+  }, []);
+
+  // Parallax scroll effect for background images
+  useEffect(() => {
+    const panels = document.querySelectorAll<HTMLElement>(".aam-parallax-img-panel");
+    const onScroll = () => {
+      panels.forEach((panel) => {
+        const rect = panel.getBoundingClientRect();
+        const img = panel.querySelector<HTMLElement>(".aam-parallax-bg");
+        if (img && rect.bottom > 0 && rect.top < window.innerHeight) {
+          const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+          const translate = (progress - 0.5) * -60;
+          img.style.transform = `scale(1.15) translateY(${translate}px)`;
+        }
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const chevronSvg = (rotated: boolean) => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "transform 0.3s", transform: rotated ? "rotate(180deg)" : "rotate(0)" }}>
       <path d="M6 9l6 6 6-6" />
@@ -273,7 +303,7 @@ const AAMPage = () => {
       <section className="aam-section aam-overview-section" id="intro">
         <div className="aam-container">
           <div className="aam-overview-grid">
-            <div className="aam-overview-left">
+            <div className="aam-overview-left reveal">
               <p className="section-label"><span className="gold-text">are you ready?</span></p>
               <h2 className="section-title">The next major phase in transportation’s <em>evolution</em></h2>
               <button
@@ -293,7 +323,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
                 <p className="aam-section-lead">
                   Next-generation aerial capabilities, integrated into existing mobility systems, complement ground, rail, and maritime transport networks. They strengthen multimodal transportation and enable urban, rural, and regional areas to benefit from a more connected, resilient, and adaptable mobility ecosystem.</p>          </div>
             </div>
-            <div className="aam-overview-right">
+            <div className="aam-overview-right reveal rd1">
               <div className="intro-cinematic-wrap">
                 <Image className="intro-cinematic-img" src={AERIAL_VIEW_IMG} alt="Aerial view" fill sizes="(max-width: 768px) 100vw, 50vw" />
                 <div className="intro-cinematic-overlay" />
@@ -323,7 +353,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
       <div className="parallax-panel aam-parallax-img-panel">
         <Image src={SKYLINE_IMG} alt="City skyline" fill sizes="100vw" className="aam-parallax-bg" />
         <div className="aam-parallax-overlay" />
-        <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
+        <p className="parallax-text reveal" style={{ position: 'relative', zIndex: 2 }}>
           Strategic Multi-Modal Integration |<br /><em>Built on Real-World Success</em>
         </p>
       </div>
@@ -331,7 +361,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
       {/* ── Value Delivery: Pillar Cards ── */}
       <section className="aam-section" id="value">
         <div className="aam-container">
-          <div className="aam-section-header">
+          <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Value Delivery</span></p>
             <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
             <button
@@ -384,7 +414,7 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
       {/* ── How we serve: Horizontal Scroll Cards ── */}
       <section className="aam-section aam-phases-alt-section" id="phases-alt">
         <div className="aam-container">
-          <div className="aam-section-header">
+          <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">how we serve our clients</span></p>
             <h2 className="section-title">Essential <em>Phases</em></h2>
             <p className="section-text" style={{ marginTop: "20px" }}>
@@ -416,7 +446,7 @@ Our team brings together regulatory guidance, operational expertise, and program
       {/* ── Strategic Methodology: Define / Enable / Deliver ── */}
       <section className="aam-section" id="methodology">
         <div className="aam-container">
-          <div className="aam-section-header">
+          <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Strategic Methodology</span></p>
             <h2 className="section-title">Our <em>Approach</em></h2>
           </div>
@@ -454,7 +484,7 @@ Our team brings together regulatory guidance, operational expertise, and program
       <div className="parallax-panel aam-parallax-img-panel">
         <Image src={HIGHWAY_AERIAL_IMG} alt="Highway aerial" fill sizes="100vw" className="aam-parallax-bg" />
         <div className="aam-parallax-overlay" />
-        <p className="parallax-text" style={{ position: 'relative', zIndex: 2 }}>
+        <p className="parallax-text reveal" style={{ position: 'relative', zIndex: 2 }}>
 Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviation</p>
       </div>
 
@@ -464,7 +494,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
           <div className="eco-layout">
             {/* Left: text */}
             <div className="eco-layout-text">
-              <div className="aam-section-header">
+              <div className="aam-section-header reveal">
                 <p className="section-label"><span className="gold-text">who we partner with</span></p>
                 <h2 className="section-title">Stakeholders We <em>Engage</em></h2>
                 <p className="aam-section-lead" style={{ marginTop: '20px' }}>
@@ -676,7 +706,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
       {/* ── Service Portfolio: Card Tiles (same style as Value Delivery) ── */}
       <section className="aam-section aam-portfolio-section" id="portfolio">
         <div className="aam-container">
-          <div className="aam-section-header" style={{ textAlign: 'center' }}>
+          <div className="aam-section-header reveal" style={{ textAlign: 'center' }}>
             <p className="section-label"><span className="gold-text">Services</span></p>
             <h2 className="section-title">Our Service <em>Portfolio</em></h2>
           </div>
@@ -717,7 +747,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
         <Image src={HELICOPTER_IMG} alt="Helicopter" fill sizes="100vw" className="aam-cta-bg" />
         <div className="aam-cta-overlay" />
         <div className="aam-container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="aam-cta-wrap" style={{ textAlign: "center", margin: "0 auto" }}>
+          <div className="aam-cta-wrap reveal" style={{ textAlign: "center", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Get Started</span></p>
             <h2 className="section-title">Ready to <em>Transform</em> Your Region?</h2>
             <p className="aam-cta-body">
