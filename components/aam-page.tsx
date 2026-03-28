@@ -224,29 +224,50 @@ const AAMPage = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll reveal
+  // Scroll reveal — with fallback for elements already in view
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const ob = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => ob.observe(el));
-    return () => ob.disconnect();
+    let ob: IntersectionObserver;
+    const raf = requestAnimationFrame(() => {
+      const els = document.querySelectorAll(".reveal");
+      ob = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+        { threshold: 0.08 }
+      );
+      els.forEach((el) => ob.observe(el));
+      setTimeout(() => {
+        els.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
+        });
+      }, 150);
+    });
+    return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };
   }, []);
 
-  // Parallax scroll effect for background images
+  // Parallax scroll effect for ALL background images (hero, quote panels, CTA)
   useEffect(() => {
-    const panels = document.querySelectorAll<HTMLElement>(".aam-parallax-img-panel");
+    const targets = [
+      ...Array.from(document.querySelectorAll<HTMLElement>(".aam-parallax-img-panel")),
+      document.querySelector<HTMLElement>(".aam-hero"),
+      document.querySelector<HTMLElement>(".aam-cta-section"),
+    ].filter(Boolean) as HTMLElement[];
+
+    const imgSelectors = [".aam-parallax-bg", ".aam-hero-bg", ".aam-cta-bg"];
+
     const onScroll = () => {
-      panels.forEach((panel) => {
+      targets.forEach((panel) => {
         const rect = panel.getBoundingClientRect();
-        const img = panel.querySelector<HTMLElement>(".aam-parallax-bg");
-        if (img && rect.bottom > 0 && rect.top < window.innerHeight) {
-          const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-          const translate = (progress - 0.5) * -60;
-          img.style.transform = `scale(1.15) translateY(${translate}px)`;
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+        // Find whichever bg image class this panel uses
+        let img: HTMLElement | null = null;
+        for (const sel of imgSelectors) {
+          img = panel.querySelector<HTMLElement>(sel);
+          if (img) break;
         }
+        if (!img) return;
+        const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+        const translate = (progress - 0.5) * -80;
+        img.style.transform = `scale(1.2) translateY(${translate}px)`;
       });
     };
     window.addEventListener("scroll", onScroll, { passive: true });

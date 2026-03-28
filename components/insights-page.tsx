@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
+import PasswordGate from "@/components/password-gate";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=1920&q=80";
 
@@ -109,13 +110,22 @@ export default function InsightsPage() {
   }, []);
 
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const ob = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => ob.observe(el));
-    return () => ob.disconnect();
+    let ob: IntersectionObserver;
+    const raf = requestAnimationFrame(() => {
+      const els = document.querySelectorAll(".reveal");
+      ob = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+        { threshold: 0.08 }
+      );
+      els.forEach((el) => ob.observe(el));
+      setTimeout(() => {
+        els.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
+        });
+      }, 150);
+    });
+    return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };
   }, []);
 
   const orbRef1 = useRef<HTMLDivElement>(null);
@@ -169,7 +179,7 @@ export default function InsightsPage() {
   }, []);
 
   return (
-    <>
+    <PasswordGate>
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
       <canvas className="particle-canvas" ref={canvasRef} />
@@ -243,6 +253,6 @@ export default function InsightsPage() {
       </section>
 
       <SiteFooter />
-    </>
+    </PasswordGate>
   );
 }

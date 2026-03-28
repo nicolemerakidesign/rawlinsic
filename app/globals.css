@@ -2128,6 +2128,8 @@ font-size: 15px;
 .aam-hero-bg {
   object-fit: cover; object-position: center;
   filter: brightness(0.3) saturate(0.7);
+  transform: scale(1.2);
+  will-change: transform;
 }
 .aam-hero-overlay {
   position: absolute;
@@ -2740,6 +2742,8 @@ color: #fff;
 .aam-cta-bg {
   object-fit: cover; object-position: center;
   filter: brightness(0.2) saturate(0.5);
+  transform: scale(1.2);
+  will-change: transform;
 }
 .aam-cta-overlay {
   position: absolute;

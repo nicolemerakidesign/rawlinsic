@@ -158,15 +158,25 @@ export default function CapabilitiesPage() {
     return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
   }, []);
 
-  /* scroll reveal */
+  /* scroll reveal — delayed to ensure DOM is painted after PasswordGate */
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const ob = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => ob.observe(el));
-    return () => ob.disconnect();
+    let ob: IntersectionObserver;
+    const raf = requestAnimationFrame(() => {
+      const els = document.querySelectorAll(".reveal");
+      ob = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+        { threshold: 0.08 }
+      );
+      els.forEach((el) => ob.observe(el));
+      /* fallback: force-check elements already in viewport */
+      setTimeout(() => {
+        els.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
+        });
+      }, 150);
+    });
+    return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };
   }, []);
 
   /* orbs */

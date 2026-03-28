@@ -62,16 +62,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
         </div>
 
         {/* Insights */}
-        <button className="mobile-menu-parent" onClick={() => toggleSub("insights")}>
-          Insights
-          <svg className={`mobile-menu-chevron${mobileSubOpen.has("insights") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
-        </button>
-        <div className={`mobile-menu-sub${mobileSubOpen.has("insights") ? " open" : ""}`}>
-          <a href="/insights" onClick={close}>View All</a>
-          <a href="/insights/thought-leadership" onClick={close}>Thought Leadership</a>
-          <a href="/insights/case-studies" onClick={close}>Case Studies</a>
-          <a href="/insights/podcast" onClick={close}>Podcast</a>
-        </div>
+        <a href="/insights" onClick={close}>Insights</a>
 
         <a href="#" onClick={close}>Careers</a>
         <Link href={ctaHref} onClick={close} className="mobile-menu-cta">Get In Touch</Link>
@@ -124,20 +115,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
             </div>
           </div>
 
-          <div className="nav-item has-sub">
-            <span className="nav-item-label">
-              Insights
-              <svg className="nav-chevron" width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M1 1l3 3 3-3"/>
-              </svg>
-            </span>
-            <div className="nav-dropdown">
-              <a href="/insights">View All</a>
-              <a href="/insights/thought-leadership">Thought Leadership</a>
-              <a href="/insights/case-studies">Case Studies</a>
-              <a href="/insights/podcast">Podcast</a>
-            </div>
-          </div>
+          <a className="nav-item" href="/insights">Insights</a>
 
           <a className="nav-item" href="#">Careers</a>
         </div>
