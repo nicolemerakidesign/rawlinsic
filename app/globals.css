@@ -2747,11 +2747,9 @@ color: #fff;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  overflow: visible;
 }
 .aam-parallax-fixed.parallax-panel {
   min-height: 40vh;
-  overflow: visible;
 }
 .aam-hero.aam-parallax-fixed {
   background-size: cover;
@@ -2779,7 +2777,7 @@ color: #fff;
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(6,12,22,0.55);
+  background: rgba(6,12,22,0.75);
   pointer-events: none;
 }
 
