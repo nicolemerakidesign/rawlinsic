@@ -53,7 +53,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
     }
   }
 
-  const [openSections, setOpenSections] = useState<Set<number>>(() => new Set([0]));
+  const [openSections, setOpenSections] = useState<Set<number>>(() => new Set());
 
   const toggleSection = (i: number) => {
     setOpenSections((prev) => {
@@ -261,12 +261,42 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
           <div className="gold-line" />
         </div>
 
-        {/* ── Article Content ── */}
-        <section className="tla-content">
-          <div className="tla-content-inner">
-            {/* Author bar + PDF download */}
+        {/* ── Two-Column Article Content ── */}
+        <section className="tla-content tla-two-col">
+          {/* LEFT COLUMN: image, PDF download, intro text */}
+          <div className="tla-col-left">
+            {/* Article banner image */}
+            {article.image && (
+              <div className="tla-article-img-wrap">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  width={900}
+                  height={525}
+                  sizes="(max-width: 768px) 100vw, 480px"
+                  className="tla-article-img"
+                />
+              </div>
+            )}
+
+            {/* PDF Download */}
+            {article.pdfUrl && (
+              <a
+                href={article.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tla-pdf-btn"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                </svg>
+                <span>Download PDF</span>
+              </a>
+            )}
+
+            {/* Author info */}
             {!isComingSoon && (
-              <div className="tla-author-bar reveal">
+              <div className="tla-sidebar-author">
                 <div className="tla-author-info">
                   {article.authorImage && (
                     <Image
@@ -282,46 +312,22 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                     <span className="tla-author-role">{article.authorRole}</span>
                   </div>
                 </div>
-                {article.pdfUrl && (
-                  <a
-                    href={article.pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="tla-pdf-btn"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                    </svg>
-                    <span>Download PDF</span>
-                  </a>
-                )}
               </div>
             )}
 
-            {/* Article banner image */}
-            {article.image && (
-              <div className="tla-article-img-wrap">
-                <Image
-                  src={article.image}
-                  alt={article.title}
-                  width={900}
-                  height={525}
-                  sizes="(max-width: 768px) 100vw, 800px"
-                  className="tla-article-img"
-                />
-              </div>
-            )}
-
-            {/* Intro blocks (before the first question) */}
+            {/* Intro text */}
             <div className="tla-body">
               {introBlocks.map((block, i) => renderBlock(block, i))}
             </div>
+          </div>
 
+          {/* RIGHT COLUMN: accordion Q&A */}
+          <div className="tla-col-right">
             {/* Accordion Q&A sections */}
             {sections.length > 0 && (
               <div className="tla-accordion">
                 {/* Expand/Collapse controls */}
-                <div className="tla-accordion-controls reveal">
+                <div className="tla-accordion-controls">
                   <span className="tla-accordion-controls-label">Q&A</span>
                   <div className="tla-accordion-controls-btns">
                     <button onClick={expandAll} className="tla-expand-btn">Expand All</button>
@@ -368,16 +374,9 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               </div>
             )}
 
-            {/* Fallback for coming-soon articles */}
-            {sections.length === 0 && (
-              <div className="tla-body">
-                {article.content.map((block, i) => renderBlock(block, i))}
-              </div>
-            )}
-
             {/* Author contact footer */}
             {!isComingSoon && (
-              <div className="tla-author-footer reveal">
+              <div className="tla-author-footer">
                 <div className="tla-author-footer-inner">
                   {article.authorImage && (
                     <Image
