@@ -69,7 +69,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
         <div className={`mobile-menu-sub${mobileSubOpen.has("insights") ? " open" : ""}`}>
           <a href="/insights/thought-leadership" onClick={close}>Thought Leadership</a>
           <a href="/insights/case-studies" onClick={close}>Case Studies</a>
-          <a href="#" onClick={close}>Podcast</a>
+          <a href="/insights/podcast" onClick={close}>Podcast</a>
         </div>
 
         <a href="#" onClick={close}>Careers</a>
@@ -133,7 +133,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
             <div className="nav-dropdown">
               <a href="/insights/thought-leadership">Thought Leadership</a>
               <a href="/insights/case-studies">Case Studies</a>
-              <a href="#">Podcast</a>
+              <a href="/insights/podcast">Podcast</a>
             </div>
           </div>
 
