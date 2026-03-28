@@ -258,6 +258,7 @@
 .nav-item.has-sub::after { display: none; }
 .nav-item-label {
   display: flex; align-items: center; gap: 6px;
+  text-decoration: none; color: inherit;
 }
 .nav-chevron {
   transition: transform 0.3s; flex-shrink: 0;
