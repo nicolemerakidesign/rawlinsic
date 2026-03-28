@@ -3866,7 +3866,10 @@ color: #fff;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--rawlins-gold);
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   border: 1px solid rgba(201,168,76,0.35);
   border-radius: 3px;
 }
@@ -3894,7 +3897,10 @@ color: #fff;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 1rem;
   font-style: italic;
-  color: var(--rawlins-gold-mid);
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin: 0 0 16px;
 }
 .tl-featured-excerpt {
@@ -4083,11 +4089,14 @@ color: #fff;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--rawlins-gold);
-  transition: color 0.3s ease;
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: opacity 0.3s ease;
 }
 .tl-card:hover .tl-card-read-more {
-  color: var(--rawlins-gold-light);
+  opacity: 0.85;
 }
 
 
@@ -4150,27 +4159,39 @@ color: #fff;
   color: var(--rawlins-text-dim);
 }
 
-/* ── PDF Download Button ── */
+/* ── PDF Download Button (gold gradient fill on hover) ── */
 .tla-pdf-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 12px 24px;
-  border: 1px solid rgba(201,168,76,0.4);
+  border: 1px solid rgba(201,168,76,0.5);
   border-radius: 6px;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--rawlins-gold);
-  background: rgba(201,168,76,0.06);
-  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  color: rgba(232,230,225,0.9);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s, border-color 0.4s;
 }
-.tla-pdf-btn:hover {
-  background: rgba(201,168,76,0.15);
-  border-color: var(--rawlins-gold);
-  color: var(--rawlins-gold-light);
+.tla-pdf-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #e8d5a0, #c9a84c);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.tla-pdf-btn:hover::before { transform: scaleX(1); }
+.tla-pdf-btn:hover { color: #060c16; border-color: #c9a84c; }
+.tla-pdf-btn svg, .tla-pdf-btn span {
+  position: relative;
+  z-index: 1;
 }
 .tla-pdf-btn svg {
   stroke: currentColor;
@@ -4188,83 +4209,200 @@ color: #fff;
   color: var(--rawlins-text-muted);
   margin: 0 0 28px;
   padding-left: 20px;
-  border-left: 3px solid var(--rawlins-gold);
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, #b89a3e, #d4be78, #c9a84c) 1;
 }
 
-.tla-question {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  margin: 48px 0 24px;
+/* ── Accordion ── */
+.tla-accordion {
+  margin-top: 40px;
 }
+.tla-accordion-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.tla-accordion-controls-label {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tla-accordion-controls-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tla-expand-btn {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--rawlins-text-dim);
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  transition: color 0.3s;
+}
+.tla-expand-btn:hover {
+  color: var(--rawlins-gold-light);
+}
+.tla-controls-sep {
+  color: rgba(255,255,255,0.15);
+  font-size: 12px;
+}
+
+.tla-accordion-item {
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.tla-accordion-item.open {
+  border-color: rgba(201,168,76,0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.tla-accordion-trigger {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  padding: 28px 28px;
+  background: none;
+  border: none;
+  text-align: left;
+  color: inherit;
+  transition: background 0.3s ease;
+}
+.tla-accordion-trigger:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+/* Q icon — gold gradient text */
 .tla-q-icon {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(145deg, rgba(201,168,76,0.15), rgba(201,168,76,0.08));
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 8px;
-  font-family: var(--font-cormorant), serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--rawlins-gold);
-}
-.tla-q-text {
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 10px;
   font-family: var(--font-cormorant), serif;
   font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+.tla-q-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+  border-radius: 10px;
+  z-index: -1;
+}
+
+/* Question text — bigger */
+.tla-q-text {
+  font-family: var(--font-cormorant), serif;
+  font-size: 30px;
   font-weight: 600;
   color: #e8e6e1;
   line-height: 1.3;
   margin: 0;
   padding-top: 6px;
+  flex: 1;
 }
 
+.tla-accordion-chevron {
+  flex-shrink: 0;
+  margin-top: 10px;
+  transition: transform 0.35s ease;
+  color: var(--rawlins-text-dim);
+}
+.tla-accordion-chevron.open {
+  transform: rotate(180deg);
+  color: var(--rawlins-gold);
+}
+
+.tla-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.tla-accordion-body.open {
+  max-height: 3000px;
+}
+.tla-accordion-body-inner {
+  padding: 0 28px 32px 100px;
+}
+
+/* ── Answer text ── */
 .tla-answer {
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--rawlins-text-muted);
-  margin: 0 0 20px;
+  margin: 0 0 22px;
 }
 .tla-answer-name {
   font-weight: 600;
   color: #e8e6e1;
 }
 
+/* ── Section headings inside accordion ── */
 .tla-heading {
   font-family: var(--font-cormorant), serif;
   font-size: 24px;
   font-weight: 600;
-  color: var(--rawlins-gold-mid);
   margin: 36px 0 14px;
   padding-left: 16px;
-  border-left: 3px solid rgba(201,168,76,0.4);
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, #b89a3e, #d4be78, #c9a84c) 1;
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
+/* ── Paragraph text ── */
 .tla-paragraph {
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--rawlins-text-muted);
-  margin: 0 0 20px;
+  margin: 0 0 22px;
 }
 
+/* ── Callout block ── */
 .tla-callout {
-  margin: 40px 0;
+  margin: 32px 0;
   padding: 32px 36px;
   background: linear-gradient(145deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02));
   border: 1px solid rgba(201,168,76,0.2);
-  border-left: 4px solid var(--rawlins-gold);
-  border-radius: 8px;
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(180deg, #b89a3e, #d4be78, #c9a84c) 1;
+  border-image-slice: 1;
+  border-radius: 0;
 }
 .tla-callout p {
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 17px;
   font-style: italic;
-  line-height: 1.85;
+  line-height: 1.9;
   color: #e8e6e1;
   margin: 0;
 }
@@ -4279,9 +4417,9 @@ color: #fff;
 .tla-list {
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--rawlins-text-muted);
-  margin: 0 0 20px;
+  margin: 0 0 22px;
   padding-left: 24px;
 }
 .tla-list li {
@@ -4327,8 +4465,11 @@ color: #fff;
 
   .tla-content { padding: 60px 24px; }
   .tla-author-bar { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .tla-question { flex-direction: column; gap: 12px; }
-  .tla-q-text { font-size: 22px; }
+  .tla-accordion-trigger { padding: 20px; gap: 14px; }
+  .tla-accordion-body-inner { padding: 0 20px 24px 20px; }
+  .tla-q-text { font-size: 24px; }
+  .tla-q-icon { width: 44px; height: 44px; }
+  .tla-q-icon::after { font-size: 22px; }
   .tla-callout { padding: 24px; }
   .tla-intro { font-size: 17px; }
   .tla-author-footer-inner { flex-direction: column; align-items: flex-start; }

@@ -11,6 +11,7 @@ export interface ThoughtLeadershipArticle {
   category: string;
   excerpt: string;
   image: string;
+  heroImage: string;
   authorImage: string;
   pdfUrl: string;
   content: ArticleSection[];
@@ -36,10 +37,11 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     category: "Technology Strategy",
     excerpt:
       "Many companies struggle to implement effective data governance. In this Q&A, April Blackburn discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies.",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80",
+    image: "/images/tl-april-blackburn-banner.jpg",
+    heroImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80",
     authorImage:
-      "https://rawlinsic.com/wp-content/uploads/2024/09/april.webp",
+      "https://rawlinsic.com/wp-content/uploads/2025/05/april.webp",
     pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",
     content: [
       {
@@ -196,6 +198,8 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
       "As technology transforms the transportation sector, agencies must rethink how they attract, develop, and retain talent. This piece explores strategies for aligning workforce planning with modernization goals.",
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80",
+    heroImage:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80",
     authorImage: "",
     pdfUrl: "",
     content: [
@@ -219,6 +223,8 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     excerpt:
       "Artificial intelligence holds enormous promise for public agencies, but implementation requires more than enthusiasm. This article outlines a grounded approach to AI readiness and adoption.",
     image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80",
+    heroImage:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80",
     authorImage: "",
     pdfUrl: "",

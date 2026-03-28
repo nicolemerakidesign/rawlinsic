@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
@@ -8,16 +8,52 @@ import SiteFooter from "@/components/site-footer";
 import {
   THOUGHT_LEADERSHIP,
   type ThoughtLeadershipArticle,
+  type ArticleSection,
 } from "@/components/thought-leadership-data";
 
 interface Props {
   article: ThoughtLeadershipArticle;
 }
 
+/* ── Group content into accordion sections (one per question) ── */
+function groupIntoAccordion(content: ArticleSection[]) {
+  const sections: { question: string; blocks: ArticleSection[] }[] = [];
+  let introBlocks: ArticleSection[] = [];
+  let current: { question: string; blocks: ArticleSection[] } | null = null;
+
+  for (const block of content) {
+    if (block.type === "question") {
+      if (current) sections.push(current);
+      current = { question: block.text || "", blocks: [] };
+    } else if (current) {
+      current.blocks.push(block);
+    } else {
+      introBlocks.push(block);
+    }
+  }
+  if (current) sections.push(current);
+
+  return { introBlocks, sections };
+}
+
 export default function ThoughtLeadershipArticlePage({ article }: Props) {
   const idx = THOUGHT_LEADERSHIP.findIndex((a) => a.slug === article.slug);
   const prev = idx > 0 ? THOUGHT_LEADERSHIP[idx - 1] : null;
   const next = idx < THOUGHT_LEADERSHIP.length - 1 ? THOUGHT_LEADERSHIP[idx + 1] : null;
+
+  const { introBlocks, sections } = groupIntoAccordion(article.content);
+  const [openSections, setOpenSections] = useState<Set<number>>(() => new Set([0]));
+
+  const toggleSection = (i: number) => {
+    setOpenSections((prev) => {
+      const next = new Set(prev);
+      next.has(i) ? next.delete(i) : next.add(i);
+      return next;
+    });
+  };
+
+  const expandAll = () => setOpenSections(new Set(sections.map((_, i) => i)));
+  const collapseAll = () => setOpenSections(new Set());
 
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -106,6 +142,55 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
 
   const isComingSoon = article.author === "Coming Soon";
 
+  /* ── Render a content block ── */
+  const renderBlock = (block: ArticleSection, i: number) => {
+    switch (block.type) {
+      case "intro":
+        return (
+          <p key={i} className="tla-intro">
+            {block.text}
+          </p>
+        );
+      case "answer":
+        return (
+          <p key={i} className="tla-answer">
+            <strong className="tla-answer-name">{article.author}:</strong>{" "}
+            {block.text}
+          </p>
+        );
+      case "heading":
+        return (
+          <h3 key={i} className="tla-heading">
+            {block.text}
+          </h3>
+        );
+      case "paragraph":
+        return (
+          <p key={i} className="tla-paragraph">
+            {block.text}
+          </p>
+        );
+      case "callout":
+        return (
+          <blockquote key={i} className="tla-callout">
+            <p>{block.text}</p>
+          </blockquote>
+        );
+      case "divider":
+        return null; /* accordion replaces dividers */
+      case "list":
+        return (
+          <ul key={i} className="tla-list">
+            {block.items?.map((item, j) => (
+              <li key={j}>{item}</li>
+            ))}
+          </ul>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       {/* Ambient Background */}
@@ -135,7 +220,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
         {/* ── Hero with image ── */}
         <section className="csd-hero" id="top">
           <Image
-            src={article.image}
+            src={article.heroImage}
             alt={article.title}
             fill
             priority
@@ -202,67 +287,61 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               </div>
             )}
 
-            {/* Article body */}
+            {/* Intro blocks (before the first question) */}
             <div className="tla-body">
-              {article.content.map((section, i) => {
-                switch (section.type) {
-                  case "intro":
-                    return (
-                      <p key={i} className="tla-intro reveal">
-                        {section.text}
-                      </p>
-                    );
-                  case "question":
-                    return (
-                      <div key={i} className="tla-question reveal">
-                        <div className="tla-q-icon">Q</div>
-                        <h2 className="tla-q-text">{section.text}</h2>
-                      </div>
-                    );
-                  case "answer":
-                    return (
-                      <p key={i} className="tla-answer reveal">
-                        <strong className="tla-answer-name">{article.author}:</strong>{" "}
-                        {section.text}
-                      </p>
-                    );
-                  case "heading":
-                    return (
-                      <h3 key={i} className="tla-heading reveal">
-                        {section.text}
-                      </h3>
-                    );
-                  case "paragraph":
-                    return (
-                      <p key={i} className="tla-paragraph reveal">
-                        {section.text}
-                      </p>
-                    );
-                  case "callout":
-                    return (
-                      <blockquote key={i} className="tla-callout reveal">
-                        <p>{section.text}</p>
-                      </blockquote>
-                    );
-                  case "divider":
-                    return (
-                      <div key={i} className="tla-divider reveal">
-                        <div className="gold-line" />
-                      </div>
-                    );
-                  case "list":
-                    return (
-                      <ul key={i} className="tla-list reveal">
-                        {section.items?.map((item, j) => (
-                          <li key={j}>{item}</li>
-                        ))}
-                      </ul>
-                    );
-                  default:
-                    return null;
-                }
-              })}
+              {introBlocks.map((block, i) => renderBlock(block, i))}
             </div>
+
+            {/* Accordion Q&A sections */}
+            {sections.length > 0 && (
+              <div className="tla-accordion">
+                {/* Expand/Collapse controls */}
+                <div className="tla-accordion-controls reveal">
+                  <span className="tla-accordion-controls-label">Q&A</span>
+                  <div className="tla-accordion-controls-btns">
+                    <button onClick={expandAll} className="tla-expand-btn">Expand All</button>
+                    <span className="tla-controls-sep">/</span>
+                    <button onClick={collapseAll} className="tla-expand-btn">Collapse All</button>
+                  </div>
+                </div>
+
+                {sections.map((section, i) => {
+                  const isOpen = openSections.has(i);
+                  return (
+                    <div
+                      key={i}
+                      className={`tla-accordion-item reveal rd${(i % 4) + 1}${isOpen ? " open" : ""}`}
+                    >
+                      <button
+                        className="tla-accordion-trigger"
+                        onClick={() => toggleSection(i)}
+                        aria-expanded={isOpen}
+                      >
+                        <div className="tla-q-icon">Q</div>
+                        <h2 className="tla-q-text">{section.question}</h2>
+                        <div className={`tla-accordion-chevron${isOpen ? " open" : ""}`}>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
+                        </div>
+                      </button>
+                      <div className={`tla-accordion-body${isOpen ? " open" : ""}`}>
+                        <div className="tla-accordion-body-inner">
+                          {section.blocks.map((block, j) => renderBlock(block, j))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Fallback for coming-soon articles */}
+            {sections.length === 0 && (
+              <div className="tla-body">
+                {article.content.map((block, i) => renderBlock(block, i))}
+              </div>
+            )}
 
             {/* Author contact footer */}
             {!isComingSoon && (
