@@ -2182,11 +2182,12 @@ color: #fff;
 }
 .aam-overview-right .intro-cinematic-img {
   object-fit: cover;
+  filter: brightness(0.45) saturate(0.7);
 }
 .aam-overview-right .intro-cinematic-overlay {
   background:
-    linear-gradient(to right, rgba(6,12,22,0.3) 0%, transparent 40%, rgba(6,12,22,0.3) 100%),
-    linear-gradient(to top, rgba(6,12,22,0.85) 0%, rgba(6,12,22,0.35) 55%);
+    linear-gradient(to right, rgba(6,12,22,0.2) 0%, transparent 40%, rgba(6,12,22,0.2) 100%),
+    linear-gradient(to top, rgba(6,12,22,0.75) 0%, transparent 55%);
 }
 
 /* Value pillar cards */
