@@ -182,7 +182,7 @@ export default function ThoughtLeadershipOverview() {
               />
               <div className="tl-featured-img-overlay" />
               <div className="tl-featured-badge">
-                <span>Featured</span>
+                <span>Latest</span>
               </div>
             </Link>
             <div className="tl-featured-text">
@@ -212,7 +212,7 @@ export default function ThoughtLeadershipOverview() {
                   <span className="tl-author-role">{articles[0].authorRole}</span>
                 </div>
               </div>
-              <Link href={`/insights/thought-leadership/${articles[0].slug}`} className="cs-cta-btn" style={{ marginTop: 28 }}>
+              <Link href={`/insights/thought-leadership/${articles[0].slug}`} className="cs-cta-btn" style={{ marginTop: 28, width: 'fit-content' }}>
                 <span>Read Article</span>
               </Link>
             </div>

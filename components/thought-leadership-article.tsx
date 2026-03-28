@@ -42,6 +42,17 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
   const next = idx < THOUGHT_LEADERSHIP.length - 1 ? THOUGHT_LEADERSHIP[idx + 1] : null;
 
   const { introBlocks, sections } = groupIntoAccordion(article.content);
+
+  /* ── Pull trailing callout out of last accordion section ── */
+  let trailingCallout: ArticleSection | null = null;
+  if (sections.length > 0) {
+    const lastSection = sections[sections.length - 1];
+    const lastBlock = lastSection.blocks[lastSection.blocks.length - 1];
+    if (lastBlock && lastBlock.type === "callout") {
+      trailingCallout = lastSection.blocks.pop()!;
+    }
+  }
+
   const [openSections, setOpenSections] = useState<Set<number>>(() => new Set([0]));
 
   const toggleSection = (i: number) => {
@@ -310,7 +321,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                   return (
                     <div
                       key={i}
-                      className={`tla-accordion-item reveal rd${(i % 4) + 1}${isOpen ? " open" : ""}`}
+                      className={`tla-accordion-item${isOpen ? " open" : ""}`}
                     >
                       <button
                         className="tla-accordion-trigger"
@@ -333,6 +344,13 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                     </div>
                   );
                 })}
+              </div>
+            )}
+
+            {/* Trailing callout (outside accordion) */}
+            {trailingCallout && (
+              <div className="tla-body" style={{ marginTop: 40 }}>
+                {renderBlock(trailingCallout, 9999)}
               </div>
             )}
 
