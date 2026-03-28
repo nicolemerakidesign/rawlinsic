@@ -2735,13 +2735,16 @@ color: #fff;
 
 /* True CSS parallax — background stays fixed while content scrolls over it */
 .aam-parallax-fixed {
+  position: relative;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  overflow: visible;
 }
 .aam-parallax-fixed.parallax-panel {
   min-height: 40vh;
+  overflow: visible;
 }
 .aam-hero.aam-parallax-fixed {
   background-size: cover;
@@ -2768,7 +2771,9 @@ color: #fff;
 .aam-parallax-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: rgba(6,12,22,0.55);
+  pointer-events: none;
 }
 
 /* CTA section */
@@ -2782,8 +2787,10 @@ color: #fff;
 .aam-cta-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 50%),
     linear-gradient(180deg, rgba(6,12,22,0.7) 0%, rgba(6,12,22,0.5) 50%, rgba(6,12,22,0.8) 100%);
+  pointer-events: none;
 }
 .aam-cta-wrap { max-width: 820px; }
 .aam-cta-body {

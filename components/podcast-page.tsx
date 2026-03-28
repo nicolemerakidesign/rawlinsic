@@ -20,11 +20,22 @@ export default function PodcastPage() {
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
+    /* Hide until first mouse move so they don't flash at top-left */
+    dot.style.opacity = "0";
+    ring.style.opacity = "0";
+    let started = false;
     const onMouseMove = (e: MouseEvent) => {
       mouseX.current = e.clientX;
       mouseY.current = e.clientY;
       dot.style.left = e.clientX - 4 + "px";
       dot.style.top = e.clientY - 4 + "px";
+      if (!started) {
+        started = true;
+        ringX.current = e.clientX;
+        ringY.current = e.clientY;
+        dot.style.opacity = "1";
+        ring.style.opacity = "1";
+      }
     };
     const animateRing = () => {
       ringX.current += (mouseX.current - ringX.current) * 0.12;
