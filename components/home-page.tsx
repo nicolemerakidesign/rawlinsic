@@ -91,7 +91,7 @@ const exploreBottomCards = [
       title: "Insights",
     desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
     cta: "See how we transform →",
-    href: "/insights/thought-leadership",
+    href: "/insights",
     bg: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=500&h=400&fit=crop",
   },
   {
@@ -115,7 +115,7 @@ const exploreTopCards = [
       title: "Insights",
     desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
     cta: "Explore insights →",
-    href: "/insights/thought-leadership",
+    href: "/insights",
     bg: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=500&h=400&fit=crop",
   },
   {

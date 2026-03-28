@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SiteNav from '@/components/site-nav';
 import SiteFooter from '@/components/site-footer';
-import PasswordGate from '@/components/password-gate';
 
 const DRONE_IMG = "https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const CITY_AERIAL_IMG = "https://images.unsplash.com/photo-1704912343381-99656b2a4ba3?auto=compress&cs=tinysrgb&w=1200";
@@ -262,7 +261,7 @@ const AAMPage = () => {
   );
 
   return (
-    <PasswordGate>
+    <>
       {/* Ambient Background */}
       <div className="ambient-bg" />
       <div className="ambient-orbs">
@@ -763,7 +762,7 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
       <div className="section-divider"><div className="gold-line" /></div>
 
       <SiteFooter />
-    </PasswordGate>
+    </>
   );
 };
 
