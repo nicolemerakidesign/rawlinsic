@@ -38,6 +38,7 @@ const pillars = [
     name: "Strategy",
     tags: "Decision systems · Planning · Organizational Design",
     desc: "We help leaders see clearly, decide wisely, and act with confidence. From governance frameworks to strategic program planning, we translate organizational priorities into actionable plans that drive sustainable transformation.",
+    href: "/capabilities#strategy",
     bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/gNTqxQESyZzn0S1NPC6S2.webp",
   },
   {
@@ -45,6 +46,7 @@ const pillars = [
     name: "Operations",
     tags: "people · process · culture · workforce",
     desc: "We create sustainable high-performance strategies that foster collaboration, accountability, and organizational health. Our proficiency programs empower teams to deliver their best work.",
+    href: "/capabilities#operations",
     bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/P9ho_XURvnAgxJEfA0Udc.webp",
   },
   {
@@ -52,6 +54,7 @@ const pillars = [
     name: "Technology",
     tags: "human-centric AI integration · digital systems · analytics · data",
     desc: "From establishing trustworthy data foundations to deploying intelligent automation, we help organizations harness the information layer. Our specialists streamline workflows so your people can focus on what machines can't do.",
+    href: "/capabilities#technology",
     bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/aJz_dR6Ty4KJ0pskjhA86.webp",
   },
 ];
@@ -105,7 +108,7 @@ const exploreTopCards = [
     title: "Capabilities",
     desc: "Explore our practice areas and how we tailor solutions to your unique organizational challenges.",
     cta: "Explore our services →",
-    href: "#",
+    href: "/capabilities",
     bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/1L1yKR0QRSVmw-qsuceL_.webp",
   },
   {
@@ -499,7 +502,7 @@ export default function HomePage() {
                 <div className="pillar-tags">{p.tags}</div>
                 <p className="pillar-desc">{p.desc}</p>
                 <Link
-                  href="#"
+                  href={p.href}
                   className="pillar-link"
                   onClick={(e) => e.stopPropagation()}
                 >

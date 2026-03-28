@@ -37,9 +37,9 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           <svg className={`mobile-menu-chevron${mobileSubOpen.has("cap") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
         </button>
         <div className={`mobile-menu-sub${mobileSubOpen.has("cap") ? " open" : ""}`}>
-          <a href="#" onClick={close}>View All</a>
-          <a href="#" onClick={close}>Strategy</a>
-          <a href="#" onClick={close}>Operations</a>
+          <a href="/capabilities" onClick={close}>View All</a>
+          <a href="/capabilities#strategy" onClick={close}>Strategy</a>
+          <a href="/capabilities#operations" onClick={close}>Operations</a>
           <button className="mobile-menu-parent mobile-menu-nested" onClick={() => toggleSub("tech")}>
             Technology
             <svg className={`mobile-menu-chevron${mobileSubOpen.has("tech") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
@@ -91,9 +91,9 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
               </svg>
             </span>
             <div className="nav-dropdown">
-              <a href="#">View All</a>
-              <a href="#">Strategy</a>
-              <a href="#">Operations</a>
+              <a href="/capabilities">View All</a>
+              <a href="/capabilities#strategy">Strategy</a>
+              <a href="/capabilities#operations">Operations</a>
               <div className="nav-dropdown-sub">
                 <span className="nav-dropdown-sub-label">
                   Technology

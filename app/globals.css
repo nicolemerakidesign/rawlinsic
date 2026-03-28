@@ -4753,3 +4753,352 @@ color: #fff;
   .pod-hero-tagline { font-size: 17px; }
   .pod-eq-section { padding: 24px; }
 }
+
+/* ═══════════════════════════════════════════════════
+   CAPABILITIES PAGE
+   ═══════════════════════════════════════════════════ */
+
+/* ── Hero ── */
+.cap-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.cap-hero-img {
+  object-fit: cover;
+  object-position: center 30%;
+}
+.cap-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,12,22,0.6) 0%, rgba(6,12,22,0.92) 100%);
+  z-index: 1;
+}
+.cap-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 32px 80px;
+}
+.cap-hero-label {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.cap-hero-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.cap-hero-title em {
+  font-style: italic;
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cap-hero-subtitle {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #e8e6e1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Sticky Tab Bar ── */
+.cap-tab-bar {
+  position: sticky;
+  top: 70px;
+  z-index: 50;
+  background: rgba(6, 12, 22, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  padding: 0 32px;
+}
+.cap-tab-bar-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+.cap-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e8e6e1;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+}
+.cap-tab::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  transition: width 0.35s ease, left 0.35s ease;
+}
+.cap-tab:hover { color: #c9a84c; }
+.cap-tab.active::after {
+  width: 100%;
+  left: 0;
+}
+.cap-tab.active {
+  color: #c9a84c;
+}
+.cap-tab-icon {
+  display: flex;
+  align-items: center;
+}
+.cap-tab-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+/* ── Capability Section ── */
+.cap-section {
+  padding: 100px 48px 40px;
+  max-width: 1300px;
+  margin: 0 auto;
+  scroll-margin-top: 140px;
+}
+
+/* Section header: image + text side by side */
+.cap-section-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+.cap-section-header.cap-reverse {
+  direction: rtl;
+}
+.cap-section-header.cap-reverse > * {
+  direction: ltr;
+}
+
+.cap-section-img-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cap-section-img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.cap-section-img-wrap:hover .cap-section-img {
+  transform: scale(1.04);
+}
+.cap-section-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(6,12,22,0.3), rgba(6,12,22,0.15));
+  pointer-events: none;
+}
+
+.cap-section-number {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.cap-section-label {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.cap-section-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.cap-section-focus {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(180deg, #b89a3e, #d4be78, #c9a84c) 1;
+}
+.cap-section-desc {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #e8e6e1;
+}
+
+/* ── Services Grid ── */
+.cap-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+.cap-service-card {
+  background: rgba(10, 21, 40, 0.6);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  border-radius: 8px;
+  padding: 36px 32px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+}
+.cap-service-card:hover {
+  border-color: rgba(201, 168, 76, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+.cap-service-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(201, 168, 76, 0.08);
+  margin-bottom: 20px;
+}
+.cap-service-icon svg {
+  stroke: #c9a84c;
+}
+.cap-service-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.cap-service-desc {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e8e6e1;
+}
+.cap-service-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #b89a3e, #d4be78, #c9a84c);
+  transition: width 0.5s ease;
+}
+.cap-service-card:hover .cap-service-bar {
+  width: 100%;
+}
+
+/* ── CTA ── */
+.cap-cta {
+  padding: 100px 48px 120px;
+  text-align: center;
+}
+.cap-cta-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.cap-cta-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.cap-cta-text {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #e8e6e1;
+  margin-bottom: 36px;
+}
+.cap-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 48px;
+  border: 1px solid #c9a84c;
+  border-radius: 4px;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s;
+}
+.cap-cta-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s ease;
+  z-index: -1;
+}
+.cap-cta-btn:hover::before {
+  transform: scaleX(1);
+}
+.cap-cta-btn:hover {
+  color: #060c16;
+}
+
+/* ── Capabilities Responsive ── */
+@media (max-width: 1100px) {
+  .cap-section { padding: 80px 32px 32px; }
+  .cap-section-header {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .cap-section-header.cap-reverse { direction: ltr; }
+}
+@media (max-width: 768px) {
+  .cap-hero { min-height: 55vh; }
+  .cap-hero-content { padding: 0 24px 60px; }
+  .cap-hero-title { font-size: 32px; }
+  .cap-section { padding: 60px 20px 20px; }
+  .cap-section-header { gap: 28px; margin-bottom: 48px; }
+  .cap-section-number { font-size: 48px; }
+  .cap-services-grid { grid-template-columns: 1fr; gap: 20px; }
+  .cap-tab { padding: 14px 12px; font-size: 12px; letter-spacing: 1px; gap: 6px; }
+  .cap-tab-icon svg { width: 14px; height: 14px; }
+  .cap-cta { padding: 60px 24px 80px; }
+}
