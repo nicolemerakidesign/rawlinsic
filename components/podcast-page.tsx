@@ -6,7 +6,8 @@ import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 import PasswordGate from "@/components/password-gate";
 
-export default function PodcastPage() {
+/* ── Cursor component — must live inside PasswordGate children so refs exist ── */
+function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const mouseX = useRef(0);
@@ -15,12 +16,10 @@ export default function PodcastPage() {
   const ringY = useRef(0);
   const animFrame = useRef<number | null>(null);
 
-  /* ── Custom cursor ── */
   useEffect(() => {
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
-    /* Hide until first mouse move so they don't flash at top-left */
     dot.style.opacity = "0";
     ring.style.opacity = "0";
     let started = false;
@@ -56,6 +55,16 @@ export default function PodcastPage() {
       if (animFrame.current) cancelAnimationFrame(animFrame.current);
     };
   }, []);
+
+  return (
+    <>
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
+    </>
+  );
+}
+
+export default function PodcastPage() {
 
   /* ── Micro particles ── */
   useEffect(() => {
@@ -128,8 +137,7 @@ export default function PodcastPage() {
       <div className="micro-particles" id="microParticles" />
 
       {/* Custom Cursor */}
-      <div className="cursor-dot" ref={dotRef} />
-      <div className="cursor-ring" ref={ringRef} />
+      <CustomCursor />
 
       {/* Back to Top */}
       <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
