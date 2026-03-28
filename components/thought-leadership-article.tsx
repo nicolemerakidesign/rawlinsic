@@ -315,14 +315,19 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               </div>
             )}
 
-            {/* Intro text */}
+            {/* First intro block only (left column) */}
             <div className="tla-body">
-              {introBlocks.map((block, i) => renderBlock(block, i))}
+              {introBlocks.filter(b => b.type === "intro").map((block, i) => renderBlock(block, i))}
             </div>
           </div>
 
-          {/* RIGHT COLUMN: accordion Q&A */}
+          {/* RIGHT COLUMN: context paragraph + accordion Q&A */}
           <div className="tla-col-right">
+            {/* "In the following Q&A..." paragraph above accordion */}
+            <div className="tla-body" style={{ marginBottom: 32 }}>
+              {introBlocks.filter(b => b.type === "paragraph").map((block, i) => renderBlock(block, i))}
+            </div>
+
             {/* Accordion Q&A sections */}
             {sections.length > 0 && (
               <div className="tla-accordion">
@@ -371,44 +376,6 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
             {trailingCallout && (
               <div className="tla-body" style={{ marginTop: 40 }}>
                 {renderBlock(trailingCallout, 9999)}
-              </div>
-            )}
-
-            {/* Author contact footer */}
-            {!isComingSoon && (
-              <div className="tla-author-footer">
-                <div className="tla-author-footer-inner">
-                  {article.authorImage && (
-                    <Image
-                      src={article.authorImage}
-                      alt={article.author}
-                      width={80}
-                      height={80}
-                      className="tl-author-avatar tla-avatar-xl"
-                    />
-                  )}
-                  <div className="tla-author-footer-text">
-                    <span className="tla-author-name">{article.author}</span>
-                    <span className="tla-author-role">{article.authorRole}</span>
-                    {article.authorPhone && (
-                      <span className="tla-author-contact">{article.authorPhone}</span>
-                    )}
-                    <span className="tla-author-contact">{article.authorEmail}</span>
-                  </div>
-                  {article.pdfUrl && (
-                    <a
-                      href={article.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="tla-pdf-btn"
-                    >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                      </svg>
-                      <span>View Full PDF</span>
-                    </a>
-                  )}
-                </div>
               </div>
             )}
           </div>

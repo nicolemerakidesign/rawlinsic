@@ -4142,7 +4142,7 @@ color: #fff;
 /* ── Two-column layout ── */
 .tla-two-col {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
 }
