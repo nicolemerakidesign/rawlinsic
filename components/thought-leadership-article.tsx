@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
+import PasswordGate from "@/components/password-gate";
 import {
   THOUGHT_LEADERSHIP,
   type ThoughtLeadershipArticle,
@@ -203,7 +204,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
   };
 
   return (
-    <>
+    <PasswordGate>
       {/* Ambient Background */}
       <div className="ambient-bg" />
       <div className="ambient-orbs">
@@ -431,6 +432,6 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
       </div>
 
       <SiteFooter />
-    </>
+    </PasswordGate>
   );
 }

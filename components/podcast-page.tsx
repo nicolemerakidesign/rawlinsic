@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
+import PasswordGate from "@/components/password-gate";
 
 export default function PodcastPage() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -92,7 +93,7 @@ export default function PodcastPage() {
   }, []);
 
   return (
-    <>
+    <PasswordGate>
       {/* Ambient Background */}
       <div className="ambient-bg" />
       <div className="ambient-orbs">
@@ -258,6 +259,6 @@ export default function PodcastPage() {
       </div>
 
       <SiteFooter />
-    </>
+    </PasswordGate>
   );
 }

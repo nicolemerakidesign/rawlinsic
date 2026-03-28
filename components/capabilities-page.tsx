@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
+import PasswordGate from "@/components/password-gate";
 
 /* ─── Images ─── */
 const HERO_IMG =
@@ -348,7 +349,7 @@ export default function CapabilitiesPage() {
   };
 
   return (
-    <>
+    <PasswordGate>
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
       <canvas className="particle-canvas" ref={canvasRef} />
@@ -461,6 +462,6 @@ export default function CapabilitiesPage() {
       </section>
 
       <SiteFooter />
-    </>
+    </PasswordGate>
   );
 }
