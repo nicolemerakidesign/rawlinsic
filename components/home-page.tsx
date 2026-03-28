@@ -88,12 +88,14 @@ const exploreBottomCards = [
       title: "Insights",
     desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
     cta: "See how we transform →",
+    href: "/insights/thought-leadership",
     bg: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=500&h=400&fit=crop",
   },
   {
       title: "Case Studies",
     desc: "Discover how our work has transformed organizations across public and private sectors.",
     cta: "Explore our impact →",
+    href: "/insights/case-studies",
     bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/AiS-o8mCLd3aTE3QobCPS.webp",
   },
   ];
@@ -103,18 +105,21 @@ const exploreTopCards = [
     title: "Capabilities",
     desc: "Explore our practice areas and how we tailor solutions to your unique organizational challenges.",
     cta: "Explore our services →",
+    href: "#",
     bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/1L1yKR0QRSVmw-qsuceL_.webp",
   },
   {
       title: "Insights",
     desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
     cta: "Explore insights →",
+    href: "/insights/thought-leadership",
     bg: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=500&h=400&fit=crop",
   },
   {
       title: "Case Studies",
     desc: "Discover how our work has transformed organizations across public and private sectors.",
     cta: "discover our impact →",
+    href: "/insights/case-studies",
     bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/AiS-o8mCLd3aTE3QobCPS.webp",
   },
 ];
@@ -595,7 +600,7 @@ export default function HomePage() {
           <div className="explore-grid">
             {exploreTopCards.map((card, i) => (
               <Link
-                href="#"
+                href={card.href}
                 className={`explore-card reveal${i > 0 ? ` rd${i}` : ""}`}
                 key={card.title}
               >
@@ -612,7 +617,7 @@ export default function HomePage() {
           <div className="explore-bottom">
             {exploreBottomCards.map((card, i) => (
               <Link
-                href="#"
+                href={card.href}
                 className={`explore-card reveal${i > 0 ? " rd1" : ""}`}
                 key={card.title}
               >
@@ -646,7 +651,7 @@ export default function HomePage() {
           <p className="team-desc">
             Our team of professionals bring decades of combined experience working within and alongside complex organizations. We pride ourselves on establishing long-term relationships with our family of clients.
           </p>
-          <Link href="#" className="btn-team"><span>View Our Team</span></Link>
+          <Link href="/about/our-people" className="btn-team"><span>View Our Team</span></Link>
         </div>
       </section>
 
