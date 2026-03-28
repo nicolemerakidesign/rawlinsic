@@ -1050,6 +1050,10 @@ a.contact-detail-value:hover { color: #fff; }
   border: 1px solid rgba(201,168,76,0.1);
   position: relative;
 }
+.aam-overview-right .intro-cinematic-wrap {
+  border: none !important;
+  border-radius: 0 !important;
+}
 .intro-cinematic-img {
   width: 110%; height: 110%;
   max-width: none;
@@ -2184,12 +2188,10 @@ color: #fff;
 }
 .aam-overview-right .intro-cinematic-img {
   object-fit: cover;
-  filter: brightness(0.3) saturate(0.6);
+  filter: none;
 }
 .aam-overview-right .intro-cinematic-overlay {
-  background:
-    linear-gradient(to right, rgba(6,12,22,0.25) 0%, transparent 40%, rgba(6,12,22,0.25) 100%),
-    linear-gradient(to top, rgba(6,12,22,0.8) 0%, rgba(6,12,22,0.2) 55%);
+  display: none;
 }
 
 /* Value pillar cards */
@@ -2769,9 +2771,7 @@ color: #fff;
 }
 .aam-hero.aam-parallax-fixed .aam-hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background:
-    radial-gradient(ellipse at 50% 70%, rgba(201,168,76,0.06) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(6,12,22,0.7) 0%, rgba(6,12,22,0.3) 50%, rgba(6,12,22,0.9) 100%);
+  background: rgba(6,12,22,0.7);
 }
 .aam-cta-section.aam-parallax-fixed {
   background-attachment: fixed;
@@ -2787,7 +2787,7 @@ color: #fff;
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(6,12,22,0.75);
+  background: rgba(6,12,22,0.6);
   pointer-events: none;
 }
 
