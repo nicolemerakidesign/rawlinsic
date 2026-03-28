@@ -2177,17 +2177,19 @@ color: #fff;
   width: 100%;
   height: 100%;
   min-height: 420px;
-  border: none;
-  border-radius: 3px;
+  border: none !important;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
 }
 .aam-overview-right .intro-cinematic-img {
   object-fit: cover;
-  filter: brightness(0.45) saturate(0.7);
+  filter: brightness(0.3) saturate(0.6);
 }
 .aam-overview-right .intro-cinematic-overlay {
   background:
-    linear-gradient(to right, rgba(6,12,22,0.2) 0%, transparent 40%, rgba(6,12,22,0.2) 100%),
-    linear-gradient(to top, rgba(6,12,22,0.75) 0%, transparent 55%);
+    linear-gradient(to right, rgba(6,12,22,0.25) 0%, transparent 40%, rgba(6,12,22,0.25) 100%),
+    linear-gradient(to top, rgba(6,12,22,0.8) 0%, rgba(6,12,22,0.2) 55%);
 }
 
 /* Value pillar cards */
@@ -2751,6 +2753,13 @@ color: #fff;
 }
 .aam-parallax-fixed.parallax-panel {
   min-height: 40vh;
+  border: none;
+  background-color: transparent;
+}
+.aam-parallax-fixed.parallax-panel::before,
+.aam-parallax-fixed.parallax-panel::after {
+  content: none;
+  display: none;
 }
 .aam-hero.aam-parallax-fixed {
   background-size: cover;
