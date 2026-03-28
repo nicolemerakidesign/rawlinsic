@@ -179,6 +179,18 @@ export default function CapabilitiesPage() {
             if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("visible");
           });
         }, 100);
+
+        /* After PasswordGate renders, scroll to hash target if present */
+        const hash = window.location.hash;
+        if (hash) {
+          const target = document.querySelector(hash);
+          if (target) {
+            setTimeout(() => {
+              const top = target.getBoundingClientRect().top + window.scrollY - 130;
+              window.scrollTo({ top, behavior: "smooth" });
+            }, 200);
+          }
+        }
       });
     });
     return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };

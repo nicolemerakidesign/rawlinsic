@@ -247,36 +247,7 @@ const AAMPage = () => {
     return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };
   }, []);
 
-  // Parallax scroll effect for ALL background images (hero, quote panels, CTA)
-  useEffect(() => {
-    const targets = [
-      ...Array.from(document.querySelectorAll<HTMLElement>(".aam-parallax-img-panel")),
-      document.querySelector<HTMLElement>(".aam-hero"),
-      document.querySelector<HTMLElement>(".aam-cta-section"),
-    ].filter(Boolean) as HTMLElement[];
-
-    const imgSelectors = [".aam-parallax-bg", ".aam-hero-bg", ".aam-cta-bg"];
-
-    const onScroll = () => {
-      targets.forEach((panel) => {
-        const rect = panel.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-        // Find whichever bg image class this panel uses
-        let img: HTMLElement | null = null;
-        for (const sel of imgSelectors) {
-          img = panel.querySelector<HTMLElement>(sel);
-          if (img) break;
-        }
-        if (!img) return;
-        const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-        const translate = (progress - 0.5) * -80;
-        img.style.transform = `scale(1.2) translateY(${translate}px)`;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // Parallax is now handled by CSS background-attachment: fixed — no JS needed
 
   const chevronSvg = (rotated: boolean) => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "transform 0.3s", transform: rotated ? "rotate(180deg)" : "rotate(0)" }}>
@@ -308,8 +279,7 @@ const AAMPage = () => {
       <SiteNav ctaHref="/contact" />
 
       {/* ── Hero ── */}
-      <section className="aam-hero" id="top">
-        <Image src={DRONE_IMG} alt="Drone aerial" fill priority sizes="100vw" className="aam-hero-bg" />
+      <section className="aam-hero aam-parallax-fixed" id="top" style={{ backgroundImage: `url(${DRONE_IMG})` }}>
         <div className="aam-hero-overlay" />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text"></span></span>
@@ -372,9 +342,11 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
         </div>
       </section>
 
-      {/* Parallax Quote with Image */}
-      <div className="parallax-panel aam-parallax-img-panel">
-        <Image src={SKYLINE_IMG} alt="City skyline" fill sizes="100vw" className="aam-parallax-bg" />
+      {/* Parallax Quote with Image — CSS background-attachment: fixed */}
+      <div
+        className="parallax-panel aam-parallax-fixed"
+        style={{ backgroundImage: `url(${SKYLINE_IMG})` }}
+      >
         <div className="aam-parallax-overlay" />
         <p className="parallax-text reveal" style={{ position: 'relative', zIndex: 2 }}>
           Strategic Multi-Modal Integration |<br /><em>Built on Real-World Success</em>
@@ -503,9 +475,11 @@ Our team brings together regulatory guidance, operational expertise, and program
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* Parallax Quote 2 with Image */}
-      <div className="parallax-panel aam-parallax-img-panel">
-        <Image src={HIGHWAY_AERIAL_IMG} alt="Highway aerial" fill sizes="100vw" className="aam-parallax-bg" />
+      {/* Parallax Quote 2 with Image — CSS background-attachment: fixed */}
+      <div
+        className="parallax-panel aam-parallax-fixed"
+        style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }}
+      >
         <div className="aam-parallax-overlay" />
         <p className="parallax-text reveal" style={{ position: 'relative', zIndex: 2 }}>
 Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviation</p>
@@ -765,9 +739,11 @@ Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviati
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── CTA with Background ── */}
-      <section className="aam-section aam-cta-section">
-        <Image src={HELICOPTER_IMG} alt="Helicopter" fill sizes="100vw" className="aam-cta-bg" />
+      {/* ── CTA with Background — CSS parallax ── */}
+      <section
+        className="aam-section aam-cta-section aam-parallax-fixed"
+        style={{ backgroundImage: `url(${HELICOPTER_IMG})` }}
+      >
         <div className="aam-cta-overlay" />
         <div className="aam-container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="aam-cta-wrap reveal" style={{ textAlign: "center", margin: "0 auto" }}>

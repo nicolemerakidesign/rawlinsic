@@ -2721,7 +2721,7 @@ color: #fff;
   opacity: 0.85;
 }
 
-/* AAM Parallax image panel */
+/* AAM Parallax image panel (legacy, kept for reference) */
 .aam-parallax-img-panel {
   position: relative;
   overflow: hidden;
@@ -2731,6 +2731,39 @@ color: #fff;
   filter: brightness(0.25) saturate(0.6);
   transform: scale(1.15);
   will-change: transform;
+}
+
+/* True CSS parallax — background stays fixed while content scrolls over it */
+.aam-parallax-fixed {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.aam-parallax-fixed.parallax-panel {
+  min-height: 40vh;
+}
+.aam-hero.aam-parallax-fixed {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: none;
+}
+.aam-hero.aam-parallax-fixed .aam-hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 70%, rgba(201,168,76,0.06) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(6,12,22,0.7) 0%, rgba(6,12,22,0.3) 50%, rgba(6,12,22,0.9) 100%);
+}
+.aam-cta-section.aam-parallax-fixed {
+  background-attachment: fixed;
+}
+/* Mobile: background-attachment: fixed doesn't work on iOS, fallback to scroll */
+@supports (-webkit-touch-callout: none) {
+  .aam-parallax-fixed { background-attachment: scroll; }
+}
+@media (max-width: 768px) {
+  .aam-parallax-fixed { background-attachment: scroll; }
 }
 .aam-parallax-overlay {
   position: absolute;
