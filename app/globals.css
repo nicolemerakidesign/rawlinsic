@@ -4226,6 +4226,20 @@ color: #fff;
   stroke: currentColor;
 }
 
+/* ── Inline Article Image ── */
+.tla-article-img-wrap {
+  margin-bottom: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.tla-article-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 /* ── Article Body ── */
 .tla-body {
   position: relative;

@@ -228,28 +228,24 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
       <SiteNav />
 
       <div className="content-wrapper">
-        {/* ── Article Banner Image ── */}
-        <section className="tla-hero" id="top">
-          <div className="tla-hero-back">
+        {/* ── Hero with dark overlay ── */}
+        <section className="csd-hero" id="top">
+          <Image
+            src={article.heroImage}
+            alt={article.title}
+            fill
+            priority
+            sizes="100vw"
+            className="csd-hero-img"
+          />
+          <div className="csd-hero-overlay" />
+          <div className="csd-hero-content">
             <Link href="/insights/thought-leadership" className="csd-back-link">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
               All Articles
             </Link>
-          </div>
-          <div className="tla-hero-banner">
-            <Image
-              src={article.heroImage}
-              alt={article.title}
-              width={1280}
-              height={746}
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1280px"
-              className="tla-hero-banner-img"
-            />
-          </div>
-          <div className="tla-hero-text">
             <p className="section-label">
               <span className="gold-text">{article.category} &middot; {article.dateLabel}</span>
             </p>
@@ -299,6 +295,20 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                     <span>Download PDF</span>
                   </a>
                 )}
+              </div>
+            )}
+
+            {/* Article banner image */}
+            {article.image && (
+              <div className="tla-article-img-wrap">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  width={900}
+                  height={525}
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="tla-article-img"
+                />
               </div>
             )}
 

@@ -183,90 +183,23 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     ],
   },
   {
-    slug: "strategic-workforce-planning-transportation",
-    title: "Strategic Workforce Planning for the Next Generation of Transportation",
-    subtitle: "Building adaptive teams in an era of rapid technological change",
+    slug: "minimizing-data-governance-fatigue-2",
+    title: "Minimizing Data Governance Fatigue to Maximize Value",
+    subtitle: "Overcoming obstacles to achieve enterprise-wide impact",
     author: "April Blackburn",
     authorRole: "Infrastructure Advisor",
     authorEmail: "April@RawlinsIC.com",
     authorPhone: "(850) 228-1453",
-    date: "2026-04-01",
-    dateLabel: "April 2026",
-    category: "Operations & People",
-    excerpt:
-      "As technology transforms the transportation sector, agencies must rethink how they attract, develop, and retain talent. This piece explores strategies for aligning workforce planning with modernization goals.",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80",
-    authorImage:
-      "https://rawlinsic.com/wp-content/uploads/2025/05/april.webp",
-    pdfUrl: "",
-    content: [
-      {
-        type: "intro",
-        text: "Many companies struggle to implement effective data governance. Research shows widespread adoption of data governance practices, yet maturity levels remain low.",
-      },
-      {
-        type: "paragraph",
-        text: "In the following Q&A, April Blackburn, who specializes in technology strategy at Rawlins, discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies, and the essential elements of a solid governance foundation. Over her career, April has led major enterprise-level initiatives, from modernizing legacy systems to transforming agency operations.",
-      },
-      { type: "divider" },
-      {
-        type: "question",
-        text: "What is data governance, and why does it matter for transportation agencies and other organizations?",
-      },
-      {
-        type: "answer",
-        text: "You really cannot talk about modern transportation without talking about data. It touches everything. Data governance sets out the conditions for effective decision-making based on trustworthy information; it is the framework of policies, roles, and processes that defines how data is owned, managed, and used across an organization. Simply put, data governance is about making sure data actually works for you rather than against you.",
-      },
-      {
-        type: "paragraph",
-        text: "A formalized data governance framework, rather than ad hoc, case-by-case practices, builds trust and helps the organization stay resilient as circumstances change. It also enables people to carry out mission-critical functions. Performance management, federal reporting, and predictive maintenance, for example, can only work well when the underlying data is consistent and trusted. Strong governance turns individual wins into repeatable, scalable practices.",
-      },
-      {
-        type: "paragraph",
-        text: "Data affects operations, asset management, planning, and finance\u2014every part of an organization. When taking an enterprise view of data and governance, you are really asking, How do we manage this foundational asset so people throughout the organization can rely on it?",
-      },
-      { type: "divider" },
-      {
-        type: "question",
-        text: "What are a few of the main barriers to good data governance, and how can they be overcome?",
-      },
-      {
-        type: "answer",
-        text: "One of the biggest barriers is data fatigue. Departments of Transportation (DOTs) and other organizations have long struggled to implement effective data governance, despite ongoing efforts. So, they are now asking fair questions: Haven\u2019t we already done this work? Why do we have to do more? Likely, in such cases, the work was limited or uneven, with governance addressing a system, a project, or a reporting need but not extending across the organization. When that happens, reporting becomes inconsistent, confidence in the data drops, and trust erodes. This situation leads to another barrier: silos.",
-      },
-      {
-        type: "paragraph",
-        text: "Overcoming these barriers takes a practical, phased approach that meets DOTs and other organizations where they are. Governance works best when it starts with clear priorities, grows over time, and becomes part of how people already work. That approach builds trust, supports mission-critical functions, and helps all organizations move forward.",
-      },
-      {
-        type: "callout",
-        text: "At the end of the day, governance is about trust. When people trust the data, they can justify investments, defend priorities, and move forward with confidence. Without that trust, progress slows. With it, agencies are positioned to use technology effectively and improve transportation outcomes.",
-      },
-    ],
-  },
-  {
-    slug: "ai-readiness-public-agencies",
-    title: "AI Readiness for Public Agencies: From Hype to Implementation",
-    subtitle: "A practical framework for responsible AI adoption",
-    author: "April Blackburn",
-    authorRole: "Infrastructure Advisor",
-    authorEmail: "April@RawlinsIC.com",
-    authorPhone: "(850) 228-1453",
-    date: "2026-05-01",
-    dateLabel: "May 2026",
+    date: "2026-03-01",
+    dateLabel: "March 2026",
     category: "Technology Strategy",
     excerpt:
-      "Artificial intelligence holds enormous promise for public agencies, but implementation requires more than enthusiasm. This article outlines a grounded approach to AI readiness and adoption.",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80",
+      "Many companies struggle to implement effective data governance. In this Q&A, April Blackburn discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies.",
+    image: "/images/tl-april-blackburn-banner.jpg",
+    heroImage: "/images/tl-april-blackburn-banner.jpg",
     authorImage:
       "https://rawlinsic.com/wp-content/uploads/2025/05/april.webp",
-    pdfUrl: "",
+    pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",
     content: [
       {
         type: "intro",
