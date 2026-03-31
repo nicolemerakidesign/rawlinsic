@@ -284,7 +284,7 @@ const AAMPage = () => {
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text"></span></span>
           <h1 className="hero-title"><em>Advanced Air Mobility</em> &amp; Uncrewed Aircraft Systems</h1>
-          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community transport solutions.</p>
+          <p className="hero-sub">Partnering to turn AAM and UAS concepts into community and regional transportation solutions.</p>
           <a href="#intro" className="hero-cta-btn"><span>explore our approach</span></a>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
@@ -327,13 +327,13 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
                   </div>
                   <div className="intro-metric-divider" />
                   <div className="intro-metric">
-                    <span className="intro-metric-num">7</span>
-                    <span className="intro-metric-label">Program Phases</span>
+                    <span className="intro-metric-num">20+</span>
+                    <span className="intro-metric-label">Specializations</span>
                   </div>
                   <div className="intro-metric-divider" />
                   <div className="intro-metric">
                     <span className="intro-metric-num">28+</span>
-                    <span className="intro-metric-label">States Served</span>
+                    <span className="intro-metric-label">US States Served</span>
                   </div>
                 </div>
               </div>
@@ -348,8 +348,8 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
         style={{ backgroundImage: `url(${SKYLINE_IMG})` }}
       >
         <div className="aam-parallax-overlay" />
-        <p className="parallax-text reveal" style={{ position: 'relative', zIndex: 2 }}>
-          Strategic Multi-Modal Integration |<br /><em>Built on Real-World Success</em>
+        <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
+          Strategic Multimodal Integration.<br /><em>Built on Real-World Success.</em>
         </p>
       </div>
 
@@ -358,7 +358,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Value Delivery</span></p>
-            <h2 className="section-title">Where AAM and UAS deliver <em>value</em></h2>
+            <h2 className="section-title">Where we drive <em>impact</em> in AAM and UAS</h2>
             <button
               className={`intro-expand-btn${valueOpen ? " expanded" : ""}`}
               aria-label="Learn more"
@@ -416,6 +416,7 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
 Our team brings together regulatory guidance, operational expertise, and program strategy to deliver real-world results. We support AAM and UAS initiatives throughout the program lifecycle.            </p>
           </div>
         </div>
+        <div class="story-scroll-controls"><div class="story-scroll-progress-bar"><div class="story-scroll-progress-fill" style="width:0%"></div></div><div class="story-scroll-arrows"><button class="story-arrow-btn" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button><button class="story-arrow-btn" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></button></div></div>
         {/* Full-width scroll area — breaks out of aam-container */}
         <div className="aam-alt-scroll-outer">
           <div className="aam-alt-scroll-track">
@@ -442,7 +443,6 @@ Our team brings together regulatory guidance, operational expertise, and program
       <section className="aam-section" id="methodology">
         <div className="aam-container">
           <div className="aam-section-header reveal">
-            <p className="section-label"><span className="gold-text">Strategic Methodology</span></p>
             <h2 className="section-title">Our <em>Approach</em></h2>
           </div>
           <div className="aam-framework-grid">
@@ -481,8 +481,8 @@ Our team brings together regulatory guidance, operational expertise, and program
         style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }}
       >
         <div className="aam-parallax-overlay" />
-        <p className="parallax-text reveal" style={{ position: 'relative', zIndex: 2 }}>
-Serving FAA, NASA, FHWA, AAAE, and AASHTO to guide the <em>future</em> of aviation</p>
+        <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
+Guideing the <em>future</em> of aviation</p>
       </div>
 
       {/* ── Interactive Stakeholder Ecosystem ── */}
