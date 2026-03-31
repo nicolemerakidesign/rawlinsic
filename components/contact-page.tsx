@@ -281,7 +281,7 @@ export default function ContactPage() {
                       className="contact-detail-value"
                       style={{ color: "rgba(232,230,225,0.6)" }}
                     >
-                      Based in Reno, NV, USA &middot; Serving Clients Across 28+ States
+                      Based in Reno, NV, USA &middot; Serving Clients Worldwide
                     </span>
                   </div>
                 </div>
