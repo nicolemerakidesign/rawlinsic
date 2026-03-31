@@ -427,7 +427,8 @@ color: #fff;
 }
 .contact-hero-content {
   position: relative; z-index: 2;
-  max-width: 800px;
+  max-width: 900px;
+  white-space: nowrap;
 }
 
   .hero-label {
@@ -554,8 +555,8 @@ color: #fff;
   margin-bottom: 4px;
 }
 .contact-detail-value {
-  font-size: 1rem; color: rgba(232,230,225,0.85);
-  font-weight: 300; transition: color 0.3s;
+  font-size: 1rem; color: #fff;
+  font-weight: 500; transition: color 0.3s;
 }
 a.contact-detail-value:hover { color: #fff; }
 .contact-divider {
@@ -798,7 +799,7 @@ text-align: center;
 }
 .footer-brand-desc {
   font-size: 0.95rem; line-height: 1.75;
-  color: rgba(232,230,225,0.55);
+  color: rgba(232,230,225,0.75);
   max-width: 300px;
 }
 .footer-heading {
@@ -812,7 +813,7 @@ text-align: center;
 .footer-links { list-style: none; }
 .footer-links li { margin-bottom: 12px; }
 .footer-links a {
-  font-size: 0.95rem; color: rgba(232,230,225,0.6);
+  font-size: 0.95rem; color: rgba(232,230,225,0.8);
   transition: color 0.3s;
 }
 .footer-links a:hover { color: #fff; }
@@ -821,7 +822,7 @@ text-align: center;
   padding-top: 30px;
   border-top: 1px solid rgba(255,255,255,0.04);
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.85rem; color: rgba(232,230,225,0.45);
+  font-size: 0.85rem; color: rgba(232,230,225,0.65);
   position: relative;
 }
 
@@ -949,10 +950,11 @@ text-align: center;
   .nav-center, .nav-right { display: none; }
   .menu-toggle { display: flex; }
   .contact-hero { min-height: auto; padding: 100px 24px 40px; }
+  .contact-hero-content { white-space: normal; }
   .contact-hero .hero-sub { margin-bottom: 0; }
-  .section-contact { padding: 40px 24px 60px; }
+  .section-contact { padding: 40px 16px 60px; }
   .contact-wrapper { display: flex; flex-direction: column-reverse; gap: 40px; }
-  .contact-form-wrap { padding: 32px 24px; }
+  .contact-form-wrap { padding: 28px 20px; width: 100%; max-width: 100%; }
   .form-row { grid-template-columns: 1fr; }
   .section-divider { padding: 0 24px; }
   .footer { padding: 60px 24px 30px; }
@@ -1615,9 +1617,10 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
 .section-team { padding: 120px 60px; text-align: center; }
 .team-content { max-width: 700px; margin: 0 auto; }
 .team-desc {
-  font-size: 1rem; line-height: 1.8;
-  color: rgba(232,230,225,0.6); font-weight: 300;
+  font-size: 1.1rem; line-height: 1.8;
+  color: #e8e6e1; font-weight: 400;
   margin-bottom: 40px;
+  letter-spacing: 0.5px;
 }
 .btn-team {
   display: inline-block;
@@ -4823,7 +4826,7 @@ color: #fff;
 
 /* ── Equalizer visual break ── */
 .pod-eq-section {
-  padding: 32px 40px 12px;
+  padding: 32px 40px 0;
   max-width: 1280px;
   margin: 0 auto;
   overflow: hidden;
@@ -4846,6 +4849,11 @@ color: #fff;
   100% { height: 40px; }
 }
 
+/* Reduce gap between eq bars and CTA on the podcast page */
+.pod-eq-section + .cs-cta-section {
+  padding-top: 60px;
+}
+
 /* ── Podcast Responsive ── */
 @media (max-width: 1100px) {
   .pod-main-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -4855,12 +4863,19 @@ color: #fff;
   .pod-main { padding: 60px 24px; }
   .pod-about-title { font-size: 28px; }
   .pod-hero-tagline { font-size: 17px; }
-  .pod-eq-section { padding: 24px 24px 8px; }
+  .pod-eq-section { padding: 24px 24px 0; }
 }
 
 /* ═══════════════════════════════════════════════════
    CAPABILITIES PAGE — v2
    ═══════════════════════════════════════════════════ */
+
+/* Capabilities page wrapper — prevent horizontal overflow */
+.cap-page-wrap {
+  overflow-x: hidden;
+  max-width: 100vw;
+  background: #060c16;
+}
 
 /* Particle canvas — position fixed so it doesn't cause horizontal overflow */
 .particle-canvas {
@@ -4880,6 +4895,10 @@ color: #fff;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-image: url('https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=1920');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 .cap-hero-img { object-fit: cover; object-position: center 30%; }
 .cap-hero-overlay {
@@ -4953,7 +4972,7 @@ color: #fff;
   flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px;
   padding: 18px 24px; background: none; border: none;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(232,230,225,0.5);
+  font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; color: #fff; font-weight: 600;
   cursor: pointer; position: relative; transition: color 0.3s;
 }
 .cap-tab::after {
@@ -5143,7 +5162,7 @@ color: #fff;
   .cap-section-img-wrap { aspect-ratio: 16/9; }
   .cap-banner-content { padding: 24px; }
   .cap-banner-number { font-size: 48px; }
-  .cap-banner-title { font-size: 32px; }
+  .cap-banner-title { font-size: 36px; }
   .cap-svc-card { flex: 0 0 280px; min-height: 160px; }
   .cap-tab { padding: 14px 12px; font-size: 11px; letter-spacing: 1.5px; }
   .cap-cta { padding: 60px 24px 80px; }
@@ -5260,9 +5279,10 @@ color: #fff;
    ═══════════════════════════════════════════════════ */
 
 .ins-hero {
-  position: relative; min-height: 60vh;
+  position: relative; min-height: 100vh;
   display: flex; align-items: center; justify-content: center; overflow: hidden;
   background: #060c16;
+  background-attachment: fixed;
 }
 .ins-hero-img { object-fit: cover; }
 .ins-hero-overlay {
@@ -5294,7 +5314,7 @@ color: #fff;
 }
 
 /* ── Channel Cards ── */
-.ins-channels { padding: 100px 48px 60px; max-width: 1300px; margin: 0 auto; }
+.ins-channels { padding: 100px 48px 60px; max-width: 1300px; margin: 0 auto; background: #060c16; }
 .ins-channels-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 
 .ins-channel-card {
@@ -5349,7 +5369,7 @@ color: #fff;
 .ins-channel-card:hover .ins-channel-accent { height: 100%; }
 
 /* ── CTA ── */
-.ins-cta { padding: 80px 48px 120px; text-align: center; }
+.ins-cta { padding: 80px 48px 120px; text-align: center; background: #060c16; }
 .ins-cta-inner { max-width: 600px; margin: 0 auto; }
 .ins-cta-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
@@ -5366,7 +5386,7 @@ color: #fff;
   .ins-channels { padding: 80px 32px 40px; }
 }
 @media (max-width: 768px) {
-  .ins-hero { min-height: 60vh; }
+  .ins-hero { min-height: 100vh; background-attachment: scroll; }
   .ins-hero-content { padding: 0 24px; }
   .ins-hero-title { font-size: 32px; }
   .ins-channels { padding: 60px 20px 32px; }

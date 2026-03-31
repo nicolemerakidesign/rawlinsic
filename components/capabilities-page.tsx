@@ -8,8 +8,6 @@ import SiteFooter from "@/components/site-footer";
 import PasswordGate from "@/components/password-gate";
 
 /* ─── Images ─── */
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80";
 const STRATEGY_IMG =
   "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/gNTqxQESyZzn0S1NPC6S2.webp";
 const OPERATIONS_IMG =
@@ -210,9 +208,11 @@ export default function CapabilitiesPage() {
     run();
   }, []);
 
-  /* active tab tracks scroll position */
+  /* Nav scroll background + active tab tracks scroll position */
   useEffect(() => {
+    const nav = document.getElementById("mainNav");
     const onScroll = () => {
+      if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
       for (const s of capabilitySections) {
         const el = document.getElementById(s.id);
         if (el) {
@@ -226,58 +226,6 @@ export default function CapabilitiesPage() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  /* animated grid background */
-  const gridCanvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const c = gridCanvasRef.current;
-    if (!c) return;
-    const ctx = c.getContext("2d");
-    if (!ctx) return;
-    let raf: number;
-    const resize = () => { c.width = c.offsetWidth; c.height = c.offsetHeight; };
-    resize();
-    window.addEventListener("resize", resize);
-    let t = 0;
-    const draw = () => {
-      t += 0.005;
-      ctx.clearRect(0, 0, c.width, c.height);
-      const spacing = 80;
-      const cols = Math.ceil(c.width / spacing) + 1;
-      const rows = Math.ceil(c.height / spacing) + 1;
-      for (let r = 0; r < rows; r++) {
-        for (let col = 0; col < cols; col++) {
-          const x = col * spacing;
-          const y = r * spacing;
-          const dist = Math.sqrt((x - c.width / 2) ** 2 + (y - c.height / 2) ** 2);
-          const pulse = Math.sin(t * 2 - dist * 0.005) * 0.5 + 0.5;
-          const alpha = 0.02 + pulse * 0.06;
-          ctx.beginPath();
-          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(201,168,76,${alpha})`;
-          ctx.fill();
-        }
-      }
-      // horizontal lines
-      for (let r = 0; r < rows; r++) {
-        ctx.beginPath();
-        ctx.moveTo(0, r * spacing);
-        ctx.lineTo(c.width, r * spacing);
-        ctx.strokeStyle = `rgba(201,168,76,0.03)`;
-        ctx.stroke();
-      }
-      // vertical lines
-      for (let col = 0; col < cols; col++) {
-        ctx.beginPath();
-        ctx.moveTo(col * spacing, 0);
-        ctx.lineTo(col * spacing, c.height);
-        ctx.stroke();
-      }
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -296,6 +244,7 @@ export default function CapabilitiesPage() {
 
   return (
     <PasswordGate>
+      <div className="cap-page-wrap">
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
       <canvas className="particle-canvas" ref={canvasRef} />
@@ -303,11 +252,9 @@ export default function CapabilitiesPage() {
       <div className="orb orb-2" ref={orbRef2} />
       <SiteNav />
 
-      {/* ── Hero with animated grid ── */}
+      {/* ── Hero with fixed background image ── */}
       <section className="cap-hero">
-        <Image src={HERO_IMG} alt="Capabilities" fill priority sizes="100vw" className="cap-hero-img" />
         <div className="cap-hero-overlay" />
-        <canvas className="cap-grid-canvas" ref={gridCanvasRef} />
         <div className="cap-hero-content reveal">
           <div className="cap-hero-badge">
             <span className="cap-hero-badge-dot" />
@@ -434,6 +381,7 @@ export default function CapabilitiesPage() {
       </section>
 
       <SiteFooter />
+      </div>
     </PasswordGate>
   );
 }

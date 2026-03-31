@@ -166,8 +166,8 @@ export default function PodcastPage() {
           <div className="pod-hero-overlay" />
           <div className="pod-hero-content">
             <div className="pod-hero-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="rgba(201,168,76,0.2)" />
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
                 <line x1="12" y1="19" x2="12" y2="23" />
                 <line x1="8" y1="23" x2="16" y2="23" />
@@ -254,12 +254,6 @@ export default function PodcastPage() {
           <h2 className="cs-cta-title">
             Let&apos;s Build Something Together
           </h2>
-          <p className="cs-cta-text">
-            Rawlins Infra Consult has the expertise and experience to drive your
-            organization&apos;s success. Our tailored solutions and strategic approach
-            help transportation agencies nationwide improve performance and meet
-            evolving challenges.
-          </p>
           <Link href="/contact" className="cs-cta-btn">
             <span>Connect With Us</span>
           </Link>
