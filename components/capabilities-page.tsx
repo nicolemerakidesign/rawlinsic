@@ -262,14 +262,11 @@ export default function CapabilitiesPage() {
       <section className="cap-hero">
         <div className="cap-hero-overlay" />
         <div className="cap-hero-content reveal">
-          <div className="cap-hero-badge">
-            <span className="cap-hero-badge-dot" />
-            <span>Integrated Advisory</span>
-          </div>
+          <p className="section-label"><span className="gold-text">Integrated Advisory</span></p>
           <h1 className="cap-hero-title">
             Strategy. Operations.<br /><em>Technology.</em>
           </h1>
-          <p className="cap-hero-subtitle">
+          <p className="hero-sub" style={{ opacity: 1, transform: 'none', animation: 'none' }}>
             Three disciplines, one mission—navigating complexity to deliver measurable, lasting transformation for the organizations we serve.
           </p>
         </div>
