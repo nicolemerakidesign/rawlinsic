@@ -281,8 +281,8 @@ export default function AutomationPage() {
           </div>
           <div className="auto-ecosystem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px", marginTop: "60px" }}>
             {pipeline.map((p, i) => (
-              <div key={i} className="reveal" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", borderLeft: "1px solid rgba(201,168,76,0.4)", transition: "all 0.3s" }}>
-                <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1 }}>
+              <div key={i} className="reveal auto-eco-tile" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", position: "relative", transition: "all 0.3s" }}>
+                <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1.2 }}>
                   {p.step}
                 </span>
                 <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginBottom: "4px", lineHeight: 1.2 }}>{p.label}</h3>
