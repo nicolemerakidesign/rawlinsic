@@ -279,7 +279,6 @@ export default function ContactPage() {
                     <div className="contact-detail-label">Global Presence</div>
                     <span
                       className="contact-detail-value"
-                      style={{ color: "rgba(232,230,225,0.6)" }}
                     >
                       Based in Reno, NV, USA &middot; Serving Clients Worldwide
                     </span>

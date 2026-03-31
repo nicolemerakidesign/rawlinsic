@@ -154,7 +154,8 @@ export default function AreaWeServeGlobe() {
     const expansionLocations = [
       { name: "Dubai, United Arab Emirates", lat: 25.2, lng: 55.3 },
       { name: "Ottawa, Canada", lat: 45.4, lng: -75.7 },
-      { name: "Uman, Ukraine", lat: 48.7, lng: 30.2 },
+      { name: "Oman, Middle East", lat: 23.6, lng: 58.5 },
+      { name: "Barbados, Caribbean", lat: 13.2, lng: -59.5 },
     ];
 
     // Device check for performance tuning
@@ -363,23 +364,23 @@ export default function AreaWeServeGlobe() {
       const g = new T.Group();
 
       if (isCurrent) {
-        g.add(new T.Mesh(new T.SphereGeometry(0.025,12,12), new T.MeshBasicMaterial({color:GOLD_LIGHT})));
-        const glow = new T.Mesh(new T.SphereGeometry(0.055,12,12), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.2}));
+        g.add(new T.Mesh(new T.SphereGeometry(0.025,32,32), new T.MeshBasicMaterial({color:GOLD_LIGHT})));
+        const glow = new T.Mesh(new T.SphereGeometry(0.055,32,32), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.2}));
         g.add(glow); g.userData.glow = glow;
-        const pulse = new T.Mesh(new T.RingGeometry(0.06,0.08,24), new T.MeshBasicMaterial({color:GOLD_LIGHT,transparent:true,opacity:0.12,side:T.DoubleSide}));
+        const pulse = new T.Mesh(new T.RingGeometry(0.06,0.08,48), new T.MeshBasicMaterial({color:GOLD_LIGHT,transparent:true,opacity:0.12,side:T.DoubleSide}));
         pulse.lookAt(pos.clone().multiplyScalar(2)); g.add(pulse); g.userData.pulse = pulse;
         const beam = new T.Mesh(new T.CylinderGeometry(0.002,0.002,0.1,4), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.35}));
         beam.lookAt(pos.clone().multiplyScalar(2)); beam.rotateX(Math.PI/2);
         beam.position.copy(pos.clone().normalize().multiplyScalar(0.05)); g.add(beam);
       } else {
         // Expanding pins: hollow ring style (no solid center) to differentiate from current
-        const innerRing = new T.Mesh(new T.RingGeometry(0.018,0.025,20), new T.MeshBasicMaterial({color:GOLD_LIGHT,transparent:true,opacity:0.7,side:T.DoubleSide}));
+        const innerRing = new T.Mesh(new T.RingGeometry(0.018,0.025,48), new T.MeshBasicMaterial({color:GOLD_LIGHT,transparent:true,opacity:0.7,side:T.DoubleSide}));
         innerRing.lookAt(pos.clone().multiplyScalar(2)); g.add(innerRing);
-        const midRing = new T.Mesh(new T.RingGeometry(0.04,0.048,24), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.35,side:T.DoubleSide}));
+        const midRing = new T.Mesh(new T.RingGeometry(0.04,0.048,48), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.35,side:T.DoubleSide}));
         midRing.lookAt(pos.clone().multiplyScalar(2)); g.add(midRing); g.userData.pulse = midRing;
-        const outer = new T.Mesh(new T.RingGeometry(0.065,0.072,28), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.15,side:T.DoubleSide}));
+        const outer = new T.Mesh(new T.RingGeometry(0.065,0.072,48), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.15,side:T.DoubleSide}));
         outer.lookAt(pos.clone().multiplyScalar(2)); g.add(outer); g.userData.outerRing = outer;
-        const glow = new T.Mesh(new T.SphereGeometry(0.08,12,12), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.08}));
+        const glow = new T.Mesh(new T.SphereGeometry(0.08,32,32), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.08}));
         g.add(glow); g.userData.glow = glow;
       }
 
