@@ -766,7 +766,7 @@ text-align: center;
   font-weight: 300;
   line-height: 1.25;
 }
-.parallax-text em {
+.parallax-text em, .parallax-text1 em {
   font-style: italic;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   -webkit-background-clip: text; background-clip: text;

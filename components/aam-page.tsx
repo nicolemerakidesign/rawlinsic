@@ -438,11 +438,9 @@ const AAMPage = () => {
         </div>
 
         {/* Full-width scroll area */}
-        <div className="aam-alt-scroll-outer">
+        <div className="aam-alt-scroll-outer" ref={phasesTrackRef} onScroll={onPhasesScroll}>
           <div
             className="aam-alt-scroll-track"
-            ref={phasesTrackRef}
-            onScroll={onPhasesScroll}
           >
             {phaseData.map((phase, i) => (
               <div className="aam-alt-card" key={phase.num}>
