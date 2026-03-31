@@ -319,8 +319,8 @@ const AAMPage = () => {
                 <div className="intro-cinematic-overlay" />
                 <div className="intro-metrics">
                   <div className="intro-metric">
-                    <span className="intro-metric-num">3</span>
-                    <span className="intro-metric-label">Core Service Areas</span>
+                    <span className="intro-metric-num">END-TO-END</span>
+                    <span className="intro-metric-label">Full Lifecycle Support</span>
                   </div>
                   <div className="intro-metric-divider" />
                   <div className="intro-metric">
