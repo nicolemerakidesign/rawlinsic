@@ -281,7 +281,6 @@ export default function CapabilitiesPage() {
         <div className="cap-tab-bar-inner">
           {capabilitySections.map((s, i) => (
             <button key={s.id} className={`cap-tab${activeTab === s.id ? " active" : ""}`} onClick={() => scrollToSection(s.id)}>
-              <span className="cap-tab-num">0{i + 1}</span>
               {s.name}
             </button>
           ))}

@@ -4981,7 +4981,10 @@ color: #fff;
   background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
   transition: width 0.35s ease, left 0.35s ease;
 }
-.cap-tab:hover { color: #e8e6e1; }
+.cap-tab:hover {
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .cap-tab.active::after { width: 100%; left: 0; }
 .cap-tab.active {
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
