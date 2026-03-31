@@ -192,7 +192,7 @@ export default function AutomationPage() {
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>
             <h2 className="section-title">How can automation help people <em>thrive</em> in a data-driven workplace?</h2>
           </div>
-          <div className="aam-framework-grid" style={{ marginTop: "60px" }}>
+          <div className="aam-framework-grid auto-benefits-grid" style={{ marginTop: "60px" }}>
             {benefits.map((card, i) => (
               <div className={`aam-framework-card${openBenefits.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-framework-img-wrap">
