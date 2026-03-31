@@ -218,7 +218,8 @@ export default function AutomationPage() {
       </section>
 
       {/* Parallax Quote */}
-      <div className="parallax-panel" style={{ background: "rgba(6,12,22,0.95)" }}>
+      <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=compress&cs=tinysrgb&w=1920)" }}>
+        <div className="aam-parallax-overlay" />
         <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
           Put some quote <em>here</em> placeholder.
         </p>
