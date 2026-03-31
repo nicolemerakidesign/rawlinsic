@@ -249,6 +249,23 @@ export default function ContactPage() {
                 <div className="contact-detail-item reveal rd2">
                   <div className="contact-detail-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="contact-detail-label">Call Us</div>
+                    <a
+                      href="tel:+17758433822"
+                      className="contact-detail-value"
+                    >
+                      (775) 843-3822
+                    </a>
+                  </div>
+                </div>
+
+                <div className="contact-detail-item reveal rd3">
+                  <div className="contact-detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
                       <rect x="2" y="9" width="4" height="12" />
                       <circle cx="4" cy="4" r="2" />
@@ -414,7 +431,7 @@ export default function ContactPage() {
                   <h3 className="form-success-title">Message Received</h3>
                   <p className="form-success-text">
                     Thank you for reaching out. A member of our team will be in
-                    touch within one to two business days.
+                    touch as soon as possible.
                   </p>
                   <button className="form-success-reset" onClick={resetForm}>
                     Send Another Message
