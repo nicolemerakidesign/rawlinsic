@@ -74,13 +74,18 @@ export default function AutomationPage() {
   }, []);
 
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const ob = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
-      { threshold: 0.08 }
-    );
-    els.forEach((el) => ob.observe(el));
-    return () => ob.disconnect();
+    let ob: IntersectionObserver;
+    const timer = setTimeout(() => {
+      const els = document.querySelectorAll(".reveal");
+      if (els.length === 0) return;
+      els.forEach((el) => { void (el as HTMLElement).offsetHeight; });
+      ob = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+        { threshold: 0.08 }
+      );
+      els.forEach((el) => ob.observe(el));
+    }, 300);
+    return () => { clearTimeout(timer); if (ob) ob.disconnect(); };
   }, []);
 
   const [openChallenge, setOpenChallenge] = useState<number | null>(null);
