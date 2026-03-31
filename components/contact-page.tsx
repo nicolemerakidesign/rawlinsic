@@ -141,11 +141,20 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    console.log("Contact form submitted:", formData);
-    // Simulate network delay
-    await new Promise((r) => setTimeout(r, 1200));
-    setSubmitting(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Form submission error:", err);
+      alert("Something went wrong. Please try again or email us directly at nicole@rawlinsic.com");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const resetForm = () => {
@@ -272,7 +281,7 @@ export default function ContactPage() {
                       className="contact-detail-value"
                       style={{ color: "rgba(232,230,225,0.6)" }}
                     >
-                      Based in Reno, NV, USA &middot; Working Internationally
+                      Based in Reno, NV, USA &middot; Serving Clients Across 28+ States
                     </span>
                   </div>
                 </div>
@@ -342,22 +351,15 @@ export default function ContactPage() {
                     <label className="form-label" htmlFor="interest">
                       Area of Interest
                     </label>
-                    <select
-                      className="form-input form-select"
+                    <input
+                      className="form-input"
                       id="interest"
                       name="interest"
+                      type="text"
+                      placeholder="e.g., Strategy, Operations, Technology, Advanced Air Mobility"
                       value={formData.interest}
                       onChange={handleChange}
-                    >
-                      <option value="" disabled>
-                        Select a practice area
-                      </option>
-                      <option value="strategy">Strategy</option>
-                      <option value="operations">Operations</option>
-                      <option value="technology">Technology</option>
-                      <option value="aero">Advanced Air Mobility</option>
-                      <option value="general">General Inquiry</option>
-                    </select>
+                    />
                   </div>
 
                   <div className="form-group">
