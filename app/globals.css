@@ -1617,9 +1617,10 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
 .section-team { padding: 120px 60px; text-align: center; }
 .team-content { max-width: 700px; margin: 0 auto; }
 .team-desc {
-  font-size: 1rem; line-height: 1.8;
-  color: rgba(232,230,225,0.6); font-weight: 300;
+  font-size: 1.1rem; line-height: 1.8;
+  color: #e8e6e1; font-weight: 400;
   margin-bottom: 40px;
+  letter-spacing: 0.5px;
 }
 .btn-team {
   display: inline-block;
@@ -4848,6 +4849,11 @@ color: #fff;
   100% { height: 40px; }
 }
 
+/* Reduce gap between eq bars and CTA on the podcast page */
+.pod-eq-section + .cs-cta-section {
+  padding-top: 60px;
+}
+
 /* ── Podcast Responsive ── */
 @media (max-width: 1100px) {
   .pod-main-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -5273,9 +5279,10 @@ color: #fff;
    ═══════════════════════════════════════════════════ */
 
 .ins-hero {
-  position: relative; min-height: 60vh;
+  position: relative; min-height: 100vh;
   display: flex; align-items: center; justify-content: center; overflow: hidden;
   background: #060c16;
+  background-attachment: fixed;
 }
 .ins-hero-img { object-fit: cover; }
 .ins-hero-overlay {
@@ -5307,7 +5314,7 @@ color: #fff;
 }
 
 /* ── Channel Cards ── */
-.ins-channels { padding: 100px 48px 60px; max-width: 1300px; margin: 0 auto; }
+.ins-channels { padding: 100px 48px 60px; max-width: 1300px; margin: 0 auto; background: #060c16; }
 .ins-channels-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 
 .ins-channel-card {
@@ -5362,7 +5369,7 @@ color: #fff;
 .ins-channel-card:hover .ins-channel-accent { height: 100%; }
 
 /* ── CTA ── */
-.ins-cta { padding: 80px 48px 120px; text-align: center; }
+.ins-cta { padding: 80px 48px 120px; text-align: center; background: #060c16; }
 .ins-cta-inner { max-width: 600px; margin: 0 auto; }
 .ins-cta-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
@@ -5379,7 +5386,7 @@ color: #fff;
   .ins-channels { padding: 80px 32px 40px; }
 }
 @media (max-width: 768px) {
-  .ins-hero { min-height: 60vh; }
+  .ins-hero { min-height: 100vh; background-attachment: scroll; }
   .ins-hero-content { padding: 0 24px; }
   .ins-hero-title { font-size: 32px; }
   .ins-channels { padding: 60px 20px 32px; }
