@@ -216,6 +216,10 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
   };
 
   return (
+    <>
+      {/* Custom Cursor — outside PasswordGate so refs are available on mount */}
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
     <PasswordGate>
       {/* Ambient Background */}
       <div className="ambient-bg" />
@@ -226,10 +230,6 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
         <div className="orb orb-4" />
       </div>
       <div className="micro-particles" id="microParticles" />
-
-      {/* Custom Cursor */}
-      <div className="cursor-dot" ref={dotRef} />
-      <div className="cursor-ring" ref={ringRef} />
 
       {/* Back to Top */}
       <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
@@ -446,5 +446,6 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
 
       <SiteFooter />
     </PasswordGate>
+    </>
   );
 }
