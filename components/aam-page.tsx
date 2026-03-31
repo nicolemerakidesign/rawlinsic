@@ -114,7 +114,7 @@ const ecosystemNodes = [
   { id: 'academic', label: 'Academic\nInstitutions', short: 'Research · Universities · Labs', desc: 'Research centers and universities advancing AAM technology, safety analysis, and workforce development.', angle: 135 },
   { id: 'ansp', label: 'Air Navigation\nProviders', short: 'UTM · ATM · Traffic Mgmt', desc: 'Unmanned traffic management operators and air traffic management providers enabling safe airspace integration.', angle: 180 },
   { id: 'operators', label: 'Operators &\nServices', short: 'Drone Ops · Delivery · Providers', desc: 'Commercial drone operators, delivery service providers, and aerial operations companies.', angle: 225 },
-  { id: 'industry', label: 'Industry\nPartners', short: 'OEMs · Tech · Integrators', desc: 'Aircraft manufacturers, technology providers, and systems integrators building the AAM ecosystem.', angle: 270 },
+  { id: 'industry', label: 'Industry', short: 'OEMs · Tech · Integrators', desc: 'Aircraft manufacturers, technology providers, and systems integrators building the AAM ecosystem.', angle: 270 },
   { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Metropolitan planning organizations, municipal governments, and transit agencies integrating AAM into community infrastructure.', angle: 315 },
 ];
 
@@ -289,7 +289,7 @@ const AAMPage = () => {
           <span className="hero-label"><span className="gold-text"></span></span>
           <h1 className="hero-title"><em>Advanced Air Mobility</em> &amp; Uncrewed Aircraft Systems</h1>
           <p className="hero-sub">Partnering to turn AAM and UAS concepts into community and regional transportation solutions.</p>
-          <a href="#intro" className="hero-cta-btn"><span>explore our approach</span></a>
+          <a href="#intro" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}><span>Explore Our Approach</span></a>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
       </section>
@@ -354,7 +354,7 @@ const AAMPage = () => {
         className="parallax-panel aam-parallax-fixed"
         style={{ backgroundImage: `url(${SKYLINE_IMG})` }}
       >
-        <div className="aam-parallax-overlay" />
+        <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
           Strategic multimodal integration.<br /><em>Built on real-world success.</em>
         </p>
@@ -512,7 +512,7 @@ const AAMPage = () => {
         className="parallax-panel aam-parallax-fixed"
         style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }}
       >
-        <div className="aam-parallax-overlay" />
+        <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
           Guiding the <em>future</em> of aviation
         </p>
@@ -773,7 +773,7 @@ const AAMPage = () => {
         className="aam-section aam-cta-section aam-parallax-fixed"
         style={{ backgroundImage: `url(${HELICOPTER_IMG})` }}
       >
-        <div className="aam-cta-overlay" />
+        <div className="aam-cta-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <div className="aam-container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="aam-cta-wrap reveal" style={{ textAlign: "center", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Get Started</span></p>
@@ -781,7 +781,7 @@ const AAMPage = () => {
             <p className="aam-cta-body">
               Whether you are just beginning or well along on your journey, we can provide guidance and support. To learn more about our service portfolio and how we can help you deliver successful AAM and UAS outcomes for your community, reach out.
             </p>
-            <Link href="/contact" className="hero-cta-btn" style={{ marginTop: "20px", display: "inline-block" }}>
+            <Link href="/contact" className="auto-hero-btn" style={{ marginTop: "20px", opacity: 1, transform: "none", animation: "none" }}>
               <span>Start a Conversation</span>
             </Link>
           </div>
