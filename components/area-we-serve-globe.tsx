@@ -372,12 +372,14 @@ export default function AreaWeServeGlobe() {
         beam.lookAt(pos.clone().multiplyScalar(2)); beam.rotateX(Math.PI/2);
         beam.position.copy(pos.clone().normalize().multiplyScalar(0.05)); g.add(beam);
       } else {
-        g.add(new T.Mesh(new T.SphereGeometry(0.02,12,12), new T.MeshBasicMaterial({color:GOLD_LIGHT,transparent:true,opacity:0.85})));
-        const ring = new T.Mesh(new T.RingGeometry(0.028,0.038,20), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.55,side:T.DoubleSide}));
-        ring.lookAt(pos.clone().multiplyScalar(2)); g.add(ring);
-        const outer = new T.Mesh(new T.RingGeometry(0.048,0.055,24), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.25,side:T.DoubleSide}));
+        // Expanding pins: hollow ring style (no solid center) to differentiate from current
+        const innerRing = new T.Mesh(new T.RingGeometry(0.018,0.025,20), new T.MeshBasicMaterial({color:GOLD_LIGHT,transparent:true,opacity:0.7,side:T.DoubleSide}));
+        innerRing.lookAt(pos.clone().multiplyScalar(2)); g.add(innerRing);
+        const midRing = new T.Mesh(new T.RingGeometry(0.04,0.048,24), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.35,side:T.DoubleSide}));
+        midRing.lookAt(pos.clone().multiplyScalar(2)); g.add(midRing); g.userData.pulse = midRing;
+        const outer = new T.Mesh(new T.RingGeometry(0.065,0.072,28), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.15,side:T.DoubleSide}));
         outer.lookAt(pos.clone().multiplyScalar(2)); g.add(outer); g.userData.outerRing = outer;
-        const glow = new T.Mesh(new T.SphereGeometry(0.065,12,12), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.12}));
+        const glow = new T.Mesh(new T.SphereGeometry(0.08,12,12), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.08}));
         g.add(glow); g.userData.glow = glow;
       }
 
@@ -490,8 +492,9 @@ export default function AreaWeServeGlobe() {
         if(p.userData.pulse){const s=1+Math.sin(t*2+i*0.3)*0.3;p.userData.pulse.scale.set(s,s,s);p.userData.pulse.material.opacity=0.12-Math.sin(t*2+i*0.3)*0.06;}
       });
       ePins.forEach((p: any,i: number)=>{
-        if(p.userData.outerRing){const s=1+Math.sin(t*1.5+i*0.7)*0.25;p.userData.outerRing.scale.set(s,s,s);p.userData.outerRing.material.opacity=0.25-Math.sin(t*1.5+i*0.7)*0.12;}
-        if(p.userData.glow) p.userData.glow.material.opacity=0.1+Math.sin(t*1.8+i*0.4)*0.08;
+        if(p.userData.outerRing){const s=1+Math.sin(t*1.2+i*0.7)*0.35;p.userData.outerRing.scale.set(s,s,s);p.userData.outerRing.material.opacity=0.15-Math.sin(t*1.2+i*0.7)*0.08;}
+        if(p.userData.pulse){const s=1+Math.sin(t*1.5+i*0.5)*0.3;p.userData.pulse.scale.set(s,s,s);p.userData.pulse.material.opacity=0.35-Math.sin(t*1.5+i*0.5)*0.15;}
+        if(p.userData.glow) p.userData.glow.material.opacity=0.08+Math.sin(t*1.0+i*0.4)*0.05;
       });
 
       particles.rotation.y+=0.0001; particles.rotation.x+=0.00005;
@@ -609,11 +612,16 @@ export default function AreaWeServeGlobe() {
           box-shadow: 0 0 12px rgba(201,168,76,0.8);
         }
         .globe-legend-dot.expansion {
-          background: transparent; border: 1.5px solid #c9a84c;
-          box-shadow: 0 0 10px rgba(201,168,76,0.5);
+          background: transparent; border: 2px solid #c9a84c;
+          box-shadow: 0 0 10px rgba(201,168,76,0.5), inset 0 0 4px rgba(201,168,76,0.2);
+          animation: expansionPulse 2.5s ease-in-out infinite;
+        }
+        @keyframes expansionPulse {
+          0%, 100% { box-shadow: 0 0 10px rgba(201,168,76,0.5), inset 0 0 4px rgba(201,168,76,0.2); transform: scale(1); }
+          50% { box-shadow: 0 0 16px rgba(201,168,76,0.7), inset 0 0 6px rgba(201,168,76,0.3); transform: scale(1.15); }
         }
         .globe-zoom-hint {
-          font-size: 15px; color: rgba(255,255,255,0.25); letter-spacing: 0.5px font-style:italic;
+          font-size: 15px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; font-style: italic;
         }
 
         /* Tooltip */
@@ -656,8 +664,18 @@ export default function AreaWeServeGlobe() {
         }
 
         /* ── Responsive ── */
-        @media (max-width: 1024px) {
+        @media (max-width: 1400px) {
+          .globe-content-inner { max-width: 480px; padding-right: 24px; }
+        }
+        @media (max-width: 1200px) {
           .globe-content-section { padding: 160px 40px 40px; }
+          .globe-content-inner { max-width: 420px; padding-right: 16px; }
+          #globe-container { left: -25vw; }
+        }
+        @media (max-width: 1024px) {
+          .globe-content-section { padding: 140px 32px 32px; }
+          .globe-content-inner { max-width: 380px; padding-right: 8px; }
+          #globe-container { left: -30vw; }
         }
         @media (max-width: 768px) {
           .globe-content-section {
@@ -692,7 +710,7 @@ export default function AreaWeServeGlobe() {
             <div className="globe-eyebrow">Areas We Serve</div>
             <h2 className="globe-heading">Global Reach, Local <em>Impact</em></h2>
             <p className="globe-subtext">
-              Delivering solutions across the U.S. and expanding our global footprint across
+              Delivering solutions throughout the United States and expanding our footprint across
               industries and borders.
             </p>
             <div className="globe-legend">
