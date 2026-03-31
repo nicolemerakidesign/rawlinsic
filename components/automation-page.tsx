@@ -21,30 +21,30 @@ const CAPABILITY_IMG = "https://images.unsplash.com/photo-1504384308090-c894fdcc
 
 const benefits = [
   {
-    title: "Make better decisions",
-    tagline: "Clarity through consolidation",
-    bullets: ["Up-to-date information in one place", "Data-driven insights at your fingertips", "Eliminate guesswork from critical decisions"],
+    title: "Decision Making",
+    tagline: "",
+    desc: "Make better decisions with up-to-date information in one place",
     img: DATA_IMG,
     accent: "linear-gradient(90deg, #c9a84c, #e8d5a0)",
   },
   {
-    title: "Achieve goals faster",
-    tagline: "Accelerated outcomes",
-    bullets: ["Accomplish objectives in less time", "Streamline approval workflows", "Reduce time-to-value on initiatives"],
+    title: "Efficiency",
+    tagline: "",
+    desc: "Achieve goals in less time",
     img: WORKFLOW_IMG,
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
   },
   {
-    title: "Prioritize creativity",
-    tagline: "People over process",
-    bullets: ["Focus on problem-solving over repetitive work", "Free teams for strategic thinking", "Channel human talent toward innovation"],
+    title: "Prioritization",
+    tagline: "",
+    desc: "Prioritize problem-solving, decision-making, and creativity rather than repetitive work",
     img: AI_IMG,
     accent: "linear-gradient(90deg, #e8d5a0, #c9a84c)",
   },
   {
-    title: "Innovate quickly",
-    tagline: "Speed to innovation",
-    bullets: ["Accelerate the pace of innovation", "Rapid prototyping and iteration", "Scale successful experiments organization-wide"],
+    title: "Innovation",
+    tagline: "",
+    desc: "Accelerate the pace of innovation",
     img: CAPABILITY_IMG,
     accent: "linear-gradient(90deg, #c9a84c, #d4b878)",
   },
@@ -187,9 +187,9 @@ export default function AutomationPage() {
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>
-            <h2 className="section-title">How can automation help people <em>thrive?</em></h2>
+            <h2 className="section-title">How can automation help people <em>thrive</em> in a data-driven workplace?</h2>
           </div>
-          <div className="aam-framework-grid" style={{ marginTop: "60px" }}>
+          <div className="aam-framework-grid" style={{ marginTop: "60px", gridTemplateColumns: "repeat(4, 1fr)" }}>
             {benefits.map((card, i) => (
               <div className={`aam-framework-card${openBenefits.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-framework-img-wrap">
@@ -204,11 +204,8 @@ export default function AutomationPage() {
                       {chevronSvg(openBenefits.has(i))}
                     </button>
                   </div>
-                  <p className="aam-framework-tagline">{card.tagline}</p>
                   <div className={`aam-framework-expand${openBenefits.has(i) ? " open" : ""}`}>
-                    <ul className="aam-bullet-list">
-                      {card.bullets.map((b) => <li key={b}>{b}</li>)}
-                    </ul>
+                    <p style={{ fontSize: "16px", color: "#e8e6e1", lineHeight: 1.8 }}>{card.desc}</p>
                   </div>
                 </div>
               </div>
