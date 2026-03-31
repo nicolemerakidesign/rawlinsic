@@ -67,10 +67,10 @@ const pipeline = [
 ];
 
 const challenges = [
-  { title: "Disconnected tools", solution: "We enable your systems to work together efficiently.", img: CONNECT_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { title: "Duplicated work", solution: "We design and implement platforms that streamline processes, eliminate manual mistakes in routine workflows, and move data where people need it.", img: DASHBOARD_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { title: "Fragmented information landscape", solution: "We integrate systems via a central hub to provide timely information in a unified view.", img: NETWORK_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { title: "Capability gap", solution: "We equip teams in automation and help organizations apply AI effectively and responsibly. We guide leaders and organizations through the challenges of automation and AI, helping teams adapt to embrace new technologies and work practices.", img: TEAM_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  { title: "Disconnected Tools", solution: "We enable your systems to work together efficiently.", img: CONNECT_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  { title: "Duplicated Work", solution: "We design and implement platforms that streamline processes, eliminate manual mistakes in routine workflows, and move data where people need it.", img: DASHBOARD_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  { title: "Fragmented Information Landscape", solution: "We integrate systems via a central hub to provide timely information in a unified view.", img: NETWORK_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  { title: "Capability Gap", solution: "We equip teams in automation and help organizations apply AI effectively and responsibly. We guide leaders and organizations through the challenges of automation and AI, helping teams adapt to embrace new technologies and work practices.", img: TEAM_IMG, videoUrl: "" },
 ];
 
 export default function AutomationPage() {
@@ -84,6 +84,7 @@ export default function AutomationPage() {
   const [valuesProgress, setValuesProgress] = useState(0);
   const [openBenefits, setOpenBenefits] = useState<Set<number>>(new Set());
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
+  const [openChallenge, setOpenChallenge] = useState<number | null>(null);
 
   const chevronSvg = (isOpen: boolean) => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "transform 0.3s", transform: isOpen ? "rotate(180deg)" : "none" }}>
@@ -343,42 +344,73 @@ export default function AutomationPage() {
             <p className="section-label"><span className="gold-text">Addressing Key Challenges</span></p>
             <h2 className="section-title">Elevate human <em>potential</em> throughout your organization</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px", marginTop: "60px" }}>
-            {challenges.map((c, i) => (
-              <div key={i} className="reveal" style={{ position: "relative", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(201,168,76,0.1)", transition: "all 0.3s" }}>
-                {/* Video or Image */}
-                {activeVideo === i ? (
-                  <div style={{ position: "relative", paddingTop: "56.25%", background: "#000" }}>
-                    <iframe
-                      src={c.videoUrl + "?autoplay=1"}
-                      allow="autoplay; encrypted-media"
-                      allowFullScreen
-                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-                    />
+          <div className="auto-challenges-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px", marginTop: "60px", alignItems: "start" }}>
+            {challenges.map((c, i) => {
+              const isOpen = openChallenge === i;
+              const isPlaying = activeVideo === i;
+              const hasVideo = !!c.videoUrl;
+              return (
+              <div key={i} className="reveal" style={{ borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(201,168,76,0.1)", transition: "all 0.3s" }}>
+                {/* Header — always visible */}
+                <div
+                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "24px 28px", cursor: "pointer", background: "rgba(6,12,22,0.4)" }}
+                  onClick={() => { setOpenChallenge(isOpen ? null : i); if (isOpen) setActiveVideo(null); }}
+                >
+                  <div>
+                    <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>Challenge</span>
+                    <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginTop: "4px" }}>{c.title}</h3>
                   </div>
-                ) : (
-                  <div style={{ position: "relative", height: "240px", cursor: "pointer" }} onClick={() => setActiveVideo(i)}>
-                    <Image src={c.img} alt={c.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
-                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,12,22,0.2) 0%, rgba(6,12,22,0.8) 100%)" }} />
-                    {/* Play button */}
-                    <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "64px", height: "64px", borderRadius: "50%", border: "2px solid rgba(201,168,76,0.6)", background: "rgba(6,12,22,0.6)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2, transition: "all 0.3s" }}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="#c9a84c" stroke="none">
-                        <polygon points="8,5 20,12 8,19" />
-                      </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, transition: "transform 0.3s", transform: isOpen ? "rotate(45deg)" : "none" }}>
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                </div>
+
+                {/* Expandable content */}
+                <div style={{ maxHeight: isOpen ? "600px" : "0", overflow: "hidden", transition: "max-height 0.5s ease", background: "rgba(6,12,22,0.7)" }}>
+                  {/* Video or Image area */}
+                  {hasVideo && (
+                    isPlaying ? (
+                      <div style={{ position: "relative", paddingTop: "56.25%", background: "#000" }}>
+                        <iframe
+                          src={c.videoUrl + "?autoplay=1"}
+                          allow="autoplay; encrypted-media"
+                          allowFullScreen
+                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                        />
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setActiveVideo(null); }}
+                          style={{ position: "absolute", top: "12px", right: "12px", width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.5)", background: "rgba(6,12,22,0.8)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", zIndex: 3 }}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                        </button>
+                      </div>
+                    ) : (
+                      <div style={{ position: "relative", height: "220px", cursor: "pointer" }} onClick={(e) => { e.stopPropagation(); setActiveVideo(i); }}>
+                        <Image src={c.img} alt={c.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                        <div style={{ position: "absolute", inset: 0, background: "rgba(6,12,22,0.65)" }} />
+                        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "64px", height: "64px", borderRadius: "50%", border: "2px solid rgba(255,255,255,0.6)", background: "rgba(6,12,22,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="8,5 20,12 8,19" /></svg>
+                        </div>
+                        <span style={{ position: "absolute", top: "16px", left: "16px", zIndex: 2, fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#fff" }}>Watch Video</span>
+                      </div>
+                    )
+                  )}
+                  {/* Image only for non-video tiles */}
+                  {!hasVideo && (
+                    <div style={{ position: "relative", height: "220px" }}>
+                      <Image src={c.img} alt={c.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                      <div style={{ position: "absolute", inset: 0, background: "rgba(6,12,22,0.65)" }} />
                     </div>
-                    <div style={{ position: "absolute", top: "16px", left: "16px", zIndex: 2, display: "flex", alignItems: "center", gap: "8px" }}>
-                      <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", background: "linear-gradient(145deg, #c9a84c, #e8d5a0)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>Watch Video</span>
-                    </div>
+                  )}
+                  {/* Description */}
+                  <div style={{ padding: "24px 28px", background: "rgba(6,12,22,0.7)" }}>
+                    <p style={{ fontSize: "16px", color: "#fff", lineHeight: 1.8 }}>{c.solution}</p>
                   </div>
-                )}
-                {/* Content below */}
-                <div style={{ padding: "24px", background: "rgba(6,12,22,0.5)" }}>
-                  <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>Challenge</span>
-                  <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "24px", fontWeight: 400, color: "#fff", marginTop: "4px", marginBottom: "12px" }}>{c.title}</h3>
-                  <p style={{ fontSize: "16px", color: "#e8e6e1", lineHeight: 1.8 }}>{c.solution}</p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

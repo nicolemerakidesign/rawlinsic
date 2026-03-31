@@ -2458,6 +2458,8 @@ color: #fff;
 .auto-hero-btn:hover::before { transform: scaleX(1); background: rgba(6,12,22,0.9); }
 .auto-hero-btn:hover { color: #fff; border-color: #fff; font-weight: 800; }
 
+.auto-challenges-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 768px) { .auto-challenges-grid { grid-template-columns: 1fr !important; } }
 .auto-benefits-grid { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 1100px) { .auto-benefits-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) { .auto-benefits-grid { grid-template-columns: 1fr; } }
