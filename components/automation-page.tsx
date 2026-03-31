@@ -166,7 +166,7 @@ export default function AutomationPage() {
 
       {/* ── Hero ── */}
       <section className="aam-hero aam-parallax-fixed" style={{ backgroundImage: `url(${HERO_IMG})` }}>
-        <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.75)" }} />
+        <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Smarter Systems. Empowered Teams.</span></span>
           <h1 className="hero-title">Systems <em>Automation</em> &amp; AI</h1>
@@ -177,7 +177,7 @@ export default function AutomationPage() {
             <span>Explore Solutions</span>
           </a>
         </div>
-        <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
+        <div className="hero-scroll"><span className="gold-text">Scroll</span><div className="scroll-line" /></div>
       </section>
 
       <div className="section-divider"><div className="gold-line" /></div>
@@ -350,11 +350,31 @@ export default function AutomationPage() {
               const hasVideo = !!c.videoUrl;
               return (
               <div key={i} className="reveal" style={{ borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(201,168,76,0.1)", transition: "all 0.3s" }}>
-                {/* Header — always visible */}
-                <div
-                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "24px 28px", cursor: "pointer", background: "rgba(6,12,22,0.4)" }}
-                  onClick={() => { setOpenChallenge(isOpen ? null : i); if (isOpen) setActiveVideo(null); }}
-                >
+                {/* Image/Video — always visible */}
+                {hasVideo && isPlaying ? (
+                  <div style={{ position: "relative", paddingTop: "56.25%", background: "#000" }}>
+                    <iframe src={c.videoUrl + "?autoplay=1"} allow="autoplay; encrypted-media" allowFullScreen style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }} />
+                    <button onClick={() => setActiveVideo(null)} style={{ position: "absolute", top: "12px", right: "12px", width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.5)", background: "rgba(6,12,22,0.8)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", zIndex: 3 }}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                    </button>
+                  </div>
+                ) : (
+                  <div style={{ position: "relative", height: "240px", cursor: hasVideo ? "pointer" : "default" }} onClick={() => hasVideo && setActiveVideo(i)}>
+                    <Image src={c.img} alt={c.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "rgba(6,12,22,0.75)" }} />
+                    {hasVideo && (
+                      <>
+                        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "64px", height: "64px", borderRadius: "50%", border: "2px solid rgba(255,255,255,0.6)", background: "rgba(6,12,22,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="8,5 20,12 8,19" /></svg>
+                        </div>
+                        <span style={{ position: "absolute", top: "16px", left: "16px", zIndex: 2, fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#fff" }}>Watch Video</span>
+                      </>
+                    )}
+                  </div>
+                )}
+
+                {/* Title + expand — always visible */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "24px 28px", background: "rgba(6,12,22,0.5)", cursor: "pointer" }} onClick={() => setOpenChallenge(isOpen ? null : i)}>
                   <div>
                     <span style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>Challenge</span>
                     <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginTop: "4px" }}>{c.title}</h3>
@@ -365,45 +385,9 @@ export default function AutomationPage() {
                   </svg>
                 </div>
 
-                {/* Expandable content */}
-                <div style={{ maxHeight: isOpen ? "600px" : "0", overflow: "hidden", transition: "max-height 0.5s ease", background: "rgba(6,12,22,0.7)" }}>
-                  {/* Video or Image area */}
-                  {hasVideo && (
-                    isPlaying ? (
-                      <div style={{ position: "relative", paddingTop: "56.25%", background: "#000" }}>
-                        <iframe
-                          src={c.videoUrl + "?autoplay=1"}
-                          allow="autoplay; encrypted-media"
-                          allowFullScreen
-                          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-                        />
-                        <button
-                          onClick={(e) => { e.stopPropagation(); setActiveVideo(null); }}
-                          style={{ position: "absolute", top: "12px", right: "12px", width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.5)", background: "rgba(6,12,22,0.8)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", zIndex: 3 }}
-                        >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
-                        </button>
-                      </div>
-                    ) : (
-                      <div style={{ position: "relative", height: "220px", cursor: "pointer" }} onClick={(e) => { e.stopPropagation(); setActiveVideo(i); }}>
-                        <Image src={c.img} alt={c.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
-                        <div style={{ position: "absolute", inset: 0, background: "rgba(6,12,22,0.65)" }} />
-                        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "64px", height: "64px", borderRadius: "50%", border: "2px solid rgba(255,255,255,0.6)", background: "rgba(6,12,22,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="8,5 20,12 8,19" /></svg>
-                        </div>
-                        <span style={{ position: "absolute", top: "16px", left: "16px", zIndex: 2, fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#fff" }}>Watch Video</span>
-                      </div>
-                    )
-                  )}
-                  {/* Image only for non-video tiles */}
-                  {!hasVideo && (
-                    <div style={{ position: "relative", height: "220px" }}>
-                      <Image src={c.img} alt={c.title} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
-                      <div style={{ position: "absolute", inset: 0, background: "rgba(6,12,22,0.65)" }} />
-                    </div>
-                  )}
-                  {/* Description */}
-                  <div style={{ padding: "24px 28px", background: "rgba(6,12,22,0.7)" }}>
+                {/* Expandable description only */}
+                <div style={{ maxHeight: isOpen ? "300px" : "0", overflow: "hidden", transition: "max-height 0.5s ease" }}>
+                  <div style={{ padding: "0 28px 24px", background: "rgba(6,12,22,0.5)" }}>
                     <p style={{ fontSize: "16px", color: "#fff", lineHeight: 1.8 }}>{c.solution}</p>
                   </div>
                 </div>
@@ -425,7 +409,7 @@ export default function AutomationPage() {
           <p style={{ fontSize: "17px", color: "#e8e6e1", lineHeight: 1.8, maxWidth: "600px", margin: "0 auto 40px", textAlign: "center" }}>
             Let&rsquo;s discuss how automation and AI can elevate your team&rsquo;s capabilities.
           </p>
-          <Link href="/contact" className="cs-cta-btn"><span>Connect With Us</span></Link>
+          <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none" }}><span>Connect With Us</span></Link>
         </div>
       </section>
 
