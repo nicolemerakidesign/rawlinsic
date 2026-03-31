@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const LOGO_URL =
   "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/cfZ06kEF6A_pOkuifk_rD.webp";
@@ -13,6 +13,17 @@ interface SiteNavProps {
 }
 
 export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (navRef.current) navRef.current.classList.toggle("scrolled", window.scrollY > 60);
+    };
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<Set<string>>(new Set());
   const close = () => { setMobileMenuOpen(false); setMobileSubOpen(new Set()); };
@@ -77,7 +88,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
       </div>
 
       {/* Navigation */}
-      <nav className="nav" id="mainNav">
+      <nav className="nav" id="mainNav" ref={navRef}>
         <a href="/" className="nav-logo" aria-label="Rawlins home">
           <Image src={LOGO_URL} alt="Rawlins" width={160} height={40} className="nav-logo-img" priority />
         </a>
