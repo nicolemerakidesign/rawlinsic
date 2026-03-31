@@ -22,7 +22,7 @@ export default function SiteFooter() {
             <li><Link href="/capabilities">View All</Link></li>
             <li><Link href="/capabilities#strategy">Strategy</Link></li>
             <li><Link href="/capabilities#operations">Operations</Link></li>
-            <li><Link href="/capabilities/technology/advanced-air-mobility">Technology</Link></li>
+            <li><Link href="/capabilities#technology">Technology</Link></li>
           </ul>
         </div>
         <div>
