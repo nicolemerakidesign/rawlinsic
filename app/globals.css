@@ -330,12 +330,12 @@
 }
 .nav-right { display: flex; align-items: center; }
 .nav-cta {
-  padding: 10px 28px;
+  padding: 12px 34px;
   background: linear-gradient(145deg, #d4be78, #c9a84c);
   border: none;
   color: #0a0f1a;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 11px; font-weight: 700;
+  font-size: 12px; font-weight: 700;
   letter-spacing: 2px; text-transform: uppercase;
   border-radius: 100px;
   transition: all 0.35s;
@@ -934,6 +934,11 @@ text-align: center;
 }
 
 /* ── Responsive ───────────────────────────────── */
+@media (max-width: 1003px) {
+  .nav { padding: 0 20px; height: 64px; }
+  .nav-center, .nav-right { display: none; }
+  .menu-toggle { display: flex; }
+}
 @media (max-width: 1100px) {
   .contact-wrapper {
     grid-template-columns: 1fr;
@@ -2434,12 +2439,31 @@ color: #fff;
   gap: 28px;
   align-items: start;
 }
+/* Automation hero button — gold filled, wipe to white outline on hover */
+.auto-hero-btn {
+  display: inline-block; padding: 16px 44px;
+  background: linear-gradient(145deg, #d4be78, #c9a84c);
+  border: 1px solid transparent; color: #060c16;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  position: relative; overflow: hidden; transition: color 0.4s, border-color 0.4s;
+  opacity: 0; transform: translateY(20px); animation: heroFade 1s 1s forwards;
+}
+.auto-hero-btn span { position: relative; z-index: 1; }
+.auto-hero-btn::before {
+  content: ""; position: absolute; inset: 0;
+  background: transparent;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.auto-hero-btn:hover::before { transform: scaleX(1); background: rgba(6,12,22,0.9); }
+.auto-hero-btn:hover { color: #fff; border-color: #fff; font-weight: 800; }
+
 .auto-benefits-grid { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 1100px) { .auto-benefits-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) { .auto-benefits-grid { grid-template-columns: 1fr; } }
 .auto-eco-tile::before {
   content: ""; position: absolute; left: 0; top: 20%; height: 60%;
-  width: 2px; background: linear-gradient(180deg, #c9a84c, rgba(232,213,160,0.3)); border-radius: 2px;
+  width: 2px; background: rgba(201,168,76,0.4);
 }
 .auto-ecosystem-grid { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 1100px) { .auto-ecosystem-grid { grid-template-columns: repeat(2, 1fr) !important; } }
