@@ -361,6 +361,8 @@ export default function CapabilitiesPage() {
         </section>
       ))}
 
+      <div className="section-divider"><div className="gold-line" /></div>
+
       {/* ── CTA ── */}
       <section className="cap-cta reveal">
         <div className="cap-cta-inner">
