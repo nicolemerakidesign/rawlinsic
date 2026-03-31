@@ -173,9 +173,9 @@ export default function AutomationPage() {
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none" }}>
             Partnering to reshape the way people work
           </p>
-          <Link href="/contact" className="hero-cta-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
+          <a href="#benefits" className="hero-cta-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
             <span>Explore solutions</span>
-          </Link>
+          </a>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
       </section>
@@ -183,7 +183,7 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── Benefits: AAM "Our Approach" style framework cards ── */}
-      <section className="aam-section" style={{ padding: "100px 48px" }}>
+      <section className="aam-section" id="benefits" style={{ padding: "100px 48px", scrollMarginTop: "80px" }}>
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>

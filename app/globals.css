@@ -197,22 +197,22 @@
 /* ── Custom Cursor ───────────────────────────── */
 .cursor-dot {
   width: 8px; height: 8px;
-  background: #c9a84c;
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 10000;
   transition: transform 0.15s ease;
-  mix-blend-mode: difference;
 }
 .cursor-ring {
   width: 40px; height: 40px;
-  border: 1.5px solid rgba(229,203,135,0.4);
+  border: 2px solid transparent;
+  background: linear-gradient(var(--rawlins-bg), var(--rawlins-bg)) padding-box, linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878) border-box;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 10000;
-  transition: width 0.3s, height 0.3s, border-color 0.3s;
+  transition: width 0.3s, height 0.3s;
 }
 .cursor-ring.hover {
   width: 60px; height: 60px;
