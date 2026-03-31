@@ -3181,15 +3181,13 @@ color: #fff;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(201,168,76,0.3) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   padding: 0 60px 16px;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
 }
-.aam-alt-scroll-outer::-webkit-scrollbar { height: 4px; }
-.aam-alt-scroll-outer::-webkit-scrollbar-track { background: rgba(201,168,76,0.05); border-radius: 2px; }
-.aam-alt-scroll-outer::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 2px; }
+.aam-alt-scroll-outer::-webkit-scrollbar { display: none; }
 .aam-alt-scroll-track {
   display: flex;
   gap: 24px;
