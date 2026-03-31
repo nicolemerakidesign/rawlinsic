@@ -329,7 +329,7 @@ const AAMPage = () => {
                   </div>
                   <div className="intro-metric-divider" />
                   <div className="intro-metric">
-                    <span className="intro-metric-num">28+</span>
+                    <span className="intro-metric-num">21</span>
                     <span className="intro-metric-label">US States Served</span>
                   </div>
                 </div>
