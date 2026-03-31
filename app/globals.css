@@ -5000,6 +5000,83 @@ color: #fff;
   font-size: 11px; opacity: 0.5;
 }
 
+/* ── Alternating Split Layout ── */
+.cap-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.08);
+  margin-bottom: 48px;
+}
+.cap-split-reverse { direction: rtl; }
+.cap-split-reverse > * { direction: ltr; }
+.cap-split-img-wrap {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+}
+.cap-split-img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.cap-split:hover .cap-split-img {
+  transform: scale(1.05);
+}
+.cap-split-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(6,12,22,0.3) 0%, rgba(6,12,22,0.6) 100%);
+  z-index: 1;
+}
+.cap-split-number {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 72px; font-weight: 300;
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  opacity: 0.3;
+  z-index: 2;
+}
+.cap-split-reverse .cap-split-number { left: auto; right: 24px; }
+.cap-split-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 56px;
+  background: rgba(6,12,22,0.4);
+}
+.cap-split-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+.cap-split-body {
+  font-size: 17px;
+  line-height: 1.85;
+  color: rgba(232,230,225,0.8);
+  margin-bottom: 28px;
+}
+.cap-split-count {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+@media (max-width: 768px) {
+  .cap-split { grid-template-columns: 1fr; min-height: auto; }
+  .cap-split-reverse { direction: ltr; }
+  .cap-split-img-wrap { min-height: 280px; }
+  .cap-split-content { padding: 36px 24px; }
+}
+
 /* ── Capability Section ── */
 .cap-section {
   padding: 100px 48px 40px; max-width: 1400px; margin: 0 auto; scroll-margin-top: 140px;

@@ -284,34 +284,29 @@ export default function CapabilitiesPage() {
         </div>
       </div>
 
-      {/* ── Capability Sections ── */}
-      {capabilitySections.map((section, sIdx) => (
+      {/* ── Capability Sections — alternating layout ── */}
+      {capabilitySections.map((section, sIdx) => {
+        const isReversed = sIdx % 2 === 1;
+        return (
         <section key={section.id} id={section.id} className="cap-section">
-          {/* Section intro: full-width image with overlaid text */}
-          <div className="cap-section-banner reveal">
-            <div className="cap-section-img-wrap">
-              <Image src={section.image} alt={section.name} fill sizes="100vw" className="cap-section-img" />
-              <div className="cap-section-img-overlay" />
+          {/* Alternating two-column intro */}
+          <div className={`cap-split reveal${isReversed ? " cap-split-reverse" : ""}`}>
+            <div className="cap-split-img-wrap">
+              <Image src={section.image} alt={section.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="cap-split-img" />
+              <div className="cap-split-img-overlay" />
+              <div className="cap-split-number">0{sIdx + 1}</div>
             </div>
-            <div className="cap-banner-content">
-              <div className="cap-banner-number">0{sIdx + 1}</div>
-              <h2 className="cap-banner-title">{section.name}</h2>
+            <div className="cap-split-content">
+              <p className="section-label"><span className="gold-text">{section.focus}</span></p>
+              <h2 className="cap-split-title">{section.name}</h2>
+              <p className="cap-split-body">{section.description}</p>
+              <div className="cap-split-count">{section.services.length} Services</div>
             </div>
-          </div>
-
-          {/* Description + focus row */}
-          <div className="cap-desc-row reveal">
-            <div className="cap-desc-focus">
-              <div className="cap-focus-bar" />
-              <p className="cap-focus-text">{section.focus}</p>
-            </div>
-            <p className="cap-desc-body">{section.description}</p>
           </div>
 
           {/* Horizontal scroll service cards */}
           <div className="cap-services-wrap">
             <div className="cap-services-header">
-              <span className="cap-services-count">{section.services.length} Services</span>
               <div className="cap-services-arrows">
                 <button className="cap-arrow-btn" onClick={() => scrollTrack(section.id, -1)} aria-label="Previous">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M15 18l-6-6 6-6" /></svg>
@@ -359,7 +354,8 @@ export default function CapabilitiesPage() {
             </div>
           )}
         </section>
-      ))}
+        );
+      })}
 
       <div className="section-divider"><div className="gold-line" /></div>
 
