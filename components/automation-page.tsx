@@ -230,7 +230,7 @@ export default function AutomationPage() {
                   We design and implement digital solutions that help people work smarter and more creatively.
                 </li>
                 <li style={{ paddingLeft: "20px", borderLeft: "2px solid rgba(201,168,76,0.4)", fontSize: "17px", color: "rgba(232,230,225,0.85)", lineHeight: 1.8 }}>
-                  WWe reduce manual effort, streamline and connect workflows, and establish effective data governance practices, enabling organizations to apply data as a strategic asset <Link href="/capabilities" style={{ color: "#c9a84c", textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
+                  We reduce manual effort, streamline and connect workflows, and establish effective data governance practices, enabling organizations to apply data as a strategic asset <Link href="/capabilities" style={{ color: "#c9a84c", textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
                 </li>
                 <li style={{ paddingLeft: "20px", borderLeft: "2px solid rgba(201,168,76,0.4)", fontSize: "17px", color: "rgba(232,230,225,0.85)", lineHeight: 1.8 }}>
                   We develop high-value AI use cases and a roadmap for adoption and scaling.
