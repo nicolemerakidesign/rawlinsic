@@ -166,7 +166,7 @@ export default function AutomationPage() {
 
       {/* ── Hero ── */}
       <section className="aam-hero aam-parallax-fixed" style={{ backgroundImage: `url(${HERO_IMG})` }}>
-        <div className="aam-hero-overlay" />
+        <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.75)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Smarter Systems. Empowered Teams.</span></span>
           <h1 className="hero-title">Systems <em>Automation</em> &amp; AI</h1>
@@ -192,7 +192,7 @@ export default function AutomationPage() {
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>
             <h2 className="section-title">How can automation help people <em>thrive</em> in a data-driven workplace?</h2>
           </div>
-          <div className="aam-framework-grid" style={{ marginTop: "60px", gridTemplateColumns: "repeat(4, 1fr)", maxWidth: "100%", gap: "24px" }}>
+          <div className="aam-framework-grid" style={{ marginTop: "60px" }}>
             {benefits.map((card, i) => (
               <div className={`aam-framework-card${openBenefits.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-framework-img-wrap">
@@ -202,7 +202,7 @@ export default function AutomationPage() {
                 <div className="aam-framework-accent" style={{ background: card.accent }} />
                 <div className="aam-framework-inner">
                   <div className="aam-pillar-title-row">
-                    <h3 className="aam-framework-phase" style={{ fontSize: "2rem", whiteSpace: "nowrap" }}>{card.title}</h3>
+                    <h3 className="aam-framework-phase" style={{ fontSize: "2rem" }}>{card.title}</h3>
                     <button className="aam-expand-btn" onClick={() => toggleBenefit(i)}>
                       {chevronSvg(openBenefits.has(i))}
                     </button>
