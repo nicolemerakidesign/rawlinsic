@@ -147,8 +147,18 @@ const AAMPage = () => {
     const max = el.scrollWidth - el.clientWidth;
     setPhasesProgress(max > 0 ? el.scrollLeft / max : 0);
   };
-  const phasesScrollPrev = () => phasesTrackRef.current?.scrollBy({ left: -420, behavior: "smooth" });
-  const phasesScrollNext = () => phasesTrackRef.current?.scrollBy({ left: 420, behavior: "smooth" });
+  const phasesScrollPrev = () => {
+    const track = phasesTrackRef.current; if (!track) return;
+    const card = track.querySelector('.aam-alt-card') as HTMLElement;
+    const w = card ? card.offsetWidth + 24 : 420;
+    track.scrollBy({ left: -w, behavior: "smooth" });
+  };
+  const phasesScrollNext = () => {
+    const track = phasesTrackRef.current; if (!track) return;
+    const card = track.querySelector('.aam-alt-card') as HTMLElement;
+    const w = card ? card.offsetWidth + 24 : 420;
+    track.scrollBy({ left: w, behavior: "smooth" });
+  };
 
   const toggleSet = (setter: React.Dispatch<React.SetStateAction<Set<number>>>, idx: number) => {
     setter(prev => {

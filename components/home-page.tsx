@@ -165,8 +165,18 @@ export default function HomePage() {
     storyTrackRef.current.scrollLeft = storyScrollStart.current - dx;
   };
   const onStoryMouseUp = () => { storyDragging.current = false; };
-  const storyScrollPrev = () => storyTrackRef.current?.scrollBy({ left: -420, behavior: "smooth" });
-  const storyScrollNext = () => storyTrackRef.current?.scrollBy({ left: 420, behavior: "smooth" });
+  const storyScrollPrev = () => {
+    const track = storyTrackRef.current; if (!track) return;
+    const card = track.querySelector('.story-card') as HTMLElement;
+    const w = card ? card.offsetWidth + 20 : 420;
+    track.scrollBy({ left: -w, behavior: "smooth" });
+  };
+  const storyScrollNext = () => {
+    const track = storyTrackRef.current; if (!track) return;
+    const card = track.querySelector('.story-card') as HTMLElement;
+    const w = card ? card.offsetWidth + 20 : 420;
+    track.scrollBy({ left: w, behavior: "smooth" });
+  };
 
   // Pillars horizontal scroll
   const pillarsTrackRef = useRef<HTMLDivElement>(null);

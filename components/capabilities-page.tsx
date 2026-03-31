@@ -355,7 +355,6 @@ export default function CapabilitiesPage() {
             <div className="cap-banner-content">
               <div className="cap-banner-number">0{sIdx + 1}</div>
               <h2 className="cap-banner-title">{section.name}</h2>
-              <p className="cap-banner-tagline">{section.tagline}</p>
             </div>
           </div>
 
