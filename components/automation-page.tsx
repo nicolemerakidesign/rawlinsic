@@ -273,8 +273,8 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── Pipeline: same style as orgValues (numbered left-border list) ── */}
-      <section className="aam-section" style={{ padding: "100px 48px" }}>
-        <div className="aam-container">
+      <section className="aam-section" style={{ padding: "100px 24px" }}>
+        <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">The Ecosystem</span></p>
             <h2 className="section-title">How data governance, automation, and <em>AI</em> work together</h2>
