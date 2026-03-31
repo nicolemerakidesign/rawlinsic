@@ -245,11 +245,17 @@ export default function CapabilitiesPage() {
   return (
     <PasswordGate>
       <div className="cap-page-wrap">
+      {/* Ambient Background — matches homepage */}
+      <div className="ambient-bg" />
+      <div className="ambient-orbs">
+        <div className="orb orb-1" ref={orbRef1} />
+        <div className="orb orb-2" ref={orbRef2} />
+        <div className="orb orb-3" />
+        <div className="orb orb-4" />
+      </div>
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
       <canvas className="particle-canvas" ref={canvasRef} />
-      <div className="orb orb-1" ref={orbRef1} />
-      <div className="orb orb-2" ref={orbRef2} />
       <SiteNav />
 
       {/* ── Hero with fixed background image ── */}
