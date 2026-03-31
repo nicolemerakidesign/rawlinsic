@@ -199,7 +199,7 @@ export default function AutomationPage() {
                 <div className="aam-framework-accent" style={{ background: card.accent }} />
                 <div className="aam-framework-inner">
                   <div className="aam-pillar-title-row">
-                    <h3 className="aam-framework-phase" style={{ fontSize: "1.6rem", whiteSpace: "nowrap" }}>{card.title}</h3>
+                    <h3 className="aam-framework-phase" style={{ fontSize: "2rem", whiteSpace: "nowrap" }}>{card.title}</h3>
                     <button className="aam-expand-btn" onClick={() => toggleBenefit(i)}>
                       {chevronSvg(openBenefits.has(i))}
                     </button>
@@ -215,10 +215,9 @@ export default function AutomationPage() {
       </section>
 
       {/* Parallax Quote */}
-      <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: `url(${DATA_IMG})` }}>
-        <div className="aam-parallax-overlay" />
+      <div className="parallax-panel" style={{ background: "rgba(6,12,22,0.95)" }}>
         <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
-          Reshaping the way <em>people</em> work
+          Put some quote <em>here</em> placeholder.
         </p>
       </div>
 
