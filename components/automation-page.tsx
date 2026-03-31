@@ -62,7 +62,7 @@ const orgValues = [
 const pipeline = [
   { step: "01", label: "Data Governance", desc: "People bring trust to data through data governance." },
   { step: "02", label: "Automation", desc: "Automation transforms workflows using clean, structured data." },
-  { step: "03", label: "AI", desc: "AI recognizes patterns, makes predictions, evaluates alternatives, and adapts outputs over time." },
+  { step: "03", label: "AI", desc: "AI recognizes patterns, makes predictions, evaluates alternatives, picks the best option, and updates its internal model, adapting outputs over time." },
   { step: "04", label: "Human Validation", desc: "People validate AI results by applying context and judgment, then turn AI outputs into actionable insights." },
 ];
 
