@@ -19,26 +19,26 @@ export default function SiteFooter() {
         <div>
           <h4 className="footer-heading">Capabilities</h4>
           <ul className="footer-links">
-            <li><a href="#">View All</a></li>
-            <li><a href="#">Strategy</a></li>
-            <li><a href="#">Operations</a></li>
-            <li><a href="/capabilities/technology/advanced-air-mobility">Technology</a></li>
+            <li><Link href="/capabilities">View All</Link></li>
+            <li><Link href="/capabilities#strategy">Strategy</Link></li>
+            <li><Link href="/capabilities#operations">Operations</Link></li>
+            <li><Link href="/capabilities/technology/advanced-air-mobility">Technology</Link></li>
           </ul>
         </div>
         <div>
           <h4 className="footer-heading">Company</h4>
           <ul className="footer-links">
-            <li><a href="/#story">About</a></li>
+            <li><Link href="/#story">About</Link></li>
             <li><Link href="/about/our-people">Our People</Link></li>
-            <li><a href="/about/areas-we-serve">Areas We Serve</a></li>
+            <li><Link href="/about/areas-we-serve">Areas We Serve</Link></li>
           </ul>
         </div>
         <div>
           <h4 className="footer-heading">Insights</h4>
           <ul className="footer-links">
-            <li><a href="#">Thought Leadership</a></li>
-            <li><a href="/insights/case-studies">Case Studies</a></li>
-            <li><a href="#">Podcast</a></li>
+            <li><Link href="/insights/thought-leadership">Thought Leadership</Link></li>
+            <li><Link href="/insights/case-studies">Case Studies</Link></li>
+            <li><Link href="/insights/podcast">Podcast</Link></li>
           </ul>
         </div>
         <div>
