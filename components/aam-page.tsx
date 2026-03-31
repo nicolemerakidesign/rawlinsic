@@ -44,7 +44,7 @@ const pillarCards = [
   {
     title: "UAS Package Delivery",
     desc: "",
-    bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support", "Air Taxis (AAM)", "Urban mobility", "Business travel", "Emergency medical transport", "Regional connectivity", "Tourism & sightseeing" ],
+    bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support", "Air Taxis (AAM)", "Urban mobility", "Business travel", "Emergency medical transport", "Regional connectivity", "Tourism & sightseeing"],
     img: LOGISTICS_IMG,
   },
 ];
@@ -83,20 +83,6 @@ const frameworkCards = [
   },
 ];
 
-const stakeholdersLeft = [
-  { name: "Aviation Authorities", entities: "FAA · ICAO · NASAO" },
-  { name: "Government Agencies", entities: "DOTs · Security · Emergency Services" },
-  { name: "Standards Organizations", entities: "ACRA · AASHTO · NCHRP" },
-  { name: "Academic Institutions", entities: "Research Centers · Universities · Labs" },
-];
-
-const stakeholdersRight = [
-  { name: "Air Navigation Providers", entities: "UTM Operators · ATM Providers · Traffic Mgmt" },
-  { name: "Operators & Services", entities: "Drone Operators · Delivery Services · Providers" },
-  { name: "Industry Partners", entities: "Manufacturers · Tech Providers · Integrators" },
-  { name: "Cities & MPOs", entities: "Municipal Gov · Planning Offices · Transit Agencies" },
-];
-
 const aamServices = [
   "Feasibility studies", "Vertiport planning", "Air traffic management",
   "Policy framework development", "Community outreach", "Pilot program design",
@@ -109,20 +95,18 @@ const uasServices = [
   "Workforce training programs", "Airspace deconfliction", "Environmental impact assessments", "Procurement support",
 ];
 
-/* ──── Component ──── */
-
 /* ──── Stakeholder Ecosystem Data ──── */
-/* SVG icon paths (24x24 viewBox line-art style) */
 const ecoIcons: Record<string, string> = {
-  aviation: 'M12 2L4 14h4v6h8v-6h4L12 2z', // plane/arrow up
-  government: 'M3 21h18v-2H3v2zm0-4h18v-2H3v2zm2-6v4h3v-4H5zm5 0v4h4v-4h-4zm6 0v4h3v-4h-3zM4 9l8-6 8 6H4z', // capitol
-  standards: 'M9 3v2H5v14h14V5h-4V3H9zm0 2h6v2H9V5zM7 9h10v2H7V9zm0 4h10v2H7v-2z', // clipboard
-  academic: 'M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 12.18L4 11.1V16l8 4 8-4v-4.9l-8 4.08z', // mortarboard
-  ansp: 'M12 2a10 10 0 100 20 10 10 0 000-20zm0 4a2 2 0 110 4 2 2 0 010-4zm-1 6h2v2l3 5h-2.2l-1.8-3.5L10.2 19H8l3-5v-2z', // radar
-  operators: 'M12 2L8 8h3v4H7l-2 4h3v4h8v-4h3l-2-4h-4V8h3L12 2z', // drone shape
-  industry: 'M22 9l-4-4-4 4h2v4h-4V9l-4-4-4 4h2v4H2v8h20v-8h-2V9h2zm-6 10h-3v-4h3v4zm-5 0H8v-4h3v4z', // factory
-  cities: 'M3 21h18v-2H3v2zM5 13v6h4v-6H5zm6-4v10h4V9h-4zm6 2v8h4v-8h-4z', // bar chart / skyline
+  aviation: 'M12 2L4 14h4v6h8v-6h4L12 2z',
+  government: 'M3 21h18v-2H3v2zm0-4h18v-2H3v2zm2-6v4h3v-4H5zm5 0v4h4v-4h-4zm6 0v4h3v-4h-3zM4 9l8-6 8 6H4z',
+  standards: 'M9 3v2H5v14h14V5h-4V3H9zm0 2h6v2H9V5zM7 9h10v2H7V9zm0 4h10v2H7v-2z',
+  academic: 'M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 12.18L4 11.1V16l8 4 8-4v-4.9l-8 4.08z',
+  ansp: 'M12 2a10 10 0 100 20 10 10 0 000-20zm0 4a2 2 0 110 4 2 2 0 010-4zm-1 6h2v2l3 5h-2.2l-1.8-3.5L10.2 19H8l3-5v-2z',
+  operators: 'M12 2L8 8h3v4H7l-2 4h3v4h8v-4h3l-2-4h-4V8h3L12 2z',
+  industry: 'M22 9l-4-4-4 4h2v4h-4V9l-4-4-4 4h2v4H2v8h20v-8h-2V9h2zm-6 10h-3v-4h3v4zm-5 0H8v-4h3v4z',
+  cities: 'M3 21h18v-2H3v2zM5 13v6h4v-6H5zm6-4v10h4V9h-4zm6 2v8h4v-8h-4z',
 };
+
 const ecosystemNodes = [
   { id: 'aviation', label: 'Aviation\nAuthorities', short: 'FAA · ICAO · NASAO', desc: 'Federal and international aviation regulatory bodies shaping airspace policy and certification standards.', angle: 0 },
   { id: 'government', label: 'Government\nAgencies', short: 'DOTs · Security · Emergency', desc: 'State and federal departments of transportation, homeland security, and emergency management services.', angle: 45 },
@@ -134,6 +118,8 @@ const ecosystemNodes = [
   { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Metropolitan planning organizations, municipal governments, and transit agencies integrating AAM into community infrastructure.', angle: 315 },
 ];
 
+/* ──── Component ──── */
+
 const AAMPage = () => {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -144,15 +130,25 @@ const AAMPage = () => {
   const animFrame = useRef<number | null>(null);
 
   const [openPillars, setOpenPillars] = useState<Set<number>>(new Set());
-  const [openPhases, setOpenPhases] = useState<Set<number>>(new Set());
   const [openFrameworks, setOpenFrameworks] = useState<Set<number>>(new Set());
-  const [showAllAAM, setShowAllAAM] = useState(false);
-  const [showAllUAS, setShowAllUAS] = useState(false);
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [introOpen, setIntroOpen] = useState(false);
   const [valueOpen, setValueOpen] = useState(false);
   const [openServices, setOpenServices] = useState<Set<number>>(new Set());
+
+  // Phases horizontal scroll
+  const [phasesProgress, setPhasesProgress] = useState(0);
+  const phasesTrackRef = useRef<HTMLDivElement>(null);
+
+  const onPhasesScroll = () => {
+    const el = phasesTrackRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setPhasesProgress(max > 0 ? el.scrollLeft / max : 0);
+  };
+  const phasesScrollPrev = () => phasesTrackRef.current?.scrollBy({ left: -420, behavior: "smooth" });
+  const phasesScrollNext = () => phasesTrackRef.current?.scrollBy({ left: 420, behavior: "smooth" });
 
   const toggleSet = (setter: React.Dispatch<React.SetStateAction<Set<number>>>, idx: number) => {
     setter(prev => {
@@ -224,7 +220,7 @@ const AAMPage = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Scroll reveal — with fallback for elements already in view
+  // Scroll reveal
   useEffect(() => {
     let ob: IntersectionObserver;
     const raf = requestAnimationFrame(() => {
@@ -246,8 +242,6 @@ const AAMPage = () => {
     });
     return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };
   }, []);
-
-  // Parallax is now handled by CSS background-attachment: fixed — no JS needed
 
   const chevronSvg = (rotated: boolean) => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "transform 0.3s", transform: rotated ? "rotate(180deg)" : "rotate(0)" }}>
@@ -298,7 +292,7 @@ const AAMPage = () => {
           <div className="aam-overview-grid">
             <div className="aam-overview-left reveal">
               <p className="section-label"><span className="gold-text">are you ready?</span></p>
-              <h2 className="section-title">The next major phase in transportation’s <em>evolution</em></h2>
+              <h2 className="section-title">The next major phase in transportation's <em>evolution</em></h2>
               <button
                 className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
                 aria-label="Learn more"
@@ -312,9 +306,12 @@ const AAMPage = () => {
               </button>
               <div className={`intro-expandable${introOpen ? " expanded" : ""}`}>
                 <p className="aam-section-lead">
-Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly part of modern mobility ecosystems. Together, these systems and associated technologies are expected to transform transportation by enhancing connectivity, improving cargo logistics, expediting emergency response, and assisting infrastructure inspection.               </p>
+                  Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly part of modern mobility ecosystems. Together, these systems and associated technologies are expected to transform transportation by enhancing connectivity, improving cargo logistics, expediting emergency response, and assisting infrastructure inspection.
+                </p>
                 <p className="aam-section-lead">
-                  Next-generation aerial capabilities, integrated into existing mobility systems, complement ground, rail, and maritime transport networks. They strengthen multimodal transportation and enable urban, rural, and regional areas to benefit from a more connected, resilient, and adaptable mobility ecosystem.</p>          </div>
+                  Next-generation aerial capabilities, integrated into existing mobility systems, complement ground, rail, and maritime transport networks. They strengthen multimodal transportation and enable urban, rural, and regional areas to benefit from a more connected, resilient, and adaptable mobility ecosystem.
+                </p>
+              </div>
             </div>
             <div className="aam-overview-right reveal rd1">
               <div className="intro-cinematic-wrap">
@@ -342,7 +339,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
         </div>
       </section>
 
-      {/* Parallax Quote with Image — CSS background-attachment: fixed */}
+      {/* Parallax Quote with Image */}
       <div
         className="parallax-panel aam-parallax-fixed"
         style={{ backgroundImage: `url(${SKYLINE_IMG})` }}
@@ -372,7 +369,7 @@ Advanced air mobility (AAM) and uncrewed aircraft systems (UAS) are increasingly
             </button>
             <div className={`intro-expandable${valueOpen ? " expanded" : ""}`}>
               <p className="aam-section-lead">
-The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.
+                The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.
               </p>
             </div>
           </div>
@@ -413,13 +410,40 @@ The capabilities pioneered by UAS technologies underpin the development of AAM, 
             <p className="section-label"><span className="gold-text">how we serve our clients</span></p>
             <h2 className="section-title">Essential <em>Phases</em></h2>
             <p className="section-text" style={{ marginTop: "20px" }}>
-Our team brings together regulatory guidance, operational expertise, and program strategy to deliver real-world results. We support AAM and UAS initiatives throughout the program lifecycle.            </p>
+              Our team brings together regulatory guidance, operational expertise, and program strategy to deliver real-world results. We support AAM and UAS initiatives throughout the program lifecycle.
+            </p>
           </div>
         </div>
-        <div class="story-scroll-controls"><div class="story-scroll-progress-bar"><div class="story-scroll-progress-fill" style="width:0%"></div></div><div class="story-scroll-arrows"><button class="story-arrow-btn" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button><button class="story-arrow-btn" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></button></div></div>
-        {/* Full-width scroll area — breaks out of aam-container */}
+
+        {/* Progress bar + arrow controls */}
+        <div className="story-scroll-controls">
+          <div className="story-scroll-progress-bar">
+            <div
+              className="story-scroll-progress-fill"
+              style={{ width: `${phasesProgress * 100}%` }}
+            />
+          </div>
+          <div className="story-scroll-arrows">
+            <button className="story-arrow-btn" onClick={phasesScrollPrev} aria-label="Previous phase">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button className="story-arrow-btn" onClick={phasesScrollNext} aria-label="Next phase">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Full-width scroll area */}
         <div className="aam-alt-scroll-outer">
-          <div className="aam-alt-scroll-track">
+          <div
+            className="aam-alt-scroll-track"
+            ref={phasesTrackRef}
+            onScroll={onPhasesScroll}
+          >
             {phaseData.map((phase, i) => (
               <div className="aam-alt-card" key={phase.num}>
                 <Image src={phase.img} alt={phase.label} fill sizes="(max-width: 768px) 80vw, 400px" className="aam-alt-card-bg" />
@@ -475,14 +499,15 @@ Our team brings together regulatory guidance, operational expertise, and program
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* Parallax Quote 2 with Image — CSS background-attachment: fixed */}
+      {/* Parallax Quote 2 */}
       <div
         className="parallax-panel aam-parallax-fixed"
         style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }}
       >
         <div className="aam-parallax-overlay" />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-Guideing the <em>future</em> of aviation</p>
+          Guiding the <em>future</em> of aviation
+        </p>
       </div>
 
       {/* ── Interactive Stakeholder Ecosystem ── */}
@@ -497,7 +522,7 @@ Guideing the <em>future</em> of aviation</p>
                 <p className="aam-section-lead" style={{ marginTop: '20px' }}>
                   We engage multiple stakeholders in the public and private sectors across AAM and UAS to align policy, regulation, operations, and technology; integrate systems and infrastructure; implement/deploy and scale services.
                 </p>
-                <p className="aam-section-lead" style={{ fontStyle: 'italic'}}>
+                <p className="aam-section-lead" style={{ fontStyle: 'italic' }}>
                   Click any stakeholder to learn more.
                 </p>
               </div>
@@ -597,7 +622,7 @@ Guideing the <em>future</em> of aviation</p>
                   <text x="400" y="390" textAnchor="middle" fill="url(#titleGoldGrad)" fontFamily="'DM Sans', sans-serif" fontSize="16" fontWeight="700" letterSpacing="4" style={{ textTransform: 'uppercase' }}>RAWLINS</text>
                   <text x="400" y="412" textAnchor="middle" fill="url(#titleGoldGrad)" fontFamily="'DM Sans', sans-serif" fontSize="14" fontWeight="600" letterSpacing="3" style={{ textTransform: 'uppercase' }}>AERO TEAM</text>
 
-                  {/* Stakeholder nodes — SVG icons with gold gradient */}
+                  {/* Stakeholder nodes */}
                   {ecosystemNodes.map((node) => {
                     const rad = (node.angle * Math.PI) / 180;
                     const nx = 400 + Math.cos(rad) * 280;
@@ -610,15 +635,12 @@ Guideing the <em>future</em> of aviation</p>
 
                     return (
                       <g key={node.id} style={{ cursor: 'none' }} onClick={() => setActiveNode(activeNode === node.id ? null : node.id)} onMouseEnter={() => setHoveredNode(node.id)} onMouseLeave={() => setHoveredNode(null)}>
-                        {/* Hit area */}
                         <circle cx={nx} cy={ny} r="65" fill="transparent" />
-                        {/* SVG icon — gold gradient fill */}
                         <g transform={`translate(${nx - iconSize / 2}, ${ny - iconSize / 2})`} style={{ transition: 'all 0.3s' }}>
                           <svg width={iconSize} height={iconSize} viewBox="0 0 24 24">
-                            <path d={iconPath} fill={highlighted ? "url(#titleGoldGrad)" : "url(#titleGoldGrad)"} opacity={highlighted ? 1 : 0.7} style={{ filter: highlighted ? 'drop-shadow(0 0 10px rgba(201,168,76,0.6))' : 'none' }} />
+                            <path d={iconPath} fill="url(#titleGoldGrad)" opacity={highlighted ? 1 : 0.7} style={{ filter: highlighted ? 'drop-shadow(0 0 10px rgba(201,168,76,0.6))' : 'none' }} />
                           </svg>
                         </g>
-                        {/* Label */}
                         {node.label.split('\n').map((line, li) => (
                           <text key={li} x={nx} y={ny + (highlighted ? 42 : 36) + li * 20} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,1)"} fontFamily="'DM Sans', sans-serif" fontSize="16" fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
                             {line}
@@ -628,19 +650,19 @@ Guideing the <em>future</em> of aviation</p>
                     );
                   })}
 
-                  {/* Particles — outbound (center → icon) */}
+                  {/* Particles — outbound */}
                   {ecosystemNodes.map((node, i) => (
                     <circle key={`particle-out-${i}`} r="2" fill="#c9a84c" className="eco-data-particle" style={{ animationDelay: `${i * 0.5}s` }}>
                       <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"><mpath href={`#path-out-${i}`} /></animateMotion>
                     </circle>
                   ))}
-                  {/* Particles — inbound (icon → center) */}
+                  {/* Particles — inbound */}
                   {ecosystemNodes.map((node, i) => (
                     <circle key={`particle-in-${i}`} r="2" fill="#c9a84c" className="eco-data-particle" style={{ animationDelay: `${i * 0.5 + 1.5}s` }}>
                       <animateMotion dur={`${3 + i * 0.3}s`} repeatCount="indefinite"><mpath href={`#path-in-${i}`} /></animateMotion>
                     </circle>
                   ))}
-                  {/* Paths — outbound (circle edge → icon) */}
+                  {/* Paths — outbound */}
                   {ecosystemNodes.map((node, i) => {
                     const rad = (node.angle * Math.PI) / 180;
                     const sx = 400 + Math.cos(rad) * 85;
@@ -649,7 +671,7 @@ Guideing the <em>future</em> of aviation</p>
                     const ny = 400 + Math.sin(rad) * 250;
                     return <path key={`path-out-${i}`} id={`path-out-${i}`} d={`M${sx},${sy} L${nx},${ny}`} fill="none" stroke="none" />;
                   })}
-                  {/* Paths — inbound (icon → circle edge) */}
+                  {/* Paths — inbound */}
                   {ecosystemNodes.map((node, i) => {
                     const rad = (node.angle * Math.PI) / 180;
                     const sx = 400 + Math.cos(rad) * 85;
@@ -660,14 +682,13 @@ Guideing the <em>future</em> of aviation</p>
                   })}
                 </svg>
 
-                {/* Detail panel — positioned near clicked node */}
+                {/* Detail panel */}
                 {activeNode && (() => {
                   const node = ecosystemNodes.find(n => n.id === activeNode);
                   if (!node) return null;
                   const rad = (node.angle * Math.PI) / 180;
                   const cosA = Math.cos(rad);
                   const sinA = Math.sin(rad);
-                  /* Position panel near node but clamped inside wrapper */
                   const rawX = 50 + cosA * 30;
                   const rawY = 50 + sinA * 30;
                   const clampX = Math.max(5, Math.min(95, rawX));
@@ -688,7 +709,7 @@ Guideing the <em>future</em> of aviation</p>
                   );
                 })()}
 
-                {/* Click-outside overlay to close panel */}
+                {/* Click-outside overlay */}
                 {activeNode && (
                   <div className="eco-click-outside" onClick={() => setActiveNode(null)} />
                 )}
@@ -700,7 +721,7 @@ Guideing the <em>future</em> of aviation</p>
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── Service Portfolio: Card Tiles (same style as Value Delivery) ── */}
+      {/* ── Service Portfolio ── */}
       <section className="aam-section aam-portfolio-section" id="portfolio">
         <div className="aam-container">
           <div className="aam-section-header reveal" style={{ textAlign: 'center' }}>
@@ -739,7 +760,7 @@ Guideing the <em>future</em> of aviation</p>
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── CTA with Background — CSS parallax ── */}
+      {/* ── CTA ── */}
       <section
         className="aam-section aam-cta-section aam-parallax-fixed"
         style={{ backgroundImage: `url(${HELICOPTER_IMG})` }}
