@@ -279,16 +279,14 @@ export default function AutomationPage() {
             <p className="section-label"><span className="gold-text">The Ecosystem</span></p>
             <h2 className="section-title">How data governance, automation, and <em>AI</em> work together</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "24px", marginTop: "60px" }}>
+          <div className="auto-ecosystem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px", marginTop: "60px" }}>
             {pipeline.map((p, i) => (
-              <div key={i} className="reveal" style={{ display: "flex", gap: "20px", padding: "28px 24px", borderLeft: "2px solid rgba(201,168,76,0.3)", transition: "all 0.3s" }}>
-                <span style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "32px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1 }}>
+              <div key={i} className="reveal" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", borderLeft: "2px solid rgba(201,168,76,0.3)", transition: "all 0.3s" }}>
+                <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1 }}>
                   {p.step}
                 </span>
-                <div>
-                  <h3 style={{ fontSize: "18px", fontWeight: 600, color: "#fff", marginBottom: "6px" }}>{p.label}</h3>
-                  <p style={{ fontSize: "16px", color: "#e8e6e1", lineHeight: 1.8 }}>{p.desc}</p>
-                </div>
+                <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginBottom: "4px", lineHeight: 1.2 }}>{p.label}</h3>
+                <p style={{ fontSize: "16px", color: "#fff", lineHeight: 1.8 }}>{p.desc}</p>
               </div>
             ))}
           </div>
