@@ -171,7 +171,7 @@ export default function AutomationPage() {
           <span className="hero-label"><span className="gold-text">Technology</span></span>
           <h1 className="hero-title">Systems <em>Automation</em> &amp; AI</h1>
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none" }}>
-            Partnering to reshape the way people work
+            Partnering to reshape the way people work.
           </p>
           <a href="#benefits" className="hero-cta-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
             <span>Explore solutions</span>
@@ -183,13 +183,13 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── Benefits: AAM "Our Approach" style framework cards ── */}
-      <section className="aam-section" id="benefits" style={{ padding: "100px 48px", scrollMarginTop: "80px" }}>
-        <div className="aam-container">
+      <section className="aam-section" id="benefits" style={{ padding: "100px 24px", scrollMarginTop: "80px" }}>
+        <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>
             <h2 className="section-title">How can automation help people <em>thrive</em> in a data-driven workplace?</h2>
           </div>
-          <div className="aam-framework-grid" style={{ marginTop: "60px", gridTemplateColumns: "repeat(4, 1fr)", maxWidth: "100%" }}>
+          <div className="aam-framework-grid" style={{ marginTop: "60px", gridTemplateColumns: "repeat(4, 1fr)", maxWidth: "100%", gap: "24px" }}>
             {benefits.map((card, i) => (
               <div className={`aam-framework-card${openBenefits.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-framework-img-wrap">
