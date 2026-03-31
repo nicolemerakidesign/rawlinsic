@@ -216,7 +216,7 @@ export default function AutomationPage() {
 
       {/* Parallax Quote */}
       <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=compress&cs=tinysrgb&w=1920)" }}>
-        <div className="aam-parallax-overlay" />
+        <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
           Put some quote <em>here</em> placeholder.
         </p>
@@ -292,7 +292,7 @@ export default function AutomationPage() {
 
       {/* Parallax Quote 2 */}
       <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: `url(${WORKFLOW_IMG})` }}>
-        <div className="aam-parallax-overlay" />
+        <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
           Explore the <em>possibilities</em>
         </p>
@@ -403,10 +403,10 @@ export default function AutomationPage() {
       {/* ── CTA ── */}
       <section className="aam-section aam-cta-section aam-parallax-fixed" style={{ backgroundImage: `url(${TEAM_IMG})` }}>
         <div className="aam-parallax-overlay" />
-        <div className="aam-cta-wrap" style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 32px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 32px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "800px", margin: "0 auto" }}>
           <p className="section-label"><span className="gold-text">Let&rsquo;s Connect</span></p>
-          <h2 className="section-title" style={{ color: "#fff", marginBottom: "20px" }}>Ready to reshape how your <em>organization</em> works?</h2>
-          <p style={{ fontSize: "17px", color: "#e8e6e1", lineHeight: 1.8, maxWidth: "600px", margin: "0 auto 40px", textAlign: "center" }}>
+          <h2 className="section-title" style={{ color: "#fff", marginBottom: "20px", textAlign: "center" }}>Ready to reshape how your <em>organization</em> works?</h2>
+          <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center", marginBottom: "40px" }}>
             Let&rsquo;s discuss how automation and AI can elevate your team&rsquo;s capabilities.
           </p>
           <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none" }}><span>Connect With Us</span></Link>
