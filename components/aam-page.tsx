@@ -329,8 +329,8 @@ const AAMPage = () => {
                   </div>
                   <div className="intro-metric-divider" />
                   <div className="intro-metric">
-                    <span className="intro-metric-num">7 Phase</span>
-                    <span className="intro-metric-label">Program Lifecycle Support</span>
+                    <span className="intro-metric-num">7</span>
+                    <span className="intro-metric-label">Phase Program Lifecycle Support</span>
                   </div>
                 </div>
               </div>
