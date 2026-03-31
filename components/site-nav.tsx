@@ -114,7 +114,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
                 </span>
                 <div className="nav-sub-dropdown">
                   <a href="/capabilities/technology/advanced-air-mobility">Advanced Air Mobility</a>
-                  <a href="#">Automation &amp; Integration</a>
+                  <a href="/capabilities/technology/automation-integration">Automation &amp; Integration</a>
                 </div>
               </div>
             </div>
