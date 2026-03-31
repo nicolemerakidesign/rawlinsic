@@ -284,10 +284,11 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                 <Image
                   src={article.image}
                   alt={article.title}
-                  width={900}
-                  height={525}
-                  sizes="(max-width: 768px) 100vw, 480px"
+                  width={1200}
+                  height={675}
+                  sizes="(max-width: 768px) 100vw, 600px"
                   className="tla-article-img"
+                  style={{ width: '100%', height: 'auto' }}
                 />
               </div>
             )}

@@ -178,7 +178,7 @@ export default function PodcastPage() {
             </p>
             <h1 className="hero-title">The Rawlins Way</h1>
             <p className="pod-hero-tagline">
-              Providing &ldquo;Value&rdquo; Consulting with a Purpose
+              Providing <em>value.</em> Consulting with a purpose.
             </p>
           </div>
         </section>
@@ -193,8 +193,8 @@ export default function PodcastPage() {
           <div className="pod-main-grid">
             {/* Left: About */}
             <div className="pod-about">
-              <h2 className="pod-about-title">
-                <span className="gold-text">About the Podcast</span>
+              <h2 className="section-title" style={{ color: "#fff", marginBottom: 24 }}>
+                About the Podcast
               </h2>
               <p className="pod-about-text">
                 The Rawlins Way podcast offers an inside look at how Rawlins Infra
@@ -203,24 +203,6 @@ export default function PodcastPage() {
                 our unique approach to creating exceptional client outcomes while
                 fostering team success.
               </p>
-
-              <div className="pod-topics">
-                <h3 className="pod-topics-title">What We Cover</h3>
-                <div className="pod-topic-tags">
-                  <span className="pod-topic-tag">Project Deep Dives</span>
-                  <span className="pod-topic-tag">Team Insights</span>
-                  <span className="pod-topic-tag">Industry Trends</span>
-                  <span className="pod-topic-tag">Client Outcomes</span>
-                  <span className="pod-topic-tag">Transportation Strategy</span>
-                  <span className="pod-topic-tag">Infrastructure Innovation</span>
-                </div>
-              </div>
-
-              <div className="pod-cta-row">
-                <Link href="/about" className="cs-cta-btn" style={{ width: "fit-content" }}>
-                  <span>Meet the Team</span>
-                </Link>
-              </div>
             </div>
 
             {/* Right: Embedded Player */}

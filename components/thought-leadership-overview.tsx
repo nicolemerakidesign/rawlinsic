@@ -208,7 +208,6 @@ export default function ThoughtLeadershipOverview() {
                   {articles[0].title}
                 </Link>
               </h2>
-              <p className="tl-featured-subtitle">{articles[0].subtitle}</p>
               <div className="tl-featured-author-row">
                 {articles[0].authorImage && (
                   <Image
