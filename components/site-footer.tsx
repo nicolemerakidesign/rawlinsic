@@ -49,6 +49,9 @@ export default function SiteFooter() {
               <a href="mailto:info@rawlinsic.com">info@rawlinsic.com</a>
             </li>
             <li>
+              <a href="tel:+17758433822">(775) 843-3822</a>
+            </li>
+            <li>
               <a
                 href="https://www.linkedin.com/company/rawlins-infra-consult/"
                 target="_blank"
