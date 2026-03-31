@@ -170,13 +170,10 @@ export default function AutomationPage() {
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Smarter Systems. Empowered Teams.</span></span>
           <h1 className="hero-title">Systems <em>Automation</em> &amp; AI</h1>
-          <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none" }}>
+          <p className="hero-sub">
             Partnering to reshape the way people work.
           </p>
-          <a href="#benefits" style={{ opacity: 1, transform: "none", animation: "none", display: "inline-block", padding: "16px 44px", background: "linear-gradient(145deg, #d4be78, #c9a84c)", border: "1px solid transparent", color: "#060c16", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" as const, position: "relative" as const, overflow: "hidden", transition: "all 0.4s" }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "#fff"; e.currentTarget.style.color = "#fff"; e.currentTarget.style.fontWeight = "800"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "linear-gradient(145deg, #d4be78, #c9a84c)"; e.currentTarget.style.borderColor = "transparent"; e.currentTarget.style.color = "#060c16"; e.currentTarget.style.fontWeight = "700"; }}
-          >
+          <a href="#benefits" className="auto-hero-btn">
             <span>Explore Solutions</span>
           </a>
         </div>
