@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CapabilitiesPage from "@/components/capabilities-page";
 
 export const metadata: Metadata = {
-  title: "Capabilities | Rawlins",
+  title: "Capabilities",
   description:
     "Explore our integrated advisory services spanning strategy, operations, and technology—designed for complex organizations navigating transformation.",
 };

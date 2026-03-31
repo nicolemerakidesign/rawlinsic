@@ -7,7 +7,7 @@ const article = THOUGHT_LEADERSHIP.find(
 )!;
 
 export const metadata: Metadata = {
-  title: `${article.title} — Thought Leadership — Rawlins`,
+  title: `${article.title} — Thought Leadership`,
   description: article.excerpt,
 };
 

@@ -17,9 +17,12 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Contact | Rawlins",
+  title: {
+    default: "Home | Rawlins Infra Consult",
+    template: "%s | Rawlins Infra Consult",
+  },
   description:
-    "Get in touch with Rawlins — trusted advisors at the intersection of strategy, operations, and technology.",
+    "Rawlins Infra Consult is a global consultancy at the intersection of strategy, operations, and technology — helping organizations translate ambitious priorities into measurable results.",
 };
 
 export default function RootLayout({

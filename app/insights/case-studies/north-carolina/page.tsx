@@ -5,7 +5,7 @@ import { CASE_STUDIES } from "@/components/case-studies-data";
 const study = CASE_STUDIES.find((s) => s.slug === "north-carolina")!;
 
 export const metadata: Metadata = {
-  title: `${study.title} — Case Studies — Rawlins`,
+  title: `${study.title} — Case Studies`,
   description: study.description,
 };
 
