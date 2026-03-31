@@ -281,7 +281,7 @@ export default function AutomationPage() {
           </div>
           <div className="auto-ecosystem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px", marginTop: "60px" }}>
             {pipeline.map((p, i) => (
-              <div key={i} className="reveal" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", transition: "all 0.3s" }}>
+              <div key={i} className="reveal" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", borderLeft: "1px solid rgba(201,168,76,0.4)", transition: "all 0.3s" }}>
                 <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1 }}>
                   {p.step}
                 </span>
@@ -319,16 +319,16 @@ export default function AutomationPage() {
             </div>
             <div className="reveal">
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "36px" }}>
-                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#e8e6e1", lineHeight: 1.8 }}>
+                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
                   We design and implement digital solutions that help people work smarter and more creatively.
                 </li>
-                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#e8e6e1", lineHeight: 1.8 }}>
+                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
                   We reduce manual effort, streamline and connect workflows, and establish effective <Link href="/capabilities" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
                 </li>
-                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#e8e6e1", lineHeight: 1.8 }}>
+                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
                   We develop high-value AI use cases and a roadmap for adoption and scaling.
                 </li>
-                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#e8e6e1", lineHeight: 1.8 }}>
+                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
                   We partner to guide <Link href="/capabilities" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>organizational change</Link> by cultivating the culture required for new ways of working.
                 </li>
               </ul>
