@@ -166,20 +166,44 @@ export default function PodcastPage() {
           <div className="pod-hero-overlay" />
           <div className="pod-hero-content">
             <div className="pod-hero-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5">
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="rgba(201,168,76,0.2)" />
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                <line x1="12" y1="19" x2="12" y2="23" />
-                <line x1="8" y1="23" x2="16" y2="23" />
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
+                <defs>
+                  <linearGradient id="iconGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#c9a84c" />
+                    <stop offset="50%" stopColor="#e8d5a0" />
+                    <stop offset="100%" stopColor="#d4b878" />
+                  </linearGradient>
+                  <linearGradient id="iconGoldFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgba(201,168,76,0.25)" />
+                    <stop offset="100%" stopColor="rgba(232,213,160,0.15)" />
+                  </linearGradient>
+                </defs>
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="url(#iconGoldFill)" stroke="url(#iconGoldGrad)" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="url(#iconGoldGrad)" />
+                <line x1="12" y1="19" x2="12" y2="23" stroke="url(#iconGoldGrad)" />
+                <line x1="8" y1="23" x2="16" y2="23" stroke="url(#iconGoldGrad)" />
               </svg>
             </div>
             <p className="section-label" style={{ textAlign: "center" }}>
               <span className="gold-text">Listen In. Learn More. Lead Better.</span>
             </p>
-            <h1 className="hero-title">The Rawlins Way</h1>
-            <p className="pod-hero-tagline">
-              Providing <em>value.</em> Consulting with a purpose.
-            </p>
+            <h1 className="hero-title">The <em>Rawlins</em> Way</h1>
+          </div>
+        </section>
+
+        {/* ── Equalizer Visual Break ── */}
+        <section className="pod-eq-section">
+          <div className="pod-eq-bars">
+            {Array.from({ length: 60 }).map((_, i) => (
+              <div
+                key={i}
+                className="pod-eq-bar"
+                style={{
+                  animationDelay: `${i * 0.06}s`,
+                  animationDuration: `${0.8 + Math.random() * 0.8}s`,
+                }}
+              />
+            ))}
           </div>
         </section>
 
@@ -193,8 +217,9 @@ export default function PodcastPage() {
           <div className="pod-main-grid">
             {/* Left: About */}
             <div className="pod-about">
+              <p className="section-label"><span className="gold-text">about the podcast</span></p>
               <h2 className="section-title" style={{ color: "#fff", marginBottom: 24 }}>
-                About the Podcast
+                Providing <em>value.</em> Consulting with a purpose.
               </h2>
               <p className="pod-about-text">
                 The Rawlins Way podcast offers an inside look at how Rawlins Infra
@@ -229,22 +254,6 @@ export default function PodcastPage() {
         <div className="section-divider">
           <div className="gold-line" />
         </div>
-
-        {/* ── Equalizer Visual Break ── */}
-        <section className="pod-eq-section">
-          <div className="pod-eq-bars">
-            {Array.from({ length: 60 }).map((_, i) => (
-              <div
-                key={i}
-                className="pod-eq-bar"
-                style={{
-                  animationDelay: `${i * 0.06}s`,
-                  animationDuration: `${0.8 + Math.random() * 0.8}s`,
-                }}
-              />
-            ))}
-          </div>
-        </section>
 
         {/* ── CTA Section ── */}
         <section className="cs-cta-section reveal">

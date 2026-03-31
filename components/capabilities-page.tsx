@@ -266,14 +266,6 @@ export default function CapabilitiesPage() {
           <p className="cap-hero-subtitle">
             Three disciplines, one mission—navigating complexity to deliver measurable, lasting transformation for the organizations we serve.
           </p>
-          <div className="cap-hero-nav">
-            {capabilitySections.map((s) => (
-              <button key={s.id} className="cap-hero-nav-btn" onClick={() => scrollToSection(s.id)}>
-                <span>{s.name}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-              </button>
-            ))}
-          </div>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
       </section>
