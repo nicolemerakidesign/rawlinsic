@@ -17,26 +17,26 @@ const DASHBOARD_IMG = "https://images.unsplash.com/photo-1551434678-e076c223a692
 const NETWORK_IMG = "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=compress&cs=tinysrgb&w=1200";
 
 const benefits = [
-  { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", title: "Make better decisions", desc: "Up-to-date information in one place" },
-  { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", title: "Achieve goals faster", desc: "Accomplish in less time" },
+  { icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", title: "Decision Making", desc: "Make better decisions with up-to-date information in one place" },
+  { icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", title: "Efficiency", desc: "Achieve goals in less time" },
   { icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z", title: "Prioritize creativity", desc: "Focus on problem-solving over repetitive work" },
-  { icon: "M13 10V3L4 14h7v7l9-11h-7z", title: "Innovate quickly", desc: "Accelerate the pace of innovation" },
+  { icon: "M13 10V3L4 14h7v7l9-11h-7z", title: "Innovation", desc: "Accelerate the pace of innovation" },
 ];
 
 const orgValues = [
-  { title: "Optimize resources", desc: "Optimize the use of diverse resources across your organization." },
-  { title: "Boost efficiency", desc: "Routine processes that take hours or days can be done in seconds, reducing errors." },
-  { title: "Scale team impact", desc: "Scale the impact of teams beyond what manual processes allow." },
-  { title: "Enhance responsiveness", desc: "React faster to changing conditions and stakeholder needs." },
-  { title: "Support resilience", desc: "Standardized tasks support continuity of operations and enable faster response when needs evolve." },
-  { title: "Support human talent", desc: "Free your people to focus on high-value work that requires human judgment." },
+  { title: "Optimization", desc: "Optimize the use of diverse resources" },
+  { title: "Boost Efficiency", desc: "Routine processes that take hours or days can be done in seconds, reducing errors." },
+  { title: "Scaling Impact", desc: "Scale the impact of teams beyond what manual processes allow." },
+  { title: "Enhance Responsiveness", desc: "React faster to changing conditions and organizational needs." },
+  { title: "Support Resilience", desc: "Standardized tasks support continuity of operations and enable faster response when needs evolve" },
+  { title: "Support Human Talent", desc: "Allow your employees to focus on work that requires human judgment." },
 ];
 
 const pipeline = [
-  { step: "01", label: "Data Governance", desc: "People bring trust to data through data governance.", color: "#c9a84c" },
-  { step: "02", label: "Automation", desc: "Automation transforms workflows using clean, structured data.", color: "#d4b878" },
-  { step: "03", label: "AI", desc: "AI recognizes patterns, makes predictions, evaluates alternatives, and adapts outputs over time.", color: "#e8d5a0" },
-  { step: "04", label: "Human Validation", desc: "People validate AI results by applying context and judgment, then turn AI outputs into actionable insights.", color: "#c9a84c" },
+  { step: "01", label: "Data Governance", desc: "People bring trust to data through data governance", color: "#c9a84c" },
+  { step: "02", label: "Automation", desc: "Automation transforms workflows using clean, structured data", color: "#d4b878" },
+  { step: "03", label: "AI", desc: "AI recognizes patterns, makes predictions, evaluates alternatives, picks the best option, and updates its internal model, adapting outputs over time", color: "#e8d5a0" },
+  { step: "04", label: "Human Validation", desc: "People validate AI results by applying context and judgment, then turn AI outputs into actionable insights", color: "#c9a84c" },
 ];
 
 const challenges = [
@@ -125,7 +125,7 @@ export default function AutomationPage() {
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>
-            <h2 className="section-title">How can automation help people <em>thrive?</em></h2>
+            <h2 className="section-title">How can automation help people <em>thrive</em> in a data-driven workplace?</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "32px", marginTop: "60px" }}>
             {benefits.map((b, i) => (
@@ -145,7 +145,7 @@ export default function AutomationPage() {
       <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: `url(${DATA_IMG})` }}>
         <div className="aam-parallax-overlay" />
         <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
-          Strategic multimodal integration.<br /><em>Built on real-world success.</em>
+          Need some quote here.
         </p>
       </div>
 
@@ -156,7 +156,7 @@ export default function AutomationPage() {
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Organizational Impact</span></p>
-            <h2 className="section-title">How automation delivers <em>value</em></h2>
+            <h2 className="section-title">How can automation deliver organizational <em>value?</em></h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "24px", marginTop: "60px" }}>
             {orgValues.map((v, i) => (
@@ -230,7 +230,7 @@ export default function AutomationPage() {
                   We design and implement digital solutions that help people work smarter and more creatively.
                 </li>
                 <li style={{ paddingLeft: "20px", borderLeft: "2px solid rgba(201,168,76,0.4)", fontSize: "17px", color: "rgba(232,230,225,0.85)", lineHeight: 1.8 }}>
-                  We reduce manual effort, streamline and connect workflows, and establish effective <Link href="/capabilities" style={{ color: "#c9a84c", textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
+                  WWe reduce manual effort, streamline and connect workflows, and establish effective data governance practices, enabling organizations to apply data as a strategic asset <Link href="/capabilities" style={{ color: "#c9a84c", textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
                 </li>
                 <li style={{ paddingLeft: "20px", borderLeft: "2px solid rgba(201,168,76,0.4)", fontSize: "17px", color: "rgba(232,230,225,0.85)", lineHeight: 1.8 }}>
                   We develop high-value AI use cases and a roadmap for adoption and scaling.
