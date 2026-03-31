@@ -310,7 +310,7 @@ export default function AutomationPage() {
             <p className="section-label"><span className="gold-text">Driving Transformation</span></p>
             <h2 className="section-title">What we <em>deliver</em></h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", marginTop: "60px", alignItems: "center" }}>
+          <div className="auto-deliver-grid" style={{ display: "grid", gap: "60px", marginTop: "60px", alignItems: "center" }}>
             <div className="reveal">
               <div style={{ position: "relative", borderRadius: "12px", overflow: "hidden", aspectRatio: "4/3" }}>
                 <Image src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=compress&cs=tinysrgb&w=1200" alt="Team collaborating on digital transformation" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
