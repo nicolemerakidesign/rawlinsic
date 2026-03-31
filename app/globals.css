@@ -2442,25 +2442,23 @@ color: #fff;
   gap: 28px;
   align-items: start;
 }
-/* Automation hero button — gold filled, wipe to white outline on hover */
+/* Automation hero button — gold filled, wipes to transparent on hover left-to-right */
 .auto-hero-btn {
   display: inline-block; padding: 16px 44px;
-  background: linear-gradient(145deg, #d4be78, #c9a84c);
+  background: linear-gradient(90deg, #d4be78, #c9a84c);
+  background-size: 100% 100%;
   border: 1px solid transparent; color: #060c16;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-  position: relative; overflow: hidden; transition: color 0.4s, border-color 0.4s;
+  position: relative; overflow: hidden;
+  transition: background-size 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s, border-color 0.4s, background-position 0.5s;
+  background-repeat: no-repeat; background-position: right center;
   opacity: 0; transform: translateY(20px); animation: heroFade 1s 1s forwards;
 }
 .auto-hero-btn span { position: relative; z-index: 1; }
-.auto-hero-btn::before {
-  content: ""; position: absolute; inset: 0;
-  background: transparent;
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-  z-index: 0;
+.auto-hero-btn:hover {
+  background-size: 0% 100%;
+  color: #fff; border-color: #fff; font-weight: 800;
 }
-.auto-hero-btn:hover::before { transform: scaleX(1); }
-.auto-hero-btn:hover { color: #fff; border-color: #fff; font-weight: 800; }
 
 .auto-challenges-grid { grid-template-columns: 1fr 1fr; }
 @media (max-width: 768px) { .auto-challenges-grid { grid-template-columns: 1fr !important; } }
