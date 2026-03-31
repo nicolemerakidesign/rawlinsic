@@ -404,7 +404,10 @@ color: #fff;
   justify-content: center;
   text-align: center;
   padding: 120px 40px 0px;
-  overflow: hidden;
+  overflow: visible;
+}
+.contact-hero .hero-title em {
+  padding-right: 4px;
 }
 .contact-hero::before {
   content: '';
@@ -938,6 +941,7 @@ text-align: center;
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
 @media (max-width: 768px) {
+  html, body { overflow-x: hidden; max-width: 100vw; }
   .cursor-dot, .cursor-ring { display: none; }
   html { cursor: default; }
   a, button { cursor: default; }
@@ -2791,13 +2795,15 @@ color: #fff;
   .aam-parallax-fixed { background-attachment: scroll; }
   .aam-parallax-fixed.parallax-panel { min-height: 25vh; }
   .parallax-text1 { font-size: clamp(1.6rem, 6vw, 2.8rem); }
-  .aam-hero { padding: 100px 24px 120px; min-height: 80vh; background-size: cover; }
+  .aam-hero { padding: 100px 24px 120px; min-height: 80vh; background-size: cover; background-position: center center; }
   .aam-hero-content { max-width: 100%; }
   .aam-hero .hero-title { font-size: clamp(2rem, 7vw, 3rem); }
   .aam-hero .hero-sub { font-size: 0.95rem; }
   .aam-stakeholders-layout { grid-template-columns: 1fr; gap: 32px; }
-  .aam-stakeholders-layout svg { width: 100%; max-width: 340px; margin: 0 auto; display: block; }
-  .aam-cta-section { background-size: cover; }
+  .aam-stakeholders-layout svg { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block; }
+  .aam-stakeholders-layout text { font-size: 18px !important; }
+  .aam-cta-section { background-size: cover; background-position: center center; }
+  .aam-parallax-fixed { background-position: center center; }
 }
 .aam-parallax-overlay {
   position: absolute;
@@ -4856,7 +4862,16 @@ color: #fff;
    CAPABILITIES PAGE — v2
    ═══════════════════════════════════════════════════ */
 
-/* ── Hero ── */
+/* Particle canvas — position fixed so it doesn't cause horizontal overflow */
+.particle-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ── Hero ── */
 .cap-hero {
   position: relative;
@@ -4960,6 +4975,7 @@ color: #fff;
 /* ── Capability Section ── */
 .cap-section {
   padding: 100px 48px 40px; max-width: 1400px; margin: 0 auto; scroll-margin-top: 140px;
+  overflow-x: hidden;
 }
 
 /* Banner: full-width cinematic image with overlaid text */
@@ -5045,13 +5061,13 @@ color: #fff;
 
 .cap-svc-card {
   flex: 0 0 340px; min-height: 200px; scroll-snap-align: start;
-  background: rgba(10,21,40,0.5); border: 1px solid rgba(201,168,76,0.06);
+  background: rgba(6,12,22,0.6); border: 1px solid rgba(201,168,76,0.06);
   border-radius: 6px; padding: 32px 28px; position: relative; overflow: hidden;
   cursor: pointer; transition: border-color 0.35s, background 0.35s;
   display: flex; flex-direction: column;
 }
 .cap-svc-card:hover, .cap-svc-card.expanded {
-  border-color: rgba(201,168,76,0.2); background: rgba(10,21,40,0.7);
+  border-color: rgba(201,168,76,0.2); background: rgba(6,12,22,0.8);
 }
 .cap-svc-glow {
   position: absolute; top: -80px; right: -80px; width: 160px; height: 160px;
@@ -5244,8 +5260,9 @@ color: #fff;
    ═══════════════════════════════════════════════════ */
 
 .ins-hero {
-  position: relative; min-height: 80vh;
+  position: relative; min-height: 60vh;
   display: flex; align-items: center; justify-content: center; overflow: hidden;
+  background: #060c16;
 }
 .ins-hero-img { object-fit: cover; }
 .ins-hero-overlay {
@@ -5302,7 +5319,9 @@ color: #fff;
 .ins-channel-body { padding: 32px 28px; flex: 1; display: flex; flex-direction: column; }
 .ins-channel-subtitle {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #c9a84c; margin-bottom: 8px;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .ins-channel-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
