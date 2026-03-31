@@ -23,28 +23,28 @@ const benefits = [
   {
     title: "Decision Making",
     tagline: "",
-    desc: "Make better decisions with up-to-date information in one place",
+    desc: "Make better decisions with up-to-date information in one place.",
     img: DATA_IMG,
     accent: "linear-gradient(90deg, #c9a84c, #e8d5a0)",
   },
   {
     title: "Efficiency",
     tagline: "",
-    desc: "Achieve goals in less time",
+    desc: "Achieve goals in less time.",
     img: WORKFLOW_IMG,
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
   },
   {
     title: "Prioritization",
     tagline: "",
-    desc: "Prioritize problem-solving, decision-making, and creativity rather than repetitive work",
+    desc: "Prioritize problem-solving, decision-making, and creativity rather than repetitive work.",
     img: AI_IMG,
     accent: "linear-gradient(90deg, #e8d5a0, #c9a84c)",
   },
   {
     title: "Innovation",
     tagline: "",
-    desc: "Accelerate the pace of innovation",
+    desc: "Accelerate the pace of innovation.",
     img: CAPABILITY_IMG,
     accent: "linear-gradient(90deg, #c9a84c, #d4b878)",
   },
@@ -189,7 +189,7 @@ export default function AutomationPage() {
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>
             <h2 className="section-title">How can automation help people <em>thrive</em> in a data-driven workplace?</h2>
           </div>
-          <div className="aam-framework-grid" style={{ marginTop: "60px", gridTemplateColumns: "repeat(4, 1fr)" }}>
+          <div className="aam-framework-grid" style={{ marginTop: "60px", gridTemplateColumns: "repeat(4, 1fr)", maxWidth: "100%" }}>
             {benefits.map((card, i) => (
               <div className={`aam-framework-card${openBenefits.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-framework-img-wrap">
@@ -199,7 +199,7 @@ export default function AutomationPage() {
                 <div className="aam-framework-accent" style={{ background: card.accent }} />
                 <div className="aam-framework-inner">
                   <div className="aam-pillar-title-row">
-                    <h3 className="aam-framework-phase">{card.title}</h3>
+                    <h3 className="aam-framework-phase" style={{ fontSize: "1.6rem", whiteSpace: "nowrap" }}>{card.title}</h3>
                     <button className="aam-expand-btn" onClick={() => toggleBenefit(i)}>
                       {chevronSvg(openBenefits.has(i))}
                     </button>
