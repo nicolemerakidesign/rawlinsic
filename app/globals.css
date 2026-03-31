@@ -4874,7 +4874,7 @@ color: #fff;
 
 /* Capabilities page wrapper — prevent horizontal overflow */
 .cap-page-wrap {
-  overflow-x: hidden;
+  overflow: clip;
   max-width: 100vw;
 }
 
