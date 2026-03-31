@@ -199,7 +199,7 @@ export default function CaseStudiesOverview() {
           <p className="cs-cta-text">
             Rawlins has the expertise and experience to drive your
             organization&rsquo;s success. Our tailored solutions and strategic
-            approach help transportation agencies nationwide improve performance
+            approach help agencies improve performance
             and meet evolving challenges.
           </p>
           <Link href="/contact" className="cs-cta-btn">
