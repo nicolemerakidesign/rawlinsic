@@ -454,13 +454,16 @@ export default function AreaWeServeGlobe() {
       zoomTarget = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, newZoom));
     },{passive:false});
 
-    // Touch support
-    let touchStart={x:0,y:0},lastTouchDist=0;
+    // Touch support — prevent page scroll when interacting with globe
+    let touchStart={x:0,y:0},lastTouchDist=0,isTouchingGlobe=false;
     container.addEventListener("touchstart",(e: TouchEvent)=>{
+      isTouchingGlobe=true;
       if(e.touches.length===1){touchStart.x=e.touches[0].clientX;touchStart.y=e.touches[0].clientY;}
       else if(e.touches.length===2){lastTouchDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
     },{passive:true});
     container.addEventListener("touchmove",(e: TouchEvent)=>{
+      if(!isTouchingGlobe) return;
+      e.preventDefault();
       if(e.touches.length===1){
         const dx=e.touches[0].clientX-touchStart.x,dy=e.touches[0].clientY-touchStart.y;
         globeGroup.rotation.y+=dx*DRAG_SENSITIVITY;globeGroup.rotation.x+=dy*DRAG_SENSITIVITY*0.5;
@@ -470,7 +473,8 @@ export default function AreaWeServeGlobe() {
         const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
         zoomTarget-=(d-lastTouchDist)*0.01;zoomTarget=Math.max(ZOOM_MIN,Math.min(ZOOM_MAX,zoomTarget));lastTouchDist=d;
       }
-    },{passive:true});
+    },{passive:false});
+    container.addEventListener("touchend",()=>{isTouchingGlobe=false;},{passive:true});
 
     function resize(){
       const r=container.getBoundingClientRect();
@@ -697,7 +701,8 @@ export default function AreaWeServeGlobe() {
             top: 0 !important;
             left: 0 !important;
             width: 100vw;
-            height: 80vh;
+            height: 60vh;
+            touch-action: none;
           }
           .globe-scroll-spacer { height: 0; }
         }

@@ -791,13 +791,13 @@ text-align: center;
   position: relative;
 }
 .footer-brand-desc {
-  font-size: 0.85rem; line-height: 1.75;
-  color: rgba(232,230,225,0.4);
+  font-size: 0.95rem; line-height: 1.75;
+  color: rgba(232,230,225,0.55);
   max-width: 300px;
 }
 .footer-heading {
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 2px; text-transform: uppercase;
+  font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
   margin-bottom: 20px;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   -webkit-background-clip: text; background-clip: text;
@@ -806,7 +806,7 @@ text-align: center;
 .footer-links { list-style: none; }
 .footer-links li { margin-bottom: 12px; }
 .footer-links a {
-  font-size: 0.85rem; color: rgba(232,230,225,0.45);
+  font-size: 0.95rem; color: rgba(232,230,225,0.6);
   transition: color 0.3s;
 }
 .footer-links a:hover { color: #fff; }
@@ -815,7 +815,7 @@ text-align: center;
   padding-top: 30px;
   border-top: 1px solid rgba(255,255,255,0.04);
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.75rem; color: rgba(232,230,225,0.3);
+  font-size: 0.85rem; color: rgba(232,230,225,0.45);
   position: relative;
 }
 
@@ -1645,6 +1645,7 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
 }
 @media (max-width: 768px) {
   .hero-title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+  .hero-sub { font-size: 0.95rem; line-height: 1.7; }
   .new-intro { padding: 80px 0; }
   .new-intro-wrap { padding: 0 24px; gap: 40px; }
   .new-intro-images { height: 340px; }
@@ -2783,6 +2784,15 @@ color: #fff;
 }
 @media (max-width: 768px) {
   .aam-parallax-fixed { background-attachment: scroll; }
+  .aam-parallax-fixed.parallax-panel { min-height: 25vh; }
+  .parallax-text1 { font-size: clamp(1.6rem, 6vw, 2.8rem); }
+  .aam-hero { padding: 100px 24px 120px; min-height: 80vh; background-size: cover; }
+  .aam-hero-content { max-width: 100%; }
+  .aam-hero .hero-title { font-size: clamp(2rem, 7vw, 3rem); }
+  .aam-hero .hero-sub { font-size: 0.95rem; }
+  .aam-stakeholders-layout { grid-template-columns: 1fr; gap: 32px; }
+  .aam-stakeholders-layout svg { width: 100%; max-width: 340px; margin: 0 auto; display: block; }
+  .aam-cta-section { background-size: cover; }
 }
 .aam-parallax-overlay {
   position: absolute;
