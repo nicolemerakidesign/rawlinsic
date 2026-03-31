@@ -109,6 +109,16 @@ export default function InsightsPage() {
     return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
   }, []);
 
+  /* ── Scroll handler: sticky nav background ── */
+  useEffect(() => {
+    const nav = document.getElementById("mainNav");
+    const onScroll = () => {
+      if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
     let ob: IntersectionObserver;
     const raf = requestAnimationFrame(() => {
