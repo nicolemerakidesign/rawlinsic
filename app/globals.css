@@ -206,9 +206,9 @@
 }
 .cursor-ring {
   width: 40px; height: 40px;
-  border: 2px solid transparent;
-  background: linear-gradient(var(--rawlins-bg), var(--rawlins-bg)) padding-box, linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878) border-box;
+  border: 1.5px solid #d4b878;
   border-radius: 50%;
+  background: transparent;
   position: fixed;
   pointer-events: none;
   z-index: 10000;
