@@ -384,9 +384,9 @@ export default function CapabilitiesPage() {
       {/* ── CTA ── */}
       <section className="cap-cta">
         <div className="cap-cta-inner">
-          <p className="section-label" style={{ marginBottom: "16px" }}><span className="gold-text">Take the Next Step</span></p>
-          <h2 className="section-title auto-cta-title">Ready to transform your organization?</h2>
-          <p className="hero-sub">
+          <p className="section-label" style={{ marginBottom: "16px", color: "#c9a84c", letterSpacing: "4px", fontSize: "13px", opacity: 1 }}>Take the Next Step</p>
+          <h2 className="cap-cta-title" style={{ whiteSpace: "normal" }}>Ready to transform your organization?</h2>
+          <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none" }}>
             Let&rsquo;s discuss how our integrated capabilities can address your unique challenges.
           </p>
           <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
