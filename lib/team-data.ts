@@ -226,7 +226,7 @@ Ben brings a fresh perspective to the Rawlins team and is ready and eager to giv
     linkedin: `https://www.linkedin.com/in/sarah-rawlins-305584283/`,
     background: `Coming soon!`,
     achievements: `Coming soon!`,
-    categories: ['operations'],
+    categories: ['operations', 'administration'],
   },
   {
     id: 13,

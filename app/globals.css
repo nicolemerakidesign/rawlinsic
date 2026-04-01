@@ -3812,10 +3812,12 @@ color: #fff;
 /* ── Project tile grid (Insights-style) ── */
 .csd-projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 340px));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  max-width: 1440px;
-  margin: 0 auto;
+  width: calc(100vw - 80px);
+  max-width: 1200px;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 .csd-project-tile {
   padding: 32px 28px;
@@ -4022,7 +4024,7 @@ color: #fff;
   .cs-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 1100px) {
-  .csd-projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .csd-projects-grid { grid-template-columns: repeat(2, 1fr); width: calc(100vw - 48px); }
 }
 @media (max-width: 900px) {
   .cs-grid-section { padding: 60px 24px 80px; }
@@ -4039,7 +4041,7 @@ color: #fff;
   .cs-cta-section { padding: 80px 24px; }
   .cs-cta-title { font-size: 32px; }
   .csd-hero { min-height: 45vh; padding: 100px 24px 40px; }
-  .csd-projects-grid { grid-template-columns: 1fr; }
+  .csd-projects-grid { grid-template-columns: 1fr; width: calc(100vw - 40px); }
   .csd-project-tile { padding: 24px 20px; }
   .csd-nav-inner { flex-direction: column; }
   .csd-nav-link { width: 100%; }
