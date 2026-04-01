@@ -3809,56 +3809,51 @@ color: #fff;
   color: #fff;
 }
 
-/* ── Project cards ── */
-.csd-projects {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+/* ── Project tile grid ── */
+.csd-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
-.csd-project-card {
-  padding: 36px 36px 36px 40px;
+.csd-project-tile {
+  padding: 32px 28px;
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(201,168,76,0.08);
-  border-left: 3px solid rgba(201,168,76,0.3);
-  border-radius: 6px;
-  transition: border-color 0.35s, background 0.35s, border-left-color 0.35s;
-}
-.csd-project-card:hover {
-  background: rgba(201,168,76,0.03);
-  border-color: rgba(201,168,76,0.15);
-  border-left-color: rgba(201,168,76,0.7);
-}
-.csd-project-header {
+  border-radius: 10px;
   display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 22px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  transition: border-color 0.4s, background 0.4s, transform 0.4s;
 }
-.csd-project-number {
+.csd-project-tile:hover {
+  background: rgba(201,168,76,0.04);
+  border-color: rgba(201,168,76,0.25);
+  transform: translateY(-4px);
+}
+.csd-tile-number {
   font-family: var(--font-cormorant), serif;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   font-style: italic;
   background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  opacity: 0.4;
-  min-width: 32px;
+  opacity: 0.35;
   line-height: 1;
+  margin-bottom: 16px;
 }
-.csd-project-title {
+.csd-tile-title {
   font-family: var(--font-cormorant), serif;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 500;
   color: #e8e6e1;
-  margin: 0;
-  flex: 1;
+  margin: 0 0 12px;
+  line-height: 1.2;
 }
-.csd-project-budget {
+.csd-tile-budget {
+  display: inline-block;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
   -webkit-background-clip: text;
@@ -3868,34 +3863,43 @@ color: #fff;
   padding: 4px 14px;
   border-radius: 20px;
   white-space: nowrap;
+  margin-bottom: 4px;
+  align-self: flex-start;
 }
-.csd-project-bullets {
+.csd-tile-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,168,76,0.5), transparent);
+  margin: 16px 0;
+}
+.csd-tile-bullets {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex: 1;
 }
-.csd-project-bullets li {
+.csd-tile-bullets li {
   position: relative;
-  padding-left: 22px;
+  padding-left: 18px;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 12px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 10px;
 }
-.csd-project-bullets li::before {
+.csd-tile-bullets li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 12px;
-  width: 6px;
-  height: 6px;
+  top: 10px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: linear-gradient(145deg, #b89a3e, #d4be78);
   opacity: 0.5;
 }
-.csd-project-bullets li:last-child {
+.csd-tile-bullets li:last-child {
   margin-bottom: 0;
 }
 
@@ -3973,6 +3977,9 @@ color: #fff;
 @media (max-width: 1100px) {
   .cs-grid { grid-template-columns: repeat(2, 1fr); }
 }
+@media (max-width: 1100px) {
+  .csd-projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 900px) {
   .cs-grid-section { padding: 60px 24px 80px; }
   .csd-content { padding: 60px 24px 40px; }
@@ -3988,8 +3995,8 @@ color: #fff;
   .cs-cta-section { padding: 80px 24px; }
   .cs-cta-title { font-size: 32px; }
   .csd-hero { min-height: 45vh; padding: 100px 24px 40px; }
-  .csd-project-card { padding: 24px 20px; }
-  .csd-project-header { flex-direction: column; gap: 8px; }
+  .csd-projects-grid { grid-template-columns: 1fr; }
+  .csd-project-tile { padding: 24px 20px; }
   .csd-nav-inner { flex-direction: column; }
   .csd-nav-link { width: 100%; }
   .csd-nav-next { text-align: left; margin-left: 0; }

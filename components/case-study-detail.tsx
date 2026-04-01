@@ -217,24 +217,23 @@ export default function CaseStudyDetail({ study }: Props) {
               </h2>
             )}
 
-            {/* Projects */}
-            <div className="csd-projects">
+            {/* Projects — tile grid */}
+            <div className="csd-projects-grid">
               {study.projects.map((project, pi) => (
                 <div
                   key={pi}
-                  className={`csd-project-card reveal rd${(pi % 4) + 1}`}
+                  className={`csd-project-tile reveal rd${(pi % 4) + 1}`}
                 >
-                  <div className="csd-project-header">
-                    <span className="csd-project-number">
-                      {String(pi + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="csd-project-title">{project.title}</h3>
-                    {project.budget && (
-                      <span className="csd-project-budget">{project.budget}</span>
-                    )}
-                  </div>
+                  <span className="csd-tile-number">
+                    {String(pi + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="csd-tile-title">{project.title}</h3>
+                  {project.budget && (
+                    <span className="csd-tile-budget">{project.budget}</span>
+                  )}
+                  <div className="csd-tile-divider" />
                   {project.bullets && project.bullets.length > 0 && (
-                    <ul className="csd-project-bullets">
+                    <ul className="csd-tile-bullets">
                       {project.bullets.map((b, bi) => (
                         <li key={bi}>{b}</li>
                       ))}
