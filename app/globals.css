@@ -3777,28 +3777,35 @@ color: #fff;
 /* ── Client info (Delaware style) ── */
 .csd-client-info {
   display: flex;
-  gap: 20px;
+  gap: 0;
   margin-bottom: 56px;
 }
 .csd-info-item {
   flex: 1;
-  padding: 24px 0;
-  border-top: 2px solid;
-  border-image: linear-gradient(90deg, #c9a84c, #e8d5a0, transparent) 1;
+  padding: 20px 32px;
+  border-left: 2px solid;
+  border-image: linear-gradient(180deg, #c9a84c, #e8d5a0, transparent) 1;
+}
+.csd-info-item:first-child {
+  border-left: none;
+  padding-left: 0;
 }
 .csd-info-label {
   display: block;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(201,168,76,0.7);
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e8d5a0, #b89a3e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 10px;
 }
 .csd-info-value {
   font-family: var(--font-cormorant), serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1.3;
   color: #fff;
@@ -4037,8 +4044,9 @@ color: #fff;
   .csd-nav-inner { flex-direction: column; }
   .csd-nav-link { width: 100%; }
   .csd-nav-next { text-align: left; margin-left: 0; }
-  .csd-client-info { flex-wrap: wrap; gap: 16px; }
-  .csd-info-item { flex: 1 1 45%; min-width: 140px; padding: 18px 0; }
+  .csd-client-info { flex-wrap: wrap; }
+  .csd-info-item { flex: 1 1 45%; min-width: 140px; padding: 16px 20px; }
+  .csd-info-item:first-child { padding-left: 0; }
 }
 
 
