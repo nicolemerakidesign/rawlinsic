@@ -1663,7 +1663,7 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
 .team-content { max-width: 700px; margin: 0 auto; }
 .team-desc {
   font-size: 1.1rem; line-height: 1.8;
-  color: #e8e6e1; font-weight: 400;
+  color: #fff; font-weight: 400;
   margin-bottom: 40px;
   letter-spacing: 0.5px;
 }
@@ -5106,10 +5106,20 @@ color: #fff;
   position: relative;
   min-height: 500px;
   overflow: hidden;
-  clip-path: polygon(0 0, 100% 0, 93% 100%, 0 100%);
+}
+.cap-split-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 55%, rgba(6,12,22,0.98) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 .cap-split-img-reversed {
-  clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%);
+  /* reversed: image is on the right, fade its left edge */
+}
+.cap-split-img-reversed::after {
+  background: linear-gradient(to left, transparent 55%, rgba(6,12,22,0.98) 100%);
 }
 /* Gold accent frame offset on image side */
 .cap-split-img-frame {
@@ -5320,7 +5330,7 @@ color: #fff;
 .cap-cta-inner { max-width: 640px; margin: 0 auto; }
 .cap-cta-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; color: #fff; margin-bottom: 16px;
+  font-size: clamp(2.6rem, 3.5vw, 3.5rem); font-weight: 300; color: #fff; margin-bottom: 16px;
 }
 .cap-cta-text {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;

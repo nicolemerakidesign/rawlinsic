@@ -221,14 +221,17 @@ export default function CapabilitiesPage() {
     const nav = document.getElementById("mainNav");
     const onScroll = () => {
       if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+      // Walk all sections and keep the last one whose top has passed the threshold.
+      // This ensures whichever section the viewport is inside stays highlighted.
+      // Only clears if we are above every section entirely.
+      const THRESHOLD = 220;
       let matched = "";
       for (const s of capabilitySections) {
         const el = document.getElementById(s.id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom > 200) {
-            matched = s.id;
-            break;
+          if (rect.top <= THRESHOLD) {
+            matched = s.id; // keep overwriting — last section that has passed wins
           }
         }
       }
