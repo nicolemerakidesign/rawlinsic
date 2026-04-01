@@ -149,7 +149,7 @@ export default function PodcastPage() {
       <SiteNav />
 
       <div className="content-wrapper">
-        {/* ── Hero Section with animated waveform ── */}
+        {/* ── Hero Section with waveform ── */}
         <section className="pod-hero" id="top">
           <div className="pod-hero-waveform">
             {Array.from({ length: 40 }).map((_, i) => (
@@ -188,22 +188,19 @@ export default function PodcastPage() {
               <span className="gold-text">Listen In. Learn More. Lead Better.</span>
             </p>
             <h1 className="hero-title">The <em>Rawlins</em> Way</h1>
-          </div>
-        </section>
-
-        {/* ── Equalizer Visual Break ── */}
-        <section className="pod-eq-section">
-          <div className="pod-eq-bars">
-            {Array.from({ length: 60 }).map((_, i) => (
-              <div
-                key={i}
-                className="pod-eq-bar"
-                style={{
-                  animationDelay: `${i * 0.06}s`,
-                  animationDuration: `${0.8 + Math.random() * 0.8}s`,
-                }}
-              />
-            ))}
+            {/* EQ bars under title in hero */}
+            <div className="pod-hero-eq">
+              {Array.from({ length: 60 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="pod-eq-bar"
+                  style={{
+                    animationDelay: `${i * 0.06}s`,
+                    animationDuration: `${0.8 + Math.random() * 0.8}s`,
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
@@ -256,14 +253,26 @@ export default function PodcastPage() {
         </div>
 
         {/* ── CTA Section ── */}
-        <section className="cs-cta-section reveal">
+        <section className="cs-cta-section pod-cta-with-eq reveal">
+          <div className="pod-cta-eq-bg">
+            {Array.from({ length: 60 }).map((_, i) => (
+              <div
+                key={i}
+                className="pod-eq-bar"
+                style={{
+                  animationDelay: `${i * 0.06}s`,
+                  animationDuration: `${0.8 + Math.random() * 0.8}s`,
+                }}
+              />
+            ))}
+          </div>
           <p className="cs-cta-label">
             <span className="gold-text">Ready to Take Your Organization to the Next Level?</span>
           </p>
           <h2 className="cs-cta-title">
             Let&apos;s Build Something Together
           </h2>
-          <Link href="/contact" className="cs-cta-btn">
+          <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
             <span>Connect With Us</span>
           </Link>
         </section>
