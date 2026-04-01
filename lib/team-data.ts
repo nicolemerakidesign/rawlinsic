@@ -20,8 +20,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
   title: `Owner`,
     role: `Transportation Programs`,
     location: `Nevada`,
-    phone: `(775) 843-3822`,
-    email: `Scott@RawlinsIC.com`,
+    phone: `+1 775-843-3822`,
+    email: `scott@rawlinsic.com`,
     background: `Scott has over 33 years in the Transportation industry experience. He has helped DOTs from around the country in improving their overall program delivery and organizational design. He also spent a career with the State of Nevada Department of Transportation.
 
 He had responsibility for the daily operations of the Department, as the Deputy Director and Chief Engineer, which had over 1800 employees and an annual budget over $1 Billion.`,
@@ -44,8 +44,8 @@ From planning, design, construction, operations and maintenance, Scott maneuvere
     photo: `https://rawlinsic.com/wp-content/uploads/2024/09/paulsteinman.webp`,
     role: `Construction Programs`,
     location: `Florida`,
-    phone: `(850) 363-0947`,
-    email: `Paul@RawlinsIC.com`,
+    phone: `+1 850-363-0947`,
+    email: `paul@rawlinsic.com`,
     background: `Paul brings more than 34 years of Transportation Industry experience. He has a diverse background in executive leadership having served in three different transportation departments, including Michigan, Florida, and Idaho. Each department varied greatly with respect to financial capacities, geography, size, and political dynamics.`,
     achievements: `He delivered a wide range of projects, including P3’s, alternative delivery contracts, and a managed lanes program. During his tenure as part of the executive leadership within transportation departments, he has worked to create targeted initiatives that could be communicated to all levels of the organization. His plans empowered employees to embrace accountability and achieve initiatives, which, in turn, enabled the department to exceed expectations for those customers whom they serve.
 
@@ -60,8 +60,8 @@ The goal of this effort was to reduce middle management within TDOT, push decisi
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/paulschneider.webp`,
     role: `Federal Programs`,
     location: `Nevada`,
-    phone: `(775) 230-6579`,
-    email: `PaulS@RawlinsIC.com`,
+    phone: `+1 775-230-6579`,
+    email: `pauls@rawlinsic.com`,
     background: `Paul brings over 39 years of Transportation Industry experience. Most recently, Paul was an executive in the FHWA California Division Office where he partnered with Caltrans, the eighteen Metropolitan Planning Organizations and hundreds of local governments in delivering the $5.6 billion Federal-aid Program.
 
 Paul provided leadership and guidance to a professional staff responsible for strategic planning, risk-based stewardship and oversight, performance management, financial management, transportation planning, environment, right-of-way, design, construction, civil rights, safety, operations, ITS, structures, asset management, local programs, and contract administration.`,
@@ -76,8 +76,8 @@ During his tenure, Paul worked closely with Caltrans Executive Leadership to res
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/mark.webp`,
     role: `Operations Programs`,
     location: `Michigan`,
-    phone: `(239) 980-0382`,
-    email: `Mark@RawlinsIC.com`,
+    phone: `+1 239-980-0382`,
+    email: `mark@rawlinsic.com`,
     background: `Mark brings more than 41 years of Transportation Industry experience. Mark has led and sponsored numerous initiatives and projects over the span of his career.`,
     achievements: `As the Division Administrator of Transportation Systems Management and Operations for MDOT, he chaired the MDOT negotiations team in the successful negotiations of a new 5 year, $1B statewide contract with the County Road Association of Michigan. The new contract addresses multiple legal, operational, financial, and administrative issues.
 
@@ -92,8 +92,8 @@ He led the TSMO Division including Maintenance and Operations, Traffic and Safet
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/janine.webp`,
     role: `Asset Management`,
     location: `Michigan`,
-    phone: `(269) 823-4545`,
-    email: `Janine@RawlinsIC.com`,
+    phone: `+1 269-823-4545`,
+    email: `janine@rawlinsic.com`,
     background: `Janine brings over 20 years of experience in the Transportation Industry with work in design, construction, maintenance and operations. With the Michigan Department of Transportation, Janine assisted with the development and implementation of several statewide organizational changes, including the movement to become a Transportation Systems Management and Operations (TSMO) focused organization.`,
     achievements: `In addition, she championed various other management improvements for efficiency and as Associate Region Engineer of Operations for the Southwest, she led several region support units including, Traffic Safety and Operations, Construction, Materials and Maintenance. In her capacity as the Associate Region Engineer of Operations, Janine led the region to adopt and pilot the new performance-based maintenance (PBM) program.
 
@@ -110,8 +110,8 @@ While in maintenance and operations, Janine incorporated data-driven decision ma
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/april.webp`,
     role: `Technology Strategy`,
     location: `Florida`,
-    phone: `(850) 228-1453`,
-    email: `April@RawlinsIC.com`,
+    phone: `+1 850-228-1453`,
+    email: `april@rawlinsic.com`,
     background: `April has over 35 years of transportation industry experience, with over seven years at the executive level. This includes planning, implementing, and leading significant strategic initiatives at the organizational level resulting in improved agency structure/organization to deliver greater productivity, improved performance, and customer satisfaction.
 
 April served as Chief Technology Officer, Chief of Transportation Technology, Interim Assistant Secretary of Finance and Administration, and Chief Information Officer for the Florida Department of Transportation (FDOT). In these roles, April led significant strategic initiatives.`,
@@ -128,8 +128,8 @@ April is a well-tested transportation industry professional with proven leadersh
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/allison-1.webp`,
     role: `Operational Change Management`,
     location: `Florida`,
-    phone: `(850) 544-3965`,
-    email: `Allison@RawlinsIC.com`,
+    phone: `+1 850-544-3965`,
+    email: `allison@rawlinsic.com`,
     background: `Allison has over 17 years of experience in state government, with over 12 years focused on organizational leadership, development, and change management. This includes strategic planning, assessment, analysis, solutioning, and implementation that results in successful workforce development and support programs, business process optimization, functional organizational structures, and employee and customer satisfaction.`,
     achievements: `At the Florida Department of Transportation, Allison led major organizational initiatives, including restructuring, enhancing, and overseeing the statewide Training, Quality Management, and Policy and Process Management Programs, establishing the statewide Organizational Change Management Office, and overseeing the planning and execution of Organizational Change Management Plans for over 30 projects, both technology and non-technology, within the Department. She also played a significant role in designing, developing, and implementing the statewide Innovation, Awards and Recognition, and Leadership Development Programs.
 
@@ -142,8 +142,8 @@ After leaving the public sector, Allison served as an Organizational Change Mana
     photo: `https://rawlinsic.com/wp-content/uploads/2024/09/davidrader.webp`,
     role: `Asset Management`,
     location: `Tennessee`,
-    phone: `(615) 300-0069`,
-    email: `David@RawlinsIC.com`,
+    phone: `+1 615-300-0069`,
+    email: `david@rawlinsic.com`,
     background: `David has spent his career creating positive change for communities through innovative solutions at all three levels of government. He has over 30 years of transportation experience.`,
     achievements: `He co-founded one of the nation’s largest transportation asset maintenance service providers with the simple idea of fundamentally changing the approach and delivery model of how our nation’s transportation assets were maintained. He built the company on the fundamental premise that a life-cycle asset management approach to maintaining and operating our nation’s infrastructure was greatly needed.
 
@@ -158,8 +158,8 @@ David was also a founding member and has served as the past President and long-t
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/amyn-1.webp`,
     role: `Program Management`,
     location: `Florida`,
-    phone: `(813) 785-3779`,
-    email: `Amy@RawlinsIC.com`,
+    phone: `+1 813-785-3779`,
+    email: `amy@rawlinsic.com`,
     background: `Amy brings more than 23 years of Transportation Industry experience. She brings a unique blend of transportation design, construction inspection, permitting, and project management expertise as part of her experience in both the Florida Department of Transportation (FDOT) and the North Carolina Department of
 
 Transportation.`,
@@ -178,8 +178,8 @@ Amy has also been instrumental in the TDOT organization optimization initiative 
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ron.webp`,
     role: `Right-of-Way Operations`,
     location: `Florida`,
-    phone: `(727) 348-5136`,
-    email: `Ron@RawlinsIC.com`,
+    phone: `+1 727-348-5136`,
+    email: `ron@rawlinsic.com`,
     background: `Ron comes to us with 43 years of Right-of-Way experience at the Florida Department of Transportation (FDOT). He was a supervisor or manager for 33 of those years, administering Right-of-Way (R/W) Production, Acquisition, Relocation, Litigation Support, Management Support, and Local Agency Projects. He is intimately familiar with all aspects of R/W, from the planning phase to the disposition of surplus property.`,
     achievements: `He worked on several high-profile projects in the Tampa Bay area, including the Gateway Expressway, Tampa Bay Next, High-Speed Rail, I-4, I-75, I-275, and U.S. 19. Ron has extensive eminent domain litigation experience and as an FDOT client with full settlement authority participated in more than 1,000 mediations.
 
@@ -194,8 +194,8 @@ Ron brings enormous experience and ability with him in many facets of Right of W
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ben.webp`,
     role: `Chief AI Strategy Officer`,
     location: `Nevada`,
-    phone: `(775) 741-1382`,
-    email: `Ben@RawlinsIC.com`,
+    phone: `+1 775-741-1382`,
+    email: `ben@rawlinsic.com`,
     background: `Ben has 3 years of experience as a roadway designer. His previous employer tasked him with designing, modifying, and facilitating the ROW plans for the I-15/Tropicana design build project in Las Vegas, Nevada.`,
     achievements: `Ben was the brains behind the coordination between the design builder, NDOT, and the external property owners for this project. Ben also has 3 years of experience working with MicroStation and AutoCAD.
 
@@ -210,8 +210,8 @@ Ben brings a fresh perspective to the Rawlins team and is ready and eager to giv
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/sarah.webp`,
     role: `Chief Culture Officer`,
     location: `Nevada`,
-    phone: `(775) 741-6492`,
-    email: `Sarah@RawlinsIC.com`,
+    phone: `+1 775-741-6492`,
+    email: `sarah@rawlinsic.com`,
     background: `Coming soon!`,
     achievements: `Coming soon!`,
     categories: ['operations'],
@@ -222,8 +222,8 @@ Ben brings a fresh perspective to the Rawlins team and is ready and eager to giv
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/lisa.webp`,
     role: `Maintenance & Operations Advisor`,
     location: `Michigan`,
-    phone: `(269) 845-1813`,
-    email: `Lisa@RawlinsIC.com`,
+    phone: `+1 269-845-1813`,
+    email: `lisa@rawlinsic.com`,
     background: `Lisa has more than 36 years of transportation experience with the Michigan Department of Transportation (MDOT). She has an extensive maintenance and operations background, holding various maintenance positions throughout her career.
 
 Her previous areas of responsibility included providing over-site of many direct force maintenance facilities, a bridge maintenance facility, a sign fabrication and installation shop, and a centralized fleet repair facility with six mobile mechanic trucks. Outsourced support included three Contract County Agencies, twenty-two Municipalities and many vendor contracts.`,
@@ -238,8 +238,8 @@ Serving as a resource and member on several MDOT Statewide and Regional committe
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/chrisp.webp`,
     role: `Project Management`,
     location: `Nevada`,
-    phone: `(775) 690-0560`,
-    email: `ChrisP@RawlinsIC.com`,
+    phone: `+1 775-690-0560`,
+    email: `chrisp@rawlinsic.com`,
     background: `Chris brings over 36 years of transportation experience, with over 30 years at NDOT which include 17 years as a Senior Project Coordinator in the Roadway Design Division where he coordinated NDOT roadway projects with internal and external entities.`,
     achievements: `He has coordinated and designed several urban interchange and rehabilitation projects within the State of Nevada. He has also coordinated projects involving the following: structures, roundabouts, sound walls, landscaping and aesthetics, hydraulics and traffic improvements. This has given him experience coordinating other disciplines within roadway design.
 
@@ -256,8 +256,8 @@ After leaving the public sector, Chris served as a Project Manager in the privat
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/lauren.webp`,
     role: `Administration & Contract Management`,
     location: `Florida`,
-    phone: `(850) 545-9377`,
-    email: `Lauren@RawlinsIC.com`,
+    phone: `+1 850-545-9377`,
+    email: `lauren@rawlinsic.com`,
     background: `Lauren has over 11 years of experience in state government, with 10 focused in transportation at the Florida Department of Transportation (FDOT). She has worked in various areas including disbursements, planning, and strategic development focusing on strategic planning, strategic objectives and action plans; developing, managing, and maintaining, programs, processes, standards, contracts, projects, and functional organizational structure; monitoring and allocating budget.
 
 Lauren was a liaison and cross functional team member at FDOT, working on many programs and projects with other disciplines with the Strategic Development division which included planning offices, multimodal offices, and transportation technology.`,
@@ -272,8 +272,8 @@ Lauren’s passion is providing a meaningful impact to organizations through col
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ann-1.webp`,
     role: `Administrative Analyst`,
     location: `Nevada`,
-    phone: `(775) 721-1396`,
-    email: `Ann@RawlinsIC.com`,
+    phone: `+1 775-721-1396`,
+    email: `ann@rawlinsic.com`,
     background: `Ann Scott has over 20 years of service working extensively with the State of Nevada’s accounting and personnel systems. Ann’s knowledge consists of budget building, analysis, job costing and AR/AP, grant and contract review, monitoring and reporting, along with personnel administration.`,
     achievements: `Throughout her career, Ann was responsible for developing and implementing policies and procedures to streamline fiscal and personnel administration, thus increasing organizational efficiency. Ann is committed to driving positive change and continuous improvement for an organization to achieve their goals.`,
     categories: ['operations'],
@@ -284,8 +284,8 @@ Lauren’s passion is providing a meaningful impact to organizations through col
     photo: `https://rawlinsic.com/wp-content/uploads/2024/09/alicia.webp`,
     role: `Aerial Technologies`,
     location: `Illinois`,
-    phone: `(618) 570-8293`,
-    email: `Alicia@RawlinsIC.com`,
+    phone: `+1 618-570-8293`,
+    email: `alicia@rawlinsic.com`,
     background: `Alicia McConnell brings over 15 years of transportation and technology experience to the Rawlins team. She began her career as a civil engineer designer, working on large roadway projects in both Wisconsin and Illinois. In 2018, an interest in technology led to her involvement in Unmanned Aerial Systems (UAS) and to investigate how these tools could be applied to improve transportation project workflows.`,
     achievements: `Alicia has developed and led UAS programs since 2018, including oversight of a nationwide network of pilots that performed UAS-based missions including surveying and mapping, bridge inspections, construction inspection and monitoring, disaster assessments, roof inspections, and thermal analyses.
 
@@ -298,8 +298,8 @@ She is a certified Part 107 UAS pilot with significant experience in bridge insp
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/stevecook.webp`,
     role: `Operations Strategic Planning`,
     location: `Michigan`,
-    phone: `(517) 204-3099`,
-    email: `Steve@RawlinsIC.com`,
+    phone: `+1 517-204-3099`,
+    email: `steve@rawlinsic.com`,
     background: `Steve brings more than 40 years of Transportation Industry experience. Steve has led and sponsored numerous initiatives and projects over the span of his career.`,
     achievements: `As the Engineer of Operations and Maintenance for MDOT, he chaired the MDOT/Industry (MITA) negotiations team resulting in the refinement of specifications/standard plans/construction practices and improved collaboration/communication for process improvement. He was the lead for the development of the MDOT Connected Vehicle and Transportation Systems Management and Operations (TSMO) Implementation and Strategic Plans (based on SHRP2 CMM model) and TSMO Community of Learning, which led to a large team effort to realign and reorganize MDOT for the TSMO Division (section areas: Operations/Maintenance, ITS Program Office, Safety Programs, and Fleet/Facilities). He was the chair of the MDOT $140 million Operations Steering Committee, which provided a dedicated funding source (separate funding from the Capital Road and Bridge Infrastructure Program) for TSMO projects.
 
@@ -316,8 +316,8 @@ He was MDOT’s voting member for both the AASHTO Committee on Transportation Sy
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/debbie.webp`,
     role: `Professional Services`,
     location: `Florida`,
-    phone: `(813) 230-7872`,
-    email: `Debbie@RawlinsIC.com`,
+    phone: `+1 813-230-7872`,
+    email: `debbie@rawlinsic.com`,
     background: `Debbie brings 35 years of government procurement experience working in the Transportation, Professional Engineering Services, and Defense contracting industries. She has a comprehensive understanding and working knowledge of the government procurement process and life cycle.
 
 The past 30 years of her career have been focused on Professional Services/Brooks Act Procurement projects. Debbie is experienced at working within the auspices of complex government acquisition regulations and brings working proficiency of the Brooks Act Procurement regulations, processes, and procedures. Debbie has cradle-to-grave contract management expertise, honed from the administration of numerous Professional Services projects for the Florida Department of Transportation (FDOT).`,
@@ -336,8 +336,8 @@ She uses her proven organizational, communications, and leadership skills to lea
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/renee.webp`,
     role: `Graphic Designer`,
     location: `Tennessee`,
-    phone: `(775) 980-5729`,
-    email: `Renee@RawlinsIC.com`,
+    phone: `+1 775-980-5729`,
+    email: `renee@rawlinsic.com`,
     background: `Renee is a professional Graphic Designer with a Bachelor’s Degree in Graphic Design and Media Arts. With an eye for aesthetics and a passion for what she does, she is known for transforming ideas into visually captivating realities. Renee understands that a brand’s identity is its first and last impression.`,
     achievements: `She meticulously crafts each element, from logo and color palette to typography and messaging, ensuring they resonate harmoniously and evoke the desired emotions cohesively. Her collaborative spirit and keen ability to listen allow her to truly understand the essence of the client’s vision, making each design reflect their unique story with every project she works on.`,
     categories: ['brand-communication'],
@@ -348,8 +348,8 @@ She uses her proven organizational, communications, and leadership skills to lea
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/barbara.webp`,
     role: `Planning & Policy Advisor`,
     location: `Florida`,
-    phone: `(407) 760-3624`,
-    email: `Barbara@RawlinsIC.com`,
+    phone: `+1 407-760-3624`,
+    email: `barbara@rawlinsic.com`,
     background: `Barbara has over 34 years of transportation planning experience working at the MPO, State, and local levels of government. She has worked on all modes of transportation projects including pedestrian, bicycle, transit, highways, and toll facilities.
 
 She began her career working as an entry-level transportation planner for a Metropolitan Planning Organization (MPO). In this role, she was responsible for development of comprehensive plans for pedestrian and bicycle modes of transportation. She was subsequently promoted to Transportation Division Manager and became responsible for overseeing the development of all the MPO’s major programs and initiatives including the Long-Range Transportation Plan, the Transportation Improvement Program, and the Unified Planning Work Program, as well as many other special projects. As the MPO’s Executive Director, she reported directly to a board of 19 local elected officials and represented the MPO on the statewide MPO Advisory Council.`,
@@ -366,8 +366,8 @@ As Toll Studies and Forecasting Administrator, she reported directly to the Dire
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/jenica.webp`,
     role: `Program & Project Management`,
     location: `Nevada`,
-    phone: `(775) 721-6508`,
-    email: `Jenica@RawlinsIC.com`,
+    phone: `+1 775-721-6508`,
+    email: `jenica@rawlinsic.com`,
     background: `Jenica has over 30 years of transportation industry experience with the Nevada Department of Transportation (NDOT), including her most recent executive role as the Assistant Director of Operations, where she focused on organizational leadership, development, and change management.`,
     achievements: `Jenica had the responsibility of approximately 200 employees as well as the operations of more than 13,500 lane miles, 500 facilities (administrative, maintenance stations, and rest areas), and a fleet of more than 2,700 units. Jenica spent 14 years in Project Management, where she managed the scope, schedule, and budget of several complex, high-profile, multi-million-dollar transportation projects, including the 13-mile, $0.5 Billion US-95NW Improvement Corridor in Las Vegas, Nevada. Jenica also spent time as a Road Designer, Specifications Writer, and Senior Materials Engineer calculating and recommending rigid and flexible pavement structural sections.
 
@@ -384,8 +384,8 @@ A seasoned transportation industry professional, Jenica brings extensive experie
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/john.webp`,
     role: `Infrastructure Technologies Advisor`,
     location: `Ohio`,
-    phone: `(513) 827-2283`,
-    email: `John@RawlinsIC.com`,
+    phone: `+1 513-827-2283`,
+    email: `john@rawlinsic.com`,
     background: `John brings 13 years of experience as a leader in structural engineering design, along with rope access and UAS bridge inspection applications, to the Rawlins team. He has led projects with various agencies across the nation ranging from design and analysis to inspection and asset management.`,
     achievements: `Notable projects include ABC bridge slides, the Leo Frigo Bridge post-collapse analysis, and the Brent Spence and Hernando de Soto Bridge emergencies. John, a SPRAT Level 3 climber, developed a small rope access team and grew it into a leading nationwide program.
 
@@ -400,8 +400,8 @@ He continues to develop next-generation tools for asset management with advanced
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/amyc-1.webp`,
     role: `Infrastructure Advisor`,
     location: `Florida`,
-    phone: `(850) 545-5077`,
-    email: `AmyC@RawlinsIC.com`,
+    phone: `+1 850-545-5077`,
+    email: `amyc@rawlinsic.com`,
     background: `Amy joined Rawlins Infra Consult in 2024. Before this, she had a successful career in various roles at the Florida Department of Transportation. She began her career as a part-time employee and an intern while completing her Social Science degree. Amy has worked with multiple groups from a functional and technical perspective, developed lasting relationships that transcend the agency and extend to all levels of government and various stakeholders. The FDOT Leadership Academy recognized Amy’s leadership potential, and she is a proud graduate of the State of Florida Certified Public Manager Program.`,
     achievements: `In 2018, Amy was promoted to the Statewide Interchange Coordinator. Under her leadership, many processes were codified into policies, standards, guidance, manuals, and handbooks. Amy’s understanding of the agency’s strategic goals and her technical expertise provided added benefit to the agency and the Federal Highway Administration (FHWA). Amy contributed to improving the agency’s strategic outcomes in areas such as Access Management, Bicycle and Pedestrian Safety, and Managed Lanes. Her work in Managed Lanes progressed as her technical expertise deepened and the industry matured. She developed, implemented, and sustained a Managed Lanes Guidebook and training with her team based on lessons learned from working with other state DOTs.
 
@@ -416,8 +416,8 @@ Amy has served in many roles in the agency, including the Statewide Work Program
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/david.webp`,
     role: `Infrastructure Advisor`,
     location: `Florida`,
-    phone: `(863) 602-7125`,
-    email: `DavidD@RawlinsIC.com`,
+    phone: `+1 863-602-7125`,
+    email: `davidd@rawlinsic.com`,
     background: `David joined Rawlins Infra Consult in 2024. Prior to this, he had a successful career in various roles at the Florida Department of Transportation. He began his career serving as a District Performance Management consultant, where he worked with various groups to develop business and strategic plans and train employees.`,
     achievements: `David received distinctions for conducting more than 8,000 classroom hours of training. He is a proud graduate of the Florida Certified Public Manager Program. In 2016, he joined Florida’s Turnpike Enterprise as the Performance and Strategic Development Manager. In this role, he focused on workforce development, performance management, and employee engagement and satisfaction.
 
@@ -430,8 +430,8 @@ David increased the amount of training by 400% and automated the entire training
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ken.webp`,
     role: `Training & Curriculum Development Advisor`,
     location: `Michigan`,
-    phone: `(989) 245-3201`,
-    email: `KenF@RawlinsIC.com`,
+    phone: `+1 989-245-3201`,
+    email: `kenf@rawlinsic.com`,
     background: `Ken has worked for the State of Michigan for the past 35 years in various roles, and most currently with the Michigan Department of Transportation. As the Statewide Maintenance Program Coordinator, using best practices, he has made extensive changes to the Departments training programs for maintenance employees. Ken is also an active member with AASHTO’s TC3 Training Committee.`,
     achievements: `He has extensive background in Labor Relations and Supervision with the Department of Transportation and the Michigan Department of Corrections, assisting in contract negations with the State’s maintenance employee’s union, abirritating contractual disputes, development of State of Michigan Departmental policies and operating procedures, and changes to Human Resources new supervisory trainings.`,
     categories: ['operations'],
@@ -442,8 +442,8 @@ David increased the amount of training by 400% and automated the entire training
     photo: `https://rawlinsic.com/wp-content/uploads/2024/09/carissa.webp`,
     role: `Safety Operations Advisor`,
     location: `Michigan`,
-    phone: `(517) 402-1521`,
-    email: `Carissa@RawlinsIC.com`,
+    phone: `+1 517-402-1521`,
+    email: `carissa@rawlinsic.com`,
     background: `Carissa has been the Safety Programs Manager for the Michigan Department of Transportation for just over two years; responsible for Managing and coordinating the division’s program for highway safety on the state trunkline. In this position, she and her staff promote Toward Zero Deaths and focus on the Safe System Approach to eliminate fatalities and serious injuries on all Michigan roadways.`,
     achievements: `Carissa previously was the MDOT Cost and Scheduling Engineer for the Davison office and managed projects such as the I-475 Planning and Environmental Linkages Study and design and other regional projects. She was the MDOT Non-Motorized Safety Engineer and served as the central resource for pedestrian and bicyclist engineering and design; writing guidance documents, conducting research, and participating in many regional projects and reviews such as Safe Routes to School, TAP grants, etc.
 
@@ -456,8 +456,8 @@ She has been with MDOT for almost 10 years. Carissa spent the seven years prior 
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/katie.webp`,
     role: `Accounting Specialist`,
     location: `Nevada`,
-    phone: `(775) 781-5132`,
-    email: `Katie@RawlinsIC.com`,
+    phone: `+1 775-781-5132`,
+    email: `katie@rawlinsic.com`,
     background: `Katie is a seasoned professional with a decade of experience in office management and administrative roles. Her expertise lies in efficiently handling day-to-day operations, streamlining processes, and ensuring organizational effectiveness. With a keen eye for detail and a proactive approach, Katie has successfully managed various administrative tasks, including scheduling and resource allocation. Her dedication to optimizing workflows has consistently contributed to the smooth functioning of her workplaces.
 
 Outside of her professional endeavors, Katie finds true joy in her role as a wife and mother. She cherishes spending quality time with her husband and two children. Driven by her passion for both work and family, Katie exemplifies balance, dedication, and resilience in all aspects of her life.`,
@@ -470,8 +470,8 @@ Outside of her professional endeavors, Katie finds true joy in her role as a wif
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/jeff.webp`,
     role: `Strategic Programs`,
     location: `Washington, D.C.`,
-    phone: `(202) 215-2809`,
-    email: `Jeff@RawlinsIC.com`,
+    phone: `+1 202-215-2809`,
+    email: `jeff@rawlinsic.com`,
     background: `Jeff has over 20 years of experience as a management consultant leading teams to solve business’ most difficult challenges. Jeff is a performance improvement expert who works with transit agencies, mobility providers, and DOTs to achieve their mission at lower overall costs. His typical engagements include strategic planning, revenue generation, operational efficiency, outsourcing and cost optimization. Jeff has assisted numerous private and public sector entities with organizational structure and business process re-engineering projects aimed at enhancing long-term business performance.`,
     achievements: `Outside the mobility sector, Jeff is an expert in supply chain and logistics. He served as a logistics and operations officer in the U.S. Army for almost a decade, serving two tours in Iraq. Prior to joining RIC, Jeff worked for Teneo, Booz Allen Hamilton, PwC, and KPMG in management consulting leadership positions. Most recently he was the CEO of a safety and efficiency business that provided maintenance solutions for transit agencies, DOTs and municipal clients.
 
@@ -484,8 +484,8 @@ Jeff holds an MBA and Master of Science in finance from Northeastern University 
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/nicole.webp`,
     role: `Web & Graphic Designer`,
     location: `Nevada`,
-    phone: `(775) 881-8165`,
-    email: `Nicole@RawlinsIC.com`,
+    phone: `+1 775-881-8165`,
+    email: `nicole@rawlinsic.com`,
     background: `Nicole is a seasoned Web and Graphic Designer with over seven years of professional experience, specializing in creating visually compelling and user-friendly digital experiences. Her expertise spans across web design, graphic design, UI/UX design, and branding, ensuring each project is both aesthetically pleasing and functionally robust. Nicole brings a comprehensive skill-set to the table, allowing her to create impactful digital and visual solutions for clients across various industries. In both web and graphic design, Nicole approaches each project with creativity, innovation, and attention to detail. Her goal is to not only meet but exceed client expectations, delivering solutions that elevate their brand presence and drive tangible results.`,
     achievements: `As a web designer, Nicole leverages her expertise to create responsive and user-friendly websites of all scopes. From sleek landing pages to intricate e-commerce platforms, she’s had the pleasure of bringing countless digital visions to life. Nicole believes in continuous learning and staying updated with industry trends, ensuring her designs are always fresh, innovative, and aligned with best practices.
 
@@ -500,8 +500,8 @@ Nicole’s journey into the world of design began after graduating with degrees 
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/skylar.webp`,
     role: `Accounting Specialist`,
     location: `Nevada`,
-    phone: `(775) 220-2720`,
-    email: `Skylar@RawlinsIC.com`,
+    phone: `+1 775-220-2720`,
+    email: `skylar@rawlinsic.com`,
     background: `With eight years of experience in administration and accounting, Skylar has established a successful career serving the State of Nevada and the City of Reno. At the Secretary of State’s Office, she gained expertise in processing notary and apostille applications while supporting the elections division. Her work at the Public Utilities Commission highlighted her organizational skills, as she managed all travel logistics and streamlined purchase order processes to improve efficiency and compliance.`,
     achievements: `At the City of Reno, Skylar took on diverse responsibilities, including budget management, policy updates, and executive calendar coordination for assistant city managers. She also led the City of Reno’s Sister Cities Project, fostering cultural and economic relationships.
 
@@ -514,8 +514,8 @@ Skylar’s commitment to detail and organizational excellence has consistently d
     photo: `https://rawlinsic.com/wp-content/uploads/2025/01/stacie.webp`,
     role: `Accounting Specialist`,
     location: `Nevada`,
-    phone: `(775) 842-7171`,
-    email: `Stacie@RawlinsIC.com`,
+    phone: `+1 775-842-7171`,
+    email: `stacie@rawlinsic.com`,
     background: `Stacie Hancock brings 30+ years of experience working with the State of Nevada. She has extensive experience in fiscal monitoring, analyzing state and federal regulations, as well as managing projections, grants, and contracts. Stacie is highly skilled in accounts payable and receivables and has worked closely with program staff to ensure accurate and timely reconciliations for federal reporting. Stacie is a team player, helps train other staff and is dedicated to her work.`,
     achievements: ``,
     categories: ['operations'],
@@ -526,8 +526,8 @@ Skylar’s commitment to detail and organizational excellence has consistently d
     photo: `https://rawlinsic.com/wp-content/uploads/2025/06/mayela.webp`,
     role: `Infrastructure Advisor`,
     location: `Indiana`,
-    phone: `(371) 349-1396`,
-    email: `Mayela@RawlinsIC.com`,
+    phone: `+1 371-349-1396`,
+    email: `mayela@rawlinsic.com`,
     background: `Mayela brings over 29 years of transportation industry experience. Most recently, Mayela was a senior executive with the Federal Highway Administration (FHWA) Office of the Directors of Field Services where she provided executive leadership support and strategic direction to leaders in the 13 FHWA Division offices in the Mid-America region with a collective federal-aid highway program of over $13 billion and approximately 300 employees. Mayela collaborated with the Mid-America Division offices and a wide variety of federal fund recipients, including state departments of transportation, metropolitan planning organizations, tribal and local governments, non-profit organizations and others, to successfully implement numerous grant programs introduced in the Infrastructure Investment and Jobs Act.  She also provided leadership and guidance to Division leaders in effectively navigating and resolving a wide range of unique operational, program and project issues.
 
 Her distinguished career with FHWA has included assignments in Texas, California, Arizona, Hawaii, Indiana, and Washington, D.C.  She work for the Texas Department of Transportation for five years and served in the U.S. Army for four years prior to joining FHWA.`,
@@ -544,8 +544,8 @@ As the FHWA Hawaii Division Administrator, Mayela led a major reform initiative 
     photo: `https://rawlinsic.com/wp-content/uploads/2025/08/jenna.webp`,
     role: `Infrastructure Advisor`,
     location: `Ohio`,
-    phone: `(760) 401-0416`,
-    email: `Jenna@RawlinsIC.com`,
+    phone: `+1 760-401-0416`,
+    email: `jenna@rawlinsic.com`,
     background: `Jenna has over a decade of professional experience in quality management, stakeholder relations, operational excellence, business consulting, and executive-level project management. She has successfully managed multimillion-dollar initiatives, developed performance programs, and standardized operations within private and public agencies. Jenna has a strong leadership, reporting, technical writing, and documentation control background within highly regulated environments. She is skilled in ISO 9001:2015 quality auditing, compliance oversight, and process improvement.`,
     achievements: `Jenna began her career with Raba Kistner, Inc., undertaking quality improvement opportunities that developed key skills such as process improvement, auditing, and project management. In 2018, she obtained her Certified Quality Auditor (CQA) certification through the American Society for Improvement through diligence and commitment to excellence. She advanced to roles of increasing responsibility, as the lead auditor for Construction and Design-Build Infrastructure projects within Texas.
 
@@ -560,8 +560,8 @@ In 2021, she left the private sector and began her career with the Texas Departm
     photo: `https://rawlinsic.com/wp-content/uploads/2025/09/markj.webp`,
     role: `Infrastructure Advisor`,
     location: `Iowa`,
-    phone: `(515) 509-4048`,
-    email: `MarkJ@rawlinsic.com`,
+    phone: `+1 515-509-4048`,
+    email: `markj@rawlinsic.com`,
     background: `Mark has over 31 years of transportation industry experience. Most recently, Mark was a Deputy Division Administrator with the Federal Highway Administration (FHWA) Iowa Division where he provided leadership support and strategic direction to the FHWA Iowa Division office with a collective federal-aid highway program of $750 million annually and approximately 21 employees. Mark collaborated with a wide variety of transportation stakeholders, including Iowa Department of Transportation (Iowa DOT), metropolitan planning organizations, tribal and local governments, non-profit organizations and others, to successfully implement numerous grant programs introduced in the Infrastructure Investment and Jobs Act.
 
 His distinguished career with FHWA has included assignments in Iowa, Nebraska, Colorado, West Virginia, and North Dakota. He worked for the Iowa Department of Transportation for three years and Federal Transit Administration for three years prior to joining FHWA.`,
@@ -578,7 +578,7 @@ Mark also completed several rotational and temporary assignments, including FHWA
     photo: `https://rawlinsic.com/wp-content/uploads/2025/10/paulw.webp`,
     role: `Aerial Innovation Advisor`,
     location: `Utah`,
-    phone: `(801) 232-9265`,
+    phone: `+1 801-232-9265`,
     email: ``,
     background: `Paul has nearly 30 years of experience and is internationally known as an Uncrewed Aircraft System (UAS) / Advanced Air Mobility (AAM) subject matter expert. He was recognized by the Commercial UAV Expo and InterDrone as one of the world’s top drone visionaries. His background in aviation, surface transportation, and technology gives him a unique perspective on innovative solutions across industries. He has developed first of their kind guidance manuals on UAS and AAM and currently serves on multiple national committees to help foster innovation through emerging technologies. He is passionate about the vision to enable a new revolution of aerial innovation and transportation.`,
     achievements: ``,
@@ -590,8 +590,8 @@ Mark also completed several rotational and temporary assignments, including FHWA
     photo: `https://rawlinsic.com/wp-content/uploads/2025/10/aaron.webp`,
     role: `Aerial Technologies Advisor`,
     location: `Utah`,
-    phone: `(480) 254-9100`,
-    email: `Aaron@rawlinsic.com`,
+    phone: `+1 480-254-9100`,
+    email: `aaron@rawlinsic.com`,
     background: `Aaron Organ brings more than 15 years of aviation and transportation experience to the Rawlins team. He began his career in aircraft parts manufacturing and supporting vintage aircraft fleets before transitioning to airport operations, where he worked on training programs at airports across the United States. Aaron later moved into collegiate aviation, teaching and mentoring more than 150 students per semester, developing curricula, and preparing candidates for Federal Aviation Administration (FAA) written exams. Building on this foundation, he entered consulting and has since supported a wide range of aerial innovation projects for public- and private-sector clients worldwide. His expertise centers on implementing aerial innovation solutions.`,
     achievements: `Aaron supported the Federal Highway Administration’s deployment of Uncrewed Aircraft Systems (UAS), serving as Lead Technical Writer for more than a dozen cross-disciplinary reports that required coordination across legal, regulatory, technical, and public-affairs reviews. He also served as Co-Principal Investigator and Lead Researcher for a nationally distributed guidebook designed to help state departments of transportation integrate UAS and Advanced Air Mobility (AAM) into their transportation systems.
 
@@ -604,8 +604,8 @@ He holds FAA Remote Pilot, Private Pilot (SEL), and Advanced Ground Instructor c
     photo: `https://rawlinsic.com/wp-content/uploads/2025/10/lance.webp`,
     role: `Infrastructure Advisor`,
     location: `Florida`,
-    phone: `(850) 556-1166`,
-    email: `Lance@rawlinsic.com`,
+    phone: `+1 850-556-1166`,
+    email: `lance@rawlinsic.com`,
     background: `Lance has over 30 years of transportation industry experience. Most recently, Lance was the Director for the Office of Maintenance with the Florida Department of Transportation (FDOT) where he provided leadership support and strategic direction for FDOT’s maintenance program area with funding that exceeded $880 million and future projections exceeding $1 billion. This included maintenance of 12,157 centerline miles, 7,152 bridges, 53 rest areas, 8 service plazas, and 4 welcome centers. His responsibilities also included the Motor Carrier Size and Weight program with 178 employees statewide that operate the scales 24/7.
 
 His 28-year career with FDOT allowed him to serve as a Project Engineer in Bartow Construction, Assistant Resident Engineer in Fort Myers Construction, Sarasota Operations Engineer, and District 7 Maintenance Engineer (Tampa Bay Area). Prior to joining FDOT full time, Lance worked 6 consecutive summers in the FDOT soils lab starting at the age of 16. He also did materials testing for an engineering consultant on a part-time basis while obtaining his engineering education.`,
@@ -713,7 +713,7 @@ After retiring from FHWA, Bob worked as a consultant providing technical assista
     role: `Advisory Services – Highway Operations & Maintenance`,
     location: `North Carolina`,
     phone: ``,
-    email: `KenM@rawlinsic.com`,
+    email: `kenm@rawlinsic.com`,
     background: `Mr. McEntire has 39 years of experience in transportation operations, having provided life cycle cost analysis for the preservation of transportation assets on numerous public and privately financed projects in the United States and Canada. He has significant expertise in program management, including maintenance program design, maintenance management systems analysis, performance standards, resource allocation, and program development.
 
 Mr. McEntire develops performance-based asset maintenance and operations systems for highway agencies, including a highway asset operational business process that combines existing processes with performance metrics to forecast workload projections.`,
