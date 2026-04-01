@@ -5147,7 +5147,8 @@ color: #fff;
 .cap-split-body {
   font-size: 17px;
   line-height: 1.85;
-  color: rgba(232,230,225,0.8);
+  color: #fff;
+  font-weight: 400;
   margin-bottom: 28px;
 }
 .cap-split-count {
