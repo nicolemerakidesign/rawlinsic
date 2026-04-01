@@ -321,6 +321,10 @@ export default function CapabilitiesPage() {
           {/* Accordion service list */}
           <div className="cap-services-wrap">
             <div className="cap-services-header">
+              <div className="cap-svc-count-label">
+                <span className="cap-svc-count-num">{section.services.length}</span>
+                <span className="cap-svc-count-word">Services</span>
+              </div>
               <button
                 className="cap-svc-toggle-btn"
                 onClick={() => toggleSectionServices(section.id)}
@@ -335,10 +339,6 @@ export default function CapabilitiesPage() {
                   <path d="M6 9l6 6 6-6" />
                 </svg>
               </button>
-              <div className="cap-svc-count-label">
-                <span className="cap-svc-count-num">{section.services.length}</span>
-                <span className="cap-svc-count-word">Services</span>
-              </div>
             </div>
             <div className={`cap-svc-list-wrap${expandedSections.has(section.id) ? " open" : ""}`}>
               <div className="cap-svc-list">
@@ -382,11 +382,11 @@ export default function CapabilitiesPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── CTA ── */}
-      <section className="cap-cta reveal">
+      <section className="cap-cta">
         <div className="cap-cta-inner">
           <p className="section-label" style={{ marginBottom: "16px" }}><span className="gold-text">Take the Next Step</span></p>
-          <h2 className="cap-cta-title">Ready to transform your organization?</h2>
-          <p className="cap-cta-text">
+          <h2 className="section-title auto-cta-title">Ready to transform your organization?</h2>
+          <p className="hero-sub">
             Let&rsquo;s discuss how our integrated capabilities can address your unique challenges.
           </p>
           <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
