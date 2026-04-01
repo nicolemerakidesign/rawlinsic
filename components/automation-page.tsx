@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
+import PasswordGate from "@/components/password-gate";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=compress&cs=tinysrgb&w=1920";
 const DATA_IMG = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=compress&cs=tinysrgb&w=1200";
@@ -156,7 +157,7 @@ export default function AutomationPage() {
     <>
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
-    <>
+    <PasswordGate>
       <div className="ambient-bg" />
       <div className="ambient-orbs">
         <div className="orb orb-1" /><div className="orb orb-2" /><div className="orb orb-3" /><div className="orb orb-4" />
@@ -415,7 +416,7 @@ export default function AutomationPage() {
 
       <div className="section-divider"><div className="gold-line" /></div>
       <SiteFooter />
-    </>
+    </PasswordGate>
     </>
   );
 }
