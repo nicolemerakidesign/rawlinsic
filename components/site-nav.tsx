@@ -51,12 +51,10 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           <a href="/capabilities" onClick={close}>View All</a>
           <a href="/capabilities#strategy" onClick={close}>Strategy</a>
           <a href="/capabilities#operations" onClick={close}>Operations</a>
-          <div className="mobile-menu-nested-row">
-            <a href="/capabilities#technology" className="mobile-menu-parent mobile-menu-nested-link" onClick={close}>Technology</a>
-            <button className="mobile-menu-chevron-btn" onClick={() => toggleSub("tech")}>
-              <svg className={`mobile-menu-chevron${mobileSubOpen.has("tech") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
-            </button>
-          </div>
+          <button className="mobile-menu-parent mobile-menu-nested" onClick={() => toggleSub("tech")}>
+            Technology
+            <svg className={`mobile-menu-chevron${mobileSubOpen.has("tech") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+          </button>
           <div className={`mobile-menu-sub mobile-menu-sub-nested${mobileSubOpen.has("tech") ? " open" : ""}`}>
             <a href="/capabilities/technology/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
             <a href="#" onClick={close}>Automation &amp; Integration</a>
