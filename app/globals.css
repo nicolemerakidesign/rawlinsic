@@ -1876,11 +1876,11 @@ font-size: 0.75rem;
   opacity: 1;
 }
 .team-card-view {
-  font-size: 0.7rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--rawlins-gold);
+  color: #ffffff;
 }
 .team-card-info {
   display: flex;
