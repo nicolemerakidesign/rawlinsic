@@ -754,7 +754,7 @@ After retiring from FHWA, Bob worked as a consultant providing technical assista
 
 Mr. McEntire develops performance-based asset maintenance and operations systems for highway agencies, including a highway asset operational business process that combines existing processes with performance metrics to forecast workload projections.`,
     achievements: ``,
-    categories: ['strategy', 'operations'],
+    categories: ['operations'],
   },
   {
     id: 45,
