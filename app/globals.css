@@ -3783,7 +3783,7 @@ color: #fff;
 .csd-info-item {
   flex: 1;
   padding: 20px 32px;
-  border-left: 2px solid;
+  border-left: 1px solid;
   border-image: linear-gradient(180deg, #c9a84c, #e8d5a0, #c9a84c) 1;
 }
 .csd-info-item:first-child {
