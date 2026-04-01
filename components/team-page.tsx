@@ -8,7 +8,7 @@ import SiteFooter from "@/components/site-footer";
 import PasswordGate from "@/components/password-gate";
 import { TEAM_MEMBERS, type TeamMember } from "@/lib/team-data";
 
-type FilterCategory = "all" | "leadership" | "strategy" | "operations" | "technology" | "brand-communication";
+type FilterCategory = "all" | "leadership" | "strategy" | "operations" | "technology" | "communication-brand-design" | "administration";
 
 const FILTERS: { label: string; value: FilterCategory }[] = [
   { label: "All", value: "all" },
@@ -16,7 +16,8 @@ const FILTERS: { label: string; value: FilterCategory }[] = [
   { label: "Strategy", value: "strategy" },
   { label: "Operations", value: "operations" },
   { label: "Technology", value: "technology" },
-  { label: "Brand & Communication", value: "brand-communication" },
+  { label: "Communication, Brand & Design", value: "communication-brand-design" },
+  { label: "Administration", value: "administration" },
 ];
 
 // Render bio text: handles **bold**, - bullets, paragraph breaks

@@ -19,7 +19,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: 1,
     name: `Scott Rawlins, P.E.`,
     photo: `/images/team/scott.webp`,
-  title: `Owner`,
+  title: `Founder`,
     role: `Transportation Programs`,
     location: `Nevada`,
     phone: `+1 702-575-3472`,
@@ -39,7 +39,7 @@ He had responsibility for the daily operations of the Department, as the Deputy 
 - Integrated Transportation Reliability Program focused on the proactive operation of the transportation system.
 
 From planning, design, construction, operations and maintenance, Scott maneuvered the department through federal, state, and local regulations and politics.`,
-    categories: ['leadership', 'strategy', 'operations'],
+    categories: ['leadership', 'strategy'],
   },
   {
     id: 2,
@@ -109,7 +109,7 @@ Working with her team, she identified assets, establish rating metrics, and defi
 As a leader in innovation, Janine pushed initiatives to enhance the future of transportation, improve safety and increase efficiency. Her work in construction includes oversight of the first precast element bridge in Michigan and she led a collaborative team to develop and implement the use of a proprietary precast concrete system for the first freeway pavement repairs.
 
 While in maintenance and operations, Janine incorporated data-driven decision making for winter operations; the development of asset management strategies, and championed the procurement, implementation and adoption of strategies for many in-house created tools, processes and techniques. Throughout the last 12 years as the Associate Region Engineer of Operations in the Southwest Region she was responsible for 130 employees, 3,000 lane miles, seven direct force maintenance facilities, a bridge and sign shop, and centralized fleet repair facility. Janine emphasized the use of performance measures and asset management to effectively manage the regions $37 million budget.`,
-    categories: ['strategy', 'operations'],
+    categories: ['strategy'],
   },
   {
     id: 6,
@@ -143,7 +143,7 @@ April is a well-tested transportation industry professional with proven leadersh
     achievements: `At the Florida Department of Transportation, Allison led major organizational initiatives, including restructuring, enhancing, and overseeing the statewide Training, Quality Management, and Policy and Process Management Programs, establishing the statewide Organizational Change Management Office, and overseeing the planning and execution of Organizational Change Management Plans for over 30 projects, both technology and non-technology, within the Department. She also played a significant role in designing, developing, and implementing the statewide Innovation, Awards and Recognition, and Leadership Development Programs.
 
 After leaving the public sector, Allison served as an Organizational Change Management Consultant, working with functional, technical, sales, and delivery teams to procure, guide, and provide strategies and services for transportation, healthcare, regulatory, law enforcement, and educational state agencies. Allison’s passion is helping organizations identify opportunities for improvement, develop implementation solutions and plans, and manage change to enhance their operations and support impacted stakeholders, both internal and external.`,
-    categories: ['operations'],
+    categories: [‘strategy’],
   },
   {
     id: 8,
@@ -160,7 +160,7 @@ After leaving the public sector, Allison served as an Organizational Change Mana
 Over 20 years the firm grew from two people into the premier performance-based asset maintenance and operations service provider in the United States with over 2,500 employees in 43 states. During his tenure, he has served in virtually every imaginable role. From traditional asset maintenance services work to providing O&M services on some of the largest PPP projects in the US, he was at the tip of the spear leading these efforts.
 
 David was also a founding member and has served as the past President and long-term Board Member of AMOTIA, the Association for the Management and Operations of Transportation Infrastructure Assets. He has participated in a number of AASHTO and TRB committees and is a regular speaker at national meetings on asset maintenance.`,
-    categories: ['strategy', 'operations'],
+    categories: ['strategy'],
   },
   {
     id: 9,
@@ -180,7 +180,7 @@ Her NCDOT career included serving as the Major Projects Engineer for the North C
 With Rawlins, Amy has focused her skills in assisting the Tennessee DOT with the development and implementation of a project management discipline founded on national best practices. She is mentoring TDOT staff on active projects, helping them build a strong project management foundation and instilling the project team concept as part of a matrix organization.
 
 Amy has also been instrumental in the TDOT organization optimization initiative and in the development of an engineering training program that focuses not only on technical concepts including the magnitude and breadth of opportunities within the transportation field, but also on leadership and management concepts that add value to both the graduate engineer and TDOT.`,
-    categories: ['operations'],
+    categories: ['strategy'],
   },
   {
     id: 10,
@@ -213,7 +213,7 @@ Ron brings enormous experience and ability with him in many facets of Right of W
 Ben worked on multiple 3R projects while dabbling in all factions of the design process. He has experience in the sub-disciplines of utilities, ADA compliance, roadway striping, roadway geometry, traffic signals and signage, bridge design, materials, drainage structures, hydraulics, as well as curbs, gutters, and sidewalk design.
 
 Ben brings a fresh perspective to the Rawlins team and is ready and eager to give his new-generational insight to the field of infrastructure consulting.`,
-    categories: ['technology', 'strategy'],
+    categories: ['technology'],
   },
   {
     id: 12,
@@ -290,7 +290,7 @@ Lauren’s passion is providing a meaningful impact to organizations through col
     email: `ann@rawlinsic.com`,
     background: `Ann Scott has over 20 years of service working extensively with the State of Nevada’s accounting and personnel systems. Ann’s knowledge consists of budget building, analysis, job costing and AR/AP, grant and contract review, monitoring and reporting, along with personnel administration.`,
     achievements: `Throughout her career, Ann was responsible for developing and implementing policies and procedures to streamline fiscal and personnel administration, thus increasing organizational efficiency. Ann is committed to driving positive change and continuous improvement for an organization to achieve their goals.`,
-    categories: ['operations'],
+    categories: ['administration'],
   },
   {
     id: 17,
@@ -323,7 +323,7 @@ He was the lead and project manager for three Unmanned Aerial Systems (UAS) rese
 He was a lead resource to regions for design/construction/maintenance on Federal-aid bridge and ancillary structure projects. Provided statewide/national training/problem-solving for bridges/structures. Served as AASHTO co-chair on regional/national alignment teams for policy/procedure and guidance documents.
 
 He was MDOT’s voting member for both the AASHTO Committee on Transportation System Operations (CTSO) and Committee on Maintenance (MaC), was chair of the Community of Practice on Road Weather Management for CTSO, co-chaired the Bridge Technical Working Group for MaC, and served on the Steering Committee for the AASHTO Snow & Ice Cooperative Program. He developed several research problem statements/deliverables that resulted in NCHRP research projects of which he served on the technical advisory teams.`,
-    categories: ['strategy', 'operations'],
+    categories: ['operations'],
   },
   {
     id: 19,
@@ -335,7 +335,7 @@ He was MDOT’s voting member for both the AASHTO Committee on Transportation Sy
     email: `renee@rawlinsic.com`,
     background: `Renee is a professional Graphic Designer with a Bachelor’s Degree in Graphic Design and Media Arts. With an eye for aesthetics and a passion for what she does, she is known for transforming ideas into visually captivating realities. Renee understands that a brand’s identity is its first and last impression.`,
     achievements: `She meticulously crafts each element, from logo and color palette to typography and messaging, ensuring they resonate harmoniously and evoke the desired emotions cohesively. Her collaborative spirit and keen ability to listen allow her to truly understand the essence of the client’s vision, making each design reflect their unique story with every project she works on.`,
-    categories: ['brand-communication'],
+    categories: ['communication-brand-design'],
   },
   {
     id: 20,
@@ -354,7 +354,7 @@ She began her career working as an entry-level transportation planner for a Metr
 She also coordinated the Planning Concept Study process with the Design department and managed the Turnpike’s interchange review process. As Traffic and Revenue Studies Program Manager she oversaw the expansion of the traffic and revenue study process to become an agency-wide program that evaluated toll projects for Florida’s Turnpike Enterprise, and the FDOT Districts and Central Office.
 
 As Toll Studies and Forecasting Administrator, she reported directly to the Director of Transportation Development and supported statewide efforts to implement tolled express lanes and other tolled facilities. This included policy development, project coordination among the phases of project development, and on-going innovations in the development of toll choice forecasting tools.`,
-    categories: ['strategy'],
+    categories: ['operations'],
   },
   {
     id: 21,
@@ -390,7 +390,7 @@ A seasoned transportation industry professional, Jenica brings extensive experie
 He incorporated the use of UAS into his inspection teams starting in 2016 and became a Part 107-certified UAS pilot in 2018. He has performed and managed hundreds of complex and post-disaster bridge inspections across the country. He is co-authoring the upcoming AASHTO guidelines for UAS applications in bridge inspections and has worked with numerous agencies to help develop rope access and UAS programs and policies.
 
 He continues to develop next-generation tools for asset management with advanced predictive and prioritization modeling, including enhanced 3D modeling and digital twin integration.`,
-    categories: ['technology', 'strategy'],
+    categories: ['technology'],
   },
   {
     id: 23,
@@ -407,7 +407,7 @@ He continues to develop next-generation tools for asset management with advanced
 From 2005 to 2018, Amy served as the Toll Finance Manager, collaborating and working with partners from the General Accounting Office, Districts, and Florida’s Turnpike Enterprise. She streamlined processes while ensuring compliance with statutes and bond documentation requirements. She was a key team member in developing finance plans. She led the team responsible for Traffic Revenue reports for Toll and Public-Private Partnership (P3) projects.
 
 Amy has served in many roles in the agency, including the Statewide Work Program and Right of Way Offices, District Planning, Transportation Disadvantaged, and Florida’s Turnpike. She collaborated with team members to streamline several processes and worked directly with internal and external stakeholders on project initiation.`,
-    categories: ['strategy'],
+    categories: [‘operations’],
   },
   {
     id: 24,
@@ -421,7 +421,7 @@ Amy has served in many roles in the agency, including the Statewide Work Program
     achievements: `David received distinctions for conducting more than 8,000 classroom hours of training. He is a proud graduate of the Florida Certified Public Manager Program. In 2016, he joined Florida’s Turnpike Enterprise as the Performance and Strategic Development Manager. In this role, he focused on workforce development, performance management, and employee engagement and satisfaction.
 
 David increased the amount of training by 400% and automated the entire training program through a virtual platform. He developed innovative programs, including Learning Journeys, which provide employees with a curriculum approach to skill development. David had significant roles in designing, developing, and implementing the statewide Awards and Recognition program, the Employee Benefit Fund program, and several Leadership Development programs, including the Management Academy. David’s passion is helping organizations and employees achieve success through strategic workforce development.`,
-    categories: ['strategy'],
+    categories: [‘operations’],
   },
   {
     id: 25,
@@ -463,7 +463,7 @@ She has been with MDOT for almost 10 years. Carissa spent the seven years prior 
 
 Outside of her professional endeavors, Katie finds true joy in her role as a wife and mother. She cherishes spending quality time with her husband and two children. Driven by her passion for both work and family, Katie exemplifies balance, dedication, and resilience in all aspects of her life.`,
     achievements: ``,
-    categories: ['operations'],
+    categories: ['administration'],
   },
   {
     id: 28,
@@ -495,7 +495,7 @@ Jeff holds an MBA and Master of Science in finance from Northeastern University 
 As a graphic designer, she excels in logo design, print materials, branding initiatives, and more. With a keen eye for typography, color theory, and layout design, Nicole is committed to creating designs that not only look great but also effectively communicate the essence of the brand.
 
 Nicole’s journey into the world of design began after graduating with degrees in Marketing and Business Administration/Management from the University of Nevada, Reno. Although she initially pursued a career in Human Resources in 2013, Nicole realized her true passion lay in creativity and design. In 2017 Nicole got her BA in Graphic Design & Media Arts specializing in Web Design from Southern New Hampshire University. Since then, she has been dedicated to bringing clients’ creative dreams to life.`,
-    categories: ['brand-communication', 'strategy', 'technology'],
+    categories: ['communication-brand-design'],
   },
   {
     id: 30,
@@ -509,7 +509,7 @@ Nicole’s journey into the world of design began after graduating with degrees 
     achievements: `At the City of Reno, Skylar took on diverse responsibilities, including budget management, policy updates, and executive calendar coordination for assistant city managers. She also led the City of Reno’s Sister Cities Project, fostering cultural and economic relationships.
 
 Skylar’s commitment to detail and organizational excellence has consistently driven efficiency and supported strategic goals throughout her career.`,
-    categories: ['operations'],
+    categories: [‘administration’],
   },
   {
     id: 31,
@@ -521,7 +521,7 @@ Skylar’s commitment to detail and organizational excellence has consistently d
     email: `stacie@rawlinsic.com`,
     background: `Stacie Hancock brings 30+ years of experience working with the State of Nevada. She has extensive experience in fiscal monitoring, analyzing state and federal regulations, as well as managing projections, grants, and contracts. Stacie is highly skilled in accounts payable and receivables and has worked closely with program staff to ensure accurate and timely reconciliations for federal reporting. Stacie is a team player, helps train other staff and is dedicated to her work.`,
     achievements: ``,
-    categories: ['operations'],
+    categories: ['administration'],
   },
   {
     id: 32,
@@ -541,7 +541,7 @@ Debbie is skilled in creating, shaping, and leading the activities required for 
 Debbie is an excellent communicator with extensive experience in mediating communications between all project stakeholders, internally and externally as well as across functional organization lines. She is proficient at developing and coordinating contract documentation and moderating meetings to ensure clear and consistent communication of project contract requirements, objectives, and work scope. She understands the criticality of teamwork and Client Relationships to the success of a project.
 
 She uses her proven organizational, communications, and leadership skills to lead teams to achieve the project objectives and the Client’s expectations. She is continuously focused on Client Satisfaction through contract compliant and quality performance; on-time, every time. Debbie is known for her wealth of contracting know-how and her responsiveness, flexibility, and solution-oriented outlook.`,
-    categories: ['operations'],
+    categories: [‘administration’],
   },
   {
     id: 33,
@@ -560,7 +560,7 @@ Her distinguished career with FHWA has included assignments in Texas, California
 As the FHWA Indiana Division Administrator, Mayela was the principal FHWA representative in Indiana, responsible for a Division office with 23 multi-disciplinary employees and providing executive stewardship and oversight of the annual $1 billion federal-aid highway program, delivered in partnership with the Indiana Department of Transportation (INDOT) and other federal, state, and local officials. Mayela worked closely with INDOT leaders on many successful projects.  For example, she ensured prompt division action and helped INDOT meet important milestones for the completion of I-69 Finish Line project, including expedited review and execution of the environmental Record of Decision.
 
 As the FHWA Hawaii Division Administrator, Mayela led a major reform initiative to address the Hawaii Department of Transportation’s (HDOT) backlog in unexpended federal-aid highway funds. She conducted a comprehensive assessment, developed strategic options, and secured FHWA leadership approval for a targeted action plan. The plan included program and project reviews, new accountability measures, and a new partnership with FHWA’s Central Federal Lands Highway Division. Mayela’s resolve led HDOT to adopt significant reforms, set reduction goals, and improve major program and project delivery processes, resulting in a more efficient use of over $100 million in federal-aid funds and expedited project delivery of critical transportation projects.`,
-    categories: ['strategy'],
+    categories: [‘strategy’, ‘operations’],
   },
   {
     id: 34,
@@ -577,7 +577,7 @@ As the FHWA Hawaii Division Administrator, Mayela led a major reform initiative 
 Throughout her career with Raba Kistner, she successfully managed complex continuous improvement initiatives, implemented quality and risk management solutions, and audited multiple Design-Build Infrastructure projects throughout several states. In 2020, she played a key role in leading cross-functional teams to obtain the organization’s ISO 9001:2015 certification.
 
 In 2021, she left the private sector and began her career with the Texas Department of Transportation (TxDOT), where she led major executive-level organizational initiatives. At TxDOT, she spearheaded Quality Management initiatives to streamline communication and enhance operational workflows, ensuring alignment with internal and external stakeholder needs. By developing accessible resource libraries and implementing systems to monitor progress, she empowered teams to meet evolving project requirements. Her mission is to drive meaningful improvements in customer service and organizational processes while fostering collaboration across diverse teams. Jenna is committed to supporting agency goals by leveraging her expertise in quality auditing and project management to enable efficient decision-making and impactful outcomes.`,
-    categories: ['strategy'],
+    categories: ['operations'],
   },
   {
     id: 35,
@@ -596,7 +596,7 @@ His distinguished career with FHWA has included assignments in Iowa, Nebraska, C
 As the FHWA West Virginia Deputy Division Administrator, Mark worked jointly with the West Virginia DOT to complete the Appalachian Development Highway System (ADHS), including Corridor H and King Coal Highway. As a member of the FHWA-West Virginia Leadership Team, he coordinated work activities in the performance plan, collected project performance measures, met weekly with the WVDOT leadership team to discuss project status and participated in on-site project reviews.
 
 Mark also completed several rotational and temporary assignments, including FHWA Deputy Division Administrator positions in Colorado and Nebraska. For nearly six months, Mark completed an assignment with the FHWA Office of Legislative Affairs and Policy Communications as a member of the FHWA “Briefings Team”. On multiple occasions, Mark served as a FHWA Leadership Development Academy Coach and volunteered to be one of 25 FHWA Corporate Mentors.`,
-    categories: ['strategy'],
+    categories: ['operations'],
   },
   {
     id: 36,
@@ -703,7 +703,7 @@ Andy holds a Master in Public Administration from Harvard Kennedy School and a B
     achievements: `Dara has established continued thought leadership dialogue toward generating new business opportunities and strengthening client relationships. She has successfully collaborated with industry experts to develop impactful messages and original narratives, fostering credibility, authority and trust.
 
 Dara applies systems thinking and clear cross-functional communication to position the organization for success in a dynamic and increasingly complex global business environment.`,
-    categories: ['brand-communication', 'strategy'],
+    categories: ['communication-brand-design'],
   },
   {
     id: 42,
@@ -720,7 +720,7 @@ Dara applies systems thinking and clear cross-functional communication to positi
 Working across Federal and State DOT programs, Jen developed project prioritization frameworks and benefit-cost methodologies that enabled data-driven investment decisions and led to statewide adoption of standardized project selection processes. She also supported delivery of complex software systems for MDOT's managed lanes program, including operations, training, and development of data governance, retention, and security policies. Jen provided construction oversight for technically complex projects, supporting testing, integration, and coordination with contractors to ensure projects were delivered on schedule and met operational requirements.  Her strong project management skills contributed to successful construction project delivery and the application of modeling and analytical tools to support project development.
 
 At the Federal level, Jen led national efforts in economic development and benefit-cost analysis at the FHWA Center for Innovation and Technology, supporting freight analysis, performance management, and traffic and modeling initiatives. She provided technical assistance and training to State DOTs and MPOs, supported performance-based planning and project prioritization, and served as a technical reviewer for federal discretionary grant programs. At the Federal Railroad Administration, she supported economic analysis and administration of major rail grant programs, developing guidance and templates now used nationally to support consistent evaluation and decision-making.`,
-    categories: ['strategy'],
+    categories: ['operations'],
   },
   {
     id: 43,
@@ -790,7 +790,7 @@ Dara’s expertise includes developing Data and AI Readiness Assessments, Implem
 At the national level, Dara led an AI in Transportation peer exchange with State DOTs, the Federal Highway Administration, and academic partners to accelerate progress in AI adoption across the transportation sector.
 
 Her work has been recognized with several prestigious honors, including the **Bimla Rhinehart Award,** Caltrans’ highest non‑engineering award for innovation, and the **ITS America Hall of Fame for the Americas Award** for the Traffic Mobility Insights GenAI pilot.`,
-    categories: ['strategy'],
+    categories: [‘technology’],
   },
   {
     id: 47,
@@ -834,7 +834,7 @@ Driven by a commitment to excellence and a passion for building strong partnersh
     achievements: `She has a proven track record of analyzing financial and inventory data. Jenn is currently pursuing a degree in Business and Accounting at Baker College. She is on an accelerated track towards her bachelor’s degree and plans to pursue an MBA shortly thereafter.
 
 Jenn has two boys in the United States Army and one grandson, who are her pride and joy. She spends her free time traveling to see them and adventuring to new places. In her spare time, she enjoys searching for beach glass along the shores of Lake Michigan, hiking, and camping with family.`,
-    categories: ['operations'],
+    categories: ['administration'],
   },
   {
     id: 50,
