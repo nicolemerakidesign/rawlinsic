@@ -1980,7 +1980,7 @@ font-size: 15px;
 .team-popup-left {
   width: 280px;
   flex-shrink: 0;
-  background: var(--rawlins-navy);
+  background: #0e1e3a;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2073,20 +2073,20 @@ font-size: 15px;
 .team-popup-social-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  border-radius: 100px;
-  border: 1px solid rgba(201,168,76,0.35);
+  justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,168,76,0.4);
   background: rgba(201,168,76,0.08);
-  color: var(--rawlins-gold);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
   transition: all 0.18s ease;
+}
+.team-popup-social-btn svg {
+  width: 20px; height: 20px;
+  fill: #c9a84c;
 }
 .team-popup-social-btn:hover {
   background: rgba(201,168,76,0.2);
-  border-color: var(--rawlins-gold);
+  border-color: #c9a84c;
 }
 
 /* Right Panel */
