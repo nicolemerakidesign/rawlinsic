@@ -156,11 +156,16 @@ export default function InsightsPage() {
 
   return (
     <PasswordGate>
+      <div className="ambient-bg" />
+      <div className="ambient-orbs">
+        <div className="orb orb-1" ref={orbRef1} />
+        <div className="orb orb-2" ref={orbRef2} />
+        <div className="orb orb-3" />
+        <div className="orb orb-4" />
+      </div>
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
       <canvas className="particle-canvas" ref={canvasRef} />
-      <div className="orb orb-1" ref={orbRef1} />
-      <div className="orb orb-2" ref={orbRef2} />
       <SiteNav />
 
       {/* ── Hero — parallax fixed background ── */}
@@ -173,7 +178,7 @@ export default function InsightsPage() {
             Original research, practitioner perspectives, and real-world case studies from the front lines of organizational transformation.
           </p>
         </div>
-        <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
+        <div className="hero-scroll"><span style={{ background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", fontSize: "0.6rem", letterSpacing: "3px", textTransform: "uppercase" as const }}>Scroll</span><div className="scroll-line" /></div>
       </section>
 
       {/* ── Channel Cards ── */}
@@ -210,17 +215,13 @@ export default function InsightsPage() {
       </div>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "100px 48px 120px", textAlign: "center", background: "#060c16", position: "relative" }}>
-        <div style={{ maxWidth: "680px", margin: "0 auto", position: "relative", zIndex: 10 }}>
-          <p style={{ marginBottom: "16px", color: "#c9a84c", letterSpacing: "4px", fontSize: "13px", textTransform: "uppercase", fontWeight: 500, opacity: 1, display: "block",
-            background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)",
-            WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-            Start a Conversation
-          </p>
-          <h2 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: "clamp(2.6rem, 3.5vw, 3.5rem)", fontWeight: 300, color: "#ffffff", marginBottom: "20px", lineHeight: 1.25, opacity: 1, display: "block" }}>
-            Have a topic you&rsquo;d like us to <em style={{ fontStyle: "italic", background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>cover</em>?
+      <section style={{ padding: "100px 48px 120px", textAlign: "center", position: "relative" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative", zIndex: 10 }}>
+          <p className="section-label"><span className="gold-text">Start a Conversation</span></p>
+          <h2 className="section-title" style={{ marginBottom: "20px", textAlign: "center", whiteSpace: "nowrap" }}>
+            Have a <em style={{ fontStyle: "italic", background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>topic</em> you&rsquo;d like us to cover?
           </h2>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, color: "#ffffff", marginBottom: "40px", fontWeight: 300, opacity: 1, display: "block" }}>
+          <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center" }}>
             We&rsquo;re always exploring new questions at the intersection of strategy, technology, and public service. Reach out to start a conversation.
           </p>
           <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
