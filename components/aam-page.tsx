@@ -16,13 +16,13 @@ const SKYLINE_IMG = "https://images.pexels.com/photos/1519088/pexels-photo-15190
 const AERIAL_VIEW_IMG = "https://images.pexels.com/photos/739410/pexels-photo-739410.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const HELICOPTER_IMG = "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?auto=compress&cs=tinysrgb&w=1200";
 const CONTROL_ROOM_IMG = "https://images.pexels.com/photos/36155852/pexels-photo-36155852.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const DRONE_FLIGHT_IMG = "https://rawlinsic.com/wp-content/uploads/2024/12/skylimit.webp?auto=compress&cs=tinysrgb&w=1200";
+const DRONE_FLIGHT_IMG = "/images/pages/skylimit.webp";
 const BLUEPRINT_IMG = "https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const DATA_CENTER_IMG = "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const HIGHWAY_AERIAL_IMG = "https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg?auto=compress&cs=tinysrgb&w=1200";
 const TEAM_MEETING_IMG = "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const DEFINE_IMG = "https://rawlinsic.com/wp-content/uploads/2025/03/connectingdots.webp?auto=compress&cs=tinysrgb&w=1200";
-const PLANNING2_IMG = "https://rawlinsic.com/wp-content/uploads/2025/07/proficiency-1.webp?auto=compress&cs=tinysrgb&w=1200";
+const DEFINE_IMG = "/images/pages/connectingdots.webp";
+const PLANNING2_IMG = "/images/pages/proficiency-1.webp";
 const DRONEMOUNTAINS_IMG = "https://images.unsplash.com/photo-1488263590619-bc1fff43b6c1?auto=compress&cs=tinysrgb&w=1200";
 
 

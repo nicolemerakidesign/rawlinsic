@@ -9,11 +9,11 @@ import PasswordGate from "@/components/password-gate";
 
 /* ─── Images ─── */
 const STRATEGY_IMG =
-  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/gNTqxQESyZzn0S1NPC6S2.webp";
+  "/images/pages/strategy-bg.webp";
 const OPERATIONS_IMG =
-  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/P9ho_XURvnAgxJEfA0Udc.webp";
+  "/images/pages/operations-bg.webp";
 const TECHNOLOGY_IMG =
-  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/aJz_dR6Ty4KJ0pskjhA86.webp";
+  "/images/pages/technology-bg.webp";
 
 /* ─── Data ─── */
 interface Service {

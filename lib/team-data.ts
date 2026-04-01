@@ -18,7 +18,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 1,
     name: `Scott Rawlins, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/scott.webp`,
+    photo: `/images/team/scott.webp`,
   title: `Owner`,
     role: `Transportation Programs`,
     location: `Nevada`,
@@ -44,7 +44,7 @@ From planning, design, construction, operations and maintenance, Scott maneuvere
   {
     id: 2,
     name: `Paul Steinman, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2024/09/paulsteinman.webp`,
+    photo: `/images/team/paulsteinman.webp`,
     role: `Construction Programs`,
     location: `Florida`,
     phone: `+1 850-363-0947`,
@@ -61,7 +61,7 @@ The goal of this effort was to reduce middle management within TDOT, push decisi
   {
     id: 3,
     name: `Paul Schneider, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/paulschneider.webp`,
+    photo: `/images/team/paulschneider.webp`,
     role: `Federal Programs`,
     location: `Nevada`,
     phone: `+1 775-230-6579`,
@@ -78,7 +78,7 @@ During his tenure, Paul worked closely with Caltrans Executive Leadership to res
   {
     id: 4,
     name: `Mark Geib, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/mark.webp`,
+    photo: `/images/team/mark.webp`,
     role: `Operations Programs`,
     location: `Michigan`,
     phone: `+1 239-980-0382`,
@@ -95,7 +95,7 @@ He led the TSMO Division including Maintenance and Operations, Traffic and Safet
   {
     id: 5,
     name: `Janine Cooper, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/janine.webp`,
+    photo: `/images/team/janine.webp`,
     role: `Asset Management`,
     location: `Michigan`,
     phone: `+1 269-823-4545`,
@@ -114,7 +114,7 @@ While in maintenance and operations, Janine incorporated data-driven decision ma
   {
     id: 6,
     name: `April Blackburn, PMP`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/april.webp`,
+    photo: `/images/team/april.webp`,
     role: `Technology Strategy`,
     location: `Florida`,
     phone: `+1 850-228-1453`,
@@ -133,7 +133,7 @@ April is a well-tested transportation industry professional with proven leadersh
   {
     id: 7,
     name: `Allison Black`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/allison-1.webp`,
+    photo: `/images/team/allison-1.webp`,
     role: `Operational Change Management`,
     location: `Florida`,
     phone: `+1 850-544-3965`,
@@ -148,7 +148,7 @@ After leaving the public sector, Allison served as an Organizational Change Mana
   {
     id: 8,
     name: `David Rader`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2024/09/davidrader.webp`,
+    photo: `/images/team/davidrader.webp`,
     role: `Asset Management`,
     location: `Tennessee`,
     phone: `+1 615-300-0069`,
@@ -165,7 +165,7 @@ David was also a founding member and has served as the past President and long-t
   {
     id: 9,
     name: `Amy Neidringhaus, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/amyn-1.webp`,
+    photo: `/images/team/amyn-1.webp`,
     role: `Program Management`,
     location: `Florida`,
     phone: `+1 813-785-3779`,
@@ -185,7 +185,7 @@ Amy has also been instrumental in the TDOT organization optimization initiative 
   {
     id: 10,
     name: `Ron Crew`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ron.webp`,
+    photo: `/images/team/ron.webp`,
     role: `Right-of-Way Operations`,
     location: `Florida`,
     phone: `+1 727-348-5136`,
@@ -201,7 +201,7 @@ Ron brings enormous experience and ability with him in many facets of Right of W
   {
     id: 11,
     name: `Ben Rawlins, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ben.webp`,
+    photo: `/images/team/ben.webp`,
     role: `Chief AI Strategy Officer`,
     location: `Nevada`,
     phone: `+1 775-741-1382`,
@@ -218,7 +218,7 @@ Ben brings a fresh perspective to the Rawlins team and is ready and eager to giv
   {
     id: 12,
     name: `Sarah Rawlins`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/sarah.webp`,
+    photo: `/images/team/sarah.webp`,
     role: `Chief Culture Officer`,
     location: `Nevada`,
     phone: `+1 775-741-6492`,
@@ -231,7 +231,7 @@ Ben brings a fresh perspective to the Rawlins team and is ready and eager to giv
   {
     id: 13,
     name: `Lisa Marsh`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/lisa.webp`,
+    photo: `/images/team/lisa.webp`,
     role: `Maintenance & Operations Advisor`,
     location: `Michigan`,
     phone: `+1 269-845-1813`,
@@ -247,7 +247,7 @@ Serving as a resource and member on several MDOT Statewide and Regional committe
   {
     id: 14,
     name: `Chris Petersen, CPM`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/chrisp.webp`,
+    photo: `/images/team/chrisp.webp`,
     role: `Project Management`,
     location: `Nevada`,
     phone: `+1 775-690-0560`,
@@ -266,7 +266,7 @@ After leaving the public sector, Chris served as a Project Manager in the privat
   {
     id: 15,
     name: `Lauren LeJeune`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/lauren.webp`,
+    photo: `/images/team/lauren.webp`,
     role: `Administration & Contract Management`,
     location: `Florida`,
     phone: `+1 850-545-9377`,
@@ -283,7 +283,7 @@ Lauren’s passion is providing a meaningful impact to organizations through col
   {
     id: 16,
     name: `Ann Scott`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ann-1.webp`,
+    photo: `/images/team/ann-1.webp`,
     role: `Administrative Analyst`,
     location: `Nevada`,
     phone: `+1 775-721-1396`,
@@ -295,7 +295,7 @@ Lauren’s passion is providing a meaningful impact to organizations through col
   {
     id: 17,
     name: `Alicia McConnell, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2024/09/alicia.webp`,
+    photo: `/images/team/alicia.webp`,
     role: `Aerial Technologies`,
     location: `Illinois`,
     phone: `+1 618-570-8293`,
@@ -310,7 +310,7 @@ She is a certified Part 107 UAS pilot with significant experience in bridge insp
   {
     id: 18,
     name: `Steve Cook, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/stevecook.webp`,
+    photo: `/images/team/stevecook.webp`,
     role: `Operations Strategic Planning`,
     location: `Michigan`,
     phone: `+1 517-204-3099`,
@@ -328,7 +328,7 @@ He was MDOT’s voting member for both the AASHTO Committee on Transportation Sy
   {
     id: 19,
     name: `Renee Barone`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/renee.webp`,
+    photo: `/images/team/renee.webp`,
     role: `Graphic Designer`,
     location: `Tennessee`,
     phone: `+1 775-980-5729`,
@@ -340,7 +340,7 @@ He was MDOT’s voting member for both the AASHTO Committee on Transportation Sy
   {
     id: 20,
     name: `Barbara Davis, AICP`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/barbara.webp`,
+    photo: `/images/team/barbara.webp`,
     role: `Planning & Policy Advisor`,
     location: `Florida`,
     phone: `+1 407-760-3624`,
@@ -359,7 +359,7 @@ As Toll Studies and Forecasting Administrator, she reported directly to the Dire
   {
     id: 21,
     name: `Jenica Keller, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/jenica.webp`,
+    photo: `/images/team/jenica.webp`,
     role: `Program & Project Management`,
     location: `Nevada`,
     phone: `+1 775-721-6508`,
@@ -378,7 +378,7 @@ A seasoned transportation industry professional, Jenica brings extensive experie
   {
     id: 22,
     name: `John Zuleger, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/john.webp`,
+    photo: `/images/team/john.webp`,
     role: `Infrastructure Technologies Advisor`,
     location: `Ohio`,
     phone: `+1 513-827-2283`,
@@ -395,7 +395,7 @@ He continues to develop next-generation tools for asset management with advanced
   {
     id: 23,
     name: `Amy Causseaux, CPM`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/amyc-1.webp`,
+    photo: `/images/team/amyc-1.webp`,
     role: `Infrastructure Advisor`,
     location: `Florida`,
     phone: `+1 850-545-5077`,
@@ -412,7 +412,7 @@ Amy has served in many roles in the agency, including the Statewide Work Program
   {
     id: 24,
     name: `David Douglas`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/david.webp`,
+    photo: `/images/team/david.webp`,
     role: `Infrastructure Advisor`,
     location: `Florida`,
     phone: `+1 863-602-7125`,
@@ -426,7 +426,7 @@ David increased the amount of training by 400% and automated the entire training
   {
     id: 25,
     name: `Ken Flore`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ken.webp`,
+    photo: `/images/team/ken.webp`,
     role: `Training & Curriculum Development Advisor`,
     location: `Michigan`,
     phone: `+1 989-245-3201`,
@@ -439,7 +439,7 @@ David increased the amount of training by 400% and automated the entire training
   {
     id: 26,
     name: `Carissa McQuiston, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2024/09/carissa.webp`,
+    photo: `/images/team/carissa.webp`,
     role: `Safety Operations Advisor`,
     location: `Michigan`,
     phone: `+1 517-402-1521`,
@@ -454,7 +454,7 @@ She has been with MDOT for almost 10 years. Carissa spent the seven years prior 
   {
     id: 27,
     name: `Katie Wendel`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/katie.webp`,
+    photo: `/images/team/katie.webp`,
     role: `Accounting Specialist`,
     location: `Nevada`,
     phone: `+1 775-781-5132`,
@@ -468,7 +468,7 @@ Outside of her professional endeavors, Katie finds true joy in her role as a wif
   {
     id: 28,
     name: `Jeffery Gallart`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/jeff.webp`,
+    photo: `/images/team/jeff.webp`,
     role: `Strategic Programs`,
     location: `Washington, D.C.`,
     phone: `+1 202-215-2809`,
@@ -483,7 +483,7 @@ Jeff holds an MBA and Master of Science in finance from Northeastern University 
   {
     id: 29,
     name: `Nicole Arakorpi`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/nicole.webp`,
+    photo: `/images/team/nicole.webp`,
     role: `Web & Graphic Designer`,
     location: `Nevada`,
     phone: `+1 775-881-8165`,
@@ -500,7 +500,7 @@ Nicole’s journey into the world of design began after graduating with degrees 
   {
     id: 30,
     name: `Skylar Granata`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/skylar.webp`,
+    photo: `/images/team/skylar.webp`,
     role: `Accounting Specialist`,
     location: `Nevada`,
     phone: `+1 775-220-2720`,
@@ -514,7 +514,7 @@ Skylar’s commitment to detail and organizational excellence has consistently d
   {
     id: 31,
     name: `Stacie Hancock`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/01/stacie.webp`,
+    photo: `/images/team/stacie.webp`,
     role: `Accounting Specialist`,
     location: `Nevada`,
     phone: `+1 775-842-7171`,
@@ -526,7 +526,7 @@ Skylar’s commitment to detail and organizational excellence has consistently d
   {
     id: 32,
     name: `Debbie Cmar`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/debbie.webp`,
+    photo: `/images/team/debbie.webp`,
     role: `Professional Services`,
     location: `Florida`,
     phone: `+1 813-230-7872`,
@@ -546,7 +546,7 @@ She uses her proven organizational, communications, and leadership skills to lea
   {
     id: 33,
     name: `Mayela Sosa`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/06/mayela.webp`,
+    photo: `/images/team/mayela.webp`,
     role: `Infrastructure Advisor`,
     location: `Indiana`,
     phone: `+1 371-349-1396`,
@@ -565,7 +565,7 @@ As the FHWA Hawaii Division Administrator, Mayela led a major reform initiative 
   {
     id: 34,
     name: `Jenna Brady`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/08/jenna.webp`,
+    photo: `/images/team/jenna.webp`,
     role: `Infrastructure Advisor`,
     location: `Ohio`,
     phone: `+1 760-401-0416`,
@@ -582,7 +582,7 @@ In 2021, she left the private sector and began her career with the Texas Departm
   {
     id: 35,
     name: `Mark A. Johnson`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/09/markj.webp`,
+    photo: `/images/team/markj.webp`,
     role: `Infrastructure Advisor`,
     location: `Iowa`,
     phone: `+1 515-509-4048`,
@@ -601,7 +601,7 @@ Mark also completed several rotational and temporary assignments, including FHWA
   {
     id: 36,
     name: `Paul Wheeler`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/10/paulw.webp`,
+    photo: `/images/team/paulw.webp`,
     role: `Aerial Innovation Advisor`,
     location: `Utah`,
     phone: `(801) 232-9265`,
@@ -614,7 +614,7 @@ Mark also completed several rotational and temporary assignments, including FHWA
   {
     id: 37,
     name: `Aaron Organ`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/10/aaron.webp`,
+    photo: `/images/team/aaron.webp`,
     role: `Aerial Technologies Advisor`,
     location: `Utah`,
     phone: `(480) 254-9100`,
@@ -629,7 +629,7 @@ He holds FAA Remote Pilot, Private Pilot (SEL), and Advanced Ground Instructor c
   {
     id: 38,
     name: `Lance Grace`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/10/lance.webp`,
+    photo: `/images/team/lance.webp`,
     role: `Infrastructure Advisor`,
     location: `Florida`,
     phone: `+1 850-556-1166`,
@@ -650,7 +650,7 @@ He also served as the project manager for one of the first projects to use the D
   {
     id: 39,
     name: `Samantha Lloyd`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/10/saml.webp`,
+    photo: `/images/team/saml.webp`,
     role: `AI & Automation Specialist`,
     location: `Cape Town, South Africa`,
     phone: `+27 74-723-6024`,
@@ -671,7 +671,7 @@ Her achievements reflect a deep commitment to innovation, collaboration, and pur
   {
     id: 40,
     name: `Andy Palanisamy`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/10/andy.webp`,
+    photo: `/images/team/andy.webp`,
     role: `Infrastructure Advisor`,
     location: `Michigan, USA / Dubai, UAE`,
     phone: `+1 240-426-6065`,
@@ -693,7 +693,7 @@ Andy holds a Master in Public Administration from Harvard Kennedy School and a B
   {
     id: 41,
     name: `Dara Schechter`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/12/dara.webp`,
+    photo: `/images/team/dara.webp`,
     role: `Strategic Communications`,
     location: `Montreal, Quebec, Canada`,
     phone: `+1 732-887-4022`,
@@ -708,7 +708,7 @@ Dara applies systems thinking and clear cross-functional communication to positi
   {
     id: 42,
     name: `Jennifer (Jen) Pihl`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/01/jennifer.webp`,
+    photo: `/images/team/jennifer.webp`,
     role: `Infrastructure Advisor`,
     location: `Michigan`,
     phone: `+1 734-716-7356`,
@@ -725,7 +725,7 @@ At the Federal level, Jen led national efforts in economic development and benef
   {
     id: 43,
     name: `Bob Eatmon`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/01/bob.webp`,
+    photo: `/images/team/bob.webp`,
     role: `Infrastructure Advisor`,
     location: `Wyoming`,
     phone: `+1 307-631-3695`,
@@ -744,7 +744,7 @@ After retiring from FHWA, Bob worked as a consultant providing technical assista
   {
     id: 44,
     name: `Ken M. McEntire, PE`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/02/kenm.webp`,
+    photo: `/images/team/kenm.webp`,
     role: `Advisory Services – Highway Operations & Maintenance`,
     location: `North Carolina`,
     phone: `+1 919-247-7707`,
@@ -759,7 +759,7 @@ Mr. McEntire develops performance-based asset maintenance and operations systems
   {
     id: 45,
     name: `Ozzy Bravo, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/02/ozzy.webp`,
+    photo: `/images/team/ozzy.webp`,
     role: `Infrastructure Advisor`,
     location: `Kansas`,
     phone: `+1 602-614-9853`,
@@ -774,7 +774,7 @@ Ozzy is a graduate of The University of Kansas and Texas A&M University in Colle
   {
     id: 46,
     name: `Dara Wheeler`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/03/darawheeler.webp`,
+    photo: `/images/team/darawheeler.webp`,
     role: `Infrastructure Advisor`,
     location: `California`,
     phone: `+1 916-768-2421`,
@@ -795,7 +795,7 @@ Her work has been recognized with several prestigious honors, including the **Bi
   {
     id: 47,
     name: `Kiara Pienaar`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/03/kiara.webp`,
+    photo: `/images/team/kiara.webp`,
     role: `Automation Tester & Content Creator`,
     location: `Gauteng/South Africa`,
     phone: `+27 69-529-8994`,
@@ -808,7 +808,7 @@ Her work has been recognized with several prestigious honors, including the **Bi
   {
     id: 48,
     name: `Corey Biddle`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/03/corey.webp`,
+    photo: `/images/team/corey.webp`,
     role: `Infrastructure Advisor`,
     location: `Colorado`,
     phone: `+1 984-500-6277`,
@@ -825,7 +825,7 @@ Driven by a commitment to excellence and a passion for building strong partnersh
   {
     id: 49,
     name: `Jenn Breitner`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/03/jennb.webp`,
+    photo: `/images/team/jennb.webp`,
     role: `Administrative Assistant`,
     location: `Michigan`,
     phone: `+1 231-383-3559`,
@@ -839,7 +839,7 @@ Jenn has two boys in the United States Army and one grandson, who are her pride 
   {
     id: 50,
     name: `Kobus Pieters`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/03/kobus.webp`,
+    photo: `/images/team/kobus.webp`,
     role: `AI & Automation Specialist`,
     location: `Capetown, South Africa`,
     phone: `+27 83-441-8454`,
@@ -851,7 +851,7 @@ Jenn has two boys in the United States Army and one grandson, who are her pride 
   {
     id: 51,
     name: `Joey Paskey`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2026/03/joey.webp`,
+    photo: `/images/team/joey.webp`,
     role: `Infrastructure Advisor`,
     location: `Nevada`,
     phone: `+1 702-575-3472`,

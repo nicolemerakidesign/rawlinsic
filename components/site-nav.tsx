@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
 const LOGO_URL =
-  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/cfZ06kEF6A_pOkuifk_rD.webp";
+  "/images/pages/hero-bg.webp";
 
 interface SiteNavProps {
   /** href for the "Get In Touch" CTA button. Defaults to /contact */

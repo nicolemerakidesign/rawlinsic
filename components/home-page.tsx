@@ -9,26 +9,26 @@ import SiteFooter from "@/components/site-footer";
 
 
 const LOGO_URL =
-  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=90,anim=true/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/cfZ06kEF6A_pOkuifk_rD.webp";
+  "/images/pages/hero-bg.webp";
 
 const VIDEO_URL =
-  "https://assets.macaly-user-data.dev/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/FcdPEVCgjerLEpW3aFWTa.mp4";
+  "/images/pages/hero-video.mp4";
 
 // Intro images
 const DRONE2_URL =
-  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/kxedm-m1_g6tpXjxTFt4c.webp";
+  "/images/pages/home-about.webp";
 const PEOPLECULTURE_URL =
-  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/P9ho_XURvnAgxJEfA0Udc.webp";
+  "/images/pages/operations-bg.webp";
 const GLOBE_URL =
-  "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/XcgZrQTfqkjshzJlBSqBM.webp";
+  "/images/pages/home-split-3.webp";
 const GLOBALFOOTPRINT_URL =
-  "https://assets.macaly-user-data.dev/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/AiS-o8mCLd3aTE3QobCPS.webp";
+  "/images/pages/home-team-bg.webp";
 
 const BUILDINGSCONNECT_VIDEO_URL =
-  "https://assets.macaly-user-data.dev/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/ebVr1DG4WZ2SE_BTTn1be.mp4";
+  "/images/pages/buildingsconnect-video.mp4";
 
 const TRANSPORTATIONROADS_URL =
-  "https://assets.macaly-user-data.dev/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/EJE7sqnj5M3frq1GEc6Bb.png";
+  "/images/pages/rawlins-logo.png";
 
 
 
@@ -39,7 +39,7 @@ const pillars = [
     tags: "Decision systems · Planning · Organizational Design",
     desc: "We help leaders see clearly, decide wisely, and act with confidence. From governance frameworks to strategic program planning, we translate organizational priorities into actionable plans that drive sustainable transformation.",
     href: "/capabilities#strategy",
-    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/gNTqxQESyZzn0S1NPC6S2.webp",
+    bg: "/images/pages/strategy-bg.webp",
   },
   {
     num: "",
@@ -47,7 +47,7 @@ const pillars = [
     tags: "people · process · culture · workforce",
     desc: "We create sustainable high-performance strategies that foster collaboration, accountability, and organizational health. Our proficiency programs empower teams to deliver their best work.",
     href: "/capabilities#operations",
-    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/P9ho_XURvnAgxJEfA0Udc.webp",
+    bg: "/images/pages/operations-bg.webp",
   },
   {
     num: "",
@@ -55,7 +55,7 @@ const pillars = [
     tags: "human-centric AI integration · digital systems · analytics · data",
     desc: "From establishing trustworthy data foundations to deploying intelligent automation, we help organizations harness the information layer. Our specialists streamline workflows so your people can focus on what machines can't do.",
     href: "/capabilities#technology",
-    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/aJz_dR6Ty4KJ0pskjhA86.webp",
+    bg: "/images/pages/technology-bg.webp",
   },
 ];
 
@@ -64,25 +64,25 @@ const journey = [
     phase: "Foundation",
     title: "Deep Public Agency Expertise",
     text: "Having worked successfully within complex public agencies for many years, our team applies deep insights gained from overcoming project and program constraints, navigating decision-making dynamics, and fostering organizational cultures that support collaboration and accountability.",
-    bg: "https://images.pexels.com/photos/775482/pexels-photo-775482.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    bg: "/images/pages/journey-foundation.jpg",
   },
   {
     phase: "Evolution",
     title: "Expanded Advisory Capabilities",
     text: "We partner with enterprises to modernize processes, empower team members, and embrace new technologies—coordinating these actions to achieve meaningful results. We pride ourselves on establishing long-term relationships with our family of clients.",
-    bg: "https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    bg: "/images/pages/journey-evolution.jpg",
   },
   {
     phase: "Innovation",
     title: "Automation, Integration, & AI",
     text: "Today, we help agencies navigate governance structures, improve data practices, incorporate analytics, and use emerging tools such as AI. Our automation and integration specialists streamline workflows, enabling people to focus on the uniquely human work that matters most for organizational success.",
-    bg: "https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    bg: "/images/pages/journey-innovation.jpg",
   },
   {
     phase: "Frontier",
     title: "Advanced Air Mobility",
     text: "We guide the planning, implementation, and integration of advanced air mobility and uncrewed aircraft systems within existing transport networks, supporting the development of multimodal connected communities.",
-    bg: "https://images.pexels.com/photos/51943/bomber-vulcan-aircraft-aeroplane-51943.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    bg: "/images/pages/journey-frontier.jpg",
   },
 ];
 
@@ -92,14 +92,14 @@ const exploreBottomCards = [
     desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
     cta: "See how we transform →",
     href: "/insights",
-    bg: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=500&h=400&fit=crop",
+    bg: "/images/pages/insights-card.jpg",
   },
   {
       title: "Case Studies",
     desc: "Discover how our work has transformed organizations across public and private sectors.",
     cta: "Explore our impact →",
     href: "/insights/case-studies",
-    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/AiS-o8mCLd3aTE3QobCPS.webp",
+    bg: "/images/pages/home-team-bg.webp",
   },
   ];
 
@@ -109,21 +109,21 @@ const exploreTopCards = [
     desc: "Explore our practice areas and how we tailor solutions to your unique organizational challenges.",
     cta: "Explore our services →",
     href: "/capabilities",
-    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/1L1yKR0QRSVmw-qsuceL_.webp",
+    bg: "/images/pages/home-tl-bg.webp",
   },
   {
       title: "Insights",
     desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
     cta: "Explore insights →",
     href: "/insights",
-    bg: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=500&h=400&fit=crop",
+    bg: "/images/pages/insights-card.jpg",
   },
   {
       title: "Case Studies",
     desc: "Discover how our work has transformed organizations across public and private sectors.",
     cta: "discover our impact →",
     href: "/insights/case-studies",
-    bg: "https://assets.macaly-user-data.dev/cdn-cgi/image/format=webp,width=2000,height=2000,fit=scale-down,quality=85,anim=false/c4zcddt61rtnmmmh8sqtv1fn/dkeher82cub0yp82vsjcz9t9/AiS-o8mCLd3aTE3QobCPS.webp",
+    bg: "/images/pages/home-team-bg.webp",
   },
 ];
 

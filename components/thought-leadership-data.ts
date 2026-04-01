@@ -40,7 +40,7 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     image: "/images/tl-april-blackburn-banner.jpg",
     heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
     authorImage:
-      "https://rawlinsic.com/wp-content/uploads/2025/05/april.webp",
+      "/images/team/april.webp",
     pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",
     content: [
       {
@@ -198,7 +198,7 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     image: "/images/tl-april-blackburn-banner.jpg",
     heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
     authorImage:
-      "https://rawlinsic.com/wp-content/uploads/2025/05/april.webp",
+      "/images/team/april.webp",
     pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",
     content: [
       {

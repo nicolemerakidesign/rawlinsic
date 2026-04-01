@@ -4984,7 +4984,7 @@ color: #fff;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1920&q=85');
+  background-image: url('/images/pages/cap-hero.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
