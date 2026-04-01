@@ -383,9 +383,9 @@ export default function CapabilitiesPage() {
 
       {/* ── CTA ── */}
       <section className="cap-cta" style={{ position: "relative" }}>
-        <div className="cap-cta-inner" style={{ position: "relative", zIndex: 10 }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative", zIndex: 10, textAlign: "center" }}>
           <p className="section-label"><span className="gold-text">Take the Next Step</span></p>
-          <h2 className="section-title auto-cta-title" style={{ whiteSpace: "normal", marginBottom: "20px", textAlign: "center" }}>
+          <h2 className="section-title" style={{ whiteSpace: "nowrap", marginBottom: "20px", textAlign: "center" }}>
             Ready to transform your <em style={{ fontStyle: "italic", background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>organization</em>?
           </h2>
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center" }}>
