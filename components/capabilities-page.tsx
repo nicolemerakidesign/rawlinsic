@@ -300,13 +300,16 @@ export default function CapabilitiesPage() {
               <p className="section-label"><span className="gold-text">{section.focus}</span></p>
               <h2 className="cap-split-title">{section.name}</h2>
               <p className="cap-split-body">{section.description}</p>
-              <div className="cap-split-count">{section.services.length} Services</div>
             </div>
           </div>
 
           {/* Horizontal scroll service cards */}
           <div className="cap-services-wrap">
             <div className="cap-services-header">
+              <div className="cap-svc-count-label">
+                <span className="cap-svc-count-num">{section.services.length}</span>
+                <span className="cap-svc-count-word">Services</span>
+              </div>
               <div className="cap-services-arrows">
                 <button className="cap-arrow-btn" onClick={() => scrollTrack(section.id, -1)} aria-label="Previous">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M15 18l-6-6 6-6" /></svg>

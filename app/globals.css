@@ -5230,13 +5230,20 @@ color: #fff;
 .cap-services-wrap { position: relative; }
 .cap-services-header {
   display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 24px; padding: 0 8px;
+  margin-bottom: 28px; padding: 0 8px;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  padding-bottom: 20px;
 }
-.cap-services-count {
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 16px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
+.cap-svc-count-label { display: flex; align-items: baseline; gap: 10px; }
+.cap-svc-count-num {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 42px; font-weight: 700; line-height: 1;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.cap-svc-count-word {
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(232,230,225,0.45); font-weight: 500;
 }
 .cap-services-arrows { display: flex; gap: 8px; }
 .cap-arrow-btn {
@@ -5248,34 +5255,50 @@ color: #fff;
 
 .cap-services-track {
   display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: 8px 0 24px; scrollbar-width: none; -ms-overflow-style: none;
+  padding: 8px 0 28px; scrollbar-width: none; -ms-overflow-style: none;
 }
 .cap-services-track::-webkit-scrollbar { display: none; }
 
 .cap-svc-card {
-  flex: 0 0 340px; min-height: 200px; scroll-snap-align: start;
-  background: rgba(6,12,22,0.6); border: 1px solid rgba(201,168,76,0.06);
-  border-radius: 6px; padding: 32px 28px; position: relative; overflow: hidden;
-  cursor: pointer; transition: border-color 0.35s, background 0.35s;
+  flex: 0 0 340px; min-height: 220px; scroll-snap-align: start;
+  background: rgba(8,15,30,0.65);
+  border: 1px solid rgba(201,168,76,0.08);
+  border-left: 3px solid rgba(201,168,76,0.35);
+  border-radius: 12px; padding: 28px 28px 28px 26px;
+  position: relative; overflow: hidden; cursor: pointer;
+  transition: border-color 0.35s ease, border-left-color 0.35s ease, background 0.35s ease, transform 0.25s ease, box-shadow 0.35s ease;
   display: flex; flex-direction: column;
 }
+.cap-svc-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, rgba(201,168,76,0.45) 0%, transparent 65%);
+  pointer-events: none;
+}
 .cap-svc-card:hover, .cap-svc-card.expanded {
-  border-color: rgba(201,168,76,0.2); background: rgba(6,12,22,0.8);
+  border-left-color: rgba(201,168,76,0.85);
+  border-color: rgba(201,168,76,0.18);
+  background: rgba(6,12,22,0.88);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 24px rgba(201,168,76,0.04);
 }
 .cap-svc-glow {
-  position: absolute; top: -80px; right: -80px; width: 160px; height: 160px;
-  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  position: absolute; top: -80px; right: -80px; width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
   pointer-events: none; opacity: 0; transition: opacity 0.5s;
 }
 .cap-svc-card:hover .cap-svc-glow, .cap-svc-card.expanded .cap-svc-glow { opacity: 1; }
 
 .cap-svc-index span {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: 13px; color: rgba(201,168,76,0.4); letter-spacing: 1px;
+  font-size: 28px; font-weight: 700;
+  background: linear-gradient(145deg, rgba(201,168,76,0.5), rgba(201,168,76,0.2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  letter-spacing: 1px; line-height: 1;
 }
 .cap-svc-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: 22px; font-weight: 500; color: #fff; margin: 12px 0 0; flex: 1;
+  font-size: 24px; font-weight: 600; color: #fff; margin: 10px 0 0; flex: 1;
+  line-height: 1.3;
 }
 .cap-svc-expand-icon {
   position: absolute; top: 28px; right: 24px;
@@ -5291,7 +5314,8 @@ color: #fff;
 .cap-svc-card.expanded .cap-svc-desc-wrap { max-height: 200px; margin-top: 16px; }
 .cap-svc-desc {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 14px; line-height: 1.7; color: #e8e6e1;
+  font-size: 14px; line-height: 1.75; color: rgba(232,230,225,0.85);
+  border-top: 1px solid rgba(201,168,76,0.12); padding-top: 14px;
 }
 
 /* ── CTA ── */
