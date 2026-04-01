@@ -185,6 +185,40 @@ export default function TeamPage() {
     }
   }, [selectedMember, activeFilter]);
 
+  // Keyboard arrow navigation
+  useEffect(() => {
+    if (!selectedMember) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") navigateMember("prev");
+      else if (e.key === "ArrowRight") navigateMember("next");
+      else if (e.key === "Escape") setSelectedMember(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selectedMember, navigateMember]);
+
+  // Touch swipe navigation on popup
+  const touchStartX = useRef(0);
+  useEffect(() => {
+    if (!selectedMember) return;
+    const popup = document.querySelector(".team-popup-overlay");
+    if (!popup) return;
+    const onTouchStart = (e: Event) => { touchStartX.current = (e as TouchEvent).touches[0].clientX; };
+    const onTouchEnd = (e: Event) => {
+      const dx = (e as TouchEvent).changedTouches[0].clientX - touchStartX.current;
+      if (Math.abs(dx) > 60) {
+        if (dx > 0) navigateMember("prev");
+        else navigateMember("next");
+      }
+    };
+    popup.addEventListener("touchstart", onTouchStart, { passive: true });
+    popup.addEventListener("touchend", onTouchEnd, { passive: true });
+    return () => {
+      popup.removeEventListener("touchstart", onTouchStart);
+      popup.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [selectedMember, navigateMember]);
+
   return (
     <>
       {/* Custom Cursor — outside PasswordGate */}
