@@ -291,10 +291,9 @@ export default function CapabilitiesPage() {
         <section key={section.id} id={section.id} className="cap-section">
           {/* Alternating two-column intro */}
           <div className={`cap-split reveal${isReversed ? " cap-split-reverse" : ""}`}>
-            <div className="cap-split-img-wrap">
+            <div className={`cap-split-img-wrap${isReversed ? " cap-split-img-reversed" : ""}`}>
               <Image src={section.image} alt={section.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="cap-split-img" />
-              <div className="cap-split-img-overlay" />
-              <div className="cap-split-number">0{sIdx + 1}</div>
+              <div className="cap-split-img-frame" />
             </div>
             <div className="cap-split-content">
               <p className="section-label"><span className="gold-text">{section.focus}</span></p>
@@ -303,48 +302,36 @@ export default function CapabilitiesPage() {
             </div>
           </div>
 
-          {/* Horizontal scroll service cards */}
+          {/* Accordion service list */}
           <div className="cap-services-wrap">
             <div className="cap-services-header">
               <div className="cap-svc-count-label">
                 <span className="cap-svc-count-num">{section.services.length}</span>
                 <span className="cap-svc-count-word">Services</span>
               </div>
-              <div className="cap-services-arrows">
-                <button className="cap-arrow-btn" onClick={() => scrollTrack(section.id, -1)} aria-label="Previous">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M15 18l-6-6 6-6" /></svg>
-                </button>
-                <button className="cap-arrow-btn" onClick={() => scrollTrack(section.id, 1)} aria-label="Next">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 18l6-6-6-6" /></svg>
-                </button>
-              </div>
             </div>
-            <div
-              className="cap-services-track"
-              ref={(el) => { serviceTrackRefs.current[section.id] = el; }}
-            >
+            <div className="cap-svc-list">
               {section.services.map((svc, i) => {
                 const isOpen = expandedService === `${section.id}-${i}`;
                 return (
                   <div
                     key={svc.title}
-                    className={`cap-svc-card${isOpen ? " expanded" : ""}`}
+                    className={`cap-svc-row${isOpen ? " expanded" : ""}`}
                     onClick={() => setExpandedService(isOpen ? null : `${section.id}-${i}`)}
                   >
-                    <div className="cap-svc-index">
-                      <span>{String(i + 1).padStart(2, "0")}</span>
+                    <div className="cap-svc-row-header">
+                      <span className="cap-svc-row-num">{String(i + 1).padStart(2, "0")}</span>
+                      <h3 className="cap-svc-row-title">{svc.title}</h3>
+                      <div className="cap-svc-row-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="12" y1="5" x2="12" y2="19" className="cap-svc-vline" />
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                      </div>
                     </div>
-                    <h3 className="cap-svc-title">{svc.title}</h3>
-                    <div className="cap-svc-expand-icon">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19" className="cap-svc-vline" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                      </svg>
+                    <div className="cap-svc-row-body">
+                      <p className="cap-svc-row-desc">{svc.desc}</p>
                     </div>
-                    <div className="cap-svc-desc-wrap">
-                      <p className="cap-svc-desc">{svc.desc}</p>
-                    </div>
-                    <div className="cap-svc-glow" />
                   </div>
                 );
               })}
@@ -369,7 +356,7 @@ export default function CapabilitiesPage() {
           <p className="cap-cta-text">
             Let&rsquo;s discuss how our integrated capabilities can address your unique challenges.
           </p>
-          <Link href="/contact" className="cap-cta-btn">
+          <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
             <span>Get In Touch</span>
           </Link>
         </div>
