@@ -1865,7 +1865,7 @@ font-size: 0.75rem;
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: rgba(6, 12, 22, 0.55);
+  background: rgba(6, 12, 22, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1876,7 +1876,7 @@ font-size: 0.75rem;
   opacity: 1;
 }
 .team-card-view {
-  font-size: 1.1rem;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
