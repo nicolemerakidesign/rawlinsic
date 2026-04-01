@@ -412,9 +412,10 @@ export default function TeamPage() {
                   <span>{selectedMember.email}</span>
                 </a>
               )}
+              {selectedMember.linkedin && (
               <div className="team-popup-social">
                 <a
-                  href="https://www.linkedin.com/company/rawlins-infra-consult/"
+                  href={selectedMember.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="team-popup-social-btn"
@@ -423,6 +424,7 @@ export default function TeamPage() {
                   <span style={{ fontFamily: "Arial, sans-serif", fontSize: "22px", fontWeight: 700, color: "#0e1e3a", lineHeight: 1, letterSpacing: "-0.5px" }}>in</span>
                 </a>
               </div>
+              )}
             </div>
 
             {/* Right Panel */}
