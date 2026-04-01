@@ -451,9 +451,9 @@ export default function HomePage() {
               <p style={{ marginTop: "20px", fontWeight: 600, color: "#d0b86c" }}>
                 We bring clarity to complexity to deliver measurable long-term outcomes.
               </p>
-              <a href="#story" style={{ marginTop: "28px", display: "inline-flex", alignItems: "center", gap: "12px", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase" as const, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", transition: "all 0.3s" }}>
-                ABOUT US
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="2">
+              <a href="#story" className="about-us-link" style={{ marginTop: "28px", display: "inline-flex", alignItems: "center", gap: "12px", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase" as const, color: "#fff", transition: "all 0.3s" }}>
+                <span style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>ABOUT US</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
