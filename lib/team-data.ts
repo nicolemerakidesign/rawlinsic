@@ -326,6 +326,203 @@ He was MDOT’s voting member for both the AASHTO Committee on Transportation Sy
   },
   {
     id: 19,
+    name: `Renee Barone`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/renee.webp`,
+    role: `Graphic Designer`,
+    location: `Tennessee`,
+    phone: `+1 813-230-7872`,
+    email: `renee@rawlinsic.com`,
+    background: `Renee is a professional Graphic Designer with a Bachelor’s Degree in Graphic Design and Media Arts. With an eye for aesthetics and a passion for what she does, she is known for transforming ideas into visually captivating realities. Renee understands that a brand’s identity is its first and last impression.`,
+    achievements: `She meticulously crafts each element, from logo and color palette to typography and messaging, ensuring they resonate harmoniously and evoke the desired emotions cohesively. Her collaborative spirit and keen ability to listen allow her to truly understand the essence of the client’s vision, making each design reflect their unique story with every project she works on.`,
+    categories: ['brand-communication'],
+  },
+  {
+    id: 20,
+    name: `Barbara Davis, AICP`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/barbara.webp`,
+    role: `Planning & Policy Advisor`,
+    location: `Florida`,
+    phone: `+1 775-980-5729`,
+    email: `barbara@rawlinsic.com`,
+    background: `Barbara has over 34 years of transportation planning experience working at the MPO, State, and local levels of government. She has worked on all modes of transportation projects including pedestrian, bicycle, transit, highways, and toll facilities.
+
+She began her career working as an entry-level transportation planner for a Metropolitan Planning Organization (MPO). In this role, she was responsible for development of comprehensive plans for pedestrian and bicycle modes of transportation. She was subsequently promoted to Transportation Division Manager and became responsible for overseeing the development of all the MPO’s major programs and initiatives including the Long-Range Transportation Plan, the Transportation Improvement Program, and the Unified Planning Work Program, as well as many other special projects. As the MPO’s Executive Director, she reported directly to a board of 19 local elected officials and represented the MPO on the statewide MPO Advisory Council.`,
+    achievements: `Barbara has nearly 15 years of experience at the Florida Department of Transportation (FDOT). During her time at FDOT, she was elevated to roles with increasingly higher responsibility within the Planning Department at Florida’s Turnpike Enterprise. As Administrator of Planning Operations, she oversaw the development of the Traffic Engineering and Travel Demand Modeling activities.
+
+She also coordinated the Planning Concept Study process with the Design department and managed the Turnpike’s interchange review process. As Traffic and Revenue Studies Program Manager she oversaw the expansion of the traffic and revenue study process to become an agency-wide program that evaluated toll projects for Florida’s Turnpike Enterprise, and the FDOT Districts and Central Office.
+
+As Toll Studies and Forecasting Administrator, she reported directly to the Director of Transportation Development and supported statewide efforts to implement tolled express lanes and other tolled facilities. This included policy development, project coordination among the phases of project development, and on-going innovations in the development of toll choice forecasting tools.`,
+    categories: ['strategy'],
+  },
+  {
+    id: 21,
+    name: `Jenica Keller, P.E.`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/jenica.webp`,
+    role: `Program & Project Management`,
+    location: `Nevada`,
+    phone: `+1 407-760-3624`,
+    email: `jenica@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/jenica-keller-p-e-b57436bb/`,
+    background: `Jenica has over 30 years of transportation industry experience with the Nevada Department of Transportation (NDOT), including her most recent executive role as the Assistant Director of Operations, where she focused on organizational leadership, development, and change management.`,
+    achievements: `Jenica had the responsibility of approximately 200 employees as well as the operations of more than 13,500 lane miles, 500 facilities (administrative, maintenance stations, and rest areas), and a fleet of more than 2,700 units. Jenica spent 14 years in Project Management, where she managed the scope, schedule, and budget of several complex, high-profile, multi-million-dollar transportation projects, including the 13-mile, $0.5 Billion US-95NW Improvement Corridor in Las Vegas, Nevada. Jenica also spent time as a Road Designer, Specifications Writer, and Senior Materials Engineer calculating and recommending rigid and flexible pavement structural sections.
+
+Throughout her career, Jenica has championed statewide initiatives and projects that have driven measurable performance improvements. She has a strategic approach to developing targeted initiatives, ensuring they are effectively communicated across all levels of the organization. Her leadership empowers employees to take ownership of their roles, fostering a culture of accountability that ultimately enables the department to exceed expectations in serving the public.
+
+Jenica was chosen as the Project Manager to assist in the development of NDOT’s Pioneer Program, which focuses on the delivery of Public-Private Partnership, Design-Build, and Construction Manager at Risk (CMAR) projects. This included the development and codification of new policy to accept unsolicited proposals in 2010. Then, in 2019, Jenica led the $181 Million Spaghetti Bowl Xpress project, located in Reno, Nevada, through contract award in the successful negotiation and execution of a design-build contract that originated as an Unsolicited Proposal.
+
+A seasoned transportation industry professional, Jenica brings extensive experience in managing projects, leading diverse teams, and a commitment to continuous improvement. She is passionate about identifying opportunities for innovation, developing strategic solutions, and managing change to enhance operations while ensuring the success of the stakeholders she serves.`,
+    categories: ['operations'],
+  },
+  {
+    id: 22,
+    name: `John Zuleger, P.E.`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/john.webp`,
+    role: `Infrastructure Technologies Advisor`,
+    location: `Ohio`,
+    phone: `+1 775-721-6508`,
+    email: `john@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/john-zuleger-pe-756bb1103/`,
+    background: `John brings 13 years of experience as a leader in structural engineering design, along with rope access and UAS bridge inspection applications, to the Rawlins team. He has led projects with various agencies across the nation ranging from design and analysis to inspection and asset management.`,
+    achievements: `Notable projects include ABC bridge slides, the Leo Frigo Bridge post-collapse analysis, and the Brent Spence and Hernando de Soto Bridge emergencies. John, a SPRAT Level 3 climber, developed a small rope access team and grew it into a leading nationwide program.
+
+He incorporated the use of UAS into his inspection teams starting in 2016 and became a Part 107-certified UAS pilot in 2018. He has performed and managed hundreds of complex and post-disaster bridge inspections across the country. He is co-authoring the upcoming AASHTO guidelines for UAS applications in bridge inspections and has worked with numerous agencies to help develop rope access and UAS programs and policies.
+
+He continues to develop next-generation tools for asset management with advanced predictive and prioritization modeling, including enhanced 3D modeling and digital twin integration.`,
+    categories: ['technology', 'strategy'],
+  },
+  {
+    id: 23,
+    name: `Amy Causseaux, CPM`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/amyc-1.webp`,
+    role: `Infrastructure Advisor`,
+    location: `Florida`,
+    phone: `+1 513-827-2283`,
+    email: `amyc@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/amy-causseaux-cpm-b0b33721/`,
+    background: `Amy joined Rawlins Infra Consult in 2024. Before this, she had a successful career in various roles at the Florida Department of Transportation. She began her career as a part-time employee and an intern while completing her Social Science degree. Amy has worked with multiple groups from a functional and technical perspective, developed lasting relationships that transcend the agency and extend to all levels of government and various stakeholders. The FDOT Leadership Academy recognized Amy’s leadership potential, and she is a proud graduate of the State of Florida Certified Public Manager Program.`,
+    achievements: `In 2018, Amy was promoted to the Statewide Interchange Coordinator. Under her leadership, many processes were codified into policies, standards, guidance, manuals, and handbooks. Amy’s understanding of the agency’s strategic goals and her technical expertise provided added benefit to the agency and the Federal Highway Administration (FHWA). Amy contributed to improving the agency’s strategic outcomes in areas such as Access Management, Bicycle and Pedestrian Safety, and Managed Lanes. Her work in Managed Lanes progressed as her technical expertise deepened and the industry matured. She developed, implemented, and sustained a Managed Lanes Guidebook and training with her team based on lessons learned from working with other state DOTs.
+
+From 2005 to 2018, Amy served as the Toll Finance Manager, collaborating and working with partners from the General Accounting Office, Districts, and Florida’s Turnpike Enterprise. She streamlined processes while ensuring compliance with statutes and bond documentation requirements. She was a key team member in developing finance plans. She led the team responsible for Traffic Revenue reports for Toll and Public-Private Partnership (P3) projects.
+
+Amy has served in many roles in the agency, including the Statewide Work Program and Right of Way Offices, District Planning, Transportation Disadvantaged, and Florida’s Turnpike. She collaborated with team members to streamline several processes and worked directly with internal and external stakeholders on project initiation.`,
+    categories: ['strategy'],
+  },
+  {
+    id: 24,
+    name: `David Douglas`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/david.webp`,
+    role: `Infrastructure Advisor`,
+    location: `Florida`,
+    phone: `+1 850-545-5077`,
+    email: `davidd@rawlinsic.com`,
+    background: `David joined Rawlins Infra Consult in 2024. Prior to this, he had a successful career in various roles at the Florida Department of Transportation. He began his career serving as a District Performance Management consultant, where he worked with various groups to develop business and strategic plans and train employees.`,
+    achievements: `David received distinctions for conducting more than 8,000 classroom hours of training. He is a proud graduate of the Florida Certified Public Manager Program. In 2016, he joined Florida’s Turnpike Enterprise as the Performance and Strategic Development Manager. In this role, he focused on workforce development, performance management, and employee engagement and satisfaction.
+
+David increased the amount of training by 400% and automated the entire training program through a virtual platform. He developed innovative programs, including Learning Journeys, which provide employees with a curriculum approach to skill development. David had significant roles in designing, developing, and implementing the statewide Awards and Recognition program, the Employee Benefit Fund program, and several Leadership Development programs, including the Management Academy. David’s passion is helping organizations and employees achieve success through strategic workforce development.`,
+    categories: ['strategy'],
+  },
+  {
+    id: 25,
+    name: `Ken Flore`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ken.webp`,
+    role: `Training & Curriculum Development Advisor`,
+    location: `Michigan`,
+    phone: `+1 863-602-7125`,
+    email: `kenf@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/kenneth-flore-ab16b166/`,
+    background: `Ken has worked for the State of Michigan for the past 35 years in various roles, and most currently with the Michigan Department of Transportation. As the Statewide Maintenance Program Coordinator, using best practices, he has made extensive changes to the Departments training programs for maintenance employees. Ken is also an active member with AASHTO’s TC3 Training Committee.`,
+    achievements: `He has extensive background in Labor Relations and Supervision with the Department of Transportation and the Michigan Department of Corrections, assisting in contract negations with the State’s maintenance employee’s union, abirritating contractual disputes, development of State of Michigan Departmental policies and operating procedures, and changes to Human Resources new supervisory trainings.`,
+    categories: ['operations'],
+  },
+  {
+    id: 26,
+    name: `Carissa McQuiston, P.E.`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2024/09/carissa.webp`,
+    role: `Safety Operations Advisor`,
+    location: `Michigan`,
+    phone: `+1 989-245-3201`,
+    email: `carissa@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/carissa-mcquiston-p-e-006ab07/`,
+    background: `Carissa has been the Safety Programs Manager for the Michigan Department of Transportation for just over two years; responsible for Managing and coordinating the division’s program for highway safety on the state trunkline. In this position, she and her staff promote Toward Zero Deaths and focus on the Safe System Approach to eliminate fatalities and serious injuries on all Michigan roadways.`,
+    achievements: `Carissa previously was the MDOT Cost and Scheduling Engineer for the Davison office and managed projects such as the I-475 Planning and Environmental Linkages Study and design and other regional projects. She was the MDOT Non-Motorized Safety Engineer and served as the central resource for pedestrian and bicyclist engineering and design; writing guidance documents, conducting research, and participating in many regional projects and reviews such as Safe Routes to School, TAP grants, etc.
+
+She has been with MDOT for almost 10 years. Carissa spent the seven years prior at the City of Grand Rapids as Traffic Engineer/Traffic System Engineer; supervising the signal, sign, and traffic engineering staff. Carissa graduated from Michigan State University (Go Green!) with a BS and MS in civil engineering.`,
+    categories: ['operations'],
+  },
+  {
+    id: 27,
+    name: `Katie Wendel`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/katie.webp`,
+    role: `Accounting Specialist`,
+    location: `Nevada`,
+    phone: `+1 517-402-1521`,
+    email: `katie@rawlinsic.com`,
+    background: `Katie is a seasoned professional with a decade of experience in office management and administrative roles. Her expertise lies in efficiently handling day-to-day operations, streamlining processes, and ensuring organizational effectiveness. With a keen eye for detail and a proactive approach, Katie has successfully managed various administrative tasks, including scheduling and resource allocation. Her dedication to optimizing workflows has consistently contributed to the smooth functioning of her workplaces.
+
+Outside of her professional endeavors, Katie finds true joy in her role as a wife and mother. She cherishes spending quality time with her husband and two children. Driven by her passion for both work and family, Katie exemplifies balance, dedication, and resilience in all aspects of her life.`,
+    achievements: ``,
+    categories: ['operations'],
+  },
+  {
+    id: 28,
+    name: `Jeffery Gallart`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/jeff.webp`,
+    role: `Strategic Programs`,
+    location: `Washington, D.C.`,
+    phone: `+1 775-781-5132`,
+    email: `jeff@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/jeffery-gallart-9baa7822/`,
+    background: `Jeff has over 20 years of experience as a management consultant leading teams to solve business’ most difficult challenges. Jeff is a performance improvement expert who works with transit agencies, mobility providers, and DOTs to achieve their mission at lower overall costs. His typical engagements include strategic planning, revenue generation, operational efficiency, outsourcing and cost optimization. Jeff has assisted numerous private and public sector entities with organizational structure and business process re-engineering projects aimed at enhancing long-term business performance.`,
+    achievements: `Outside the mobility sector, Jeff is an expert in supply chain and logistics. He served as a logistics and operations officer in the U.S. Army for almost a decade, serving two tours in Iraq. Prior to joining RIC, Jeff worked for Teneo, Booz Allen Hamilton, PwC, and KPMG in management consulting leadership positions. Most recently he was the CEO of a safety and efficiency business that provided maintenance solutions for transit agencies, DOTs and municipal clients.
+
+Jeff holds an MBA and Master of Science in finance from Northeastern University and a Bachelor of Science in environmental engineering from the United States Military Academy at West Point.`,
+    categories: ['strategy'],
+  },
+  {
+    id: 29,
+    name: `Nicole Arakorpi`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/nicole.webp`,
+    role: `Web & Graphic Designer`,
+    location: `Nevada`,
+    phone: `+1 202-215-2809`,
+    email: `nicole@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/nicolelawley/`,
+    background: `Nicole is a seasoned Web and Graphic Designer with over seven years of professional experience, specializing in creating visually compelling and user-friendly digital experiences. Her expertise spans across web design, graphic design, UI/UX design, and branding, ensuring each project is both aesthetically pleasing and functionally robust. Nicole brings a comprehensive skill-set to the table, allowing her to create impactful digital and visual solutions for clients across various industries. In both web and graphic design, Nicole approaches each project with creativity, innovation, and attention to detail. Her goal is to not only meet but exceed client expectations, delivering solutions that elevate their brand presence and drive tangible results.`,
+    achievements: `As a web designer, Nicole leverages her expertise to create responsive and user-friendly websites of all scopes. From sleek landing pages to intricate e-commerce platforms, she’s had the pleasure of bringing countless digital visions to life. Nicole believes in continuous learning and staying updated with industry trends, ensuring her designs are always fresh, innovative, and aligned with best practices.
+
+As a graphic designer, she excels in logo design, print materials, branding initiatives, and more. With a keen eye for typography, color theory, and layout design, Nicole is committed to creating designs that not only look great but also effectively communicate the essence of the brand.
+
+Nicole’s journey into the world of design began after graduating with degrees in Marketing and Business Administration/Management from the University of Nevada, Reno. Although she initially pursued a career in Human Resources in 2013, Nicole realized her true passion lay in creativity and design. In 2017 Nicole got her BA in Graphic Design & Media Arts specializing in Web Design from Southern New Hampshire University. Since then, she has been dedicated to bringing clients’ creative dreams to life.`,
+    categories: ['brand-communication', 'strategy', 'technology'],
+  },
+  {
+    id: 30,
+    name: `Skylar Granata`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/skylar.webp`,
+    role: `Accounting Specialist`,
+    location: `Nevada`,
+    phone: `+1 775-881-8165`,
+    email: `skylar@rawlinsic.com`,
+    background: `With eight years of experience in administration and accounting, Skylar has established a successful career serving the State of Nevada and the City of Reno. At the Secretary of State’s Office, she gained expertise in processing notary and apostille applications while supporting the elections division. Her work at the Public Utilities Commission highlighted her organizational skills, as she managed all travel logistics and streamlined purchase order processes to improve efficiency and compliance.`,
+    achievements: `At the City of Reno, Skylar took on diverse responsibilities, including budget management, policy updates, and executive calendar coordination for assistant city managers. She also led the City of Reno’s Sister Cities Project, fostering cultural and economic relationships.
+
+Skylar’s commitment to detail and organizational excellence has consistently driven efficiency and supported strategic goals throughout her career.`,
+    categories: ['operations'],
+  },
+  {
+    id: 31,
+    name: `Stacie Hancock`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2025/01/stacie.webp`,
+    role: `Accounting Specialist`,
+    location: `Nevada`,
+    phone: `+1 775-220-2720`,
+    email: `stacie@rawlinsic.com`,
+    background: `Stacie Hancock brings 30+ years of experience working with the State of Nevada. She has extensive experience in fiscal monitoring, analyzing state and federal regulations, as well as managing projections, grants, and contracts. Stacie is highly skilled in accounts payable and receivables and has worked closely with program staff to ensure accurate and timely reconciliations for federal reporting. Stacie is a team player, helps train other staff and is dedicated to her work.`,
+    achievements: ``,
+    categories: ['operations'],
+  },
+  {
+    id: 32,
     name: `Debbie Cmar`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/05/debbie.webp`,
     role: `Professional Services`,
@@ -345,204 +542,7 @@ She uses her proven organizational, communications, and leadership skills to lea
     categories: ['operations'],
   },
   {
-    id: 20,
-    name: `Renee Barone`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/renee.webp`,
-    role: `Graphic Designer`,
-    location: `Tennessee`,
-    phone: `+1 813-230-7872`,
-    email: `renee@rawlinsic.com`,
-    background: `Renee is a professional Graphic Designer with a Bachelor’s Degree in Graphic Design and Media Arts. With an eye for aesthetics and a passion for what she does, she is known for transforming ideas into visually captivating realities. Renee understands that a brand’s identity is its first and last impression.`,
-    achievements: `She meticulously crafts each element, from logo and color palette to typography and messaging, ensuring they resonate harmoniously and evoke the desired emotions cohesively. Her collaborative spirit and keen ability to listen allow her to truly understand the essence of the client’s vision, making each design reflect their unique story with every project she works on.`,
-    categories: ['brand-communication'],
-  },
-  {
-    id: 21,
-    name: `Barbara Davis, AICP`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/barbara.webp`,
-    role: `Planning & Policy Advisor`,
-    location: `Florida`,
-    phone: `+1 775-980-5729`,
-    email: `barbara@rawlinsic.com`,
-    background: `Barbara has over 34 years of transportation planning experience working at the MPO, State, and local levels of government. She has worked on all modes of transportation projects including pedestrian, bicycle, transit, highways, and toll facilities.
-
-She began her career working as an entry-level transportation planner for a Metropolitan Planning Organization (MPO). In this role, she was responsible for development of comprehensive plans for pedestrian and bicycle modes of transportation. She was subsequently promoted to Transportation Division Manager and became responsible for overseeing the development of all the MPO’s major programs and initiatives including the Long-Range Transportation Plan, the Transportation Improvement Program, and the Unified Planning Work Program, as well as many other special projects. As the MPO’s Executive Director, she reported directly to a board of 19 local elected officials and represented the MPO on the statewide MPO Advisory Council.`,
-    achievements: `Barbara has nearly 15 years of experience at the Florida Department of Transportation (FDOT). During her time at FDOT, she was elevated to roles with increasingly higher responsibility within the Planning Department at Florida’s Turnpike Enterprise. As Administrator of Planning Operations, she oversaw the development of the Traffic Engineering and Travel Demand Modeling activities.
-
-She also coordinated the Planning Concept Study process with the Design department and managed the Turnpike’s interchange review process. As Traffic and Revenue Studies Program Manager she oversaw the expansion of the traffic and revenue study process to become an agency-wide program that evaluated toll projects for Florida’s Turnpike Enterprise, and the FDOT Districts and Central Office.
-
-As Toll Studies and Forecasting Administrator, she reported directly to the Director of Transportation Development and supported statewide efforts to implement tolled express lanes and other tolled facilities. This included policy development, project coordination among the phases of project development, and on-going innovations in the development of toll choice forecasting tools.`,
-    categories: ['strategy'],
-  },
-  {
-    id: 22,
-    name: `Jenica Keller, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/jenica.webp`,
-    role: `Program & Project Management`,
-    location: `Nevada`,
-    phone: `+1 407-760-3624`,
-    email: `jenica@rawlinsic.com`,
-    linkedin: `https://www.linkedin.com/in/jenica-keller-p-e-b57436bb/`,
-    background: `Jenica has over 30 years of transportation industry experience with the Nevada Department of Transportation (NDOT), including her most recent executive role as the Assistant Director of Operations, where she focused on organizational leadership, development, and change management.`,
-    achievements: `Jenica had the responsibility of approximately 200 employees as well as the operations of more than 13,500 lane miles, 500 facilities (administrative, maintenance stations, and rest areas), and a fleet of more than 2,700 units. Jenica spent 14 years in Project Management, where she managed the scope, schedule, and budget of several complex, high-profile, multi-million-dollar transportation projects, including the 13-mile, $0.5 Billion US-95NW Improvement Corridor in Las Vegas, Nevada. Jenica also spent time as a Road Designer, Specifications Writer, and Senior Materials Engineer calculating and recommending rigid and flexible pavement structural sections.
-
-Throughout her career, Jenica has championed statewide initiatives and projects that have driven measurable performance improvements. She has a strategic approach to developing targeted initiatives, ensuring they are effectively communicated across all levels of the organization. Her leadership empowers employees to take ownership of their roles, fostering a culture of accountability that ultimately enables the department to exceed expectations in serving the public.
-
-Jenica was chosen as the Project Manager to assist in the development of NDOT’s Pioneer Program, which focuses on the delivery of Public-Private Partnership, Design-Build, and Construction Manager at Risk (CMAR) projects. This included the development and codification of new policy to accept unsolicited proposals in 2010. Then, in 2019, Jenica led the $181 Million Spaghetti Bowl Xpress project, located in Reno, Nevada, through contract award in the successful negotiation and execution of a design-build contract that originated as an Unsolicited Proposal.
-
-A seasoned transportation industry professional, Jenica brings extensive experience in managing projects, leading diverse teams, and a commitment to continuous improvement. She is passionate about identifying opportunities for innovation, developing strategic solutions, and managing change to enhance operations while ensuring the success of the stakeholders she serves.`,
-    categories: ['operations'],
-  },
-  {
-    id: 23,
-    name: `John Zuleger, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/john.webp`,
-    role: `Infrastructure Technologies Advisor`,
-    location: `Ohio`,
-    phone: `+1 775-721-6508`,
-    email: `john@rawlinsic.com`,
-    linkedin: `https://www.linkedin.com/in/john-zuleger-pe-756bb1103/`,
-    background: `John brings 13 years of experience as a leader in structural engineering design, along with rope access and UAS bridge inspection applications, to the Rawlins team. He has led projects with various agencies across the nation ranging from design and analysis to inspection and asset management.`,
-    achievements: `Notable projects include ABC bridge slides, the Leo Frigo Bridge post-collapse analysis, and the Brent Spence and Hernando de Soto Bridge emergencies. John, a SPRAT Level 3 climber, developed a small rope access team and grew it into a leading nationwide program.
-
-He incorporated the use of UAS into his inspection teams starting in 2016 and became a Part 107-certified UAS pilot in 2018. He has performed and managed hundreds of complex and post-disaster bridge inspections across the country. He is co-authoring the upcoming AASHTO guidelines for UAS applications in bridge inspections and has worked with numerous agencies to help develop rope access and UAS programs and policies.
-
-He continues to develop next-generation tools for asset management with advanced predictive and prioritization modeling, including enhanced 3D modeling and digital twin integration.`,
-    categories: ['technology', 'strategy'],
-  },
-  {
-    id: 24,
-    name: `Amy Causseaux, CPM`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/amyc-1.webp`,
-    role: `Infrastructure Advisor`,
-    location: `Florida`,
-    phone: `+1 513-827-2283`,
-    email: `amyc@rawlinsic.com`,
-    linkedin: `https://www.linkedin.com/in/amy-causseaux-cpm-b0b33721/`,
-    background: `Amy joined Rawlins Infra Consult in 2024. Before this, she had a successful career in various roles at the Florida Department of Transportation. She began her career as a part-time employee and an intern while completing her Social Science degree. Amy has worked with multiple groups from a functional and technical perspective, developed lasting relationships that transcend the agency and extend to all levels of government and various stakeholders. The FDOT Leadership Academy recognized Amy’s leadership potential, and she is a proud graduate of the State of Florida Certified Public Manager Program.`,
-    achievements: `In 2018, Amy was promoted to the Statewide Interchange Coordinator. Under her leadership, many processes were codified into policies, standards, guidance, manuals, and handbooks. Amy’s understanding of the agency’s strategic goals and her technical expertise provided added benefit to the agency and the Federal Highway Administration (FHWA). Amy contributed to improving the agency’s strategic outcomes in areas such as Access Management, Bicycle and Pedestrian Safety, and Managed Lanes. Her work in Managed Lanes progressed as her technical expertise deepened and the industry matured. She developed, implemented, and sustained a Managed Lanes Guidebook and training with her team based on lessons learned from working with other state DOTs.
-
-From 2005 to 2018, Amy served as the Toll Finance Manager, collaborating and working with partners from the General Accounting Office, Districts, and Florida’s Turnpike Enterprise. She streamlined processes while ensuring compliance with statutes and bond documentation requirements. She was a key team member in developing finance plans. She led the team responsible for Traffic Revenue reports for Toll and Public-Private Partnership (P3) projects.
-
-Amy has served in many roles in the agency, including the Statewide Work Program and Right of Way Offices, District Planning, Transportation Disadvantaged, and Florida’s Turnpike. She collaborated with team members to streamline several processes and worked directly with internal and external stakeholders on project initiation.`,
-    categories: ['strategy'],
-  },
-  {
-    id: 25,
-    name: `David Douglas`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/david.webp`,
-    role: `Infrastructure Advisor`,
-    location: `Florida`,
-    phone: `+1 850-545-5077`,
-    email: `davidd@rawlinsic.com`,
-    background: `David joined Rawlins Infra Consult in 2024. Prior to this, he had a successful career in various roles at the Florida Department of Transportation. He began his career serving as a District Performance Management consultant, where he worked with various groups to develop business and strategic plans and train employees.`,
-    achievements: `David received distinctions for conducting more than 8,000 classroom hours of training. He is a proud graduate of the Florida Certified Public Manager Program. In 2016, he joined Florida’s Turnpike Enterprise as the Performance and Strategic Development Manager. In this role, he focused on workforce development, performance management, and employee engagement and satisfaction.
-
-David increased the amount of training by 400% and automated the entire training program through a virtual platform. He developed innovative programs, including Learning Journeys, which provide employees with a curriculum approach to skill development. David had significant roles in designing, developing, and implementing the statewide Awards and Recognition program, the Employee Benefit Fund program, and several Leadership Development programs, including the Management Academy. David’s passion is helping organizations and employees achieve success through strategic workforce development.`,
-    categories: ['strategy'],
-  },
-  {
-    id: 27,
-    name: `Ken Flore`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/ken.webp`,
-    role: `Training & Curriculum Development Advisor`,
-    location: `Michigan`,
-    phone: `+1 863-602-7125`,
-    email: `kenf@rawlinsic.com`,
-    linkedin: `https://www.linkedin.com/in/kenneth-flore-ab16b166/`,
-    background: `Ken has worked for the State of Michigan for the past 35 years in various roles, and most currently with the Michigan Department of Transportation. As the Statewide Maintenance Program Coordinator, using best practices, he has made extensive changes to the Departments training programs for maintenance employees. Ken is also an active member with AASHTO’s TC3 Training Committee.`,
-    achievements: `He has extensive background in Labor Relations and Supervision with the Department of Transportation and the Michigan Department of Corrections, assisting in contract negations with the State’s maintenance employee’s union, abirritating contractual disputes, development of State of Michigan Departmental policies and operating procedures, and changes to Human Resources new supervisory trainings.`,
-    categories: ['operations'],
-  },
-  {
-    id: 28,
-    name: `Carissa McQuiston, P.E.`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2024/09/carissa.webp`,
-    role: `Safety Operations Advisor`,
-    location: `Michigan`,
-    phone: `+1 989-245-3201`,
-    email: `carissa@rawlinsic.com`,
-    linkedin: `https://www.linkedin.com/in/carissa-mcquiston-p-e-006ab07/`,
-    background: `Carissa has been the Safety Programs Manager for the Michigan Department of Transportation for just over two years; responsible for Managing and coordinating the division’s program for highway safety on the state trunkline. In this position, she and her staff promote Toward Zero Deaths and focus on the Safe System Approach to eliminate fatalities and serious injuries on all Michigan roadways.`,
-    achievements: `Carissa previously was the MDOT Cost and Scheduling Engineer for the Davison office and managed projects such as the I-475 Planning and Environmental Linkages Study and design and other regional projects. She was the MDOT Non-Motorized Safety Engineer and served as the central resource for pedestrian and bicyclist engineering and design; writing guidance documents, conducting research, and participating in many regional projects and reviews such as Safe Routes to School, TAP grants, etc.
-
-She has been with MDOT for almost 10 years. Carissa spent the seven years prior at the City of Grand Rapids as Traffic Engineer/Traffic System Engineer; supervising the signal, sign, and traffic engineering staff. Carissa graduated from Michigan State University (Go Green!) with a BS and MS in civil engineering.`,
-    categories: ['operations'],
-  },
-  {
-    id: 29,
-    name: `Katie Wendel`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/katie.webp`,
-    role: `Accounting Specialist`,
-    location: `Nevada`,
-    phone: `+1 517-402-1521`,
-    email: `katie@rawlinsic.com`,
-    background: `Katie is a seasoned professional with a decade of experience in office management and administrative roles. Her expertise lies in efficiently handling day-to-day operations, streamlining processes, and ensuring organizational effectiveness. With a keen eye for detail and a proactive approach, Katie has successfully managed various administrative tasks, including scheduling and resource allocation. Her dedication to optimizing workflows has consistently contributed to the smooth functioning of her workplaces.
-
-Outside of her professional endeavors, Katie finds true joy in her role as a wife and mother. She cherishes spending quality time with her husband and two children. Driven by her passion for both work and family, Katie exemplifies balance, dedication, and resilience in all aspects of her life.`,
-    achievements: ``,
-    categories: ['operations'],
-  },
-  {
-    id: 30,
-    name: `Jeffery Gallart`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/jeff.webp`,
-    role: `Strategic Programs`,
-    location: `Washington, D.C.`,
-    phone: `+1 775-781-5132`,
-    email: `jeff@rawlinsic.com`,
-    linkedin: `https://www.linkedin.com/in/jeffery-gallart-9baa7822/`,
-    background: `Jeff has over 20 years of experience as a management consultant leading teams to solve business’ most difficult challenges. Jeff is a performance improvement expert who works with transit agencies, mobility providers, and DOTs to achieve their mission at lower overall costs. His typical engagements include strategic planning, revenue generation, operational efficiency, outsourcing and cost optimization. Jeff has assisted numerous private and public sector entities with organizational structure and business process re-engineering projects aimed at enhancing long-term business performance.`,
-    achievements: `Outside the mobility sector, Jeff is an expert in supply chain and logistics. He served as a logistics and operations officer in the U.S. Army for almost a decade, serving two tours in Iraq. Prior to joining RIC, Jeff worked for Teneo, Booz Allen Hamilton, PwC, and KPMG in management consulting leadership positions. Most recently he was the CEO of a safety and efficiency business that provided maintenance solutions for transit agencies, DOTs and municipal clients.
-
-Jeff holds an MBA and Master of Science in finance from Northeastern University and a Bachelor of Science in environmental engineering from the United States Military Academy at West Point.`,
-    categories: ['strategy'],
-  },
-  {
-    id: 31,
-    name: `Nicole Arakorpi`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/nicole.webp`,
-    role: `Web & Graphic Designer`,
-    location: `Nevada`,
-    phone: `+1 202-215-2809`,
-    email: `nicole@rawlinsic.com`,
-    linkedin: `https://www.linkedin.com/in/nicolelawley/`,
-    background: `Nicole is a seasoned Web and Graphic Designer with over seven years of professional experience, specializing in creating visually compelling and user-friendly digital experiences. Her expertise spans across web design, graphic design, UI/UX design, and branding, ensuring each project is both aesthetically pleasing and functionally robust. Nicole brings a comprehensive skill-set to the table, allowing her to create impactful digital and visual solutions for clients across various industries. In both web and graphic design, Nicole approaches each project with creativity, innovation, and attention to detail. Her goal is to not only meet but exceed client expectations, delivering solutions that elevate their brand presence and drive tangible results.`,
-    achievements: `As a web designer, Nicole leverages her expertise to create responsive and user-friendly websites of all scopes. From sleek landing pages to intricate e-commerce platforms, she’s had the pleasure of bringing countless digital visions to life. Nicole believes in continuous learning and staying updated with industry trends, ensuring her designs are always fresh, innovative, and aligned with best practices.
-
-As a graphic designer, she excels in logo design, print materials, branding initiatives, and more. With a keen eye for typography, color theory, and layout design, Nicole is committed to creating designs that not only look great but also effectively communicate the essence of the brand.
-
-Nicole’s journey into the world of design began after graduating with degrees in Marketing and Business Administration/Management from the University of Nevada, Reno. Although she initially pursued a career in Human Resources in 2013, Nicole realized her true passion lay in creativity and design. In 2017 Nicole got her BA in Graphic Design & Media Arts specializing in Web Design from Southern New Hampshire University. Since then, she has been dedicated to bringing clients’ creative dreams to life.`,
-    categories: ['brand-communication', 'strategy', 'technology'],
-  },
-  {
-    id: 32,
-    name: `Skylar Granata`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/05/skylar.webp`,
-    role: `Accounting Specialist`,
-    location: `Nevada`,
-    phone: `+1 775-881-8165`,
-    email: `skylar@rawlinsic.com`,
-    background: `With eight years of experience in administration and accounting, Skylar has established a successful career serving the State of Nevada and the City of Reno. At the Secretary of State’s Office, she gained expertise in processing notary and apostille applications while supporting the elections division. Her work at the Public Utilities Commission highlighted her organizational skills, as she managed all travel logistics and streamlined purchase order processes to improve efficiency and compliance.`,
-    achievements: `At the City of Reno, Skylar took on diverse responsibilities, including budget management, policy updates, and executive calendar coordination for assistant city managers. She also led the City of Reno’s Sister Cities Project, fostering cultural and economic relationships.
-
-Skylar’s commitment to detail and organizational excellence has consistently driven efficiency and supported strategic goals throughout her career.`,
-    categories: ['operations'],
-  },
-  {
     id: 33,
-    name: `Stacie Hancock`,
-    photo: `https://rawlinsic.com/wp-content/uploads/2025/01/stacie.webp`,
-    role: `Accounting Specialist`,
-    location: `Nevada`,
-    phone: `+1 775-220-2720`,
-    email: `stacie@rawlinsic.com`,
-    background: `Stacie Hancock brings 30+ years of experience working with the State of Nevada. She has extensive experience in fiscal monitoring, analyzing state and federal regulations, as well as managing projections, grants, and contracts. Stacie is highly skilled in accounts payable and receivables and has worked closely with program staff to ensure accurate and timely reconciliations for federal reporting. Stacie is a team player, helps train other staff and is dedicated to her work.`,
-    achievements: ``,
-    categories: ['operations'],
-  },
-  {
-    id: 34,
     name: `Mayela Sosa`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/06/mayela.webp`,
     role: `Infrastructure Advisor`,
@@ -560,7 +560,7 @@ As the FHWA Hawaii Division Administrator, Mayela led a major reform initiative 
     categories: ['strategy'],
   },
   {
-    id: 35,
+    id: 34,
     name: `Jenna Brady`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/08/jenna.webp`,
     role: `Infrastructure Advisor`,
@@ -577,7 +577,7 @@ In 2021, she left the private sector and began her career with the Texas Departm
     categories: ['strategy'],
   },
   {
-    id: 36,
+    id: 35,
     name: `Mark A. Johnson`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/09/markj.webp`,
     role: `Infrastructure Advisor`,
@@ -596,7 +596,7 @@ Mark also completed several rotational and temporary assignments, including FHWA
     categories: ['strategy'],
   },
   {
-    id: 37,
+    id: 36,
     name: `Paul Wheeler`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/10/paulw.webp`,
     role: `Aerial Innovation Advisor`,
@@ -604,12 +604,12 @@ Mark also completed several rotational and temporary assignments, including FHWA
     phone: `+1 801-232-9265`,
     email: ``,
     linkedin: `https://www.linkedin.com/in/pcwheeler/`,
-    background: `Paul has nearly 30 years of experience and is internationally known as an Uncrewed Aircraft System (UAS) / Advanced Air Mobility (AAM) subject matter expert. He was recognized by the Commercial UAV Expo and InterDrone as one of the world’s top drone visionaries. His background in aviation, surface transportation, and technology gives him a unique perspective on innovative solutions across industries. He has developed first of their kind guidance manuals on UAS and AAM and currently serves on multiple national committees to help foster innovation through emerging technologies. He is passionate about the vision to enable a new revolution of aerial innovation and transportation.`,
+    background: `Paul has nearly 30 years of experience and is internationally known as an Uncrewed Aircraft System (UAS) / Advanced Air Mobility (AAM) subject matter expert. He was recognized by the Commercial UAV Expo and InterDrone as one of the world's top drone visionaries. His background in aviation, surface transportation, and technology gives him a unique perspective on innovative solutions across industries. He has developed first of their kind guidance manuals on UAS and AAM and currently serves on multiple national committees to help foster innovation through emerging technologies. He is passionate about the vision to enable a new revolution of aerial innovation and transportation.`,
     achievements: ``,
     categories: ['technology'],
   },
   {
-    id: 38,
+    id: 37,
     name: `Aaron Organ`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/10/aaron.webp`,
     role: `Aerial Technologies Advisor`,
@@ -624,7 +624,7 @@ He holds FAA Remote Pilot, Private Pilot (SEL), and Advanced Ground Instructor c
     categories: ['technology'],
   },
   {
-    id: 39,
+    id: 38,
     name: `Lance Grace`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/10/lance.webp`,
     role: `Infrastructure Advisor`,
@@ -645,7 +645,7 @@ He also served as the project manager for one of the first projects to use the D
     categories: ['strategy'],
   },
   {
-    id: 40,
+    id: 39,
     name: `Samantha Lloyd`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/10/saml.webp`,
     role: `AI & Automation Specialist`,
@@ -666,7 +666,7 @@ Her achievements reflect a deep commitment to innovation, collaboration, and pur
     categories: ['technology'],
   },
   {
-    id: 41,
+    id: 40,
     name: `Andy Palanisamy`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/10/andy.webp`,
     role: `Infrastructure Advisor`,
@@ -686,7 +686,7 @@ Andy holds a Master in Public Administration from Harvard Kennedy School and a B
     categories: ['strategy'],
   },
   {
-    id: 42,
+    id: 41,
     name: `Dara Schechter`,
     photo: `https://rawlinsic.com/wp-content/uploads/2025/12/dara.webp`,
     role: `Strategic Communications`,
@@ -701,7 +701,7 @@ Dara applies systems thinking and clear cross-functional communication to positi
     categories: ['brand-communication', 'strategy'],
   },
   {
-    id: 43,
+    id: 42,
     name: `Jennifer (Jen) Pihl`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/01/jennifer.webp`,
     role: `Infrastructure Advisor`,
@@ -709,16 +709,16 @@ Dara applies systems thinking and clear cross-functional communication to positi
     phone: `+1 602-614-9853`,
     email: `jen@rawlinsic.com`,
     linkedin: `https://www.linkedin.com/in/jpihl4/`,
-    background: `Jennifer has more than 20 years of transportation experience working for the Michigan Department of Transportation (MDOT), Federal Highway Administration, Federal Rail Administration and Rawlins.  Jen is recognized for her ability to effectively manage and deliver transportation projects.  She has a broad range of experience from maintenance and operations to construction and traffic and safety, including intelligent transportation systems.  Jen is known for her ability to collaborate and work effectively in a team environment.`,
-    achievements: `Jen has led and managed multimillion-dollar transportation projects with a high degree of technical and operational complexity. She was responsible for the MDOT University Region’s Intelligent Transportation Systems (ITS) infrastructure across the full asset lifecycle, including planning, design, deployment, operations, and maintenance. In this role, she advanced Transportation Systems Management and Operations (TSMO) initiatives that improved safety, maintenance, and operational efficiency while increasing transparency and consistency in program delivery.
+    background: `Jennifer has more than 20 years of transportation experience working for the Michigan Department of Transportation (MDOT), Federal Highway Administration, Federal Rail Administration and Rawlins.  Jen is recognized for her ability to effectively manage and deliver transportation projects.  She has a broad range of experience from maintenance and operations to construction and traffic and safety, including intelligent transportation systems.  Jen is known for her ability to collaborate and work effectively in a team environment.`,
+    achievements: `Jen has led and managed multimillion-dollar transportation projects with a high degree of technical and operational complexity. She was responsible for the MDOT University Region's Intelligent Transportation Systems (ITS) infrastructure across the full asset lifecycle, including planning, design, deployment, operations, and maintenance. In this role, she advanced Transportation Systems Management and Operations (TSMO) initiatives that improved safety, maintenance, and operational efficiency while increasing transparency and consistency in program delivery.
 
-Working across Federal and State DOT programs, Jen developed project prioritization frameworks and benefit-cost methodologies that enabled data-driven investment decisions and led to statewide adoption of standardized project selection processes. She also supported delivery of complex software systems for MDOT’s managed lanes program, including operations, training, and development of data governance, retention, and security policies. Jen provided construction oversight for technically complex projects, supporting testing, integration, and coordination with contractors to ensure projects were delivered on schedule and met operational requirements.  Her strong project management skills contributed to successful construction project delivery and the application of modeling and analytical tools to support project development.
+Working across Federal and State DOT programs, Jen developed project prioritization frameworks and benefit-cost methodologies that enabled data-driven investment decisions and led to statewide adoption of standardized project selection processes. She also supported delivery of complex software systems for MDOT's managed lanes program, including operations, training, and development of data governance, retention, and security policies. Jen provided construction oversight for technically complex projects, supporting testing, integration, and coordination with contractors to ensure projects were delivered on schedule and met operational requirements.  Her strong project management skills contributed to successful construction project delivery and the application of modeling and analytical tools to support project development.
 
 At the Federal level, Jen led national efforts in economic development and benefit-cost analysis at the FHWA Center for Innovation and Technology, supporting freight analysis, performance management, and traffic and modeling initiatives. She provided technical assistance and training to State DOTs and MPOs, supported performance-based planning and project prioritization, and served as a technical reviewer for federal discretionary grant programs. At the Federal Railroad Administration, she supported economic analysis and administration of major rail grant programs, developing guidance and templates now used nationally to support consistent evaluation and decision-making.`,
     categories: ['strategy'],
   },
   {
-    id: 44,
+    id: 43,
     name: `Bob Eatmon`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/01/bob.webp`,
     role: `Infrastructure Advisor`,
@@ -737,7 +737,7 @@ After retiring from FHWA, Bob worked as a consultant providing technical assista
     categories: ['strategy'],
   },
   {
-    id: 45,
+    id: 44,
     name: `Ken M. McEntire, PE`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/02/kenm.webp`,
     role: `Advisory Services – Highway Operations & Maintenance`,
@@ -752,7 +752,7 @@ Mr. McEntire develops performance-based asset maintenance and operations systems
     categories: ['strategy', 'operations'],
   },
   {
-    id: 46,
+    id: 45,
     name: `Ozzy Bravo, P.E.`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/02/ozzy.webp`,
     role: `Infrastructure Advisor`,
@@ -767,7 +767,7 @@ Ozzy is a graduate of The University of Kansas and Texas A&M University in Colle
     categories: ['strategy'],
   },
   {
-    id: 47,
+    id: 46,
     name: `Dara Wheeler`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/darawheeler.webp`,
     role: `Infrastructure Advisor`,
@@ -788,7 +788,7 @@ Her work has been recognized with several prestigious honors, including the **Bi
     categories: ['strategy'],
   },
   {
-    id: 48,
+    id: 47,
     name: `Kiara Pienaar`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/kiara.webp`,
     role: `Automation Tester & Content Creator`,
@@ -801,7 +801,7 @@ Her work has been recognized with several prestigious honors, including the **Bi
     categories: ['technology'],
   },
   {
-    id: 49,
+    id: 48,
     name: `Corey Biddle`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/corey.webp`,
     role: `Infrastructure Advisor`,
@@ -818,7 +818,7 @@ Driven by a commitment to excellence and a passion for building strong partnersh
     categories: ['strategy'],
   },
   {
-    id: 50,
+    id: 49,
     name: `Jenn Breitner`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/jennb.webp`,
     role: `Administrative Assistant`,
@@ -832,7 +832,7 @@ Jenn has two boys in the United States Army and one grandson, who are her pride 
     categories: ['operations'],
   },
   {
-    id: 51,
+    id: 50,
     name: `Kobus Pieters`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/kobus.webp`,
     role: `AI & Automation Specialist`,
@@ -844,7 +844,7 @@ Jenn has two boys in the United States Army and one grandson, who are her pride 
     categories: ['technology'],
   },
   {
-    id: 52,
+    id: 51,
     name: `Joey Paskey`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/joey.webp`,
     role: `Infrastructure Advisor`,
