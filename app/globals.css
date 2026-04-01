@@ -1720,8 +1720,12 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .section-explore { padding: 80px 24px; }
   .section-team { padding: 80px 24px; }
   /* Intro expandable — same click-to-expand behaviour on mobile */
-  /* Explore arrow visible on mobile */
+  /* Show hover-dependent content on mobile since there's no hover */
+  .explore-card-desc { opacity: 1; max-height: 140px; transform: translateY(0); }
   .explore-card-arrow { opacity: 1; transform: translateY(0); }
+  .story-card-body-wrap { opacity: 1; max-height: 300px; transform: translateY(0); }
+  .pillar-desc { max-height: 220px; opacity: 1; }
+  .pillar-link { opacity: 1; transform: translateY(0); }
 }
 
 /* Hide Next.js badge */

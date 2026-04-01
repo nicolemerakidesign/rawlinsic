@@ -62,7 +62,7 @@ const pillars = [
 const journey = [
   {
     phase: "Foundation",
-    title: "Deep Public Agency Expertise",
+    title: "Deep Transportation Agency Expertise",
     text: "Having worked successfully within complex public agencies for many years, our team applies deep insights gained from overcoming project and program constraints, navigating decision-making dynamics, and fostering organizational cultures that support collaboration and accountability.",
     bg: "/images/pages/journey-foundation.jpg",
   },
