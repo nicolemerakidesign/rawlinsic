@@ -87,6 +87,14 @@ const capabilitySections: CapabilitySection[] = [
 export default function CapabilitiesPage() {
   const [activeTab, setActiveTab] = useState("strategy");
   const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const toggleSectionServices = (id: string) => {
+    setExpandedSections(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const mouseX = useRef(0);
@@ -314,32 +322,48 @@ export default function CapabilitiesPage() {
                 <span className="cap-svc-count-num">{section.services.length}</span>
                 <span className="cap-svc-count-word">Services</span>
               </div>
+              <button
+                className="cap-svc-toggle-btn"
+                onClick={() => toggleSectionServices(section.id)}
+                aria-expanded={expandedSections.has(section.id)}
+              >
+                <span>{expandedSections.has(section.id) ? "Collapse" : "Expand Services"}</span>
+                <svg
+                  width="13" height="13" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                  style={{ transform: expandedSections.has(section.id) ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.35s ease" }}
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
             </div>
-            <div className="cap-svc-list">
-              {section.services.map((svc, i) => {
-                const isOpen = expandedService === `${section.id}-${i}`;
-                return (
-                  <div
-                    key={svc.title}
-                    className={`cap-svc-row${isOpen ? " expanded" : ""}`}
-                    onClick={() => setExpandedService(isOpen ? null : `${section.id}-${i}`)}
-                  >
-                    <div className="cap-svc-row-header">
-                      <span className="cap-svc-row-num">{String(i + 1).padStart(2, "0")}</span>
-                      <h3 className="cap-svc-row-title">{svc.title}</h3>
-                      <div className="cap-svc-row-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="12" y1="5" x2="12" y2="19" className="cap-svc-vline" />
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
+            <div className={`cap-svc-list-wrap${expandedSections.has(section.id) ? " open" : ""}`}>
+              <div className="cap-svc-list">
+                {section.services.map((svc, i) => {
+                  const isOpen = expandedService === `${section.id}-${i}`;
+                  return (
+                    <div
+                      key={svc.title}
+                      className={`cap-svc-row${isOpen ? " expanded" : ""}`}
+                      onClick={() => setExpandedService(isOpen ? null : `${section.id}-${i}`)}
+                    >
+                      <div className="cap-svc-row-header">
+                        <span className="cap-svc-row-num">{String(i + 1).padStart(2, "0")}</span>
+                        <h3 className="cap-svc-row-title">{svc.title}</h3>
+                        <div className="cap-svc-row-icon">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19" className="cap-svc-vline" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="cap-svc-row-body">
+                        <p className="cap-svc-row-desc">{svc.desc}</p>
                       </div>
                     </div>
-                    <div className="cap-svc-row-body">
-                      <p className="cap-svc-row-desc">{svc.desc}</p>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
 
