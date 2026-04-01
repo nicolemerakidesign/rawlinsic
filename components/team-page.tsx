@@ -326,6 +326,7 @@ export default function TeamPage() {
                 </div>
                 <div className="team-card-info">
                   <span className="team-card-name">{member.name}</span>
+                  {member.title && <span className="team-card-title-label">{member.title}</span>}
                   <span className="team-card-role">{member.role}</span>
                   <span className="team-card-location">{member.location}</span>
                 </div>
