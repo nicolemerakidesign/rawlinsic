@@ -218,11 +218,11 @@ export default function InsightsPage() {
       <section style={{ padding: "100px 48px 120px", textAlign: "center", position: "relative" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative", zIndex: 10 }}>
           <p className="section-label"><span className="gold-text">Start a Conversation</span></p>
-          <h2 className="section-title" style={{ marginBottom: "20px", textAlign: "center", whiteSpace: "nowrap" }}>
-            Have a <em style={{ fontStyle: "italic", background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>topic</em> you&rsquo;d like us to cover?
+          <h2 className="section-title" style={{ marginBottom: "20px", textAlign: "center" }}>
+            Have a <em>topic</em> you&rsquo;d like to discuss?
           </h2>
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center" }}>
-            We&rsquo;re always exploring new questions at the intersection of strategy, technology, and public service. Reach out to start a conversation.
+            We&rsquo;re always exploring new questions and emerging needs shaping how organizations plan, deliver, and evolve&mdash;particularly in transportation and increasingly across other sectors.
           </p>
           <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
             <span>Get In Touch</span>
