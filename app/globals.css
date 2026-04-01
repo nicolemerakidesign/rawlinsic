@@ -3746,7 +3746,7 @@ color: #fff;
   padding: 80px 40px 60px;
 }
 .csd-content-inner {
-  max-width: 960px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 .csd-description {
@@ -3775,35 +3775,35 @@ color: #fff;
 /* ── Client info (Delaware style) ── */
 .csd-client-info {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(201,168,76,0.1);
+  background: rgba(201,168,76,0.03);
+  border: 1px solid rgba(201,168,76,0.15);
   border-radius: 10px;
   margin-bottom: 56px;
   overflow: hidden;
 }
 .csd-info-item {
-  padding: 24px 28px;
-  border-right: 1px solid rgba(201,168,76,0.08);
+  padding: 28px 32px;
+  border-right: 1px solid rgba(201,168,76,0.1);
 }
 .csd-info-item:last-child { border-right: none; }
 .csd-info-label {
   display: block;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e8d5a0, #b89a3e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .csd-info-value {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.6;
   color: #fff;
@@ -3812,8 +3812,8 @@ color: #fff;
 /* ── Project tile grid (Insights-style) ── */
 .csd-projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 .csd-project-tile {
   padding: 32px 28px;
@@ -3924,22 +3924,22 @@ color: #fff;
   position: relative;
   padding-left: 18px;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.75;
-  color: rgba(255,255,255,0.9);
+  color: #ffffff;
   margin-bottom: 10px;
 }
 .csd-tile-bullets li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 10px;
+  top: 11px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: linear-gradient(145deg, #b89a3e, #d4be78);
-  opacity: 0.5;
+  opacity: 1;
 }
 .csd-tile-bullets li:last-child {
   margin-bottom: 0;
@@ -3969,7 +3969,7 @@ color: #fff;
   padding: 60px 40px 80px;
 }
 .csd-nav-inner {
-  max-width: 860px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -4021,6 +4021,9 @@ color: #fff;
 }
 @media (max-width: 1100px) {
   .csd-projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1400px) {
+  .csd-content { padding: 80px 40px 60px; }
 }
 @media (max-width: 900px) {
   .cs-grid-section { padding: 60px 24px 80px; }
@@ -5628,7 +5631,11 @@ color: #fff;
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 .ins-channel-img-wrap {
-  position: relative; aspect-ratio: 16/10; overflow: hidden;
+  position: relative; aspect-ratio: 16/9; overflow: hidden;
+  transition: aspect-ratio 0.4s ease;
+}
+.ins-channel-card:hover .ins-channel-img-wrap {
+  aspect-ratio: 16/10;
 }
 .ins-channel-img { object-fit: cover; transition: transform 0.6s ease; }
 .ins-channel-card:hover .ins-channel-img { transform: scale(1.08); }
@@ -5636,7 +5643,8 @@ color: #fff;
   position: absolute; inset: 0;
   background: linear-gradient(180deg, transparent 40%, rgba(6,12,22,0.8) 100%);
 }
-.ins-channel-body { padding: 32px 28px; flex: 1; display: flex; flex-direction: column; }
+.ins-channel-body { padding: 24px 28px; flex: 1; display: flex; flex-direction: column; transition: padding 0.3s; }
+.ins-channel-card:hover .ins-channel-body { padding: 32px 28px; }
 .ins-channel-subtitle {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;
