@@ -392,6 +392,10 @@ color: #fff;
 .rd1 { transition-delay: 0.12s; }
 .rd2 { transition-delay: 0.24s; }
 .rd3 { transition-delay: 0.36s; }
+/* Disable reveal animations on mobile — content shows instantly */
+@media (max-width: 768px) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
 .rd4 { transition-delay: 0.48s; }
 
 /* ── Contact Hero ────────────────────────────── */
