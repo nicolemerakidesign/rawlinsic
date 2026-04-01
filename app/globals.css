@@ -637,39 +637,37 @@ a.contact-detail-value:hover { color: #fff; }
 }
 .form-submit {
   display: flex; align-items: center; justify-content: center;
-  padding: 16px 40px;
-  border: 1px solid rgba(201,168,76,0.5);
-  background: transparent;
-  color: #d4be78;
+  padding: 18px 40px;
+  background: linear-gradient(90deg, #d4be78, #c9a84c);
+  background-size: 100% 100%;
+  background-repeat: no-repeat; background-position: right center;
+  border: 1px solid transparent;
+  color: #060c16;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.75rem; font-weight: 600;
+  font-size: 0.75rem; font-weight: 700;
   letter-spacing: 3px; text-transform: uppercase;
   border-radius: 0;
   cursor: pointer;
   position: relative; overflow: hidden;
-  transition: all 0.4s;
+  transition: background-size 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s, border-color 0.4s;
   margin-top: 8px;
   width: 100%;
 }
-.form-submit::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(145deg, #e8d5a0, #c9a84c);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+.form-submit:hover {
+  background-size: 0% 100%;
+  color: #fff; border-color: rgba(201,168,76,0.5); font-weight: 800;
 }
-.form-submit:hover::before { transform: scaleX(1); }
-.form-submit:hover { color: #060c16; border-color: #c9a84c; }
-.form-submit:disabled { opacity: 0.7; }
+.form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 .form-submit-inner {
   display: flex; align-items: center; gap: 12px;
   position: relative; z-index: 1;
 }
 .form-submit svg { transition: transform 0.4s ease; }
-.form-submit:hover svg { transform: translateX(5px); stroke: #060c16; }
+.form-submit:hover svg { transform: translateX(5px); stroke: #fff; }
 .form-spinner {
   width: 16px; height: 16px;
-  border: 1.5px solid rgba(212,190,120,0.3);
-  border-top-color: #d4be78;
+  border: 1.5px solid rgba(6,12,22,0.25);
+  border-top-color: #060c16;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   flex-shrink: 0;
