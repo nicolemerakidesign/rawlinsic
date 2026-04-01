@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
+import PasswordGate from "@/components/password-gate";
 import { TEAM_MEMBERS, type TeamMember } from "@/lib/team-data";
 
 type FilterCategory = "all" | "leadership" | "strategy" | "operations" | "technology" | "brand-communication";
@@ -186,6 +187,10 @@ export default function TeamPage() {
 
   return (
     <>
+      {/* Custom Cursor — outside PasswordGate */}
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
+    <PasswordGate>
       {/* Ambient Background */}
       <div className="ambient-bg" />
       <div className="ambient-orbs">
@@ -195,10 +200,6 @@ export default function TeamPage() {
         <div className="orb orb-4" />
       </div>
       <div className="micro-particles" id="microParticles" />
-
-      {/* Custom Cursor */}
-      <div className="cursor-dot" ref={dotRef} />
-      <div className="cursor-ring" ref={ringRef} />
 
       {/* Back to Top */}
       <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
@@ -416,6 +417,7 @@ export default function TeamPage() {
           </button>
         </div>
       )}
+    </PasswordGate>
     </>
   );
 }

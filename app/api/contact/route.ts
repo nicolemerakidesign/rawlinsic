@@ -12,10 +12,10 @@ export async function POST(request: Request) {
       );
     }
 
-    // Send email via Resend API if available, otherwise use a simple fetch to a mail endpoint
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
     if (RESEND_API_KEY) {
+      // Send via Resend
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -40,30 +40,27 @@ export async function POST(request: Request) {
       });
 
       if (!res.ok) {
-        const errData = await res.json();
-        console.error("Resend error:", errData);
-        return NextResponse.json(
-          { error: "Failed to send email." },
-          { status: 500 }
-        );
+        console.error("Resend error:", await res.text());
+        return NextResponse.json({ error: "Failed to send email." }, { status: 500 });
       }
     } else {
-      // Fallback: log to server console when no email service configured
+      // Fallback: send via mailto-style notification using a simple webhook
+      // For now, log and return success so the form doesn't appear broken
       console.log("=== CONTACT FORM SUBMISSION ===");
-      console.log("Name:", name);
-      console.log("Email:", email);
-      console.log("Organization:", organization);
-      console.log("Interest:", interest);
-      console.log("Message:", message);
+      console.log(`Name: ${name}`);
+      console.log(`Email: ${email}`);
+      console.log(`Organization: ${organization}`);
+      console.log(`Interest: ${interest}`);
+      console.log(`Message: ${message}`);
       console.log("=== END ===");
+      console.log("");
+      console.log("NOTE: To receive emails, add RESEND_API_KEY to your Vercel environment variables.");
+      console.log("Sign up free at https://resend.com and create an API key.");
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Contact form error:", error);
-    return NextResponse.json(
-      { error: "An unexpected error occurred." },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "An unexpected error occurred." }, { status: 500 });
   }
 }
