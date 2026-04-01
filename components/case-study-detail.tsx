@@ -217,21 +217,26 @@ export default function CaseStudyDetail({ study }: Props) {
               </h2>
             )}
 
-            {/* Projects — tile grid */}
+            {/* Projects — tile grid (Insights-style) */}
             <div className="csd-projects-grid">
               {study.projects.map((project, pi) => (
                 <div
                   key={pi}
                   className={`csd-project-tile reveal rd${(pi % 4) + 1}`}
                 >
-                  <span className="csd-tile-number">
+                  <span className="csd-tile-subtitle">
                     {String(pi + 1).padStart(2, "0")}
                   </span>
                   <h3 className="csd-tile-title">{project.title}</h3>
                   {project.budget && (
                     <span className="csd-tile-budget">{project.budget}</span>
                   )}
-                  <div className="csd-tile-divider" />
+                  <span className="csd-tile-expand-hint">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                  </span>
                   {project.bullets && project.bullets.length > 0 && (
                     <ul className="csd-tile-bullets">
                       {project.bullets.map((b, bi) => (

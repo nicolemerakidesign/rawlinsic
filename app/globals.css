@@ -3809,46 +3809,63 @@ color: #fff;
   color: #fff;
 }
 
-/* ── Project tile grid ── */
+/* ── Project tile grid (Insights-style) ── */
 .csd-projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 28px;
 }
 .csd-project-tile {
   padding: 32px 28px;
-  background: rgba(255,255,255,0.02);
+  background: rgba(6,12,22,0.6);
   border: 1px solid rgba(201,168,76,0.08);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.4s, background 0.4s, transform 0.4s;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s, transform 0.45s;
 }
+.csd-project-tile::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px; z-index: 2;
+  background: linear-gradient(90deg, #c9a84c, #e8d5a0, #c9a84c);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.csd-project-tile:hover::before { transform: scaleX(1); }
 .csd-project-tile:hover {
-  background: rgba(201,168,76,0.04);
-  border-color: rgba(201,168,76,0.25);
+  border-color: rgba(201,168,76,0.22);
   transform: translateY(-4px);
 }
-.csd-tile-number {
-  font-family: var(--font-cormorant), serif;
-  font-size: 32px;
+/* Accent bar (like ins-channel-accent) */
+.csd-project-tile::after {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 3px; height: 0;
+  background: linear-gradient(180deg, #c9a84c, transparent);
+  transition: height 0.5s ease;
+}
+.csd-project-tile:hover::after { height: 100%; }
+/* Subtitle / number */
+.csd-tile-subtitle {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 12px;
   font-weight: 700;
-  font-style: italic;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  opacity: 0.35;
-  line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .csd-tile-title {
   font-family: var(--font-cormorant), serif;
-  font-size: 24px;
-  font-weight: 500;
-  color: #e8e6e1;
-  margin: 0 0 12px;
-  line-height: 1.2;
+  font-size: 34px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 14px;
+  line-height: 1.15;
 }
 .csd-tile-budget {
   display: inline-block;
@@ -3863,20 +3880,33 @@ color: #fff;
   padding: 4px 14px;
   border-radius: 20px;
   white-space: nowrap;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   align-self: flex-start;
 }
-.csd-tile-divider {
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(201,168,76,0.5), transparent);
-  margin: 16px 0;
+/* + hint icon */
+.csd-tile-expand-hint {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px;
+  border: 1px solid rgba(201,168,76,0.6);
+  border-radius: 50%;
+  margin: 16px 0 0;
+  transition: opacity 0.3s, margin-bottom 0.3s;
 }
+.csd-tile-expand-hint svg { stroke: rgba(201,168,76,0.9); }
+.csd-project-tile:hover .csd-tile-expand-hint {
+  margin-bottom: 20px;
+}
+/* Bullets — hidden by default, show on hover */
 .csd-tile-bullets {
   list-style: none;
   padding: 0;
   margin: 0;
   flex: 1;
+  max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 0.45s ease, opacity 0.4s ease;
+}
+.csd-project-tile:hover .csd-tile-bullets {
+  max-height: 500px; opacity: 1;
 }
 .csd-tile-bullets li {
   position: relative;
@@ -3884,8 +3914,8 @@ color: #fff;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   font-size: 15px;
   font-weight: 400;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.85);
+  line-height: 1.75;
+  color: rgba(255,255,255,0.9);
   margin-bottom: 10px;
 }
 .csd-tile-bullets li::before {
@@ -3997,6 +4027,8 @@ color: #fff;
   .csd-hero { min-height: 45vh; padding: 100px 24px 40px; }
   .csd-projects-grid { grid-template-columns: 1fr; }
   .csd-project-tile { padding: 24px 20px; }
+  .csd-tile-bullets { max-height: 500px; opacity: 1; }
+  .csd-tile-expand-hint { display: none; }
   .csd-nav-inner { flex-direction: column; }
   .csd-nav-link { width: 100%; }
   .csd-nav-next { text-align: left; margin-left: 0; }
