@@ -5389,7 +5389,9 @@ color: #fff;
   .cap-banner-title { font-size: 36px; }
   .cap-svc-card { flex: 0 0 280px; min-height: 160px; }
   .cap-tab { padding: 14px 12px; font-size: 11px; letter-spacing: 1.5px; }
-  .cap-cta { padding: 60px 24px 80px; }
+  .cap-cta { padding: 60px 24px 80px; opacity: 1 !important; }
+  .cap-cta-title { font-size: clamp(1.8rem, 8vw, 2.4rem); color: #fff !important; }
+  .cap-cta-text { color: #fff !important; }
 }
 
 /* ═══════════════════════════════════════════════════
