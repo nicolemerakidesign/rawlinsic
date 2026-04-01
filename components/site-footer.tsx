@@ -51,15 +51,6 @@ export default function SiteFooter() {
             <li>
               <a href="tel:+17758433822">(775) 843-3822</a>
             </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/company/rawlins-infra-consult/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-            </li>
           </ul>
           <div className="footer-social">
             <a href="https://www.linkedin.com/company/107078508/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="LinkedIn">
