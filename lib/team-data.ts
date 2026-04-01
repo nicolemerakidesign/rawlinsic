@@ -814,10 +814,12 @@ Jenn has two boys in the United States Army and one grandson, who are her pride 
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/joey.webp`,
     role: `Infrastructure Advisor`,
     location: `Nevada`,
-    phone: ``,
+    phone: `+1 702-575-3472`,
     email: `joey@rawlinsic.com`,
-    background: `Coming soon!`,
-    achievements: ``,
+    background: `Joey brings over 20 years of experience in the transportation industry. She has worked extensively with state departments of transportation, regional agencies, and local governments across the United States on major infrastructure projects, with a focus on transportation systems, alternative delivery, and turning long-range plans into implementable programs.`,
+    achievements: `Joey's career reflects leadership in transportation and infrastructure, spanning both public and private sectors. As Director of Public Works for the City of Las Vegas, she oversaw planning, design, construction, and maintenance of public infrastructure, with responsibility for policy, program, and budget development, including oversight of more than $950 million annually. During her tenure, she championed the City's Vision Zero initiative to eliminate traffic fatalities and serious injuries and led the implementation of asset management programs to improve maintenance efficiency and system performance.
+
+Prior to her public sector leadership, Joey served as a consultant providing technical expertise in intelligent transportation systems (ITS), traffic design, and alternative delivery for major infrastructure projects nationwide. She is actively involved in professional organizations at the national, regional, state, and local levels. Joey is a registered Professional Engineer in Nevada and California, a certified Professional Traffic Operations Engineer (PTOE), and holds both bachelor's and master's degrees in civil engineering from Montana State University.`,
     categories: ['operations'],
   }
 ];
