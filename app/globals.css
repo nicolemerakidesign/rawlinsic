@@ -3746,7 +3746,7 @@ color: #fff;
   padding: 80px 40px 60px;
 }
 .csd-content-inner {
-  max-width: 1400px;
+  max-width: 960px;
   margin: 0 auto;
 }
 .csd-description {
@@ -3812,8 +3812,10 @@ color: #fff;
 /* ── Project tile grid (Insights-style) ── */
 .csd-projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 340px));
   gap: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 .csd-project-tile {
   padding: 32px 28px;
@@ -3969,7 +3971,7 @@ color: #fff;
   padding: 60px 40px 80px;
 }
 .csd-nav-inner {
-  max-width: 1400px;
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -4021,9 +4023,6 @@ color: #fff;
 }
 @media (max-width: 1100px) {
   .csd-projects-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 1400px) {
-  .csd-content { padding: 80px 40px 60px; }
 }
 @media (max-width: 900px) {
   .cs-grid-section { padding: 60px 24px 80px; }
