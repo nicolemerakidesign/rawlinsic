@@ -344,6 +344,7 @@ He was MDOT’s voting member for both the AASHTO Committee on Transportation Sy
     location: `Florida`,
     phone: `+1 775-980-5729`,
     email: `barbara@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/barbara-davis-aicp-69606b30/`,
     background: `Barbara has over 34 years of transportation planning experience working at the MPO, State, and local levels of government. She has worked on all modes of transportation projects including pedestrian, bicycle, transit, highways, and toll facilities.
 
 She began her career working as an entry-level transportation planner for a Metropolitan Planning Organization (MPO). In this role, she was responsible for development of comprehensive plans for pedestrian and bicycle modes of transportation. She was subsequently promoted to Transportation Division Manager and became responsible for overseeing the development of all the MPO’s major programs and initiatives including the Long-Range Transportation Plan, the Transportation Improvement Program, and the Unified Planning Work Program, as well as many other special projects. As the MPO’s Executive Director, she reported directly to a board of 19 local elected officials and represented the MPO on the statewide MPO Advisory Council.`,
@@ -549,6 +550,7 @@ She uses her proven organizational, communications, and leadership skills to lea
     location: `Indiana`,
     phone: `+1 371-349-1396`,
     email: `mayela@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/mayela-sosa-596509297/`,
     background: `Mayela brings over 29 years of transportation industry experience. Most recently, Mayela was a senior executive with the Federal Highway Administration (FHWA) Office of the Directors of Field Services where she provided executive leadership support and strategic direction to leaders in the 13 FHWA Division offices in the Mid-America region with a collective federal-aid highway program of over $13 billion and approximately 300 employees. Mayela collaborated with the Mid-America Division offices and a wide variety of federal fund recipients, including state departments of transportation, metropolitan planning organizations, tribal and local governments, non-profit organizations and others, to successfully implement numerous grant programs introduced in the Infrastructure Investment and Jobs Act.  She also provided leadership and guidance to Division leaders in effectively navigating and resolving a wide range of unique operational, program and project issues.
 
 Her distinguished career with FHWA has included assignments in Texas, California, Arizona, Hawaii, Indiana, and Washington, D.C.  She work for the Texas Department of Transportation for five years and served in the U.S. Army for four years prior to joining FHWA.`,
@@ -823,7 +825,7 @@ Driven by a commitment to excellence and a passion for building strong partnersh
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/jennb.webp`,
     role: `Administrative Assistant`,
     location: `Michigan`,
-    phone: ``,
+    phone: `+1 231-383-3559`,
     email: `jennb@rawlinsic.com`,
     background: `Jenn has 20 years of office experience and a background in client services and administration, including managerial and financial accounting. Throughout her career, she has developed extensive skills in clerical operations, financial data entry, and account reconciliation. Her background in client relations allows her to communicate effectively, analyze requests, and provide exceptional service with precision.`,
     achievements: `She has a proven track record of analyzing financial and inventory data. Jenn is currently pursuing a degree in Business and Accounting at Baker College. She is on an accelerated track towards her bachelor’s degree and plans to pursue an MBA shortly thereafter.
@@ -836,8 +838,8 @@ Jenn has two boys in the United States Army and one grandson, who are her pride 
     name: `Kobus Pieters`,
     photo: `https://rawlinsic.com/wp-content/uploads/2026/03/kobus.webp`,
     role: `AI & Automation Specialist`,
-    location: `Cape Town, South Africa`,
-    phone: ``,
+    location: `Capetown, South Africa`,
+    phone: `+27 83-441-8454`,
     email: `kobus@rawlinsic.com`,
     background: `Kobus is a developer and automation specialist with five years of experience across frontend, backend, and DevOps. He brings deep technical expertise to the team, building custom-coded solutions that extend and enhance automation workflows from the ground up.`,
     achievements: ``,
