@@ -211,17 +211,19 @@ export default function CaseStudyDetail({ study }: Props) {
               </div>
             )}
 
-            {/* Divider before projects */}
-            <div className="section-divider" style={{ padding: 0, marginBottom: 48 }}>
-              <div className="gold-line" />
-            </div>
+            {/* Divider before projects — matches tile grid width */}
+            <div className="csd-wide-section">
+              <div className="section-divider" style={{ padding: 0, marginBottom: 48 }}>
+                <div className="gold-line" />
+              </div>
 
-            {/* Section heading */}
-            {study.sectionHeading && (
-              <h2 className="csd-section-heading reveal">
-                {study.sectionHeading}
-              </h2>
-            )}
+              {/* Section heading */}
+              {study.sectionHeading && (
+                <h2 className="csd-section-heading reveal">
+                  {study.sectionHeading}
+                </h2>
+              )}
+            </div>
 
             {/* Projects — tile grid (Insights-style) */}
             <div className="csd-projects-grid">

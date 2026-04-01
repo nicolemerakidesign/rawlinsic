@@ -3762,6 +3762,12 @@ color: #fff;
   background: rgba(201,168,76,0.03);
   border-radius: 0 8px 8px 0;
 }
+.csd-wide-section {
+  width: calc(100vw - 80px);
+  max-width: 1200px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
 .csd-section-heading {
   font-family: var(--font-cormorant), serif;
   font-size: 32px;
