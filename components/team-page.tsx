@@ -270,7 +270,10 @@ export default function TeamPage() {
               Meet the <span className="gold-text"><em>Experts</em></span>
             </h1>
             <p className="hero-sub">
-               Our team at Rawlins Infra Consult delivers innovative solutions in transportation infrastructure and leadership. Meet the professionals driving our success.
+               Our team brings together expertise in strategy, operations, and technology to deliver practical, forward-thinking solutions to complex challenges. While rooted in transportation, we continue to expand our experience across sectors.
+            </p>
+            <p className="hero-sub" style={{ marginTop: "16px" }}>
+               Collaboration is central to how we work. Team members have core areas of focus and work seamlessly across disciplines to support each engagement.
             </p>
           </div>
         </section>
