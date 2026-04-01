@@ -3746,55 +3746,66 @@ color: #fff;
   padding: 80px 40px 60px;
 }
 .csd-content-inner {
-  max-width: 860px;
+  max-width: 960px;
   margin: 0 auto;
 }
 .csd-description {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.85;
   color: #fff;
-  margin: 0 0 48px;
+  margin: 0 0 56px;
+  padding: 28px 32px;
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, #b89a3e, #d4be78, #c9a84c) 1;
+  background: rgba(201,168,76,0.03);
+  border-radius: 0 8px 8px 0;
 }
 .csd-section-heading {
   font-family: var(--font-cormorant), serif;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 500;
   color: #e8e6e1;
-  margin: 0 0 32px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(201,168,76,0.15);
+  margin: 0 0 36px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
 }
 
 /* ── Client info (Delaware style) ── */
 .csd-client-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 28px 32px;
+  gap: 0;
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(201,168,76,0.1);
   border-radius: 10px;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
+  overflow: hidden;
 }
+.csd-info-item {
+  padding: 24px 28px;
+  border-right: 1px solid rgba(201,168,76,0.08);
+}
+.csd-info-item:last-child { border-right: none; }
 .csd-info-label {
   display: block;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 .csd-info-value {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.85;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
   color: #fff;
 }
 
@@ -3802,39 +3813,44 @@ color: #fff;
 .csd-projects {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 .csd-project-card {
-  padding: 32px;
+  padding: 36px 36px 36px 40px;
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(201,168,76,0.08);
-  border-radius: 10px;
-  transition: border-color 0.35s, background 0.35s;
+  border-left: 3px solid rgba(201,168,76,0.3);
+  border-radius: 6px;
+  transition: border-color 0.35s, background 0.35s, border-left-color 0.35s;
 }
 .csd-project-card:hover {
   background: rgba(201,168,76,0.03);
-  border-color: rgba(201,168,76,0.2);
+  border-color: rgba(201,168,76,0.15);
+  border-left-color: rgba(201,168,76,0.7);
 }
 .csd-project-header {
   display: flex;
   align-items: baseline;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   flex-wrap: wrap;
 }
 .csd-project-number {
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: 13px;
+  font-family: var(--font-cormorant), serif;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
   background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  opacity: 0.6;
-  min-width: 24px;
+  opacity: 0.4;
+  min-width: 32px;
+  line-height: 1;
 }
 .csd-project-title {
   font-family: var(--font-cormorant), serif;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 500;
   color: #e8e6e1;
   margin: 0;
@@ -3860,13 +3876,13 @@ color: #fff;
 }
 .csd-project-bullets li {
   position: relative;
-  padding-left: 20px;
+  padding-left: 22px;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.85;
-  color: #fff;
-  margin-bottom: 8px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 12px;
 }
 .csd-project-bullets li::before {
   content: '';
@@ -3885,16 +3901,16 @@ color: #fff;
 
 /* ── Impact note ── */
 .csd-impact {
-  margin-top: 40px;
-  padding: 24px 28px;
+  margin-top: 48px;
+  padding: 32px 36px;
   border-left: 3px solid;
   border-image: linear-gradient(180deg, #b89a3e, #d4be78, #c9a84c) 1;
-  background: rgba(201,168,76,0.03);
+  background: rgba(201,168,76,0.04);
   border-radius: 0 8px 8px 0;
 }
 .csd-impact p {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.85;
   color: #fff;
@@ -3978,6 +3994,8 @@ color: #fff;
   .csd-nav-link { width: 100%; }
   .csd-nav-next { text-align: left; margin-left: 0; }
   .csd-client-info { grid-template-columns: 1fr 1fr; }
+  .csd-info-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); padding: 18px 20px; }
+  .csd-info-item:last-child { border-bottom: none; }
 }
 
 

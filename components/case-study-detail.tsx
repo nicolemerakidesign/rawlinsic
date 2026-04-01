@@ -205,6 +205,11 @@ export default function CaseStudyDetail({ study }: Props) {
               </div>
             )}
 
+            {/* Divider before projects */}
+            <div className="section-divider" style={{ padding: 0, marginBottom: 48 }}>
+              <div className="gold-line" />
+            </div>
+
             {/* Section heading */}
             {study.sectionHeading && (
               <h2 className="csd-section-heading reveal">
