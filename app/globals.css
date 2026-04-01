@@ -5582,13 +5582,13 @@ color: #fff;
 }
 .ins-channel-expand-hint {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 28px; height: 28px;
+  width: 42px; height: 42px;
   border: 1px solid rgba(201,168,76,0.35);
   border-radius: 50%;
-  margin: 12px 0 0;
+  margin: 16px 0 0;
   transition: opacity 0.3s, transform 0.4s;
 }
-.ins-channel-expand-hint svg { stroke: rgba(201,168,76,0.6); }
+.ins-channel-expand-hint svg { stroke: rgba(201,168,76,0.6); width: 20px; height: 20px; }
 .ins-channel-card:hover .ins-channel-expand-hint {
   opacity: 0; transform: rotate(45deg);
 }
