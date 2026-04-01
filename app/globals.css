@@ -929,6 +929,18 @@ text-align: center;
   color: rgba(255,255,255,0.8) !important;
   padding: 0;
 }
+.mobile-menu-nested-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.mobile-menu-nested-link {
+  flex: 1; text-decoration: none;
+}
+.mobile-menu-chevron-btn {
+  background: none; border: none; cursor: pointer;
+  color: #fff; display: flex; align-items: center; padding: 4px 8px;
+  transition: color 0.3s;
+}
+.mobile-menu-chevron-btn:hover { color: #c9a84c; }
 .mobile-menu-sub-nested {
   padding-left: 20px;
 }
