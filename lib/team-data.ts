@@ -6,6 +6,7 @@ export type TeamMember = {
   role: string;
   location: string;
   phone: string;
+  phone2?: string;
   email: string;
   linkedin?: string;
   background: string;
@@ -674,7 +675,9 @@ Her achievements reflect a deep commitment to innovation, collaboration, and pur
     role: `Infrastructure Advisor`,
     location: `Michigan, USA / Dubai, UAE`,
     phone: `+1 240-426-6065`,
+    phone2: `+971 54-463-6822`,
     email: `andy@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/transportgooru/`,
     background: `Andy Palanisamy is a seasoned technologist and public‑policy professional with more than twenty‑five years’ experience in both the public and private sectors, delivering complex projects in mobility innovation and smart‑city technologies. As a board advisor, he counsels leadership teams and clients on emerging technologies in smart cities, infrastructure and urban mobility, and he is currently developing cutting‑edge artificial‑intelligence products and services for the education sector worldwide.
 
 Until recently Andy led the Smart Cities and Innovation practice at Parsons in Dubai, where he managed a variety of advanced technology and smart‑city projects across the Middle East and Africa. Earlier he served as Ford Motor Company’s Head of Mobility Engagements for the U.S. Midwest and Canada and was the business owner of the City Insights data platform, overseeing the development and delivery of this analytics platform for cities.
