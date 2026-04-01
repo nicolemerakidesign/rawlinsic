@@ -106,12 +106,12 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
               <a href="/capabilities#strategy">Strategy</a>
               <a href="/capabilities#operations">Operations</a>
               <div className="nav-dropdown-sub">
-                <a href="/capabilities#technology" className="nav-dropdown-sub-label">
+                <span className="nav-dropdown-sub-label" style={{ cursor: "pointer" }} onClick={() => { window.location.href = "/capabilities#technology"; }}>
                   Technology
                   <svg className="nav-sub-chevron" width="6" height="8" viewBox="0 0 6 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M1 1l4 3-4 3"/>
                   </svg>
-                </a>
+                </span>
                 <div className="nav-sub-dropdown">
                   <a href="/capabilities/technology/advanced-air-mobility">Advanced Air Mobility</a>
                   <a href="/capabilities/technology/automation-integration">Automation &amp; Integration</a>
