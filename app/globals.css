@@ -5590,7 +5590,7 @@ color: #fff;
 }
 .ins-channel-expand-hint svg { stroke: rgba(201,168,76,0.9); width: 20px; height: 20px; }
 .ins-channel-card:hover .ins-channel-expand-hint {
-  opacity: 0; transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .ins-channel-desc {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
