@@ -293,7 +293,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div>
-                    <div className="contact-detail-label">Global Presence</div>
+                    <div className="contact-detail-label">Location</div>
                     <span
                       className="contact-detail-value"
                     >
