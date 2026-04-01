@@ -241,7 +241,7 @@ export default function TeamPage() {
       {/* Custom Cursor — outside PasswordGate */}
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
-    <PasswordGate>
+    <>
       {/* Ambient Background */}
       <div className="ambient-bg" />
       <div className="ambient-orbs">
@@ -479,7 +479,7 @@ export default function TeamPage() {
           </button>
         </div>
       )}
-    </PasswordGate>
+    </>
     </>
   );
 }
