@@ -6,24 +6,24 @@ import Link from 'next/link';
 import SiteNav from '@/components/site-nav';
 import SiteFooter from '@/components/site-footer';
 
-const DRONE_IMG = "https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const CITY_AERIAL_IMG = "https://images.unsplash.com/photo-1704912343381-99656b2a4ba3?auto=compress&cs=tinysrgb&w=1200";
-const INFRASTRUCTURE_IMG = "https://images.pexels.com/photos/7381780/pexels-photo-7381780.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const TECH_NETWORK_IMG = "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const LOGISTICS_IMG = "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=compress&cs=tinysrgb&w=1200";
-const PLANNING_IMG = "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const SKYLINE_IMG = "https://images.pexels.com/photos/1519088/pexels-photo-1519088.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const AERIAL_VIEW_IMG = "https://images.pexels.com/photos/739410/pexels-photo-739410.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const HELICOPTER_IMG = "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?auto=compress&cs=tinysrgb&w=1200";
-const CONTROL_ROOM_IMG = "https://images.pexels.com/photos/36155852/pexels-photo-36155852.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const DRONE_IMG = "/images/pages/aam-drone.jpg";
+const CITY_AERIAL_IMG = "/images/pages/aam-city-aerial.jpg";
+const INFRASTRUCTURE_IMG = "/images/pages/aam-infrastructure.jpg";
+const TECH_NETWORK_IMG = "/images/pages/aam-tech-network.jpg";
+const LOGISTICS_IMG = "/images/pages/aam-logistics.jpg";
+const PLANNING_IMG = "/images/pages/aam-planning.jpg";
+const SKYLINE_IMG = "/images/pages/aam-skyline.jpg";
+const AERIAL_VIEW_IMG = "/images/pages/aam-aerial-view.jpg";
+const HELICOPTER_IMG = "/images/pages/aam-helicopter.jpg";
+const CONTROL_ROOM_IMG = "/images/pages/aam-control-room.jpg";
 const DRONE_FLIGHT_IMG = "/images/pages/skylimit.webp";
-const BLUEPRINT_IMG = "https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const DATA_CENTER_IMG = "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const HIGHWAY_AERIAL_IMG = "https://images.pexels.com/photos/681335/pexels-photo-681335.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const TEAM_MEETING_IMG = "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const BLUEPRINT_IMG = "/images/pages/aam-blueprint.jpg";
+const DATA_CENTER_IMG = "/images/pages/aam-data-center.jpg";
+const HIGHWAY_AERIAL_IMG = "/images/pages/aam-highway-aerial.jpg";
+const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.jpg";
 const DEFINE_IMG = "/images/pages/connectingdots.webp";
 const PLANNING2_IMG = "/images/pages/proficiency-1.webp";
-const DRONEMOUNTAINS_IMG = "https://images.unsplash.com/photo-1488263590619-bc1fff43b6c1?auto=compress&cs=tinysrgb&w=1200";
+const DRONEMOUNTAINS_IMG = "/images/pages/aam-drone-mountains.jpg";
 
 
 /* ──── Data ──── */

@@ -38,7 +38,7 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     excerpt:
       "Many companies struggle to implement effective data governance. In this Q&A, April Blackburn discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies.",
     image: "/images/tl-april-blackburn-banner.jpg",
-    heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
+    heroImage: "/images/pages/tl-hero.jpg",
     authorImage:
       "/images/team/april.webp",
     pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",
@@ -196,7 +196,7 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     excerpt:
       "Many companies struggle to implement effective data governance. In this Q&A, April Blackburn discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies.",
     image: "/images/tl-april-blackburn-banner.jpg",
-    heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
+    heroImage: "/images/pages/tl-hero.jpg",
     authorImage:
       "/images/team/april.webp",
     pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",

@@ -7,15 +7,15 @@ import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 import PasswordGate from "@/components/password-gate";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=compress&cs=tinysrgb&w=1920";
-const DATA_IMG = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=compress&cs=tinysrgb&w=1200";
-const WORKFLOW_IMG = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=compress&cs=tinysrgb&w=1200";
-const AI_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=compress&cs=tinysrgb&w=1200";
-const TEAM_IMG = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=compress&cs=tinysrgb&w=1200";
-const CONNECT_IMG = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=compress&cs=tinysrgb&w=1200";
-const DASHBOARD_IMG = "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=compress&cs=tinysrgb&w=1200";
-const NETWORK_IMG = "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=compress&cs=tinysrgb&w=1200";
-const CAPABILITY_IMG = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=compress&cs=tinysrgb&w=1200";
+const HERO_IMG = "/images/pages/auto-hero.jpg";
+const DATA_IMG = "/images/pages/auto-data.jpg";
+const WORKFLOW_IMG = "/images/pages/auto-workflow.jpg";
+const AI_IMG = "/images/pages/auto-ai.jpg";
+const TEAM_IMG = "/images/pages/auto-team.jpg";
+const CONNECT_IMG = "/images/pages/auto-connect.jpg";
+const DASHBOARD_IMG = "/images/pages/auto-dashboard.jpg";
+const NETWORK_IMG = "/images/pages/auto-network.jpg";
+const CAPABILITY_IMG = "/images/pages/auto-capability.jpg";
 
 /* ── Editable Data ── */
 
@@ -51,12 +51,12 @@ const benefits = [
 ];
 
 const orgValues = [
-  { num: "01", label: "Optimize Resources", body: "Optimize the use of diverse resources across your organization.", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=compress&cs=tinysrgb&w=800" },
-  { num: "02", label: "Boost Efficiency", body: "Routine processes that take hours or days can be done in seconds, reducing errors.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=compress&cs=tinysrgb&w=800" },
-  { num: "03", label: "Scale Team Impact", body: "Scale the impact of teams beyond what manual processes allow.", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=compress&cs=tinysrgb&w=800" },
-  { num: "04", label: "Enhance Responsiveness", body: "React faster to changing conditions and stakeholder needs.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=compress&cs=tinysrgb&w=800" },
-  { num: "05", label: "Support Resilience", body: "Standardized tasks support continuity of operations and enable faster response when needs evolve.", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=compress&cs=tinysrgb&w=800" },
-  { num: "06", label: "Support Human Talent", body: "Free your people to focus on high-value work that requires human judgment.", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=compress&cs=tinysrgb&w=800" },
+  { num: "01", label: "Optimize Resources", body: "Optimize the use of diverse resources across your organization.", img: "/images/pages/auto-optimize.jpg" },
+  { num: "02", label: "Boost Efficiency", body: "Routine processes that take hours or days can be done in seconds, reducing errors.", img: "/images/pages/auto-data.jpg" },
+  { num: "03", label: "Scale Team Impact", body: "Scale the impact of teams beyond what manual processes allow.", img: "/images/pages/auto-team.jpg" },
+  { num: "04", label: "Enhance Responsiveness", body: "React faster to changing conditions and stakeholder needs.", img: "/images/pages/auto-workflow.jpg" },
+  { num: "05", label: "Support Resilience", body: "Standardized tasks support continuity of operations and enable faster response when needs evolve.", img: "/images/pages/auto-capability.jpg" },
+  { num: "06", label: "Support Human Talent", body: "Free your people to focus on high-value work that requires human judgment.", img: "/images/pages/auto-human.jpg" },
 ];
 
 const pipeline = [
@@ -216,7 +216,7 @@ export default function AutomationPage() {
       </section>
 
       {/* Parallax Quote */}
-      <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=compress&cs=tinysrgb&w=1920)" }}>
+      <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: "url(/images/pages/auto-parallax.jpg" }}>
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
           Put some quote <em>here</em> placeholder.
@@ -311,7 +311,7 @@ export default function AutomationPage() {
           <div className="auto-deliver-grid" style={{ display: "grid", gap: "60px", marginTop: "60px", alignItems: "center" }}>
             <div className="reveal">
               <div style={{ position: "relative", borderRadius: "12px", overflow: "hidden", aspectRatio: "4/3" }}>
-                <Image src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=compress&cs=tinysrgb&w=1200" alt="Team collaborating on digital transformation" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                <Image src="/images/pages/auto-collab.jpg" alt="Team collaborating on digital transformation" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(6,12,22,0.15), rgba(6,12,22,0.45))" }} />
               </div>
             </div>

@@ -7,7 +7,7 @@ import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 import PasswordGate from "@/components/password-gate";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=1920&q=80";
+const HERO_IMG = "/images/pages/insights-hero.jpg";
 
 const channels = [
   {
@@ -16,7 +16,7 @@ const channels = [
     title: "Thought Leadership",
     subtitle: "Expert perspectives",
     desc: "In-depth Q&As, analysis, and practitioner insights from our advisory team—covering data governance, workforce transformation, strategic planning, and the evolving landscape of public infrastructure.",
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
+    image: "/images/pages/insights-card-2.jpg",
     cta: "Read Articles",
     accent: "#c9a84c",
   },
@@ -26,7 +26,7 @@ const channels = [
     title: "The Rawlins Way",
     subtitle: "Podcast",
     desc: "Candid conversations about the real challenges facing transportation agencies and complex organizations. Our team and guests break down what it actually takes to lead change.",
-    image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80",
+    image: "/images/pages/insights-card-3.jpg",
     cta: "Listen Now",
     accent: "#d4be78",
   },
@@ -36,7 +36,7 @@ const channels = [
     title: "Case Studies",
     subtitle: "Impact in action",
     desc: "Detailed accounts of how we've helped agencies and enterprises overcome operational hurdles, modernize systems, and deliver measurable results across complex programs.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+    image: "/images/pages/auto-optimize.jpg",
     cta: "Explore Cases",
     accent: "#e0cfa0",
   },

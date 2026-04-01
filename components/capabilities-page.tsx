@@ -308,7 +308,7 @@ export default function CapabilitiesPage() {
           {/* Alternating two-column intro */}
           <div className={`cap-split reveal${isReversed ? " cap-split-reverse" : ""}`}>
             <div className={`cap-split-img-wrap${isReversed ? " cap-split-img-reversed" : ""}`}>
-              <Image src={section.image} alt={section.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="cap-split-img" />
+              <Image src={section.image} alt={section.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="cap-split-img" priority={sIdx === 0} />
               <div className="cap-split-img-frame" />
             </div>
             <div className="cap-split-content">
