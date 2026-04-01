@@ -1298,10 +1298,9 @@ font-size: 11px;
 .pillar-link span { display: inline-block; }
 .pillar-card:hover .pillar-link { opacity: 1; transform: translateY(0); }
 
-.about-us-link:hover {
-  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878) !important;
-  -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important;
-}
+.about-us-link:hover { color: #c9a84c !important; }
+.about-us-link:hover span { text-decoration-color: #c9a84c; }
+.about-us-link:hover svg { stroke: #c9a84c; }
 
 /* ── Our Journey / Story ─────────────────────── */
 .section-story { padding: 120px 0px 0px; overflow: hidden; }
