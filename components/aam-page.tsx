@@ -289,7 +289,7 @@ const AAMPage = () => {
           <span className="hero-label"><span className="gold-text"></span></span>
           <h1 className="hero-title"><em>Advanced Air Mobility</em> &amp; Uncrewed Aircraft Systems</h1>
           <p className="hero-sub">Partnering to turn AAM and UAS concepts into community and regional transportation solutions.</p>
-          <a href="#intro" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}><span>Explore Our Approach</span></a>
+          <a href="#intro" className="auto-hero-btn"><span>Explore Our Approach</span></a>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
       </section>
