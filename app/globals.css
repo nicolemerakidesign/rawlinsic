@@ -3079,10 +3079,11 @@ color: #fff;
 @media (max-width: 768px) {
   .team-grid { grid-template-columns: repeat(3, 1fr); gap: 24px 14px; }
   .team-grid-section { padding: 16px 20px 56px; }
-  .team-popup { flex-direction: column; max-height: 90vh; }
+  .team-popup-overlay { padding: 20px 8px 48px; align-items: flex-start; overflow-y: auto; }
+  .team-popup { flex-direction: column; max-height: none; }
   .team-popup-left { width: 100%; padding: 28px 24px 20px; flex-direction: column; }
-  .team-popup-right { padding: 24px 20px 32px; }
-  .team-popup-overlay { padding: 12px 48px; }
+  .team-popup-right { padding: 24px 20px 32px; overflow-y: visible; }
+  .team-popup-close { position: fixed; top: 24px; right: 16px; }
   .team-popup-arrow { width: 36px; height: 36px; }
   .team-popup-arrow-prev { left: 8px; }
   .team-popup-arrow-next { right: 8px; }
