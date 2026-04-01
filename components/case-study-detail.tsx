@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
@@ -23,6 +23,12 @@ export default function CaseStudyDetail({ study }: Props) {
   const ringX = useRef(0);
   const ringY = useRef(0);
   const animFrame = useRef<number | null>(null);
+  const [expandedTiles, setExpandedTiles] = useState<Set<number>>(new Set());
+  const toggleTile = (idx: number) => setExpandedTiles(prev => {
+    const next = new Set(prev);
+    next.has(idx) ? next.delete(idx) : next.add(idx);
+    return next;
+  });
 
   /* ── Custom cursor ── */
   useEffect(() => {
@@ -222,7 +228,7 @@ export default function CaseStudyDetail({ study }: Props) {
               {study.projects.map((project, pi) => (
                 <div
                   key={pi}
-                  className={`csd-project-tile reveal rd${(pi % 4) + 1}`}
+                  className={`csd-project-tile reveal rd${(pi % 4) + 1}${expandedTiles.has(pi) ? " expanded" : ""}`}
                 >
                   <span className="csd-tile-subtitle">
                     {String(pi + 1).padStart(2, "0")}
@@ -231,12 +237,16 @@ export default function CaseStudyDetail({ study }: Props) {
                   {project.budget && (
                     <span className="csd-tile-budget">{project.budget}</span>
                   )}
-                  <span className="csd-tile-expand-hint">
+                  <button
+                    className="csd-tile-expand-hint"
+                    onClick={() => toggleTile(pi)}
+                    aria-label={expandedTiles.has(pi) ? "Collapse" : "Expand"}
+                  >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="12" y1="5" x2="12" y2="19" className={`csd-plus-vertical${expandedTiles.has(pi) ? " hidden" : ""}`} />
                       <line x1="5" y1="12" x2="19" y2="12" />
                     </svg>
-                  </span>
+                  </button>
                   {project.bullets && project.bullets.length > 0 && (
                     <ul className="csd-tile-bullets">
                       {project.bullets.map((b, bi) => (

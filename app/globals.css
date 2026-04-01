@@ -3890,10 +3890,22 @@ color: #fff;
   border: 1px solid rgba(201,168,76,0.6);
   border-radius: 50%;
   margin: 16px 0 0;
-  transition: opacity 0.3s, margin-bottom 0.3s;
+  background: none; cursor: pointer;
+  transition: opacity 0.3s, margin-bottom 0.3s, border-color 0.3s;
 }
 .csd-tile-expand-hint svg { stroke: rgba(201,168,76,0.9); }
+.csd-tile-expand-hint:hover { border-color: rgba(201,168,76,0.9); }
 .csd-project-tile:hover .csd-tile-expand-hint {
+  margin-bottom: 20px;
+}
+/* Vertical line of + hides when expanded (becomes –) */
+.csd-plus-vertical { transition: opacity 0.3s; }
+.csd-plus-vertical.hidden { opacity: 0; }
+/* Tap-to-expand on mobile */
+.csd-project-tile.expanded .csd-tile-bullets {
+  max-height: 500px; opacity: 1;
+}
+.csd-project-tile.expanded .csd-tile-expand-hint {
   margin-bottom: 20px;
 }
 /* Bullets — hidden by default, show on hover */
@@ -4027,8 +4039,6 @@ color: #fff;
   .csd-hero { min-height: 45vh; padding: 100px 24px 40px; }
   .csd-projects-grid { grid-template-columns: 1fr; }
   .csd-project-tile { padding: 24px 20px; }
-  .csd-tile-bullets { max-height: 500px; opacity: 1; }
-  .csd-tile-expand-hint { display: none; }
   .csd-nav-inner { flex-direction: column; }
   .csd-nav-link { width: 100%; }
   .csd-nav-next { text-align: left; margin-left: 0; }
