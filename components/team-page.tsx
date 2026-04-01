@@ -263,7 +263,7 @@ export default function TeamPage() {
         <div className="section-divider"><div className="gold-line" /></div>
 
         {/* Filter Tabs */}
-        <section className="team-filter-section">
+        <section className="team-filter-section reveal">
           <div className="team-filter-tabs">
             {FILTERS.map((f) => (
               <button
@@ -283,7 +283,7 @@ export default function TeamPage() {
         </section>
 
         {/* Team Grid */}
-        <section className="team-grid-section">
+        <section className="team-grid-section reveal">
           <div
             className="team-grid"
             style={{ opacity: gridOpacity, transition: "opacity 0.22s ease" }}
