@@ -5098,6 +5098,7 @@ color: #fff;
   overflow: hidden;
   border: 1px solid rgba(201,168,76,0.08);
   margin-bottom: 48px;
+  background: rgba(6,12,22,0.4);
 }
 .cap-split-reverse { direction: rtl; }
 .cap-split-reverse > * { direction: ltr; }
@@ -5147,11 +5148,13 @@ color: #fff;
   margin-bottom: 28px;
 }
 @media (max-width: 768px) {
-  .cap-split { grid-template-columns: 1fr; min-height: auto; }
+  .cap-split { grid-template-columns: 1fr; min-height: auto; overflow: visible; }
   .cap-split-reverse { direction: ltr; }
-  .cap-split-img-wrap { min-height: 280px; clip-path: none; }
+  .cap-split-img-wrap { min-height: 260px; clip-path: none; overflow: hidden; border-radius: 0; }
   .cap-split-img-reversed { clip-path: none; }
-  .cap-split-content { padding: 36px 24px; }
+  .cap-split-img-frame { display: none; }
+  .cap-split-content { padding: 32px 24px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 0; }
+  .cap-split-content * { opacity: 1 !important; visibility: visible !important; }
 }
 
 /* ── Capability Section ── */
@@ -5219,9 +5222,7 @@ color: #fff;
 .cap-services-wrap { position: relative; }
 .cap-services-header {
   display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 28px; padding: 0 8px;
-  border-bottom: 1px solid rgba(201,168,76,0.12);
-  padding-bottom: 20px;
+  margin-bottom: 20px; padding: 0 8px;
 }
 .cap-svc-count-label { display: flex; align-items: baseline; gap: 10px; }
 .cap-svc-count-num {
@@ -5242,7 +5243,7 @@ color: #fff;
   transition: background 0.3s ease;
   border-radius: 4px;
 }
-.cap-svc-row:first-child { border-top: 1px solid rgba(201,168,76,0.1); }
+.cap-svc-row:first-child { border-top: none; }
 .cap-svc-row:hover { background: rgba(201,168,76,0.04); }
 .cap-svc-row.expanded { background: rgba(201,168,76,0.05); }
 .cap-svc-row-header {
@@ -5289,7 +5290,7 @@ color: #fff;
 }
 .cap-svc-row-desc {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 15px; line-height: 1.75; color: rgba(232,230,225,0.8);
+  font-size: 16px; line-height: 1.75; color: #fff;
 }
 
 /* ── CTA ── */

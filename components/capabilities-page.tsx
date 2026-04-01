@@ -213,16 +213,18 @@ export default function CapabilitiesPage() {
     const nav = document.getElementById("mainNav");
     const onScroll = () => {
       if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+      let matched = "";
       for (const s of capabilitySections) {
         const el = document.getElementById(s.id);
         if (el) {
           const rect = el.getBoundingClientRect();
           if (rect.top <= 200 && rect.bottom > 200) {
-            setActiveTab(s.id);
+            matched = s.id;
             break;
           }
         }
       }
+      setActiveTab(matched);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -230,6 +232,9 @@ export default function CapabilitiesPage() {
 
   const scrollToSection = (id: string) => {
     setActiveTab(id);
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", `#${id}`);
+    }
     const el = document.getElementById(id);
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 130;
@@ -352,6 +357,7 @@ export default function CapabilitiesPage() {
       {/* ── CTA ── */}
       <section className="cap-cta reveal">
         <div className="cap-cta-inner">
+          <p className="section-label" style={{ marginBottom: "16px" }}><span className="gold-text">Take the Next Step</span></p>
           <h2 className="cap-cta-title">Ready to transform your organization?</h2>
           <p className="cap-cta-text">
             Let&rsquo;s discuss how our integrated capabilities can address your unique challenges.
