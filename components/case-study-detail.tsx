@@ -270,7 +270,7 @@ export default function CaseStudyDetail({ study }: Props) {
         </section>
 
         {/* Divider */}
-        <div className="section-divider">
+        <div className="section-divider" style={{ maxWidth: 1000, margin: "0 auto", padding: "0 40px" }}>
           <div className="gold-line" />
         </div>
 

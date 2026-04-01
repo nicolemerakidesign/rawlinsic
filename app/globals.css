@@ -3746,7 +3746,7 @@ color: #fff;
   padding: 80px 40px 60px;
 }
 .csd-content-inner {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 .csd-description {
@@ -3971,7 +3971,7 @@ color: #fff;
   padding: 60px 40px 80px;
 }
 .csd-nav-inner {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
