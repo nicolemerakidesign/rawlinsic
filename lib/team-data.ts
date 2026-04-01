@@ -807,5 +807,17 @@ Jenn has two boys in the United States Army and one grandson, who are her pride 
     background: `Kobus is a developer and automation specialist with five years of experience across frontend, backend, and DevOps. He brings deep technical expertise to the team, building custom-coded solutions that extend and enhance automation workflows from the ground up.`,
     achievements: ``,
     categories: ['technology'],
+  },
+  {
+    id: 52,
+    name: `Joey Paskey`,
+    photo: `https://rawlinsic.com/wp-content/uploads/2026/03/joey.webp`,
+    role: `Infrastructure Advisor`,
+    location: `Nevada`,
+    phone: ``,
+    email: `joey@rawlinsic.com`,
+    background: `Coming soon!`,
+    achievements: ``,
+    categories: ['operations'],
   }
 ];
