@@ -830,6 +830,22 @@ text-align: center;
   position: relative;
 }
 
+.footer-social {
+  display: flex; gap: 12px; margin-top: 20px;
+}
+.footer-social-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.06);
+  transition: all 0.25s;
+}
+.footer-social-btn:hover {
+  border-color: #c9a84c;
+  background: rgba(201,168,76,0.15);
+  transform: translateY(-2px);
+}
+
 /* ── Back to Top ─────────────────────────────── */
 .back-to-top {
   position: fixed; bottom: 30px; right: 30px;
