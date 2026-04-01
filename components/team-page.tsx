@@ -160,6 +160,22 @@ export default function TeamPage() {
     return () => { document.body.style.overflow = ""; };
   }, [selectedMember]);
 
+  // Scroll reveal — delayed for PasswordGate
+  useEffect(() => {
+    let ob: IntersectionObserver;
+    const timer = setTimeout(() => {
+      const els = document.querySelectorAll(".reveal");
+      if (els.length === 0) return;
+      els.forEach((el) => { void (el as HTMLElement).offsetHeight; });
+      ob = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+        { threshold: 0.08 }
+      );
+      els.forEach((el) => ob.observe(el));
+    }, 300);
+    return () => { clearTimeout(timer); if (ob) ob.disconnect(); };
+  }, []);
+
   const handleFilterChange = useCallback((cat: FilterCategory) => {
     if (cat === activeFilter) return;
     setGridOpacity(0);
