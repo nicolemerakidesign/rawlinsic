@@ -154,43 +154,6 @@ export default function InsightsPage() {
     run();
   }, []);
 
-  /* Waveform canvas for hero */
-  const waveRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const c = waveRef.current;
-    if (!c) return;
-    const ctx = c.getContext("2d");
-    if (!ctx) return;
-    let raf: number;
-    const resize = () => { c.width = c.offsetWidth * 2; c.height = c.offsetHeight * 2; ctx.scale(2, 2); };
-    resize();
-    let t = 0;
-    const draw = () => {
-      t += 0.02;
-      ctx.clearRect(0, 0, c.offsetWidth, c.offsetHeight);
-      const w = c.offsetWidth;
-      const h = c.offsetHeight;
-      for (let wave = 0; wave < 3; wave++) {
-        ctx.beginPath();
-        const amp = 12 + wave * 8;
-        const freq = 0.008 - wave * 0.001;
-        const offset = wave * 1.2;
-        const alpha = 0.08 - wave * 0.02;
-        for (let x = 0; x <= w; x++) {
-          const y = h / 2 + Math.sin(x * freq + t + offset) * amp + Math.sin(x * freq * 2.5 + t * 1.5) * (amp * 0.3);
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.strokeStyle = `rgba(201,168,76,${alpha})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
   return (
     <PasswordGate>
       <div className="cursor-dot" ref={dotRef} />
@@ -200,19 +163,13 @@ export default function InsightsPage() {
       <div className="orb orb-2" ref={orbRef2} />
       <SiteNav />
 
-      {/* ── Hero ── */}
-      <section className="ins-hero">
-        <Image src={HERO_IMG} alt="Insights" fill priority sizes="100vw" className="ins-hero-img" />
-        <div className="ins-hero-overlay" />
-        <canvas className="ins-wave-canvas" ref={waveRef} />
-        <div className="ins-hero-content reveal">
-          <p className="ins-hero-label">
-            <span className="gold-text">Knowledge &amp; Perspective</span>
-          </p>
-          <h1 className="ins-hero-title">
-            Insights that <em>inform</em> action
-          </h1>
-          <p className="ins-hero-subtitle">
+      {/* ── Hero — parallax fixed background ── */}
+      <section className="aam-hero aam-parallax-fixed" style={{ backgroundImage: `url(${HERO_IMG})` }}>
+        <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
+        <div className="aam-hero-content">
+          <span className="hero-label"><span className="gold-text">Knowledge &amp; Perspective</span></span>
+          <h1 className="hero-title">Insights that <em>inform</em> action</h1>
+          <p className="hero-sub">
             Original research, practitioner perspectives, and real-world case studies from the front lines of organizational transformation.
           </p>
         </div>
@@ -245,21 +202,28 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      {/* ── Why Insights Matter ── */}
+      {/* ── Quote Panel ── */}
       <div className="parallax-panel">
         <p className="parallax-text reveal">
-          The organizations that thrive are the ones that never stop <em>learning</em>.
+          Organizations that thrive are the ones that never stop <em>learning</em>.
         </p>
       </div>
 
       {/* ── CTA ── */}
-      <section className="ins-cta reveal">
-        <div className="ins-cta-inner">
-          <h2 className="ins-cta-title">Have a topic you&rsquo;d like us to cover?</h2>
-          <p className="ins-cta-text">
+      <section style={{ padding: "100px 48px 120px", textAlign: "center", background: "#060c16", position: "relative" }}>
+        <div style={{ maxWidth: "680px", margin: "0 auto", position: "relative", zIndex: 10 }}>
+          <p style={{ marginBottom: "16px", color: "#c9a84c", letterSpacing: "4px", fontSize: "13px", textTransform: "uppercase", fontWeight: 500, opacity: 1, display: "block",
+            background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)",
+            WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            Start a Conversation
+          </p>
+          <h2 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: "clamp(2.6rem, 3.5vw, 3.5rem)", fontWeight: 300, color: "#ffffff", marginBottom: "20px", lineHeight: 1.25, opacity: 1, display: "block" }}>
+            Have a topic you&rsquo;d like us to <em style={{ fontStyle: "italic", background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>cover</em>?
+          </h2>
+          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, color: "#ffffff", marginBottom: "40px", fontWeight: 300, opacity: 1, display: "block" }}>
             We&rsquo;re always exploring new questions at the intersection of strategy, technology, and public service. Reach out to start a conversation.
           </p>
-          <Link href="/contact" className="cap-cta-btn">
+          <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
             <span>Get In Touch</span>
           </Link>
         </div>

@@ -382,11 +382,11 @@ export default function CapabilitiesPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── CTA ── */}
-      <section className="cap-cta">
-        <div className="cap-cta-inner">
-          <p className="section-label" style={{ marginBottom: "16px", color: "#c9a84c", letterSpacing: "4px", fontSize: "13px", opacity: 1 }}>Take the Next Step</p>
-          <h2 className="cap-cta-title" style={{ whiteSpace: "normal" }}>Ready to transform your organization?</h2>
-          <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none" }}>
+      <section style={{ padding: "100px 48px 120px", textAlign: "center", background: "#060c16", position: "relative" }}>
+        <div style={{ maxWidth: "640px", margin: "0 auto", position: "relative", zIndex: 10 }}>
+          <p style={{ marginBottom: "16px", color: "#c9a84c", letterSpacing: "4px", fontSize: "13px", textTransform: "uppercase", fontWeight: 500, opacity: 1, display: "block" }}>Take the Next Step</p>
+          <h2 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif", fontSize: "clamp(2.6rem, 3.5vw, 3.5rem)", fontWeight: 300, color: "#ffffff", marginBottom: "20px", lineHeight: 1.25, whiteSpace: "normal", opacity: 1, display: "block" }}>Ready to transform your <em>organization</em>?</h2>
+          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, color: "#ffffff", marginBottom: "40px", fontWeight: 300, opacity: 1, display: "block" }}>
             Let&rsquo;s discuss how our integrated capabilities can address your unique challenges.
           </p>
           <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
