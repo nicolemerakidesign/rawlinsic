@@ -221,7 +221,7 @@ export default function ContactPage() {
               <h2 className="section-title">
                 Send us a message
               </h2>
-              <p className="section-text" style={{ marginBottom: "48px" }}>
+              <p className="section-text" style={{ marginTop: "20px", marginBottom: "48px" }}>
                 Our team is here to listen, advise, and partner with you. Share a
                 bit about your organization and what you&rsquo;re working through
                 &mdash; we&rsquo;ll take it from there.

@@ -36,6 +36,7 @@ export default function SiteFooter() {
         <div>
           <h4 className="footer-heading">Insights</h4>
           <ul className="footer-links">
+            <li><Link href="/insights">View All</Link></li>
             <li><Link href="/insights/thought-leadership">Thought Leadership</Link></li>
             <li><Link href="/insights/case-studies">Case Studies</Link></li>
             <li><Link href="/insights/podcast">Podcast</Link></li>

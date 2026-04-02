@@ -190,11 +190,11 @@ export default function CaseStudiesOverview() {
 
         {/* ── CTA Section (matches Meet the Team) ── */}
         <section className="cs-cta-section reveal">
-          <p className="cs-cta-label">
+          <p className="section-label">
             <span className="gold-text">Partner With Us</span>
           </p>
-          <h2 className="cs-cta-title">
-            Ready to Take Your Organization to the Next Level?
+          <h2 className="section-title">
+            Ready to Take Your Organization to the <em>Next Level?</em>
           </h2>
           <p className="cs-cta-text">
             Rawlins has the expertise and experience to drive your
@@ -202,7 +202,7 @@ export default function CaseStudiesOverview() {
             approach help agencies improve performance
             and meet evolving challenges.
           </p>
-          <Link href="/contact" className="cs-cta-btn">
+          <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
             <span>Connect With Us Today</span>
           </Link>
         </section>

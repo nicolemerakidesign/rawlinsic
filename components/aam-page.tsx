@@ -356,7 +356,7 @@ const AAMPage = () => {
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-          Strategic multimodal integration.<br /><em>Built on real-world success.</em>
+          Strategic multimodal integration<br /><em>Built on real-world success</em>
         </p>
       </div>
 
