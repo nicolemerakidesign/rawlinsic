@@ -135,13 +135,11 @@ export default function CaseStudiesOverview() {
         <section className="cs-hero" id="top">
           <div className="cs-hero-content">
             <p className="section-label" style={{ textAlign: "center" }}>
-              <span className="gold-text">Strategic Projects. Proven Impact.</span>
+              <span className="gold-text">Solving Complex Challenges. Proven Impact.</span>
             </p>
             <h1 className="hero-title">Case Studies</h1>
             <p className="hero-sub" style={{ maxWidth: 720 }}>
-              Discover how Rawlins has helped transportation agencies across the
-              country implement strategic, high-impact solutions tailored to
-              their unique operational goals.
+              Explore how we turn strategic initiatives into measurable results.
             </p>
           </div>
         </section>

@@ -219,7 +219,7 @@ export default function AutomationPage() {
       <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: "url(/images/pages/auto-parallax.jpg" }}>
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
-          The best automation doesn&apos;t replace people&mdash;it <em>empowers</em> them to focus on what matters most.
+          The <em>future</em> of work requires designing systems where people, data, and AI work <em>together</em> with clarity, trust, and purpose.
         </p>
       </div>
 
