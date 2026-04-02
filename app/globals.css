@@ -5013,7 +5013,7 @@ color: #fff;
   gap: 3px;
   height: 48px;
   margin-top: 40px;
-  margin-bottom: -20px;
+  margin-bottom: -40px;
   opacity: 0;
   animation: heroFade 1s 1.2s forwards;
 }
@@ -5032,6 +5032,7 @@ color: #fff;
 }
 .pod-cta-waveform .pod-wave-bar {
   max-width: 16px;
+  background: linear-gradient(180deg, rgba(10,20,40,0.9), rgba(8,16,32,0.6));
 }
 
 /* ── Podcast Responsive ── */
