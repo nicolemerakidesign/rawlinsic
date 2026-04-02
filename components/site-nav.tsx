@@ -95,7 +95,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           <a href="https://www.linkedin.com/company/107078508/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="LinkedIn">
             <span style={{ fontFamily: "Arial, sans-serif", fontSize: "20px", fontWeight: 700, color: "#060c16", lineHeight: 1, letterSpacing: "-0.5px" }}>in</span>
           </a>
-          <a href="https://www.google.com/maps/place/Rawlins+Infra+Consult/@39.4199229,-119.7519656,17z" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="Google">
+          <a href="https://g.page/r/CSNh-GWp5ejQEAI/review" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="Google">
             <span style={{ fontFamily: "Arial, sans-serif", fontSize: "22px", fontWeight: 700, color: "#060c16", lineHeight: 1 }}>G</span>
           </a>
         </div>
