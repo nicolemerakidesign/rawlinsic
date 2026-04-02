@@ -258,7 +258,7 @@ export default function PodcastPage() {
             <p className="section-label">
               <span className="gold-text">Ready to Take Your Organization to the Next Level?</span>
             </p>
-            <h2 className="section-title">
+            <h2 className="section-title" style={{ whiteSpace: "nowrap" }}>
               Let&apos;s Build Something Together
             </h2>
             <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginTop: 24 }}>

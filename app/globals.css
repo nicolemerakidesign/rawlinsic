@@ -5034,7 +5034,7 @@ color: #fff;
 }
 .pod-cta-waveform .pod-wave-bar {
   max-width: 16px;
-  background: linear-gradient(180deg, rgba(18,32,56,1), rgba(12,24,46,0.8));
+  background: linear-gradient(180deg, rgba(10,18,34,1), rgba(8,14,28,0.85));
 }
 
 /* ── Podcast Responsive ── */
