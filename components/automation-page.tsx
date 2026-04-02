@@ -157,7 +157,7 @@ export default function AutomationPage() {
     <>
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
-    <PasswordGate>
+    <>
       <div className="ambient-bg" />
       <div className="ambient-orbs">
         <div className="orb orb-1" /><div className="orb orb-2" /><div className="orb orb-3" /><div className="orb orb-4" />
@@ -219,7 +219,7 @@ export default function AutomationPage() {
       <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: "url(/images/pages/auto-parallax.jpg" }}>
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
-          Put some quote <em>here</em> placeholder.
+          The best automation doesn&apos;t replace people&mdash;it <em>empowers</em> them to focus on what matters most.
         </p>
       </div>
 
@@ -416,7 +416,7 @@ export default function AutomationPage() {
 
       <div className="section-divider"><div className="gold-line" /></div>
       <SiteFooter />
-    </PasswordGate>
+    </>
     </>
   );
 }

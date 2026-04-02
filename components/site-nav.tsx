@@ -57,7 +57,6 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           </button>
           <div className={`mobile-menu-sub mobile-menu-sub-nested${mobileSubOpen.has("tech") ? " open" : ""}`}>
             <a href="/capabilities/technology/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
-            <a href="#" onClick={close}>Automation &amp; Integration</a>
           </div>
         </div>
 
@@ -115,7 +114,6 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
                 </span>
                 <div className="nav-sub-dropdown">
                   <a href="/capabilities/technology/advanced-air-mobility">Advanced Air Mobility</a>
-                  <a href="/capabilities/technology/automation-integration">Automation &amp; Integration</a>
                 </div>
               </div>
             </div>

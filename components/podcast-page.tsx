@@ -216,7 +216,7 @@ export default function PodcastPage() {
             </div>
 
             {/* Right: Embedded Player */}
-            <div className="pod-player-wrap reveal rd2">
+            <div className="pod-player-wrap">
               <div className="pod-player-label">
                 <div className="pod-pulse" />
                 <span>Now Streaming</span>

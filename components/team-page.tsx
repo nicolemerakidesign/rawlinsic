@@ -303,7 +303,7 @@ export default function TeamPage() {
         </section>
 
         {/* Team Grid */}
-        <section className="team-grid-section reveal">
+        <section className="team-grid-section">
           <div
             className="team-grid"
             style={{ opacity: gridOpacity, transition: "opacity 0.22s ease" }}
