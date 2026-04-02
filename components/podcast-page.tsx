@@ -149,21 +149,8 @@ export default function PodcastPage() {
       <SiteNav />
 
       <div className="content-wrapper">
-        {/* ── Hero Section with waveform ── */}
+        {/* ── Hero Section ── */}
         <section className="pod-hero" id="top">
-          <div className="pod-hero-waveform">
-            {Array.from({ length: 40 }).map((_, i) => (
-              <div
-                key={i}
-                className="pod-wave-bar"
-                style={{
-                  animationDelay: `${i * 0.08}s`,
-                  height: `${20 + Math.sin(i * 0.5) * 30 + Math.random() * 20}%`,
-                }}
-              />
-            ))}
-          </div>
-          <div className="pod-hero-overlay" />
           <div className="pod-hero-content">
             <div className="pod-hero-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
@@ -253,15 +240,15 @@ export default function PodcastPage() {
         </div>
 
         {/* ── CTA Section ── */}
-        <section className="cs-cta-section pod-cta-with-eq reveal">
-          <div className="pod-cta-eq-bg">
-            {Array.from({ length: 60 }).map((_, i) => (
+        <section className="cs-cta-section pod-cta-with-wave reveal">
+          <div className="pod-cta-waveform">
+            {Array.from({ length: 40 }).map((_, i) => (
               <div
                 key={i}
-                className="pod-eq-bar"
+                className="pod-wave-bar"
                 style={{
-                  animationDelay: `${i * 0.06}s`,
-                  animationDuration: `${0.8 + Math.random() * 0.8}s`,
+                  animationDelay: `${i * 0.08}s`,
+                  height: `${20 + Math.sin(i * 0.5) * 30 + Math.random() * 20}%`,
                 }}
               />
             ))}

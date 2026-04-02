@@ -4817,14 +4817,7 @@ color: #fff;
   overflow: hidden;
 }
 .pod-hero-waveform {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 4px;
-  padding: 0 40px;
-  opacity: 0.12;
+  display: none;
 }
 .pod-wave-bar {
   flex: 1;
@@ -4840,9 +4833,7 @@ color: #fff;
   100% { transform: scaleY(0.6); }
 }
 .pod-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(6,12,22,0.5) 0%, rgba(6,12,22,0.85) 70%);
+  display: none;
 }
 .pod-hero-content {
   position: relative;
@@ -5019,21 +5010,22 @@ color: #fff;
   justify-content: center;
   gap: 3px;
   height: 48px;
-  margin-top: 32px;
+  margin-top: 24px;
+  margin-bottom: -20px;
   opacity: 0;
   animation: heroFade 1s 1.2s forwards;
 }
-/* EQ bars as CTA background */
-.pod-cta-with-eq { position: relative; overflow: hidden; }
-.pod-cta-eq-bg {
+/* Waveform bars as CTA background */
+.pod-cta-with-wave { position: relative; overflow: hidden; }
+.pod-cta-waveform {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
   padding: 0 40px;
-  opacity: 0.06;
+  opacity: 0.08;
   pointer-events: none;
 }
 
