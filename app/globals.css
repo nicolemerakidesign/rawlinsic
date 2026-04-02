@@ -4810,7 +4810,8 @@ color: #fff;
 /* ── Hero with animated waveform ── */
 .pod-hero {
   position: relative;
-  min-height: 70vh;
+  min-height: auto;
+  padding: 140px 40px 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5027,12 +5028,12 @@ color: #fff;
   justify-content: center;
   gap: 5px;
   padding: 0 0;
-  opacity: 0.12;
+  opacity: 1;
   pointer-events: none;
 }
 .pod-cta-waveform .pod-wave-bar {
   max-width: 16px;
-  background: linear-gradient(180deg, rgba(10,20,40,0.9), rgba(8,16,32,0.6));
+  background: linear-gradient(180deg, rgba(14,26,50,0.95), rgba(10,20,42,0.7));
 }
 
 /* ── Podcast Responsive ── */
