@@ -968,7 +968,8 @@ text-align: center;
 }
 /* CTA button — square */
 .mobile-menu-cta {
-  margin-top: 20px;
+  margin-top: 32px;
+  margin-bottom: 24px;
   padding: 16px 36px !important;
   background: linear-gradient(145deg, #d4be78, #c9a84c) !important;
   border: none !important;
