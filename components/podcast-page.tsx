@@ -125,7 +125,7 @@ export default function PodcastPage() {
   }, []);
 
   return (
-    <PasswordGate>
+    <>
       {/* Ambient Background */}
       <div className="ambient-bg" />
       <div className="ambient-orbs">
@@ -274,6 +274,6 @@ export default function PodcastPage() {
       </div>
 
       <SiteFooter />
-    </PasswordGate>
+    </>
   );
 }
