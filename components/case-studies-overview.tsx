@@ -193,10 +193,10 @@ export default function CaseStudiesOverview() {
           <p className="section-label">
             <span className="gold-text">Partner With Us</span>
           </p>
-          <h2 className="section-title">
+          <h2 className="section-title" style={{ whiteSpace: "nowrap" }}>
             Ready to Take Your Organization to the <em>Next Level?</em>
           </h2>
-          <p className="cs-cta-text">
+          <p className="team-desc">
             Rawlins has the expertise and experience to drive your
             organization&rsquo;s success. Our tailored solutions and strategic
             approach help agencies improve performance
