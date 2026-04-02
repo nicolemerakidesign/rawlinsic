@@ -28,9 +28,8 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
   const [mobileSubOpen, setMobileSubOpen] = useState<Set<string>>(new Set());
   const close = () => { setMobileMenuOpen(false); setMobileSubOpen(new Set()); };
   const toggleSub = (key: string) => setMobileSubOpen(prev => {
-    const next = new Set(prev);
-    next.has(key) ? next.delete(key) : next.add(key);
-    return next;
+    if (prev.has(key)) return new Set();
+    return new Set([key]);
   });
 
   return (
@@ -89,6 +88,8 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           <a href="#" onClick={close} className="mobile-menu-link">Careers</a>
         </div>
 
+        <Link href={ctaHref} onClick={close} className="mobile-menu-cta">Get In Touch</Link>
+
         {/* Social icons — same as footer */}
         <div className="mobile-menu-social">
           <a href="https://www.linkedin.com/company/107078508/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="LinkedIn">
@@ -98,8 +99,6 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
             <span style={{ fontFamily: "Arial, sans-serif", fontSize: "22px", fontWeight: 700, color: "#060c16", lineHeight: 1 }}>G</span>
           </a>
         </div>
-
-        <Link href={ctaHref} onClick={close} className="mobile-menu-cta">Get In Touch</Link>
       </div>
 
       {/* Navigation */}
