@@ -189,7 +189,7 @@ export default function CaseStudiesOverview() {
         </div>
 
         {/* ── CTA Section (matches automation page CTA) ── */}
-        <section className="aam-section aam-cta-section reveal">
+        <section className="aam-section aam-cta-section reveal" style={{ overflow: "visible" }}>
           <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 32px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "800px", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Partner With Us</span></p>
             <h2 className="section-title auto-cta-title" style={{ color: "#fff", marginBottom: "20px", textAlign: "center" }}>
