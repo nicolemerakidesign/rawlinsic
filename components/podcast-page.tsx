@@ -254,15 +254,17 @@ export default function PodcastPage() {
               />
             ))}
           </div>
-          <p className="cs-cta-label">
-            <span className="gold-text">Ready to Take Your Organization to the Next Level?</span>
-          </p>
-          <h2 className="cs-cta-title">
-            Let&apos;s Build Something Together
-          </h2>
-          <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
-            <span>Connect With Us</span>
-          </Link>
+          <div style={{ position: "relative", zIndex: 2 }}>
+            <p className="section-label">
+              <span className="gold-text">Ready to Take Your Organization to the Next Level?</span>
+            </p>
+            <h2 className="section-title">
+              Let&apos;s Build Something Together
+            </h2>
+            <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginTop: 24 }}>
+              <span>Connect With Us</span>
+            </Link>
+          </div>
         </section>
 
         {/* Divider */}
