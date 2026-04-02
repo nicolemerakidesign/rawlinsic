@@ -961,6 +961,29 @@ text-align: center;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878) !important;
   -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important;
 }
+/* Nested mobile submenu (e.g. Technology under Capabilities) */
+.mobile-menu-group-nested {
+  margin: 0;
+}
+.mobile-menu-parent-nested {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif !important;
+  font-size: 0.78rem !important; font-weight: 600 !important;
+  letter-spacing: 3px !important; text-transform: uppercase !important;
+  color: #fff !important;
+  padding: 14px 0 !important;
+  border-bottom: 1px solid rgba(201,168,76,0.1) !important;
+  display: flex !important; align-items: center; justify-content: space-between;
+  width: 100%; background: none; border-left: none; border-right: none; border-top: none;
+  cursor: pointer;
+}
+.mobile-menu-sub-nested {
+  padding-left: 16px !important;
+}
+.mobile-menu-sub-nested a {
+  font-size: 0.72rem !important;
+  letter-spacing: 2.5px !important;
+  opacity: 0.85;
+}
 /* Social icons — reuse footer-social-btn style */
 .mobile-menu-social {
   display: flex; gap: 14px;
