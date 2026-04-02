@@ -188,23 +188,21 @@ export default function CaseStudiesOverview() {
           <div className="gold-line" />
         </div>
 
-        {/* ── CTA Section (matches Meet the Team) ── */}
-        <section className="cs-cta-section reveal">
-          <p className="section-label">
-            <span className="gold-text">Partner With Us</span>
-          </p>
-          <h2 className="section-title" style={{ whiteSpace: "nowrap" }}>
-            Ready to Take Your Organization to the <em>Next Level?</em>
-          </h2>
-          <p className="team-desc">
-            Rawlins has the expertise and experience to drive your
-            organization&rsquo;s success. Our tailored solutions and strategic
-            approach help agencies improve performance
-            and meet evolving challenges.
-          </p>
-          <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
-            <span>Connect With Us Today</span>
-          </Link>
+        {/* ── CTA Section (matches automation page CTA) ── */}
+        <section className="aam-section aam-cta-section reveal">
+          <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 32px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "800px", margin: "0 auto" }}>
+            <p className="section-label"><span className="gold-text">Partner With Us</span></p>
+            <h2 className="section-title auto-cta-title" style={{ color: "#fff", marginBottom: "20px", textAlign: "center", whiteSpace: "nowrap" }}>
+              Ready to Take Your Organization to the <em>Next Level?</em>
+            </h2>
+            <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center", marginBottom: "40px" }}>
+              Rawlins has the expertise and experience to drive your
+              organization&rsquo;s success. Our tailored solutions and strategic
+              approach help agencies improve performance
+              and meet evolving challenges.
+            </p>
+            <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none" }}><span>Connect With Us Today</span></Link>
+          </div>
         </section>
 
         {/* Divider */}
