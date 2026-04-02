@@ -227,9 +227,10 @@ export default function PodcastPage() {
                   height="600"
                   src="https://app.hiro.fm/embed/6750fc8bfc938602a4e7fd78"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                   style={{ borderRadius: 12, border: "none" }}
-                />
+                ></iframe>
               </div>
             </div>
           </div>
