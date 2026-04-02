@@ -151,6 +151,7 @@ export default function PodcastPage() {
       <div className="content-wrapper">
         {/* ── Hero Section ── */}
         <section className="pod-hero" id="top">
+          <div className="pod-hero-overlay" />
           <div className="pod-hero-content">
             <div className="pod-hero-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
@@ -203,7 +204,7 @@ export default function PodcastPage() {
             <div className="pod-about">
               <p className="section-label"><span className="gold-text">about the podcast</span></p>
               <h2 className="section-title" style={{ color: "#fff", marginBottom: 24 }}>
-                Providing <em>value.</em> Consulting with a purpose.
+                Providing <em>value.</em><br />Consulting with a purpose.
               </h2>
               <p className="pod-about-text">
                 The Rawlins Way podcast offers an inside look at how Rawlins Infra
