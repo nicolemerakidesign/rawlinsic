@@ -900,7 +900,7 @@ text-align: center;
 .mobile-menu-link,
 .mobile-menu-parent {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.85rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
   color: #fff;
   padding: 22px 0;
   border-bottom: 1px solid rgba(201,168,76,0.15);
@@ -968,6 +968,7 @@ text-align: center;
 }
 /* CTA button — square */
 .mobile-menu-cta {
+  margin-top: 20px;
   padding: 16px 36px !important;
   background: linear-gradient(145deg, #d4be78, #c9a84c) !important;
   border: none !important;
