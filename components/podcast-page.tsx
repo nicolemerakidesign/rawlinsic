@@ -77,7 +77,7 @@ export default function PodcastPage() {
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.charset = "utf-8";
-    script.src = "https://www.mypodops.com/hosting/player/embed.js?id=3542&type=full&primary=667eea&secondary=764ba2&width=100%25&height=450&artwork=1&desc=1&waveform=0&theme=minimal";
+    script.src = "https://www.mypodops.com/hosting/player/embed.js?id=3542&type=full&primary=c9a84c&secondary=d4b878&width=100%25&height=600&artwork=1&desc=1&waveform=0&theme=minimal";
     container.appendChild(script);
   }, []);
 
