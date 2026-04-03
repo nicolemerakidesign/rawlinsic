@@ -118,37 +118,6 @@ const ecosystemNodes = [
   { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Metropolitan planning organizations, municipal governments, and transit agencies integrating AAM into community infrastructure.', angle: 315 },
 ];
 
-/* ──── Operations Map Data ──── */
-const opsIcons: Record<string, string> = {
-  airtaxi: 'M12 2L8 8h3v4H7l-2 4h3v4h8v-4h3l-2-4h-4V8h3L12 2z',
-  airport: 'M22 16v-2l-8.5-5V3.5A1.5 1.5 0 0012 2a1.5 1.5 0 00-1.5 1.5V9L2 14v2l8.5-2.5V19L8 20.5V22l4-1 4 1v-1.5L13.5 19v-5.5L22 16z',
-  package: 'M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2a3 3 0 006 0h6a3 3 0 006 0h2v-5l-3-4zM6 18.5A1.5 1.5 0 014.5 17 1.5 1.5 0 016 15.5 1.5 1.5 0 017.5 17 1.5 1.5 0 016 18.5zm13.5-9L21 12h-4V9.5h2.5zM18 18.5a1.5 1.5 0 01-1.5-1.5 1.5 1.5 0 011.5-1.5 1.5 1.5 0 011.5 1.5 1.5 1.5 0 01-1.5 1.5z',
-  suburb: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z',
-  rural: 'M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9h-3v-5h-6v5H6v-9l6-4.5zM12 1l1 2h-2l1-2z',
-  medical: 'M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z',
-  construction: 'M13 4h-2l-1 7h4l-1-7zm4.5 14H22l-4-7h-3.5l4 7zM6.5 18H2l4-7h3.5l-4 7zM12 14a2 2 0 100-4 2 2 0 000 4z',
-  city: 'M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z',
-};
-
-const opsNodes = [
-  { id: 'airtaxi', label: 'Urban\nAir Taxi', x: 12, y: 15, short: 'eVTOL · Passenger Transport', desc: 'Electric vertical takeoff and landing aircraft providing urban air mobility for passenger transport, business travel, emergency medical transport, and regional connectivity.' },
-  { id: 'airport', label: 'Airport &\nVertiport', x: 15, y: 55, short: 'Hub · Infrastructure · Operations', desc: 'Aviation hubs and vertiport infrastructure supporting AAM operations including air traffic management, ground handling, and multimodal transit integration.' },
-  { id: 'package', label: 'Package\nDelivery', x: 12, y: 88, short: 'Last-Mile · Retail · E-Commerce', desc: 'Autonomous drone delivery for last-mile packages, retail fulfillment, and e-commerce support serving suburban, urban, and rural communities.' },
-  { id: 'suburb', label: 'Suburban\nCommunity', x: 42, y: 18, short: 'Residential · Neighborhoods', desc: 'Suburban residential areas receiving drone delivery services, air taxi connections, and benefiting from reduced ground traffic congestion.' },
-  { id: 'medical', label: 'Medical\nSupplies', x: 42, y: 52, short: 'Healthcare · Emergency · Labs', desc: 'Critical medical supply delivery including pharmaceuticals, lab samples, blood products, and emergency medical equipment to hospitals and clinics.' },
-  { id: 'construction', label: 'Construction\n& Inspection', x: 42, y: 85, short: 'Infrastructure · Monitoring', desc: 'UAS data collection for infrastructure inspection, construction monitoring, aerial surveying, mapping, and environmental assessments.' },
-  { id: 'rural', label: 'Rural &\nAgriculture', x: 80, y: 15, short: 'Farms · Remote Areas', desc: 'Serving rural and remote communities with drone delivery, agricultural monitoring, precision farming support, and emergency connectivity.' },
-  { id: 'city', label: 'City &\nUrban Center', x: 80, y: 65, short: 'Metro · Downtown · Transit', desc: 'Dense urban areas integrating AAM into city infrastructure for air taxi services, package delivery, traffic management, and smart city operations.' },
-];
-
-const opsConnections = [
-  ['airport', 'airtaxi'], ['airport', 'package'], ['airport', 'city'],
-  ['airtaxi', 'suburb'], ['airtaxi', 'city'], ['airtaxi', 'rural'],
-  ['package', 'suburb'], ['package', 'city'], ['package', 'rural'],
-  ['medical', 'suburb'], ['medical', 'city'], ['medical', 'rural'], ['medical', 'construction'],
-  ['construction', 'city'], ['construction', 'rural'],
-  ['suburb', 'rural'],
-];
 
 /* ──── Component ──── */
 
@@ -168,8 +137,6 @@ const AAMPage = () => {
   const [introOpen, setIntroOpen] = useState(false);
   const [valueOpen, setValueOpen] = useState(false);
   const [openServices, setOpenServices] = useState<Set<number>>(new Set());
-  const [activeOps, setActiveOps] = useState<string | null>(null);
-  const [hoveredOps, setHoveredOps] = useState<string | null>(null);
 
   // Phases horizontal scroll
   const [phasesProgress, setPhasesProgress] = useState(0);
@@ -358,25 +325,252 @@ const AAMPage = () => {
               </div>
             </div>
             <div className="aam-overview-right reveal rd1">
-              <div className="intro-cinematic-wrap">
-                <Image className="intro-cinematic-img" src={AERIAL_VIEW_IMG} alt="Aerial view" fill sizes="(max-width: 768px) 100vw, 50vw" />
-                <div className="intro-cinematic-overlay" />
-                <div className="intro-metrics">
-                  <div className="intro-metric">
-                    <span className="intro-metric-num">20+</span>
-                    <span className="intro-metric-label">Specializations</span>
-                  </div>
-                  <div className="intro-metric-divider" />
-                  <div className="intro-metric">
-                    <span className="intro-metric-num">20</span>
-                    <span className="intro-metric-label">US States Served</span>
-                  </div>
-                  <div className="intro-metric-divider" />
-                  <div className="intro-metric">
-                    <span className="intro-metric-num">7</span>
-                    <span className="intro-metric-label">Phase Program Lifecycle Support</span>
-                  </div>
-                </div>
+              <div className="aam-ops-illustration">
+                <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" className="aam-ops-svg">
+                  <defs>
+                    <linearGradient id="opsGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#c9a84c" />
+                      <stop offset="50%" stopColor="#e8d5a0" />
+                      <stop offset="100%" stopColor="#c9a84c" />
+                    </linearGradient>
+                    <linearGradient id="opsRiver" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="rgba(100,140,180,0.3)" />
+                      <stop offset="50%" stopColor="rgba(100,140,180,0.5)" />
+                      <stop offset="100%" stopColor="rgba(100,140,180,0.3)" />
+                    </linearGradient>
+                    <style>{`
+                      .ops-flight { stroke-dasharray: 6 5; animation: opsFlightDash 12s linear infinite; }
+                      @keyframes opsFlightDash { to { stroke-dashoffset: -200; } }
+                    `}</style>
+                  </defs>
+
+                  {/* Ground line */}
+                  <line x1="0" y1="370" x2="900" y2="370" stroke="rgba(201,168,76,0.15)" strokeWidth="1" />
+
+                  {/* ── LEFT: Airport / Urban Area ── */}
+                  {/* Stadium / Vertiport */}
+                  <ellipse cx="95" cy="260" rx="55" ry="18" fill="rgba(232,230,225,0.9)" />
+                  <path d="M40 260 Q40 225 95 220 Q150 225 150 260" fill="rgba(200,195,185,0.85)" stroke="rgba(232,230,225,0.6)" strokeWidth="0.5" />
+                  <ellipse cx="95" cy="220" rx="55" ry="14" fill="rgba(180,175,165,0.8)" />
+                  <text x="95" y="252" textAnchor="middle" fill="rgba(6,12,22,0.7)" fontSize="8" fontFamily="'DM Sans', sans-serif" fontWeight="600">URBAN AIR TAXI</text>
+
+                  {/* Control tower */}
+                  <rect x="165" y="225" width="8" height="45" fill="rgba(180,175,165,0.9)" />
+                  <rect x="158" y="218" width="22" height="12" rx="2" fill="rgba(200,195,185,0.9)" stroke="rgba(232,230,225,0.5)" strokeWidth="0.5" />
+                  <rect x="161" y="220" width="3" height="6" fill="rgba(140,200,220,0.6)" />
+                  <rect x="166" y="220" width="3" height="6" fill="rgba(140,200,220,0.6)" />
+                  <rect x="171" y="220" width="3" height="6" fill="rgba(140,200,220,0.6)" />
+
+                  {/* Airplane */}
+                  <g transform="translate(130,185) rotate(-15)">
+                    <path d="M0 5 L35 0 L40 5 L35 10 Z" fill="rgba(232,230,225,0.85)" />
+                    <path d="M12 5 L18 -8 L22 -6 L18 5Z" fill="rgba(232,230,225,0.7)" />
+                    <path d="M30 5 L34 -2 L36 -1 L34 5Z" fill="rgba(232,230,225,0.7)" />
+                  </g>
+
+                  {/* Helicopter */}
+                  <g transform="translate(55,195)">
+                    <ellipse cx="12" cy="8" rx="10" ry="6" fill="rgba(232,230,225,0.85)" />
+                    <line x1="2" y1="2" x2="22" y2="2" stroke="rgba(200,195,185,0.9)" strokeWidth="1.5" />
+                    <line x1="12" y1="2" x2="12" y2="5" stroke="rgba(200,195,185,0.9)" strokeWidth="1" />
+                    <path d="M22 8 L32 12 L32 10 L22 8Z" fill="rgba(200,195,185,0.8)" />
+                    <line x1="8" y1="14" x2="16" y2="14" stroke="rgba(200,195,185,0.9)" strokeWidth="1" />
+                  </g>
+
+                  {/* Warehouse (Package Delivery) */}
+                  <rect x="30" y="310" width="80" height="55" fill="rgba(180,175,165,0.9)" />
+                  <rect x="30" y="300" width="80" height="15" fill="rgba(160,155,145,0.9)" />
+                  <rect x="55" y="340" width="28" height="25" fill="rgba(140,135,125,0.7)" />
+                  <text x="70" y="330" textAnchor="middle" fill="#c9a84c" fontSize="9" fontFamily="'DM Sans', sans-serif" fontWeight="700">PACKAGE</text>
+                  <text x="70" y="340" textAnchor="middle" fill="#c9a84c" fontSize="9" fontFamily="'DM Sans', sans-serif" fontWeight="700">DELIVERY</text>
+
+                  {/* Road from warehouse */}
+                  <path d="M110 340 Q140 340 150 360 Q160 380 200 380" stroke="rgba(100,95,85,0.6)" strokeWidth="12" fill="none" />
+                  <path d="M110 340 Q140 340 150 360 Q160 380 200 380" stroke="rgba(201,168,76,0.2)" strokeWidth="1" strokeDasharray="4 4" fill="none" />
+
+                  {/* ── CENTER-TOP: Suburban Homes ── */}
+                  {/* House 1 */}
+                  <rect x="370" y="155" width="30" height="22" fill="rgba(200,195,185,0.9)" />
+                  <path d="M365 155 L385 138 L405 155Z" fill="rgba(160,155,145,0.9)" />
+                  <rect x="380" y="162" width="8" height="15" fill="rgba(140,180,160,0.5)" />
+
+                  {/* House 2 */}
+                  <rect x="415" y="150" width="35" height="27" fill="rgba(210,205,195,0.9)" />
+                  <path d="M410 150 L432 130 L455 150Z" fill="rgba(170,165,155,0.9)" />
+                  <rect x="420" y="158" width="8" height="8" fill="rgba(140,180,220,0.4)" />
+                  <rect x="433" y="162" width="10" height="15" fill="rgba(140,135,125,0.6)" />
+
+                  {/* House 3 */}
+                  <rect x="460" y="152" width="28" height="25" fill="rgba(200,195,185,0.9)" />
+                  <path d="M456 152 L474 137 L492 152Z" fill="rgba(155,150,140,0.9)" />
+                  <rect x="468" y="160" width="8" height="17" fill="rgba(140,135,125,0.6)" />
+
+                  {/* House 4 (smaller) */}
+                  <rect x="500" y="156" width="22" height="20" fill="rgba(195,190,180,0.9)" />
+                  <path d="M496 156 L511 144 L526 156Z" fill="rgba(165,160,150,0.9)" />
+
+                  {/* Trees between houses */}
+                  <circle cx="405" cy="163" r="6" fill="rgba(80,120,80,0.6)" />
+                  <circle cx="453" cy="165" r="5" fill="rgba(70,110,70,0.5)" />
+                  <circle cx="530" cy="163" r="7" fill="rgba(75,115,75,0.55)" />
+                  <circle cx="534" cy="160" r="5" fill="rgba(85,125,85,0.5)" />
+
+                  {/* ── CENTER-BOTTOM: Medical & City ── */}
+                  {/* Medical building */}
+                  <rect x="420" y="290" width="45" height="50" fill="rgba(232,230,225,0.9)" />
+                  <rect x="430" y="298" width="8" height="8" fill="rgba(140,180,220,0.4)" />
+                  <rect x="442" y="298" width="8" height="8" fill="rgba(140,180,220,0.4)" />
+                  {/* Red cross */}
+                  <rect x="436" y="280" width="18" height="14" rx="2" fill="rgba(200,60,60,0.85)" />
+                  <rect x="442" y="283" width="6" height="8" fill="rgba(255,255,255,0.9)" />
+                  <rect x="439" y="285.5" width="12" height="3" fill="rgba(255,255,255,0.9)" />
+                  <text x="442" y="330" textAnchor="middle" fill="rgba(6,12,22,0.6)" fontSize="7" fontFamily="'DM Sans', sans-serif" fontWeight="600">MEDICAL</text>
+
+                  {/* City skyline silhouettes */}
+                  <rect x="490" y="275" width="25" height="95" fill="rgba(60,55,50,0.85)" />
+                  <rect x="493" y="280" width="5" height="6" fill="rgba(201,168,76,0.3)" />
+                  <rect x="501" y="280" width="5" height="6" fill="rgba(201,168,76,0.3)" />
+                  <rect x="493" y="290" width="5" height="6" fill="rgba(201,168,76,0.3)" />
+                  <rect x="501" y="290" width="5" height="6" fill="rgba(201,168,76,0.3)" />
+                  <rect x="493" y="300" width="5" height="6" fill="rgba(201,168,76,0.3)" />
+                  <rect x="501" y="300" width="5" height="6" fill="rgba(201,168,76,0.3)" />
+
+                  <rect x="520" y="300" width="20" height="70" fill="rgba(70,65,58,0.85)" />
+                  <rect x="545" y="260" width="30" height="110" fill="rgba(55,50,45,0.85)" />
+                  <rect x="548" y="265" width="6" height="6" fill="rgba(201,168,76,0.25)" />
+                  <rect x="558" y="265" width="6" height="6" fill="rgba(201,168,76,0.25)" />
+                  <rect x="548" y="278" width="6" height="6" fill="rgba(201,168,76,0.25)" />
+                  <rect x="558" y="278" width="6" height="6" fill="rgba(201,168,76,0.25)" />
+                  <rect x="548" y="291" width="6" height="6" fill="rgba(201,168,76,0.25)" />
+
+                  <rect x="580" y="310" width="18" height="60" fill="rgba(65,60,53,0.85)" />
+
+                  {/* Construction cranes */}
+                  <line x1="610" y1="245" x2="610" y2="370" stroke="rgba(201,168,76,0.5)" strokeWidth="2" />
+                  <line x1="610" y1="245" x2="645" y2="245" stroke="rgba(201,168,76,0.5)" strokeWidth="1.5" />
+                  <line x1="610" y1="245" x2="600" y2="250" stroke="rgba(201,168,76,0.4)" strokeWidth="1" />
+                  <line x1="645" y1="245" x2="640" y2="270" stroke="rgba(201,168,76,0.3)" strokeWidth="0.5" />
+
+                  <line x1="640" y1="270" x2="640" y2="370" stroke="rgba(201,168,76,0.4)" strokeWidth="1.5" />
+                  <line x1="640" y1="270" x2="670" y2="270" stroke="rgba(201,168,76,0.4)" strokeWidth="1" />
+
+                  {/* Bridge */}
+                  <path d="M480 370 Q510 355 540 370 Q570 355 600 370 Q630 355 660 370" fill="none" stroke="rgba(120,115,105,0.8)" strokeWidth="3" />
+                  <line x1="490" y1="370" x2="490" y2="385" stroke="rgba(120,115,105,0.7)" strokeWidth="2" />
+                  <line x1="540" y1="370" x2="540" y2="385" stroke="rgba(120,115,105,0.7)" strokeWidth="2" />
+                  <line x1="600" y1="370" x2="600" y2="385" stroke="rgba(120,115,105,0.7)" strokeWidth="2" />
+                  <line x1="650" y1="370" x2="650" y2="385" stroke="rgba(120,115,105,0.7)" strokeWidth="2" />
+
+                  {/* River */}
+                  <rect x="470" y="378" width="200" height="18" fill="url(#opsRiver)" rx="4" />
+
+                  {/* Orange/brown building */}
+                  <rect x="680" y="285" width="40" height="85" fill="rgba(200,120,50,0.8)" rx="2" />
+                  <rect x="685" y="292" width="8" height="8" fill="rgba(255,255,255,0.3)" />
+                  <rect x="697" y="292" width="8" height="8" fill="rgba(255,255,255,0.3)" />
+                  <rect x="685" y="305" width="8" height="8" fill="rgba(255,255,255,0.3)" />
+                  <rect x="697" y="305" width="8" height="8" fill="rgba(255,255,255,0.3)" />
+                  <rect x="685" y="318" width="8" height="8" fill="rgba(255,255,255,0.3)" />
+                  <rect x="697" y="318" width="8" height="8" fill="rgba(255,255,255,0.3)" />
+                  <rect x="685" y="331" width="8" height="8" fill="rgba(255,255,255,0.3)" />
+                  <rect x="697" y="331" width="8" height="8" fill="rgba(255,255,255,0.3)" />
+                  <rect x="693" y="348" width="12" height="22" fill="rgba(160,90,35,0.8)" />
+
+                  {/* ── RIGHT: Rural / Farm ── */}
+                  {/* Barn */}
+                  <rect x="760" y="135" width="40" height="35" fill="rgba(180,100,60,0.8)" />
+                  <path d="M755 135 L780 115 L805 135Z" fill="rgba(160,85,50,0.85)" />
+                  <rect x="775" y="150" width="10" height="20" fill="rgba(140,75,40,0.7)" />
+
+                  {/* Silo */}
+                  <rect x="810" y="130" width="14" height="40" fill="rgba(190,185,175,0.85)" rx="3" />
+                  <ellipse cx="817" cy="130" rx="7" ry="4" fill="rgba(170,165,155,0.8)" />
+
+                  {/* Windmill */}
+                  <line x1="843" y1="125" x2="843" y2="170" stroke="rgba(180,175,165,0.9)" strokeWidth="2" />
+                  <g transform="translate(843,125)">
+                    <line x1="0" y1="0" x2="-12" y2="-14" stroke="rgba(200,195,185,0.8)" strokeWidth="1.5" />
+                    <line x1="0" y1="0" x2="14" y2="-8" stroke="rgba(200,195,185,0.8)" strokeWidth="1.5" />
+                    <line x1="0" y1="0" x2="6" y2="15" stroke="rgba(200,195,185,0.8)" strokeWidth="1.5" />
+                    <line x1="0" y1="0" x2="-14" y2="6" stroke="rgba(200,195,185,0.8)" strokeWidth="1.5" />
+                  </g>
+
+                  {/* Farm house */}
+                  <rect x="855" y="140" width="30" height="30" fill="rgba(210,205,195,0.9)" />
+                  <path d="M850 140 L870 122 L890 140Z" fill="rgba(160,155,145,0.9)" />
+
+                  {/* Trees */}
+                  <circle cx="740" cy="155" r="8" fill="rgba(60,100,60,0.6)" />
+                  <circle cx="745" cy="150" r="6" fill="rgba(70,110,70,0.55)" />
+                  <circle cx="835" cy="160" r="6" fill="rgba(65,105,65,0.5)" />
+                  <circle cx="750" cy="160" r="5" fill="rgba(75,115,75,0.5)" />
+
+                  {/* Fence */}
+                  <line x1="740" y1="170" x2="890" y2="170" stroke="rgba(160,155,145,0.5)" strokeWidth="0.8" />
+
+                  {/* ── DRONES ── */}
+                  {/* Drone 1: near airport */}
+                  <g transform="translate(195,210)">
+                    <rect x="-3" y="-2" width="6" height="4" fill="rgba(60,55,50,0.9)" rx="1" />
+                    <line x1="-8" y1="-3" x2="-3" y2="-2" stroke="rgba(80,75,70,0.8)" strokeWidth="1" />
+                    <line x1="3" y1="-2" x2="8" y2="-3" stroke="rgba(80,75,70,0.8)" strokeWidth="1" />
+                    <circle cx="-9" cy="-4" r="3" fill="none" stroke="rgba(201,168,76,0.6)" strokeWidth="0.8" />
+                    <circle cx="9" cy="-4" r="3" fill="none" stroke="rgba(201,168,76,0.6)" strokeWidth="0.8" />
+                  </g>
+
+                  {/* Drone 2: near suburbs */}
+                  <g transform="translate(350,120)">
+                    <rect x="-3" y="-2" width="6" height="4" fill="rgba(60,55,50,0.9)" rx="1" />
+                    <line x1="-8" y1="-3" x2="-3" y2="-2" stroke="rgba(80,75,70,0.8)" strokeWidth="1" />
+                    <line x1="3" y1="-2" x2="8" y2="-3" stroke="rgba(80,75,70,0.8)" strokeWidth="1" />
+                    <circle cx="-9" cy="-4" r="3" fill="none" stroke="rgba(201,168,76,0.6)" strokeWidth="0.8" />
+                    <circle cx="9" cy="-4" r="3" fill="none" stroke="rgba(201,168,76,0.6)" strokeWidth="0.8" />
+                  </g>
+
+                  {/* Drone 3: near medical */}
+                  <g transform="translate(460,250)">
+                    <rect x="-3" y="-2" width="6" height="4" fill="rgba(60,55,50,0.9)" rx="1" />
+                    <line x1="-8" y1="-3" x2="-3" y2="-2" stroke="rgba(80,75,70,0.8)" strokeWidth="1" />
+                    <line x1="3" y1="-2" x2="8" y2="-3" stroke="rgba(80,75,70,0.8)" strokeWidth="1" />
+                    <circle cx="-9" cy="-4" r="3" fill="none" stroke="rgba(201,168,76,0.6)" strokeWidth="0.8" />
+                    <circle cx="9" cy="-4" r="3" fill="none" stroke="rgba(201,168,76,0.6)" strokeWidth="0.8" />
+                  </g>
+
+                  {/* Drone 4: near rural */}
+                  <g transform="translate(720,100)">
+                    <rect x="-3" y="-2" width="6" height="4" fill="rgba(60,55,50,0.9)" rx="1" />
+                    <line x1="-8" y1="-3" x2="-3" y2="-2" stroke="rgba(80,75,70,0.8)" strokeWidth="1" />
+                    <line x1="3" y1="-2" x2="8" y2="-3" stroke="rgba(80,75,70,0.8)" strokeWidth="1" />
+                    <circle cx="-9" cy="-4" r="3" fill="none" stroke="rgba(201,168,76,0.6)" strokeWidth="0.8" />
+                    <circle cx="9" cy="-4" r="3" fill="none" stroke="rgba(201,168,76,0.6)" strokeWidth="0.8" />
+                  </g>
+
+                  {/* ── FLIGHT PATHS (dashed curves) ── */}
+                  {/* Airport → Suburbs */}
+                  <path d="M150 230 Q250 100 370 140" fill="none" stroke="rgba(201,168,76,0.4)" strokeWidth="1.2" className="ops-flight" />
+                  {/* Airport → Rural */}
+                  <path d="M160 220 Q400 20 760 130" fill="none" stroke="rgba(201,168,76,0.35)" strokeWidth="1" className="ops-flight" />
+                  {/* Airport → Medical */}
+                  <path d="M130 270 Q280 230 420 280" fill="none" stroke="rgba(201,168,76,0.35)" strokeWidth="1" className="ops-flight" />
+                  {/* Warehouse → Suburbs */}
+                  <path d="M110 320 Q240 200 380 150" fill="none" stroke="rgba(201,168,76,0.35)" strokeWidth="1" className="ops-flight" />
+                  {/* Warehouse → City */}
+                  <path d="M110 340 Q300 290 490 290" fill="none" stroke="rgba(201,168,76,0.35)" strokeWidth="1" className="ops-flight" />
+                  {/* Warehouse → Rural */}
+                  <path d="M100 310 Q400 80 770 130" fill="none" stroke="rgba(201,168,76,0.3)" strokeWidth="1" className="ops-flight" />
+                  {/* Suburbs → Rural */}
+                  <path d="M530 155 Q630 90 760 130" fill="none" stroke="rgba(201,168,76,0.35)" strokeWidth="1" className="ops-flight" />
+                  {/* Medical → Suburbs */}
+                  <path d="M440 280 Q430 210 420 155" fill="none" stroke="rgba(201,168,76,0.35)" strokeWidth="1" className="ops-flight" />
+                  {/* Medical → City */}
+                  <path d="M465 300 Q475 300 490 295" fill="none" stroke="rgba(201,168,76,0.3)" strokeWidth="1" className="ops-flight" />
+
+                  {/* ── LABELS ── */}
+                  <text x="95" y="395" textAnchor="middle" fill="rgba(201,168,76,0.7)" fontSize="10" fontFamily="'DM Sans', sans-serif" fontWeight="600" letterSpacing="1.5" style={{ textTransform: 'uppercase' } as React.CSSProperties}>Airport Hub</text>
+                  <text x="450" y="190" textAnchor="middle" fill="rgba(201,168,76,0.7)" fontSize="10" fontFamily="'DM Sans', sans-serif" fontWeight="600" letterSpacing="1.5" style={{ textTransform: 'uppercase' } as React.CSSProperties}>Suburban</text>
+                  <text x="570" y="395" textAnchor="middle" fill="rgba(201,168,76,0.7)" fontSize="10" fontFamily="'DM Sans', sans-serif" fontWeight="600" letterSpacing="1.5" style={{ textTransform: 'uppercase' } as React.CSSProperties}>Urban Center</text>
+                  <text x="810" y="190" textAnchor="middle" fill="rgba(201,168,76,0.7)" fontSize="10" fontFamily="'DM Sans', sans-serif" fontWeight="600" letterSpacing="1.5" style={{ textTransform: 'uppercase' } as React.CSSProperties}>Rural</text>
+                </svg>
               </div>
             </div>
           </div>
@@ -441,161 +635,6 @@ const AAMPage = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider"><div className="gold-line" /></div>
-
-      {/* ── Interactive Operations Map ── */}
-      <section className="aam-section aam-ecosystem-section" id="operations-map">
-        <div className="aam-container">
-          <div className="aam-section-header reveal" style={{ textAlign: 'center', marginBottom: 40 }}>
-            <p className="section-label"><span className="gold-text">The AAM &amp; UAS Ecosystem</span></p>
-            <h2 className="section-title">How it all <em>connects</em></h2>
-            <p className="aam-section-lead" style={{ marginTop: 20, maxWidth: 700, marginLeft: 'auto', marginRight: 'auto' }}>
-              From air taxis to medical supply delivery, see how advanced air mobility and uncrewed aircraft systems serve communities across every environment.
-            </p>
-            <p className="aam-section-lead" style={{ fontStyle: 'italic' }}>Click any node to learn more.</p>
-          </div>
-
-          <div className="eco-vis-wrapper" style={{ maxWidth: 1000, margin: '0 auto' }}>
-            <svg viewBox="0 0 1000 550" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto' }}>
-              <defs>
-                <linearGradient id="opsGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#c9a84c" />
-                  <stop offset="50%" stopColor="#e8d5a0" />
-                  <stop offset="100%" stopColor="#c9a84c" />
-                </linearGradient>
-                <filter id="opsGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur" />
-                  <feFlood floodColor="#c9a84c" floodOpacity="0.3" result="color" />
-                  <feComposite in="color" in2="blur" operator="in" result="shadow" />
-                  <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
-                </filter>
-                <style>{`
-                  .ops-path { stroke-dasharray: 8 6; animation: opsDash 20s linear infinite; }
-                  .ops-path-active { stroke-dasharray: 4 4; animation: opsDash 6s linear infinite; stroke-width: 2.5; }
-                  @keyframes opsDash { to { stroke-dashoffset: -200; } }
-                `}</style>
-              </defs>
-
-              {/* Background grid */}
-              <g opacity="0.03">
-                {Array.from({ length: 21 }, (_, i) => (
-                  <React.Fragment key={`opsgrid-${i}`}>
-                    <line x1={i * 50} y1="0" x2={i * 50} y2="550" stroke="#c9a84c" strokeWidth="0.5" />
-                    <line x1="0" y1={i * 27.5} x2="1000" y2={i * 27.5} stroke="#c9a84c" strokeWidth="0.5" />
-                  </React.Fragment>
-                ))}
-              </g>
-
-              {/* Flight path connections */}
-              {opsConnections.map(([fromId, toId], ci) => {
-                const from = opsNodes.find(n => n.id === fromId)!;
-                const to = opsNodes.find(n => n.id === toId)!;
-                const fx = from.x * 10;
-                const fy = from.y * 5.5;
-                const tx = to.x * 10;
-                const ty = to.y * 5.5;
-                const mx = (fx + tx) / 2;
-                const my = Math.min(fy, ty) - 30 - (ci % 3) * 15;
-                const isActive = activeOps === fromId || activeOps === toId || hoveredOps === fromId || hoveredOps === toId;
-                return (
-                  <path
-                    key={`ops-conn-${ci}`}
-                    d={`M${fx},${fy} Q${mx},${my} ${tx},${ty}`}
-                    fill="none"
-                    stroke={isActive ? "#c9a84c" : "rgba(201,168,76,0.15)"}
-                    strokeWidth={isActive ? 2.5 : 1}
-                    className={isActive ? "ops-path-active" : "ops-path"}
-                    opacity={isActive ? 0.9 : 0.4}
-                  />
-                );
-              })}
-
-              {/* Nodes */}
-              {opsNodes.map((node) => {
-                const nx = node.x * 10;
-                const ny = node.y * 5.5;
-                const isActive = activeOps === node.id;
-                const isHovered = hoveredOps === node.id;
-                const highlighted = isActive || isHovered;
-                const iconPath = opsIcons[node.id] || '';
-                const iconSize = highlighted ? 52 : 44;
-
-                return (
-                  <g
-                    key={node.id}
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => setActiveOps(activeOps === node.id ? null : node.id)}
-                    onMouseEnter={() => setHoveredOps(node.id)}
-                    onMouseLeave={() => setHoveredOps(null)}
-                  >
-                    {/* Hit area */}
-                    <circle cx={nx} cy={ny} r="55" fill="transparent" />
-
-                    {/* Glow ring */}
-                    {highlighted && (
-                      <circle cx={nx} cy={ny} r="42" fill="none" stroke="#c9a84c" strokeWidth="1.5" opacity="0.5" />
-                    )}
-
-                    {/* Background circle */}
-                    <circle cx={nx} cy={ny} r="36" fill="rgba(6,12,22,0.9)" stroke={highlighted ? "rgba(201,168,76,0.6)" : "rgba(201,168,76,0.15)"} strokeWidth="1.5" />
-
-                    {/* Icon */}
-                    <g transform={`translate(${nx - iconSize / 2}, ${ny - iconSize / 2 - 6})`}>
-                      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24">
-                        <path d={iconPath} fill="url(#opsGoldGrad)" opacity={highlighted ? 1 : 0.7} />
-                      </svg>
-                    </g>
-
-                    {/* Label */}
-                    {node.label.split('\n').map((line, li) => (
-                      <text
-                        key={li}
-                        x={nx}
-                        y={ny + 42 + li * 16}
-                        textAnchor="middle"
-                        fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.9)"}
-                        fontFamily="'DM Sans', sans-serif"
-                        fontSize="13"
-                        fontWeight={highlighted ? "700" : "600"}
-                        letterSpacing="1.5"
-                        style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}
-                      >
-                        {line}
-                      </text>
-                    ))}
-                  </g>
-                );
-              })}
-            </svg>
-
-            {/* Detail panel */}
-            {activeOps && (() => {
-              const node = opsNodes.find(n => n.id === activeOps);
-              if (!node) return null;
-              return (
-                <div className="eco-detail-panel" style={{ left: `${Math.max(15, Math.min(85, node.x))}%`, top: `${Math.max(10, Math.min(75, node.y))}%`, transform: 'translate(-50%, -50%)' }}>
-                  <div className="eco-detail-header">
-                    <div>
-                      <h4 className="eco-detail-title">{node.label.replace('\n', ' ')}</h4>
-                      <p className="eco-detail-short">{node.short}</p>
-                    </div>
-                    <button className="eco-detail-close" onClick={() => setActiveOps(null)}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
-                    </button>
-                  </div>
-                  <p className="eco-detail-desc">{node.desc}</p>
-                </div>
-              );
-            })()}
-
-            {/* Click-outside overlay */}
-            {activeOps && (
-              <div className="eco-click-outside" onClick={() => setActiveOps(null)} />
-            )}
           </div>
         </div>
       </section>

@@ -1165,6 +1165,20 @@ text-align: center;
   border: none !important;
   border-radius: 0 !important;
 }
+
+/* AAM Operations Illustration */
+.aam-ops-illustration {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aam-ops-svg {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+}
+
 .intro-cinematic-img {
   width: 110%; height: 110%;
   max-width: none;
