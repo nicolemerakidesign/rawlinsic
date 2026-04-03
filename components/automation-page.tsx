@@ -175,7 +175,7 @@ export default function AutomationPage() {
             Partnering to reshape the way people work.
           </p>
           <a href="#benefits" className="auto-hero-btn">
-            <span>Explore Solutions</span>
+            <span>Explore Our Capabilities</span>
           </a>
         </div>
         <div className="hero-scroll"><span style={{ background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", fontSize: "0.6rem", letterSpacing: "3px", textTransform: "uppercase" as const }}>Scroll</span><div className="scroll-line" /></div>
