@@ -230,7 +230,7 @@ export default function CaseStudyDetail({ study }: Props) {
               {study.projects.map((project, pi) => (
                 <div
                   key={pi}
-                  className={`csd-project-tile reveal rd${(pi % 4) + 1}${expandedTiles.has(pi) ? " expanded" : ""}`}
+                  className={`csd-project-tile reveal visible rd${(pi % 4) + 1}${expandedTiles.has(pi) ? " expanded" : ""}`}
                   onClick={() => toggleTile(pi)}
                   style={{ cursor: "pointer" }}
                 >

@@ -305,21 +305,21 @@ export default function ThoughtLeadershipOverview() {
         </div>
 
         {/* ── CTA Section ── */}
-        <section className="cs-cta-section reveal">
-          <p className="cs-cta-label">
-            <span className="gold-text">Share Your Expertise</span>
-          </p>
-          <h2 className="cs-cta-title">
-            Have a Perspective to Contribute?
-          </h2>
-          <p className="cs-cta-text">
-            Rawlins is always looking to amplify expert voices across the
-            transportation and infrastructure community. If you&rsquo;re interested in
-            contributing thought leadership, we&rsquo;d love to hear from you.
-          </p>
-          <Link href="/contact" className="cs-cta-btn">
-            <span>Get In Touch</span>
-          </Link>
+        <section className="section-team reveal">
+          <div className="team-content">
+            <p className="section-label">
+              <span className="gold-text">Share Your Expertise</span>
+            </p>
+            <h2 className="section-title">
+              Have a Perspective to Contribute?
+            </h2>
+            <p className="team-desc">
+              Rawlins is always looking to amplify expert voices across the
+              transportation and infrastructure community. If you&rsquo;re interested in
+              contributing thought leadership, we&rsquo;d love to hear from you.
+            </p>
+            <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}><span>Get In Touch</span></Link>
+          </div>
         </section>
 
         {/* Divider */}

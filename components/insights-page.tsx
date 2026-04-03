@@ -228,7 +228,7 @@ export default function InsightsPage() {
             Have a <em>topic</em> you&rsquo;d like to discuss?
           </h2>
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center" }}>
-            We&rsquo;re always exploring new questions and emerging needs shaping how organizations plan, deliver, and evolve&mdash;particularly in transportation and increasingly across other sectors.
+            We&rsquo;re always exploring new questions and emerging needs shaping how organizations plan, deliver, and evolve.
           </p>
           <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
             <span>Get In Touch</span>
