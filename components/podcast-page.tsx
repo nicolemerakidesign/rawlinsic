@@ -243,8 +243,8 @@ export default function PodcastPage() {
                 <div className="pod-pulse" />
                 <span>Now Streaming</span>
               </div>
-              <div className="pod-player-embed" ref={podPlayerRef} style={{ maxHeight: 450, overflow: 'hidden' }}>
-                <div id="mypodops-player-3542" style={{ height: 450 }} />
+              <div className="pod-player-embed" ref={podPlayerRef}>
+                <div id="mypodops-player-3542" />
               </div>
             </div>
           </div>

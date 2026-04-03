@@ -5008,6 +5008,8 @@ color: #fff;
 /* ── Player embed ── */
 .pod-player-wrap {
   position: relative;
+  min-width: 0;
+  overflow: hidden;
 }
 .pod-player-label {
   display: flex;
@@ -5044,11 +5046,12 @@ color: #fff;
 .mypodops-player-header {
   background: linear-gradient(135deg, #2d3340 0%, #3a3f4a 100%) !important;
 }
-#mypodops-player-3542 iframe {
-  max-height: 450px !important;
+#mypodops-player-3542,
+#mypodops-player-3542 iframe,
+#mypodops-player-3542 > * {
+  width: 100% !important;
+  max-width: 100% !important;
   height: 450px !important;
-}
-#mypodops-player-3542 {
   max-height: 450px !important;
   overflow: hidden !important;
 }
