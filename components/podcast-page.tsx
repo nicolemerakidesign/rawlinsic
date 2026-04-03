@@ -66,6 +66,21 @@ function CustomCursor() {
 
 export default function PodcastPage() {
 
+  const podPlayerRef = useRef<HTMLDivElement>(null);
+
+  /* ── MyPodOps player script ── */
+  useEffect(() => {
+    const container = podPlayerRef.current;
+    if (!container) return;
+    // Avoid double-loading
+    if (container.querySelector("script")) return;
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.charset = "utf-8";
+    script.src = "https://www.mypodops.com/hosting/player/embed.js?id=3542&type=full&primary=667eea&secondary=764ba2&width=100%25&height=450&artwork=1&desc=1&waveform=0&theme=minimal";
+    container.appendChild(script);
+  }, []);
+
   /* ── Micro particles ── */
   useEffect(() => {
     const container = document.getElementById("microParticles");
@@ -221,16 +236,8 @@ export default function PodcastPage() {
                 <div className="pod-pulse" />
                 <span>Now Streaming</span>
               </div>
-              <div className="pod-player-embed">
-                <iframe
-                  width="100%"
-                  height="600"
-                  src="https://app.hiro.fm/embed/6750fc8bfc938602a4e7fd78"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  style={{ borderRadius: 12, border: "none" }}
-                ></iframe>
+              <div className="pod-player-embed" ref={podPlayerRef}>
+                <div id="mypodops-player-3542" />
               </div>
             </div>
           </div>
