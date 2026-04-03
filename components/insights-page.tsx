@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
-import PasswordGate from "@/components/password-gate";
+
 
 const HERO_IMG = "/images/pages/insights-hero.jpg";
 
@@ -155,7 +155,7 @@ export default function InsightsPage() {
   }, []);
 
   return (
-    <PasswordGate>
+    <>
       <div className="ambient-bg" />
       <div className="ambient-orbs">
         <div className="orb orb-1" ref={orbRef1} />
@@ -237,6 +237,6 @@ export default function InsightsPage() {
       </section>
 
       <SiteFooter />
-    </PasswordGate>
+    </>
   );
 }
