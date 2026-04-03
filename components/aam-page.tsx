@@ -118,6 +118,38 @@ const ecosystemNodes = [
   { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Metropolitan planning organizations, municipal governments, and transit agencies integrating AAM into community infrastructure.', angle: 315 },
 ];
 
+/* ──── Operations Map Data ──── */
+const opsIcons: Record<string, string> = {
+  airtaxi: 'M12 2L8 8h3v4H7l-2 4h3v4h8v-4h3l-2-4h-4V8h3L12 2z',
+  airport: 'M22 16v-2l-8.5-5V3.5A1.5 1.5 0 0012 2a1.5 1.5 0 00-1.5 1.5V9L2 14v2l8.5-2.5V19L8 20.5V22l4-1 4 1v-1.5L13.5 19v-5.5L22 16z',
+  package: 'M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2a3 3 0 006 0h6a3 3 0 006 0h2v-5l-3-4zM6 18.5A1.5 1.5 0 014.5 17 1.5 1.5 0 016 15.5 1.5 1.5 0 017.5 17 1.5 1.5 0 016 18.5zm13.5-9L21 12h-4V9.5h2.5zM18 18.5a1.5 1.5 0 01-1.5-1.5 1.5 1.5 0 011.5-1.5 1.5 1.5 0 011.5 1.5 1.5 1.5 0 01-1.5 1.5z',
+  suburb: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z',
+  rural: 'M12 3L4 9v12h16V9l-8-6zm0 2.5L18 10v9h-3v-5h-6v5H6v-9l6-4.5zM12 1l1 2h-2l1-2z',
+  medical: 'M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z',
+  construction: 'M13 4h-2l-1 7h4l-1-7zm4.5 14H22l-4-7h-3.5l4 7zM6.5 18H2l4-7h3.5l-4 7zM12 14a2 2 0 100-4 2 2 0 000 4z',
+  city: 'M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z',
+};
+
+const opsNodes = [
+  { id: 'airtaxi', label: 'Urban\nAir Taxi', x: 12, y: 15, short: 'eVTOL · Passenger Transport', desc: 'Electric vertical takeoff and landing aircraft providing urban air mobility for passenger transport, business travel, emergency medical transport, and regional connectivity.' },
+  { id: 'airport', label: 'Airport &\nVertiport', x: 15, y: 55, short: 'Hub · Infrastructure · Operations', desc: 'Aviation hubs and vertiport infrastructure supporting AAM operations including air traffic management, ground handling, and multimodal transit integration.' },
+  { id: 'package', label: 'Package\nDelivery', x: 12, y: 88, short: 'Last-Mile · Retail · E-Commerce', desc: 'Autonomous drone delivery for last-mile packages, retail fulfillment, and e-commerce support serving suburban, urban, and rural communities.' },
+  { id: 'suburb', label: 'Suburban\nCommunity', x: 42, y: 18, short: 'Residential · Neighborhoods', desc: 'Suburban residential areas receiving drone delivery services, air taxi connections, and benefiting from reduced ground traffic congestion.' },
+  { id: 'medical', label: 'Medical\nSupplies', x: 42, y: 52, short: 'Healthcare · Emergency · Labs', desc: 'Critical medical supply delivery including pharmaceuticals, lab samples, blood products, and emergency medical equipment to hospitals and clinics.' },
+  { id: 'construction', label: 'Construction\n& Inspection', x: 42, y: 85, short: 'Infrastructure · Monitoring', desc: 'UAS data collection for infrastructure inspection, construction monitoring, aerial surveying, mapping, and environmental assessments.' },
+  { id: 'rural', label: 'Rural &\nAgriculture', x: 80, y: 15, short: 'Farms · Remote Areas', desc: 'Serving rural and remote communities with drone delivery, agricultural monitoring, precision farming support, and emergency connectivity.' },
+  { id: 'city', label: 'City &\nUrban Center', x: 80, y: 65, short: 'Metro · Downtown · Transit', desc: 'Dense urban areas integrating AAM into city infrastructure for air taxi services, package delivery, traffic management, and smart city operations.' },
+];
+
+const opsConnections = [
+  ['airport', 'airtaxi'], ['airport', 'package'], ['airport', 'city'],
+  ['airtaxi', 'suburb'], ['airtaxi', 'city'], ['airtaxi', 'rural'],
+  ['package', 'suburb'], ['package', 'city'], ['package', 'rural'],
+  ['medical', 'suburb'], ['medical', 'city'], ['medical', 'rural'], ['medical', 'construction'],
+  ['construction', 'city'], ['construction', 'rural'],
+  ['suburb', 'rural'],
+];
+
 /* ──── Component ──── */
 
 const AAMPage = () => {
@@ -136,6 +168,8 @@ const AAMPage = () => {
   const [introOpen, setIntroOpen] = useState(false);
   const [valueOpen, setValueOpen] = useState(false);
   const [openServices, setOpenServices] = useState<Set<number>>(new Set());
+  const [activeOps, setActiveOps] = useState<string | null>(null);
+  const [hoveredOps, setHoveredOps] = useState<string | null>(null);
 
   // Phases horizontal scroll
   const [phasesProgress, setPhasesProgress] = useState(0);
@@ -407,6 +441,161 @@ const AAMPage = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider"><div className="gold-line" /></div>
+
+      {/* ── Interactive Operations Map ── */}
+      <section className="aam-section aam-ecosystem-section" id="operations-map">
+        <div className="aam-container">
+          <div className="aam-section-header reveal" style={{ textAlign: 'center', marginBottom: 40 }}>
+            <p className="section-label"><span className="gold-text">The AAM &amp; UAS Ecosystem</span></p>
+            <h2 className="section-title">How it all <em>connects</em></h2>
+            <p className="aam-section-lead" style={{ marginTop: 20, maxWidth: 700, marginLeft: 'auto', marginRight: 'auto' }}>
+              From air taxis to medical supply delivery, see how advanced air mobility and uncrewed aircraft systems serve communities across every environment.
+            </p>
+            <p className="aam-section-lead" style={{ fontStyle: 'italic' }}>Click any node to learn more.</p>
+          </div>
+
+          <div className="eco-vis-wrapper" style={{ maxWidth: 1000, margin: '0 auto' }}>
+            <svg viewBox="0 0 1000 550" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: 'auto' }}>
+              <defs>
+                <linearGradient id="opsGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#c9a84c" />
+                  <stop offset="50%" stopColor="#e8d5a0" />
+                  <stop offset="100%" stopColor="#c9a84c" />
+                </linearGradient>
+                <filter id="opsGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur" />
+                  <feFlood floodColor="#c9a84c" floodOpacity="0.3" result="color" />
+                  <feComposite in="color" in2="blur" operator="in" result="shadow" />
+                  <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <style>{`
+                  .ops-path { stroke-dasharray: 8 6; animation: opsDash 20s linear infinite; }
+                  .ops-path-active { stroke-dasharray: 4 4; animation: opsDash 6s linear infinite; stroke-width: 2.5; }
+                  @keyframes opsDash { to { stroke-dashoffset: -200; } }
+                `}</style>
+              </defs>
+
+              {/* Background grid */}
+              <g opacity="0.03">
+                {Array.from({ length: 21 }, (_, i) => (
+                  <React.Fragment key={`opsgrid-${i}`}>
+                    <line x1={i * 50} y1="0" x2={i * 50} y2="550" stroke="#c9a84c" strokeWidth="0.5" />
+                    <line x1="0" y1={i * 27.5} x2="1000" y2={i * 27.5} stroke="#c9a84c" strokeWidth="0.5" />
+                  </React.Fragment>
+                ))}
+              </g>
+
+              {/* Flight path connections */}
+              {opsConnections.map(([fromId, toId], ci) => {
+                const from = opsNodes.find(n => n.id === fromId)!;
+                const to = opsNodes.find(n => n.id === toId)!;
+                const fx = from.x * 10;
+                const fy = from.y * 5.5;
+                const tx = to.x * 10;
+                const ty = to.y * 5.5;
+                const mx = (fx + tx) / 2;
+                const my = Math.min(fy, ty) - 30 - (ci % 3) * 15;
+                const isActive = activeOps === fromId || activeOps === toId || hoveredOps === fromId || hoveredOps === toId;
+                return (
+                  <path
+                    key={`ops-conn-${ci}`}
+                    d={`M${fx},${fy} Q${mx},${my} ${tx},${ty}`}
+                    fill="none"
+                    stroke={isActive ? "#c9a84c" : "rgba(201,168,76,0.15)"}
+                    strokeWidth={isActive ? 2.5 : 1}
+                    className={isActive ? "ops-path-active" : "ops-path"}
+                    opacity={isActive ? 0.9 : 0.4}
+                  />
+                );
+              })}
+
+              {/* Nodes */}
+              {opsNodes.map((node) => {
+                const nx = node.x * 10;
+                const ny = node.y * 5.5;
+                const isActive = activeOps === node.id;
+                const isHovered = hoveredOps === node.id;
+                const highlighted = isActive || isHovered;
+                const iconPath = opsIcons[node.id] || '';
+                const iconSize = highlighted ? 52 : 44;
+
+                return (
+                  <g
+                    key={node.id}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => setActiveOps(activeOps === node.id ? null : node.id)}
+                    onMouseEnter={() => setHoveredOps(node.id)}
+                    onMouseLeave={() => setHoveredOps(null)}
+                  >
+                    {/* Hit area */}
+                    <circle cx={nx} cy={ny} r="55" fill="transparent" />
+
+                    {/* Glow ring */}
+                    {highlighted && (
+                      <circle cx={nx} cy={ny} r="42" fill="none" stroke="#c9a84c" strokeWidth="1.5" opacity="0.5" />
+                    )}
+
+                    {/* Background circle */}
+                    <circle cx={nx} cy={ny} r="36" fill="rgba(6,12,22,0.9)" stroke={highlighted ? "rgba(201,168,76,0.6)" : "rgba(201,168,76,0.15)"} strokeWidth="1.5" />
+
+                    {/* Icon */}
+                    <g transform={`translate(${nx - iconSize / 2}, ${ny - iconSize / 2 - 6})`}>
+                      <svg width={iconSize} height={iconSize} viewBox="0 0 24 24">
+                        <path d={iconPath} fill="url(#opsGoldGrad)" opacity={highlighted ? 1 : 0.7} />
+                      </svg>
+                    </g>
+
+                    {/* Label */}
+                    {node.label.split('\n').map((line, li) => (
+                      <text
+                        key={li}
+                        x={nx}
+                        y={ny + 42 + li * 16}
+                        textAnchor="middle"
+                        fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,0.9)"}
+                        fontFamily="'DM Sans', sans-serif"
+                        fontSize="13"
+                        fontWeight={highlighted ? "700" : "600"}
+                        letterSpacing="1.5"
+                        style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}
+                      >
+                        {line}
+                      </text>
+                    ))}
+                  </g>
+                );
+              })}
+            </svg>
+
+            {/* Detail panel */}
+            {activeOps && (() => {
+              const node = opsNodes.find(n => n.id === activeOps);
+              if (!node) return null;
+              return (
+                <div className="eco-detail-panel" style={{ left: `${Math.max(15, Math.min(85, node.x))}%`, top: `${Math.max(10, Math.min(75, node.y))}%`, transform: 'translate(-50%, -50%)' }}>
+                  <div className="eco-detail-header">
+                    <div>
+                      <h4 className="eco-detail-title">{node.label.replace('\n', ' ')}</h4>
+                      <p className="eco-detail-short">{node.short}</p>
+                    </div>
+                    <button className="eco-detail-close" onClick={() => setActiveOps(null)}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                    </button>
+                  </div>
+                  <p className="eco-detail-desc">{node.desc}</p>
+                </div>
+              );
+            })()}
+
+            {/* Click-outside overlay */}
+            {activeOps && (
+              <div className="eco-click-outside" onClick={() => setActiveOps(null)} />
+            )}
           </div>
         </div>
       </section>
