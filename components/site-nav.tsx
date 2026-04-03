@@ -72,7 +72,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
                   <svg className={`mobile-menu-chevron${mobileSubOpen.has("tech") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
                 </button>
                 <div className={`mobile-menu-sub mobile-menu-sub-nested${mobileSubOpen.has("tech") ? " open" : ""}`}>
-                  <a href="/capabilities/technology/advanced-air-mobility" onClick={close}>Advanced Air Mobility</a>
+                  <a href="/capabilities/technology/advanced-air-mobility" onClick={close}>Advanced Air Mobility &amp; UAS</a>
                   <a href="/capabilities/technology/automation-integration" onClick={close}>Automation &amp; Integration</a>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
                   </svg>
                 </span>
                 <div className="nav-sub-dropdown">
-                  <a href="/capabilities/technology/advanced-air-mobility">Advanced Air Mobility</a>
+                  <a href="/capabilities/technology/advanced-air-mobility">Advanced Air Mobility &amp; UAS</a>
                   <a href="/capabilities/technology/automation-integration">Automation &amp; Integration</a>
                 </div>
               </div>

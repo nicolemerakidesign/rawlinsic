@@ -36,16 +36,16 @@ const pillarCards = [
     img: CITY_AERIAL_IMG,
   },
   {
+    title: "Advanced Air Mobility Package Delivery",
+    desc: "",
+    bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support", "Air Taxis (AAM)", "Urban mobility", "Business travel", "Emergency medical transport", "Regional connectivity", "Tourism & sightseeing"],
+    img: LOGISTICS_IMG,
+  },
+  {
     title: "UAS Data Collection",
     desc: "",
     bullets: ["Infrastructure inspection", "Construction inspection & monitoring", "Environmental monitoring", "Aerial surveying & mapping", "Disaster response"],
     img: DRONE_FLIGHT_IMG,
-  },
-  {
-    title: "UAS Package Delivery",
-    desc: "",
-    bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support", "Air Taxis (AAM)", "Urban mobility", "Business travel", "Emergency medical transport", "Regional connectivity", "Tourism & sightseeing"],
-    img: LOGISTICS_IMG,
   },
 ];
 
@@ -413,100 +413,6 @@ const AAMPage = () => {
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── How we serve: Horizontal Scroll Cards ── */}
-      <section className="aam-section aam-phases-alt-section" id="phases-alt">
-        <div className="aam-container">
-          <div className="aam-section-header reveal">
-            <p className="section-label"><span className="gold-text">how we serve our clients</span></p>
-            <h2 className="section-title">Essential <em>Phases</em></h2>
-            <p className="section-text" style={{ marginTop: "20px" }}>
-              Our team brings together regulatory guidance, operational expertise, and program strategy to deliver real-world results. We support AAM and UAS initiatives throughout the program lifecycle.
-            </p>
-          </div>
-        </div>
-
-        {/* Progress bar + arrow controls */}
-        <div className="story-scroll-controls">
-          <div className="story-scroll-progress-bar">
-            <div
-              className="story-scroll-progress-fill"
-              style={{ width: `${phasesProgress * 100}%` }}
-            />
-          </div>
-          <div className="story-scroll-arrows">
-            <button className="story-arrow-btn" onClick={phasesScrollPrev} aria-label="Previous phase">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <button className="story-arrow-btn" onClick={phasesScrollNext} aria-label="Next phase">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Full-width scroll area */}
-        <div className="aam-alt-scroll-outer" ref={phasesTrackRef} onScroll={onPhasesScroll}>
-          <div
-            className="aam-alt-scroll-track"
-          >
-            {phaseData.map((phase, i) => (
-              <div className="aam-alt-card" key={phase.num}>
-                <Image src={phase.img} alt={phase.label} fill sizes="(max-width: 768px) 80vw, 400px" className="aam-alt-card-bg" />
-                <div className="aam-alt-card-overlay" />
-                <div className="aam-alt-card-header">
-                  <span className="aam-alt-card-num">{phase.num}</span>
-                  <span className="aam-alt-card-phase">Phase {i + 1}</span>
-                </div>
-                <div className="aam-alt-card-divider" />
-                <h4 className="aam-alt-card-title">{phase.label}</h4>
-                <p className="aam-alt-card-body">{phase.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider"><div className="gold-line" /></div>
-
-      {/* ── Strategic Methodology: Define / Enable / Deliver ── */}
-      <section className="aam-section" id="methodology">
-        <div className="aam-container">
-          <div className="aam-section-header reveal">
-            <h2 className="section-title">Our <em>Approach</em></h2>
-          </div>
-          <div className="aam-framework-grid">
-            {frameworkCards.map((card, i) => (
-              <div className={`aam-framework-card${openFrameworks.has(i) ? " open" : ""}`} key={card.title}>
-                <div className="aam-framework-img-wrap">
-                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-framework-img" />
-                  <div className="aam-framework-img-overlay" />
-                </div>
-                <div className="aam-framework-accent" style={{ background: card.accent }} />
-                <div className="aam-framework-inner">
-                  <div className="aam-pillar-title-row">
-                    <h3 className="aam-framework-phase">{card.title}</h3>
-                    <button className="aam-expand-btn" onClick={() => toggleSet(setOpenFrameworks, i)}>
-                      {chevronSvg(openFrameworks.has(i))}
-                    </button>
-                  </div>
-                  <p className="aam-framework-tagline">{card.tagline}</p>
-                  <div className={`aam-framework-expand${openFrameworks.has(i) ? " open" : ""}`}>
-                    <ul className="aam-bullet-list">
-                      {card.bullets.map((b) => <li key={b}>{b}</li>)}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider"><div className="gold-line" /></div>
-
       {/* Parallax Quote 2 */}
       <div
         className="parallax-panel aam-parallax-fixed"
@@ -723,6 +629,100 @@ const AAMPage = () => {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider"><div className="gold-line" /></div>
+
+      {/* ── How we serve: Horizontal Scroll Cards ── */}
+      <section className="aam-section aam-phases-alt-section" id="phases-alt">
+        <div className="aam-container">
+          <div className="aam-section-header reveal">
+            <p className="section-label"><span className="gold-text">how we serve our clients</span></p>
+            <h2 className="section-title">Essential <em>Phases</em></h2>
+            <p className="section-text" style={{ marginTop: "20px" }}>
+              Our team brings together regulatory guidance, operational expertise, and program strategy to deliver real-world results. We support AAM and UAS initiatives throughout the program lifecycle.
+            </p>
+          </div>
+        </div>
+
+        {/* Progress bar + arrow controls */}
+        <div className="story-scroll-controls">
+          <div className="story-scroll-progress-bar">
+            <div
+              className="story-scroll-progress-fill"
+              style={{ width: `${phasesProgress * 100}%` }}
+            />
+          </div>
+          <div className="story-scroll-arrows">
+            <button className="story-arrow-btn" onClick={phasesScrollPrev} aria-label="Previous phase">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button className="story-arrow-btn" onClick={phasesScrollNext} aria-label="Next phase">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Full-width scroll area */}
+        <div className="aam-alt-scroll-outer" ref={phasesTrackRef} onScroll={onPhasesScroll}>
+          <div
+            className="aam-alt-scroll-track"
+          >
+            {phaseData.map((phase, i) => (
+              <div className="aam-alt-card" key={phase.num}>
+                <Image src={phase.img} alt={phase.label} fill sizes="(max-width: 768px) 80vw, 400px" className="aam-alt-card-bg" />
+                <div className="aam-alt-card-overlay" />
+                <div className="aam-alt-card-header">
+                  <span className="aam-alt-card-num">{phase.num}</span>
+                  <span className="aam-alt-card-phase">Phase {i + 1}</span>
+                </div>
+                <div className="aam-alt-card-divider" />
+                <h4 className="aam-alt-card-title">{phase.label}</h4>
+                <p className="aam-alt-card-body">{phase.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider"><div className="gold-line" /></div>
+
+      {/* ── Strategic Methodology: Define / Enable / Deliver ── */}
+      <section className="aam-section" id="methodology">
+        <div className="aam-container">
+          <div className="aam-section-header reveal">
+            <h2 className="section-title">Our <em>Approach</em></h2>
+          </div>
+          <div className="aam-framework-grid">
+            {frameworkCards.map((card, i) => (
+              <div className={`aam-framework-card${openFrameworks.has(i) ? " open" : ""}`} key={card.title}>
+                <div className="aam-framework-img-wrap">
+                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-framework-img" />
+                  <div className="aam-framework-img-overlay" />
+                </div>
+                <div className="aam-framework-accent" style={{ background: card.accent }} />
+                <div className="aam-framework-inner">
+                  <div className="aam-pillar-title-row">
+                    <h3 className="aam-framework-phase">{card.title}</h3>
+                    <button className="aam-expand-btn" onClick={() => toggleSet(setOpenFrameworks, i)}>
+                      {chevronSvg(openFrameworks.has(i))}
+                    </button>
+                  </div>
+                  <p className="aam-framework-tagline">{card.tagline}</p>
+                  <div className={`aam-framework-expand${openFrameworks.has(i) ? " open" : ""}`}>
+                    <ul className="aam-bullet-list">
+                      {card.bullets.map((b) => <li key={b}>{b}</li>)}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
