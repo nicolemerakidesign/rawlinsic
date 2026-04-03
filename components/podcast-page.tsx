@@ -77,7 +77,7 @@ export default function PodcastPage() {
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.charset = "utf-8";
-    script.src = "https://www.mypodops.com/hosting/player/embed.js?id=3542&type=full&primary=6b7280&secondary=c9a84c&width=100%25&height=600&artwork=1&desc=1&waveform=0&theme=minimal";
+    script.src = "https://www.mypodops.com/hosting/player/embed.js?id=3542&type=full&primary=1a202c&secondary=c9a84c&width=100%25&height=450&artwork=1&desc=1&waveform=0&theme=minimal";
     container.appendChild(script);
   }, []);
 
@@ -237,7 +237,7 @@ export default function PodcastPage() {
                 <span>Now Streaming</span>
               </div>
               <div className="pod-player-embed" ref={podPlayerRef}>
-                <div id="mypodops-player-3542" style={{ minHeight: 600 }} />
+                <div id="mypodops-player-3542" style={{ minHeight: 450 }} />
               </div>
             </div>
           </div>
