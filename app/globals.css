@@ -5041,8 +5041,16 @@ color: #fff;
 .pod-player-embed iframe {
   display: block;
 }
-.pod-player-embed .mypodops-player-header {
+.mypodops-player-header {
   background: linear-gradient(135deg, #2d3340 0%, #3a3f4a 100%) !important;
+}
+#mypodops-player-3542 iframe {
+  max-height: 450px !important;
+  height: 450px !important;
+}
+#mypodops-player-3542 {
+  max-height: 450px !important;
+  overflow: hidden !important;
 }
 
 /* ── Equalizer visual break ── */

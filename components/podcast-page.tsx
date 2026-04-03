@@ -74,11 +74,18 @@ export default function PodcastPage() {
     if (!container) return;
     // Avoid double-loading
     if (container.querySelector("script")) return;
+
+    // Inject style override for player header
+    const style = document.createElement("style");
+    style.textContent = `.mypodops-player-header { background: linear-gradient(135deg, #2d3340 0%, #3a3f4a 100%) !important; }`;
+    document.head.appendChild(style);
+
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.charset = "utf-8";
     script.src = "https://www.mypodops.com/hosting/player/embed.js?id=3542&type=full&primary=c9a84c&secondary=4a4f57&width=100%25&height=450&artwork=1&desc=1&waveform=0&theme=minimal";
     container.appendChild(script);
+    return () => { style.remove(); };
   }, []);
 
   /* ── Micro particles ── */
