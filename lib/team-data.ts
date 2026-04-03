@@ -688,7 +688,7 @@ Andy holds a Master's degree in Public Administration from Harvard Kennedy Schoo
     achievements: `Before joining Ford, Andy spent nearly fifteen years supporting various Federal initiatives at the U.S. Department of Transportation (USDOT) and the NASA Jet Propulsion Laboratory. As an industry thought leader, Andy is recognized for his contributions to the USDOT's pioneering Intelligent Transportation Systems program and various projects at the Federal Highway Administration's Connected Automated Vehicle research program at the Turner Fairbank Highway Research Center.
 
 Andy holds a Master in Public Administration from Harvard Kennedy School and a Bachelor in Civil Engineering.Andy Palanisamy is a seasoned technologist and public policy professional with over twenty-five years of public and private sector experience, delivering complex projects in mobility innovations and smart city technologies. Andy has managed a variety of advance technology/smart city projects globally; he holds a Master in Public Administration from Harvard Kennedy School and a Bachelor in Civil Engineering.`,
-    categories: ['strategy'],
+    categories: ['strategy', 'technology'],
   },
   {
     id: 41,
