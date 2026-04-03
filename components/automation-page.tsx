@@ -56,7 +56,7 @@ const orgValues = [
   { num: "03", label: "Scale Team Impact", body: "Scale the impact of teams beyond what manual processes allow.", img: "/images/pages/auto-team.jpg" },
   { num: "04", label: "Enhance Responsiveness", body: "React faster to changing conditions and stakeholder needs.", img: "/images/pages/auto-workflow.jpg" },
   { num: "05", label: "Support Resilience", body: "Standardized tasks support continuity of operations and enable faster response when needs evolve.", img: "/images/pages/auto-capability.jpg" },
-  { num: "06", label: "Support Human Talent", body: "Free your people to focus on high-value work that requires human judgment.", img: "/images/pages/auto-human.jpg" },
+  { num: "06", label: "Foster Human Talent", body: "Free people to focus on high-value work that requires human judgment.", img: "/images/pages/auto-human.jpg" },
 ];
 
 const pipeline = [
