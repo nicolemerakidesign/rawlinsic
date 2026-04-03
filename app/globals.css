@@ -1166,17 +1166,45 @@ text-align: center;
   border-radius: 0 !important;
 }
 
-/* AAM Operations Illustration */
-.aam-ops-illustration {
-  width: 100%;
+/* AAM Landscape Visualization */
+.ls-vis-wrapper {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid rgba(201,168,76,0.1);
+  background: rgba(6,12,22,0.4);
+  overflow: hidden;
+}
+.ls-info-panel {
+  margin-top: 24px;
+  padding: 18px 22px 16px;
+  background: rgba(6,12,22,0.85);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  animation: lsInfoIn 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes lsInfoIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.ls-info-header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
 }
-.aam-ops-svg {
-  width: 100%;
-  height: auto;
-  max-width: 600px;
+.ls-info-icon {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.15);
+}
+.ls-info-title {
+  font-size: 14px; font-weight: 600;
+  background: linear-gradient(135deg, #c9a84c, #e8d5a0);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-transform: uppercase; letter-spacing: 1.2px;
+}
+.ls-info-desc {
+  color: #fff; font-size: 14px; line-height: 1.85;
 }
 
 .intro-cinematic-img {
