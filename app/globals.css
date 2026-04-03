@@ -4772,6 +4772,7 @@ color: #fff;
 .tla-paragraph {
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 16px;
+  font-weight: 500;
   line-height: 1.9;
   color: #fff;
   margin: 0 0 22px;
