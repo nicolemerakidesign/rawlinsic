@@ -58,9 +58,8 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
 
   const toggleSection = (i: number) => {
     setOpenSections((prev) => {
-      const next = new Set(prev);
-      next.has(i) ? next.delete(i) : next.add(i);
-      return next;
+      if (prev.has(i)) return new Set();
+      return new Set([i]);
     });
   };
 
