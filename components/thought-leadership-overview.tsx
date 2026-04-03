@@ -310,8 +310,8 @@ export default function ThoughtLeadershipOverview() {
             <p className="section-label">
               <span className="gold-text">Share Your Expertise</span>
             </p>
-            <h2 className="section-title">
-              Have a Perspective to Contribute?
+            <h2 className="section-title" style={{ textTransform: 'none' }}>
+              Have a perspective to <em>contribute?</em>
             </h2>
             <p className="team-desc">
               Rawlins is always looking to amplify expert voices across the
