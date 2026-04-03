@@ -413,17 +413,6 @@ const AAMPage = () => {
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* Parallax Quote 2 */}
-      <div
-        className="parallax-panel aam-parallax-fixed"
-        style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }}
-      >
-        <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
-        <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-          Guiding the <em>future</em> of aviation
-        </p>
-      </div>
-
       {/* ── Interactive Stakeholder Ecosystem ── */}
       <section className="aam-section aam-ecosystem-section" id="stakeholders">
         <div className="aam-container">
@@ -632,6 +621,19 @@ const AAMPage = () => {
           </div>
         </div>
       </section>
+
+      <div className="section-divider"><div className="gold-line" /></div>
+
+      {/* Parallax Quote 2 */}
+      <div
+        className="parallax-panel aam-parallax-fixed"
+        style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }}
+      >
+        <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
+        <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
+          Guiding the <em>future</em> of aviation
+        </p>
+      </div>
 
       <div className="section-divider"><div className="gold-line" /></div>
 
