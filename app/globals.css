@@ -3877,6 +3877,7 @@ color: #fff;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  align-items: start;
 }
 .csd-project-tile {
   padding: 32px 28px;
