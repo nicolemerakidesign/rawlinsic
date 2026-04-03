@@ -219,7 +219,7 @@ export default function PodcastPage() {
             <div className="pod-about">
               <p className="section-label"><span className="gold-text">about the podcast</span></p>
               <h2 className="section-title" style={{ color: "#fff", marginBottom: 24 }}>
-                Providing <em>value.</em><br />Consulting with a purpose.
+                Providing <em>value.</em><br />Consulting with <em>purpose.</em>
               </h2>
               <p className="pod-about-text">
                 The Rawlins Way podcast offers an inside look at how Rawlins Infra
