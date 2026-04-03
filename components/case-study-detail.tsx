@@ -231,6 +231,8 @@ export default function CaseStudyDetail({ study }: Props) {
                 <div
                   key={pi}
                   className={`csd-project-tile reveal rd${(pi % 4) + 1}${expandedTiles.has(pi) ? " expanded" : ""}`}
+                  onClick={() => toggleTile(pi)}
+                  style={{ cursor: "pointer" }}
                 >
                   <span className="csd-tile-subtitle">
                     {String(pi + 1).padStart(2, "0")}
@@ -241,7 +243,7 @@ export default function CaseStudyDetail({ study }: Props) {
                   )}
                   <button
                     className="csd-tile-expand-hint"
-                    onClick={() => toggleTile(pi)}
+                    onClick={(e) => { e.stopPropagation(); toggleTile(pi); }}
                     aria-label={expandedTiles.has(pi) ? "Collapse" : "Expand"}
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
