@@ -114,7 +114,7 @@ const landscapeNodes = [
   { id: 'package-delivery', label: 'Package Delivery', x: 8, y: 62, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
   { id: 'residential', label: 'Residential Areas', x: 42, y: 18, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
   { id: 'medical', label: 'Medical Supplies', x: 42, y: 52, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
-  { id: 'rural', label: 'Rural & Agriculture', x: 80, y: 10, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
+  { id: 'rural', label: 'Rural & Agriculture', x: 72, y: 10, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
   { id: 'industrial', label: 'Industrial Zone', x: 35, y: 80, icon: 'industrial', desc: 'Construction monitoring, infrastructure inspection, and industrial site surveying using UAS data collection.' },
   { id: 'city-center', label: 'City Center', x: 68, y: 60, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
   { id: 'waterfront', label: 'Waterfront & Port', x: 88, y: 72, icon: 'waterfront', desc: 'Maritime logistics coordination, port inspection, coastal monitoring, and waterfront emergency response operations.' },
@@ -392,29 +392,29 @@ const AAMPage = () => {
               <div className="ls-vis-wrapper">
                 <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', width: '100%', height: 'auto' }}>
                   <defs>
-                    <linearGradient id="lsSkyGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#0a1628" />
-                      <stop offset="40%" stopColor="#0d1f35" />
-                      <stop offset="100%" stopColor="#0c1a2e" />
-                    </linearGradient>
                     <linearGradient id="lsWaterGrad" x1="0" y1="0" x2="1" y2="0">
                       <stop offset="0%" stopColor="transparent" />
                       <stop offset="40%" stopColor="#0e2a45" stopOpacity="0.6" />
                       <stop offset="100%" stopColor="#132d48" stopOpacity="0.8" />
                     </linearGradient>
+                    <linearGradient id="lsGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#c9a84c" />
+                      <stop offset="50%" stopColor="#e8d5a0" />
+                      <stop offset="100%" stopColor="#c9a84c" />
+                    </linearGradient>
                     <radialGradient id="lsNodeGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.3" />
+                      <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.4" />
                       <stop offset="100%" stopColor="#c9a84c" stopOpacity="0" />
                     </radialGradient>
                     <filter id="lsGlow" x="-50%" y="-50%" width="200%" height="200%">
-                      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur" />
-                      <feFlood floodColor="#c9a84c" floodOpacity="0.35" result="color" />
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur" />
+                      <feFlood floodColor="#c9a84c" floodOpacity="0.5" result="color" />
                       <feComposite in="color" in2="blur" operator="in" result="shadow" />
                       <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
                     </filter>
                     <filter id="lsGlowMed" x="-50%" y="-50%" width="200%" height="200%">
-                      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur" />
-                      <feFlood floodColor="#d4443b" floodOpacity="0.4" result="color" />
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur" />
+                      <feFlood floodColor="#d4443b" floodOpacity="0.5" result="color" />
                       <feComposite in="color" in2="blur" operator="in" result="shadow" />
                       <feMerge><feMergeNode in="shadow" /><feMergeNode in="SourceGraphic" /></feMerge>
                     </filter>
@@ -426,16 +426,13 @@ const AAMPage = () => {
                       .ls-node-pulse { animation: lsNodePulse 4s ease-in-out infinite; }
                       @keyframes lsDash { to { stroke-dashoffset: -60; } }
                       @keyframes lsDashReverse { to { stroke-dashoffset: 60; } }
-                      @keyframes lsParticle { 0% { opacity: 0; } 10% { opacity: 0.9; } 90% { opacity: 0.9; } 100% { opacity: 0; } }
-                      @keyframes lsNodePulse { 0%,100% { r: 28; opacity: 0.08; } 50% { r: 34; opacity: 0.18; } }
+                      @keyframes lsParticle { 0% { opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; } }
+                      @keyframes lsNodePulse { 0%,100% { r: 32; opacity: 0.12; } 50% { r: 40; opacity: 0.25; } }
                     `}</style>
                   </defs>
 
-                  {/* Sky background */}
-                  <rect width="1000" height="600" fill="url(#lsSkyGrad)" />
-
                   {/* Grid */}
-                  <g opacity="0.03">
+                  <g opacity="0.04">
                     {Array.from({ length: 21 }, (_, i) => (
                       <React.Fragment key={`lsg-${i}`}>
                         <line x1={i * 50} y1="0" x2={i * 50} y2="600" stroke="#c9a84c" strokeWidth="0.5" />
@@ -445,8 +442,8 @@ const AAMPage = () => {
                   </g>
 
                   {/* Terrain layers */}
-                  <path d="M0 380 Q200 360 400 375 Q600 390 800 370 Q900 365 1000 380 L1000 600 L0 600Z" fill="#0d1a2d" opacity="0.6" />
-                  <path d="M0 420 Q100 390 250 410 Q400 430 500 415 Q650 400 800 420 Q900 430 1000 415 L1000 600 L0 600Z" fill="#0a1422" opacity="0.8" />
+                  <path d="M0 380 Q200 360 400 375 Q600 390 800 370 Q900 365 1000 380 L1000 600 L0 600Z" fill="rgba(13,26,45,0.3)" />
+                  <path d="M0 420 Q100 390 250 410 Q400 430 500 415 Q650 400 800 420 Q900 430 1000 415 L1000 600 L0 600Z" fill="rgba(10,20,34,0.4)" />
                   <path d="M600 520 Q700 510 800 525 Q900 515 1000 530 L1000 600 L600 600Z" fill="url(#lsWaterGrad)" opacity="0.5" />
 
                   {/* ── SCENE: Building silhouettes ── */}
@@ -608,9 +605,9 @@ const AAMPage = () => {
                     const cls = fp.type === 'medical' ? 'ls-flight-path-med' : (i % 2 === 0 ? 'ls-flight-path' : 'ls-flight-path-reverse');
                     return (
                       <React.Fragment key={`lsp-${i}`}>
-                        <path d={d} fill="none" stroke={fp.color} strokeWidth={hl ? 1.8 : 0.8} opacity={hl ? 0.7 : 0.15} className={cls} />
+                        <path d={d} fill="none" stroke={fp.color} strokeWidth={hl ? 2.5 : 1.2} opacity={hl ? 0.85 : 0.3} className={cls} />
                         <path id={`lspath-${i}`} d={d} fill="none" stroke="none" />
-                        <circle r={hl ? 3 : 2} fill={fp.color} className="ls-particle" style={{ animationDelay: `${i * 0.4}s`, animationDuration: `${2.5 + (i % 3) * 0.5}s` }}>
+                        <circle r={hl ? 4 : 3} fill={fp.color} className="ls-particle" style={{ animationDelay: `${i * 0.4}s`, animationDuration: `${2.5 + (i % 3) * 0.5}s` }}>
                           <animateMotion dur={`${3 + (i % 4) * 0.8}s`} repeatCount="indefinite">
                             <mpath href={`#lspath-${i}`} />
                           </animateMotion>
@@ -625,15 +622,15 @@ const AAMPage = () => {
                     if (!fp) return null;
                     const c = fp.type === 'medical' ? '#d4443b' : '#c9a84c';
                     return (
-                      <g key={`drone-${idx}`} opacity="0.6">
+                      <g key={`drone-${idx}`} opacity="0.8">
                         <g>
                           <animateMotion dur={`${5 + idx * 0.5}s`} repeatCount="indefinite">
                             <mpath href={`#lspath-${idx}`} />
                           </animateMotion>
-                          <circle r="4" fill={c} opacity="0.2" />
-                          <line x1="-6" y1="0" x2="6" y2="0" stroke={c} strokeWidth="0.8" opacity="0.6" />
-                          <line x1="0" y1="-4" x2="0" y2="4" stroke={c} strokeWidth="0.8" opacity="0.6" />
-                          <circle r="1.5" fill={c} opacity="0.8" />
+                          <circle r="5" fill={c} opacity="0.25" />
+                          <line x1="-8" y1="0" x2="8" y2="0" stroke={c} strokeWidth="1.2" opacity="0.8" />
+                          <line x1="0" y1="-5" x2="0" y2="5" stroke={c} strokeWidth="1.2" opacity="0.8" />
+                          <circle r="2" fill={c} opacity="0.9" />
                         </g>
                       </g>
                     );
@@ -645,8 +642,7 @@ const AAMPage = () => {
                     const ny = node.y * 6;
                     const hl = hoveredLs === node.id;
                     const isMed = node.id === 'medical';
-                    const sc = isMed && hl ? '#d4443b' : hl ? '#e8d5a0' : 'rgba(201,168,76,0.25)';
-                    const ic = isMed ? '#d4443b' : hl ? '#e8d5a0' : '#c9a84c';
+                    const sc = isMed && hl ? '#d4443b' : hl ? '#e8d5a0' : 'rgba(201,168,76,0.4)';
                     const flt = hl ? (isMed ? 'url(#lsGlowMed)' : 'url(#lsGlow)') : 'none';
                     return (
                       <g
@@ -656,32 +652,35 @@ const AAMPage = () => {
                         onMouseLeave={() => setHoveredLs(null)}
                       >
                         {/* Pulse ring */}
-                        <circle cx={nx} cy={ny} r={28} fill="none" stroke={isMed ? '#d4443b' : '#c9a84c'} strokeWidth="0.5" className="ls-node-pulse" style={{ animationDelay: `${ni * 0.5}s` }} />
+                        <circle cx={nx} cy={ny} r={32} fill="none" stroke={isMed ? '#d4443b' : '#c9a84c'} strokeWidth="0.8" className="ls-node-pulse" style={{ animationDelay: `${ni * 0.5}s` }} />
                         {/* Glow */}
-                        <circle cx={nx} cy={ny} r={hl ? 40 : 30} fill="url(#lsNodeGlow)" opacity={hl ? 1 : 0.5} />
+                        <circle cx={nx} cy={ny} r={hl ? 48 : 36} fill="url(#lsNodeGlow)" opacity={hl ? 1 : 0.6} />
                         {/* Circle bg */}
-                        <circle cx={nx} cy={ny} r={22} fill="rgba(6,12,22,0.9)" stroke={sc} strokeWidth={hl ? 1.5 : 0.8} />
-                        {/* Icon */}
+                        <circle cx={nx} cy={ny} r={26} fill="rgba(6,12,22,0.92)" stroke={sc} strokeWidth={hl ? 2 : 1} />
+                        {/* Icon — gold gradient via url(#lsGoldGrad) for fill paths */}
                         <g
-                          transform={`translate(${nx - 12},${ny - 12})`}
-                          style={{ color: ic, filter: flt }}
-                          dangerouslySetInnerHTML={{ __html: lsIcons[node.icon] }}
-                        />
+                          transform={`translate(${nx - 13},${ny - 13})`}
+                          style={{ color: 'url(#lsGoldGrad)', filter: flt }}
+                        >
+                          <svg width="26" height="26" viewBox="0 0 24 24">
+                            <g dangerouslySetInnerHTML={{ __html: lsIcons[node.icon].replace(/currentColor/g, 'url(#lsGoldGrad)') }} />
+                          </svg>
+                        </g>
                         {/* Label */}
                         <text
-                          x={nx} y={ny + 34}
+                          x={nx} y={ny + 40}
                           textAnchor="middle"
-                          fill={hl ? '#e8d5a0' : 'rgba(232,230,225,0.7)'}
+                          fill={hl ? '#e8d5a0' : 'rgba(232,230,225,0.85)'}
                           fontFamily="'DM Sans', sans-serif"
-                          fontSize={hl ? '11' : '10'}
-                          fontWeight={hl ? '600' : '400'}
-                          letterSpacing="1.2"
+                          fontSize={hl ? '13' : '12'}
+                          fontWeight={hl ? '700' : '500'}
+                          letterSpacing="1.5"
                           style={{ textTransform: 'uppercase' } as React.CSSProperties}
                         >
                           {node.label}
                         </text>
                         {/* Hit area */}
-                        <circle cx={nx} cy={ny} r={40} fill="transparent" />
+                        <circle cx={nx} cy={ny} r={45} fill="transparent" />
                       </g>
                     );
                   })}
