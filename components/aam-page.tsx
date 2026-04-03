@@ -36,7 +36,7 @@ const pillarCards = [
     img: CITY_AERIAL_IMG,
   },
   {
-    title: "Advanced Air Mobility Package Delivery",
+    title: "AAM Package Delivery",
     desc: "",
     bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support", "Air Taxis (AAM)", "Urban mobility", "Business travel", "Emergency medical transport", "Regional connectivity", "Tourism & sightseeing"],
     img: LOGISTICS_IMG,
