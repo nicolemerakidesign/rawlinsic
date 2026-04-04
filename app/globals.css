@@ -5267,7 +5267,12 @@ color: #fff;
   position: sticky; top: 70px; z-index: 50;
   background: rgba(15,22,35,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(201,168,76,0.08);
-  border-bottom: 1px solid rgba(201,168,76,0.12); padding: 0 32px;
+  border-bottom: none; padding: 0 32px;
+  position: sticky; /* keep sticky */
+}
+.cap-tab-bar::after {
+  content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, #b89a3e, #e8d5a0, #c9a84c, transparent);
 }
 .cap-tab-bar-inner {
   max-width: 600px; margin: 0 auto; display: flex; gap: 0;
