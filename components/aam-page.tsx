@@ -106,12 +106,12 @@ const lsIcons: Record<string, string> = {
 };
 
 const landscapeNodes = [
-  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 5, y: 5, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
-  { id: 'package-delivery', label: 'Package Delivery', x: 5, y: 52, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
-  { id: 'residential', label: 'Residential Areas', x: 42, y: 5, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
-  { id: 'medical', label: 'Medical Supplies', x: 42, y: 42, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
+  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 5, y: 8, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
+  { id: 'package-delivery', label: 'Package Delivery', x: 10, y: 52, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
+  { id: 'residential', label: 'Residential Areas', x: 44, y: 5, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
+  { id: 'medical', label: 'Medical Supplies', x: 38, y: 40, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
   { id: 'rural', label: 'Rural & Agriculture', x: 72, y: 5, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
-  { id: 'city-center', label: 'City Center', x: 82, y: 42, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
+  { id: 'city-center', label: 'City Center', x: 65, y: 30, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
 ];
 
 const landscapePaths = [
@@ -385,7 +385,7 @@ const AAMPage = () => {
             </div>
             <div className="aam-overview-right reveal rd1">
               <div className="ls-vis-wrapper">
-                <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', width: '100%', height: 'auto' }}>
+                <svg viewBox="0 -60 1000 660" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', width: '100%', height: 'auto' }}>
                   <defs>
                     <linearGradient id="lsGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="#c9a84c" />
@@ -434,161 +434,171 @@ const AAMPage = () => {
 
                   {/* ── SCENE: Building silhouettes (full opacity) ── */}
                   {/* Airport: Hangar + Tower + Airplane + eVTOL drone */}
-                  <g opacity={hoveredLs === 'urban-air-taxi' ? 1 : 0.7} style={{ transition: 'opacity 0.3s' }}>
+                  <g opacity={hoveredLs === 'urban-air-taxi' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
                     {/* Hangar */}
-                    <path d="M20 170 Q20 130 110 118 Q200 130 200 170 L200 200 L20 200Z" fill="rgba(232,230,225,0.45)" stroke="rgba(232,230,225,0.6)" strokeWidth="1" />
-                    <rect x="38" y="148" width="140" height="52" fill="rgba(232,230,225,0.25)" stroke="rgba(232,230,225,0.4)" strokeWidth="0.5" />
-                    <rect x="55" y="158" width="28" height="14" fill="rgba(232,230,225,0.15)" />
-                    <rect x="95" y="158" width="28" height="14" fill="rgba(232,230,225,0.15)" />
-                    <rect x="135" y="158" width="28" height="14" fill="rgba(232,230,225,0.15)" />
-                    <rect x="72" y="180" width="14" height="20" fill="rgba(232,230,225,0.12)" />
-                    <rect x="92" y="180" width="14" height="20" fill="rgba(232,230,225,0.12)" />
-                    <rect x="112" y="180" width="14" height="20" fill="rgba(232,230,225,0.12)" />
+                    <path d="M20 170 Q20 130 110 118 Q200 130 200 170 L200 200 L20 200Z" fill="#b8b4ae" stroke="#ccc8c2" strokeWidth="1" />
+                    <rect x="38" y="148" width="140" height="52" fill="#9e9a94" stroke="#b8b4ae" strokeWidth="0.5" />
+                    <rect x="55" y="158" width="28" height="14" fill="#87837d" />
+                    <rect x="95" y="158" width="28" height="14" fill="#87837d" />
+                    <rect x="135" y="158" width="28" height="14" fill="#87837d" />
+                    <rect x="72" y="180" width="14" height="20" fill="#7a766f" />
+                    <rect x="92" y="180" width="14" height="20" fill="#7a766f" />
+                    <rect x="112" y="180" width="14" height="20" fill="#7a766f" />
                     {/* Tower */}
-                    <rect x="222" y="115" width="16" height="85" fill="rgba(232,230,225,0.5)" />
-                    <rect x="214" y="100" width="32" height="20" rx="3" fill="rgba(232,230,225,0.55)" stroke="rgba(232,230,225,0.65)" strokeWidth="0.8" />
-                    <rect x="218" y="105" width="6" height="10" fill="rgba(140,200,220,0.5)" />
-                    <rect x="226" y="105" width="6" height="10" fill="rgba(140,200,220,0.5)" />
-                    <rect x="234" y="105" width="6" height="10" fill="rgba(140,200,220,0.5)" />
-                    <rect x="208" y="170" width="50" height="30" fill="rgba(232,230,225,0.35)" />
+                    <rect x="222" y="115" width="16" height="85" fill="#c0bcb6" />
+                    <rect x="214" y="100" width="32" height="20" rx="3" fill="#ccc8c2" stroke="#d8d4ce" strokeWidth="0.8" />
+                    <rect x="218" y="105" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="226" y="105" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="234" y="105" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="208" y="170" width="50" height="30" fill="#a8a49e" />
                     {/* Airplane */}
                     <g transform="translate(160,75) rotate(-10)">
-                      <ellipse cx="30" cy="8" rx="32" ry="6" fill="rgba(232,230,225,0.55)" />
-                      <path d="M18 8 L28 -14 L36 -12 L26 8Z" fill="rgba(232,230,225,0.45)" />
-                      <path d="M18 8 L28 30 L36 28 L26 8Z" fill="rgba(232,230,225,0.45)" />
-                      <path d="M-2 8 L2 -5 L9 -3 L5 8Z" fill="rgba(232,230,225,0.4)" />
-                      <ellipse cx="58" cy="8" rx="6" ry="4" fill="rgba(140,200,220,0.35)" />
+                      <ellipse cx="30" cy="8" rx="32" ry="6" fill="#ccc8c2" />
+                      <path d="M18 8 L28 -14 L36 -12 L26 8Z" fill="#b8b4ae" />
+                      <path d="M18 8 L28 30 L36 28 L26 8Z" fill="#b8b4ae" />
+                      <path d="M-2 8 L2 -5 L9 -3 L5 8Z" fill="#aaa6a0" />
+                      <ellipse cx="58" cy="8" rx="6" ry="4" fill="#7eb8d0" />
                     </g>
                     {/* eVTOL Air Taxi drone — with passenger silhouette */}
                     <g transform="translate(60,60)">
-                      {/* Body/cabin — rounded */}
-                      <ellipse cx="0" cy="5" rx="18" ry="12" fill="rgba(232,230,225,0.5)" />
-                      {/* Arms */}
-                      <line x1="-18" y1="0" x2="-34" y2="-8" stroke="rgba(232,230,225,0.5)" strokeWidth="2.5" />
-                      <line x1="18" y1="0" x2="34" y2="-8" stroke="rgba(232,230,225,0.5)" strokeWidth="2.5" />
-                      {/* Rotors */}
-                      <ellipse cx="-34" cy="-10" rx="14" ry="4" fill="none" stroke="rgba(232,230,225,0.4)" strokeWidth="1.2" />
-                      <ellipse cx="34" cy="-10" rx="14" ry="4" fill="none" stroke="rgba(232,230,225,0.4)" strokeWidth="1.2" />
-                      {/* Landing skids */}
-                      <line x1="-12" y1="16" x2="-16" y2="22" stroke="rgba(232,230,225,0.4)" strokeWidth="1.5" />
-                      <line x1="12" y1="16" x2="16" y2="22" stroke="rgba(232,230,225,0.4)" strokeWidth="1.5" />
-                      <line x1="-20" y1="22" x2="20" y2="22" stroke="rgba(232,230,225,0.35)" strokeWidth="1.5" />
-                      {/* Passenger silhouette — gold */}
-                      <circle cx="0" cy="-2" r="4" fill="rgba(201,168,76,0.6)" />
-                      <path d="M-6 14 L-4 5 L4 5 L6 14Z" fill="rgba(201,168,76,0.5)" />
+                      <ellipse cx="0" cy="5" rx="18" ry="12" fill="#c0bcb6" />
+                      <line x1="-18" y1="0" x2="-34" y2="-8" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <line x1="18" y1="0" x2="34" y2="-8" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <ellipse cx="-34" cy="-10" rx="14" ry="4" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <ellipse cx="34" cy="-10" rx="14" ry="4" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <line x1="-12" y1="16" x2="-16" y2="22" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <line x1="12" y1="16" x2="16" y2="22" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <line x1="-20" y1="22" x2="20" y2="22" stroke="#9e9a94" strokeWidth="1.5" />
+                      <circle cx="0" cy="-2" r="4" fill="#c9a84c" />
+                      <path d="M-6 14 L-4 5 L4 5 L6 14Z" fill="rgba(201,168,76,0.8)" />
                     </g>
                   </g>
 
-                  {/* Warehouse + Delivery Drone */}
-                  <g opacity={hoveredLs === 'package-delivery' ? 1 : 0.7} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="20" y="380" width="170" height="85" fill="rgba(232,230,225,0.4)" />
-                    <rect x="20" y="365" width="170" height="20" fill="rgba(232,230,225,0.35)" />
-                    <rect x="50" y="420" width="28" height="45" fill="rgba(232,230,225,0.15)" />
-                    <rect x="88" y="420" width="28" height="45" fill="rgba(232,230,225,0.15)" />
-                    <rect x="126" y="420" width="28" height="45" fill="rgba(232,230,225,0.15)" />
-                    {/* Delivery drone */}
-                    <g transform="translate(140,340)">
-                      <ellipse cx="0" cy="0" rx="16" ry="7" fill="rgba(232,230,225,0.55)" />
-                      <line x1="-16" y1="0" x2="-30" y2="-7" stroke="rgba(232,230,225,0.5)" strokeWidth="2.5" />
-                      <line x1="16" y1="0" x2="30" y2="-7" stroke="rgba(232,230,225,0.5)" strokeWidth="2.5" />
-                      <ellipse cx="-30" cy="-9" rx="12" ry="3.5" fill="none" stroke="rgba(232,230,225,0.4)" strokeWidth="1.2" />
-                      <ellipse cx="30" cy="-9" rx="12" ry="3.5" fill="none" stroke="rgba(232,230,225,0.4)" strokeWidth="1.2" />
-                      <line x1="-9" y1="7" x2="-14" y2="16" stroke="rgba(232,230,225,0.4)" strokeWidth="1.5" />
-                      <line x1="9" y1="7" x2="14" y2="16" stroke="rgba(232,230,225,0.4)" strokeWidth="1.5" />
-                      <line x1="0" y1="7" x2="0" y2="18" stroke="rgba(201,168,76,0.5)" strokeWidth="1" />
-                      <rect x="-9" y="18" width="18" height="16" rx="2" fill="rgba(201,168,76,0.45)" stroke="rgba(201,168,76,0.6)" strokeWidth="1" />
-                      <line x1="0" y1="18" x2="0" y2="34" stroke="rgba(201,168,76,0.3)" strokeWidth="0.8" />
-                      <line x1="-9" y1="26" x2="9" y2="26" stroke="rgba(201,168,76,0.3)" strokeWidth="0.8" />
+                  {/* Warehouse + Delivery Drone (drone moved up-right of icon) */}
+                  <g opacity={hoveredLs === 'package-delivery' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
+                    <rect x="40" y="380" width="170" height="85" fill="#b0aca6" />
+                    <rect x="40" y="365" width="170" height="20" fill="#a8a49e" />
+                    <rect x="70" y="420" width="28" height="45" fill="#87837d" />
+                    <rect x="108" y="420" width="28" height="45" fill="#87837d" />
+                    <rect x="146" y="420" width="28" height="45" fill="#87837d" />
+                    {/* Delivery drone — up and to the right of icon */}
+                    <g transform="translate(170,290)">
+                      <ellipse cx="0" cy="0" rx="16" ry="7" fill="#ccc8c2" />
+                      <line x1="-16" y1="0" x2="-30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <line x1="16" y1="0" x2="30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <ellipse cx="-30" cy="-9" rx="12" ry="3.5" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <ellipse cx="30" cy="-9" rx="12" ry="3.5" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <line x1="-9" y1="7" x2="-14" y2="16" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <line x1="9" y1="7" x2="14" y2="16" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <line x1="0" y1="7" x2="0" y2="18" stroke="#c9a84c" strokeWidth="1" />
+                      <rect x="-9" y="18" width="18" height="16" rx="2" fill="#c9a84c" stroke="#dab84c" strokeWidth="1" />
+                      <line x1="0" y1="18" x2="0" y2="34" stroke="rgba(201,168,76,0.5)" strokeWidth="0.8" />
+                      <line x1="-9" y1="26" x2="9" y2="26" stroke="rgba(201,168,76,0.5)" strokeWidth="0.8" />
                     </g>
                   </g>
 
                   {/* Suburban houses */}
-                  <g opacity={hoveredLs === 'residential' ? 1 : 0.7} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="350" y="105" width="38" height="28" fill="rgba(232,230,225,0.45)" />
-                    <path d="M344 105 L369 82 L394 105Z" fill="rgba(200,195,185,0.45)" />
-                    <rect x="361" y="116" width="10" height="17" fill="rgba(232,230,225,0.2)" />
-                    <rect x="400" y="92" width="50" height="41" fill="rgba(232,230,225,0.5)" />
-                    <path d="M394 92 L425 65 L456 92Z" fill="rgba(210,205,195,0.45)" />
-                    <rect x="418" y="116" width="13" height="17" fill="rgba(232,230,225,0.2)" />
-                    <rect x="405" y="100" width="9" height="9" fill="rgba(140,200,220,0.3)" />
-                    <rect x="460" y="88" width="55" height="45" fill="rgba(232,230,225,0.48)" />
-                    <path d="M454 88 L487 60 L521 88Z" fill="rgba(200,195,185,0.45)" />
-                    <rect x="466" y="96" width="9" height="9" fill="rgba(140,200,220,0.25)" />
-                    <rect x="480" y="96" width="9" height="9" fill="rgba(140,200,220,0.25)" />
-                    <rect x="496" y="96" width="9" height="9" fill="rgba(140,200,220,0.25)" />
-                    <rect x="482" y="116" width="12" height="17" fill="rgba(232,230,225,0.2)" />
-                    <circle cx="393" cy="118" r="10" fill="rgba(100,160,100,0.3)" />
-                    <circle cx="455" cy="120" r="8" fill="rgba(90,150,90,0.25)" />
-                    <circle cx="525" cy="118" r="11" fill="rgba(95,155,95,0.28)" />
-                    <line x1="340" y1="133" x2="540" y2="133" stroke="rgba(232,230,225,0.25)" strokeWidth="1" />
+                  <g opacity={hoveredLs === 'residential' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
+                    <rect x="360" y="105" width="38" height="28" fill="#b8b4ae" />
+                    <path d="M354 105 L379 82 L404 105Z" fill="#ada9a3" />
+                    <rect x="371" y="116" width="10" height="17" fill="#8a8680" />
+                    <rect x="410" y="92" width="50" height="41" fill="#c0bcb6" />
+                    <path d="M404 92 L435 65 L466 92Z" fill="#b0aca6" />
+                    <rect x="428" y="116" width="13" height="17" fill="#8a8680" />
+                    <rect x="415" y="100" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="470" y="88" width="55" height="45" fill="#bcb8b2" />
+                    <path d="M464 88 L497 60 L531 88Z" fill="#ada9a3" />
+                    <rect x="476" y="96" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="490" y="96" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="506" y="96" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="492" y="116" width="12" height="17" fill="#8a8680" />
+                    <circle cx="403" cy="118" r="10" fill="#5a945a" />
+                    <circle cx="465" cy="120" r="8" fill="#4f8a4f" />
+                    <circle cx="535" cy="118" r="11" fill="#558e55" />
+                    <line x1="350" y1="133" x2="550" y2="133" stroke="rgba(232,230,225,0.4)" strokeWidth="1" />
                   </g>
 
                   {/* City skyline */}
-                  <g opacity={hoveredLs === 'city-center' ? 1 : 0.7} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="730" y="310" width="32" height="90" fill="rgba(232,230,225,0.45)" />
-                    <rect x="767" y="288" width="28" height="112" fill="rgba(232,230,225,0.4)" />
-                    <rect x="800" y="330" width="22" height="70" fill="rgba(232,230,225,0.35)" />
-                    <rect x="827" y="270" width="38" height="130" fill="rgba(232,230,225,0.5)" />
-                    <rect x="870" y="310" width="24" height="90" fill="rgba(232,230,225,0.38)" />
-                    <rect x="899" y="340" width="20" height="60" fill="rgba(232,230,225,0.3)" />
-                    <rect x="735" y="320" width="6" height="6" fill="rgba(201,168,76,0.3)" />
-                    <rect x="743" y="320" width="6" height="6" fill="rgba(201,168,76,0.3)" />
-                    <rect x="735" y="332" width="6" height="6" fill="rgba(201,168,76,0.3)" />
-                    <rect x="832" y="280" width="7" height="7" fill="rgba(201,168,76,0.25)" />
-                    <rect x="843" y="280" width="7" height="7" fill="rgba(201,168,76,0.25)" />
-                    <rect x="832" y="296" width="7" height="7" fill="rgba(201,168,76,0.25)" />
-                    <rect x="843" y="296" width="7" height="7" fill="rgba(201,168,76,0.25)" />
-                    <rect x="832" y="312" width="7" height="7" fill="rgba(201,168,76,0.25)" />
-                    <rect x="924" y="310" width="48" height="90" fill="rgba(210,140,60,0.5)" rx="2" />
-                    <rect x="930" y="320" width="9" height="9" fill="rgba(0,0,0,0.35)" />
-                    <rect x="945" y="320" width="9" height="9" fill="rgba(0,0,0,0.35)" />
-                    <rect x="930" y="336" width="9" height="9" fill="rgba(0,0,0,0.35)" />
-                    <rect x="945" y="336" width="9" height="9" fill="rgba(0,0,0,0.35)" />
-                    <rect x="930" y="352" width="9" height="9" fill="rgba(0,0,0,0.35)" />
-                    <rect x="945" y="352" width="9" height="9" fill="rgba(0,0,0,0.35)" />
+                  <g opacity={hoveredLs === 'city-center' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
+                    <rect x="730" y="280" width="32" height="120" fill="#b8b4ae" />
+                    <rect x="767" y="258" width="28" height="142" fill="#b0aca6" />
+                    <rect x="800" y="300" width="22" height="100" fill="#a8a49e" />
+                    <rect x="827" y="240" width="38" height="160" fill="#c0bcb6" />
+                    <rect x="870" y="280" width="24" height="120" fill="#aca8a2" />
+                    <rect x="899" y="310" width="20" height="90" fill="#9e9a94" />
+                    <rect x="735" y="290" width="6" height="6" fill="#c9a84c" />
+                    <rect x="743" y="290" width="6" height="6" fill="#c9a84c" />
+                    <rect x="735" y="302" width="6" height="6" fill="#c9a84c" />
+                    <rect x="832" y="250" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="843" y="250" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="832" y="266" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="843" y="266" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="832" y="282" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="924" y="280" width="48" height="120" fill="#c2872e" rx="2" />
+                    <rect x="930" y="290" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="945" y="290" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="930" y="306" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="945" y="306" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="930" y="322" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="945" y="322" width="9" height="9" fill="rgba(0,0,0,0.4)" />
                   </g>
 
-                  {/* Medical building + Medical Drone */}
-                  <g opacity={hoveredLs === 'medical' ? 1 : 0.7} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="360" y="310" width="60" height="50" fill="rgba(232,230,225,0.45)" />
-                    <rect x="370" y="293" width="24" height="20" rx="3" fill="rgba(212,68,59,0.7)" />
-                    <rect x="379" y="296" width="6" height="14" fill="rgba(255,255,255,0.85)" />
-                    <rect x="374" y="301" width="16" height="4" fill="rgba(255,255,255,0.85)" />
-                    {/* Medical drone */}
-                    <g transform="translate(460,285)">
-                      <ellipse cx="0" cy="0" rx="16" ry="7" fill="rgba(232,230,225,0.55)" />
-                      <line x1="-16" y1="0" x2="-30" y2="-7" stroke="rgba(232,230,225,0.5)" strokeWidth="2.5" />
-                      <line x1="16" y1="0" x2="30" y2="-7" stroke="rgba(232,230,225,0.5)" strokeWidth="2.5" />
-                      <ellipse cx="-30" cy="-9" rx="12" ry="3.5" fill="none" stroke="rgba(232,230,225,0.4)" strokeWidth="1.2" />
-                      <ellipse cx="30" cy="-9" rx="12" ry="3.5" fill="none" stroke="rgba(232,230,225,0.4)" strokeWidth="1.2" />
-                      <line x1="-9" y1="7" x2="-14" y2="16" stroke="rgba(232,230,225,0.4)" strokeWidth="1.5" />
-                      <line x1="9" y1="7" x2="14" y2="16" stroke="rgba(232,230,225,0.4)" strokeWidth="1.5" />
+                  {/* Medical building (hospital) + Medical Drone w/ heart to right of icon */}
+                  <g opacity={hoveredLs === 'medical' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
+                    {/* Hospital building — below icon, more detailed */}
+                    <rect x="310" y="310" width="90" height="80" fill="#b8b4ae" />
+                    <rect x="310" y="300" width="90" height="14" fill="#c0bcb6" />
+                    <rect x="340" y="282" width="30" height="22" rx="3" fill="#d4443b" />
+                    <rect x="351" y="286" width="8" height="14" fill="#fff" />
+                    <rect x="344" y="291" width="22" height="4" fill="#fff" />
+                    {/* Windows */}
+                    <rect x="318" y="318" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="334" y="318" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="350" y="318" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="366" y="318" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="382" y="318" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="318" y="340" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="334" y="340" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="350" y="340" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="366" y="340" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="382" y="340" width="10" height="10" fill="#7eb8d0" />
+                    {/* Entrance */}
+                    <rect x="342" y="360" width="26" height="30" fill="#8a8680" />
+                    {/* Medical drone w/ heart — to right of icon */}
+                    <g transform="translate(440,230)">
+                      <ellipse cx="0" cy="0" rx="16" ry="7" fill="#ccc8c2" />
+                      <line x1="-16" y1="0" x2="-30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <line x1="16" y1="0" x2="30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <ellipse cx="-30" cy="-9" rx="12" ry="3.5" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <ellipse cx="30" cy="-9" rx="12" ry="3.5" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <line x1="-9" y1="7" x2="-14" y2="16" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <line x1="9" y1="7" x2="14" y2="16" stroke="#aaa6a0" strokeWidth="1.5" />
                       <g transform="translate(0,24)">
-                        <path d="M0 4 C0 -3 -10 -5 -10 2 C-10 7 0 14 0 14 C0 14 10 7 10 2 C10 -5 0 -3 0 4Z" fill="rgba(212,68,59,0.7)" stroke="rgba(212,68,59,0.85)" strokeWidth="1" />
-                        <path d="M-6 5 L-3 5 L0 0 L3 10 L5 5 L7 5" fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth="1.2" />
+                        <path d="M0 4 C0 -3 -10 -5 -10 2 C-10 7 0 14 0 14 C0 14 10 7 10 2 C10 -5 0 -3 0 4Z" fill="#d4443b" stroke="#e04e47" strokeWidth="1" />
+                        <path d="M-6 5 L-3 5 L0 0 L3 10 L5 5 L7 5" fill="none" stroke="#fff" strokeWidth="1.2" />
                       </g>
                     </g>
                   </g>
 
                   {/* Rural farm */}
-                  <g opacity={hoveredLs === 'rural' ? 1 : 0.7} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="680" y="85" width="55" height="45" fill="rgba(232,230,225,0.48)" />
-                    <path d="M674 85 L707 58 L741 85Z" fill="rgba(200,160,120,0.45)" />
-                    <rect x="698" y="106" width="16" height="24" fill="rgba(232,230,225,0.18)" />
-                    <rect x="745" y="68" width="20" height="62" rx="5" fill="rgba(232,230,225,0.45)" />
-                    <ellipse cx="755" cy="68" rx="10" ry="6" fill="rgba(200,195,185,0.35)" />
-                    <line x1="785" y1="62" x2="785" y2="130" stroke="rgba(232,230,225,0.5)" strokeWidth="2.5" />
+                  <g opacity={hoveredLs === 'rural' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
+                    <rect x="680" y="85" width="55" height="45" fill="#bcb8b2" />
+                    <path d="M674 85 L707 58 L741 85Z" fill="#b09870" />
+                    <rect x="698" y="106" width="16" height="24" fill="#8a8680" />
+                    <rect x="745" y="68" width="20" height="62" rx="5" fill="#b8b4ae" />
+                    <ellipse cx="755" cy="68" rx="10" ry="6" fill="#ada9a3" />
+                    <line x1="785" y1="62" x2="785" y2="130" stroke="#c0bcb6" strokeWidth="2.5" />
                     <g transform="translate(785,62)">
-                      <line x1="0" y1="0" x2="-16" y2="-20" stroke="rgba(232,230,225,0.45)" strokeWidth="2" />
-                      <line x1="0" y1="0" x2="20" y2="-12" stroke="rgba(232,230,225,0.45)" strokeWidth="2" />
-                      <line x1="0" y1="0" x2="10" y2="20" stroke="rgba(232,230,225,0.45)" strokeWidth="2" />
-                      <line x1="0" y1="0" x2="-20" y2="10" stroke="rgba(232,230,225,0.45)" strokeWidth="2" />
+                      <line x1="0" y1="0" x2="-16" y2="-20" stroke="#b8b4ae" strokeWidth="2" />
+                      <line x1="0" y1="0" x2="20" y2="-12" stroke="#b8b4ae" strokeWidth="2" />
+                      <line x1="0" y1="0" x2="10" y2="20" stroke="#b8b4ae" strokeWidth="2" />
+                      <line x1="0" y1="0" x2="-20" y2="10" stroke="#b8b4ae" strokeWidth="2" />
                     </g>
-                    <path d="M660 110 L670 75 L680 110Z" fill="rgba(100,160,100,0.3)" />
-                    <path d="M648 115 L655 88 L662 115Z" fill="rgba(90,150,90,0.25)" />
-                    <circle cx="810" cy="112" r="10" fill="rgba(95,155,95,0.3)" />
-                    <circle cx="828" cy="116" r="7" fill="rgba(90,145,90,0.25)" />
-                    <line x1="645" y1="130" x2="840" y2="130" stroke="rgba(232,230,225,0.2)" strokeWidth="1" />
+                    <path d="M660 110 L670 75 L680 110Z" fill="#5a945a" />
+                    <path d="M648 115 L655 88 L662 115Z" fill="#4f8a4f" />
+                    <circle cx="810" cy="112" r="10" fill="#558e55" />
+                    <circle cx="828" cy="116" r="7" fill="#4f8a4f" />
+                    <line x1="645" y1="130" x2="840" y2="130" stroke="rgba(232,230,225,0.35)" strokeWidth="1" />
                   </g>
 
 
@@ -598,11 +608,22 @@ const AAMPage = () => {
                     const to = landscapeNodes.find(n => n.id === fp.to)!;
                     const x1 = from.x * 10, y1 = from.y * 6;
                     const x2 = to.x * 10, y2 = to.y * 6;
-                    const mx = (x1 + x2) / 2;
-                    const dx = x2 - x1, dy = y2 - y1;
-                    const my = (y1 + y2) / 2 + dx * 0.15;
-                    const d = `M${x1},${y1} Q${mx - dy * 0.15},${my} ${x2},${y2}`;
-                    const hl = hoveredLs === fp.from || hoveredLs === fp.to;
+                    let d: string;
+                    // Special case: urban-air-taxi → rural — arc ABOVE residential
+                    if (fp.from === 'urban-air-taxi' && fp.to === 'rural') {
+                      const mx = (x1 + x2) / 2;
+                      d = `M${x1},${y1} Q${mx},-40 ${x2},${y2}`;
+                    } else {
+                      const mx = (x1 + x2) / 2;
+                      const dx = x2 - x1, dy = y2 - y1;
+                      const my = (y1 + y2) / 2 + dx * 0.15;
+                      d = `M${x1},${y1} Q${mx - dy * 0.15},${my} ${x2},${y2}`;
+                    }
+                    // When urban-air-taxi hovered, also highlight downstream paths
+                    const uatNetwork = ['urban-air-taxi', 'residential', 'rural', 'medical', 'city-center'];
+                    const hl = hoveredLs === 'urban-air-taxi'
+                      ? uatNetwork.includes(fp.from) && uatNetwork.includes(fp.to)
+                      : (hoveredLs === fp.from || hoveredLs === fp.to);
                     const cls = fp.type === 'medical' ? 'ls-flight-path-med' : (i % 2 === 0 ? 'ls-flight-path' : 'ls-flight-path-reverse');
                     return (
                       <React.Fragment key={`lsp-${i}`}>
@@ -667,22 +688,35 @@ const AAMPage = () => {
                             <g dangerouslySetInnerHTML={{ __html: lsIcons[node.icon].replace(/currentColor/g, isMed ? '#d4443b' : 'url(#lsGoldGrad)') }} />
                           </svg>
                         </g>
-                        {/* Label */}
-                        <text
-                          x={nx} y={ny + 40}
-                          textAnchor="middle"
-                          fill={hl ? '#e8d5a0' : 'rgba(232,230,225,0.85)'}
-                          fontFamily="'DM Sans', sans-serif"
-                          fontSize={hl ? '13' : '12'}
-                          fontWeight={hl ? '700' : '500'}
-                          letterSpacing="1.5"
-                          style={{ textTransform: 'uppercase' } as React.CSSProperties}
-                        >
-                          {node.label}
-                        </text>
                         {/* Hit area */}
                         <circle cx={nx} cy={ny} r={45} fill="transparent" />
                       </g>
+                    );
+                  })}
+
+                  {/* ── LABELS (rendered last = on top of everything) ── */}
+                  {landscapeNodes.map((node) => {
+                    const nx = node.x * 10;
+                    const ny = node.y * 6;
+                    const hl = hoveredLs === node.id;
+                    let lx = nx, ly = ny + 40, anchor: string = 'middle';
+                    if (node.id === 'residential') { ly = 155; }
+                    if (node.id === 'rural') { ly = 155; }
+                    if (node.id === 'package-delivery') { lx = nx + 12; anchor = 'start'; }
+                    return (
+                      <text
+                        key={`label-${node.id}`}
+                        x={lx} y={ly}
+                        textAnchor={anchor}
+                        fill={hl ? '#e8d5a0' : '#ffffff'}
+                        fontFamily="'DM Sans', sans-serif"
+                        fontSize={hl ? '13' : '12'}
+                        fontWeight={hl ? '700' : '600'}
+                        letterSpacing="1.5"
+                        style={{ textTransform: 'uppercase', pointerEvents: 'none' } as React.CSSProperties}
+                      >
+                        {node.label}
+                      </text>
                     );
                   })}
                 </svg>
