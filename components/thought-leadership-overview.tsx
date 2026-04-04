@@ -172,7 +172,7 @@ export default function ThoughtLeadershipOverview() {
             </p>
             <h1 className="hero-title">Thought Leadership</h1>
             <p className="hero-sub" style={{ maxWidth: 760 }}>
-              At Rawlins, we believe that deep expertise should be shared, not siloed. Our thought leadership draws on decades of experience advising transportation agencies and public-sector organizations to provide practical, forward-looking perspectives on the challenges shaping the industry today.
+              At Rawlins, our thought leadership reflects the depth of our experience advising organizations through complex challenges and change. We share practical insights and forward-looking perspectives to help you make informed decisions and move forward with confidence.
             </p>
           </div>
         </section>
