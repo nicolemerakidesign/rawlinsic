@@ -5552,7 +5552,7 @@ color: #fff;
 }
 .cap-svc-row-desc {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 16px; line-height: 1.75; color: #fff;
+  font-size: 16px; line-height: 1.75; color: #fff; font-weight: 500;
 }
 
 /* ── CTA ── */
