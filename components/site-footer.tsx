@@ -31,6 +31,7 @@ export default function SiteFooter() {
             <li><Link href="/#story">About</Link></li>
             <li><Link href="/about/our-people">Our People</Link></li>
             <li><Link href="/about/areas-we-serve">Areas We Serve</Link></li>
+            <li><Link href="/careers">Careers</Link></li>
           </ul>
         </div>
         <div>
