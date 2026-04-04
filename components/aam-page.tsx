@@ -106,12 +106,12 @@ const lsIcons: Record<string, string> = {
 };
 
 const landscapeNodes = [
-  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 5, y: 8, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
+  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 15, y: 8, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
   { id: 'package-delivery', label: 'Package Delivery', x: 10, y: 52, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
   { id: 'residential', label: 'Residential Areas', x: 44, y: 5, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
   { id: 'medical', label: 'Medical Supplies', x: 38, y: 40, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
   { id: 'rural', label: 'Rural & Agriculture', x: 72, y: 5, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
-  { id: 'city-center', label: 'City Center', x: 65, y: 30, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
+  { id: 'city-center', label: 'City Center', x: 58, y: 40, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
 ];
 
 const landscapePaths = [
@@ -120,8 +120,8 @@ const landscapePaths = [
   { from: 'urban-air-taxi', to: 'residential', color: '#c9a84c', type: 'air-taxi' },
   { from: 'urban-air-taxi', to: 'rural', color: '#c9a84c', type: 'air-taxi' },
   // Residential → Rural, City Center
-  { from: 'residential', to: 'rural', color: '#8B6914', type: 'air-taxi' },
-  { from: 'residential', to: 'city-center', color: '#8B6914', type: 'air-taxi' },
+  { from: 'residential', to: 'rural', color: '#c9a84c', type: 'air-taxi' },
+  { from: 'residential', to: 'city-center', color: '#c9a84c', type: 'air-taxi' },
   // Rural → Medical
   { from: 'rural', to: 'medical', color: '#d4443b', type: 'medical' },
   // Package Delivery → Medical, Residential, Rural
@@ -433,34 +433,10 @@ const AAMPage = () => {
 
 
                   {/* ── SCENE: Building silhouettes (full opacity) ── */}
-                  {/* Airport: Hangar + Tower + Airplane + eVTOL drone */}
+                  {/* Airport: eVTOL left, icon right, hangar/tower/plane below */}
                   <g opacity={hoveredLs === 'urban-air-taxi' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    {/* Hangar */}
-                    <path d="M20 170 Q20 130 110 118 Q200 130 200 170 L200 200 L20 200Z" fill="#b8b4ae" stroke="#ccc8c2" strokeWidth="1" />
-                    <rect x="38" y="148" width="140" height="52" fill="#9e9a94" stroke="#b8b4ae" strokeWidth="0.5" />
-                    <rect x="55" y="158" width="28" height="14" fill="#87837d" />
-                    <rect x="95" y="158" width="28" height="14" fill="#87837d" />
-                    <rect x="135" y="158" width="28" height="14" fill="#87837d" />
-                    <rect x="72" y="180" width="14" height="20" fill="#7a766f" />
-                    <rect x="92" y="180" width="14" height="20" fill="#7a766f" />
-                    <rect x="112" y="180" width="14" height="20" fill="#7a766f" />
-                    {/* Tower */}
-                    <rect x="222" y="115" width="16" height="85" fill="#c0bcb6" />
-                    <rect x="214" y="100" width="32" height="20" rx="3" fill="#ccc8c2" stroke="#d8d4ce" strokeWidth="0.8" />
-                    <rect x="218" y="105" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="226" y="105" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="234" y="105" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="208" y="170" width="50" height="30" fill="#a8a49e" />
-                    {/* Airplane */}
-                    <g transform="translate(160,75) rotate(-10)">
-                      <ellipse cx="30" cy="8" rx="32" ry="6" fill="#ccc8c2" />
-                      <path d="M18 8 L28 -14 L36 -12 L26 8Z" fill="#b8b4ae" />
-                      <path d="M18 8 L28 30 L36 28 L26 8Z" fill="#b8b4ae" />
-                      <path d="M-2 8 L2 -5 L9 -3 L5 8Z" fill="#aaa6a0" />
-                      <ellipse cx="58" cy="8" rx="6" ry="4" fill="#7eb8d0" />
-                    </g>
-                    {/* eVTOL Air Taxi drone — with passenger silhouette */}
-                    <g transform="translate(60,60)">
+                    {/* eVTOL Air Taxi drone — to the left of icon */}
+                    <g transform="translate(60,48)">
                       <ellipse cx="0" cy="5" rx="18" ry="12" fill="#c0bcb6" />
                       <line x1="-18" y1="0" x2="-34" y2="-8" stroke="#c0bcb6" strokeWidth="2.5" />
                       <line x1="18" y1="0" x2="34" y2="-8" stroke="#c0bcb6" strokeWidth="2.5" />
@@ -472,17 +448,41 @@ const AAMPage = () => {
                       <circle cx="0" cy="-2" r="4" fill="#c9a84c" />
                       <path d="M-6 14 L-4 5 L4 5 L6 14Z" fill="rgba(201,168,76,0.8)" />
                     </g>
+                    {/* Hangar — moved down */}
+                    <path d="M20 230 Q20 190 110 178 Q200 190 200 230 L200 260 L20 260Z" fill="#b8b4ae" stroke="#ccc8c2" strokeWidth="1" />
+                    <rect x="38" y="208" width="140" height="52" fill="#9e9a94" stroke="#b8b4ae" strokeWidth="0.5" />
+                    <rect x="55" y="218" width="28" height="14" fill="#87837d" />
+                    <rect x="95" y="218" width="28" height="14" fill="#87837d" />
+                    <rect x="135" y="218" width="28" height="14" fill="#87837d" />
+                    <rect x="72" y="240" width="14" height="20" fill="#7a766f" />
+                    <rect x="92" y="240" width="14" height="20" fill="#7a766f" />
+                    <rect x="112" y="240" width="14" height="20" fill="#7a766f" />
+                    {/* Tower — moved down */}
+                    <rect x="222" y="175" width="16" height="85" fill="#c0bcb6" />
+                    <rect x="214" y="160" width="32" height="20" rx="3" fill="#ccc8c2" stroke="#d8d4ce" strokeWidth="0.8" />
+                    <rect x="218" y="165" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="226" y="165" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="234" y="165" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="208" y="230" width="50" height="30" fill="#a8a49e" />
+                    {/* Airplane — moved down */}
+                    <g transform="translate(160,140) rotate(-10)">
+                      <ellipse cx="30" cy="8" rx="32" ry="6" fill="#ccc8c2" />
+                      <path d="M18 8 L28 -14 L36 -12 L26 8Z" fill="#b8b4ae" />
+                      <path d="M18 8 L28 30 L36 28 L26 8Z" fill="#b8b4ae" />
+                      <path d="M-2 8 L2 -5 L9 -3 L5 8Z" fill="#aaa6a0" />
+                      <ellipse cx="58" cy="8" rx="6" ry="4" fill="#7eb8d0" />
+                    </g>
                   </g>
 
-                  {/* Warehouse + Delivery Drone (drone moved up-right of icon) */}
+                  {/* Warehouse + Delivery Drone (drone to LEFT of icon) */}
                   <g opacity={hoveredLs === 'package-delivery' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
                     <rect x="40" y="380" width="170" height="85" fill="#b0aca6" />
                     <rect x="40" y="365" width="170" height="20" fill="#a8a49e" />
                     <rect x="70" y="420" width="28" height="45" fill="#87837d" />
                     <rect x="108" y="420" width="28" height="45" fill="#87837d" />
                     <rect x="146" y="420" width="28" height="45" fill="#87837d" />
-                    {/* Delivery drone — up and to the right of icon */}
-                    <g transform="translate(170,290)">
+                    {/* Delivery drone — to the LEFT of icon */}
+                    <g transform="translate(30,295)">
                       <ellipse cx="0" cy="0" rx="16" ry="7" fill="#ccc8c2" />
                       <line x1="-16" y1="0" x2="-30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
                       <line x1="16" y1="0" x2="30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
@@ -518,54 +518,54 @@ const AAMPage = () => {
                     <line x1="350" y1="133" x2="550" y2="133" stroke="rgba(232,230,225,0.4)" strokeWidth="1" />
                   </g>
 
-                  {/* City skyline */}
+                  {/* City skyline — moved left */}
                   <g opacity={hoveredLs === 'city-center' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="730" y="280" width="32" height="120" fill="#b8b4ae" />
-                    <rect x="767" y="258" width="28" height="142" fill="#b0aca6" />
-                    <rect x="800" y="300" width="22" height="100" fill="#a8a49e" />
-                    <rect x="827" y="240" width="38" height="160" fill="#c0bcb6" />
-                    <rect x="870" y="280" width="24" height="120" fill="#aca8a2" />
-                    <rect x="899" y="310" width="20" height="90" fill="#9e9a94" />
-                    <rect x="735" y="290" width="6" height="6" fill="#c9a84c" />
-                    <rect x="743" y="290" width="6" height="6" fill="#c9a84c" />
-                    <rect x="735" y="302" width="6" height="6" fill="#c9a84c" />
-                    <rect x="832" y="250" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="843" y="250" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="832" y="266" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="843" y="266" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="832" y="282" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="924" y="280" width="48" height="120" fill="#c2872e" rx="2" />
-                    <rect x="930" y="290" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="945" y="290" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="930" y="306" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="945" y="306" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="930" y="322" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="945" y="322" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="650" y="280" width="32" height="120" fill="#b8b4ae" />
+                    <rect x="687" y="258" width="28" height="142" fill="#b0aca6" />
+                    <rect x="720" y="300" width="22" height="100" fill="#a8a49e" />
+                    <rect x="747" y="240" width="38" height="160" fill="#c0bcb6" />
+                    <rect x="790" y="280" width="24" height="120" fill="#aca8a2" />
+                    <rect x="819" y="310" width="20" height="90" fill="#9e9a94" />
+                    <rect x="655" y="290" width="6" height="6" fill="#c9a84c" />
+                    <rect x="663" y="290" width="6" height="6" fill="#c9a84c" />
+                    <rect x="655" y="302" width="6" height="6" fill="#c9a84c" />
+                    <rect x="752" y="250" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="763" y="250" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="752" y="266" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="763" y="266" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="752" y="282" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="844" y="280" width="48" height="120" fill="#c2872e" rx="2" />
+                    <rect x="850" y="290" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="865" y="290" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="850" y="306" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="865" y="306" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="850" y="322" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="865" y="322" width="9" height="9" fill="rgba(0,0,0,0.4)" />
                   </g>
 
-                  {/* Medical building (hospital) + Medical Drone w/ heart to right of icon */}
+                  {/* Medical building (hospital) + Medical Drone w/ heart — more right */}
                   <g opacity={hoveredLs === 'medical' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    {/* Hospital building — below icon, more detailed */}
-                    <rect x="310" y="310" width="90" height="80" fill="#b8b4ae" />
-                    <rect x="310" y="300" width="90" height="14" fill="#c0bcb6" />
-                    <rect x="340" y="282" width="30" height="22" rx="3" fill="#d4443b" />
-                    <rect x="351" y="286" width="8" height="14" fill="#fff" />
-                    <rect x="344" y="291" width="22" height="4" fill="#fff" />
+                    {/* Hospital building — down and to the right */}
+                    <rect x="390" y="340" width="90" height="80" fill="#b8b4ae" />
+                    <rect x="390" y="330" width="90" height="14" fill="#c0bcb6" />
+                    <rect x="420" y="312" width="30" height="22" rx="3" fill="#d4443b" />
+                    <rect x="431" y="316" width="8" height="14" fill="#fff" />
+                    <rect x="424" y="321" width="22" height="4" fill="#fff" />
                     {/* Windows */}
-                    <rect x="318" y="318" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="334" y="318" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="350" y="318" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="366" y="318" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="382" y="318" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="318" y="340" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="334" y="340" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="350" y="340" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="366" y="340" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="382" y="340" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="398" y="348" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="414" y="348" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="430" y="348" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="446" y="348" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="462" y="348" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="398" y="370" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="414" y="370" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="430" y="370" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="446" y="370" width="10" height="10" fill="#7eb8d0" />
+                    <rect x="462" y="370" width="10" height="10" fill="#7eb8d0" />
                     {/* Entrance */}
-                    <rect x="342" y="360" width="26" height="30" fill="#8a8680" />
-                    {/* Medical drone w/ heart — to right of icon */}
-                    <g transform="translate(440,230)">
+                    <rect x="422" y="390" width="26" height="30" fill="#8a8680" />
+                    {/* Medical drone w/ heart — further right of icon */}
+                    <g transform="translate(490,230)">
                       <ellipse cx="0" cy="0" rx="16" ry="7" fill="#ccc8c2" />
                       <line x1="-16" y1="0" x2="-30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
                       <line x1="16" y1="0" x2="30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
@@ -619,11 +619,8 @@ const AAMPage = () => {
                       const my = (y1 + y2) / 2 + dx * 0.15;
                       d = `M${x1},${y1} Q${mx - dy * 0.15},${my} ${x2},${y2}`;
                     }
-                    // When urban-air-taxi hovered, also highlight downstream paths
-                    const uatNetwork = ['urban-air-taxi', 'residential', 'rural', 'medical', 'city-center'];
-                    const hl = hoveredLs === 'urban-air-taxi'
-                      ? uatNetwork.includes(fp.from) && uatNetwork.includes(fp.to)
-                      : (hoveredLs === fp.from || hoveredLs === fp.to);
+                    // Only highlight direct connections for the hovered node
+                    const hl = hoveredLs === fp.from || hoveredLs === fp.to;
                     const cls = fp.type === 'medical' ? 'ls-flight-path-med' : (i % 2 === 0 ? 'ls-flight-path' : 'ls-flight-path-reverse');
                     return (
                       <React.Fragment key={`lsp-${i}`}>
@@ -702,7 +699,6 @@ const AAMPage = () => {
                     let lx = nx, ly = ny + 40, anchor: string = 'middle';
                     if (node.id === 'residential') { ly = 155; }
                     if (node.id === 'rural') { ly = 155; }
-                    if (node.id === 'package-delivery') { lx = nx + 12; anchor = 'start'; }
                     return (
                       <text
                         key={`label-${node.id}`}
