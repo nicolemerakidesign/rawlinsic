@@ -321,13 +321,13 @@ export default function AutomationPage() {
                   We design and implement digital solutions that help people work smarter and more creatively.
                 </li>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
-                  We reduce manual effort, streamline and connect workflows, and establish effective <Link href="/capabilities" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
+                  We reduce manual effort, streamline and connect workflows, and establish effective <Link href="/capabilities#data-governance" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
                 </li>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
                   We develop high-value AI use cases and a roadmap for adoption and scaling.
                 </li>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
-                  We partner to guide <Link href="/capabilities" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>organizational change</Link> by cultivating the culture required for new ways of working.
+                  We partner to guide <Link href="/capabilities#organizational-change-management" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>organizational change</Link> by cultivating the culture required for new ways of working.
                 </li>
               </ul>
             </div>

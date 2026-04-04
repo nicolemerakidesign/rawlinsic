@@ -260,7 +260,7 @@ export default function CapabilitiesPage() {
   };
 
   return (
-    <PasswordGate>
+    <>
       <div className="cap-page-wrap">
       {/* Ambient Background — matches homepage */}
       <div className="ambient-bg" />
@@ -348,6 +348,7 @@ export default function CapabilitiesPage() {
                   return (
                     <div
                       key={svc.title}
+                      id={svc.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}
                       className={`cap-svc-row${isOpen ? " expanded" : ""}`}
                       onClick={() => setExpandedService(isOpen ? null : `${section.id}-${i}`)}
                     >
@@ -400,6 +401,6 @@ export default function CapabilitiesPage() {
 
       <SiteFooter />
       </div>
-    </PasswordGate>
+    </>
   );
 }
