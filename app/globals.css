@@ -5464,7 +5464,7 @@ color: #fff;
 .cap-svc-count-label { display: flex; align-items: center; gap: 12px; }
 .cap-svc-count-num {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: 58px; font-weight: 700; line-height: 1;
+  font-size: 58px; font-weight: 700; line-height: 1.15; overflow: visible;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
