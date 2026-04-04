@@ -389,11 +389,6 @@ const AAMPage = () => {
               <div className="ls-vis-wrapper">
                 <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', width: '100%', height: 'auto' }}>
                   <defs>
-                    <linearGradient id="lsWaterGrad" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stopColor="transparent" />
-                      <stop offset="40%" stopColor="#0e2a45" stopOpacity="0.6" />
-                      <stop offset="100%" stopColor="#132d48" stopOpacity="0.8" />
-                    </linearGradient>
                     <linearGradient id="lsGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="#c9a84c" />
                       <stop offset="50%" stopColor="#e8d5a0" />
@@ -438,10 +433,6 @@ const AAMPage = () => {
                     ))}
                   </g>
 
-                  {/* Terrain layers */}
-                  <path d="M0 380 Q200 360 400 375 Q600 390 800 370 Q900 365 1000 380 L1000 600 L0 600Z" fill="rgba(13,26,45,0.3)" />
-                  <path d="M0 420 Q100 390 250 410 Q400 430 500 415 Q650 400 800 420 Q900 430 1000 415 L1000 600 L0 600Z" fill="rgba(10,20,34,0.4)" />
-                  <path d="M600 520 Q700 510 800 525 Q900 515 1000 530 L1000 600 L600 600Z" fill="url(#lsWaterGrad)" opacity="0.5" />
 
                   {/* ── SCENE: Building silhouettes ── */}
                   {/* Airport hangar */}
@@ -625,13 +616,13 @@ const AAMPage = () => {
                         <circle cx={nx} cy={ny} r={hl ? 48 : 36} fill="url(#lsNodeGlow)" opacity={hl ? 1 : 0.6} />
                         {/* Circle bg */}
                         <circle cx={nx} cy={ny} r={26} fill="rgba(6,12,22,0.92)" stroke={sc} strokeWidth={hl ? 2 : 1} />
-                        {/* Icon — gold gradient via url(#lsGoldGrad) for fill paths */}
+                        {/* Icon */}
                         <g
                           transform={`translate(${nx - 13},${ny - 13})`}
-                          style={{ color: 'url(#lsGoldGrad)', filter: flt }}
+                          style={{ filter: flt }}
                         >
                           <svg width="26" height="26" viewBox="0 0 24 24">
-                            <g dangerouslySetInnerHTML={{ __html: lsIcons[node.icon].replace(/currentColor/g, 'url(#lsGoldGrad)') }} />
+                            <g dangerouslySetInnerHTML={{ __html: lsIcons[node.icon].replace(/currentColor/g, isMed ? '#d4443b' : 'url(#lsGoldGrad)') }} />
                           </svg>
                         </g>
                         {/* Label */}
