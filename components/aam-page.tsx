@@ -98,7 +98,6 @@ const uasServices = [
 /* ──── Landscape Visualization Data ──── */
 const lsIcons: Record<string, string> = {
   helicopter: '<g transform="scale(0.9) translate(2,2)"><path d="M4 12h3l2-4h6l2 4h3" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.8"/><line x1="3" y1="8" x2="21" y2="8" stroke="currentColor" stroke-width="1" opacity="0.6"/><line x1="12" y1="8" x2="12" y2="9.5" stroke="currentColor" stroke-width="1"/><line x1="10" y1="14.5" x2="8" y2="18" stroke="currentColor" stroke-width="1"/><line x1="14" y1="14.5" x2="16" y2="18" stroke="currentColor" stroke-width="1"/></g>',
-  airport: '<g><path d="M12 2L8 10h3v5H7l-1 3h12l-1-3h-4v-5h3L12 2z" fill="currentColor" opacity="0.8"/><rect x="5" y="19" width="14" height="2" rx="1" fill="currentColor" opacity="0.5"/></g>',
   package: '<g><rect x="5" y="8" width="14" height="12" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="5" y1="13" x2="19" y2="13" stroke="currentColor" stroke-width="1" opacity="0.5"/><line x1="12" y1="8" x2="12" y2="20" stroke="currentColor" stroke-width="1" opacity="0.5"/><path d="M8 4L12 2L16 4" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="12" y1="2" x2="12" y2="8" stroke="currentColor" stroke-width="1"/></g>',
   residential: '<g><path d="M3 12L12 4l9 8" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="6" y="12" width="12" height="8" stroke="currentColor" stroke-width="1.2" fill="none"/><rect x="10" y="15" width="4" height="5" stroke="currentColor" stroke-width="1" fill="none"/></g>',
   medical: '<g><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="2.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2.5"/></g>',
@@ -108,7 +107,6 @@ const lsIcons: Record<string, string> = {
 
 const landscapeNodes = [
   { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 10, y: 8, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
-  { id: 'airport', label: 'Airport Hub', x: 16, y: 30, icon: 'airport', desc: 'Traditional aviation infrastructure serving as integration points for AAM services and intermodal connectivity.' },
   { id: 'package-delivery', label: 'Package Delivery', x: 8, y: 62, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
   { id: 'residential', label: 'Residential Areas', x: 42, y: 18, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
   { id: 'medical', label: 'Medical Supplies', x: 42, y: 52, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
@@ -435,22 +433,46 @@ const AAMPage = () => {
 
 
                   {/* ── SCENE: Building silhouettes ── */}
-                  {/* Airport hangar */}
-                  <g opacity={hoveredLs === 'airport' ? 1 : 0.5} style={{ transition: 'opacity 0.3s' }}>
-                    <path d="M100 200 Q100 165 170 155 Q240 165 240 200 L240 210 L100 210Z" fill="rgba(232,230,225,0.15)" stroke="rgba(232,230,225,0.25)" strokeWidth="0.5" />
-                    <rect x="120" y="185" width="100" height="25" fill="rgba(232,230,225,0.08)" stroke="rgba(232,230,225,0.12)" strokeWidth="0.5" />
-                    {/* Parked planes */}
-                    <g transform="translate(85,195) scale(0.5)"><path d="M0 10 L50 0 L55 10 L50 20Z" fill="rgba(232,230,225,0.2)" /></g>
-                    <g transform="translate(235,195) scale(-0.5,0.5)"><path d="M0 10 L50 0 L55 10 L50 20Z" fill="rgba(232,230,225,0.2)" /></g>
-                  </g>
+                  {/* Airport: Hangar + Control Tower + Airplane — near Urban Air Taxi */}
+                  <g opacity={hoveredLs === 'urban-air-taxi' ? 1 : 0.45} style={{ transition: 'opacity 0.3s' }}>
+                    {/* Hangar — curved roof */}
+                    <path d="M40 130 Q40 95 120 85 Q200 95 200 130 L200 155 L40 155Z" fill="rgba(232,230,225,0.18)" stroke="rgba(232,230,225,0.3)" strokeWidth="0.8" />
+                    {/* Hangar front — glass/white face */}
+                    <rect x="55" y="110" width="130" height="45" fill="rgba(232,230,225,0.1)" stroke="rgba(232,230,225,0.18)" strokeWidth="0.5" />
+                    {/* Hangar windows */}
+                    <rect x="70" y="120" width="25" height="12" fill="rgba(232,230,225,0.08)" />
+                    <rect x="107" y="120" width="25" height="12" fill="rgba(232,230,225,0.08)" />
+                    <rect x="145" y="120" width="25" height="12" fill="rgba(232,230,225,0.08)" />
+                    {/* Hangar door */}
+                    <rect x="85" y="138" width="12" height="17" fill="rgba(232,230,225,0.06)" />
+                    <rect x="100" y="138" width="12" height="17" fill="rgba(232,230,225,0.06)" />
+                    <rect x="115" y="138" width="12" height="17" fill="rgba(232,230,225,0.06)" />
+                    <rect x="130" y="138" width="12" height="17" fill="rgba(232,230,225,0.06)" />
 
-                  {/* Control tower */}
-                  <g opacity={hoveredLs === 'airport' ? 1 : 0.5} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="260" y="150" width="12" height="65" fill="rgba(232,230,225,0.2)" />
-                    <rect x="252" y="140" width="28" height="16" rx="3" fill="rgba(232,230,225,0.25)" />
-                    <rect x="256" y="143" width="4" height="8" fill="rgba(140,200,220,0.25)" />
-                    <rect x="263" y="143" width="4" height="8" fill="rgba(140,200,220,0.25)" />
-                    <rect x="270" y="143" width="4" height="8" fill="rgba(140,200,220,0.25)" />
+                    {/* Control tower — right of hangar */}
+                    <rect x="225" y="85" width="14" height="70" fill="rgba(232,230,225,0.22)" />
+                    <rect x="218" y="72" width="28" height="18" rx="3" fill="rgba(232,230,225,0.28)" stroke="rgba(232,230,225,0.35)" strokeWidth="0.5" />
+                    {/* Tower windows */}
+                    <rect x="222" y="76" width="5" height="8" fill="rgba(140,200,220,0.25)" />
+                    <rect x="229" y="76" width="5" height="8" fill="rgba(140,200,220,0.25)" />
+                    <rect x="236" y="76" width="5" height="8" fill="rgba(140,200,220,0.25)" />
+                    {/* Tower base/smaller building */}
+                    <rect x="210" y="130" width="45" height="25" fill="rgba(232,230,225,0.15)" />
+
+                    {/* Airplane — taking off, angled up-right */}
+                    <g transform="translate(155,50) rotate(-12)">
+                      {/* Fuselage */}
+                      <ellipse cx="30" cy="8" rx="30" ry="5" fill="rgba(232,230,225,0.3)" />
+                      {/* Wings */}
+                      <path d="M18 8 L28 -12 L34 -10 L26 8Z" fill="rgba(232,230,225,0.25)" />
+                      <path d="M18 8 L28 28 L34 26 L26 8Z" fill="rgba(232,230,225,0.25)" />
+                      {/* Tail */}
+                      <path d="M-2 8 L2 -4 L8 -2 L4 8Z" fill="rgba(232,230,225,0.2)" />
+                      {/* Tail fin */}
+                      <path d="M0 5 L-4 0 L2 2Z" fill="rgba(232,230,225,0.2)" />
+                      {/* Cockpit */}
+                      <ellipse cx="55" cy="8" rx="6" ry="3.5" fill="rgba(140,200,220,0.2)" />
+                    </g>
                   </g>
 
                   {/* Warehouse */}
