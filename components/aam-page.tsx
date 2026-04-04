@@ -475,13 +475,34 @@ const AAMPage = () => {
                     </g>
                   </g>
 
-                  {/* Warehouse */}
+                  {/* Warehouse + Delivery Drone */}
                   <g opacity={hoveredLs === 'package-delivery' ? 1 : 0.5} style={{ transition: 'opacity 0.3s' }}>
                     <rect x="30" y="370" width="160" height="80" fill="rgba(232,230,225,0.2)" />
                     <rect x="30" y="355" width="160" height="20" fill="rgba(232,230,225,0.15)" />
                     <rect x="60" y="410" width="25" height="40" fill="rgba(232,230,225,0.08)" />
                     <rect x="95" y="410" width="25" height="40" fill="rgba(232,230,225,0.08)" />
                     <rect x="130" y="410" width="25" height="40" fill="rgba(232,230,225,0.08)" />
+
+                    {/* Delivery drone with package — positioned near Package Delivery node */}
+                    <g transform="translate(130,330)">
+                      {/* Drone body */}
+                      <ellipse cx="0" cy="0" rx="14" ry="6" fill="rgba(232,230,225,0.3)" />
+                      {/* Arms */}
+                      <line x1="-14" y1="0" x2="-26" y2="-6" stroke="rgba(232,230,225,0.3)" strokeWidth="2" />
+                      <line x1="14" y1="0" x2="26" y2="-6" stroke="rgba(232,230,225,0.3)" strokeWidth="2" />
+                      {/* Rotors */}
+                      <ellipse cx="-26" cy="-8" rx="10" ry="3" fill="none" stroke="rgba(232,230,225,0.2)" strokeWidth="1" />
+                      <ellipse cx="26" cy="-8" rx="10" ry="3" fill="none" stroke="rgba(232,230,225,0.2)" strokeWidth="1" />
+                      {/* Landing gear */}
+                      <line x1="-8" y1="6" x2="-12" y2="14" stroke="rgba(232,230,225,0.25)" strokeWidth="1.5" />
+                      <line x1="8" y1="6" x2="12" y2="14" stroke="rgba(232,230,225,0.25)" strokeWidth="1.5" />
+                      {/* Package hanging below */}
+                      <line x1="0" y1="6" x2="0" y2="16" stroke="rgba(201,168,76,0.3)" strokeWidth="0.8" />
+                      <rect x="-8" y="16" width="16" height="14" rx="2" fill="rgba(201,168,76,0.25)" stroke="rgba(201,168,76,0.35)" strokeWidth="0.8" />
+                      {/* Package tape */}
+                      <line x1="0" y1="16" x2="0" y2="30" stroke="rgba(201,168,76,0.15)" strokeWidth="0.5" />
+                      <line x1="-8" y1="23" x2="8" y2="23" stroke="rgba(201,168,76,0.15)" strokeWidth="0.5" />
+                    </g>
                   </g>
 
                   {/* Suburban houses */}
@@ -536,12 +557,33 @@ const AAMPage = () => {
                     <rect x="920" y="350" width="8" height="8" fill="rgba(0,0,0,0.3)" />
                   </g>
 
-                  {/* Medical building */}
+                  {/* Medical building + Medical Drone */}
                   <g opacity={hoveredLs === 'medical' ? 1 : 0.5} style={{ transition: 'opacity 0.3s' }}>
                     <rect x="365" y="300" width="55" height="45" fill="rgba(232,230,225,0.2)" />
                     <rect x="375" y="285" width="22" height="18" rx="3" fill="rgba(212,68,59,0.5)" />
                     <rect x="383" y="288" width="6" height="12" fill="rgba(255,255,255,0.7)" />
                     <rect x="379" y="292" width="14" height="4" fill="rgba(255,255,255,0.7)" />
+
+                    {/* Medical drone with heart — positioned near Medical Supplies node */}
+                    <g transform="translate(465,275)">
+                      {/* Drone body */}
+                      <ellipse cx="0" cy="0" rx="14" ry="6" fill="rgba(232,230,225,0.3)" />
+                      {/* Arms */}
+                      <line x1="-14" y1="0" x2="-26" y2="-6" stroke="rgba(232,230,225,0.3)" strokeWidth="2" />
+                      <line x1="14" y1="0" x2="26" y2="-6" stroke="rgba(232,230,225,0.3)" strokeWidth="2" />
+                      {/* Rotors */}
+                      <ellipse cx="-26" cy="-8" rx="10" ry="3" fill="none" stroke="rgba(232,230,225,0.2)" strokeWidth="1" />
+                      <ellipse cx="26" cy="-8" rx="10" ry="3" fill="none" stroke="rgba(232,230,225,0.2)" strokeWidth="1" />
+                      {/* Landing gear */}
+                      <line x1="-8" y1="6" x2="-12" y2="14" stroke="rgba(232,230,225,0.25)" strokeWidth="1.5" />
+                      <line x1="8" y1="6" x2="12" y2="14" stroke="rgba(232,230,225,0.25)" strokeWidth="1.5" />
+                      {/* Heart with pulse — red */}
+                      <g transform="translate(0,22)">
+                        <path d="M0 4 C0 -2 -8 -4 -8 2 C-8 6 0 12 0 12 C0 12 8 6 8 2 C8 -4 0 -2 0 4Z" fill="rgba(212,68,59,0.5)" stroke="rgba(212,68,59,0.7)" strokeWidth="0.8" />
+                        {/* Pulse line */}
+                        <path d="M-5 5 L-2 5 L0 1 L2 8 L4 5 L6 5" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1" />
+                      </g>
+                    </g>
                   </g>
 
                   {/* Rural farm */}
