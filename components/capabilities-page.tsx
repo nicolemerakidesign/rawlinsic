@@ -187,15 +187,30 @@ export default function CapabilitiesPage() {
           });
         }, 100);
 
-        /* After PasswordGate renders, scroll to hash target if present */
-        const hash = window.location.hash;
+        /* Scroll to hash target if present, expanding section + service */
+        const hash = window.location.hash?.slice(1);
         if (hash) {
-          const target = document.querySelector(hash);
+          const target = document.getElementById(hash);
           if (target) {
+            /* Find which section & service index this belongs to */
+            for (const section of capabilitySections) {
+              const svcIndex = section.services.findIndex(
+                (svc) => svc.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") === hash
+              );
+              if (svcIndex !== -1) {
+                setExpandedSections(prev => new Set(prev).add(section.id));
+                setExpandedService(`${section.id}-${svcIndex}`);
+                setActiveTab(section.id);
+                break;
+              }
+            }
             setTimeout(() => {
-              const top = target.getBoundingClientRect().top + window.scrollY - 130;
-              window.scrollTo({ top, behavior: "smooth" });
-            }, 200);
+              const el = document.getElementById(hash);
+              if (el) {
+                const top = el.getBoundingClientRect().top + window.scrollY - 130;
+                window.scrollTo({ top, behavior: "smooth" });
+              }
+            }, 400);
           }
         }
       });
