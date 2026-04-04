@@ -103,9 +103,7 @@ const lsIcons: Record<string, string> = {
   residential: '<g><path d="M3 12L12 4l9 8" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="6" y="12" width="12" height="8" stroke="currentColor" stroke-width="1.2" fill="none"/><rect x="10" y="15" width="4" height="5" stroke="currentColor" stroke-width="1" fill="none"/></g>',
   medical: '<g><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="2.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="2.5"/></g>',
   rural: '<g><path d="M2 20L12 6l10 14" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="16" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="1"/><circle cx="8" cy="16" r="1" fill="currentColor" opacity="0.5"/></g>',
-  industrial: '<g><rect x="3" y="10" width="8" height="10" stroke="currentColor" stroke-width="1.2" fill="none"/><rect x="13" y="6" width="8" height="14" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="17" y1="2" x2="17" y2="6" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="13" x2="9" y2="13" stroke="currentColor" stroke-width="0.8" opacity="0.5"/><line x1="15" y1="9" x2="19" y2="9" stroke="currentColor" stroke-width="0.8" opacity="0.5"/></g>',
   city: '<g><rect x="2" y="10" width="5" height="11" stroke="currentColor" stroke-width="1" fill="none"/><rect x="8" y="4" width="5" height="17" stroke="currentColor" stroke-width="1" fill="none"/><rect x="14" y="7" width="5" height="14" stroke="currentColor" stroke-width="1" fill="none"/><rect x="20" y="12" width="3" height="9" stroke="currentColor" stroke-width="0.8" fill="none"/></g>',
-  waterfront: '<g><path d="M2 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="currentColor" stroke-width="1" fill="none" opacity="0.5"/><rect x="8" y="5" width="8" height="9" stroke="currentColor" stroke-width="1.2" fill="none"/></g>',
 };
 
 const landscapeNodes = [
@@ -115,27 +113,26 @@ const landscapeNodes = [
   { id: 'residential', label: 'Residential Areas', x: 42, y: 18, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
   { id: 'medical', label: 'Medical Supplies', x: 42, y: 52, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
   { id: 'rural', label: 'Rural & Agriculture', x: 72, y: 10, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
-  { id: 'industrial', label: 'Industrial Zone', x: 35, y: 80, icon: 'industrial', desc: 'Construction monitoring, infrastructure inspection, and industrial site surveying using UAS data collection.' },
-  { id: 'city-center', label: 'City Center', x: 68, y: 60, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
-  { id: 'waterfront', label: 'Waterfront & Port', x: 88, y: 72, icon: 'waterfront', desc: 'Maritime logistics coordination, port inspection, coastal monitoring, and waterfront emergency response operations.' },
+  { id: 'city-center', label: 'City Center', x: 82, y: 55, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
 ];
 
 const landscapePaths = [
+  // Urban Air Taxi → Medical, Residential, Rural
+  { from: 'urban-air-taxi', to: 'medical', color: '#c9a84c', type: 'air-taxi' },
   { from: 'urban-air-taxi', to: 'residential', color: '#c9a84c', type: 'air-taxi' },
-  { from: 'urban-air-taxi', to: 'airport', color: '#c9a84c', type: 'air-taxi' },
-  { from: 'urban-air-taxi', to: 'city-center', color: '#c9a84c', type: 'air-taxi' },
   { from: 'urban-air-taxi', to: 'rural', color: '#c9a84c', type: 'air-taxi' },
-  { from: 'airport', to: 'residential', color: '#8B6914', type: 'air-taxi' },
-  { from: 'airport', to: 'city-center', color: '#8B6914', type: 'air-taxi' },
+  // Residential → Rural, City Center
+  { from: 'residential', to: 'rural', color: '#8B6914', type: 'air-taxi' },
+  { from: 'residential', to: 'city-center', color: '#8B6914', type: 'air-taxi' },
+  // Rural → Medical
+  { from: 'rural', to: 'medical', color: '#d4443b', type: 'medical' },
+  // Package Delivery → Medical, Residential, Rural
+  { from: 'package-delivery', to: 'medical', color: '#e8d5a0', type: 'delivery' },
   { from: 'package-delivery', to: 'residential', color: '#e8d5a0', type: 'delivery' },
-  { from: 'package-delivery', to: 'city-center', color: '#e8d5a0', type: 'delivery' },
   { from: 'package-delivery', to: 'rural', color: '#e8d5a0', type: 'delivery' },
+  // Medical → Residential, Rural
   { from: 'medical', to: 'residential', color: '#d4443b', type: 'medical' },
-  { from: 'medical', to: 'city-center', color: '#d4443b', type: 'medical' },
   { from: 'medical', to: 'rural', color: '#d4443b', type: 'medical' },
-  { from: 'medical', to: 'industrial', color: '#d4443b', type: 'medical' },
-  { from: 'city-center', to: 'waterfront', color: '#c9a84c', type: 'air-taxi' },
-  { from: 'industrial', to: 'city-center', color: '#8B6914', type: 'inspection' },
 ];
 
 /* ──── Stakeholder Ecosystem Data ──── */
@@ -500,22 +497,30 @@ const AAMPage = () => {
                     <line x1="340" y1="155" x2="530" y2="155" stroke="rgba(232,230,225,0.12)" strokeWidth="1" />
                   </g>
 
-                  {/* City skyline */}
+                  {/* City skyline — positioned near city-center node (x:82 → 820px) */}
                   <g opacity={hoveredLs === 'city-center' ? 1 : 0.5} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="550" y="310" width="30" height="80" fill="rgba(232,230,225,0.2)" />
-                    <rect x="585" y="290" width="25" height="100" fill="rgba(232,230,225,0.18)" />
-                    <rect x="615" y="330" width="20" height="60" fill="rgba(232,230,225,0.15)" />
-                    <rect x="640" y="270" width="35" height="120" fill="rgba(232,230,225,0.22)" />
-                    <rect x="680" y="310" width="22" height="80" fill="rgba(232,230,225,0.16)" />
-                    <rect x="706" y="340" width="18" height="50" fill="rgba(232,230,225,0.13)" />
+                    <rect x="720" y="300" width="30" height="80" fill="rgba(232,230,225,0.2)" />
+                    <rect x="755" y="280" width="25" height="100" fill="rgba(232,230,225,0.18)" />
+                    <rect x="785" y="320" width="20" height="60" fill="rgba(232,230,225,0.15)" />
+                    <rect x="810" y="260" width="35" height="120" fill="rgba(232,230,225,0.22)" />
+                    <rect x="850" y="300" width="22" height="80" fill="rgba(232,230,225,0.16)" />
+                    <rect x="876" y="330" width="18" height="50" fill="rgba(232,230,225,0.13)" />
                     {/* Windows */}
-                    <rect x="555" y="320" width="5" height="5" fill="rgba(201,168,76,0.15)" />
-                    <rect x="560" y="320" width="5" height="5" fill="rgba(201,168,76,0.15)" />
-                    <rect x="555" y="330" width="5" height="5" fill="rgba(201,168,76,0.15)" />
-                    <rect x="645" y="280" width="6" height="6" fill="rgba(201,168,76,0.12)" />
-                    <rect x="655" y="280" width="6" height="6" fill="rgba(201,168,76,0.12)" />
-                    <rect x="645" y="295" width="6" height="6" fill="rgba(201,168,76,0.12)" />
-                    <rect x="655" y="295" width="6" height="6" fill="rgba(201,168,76,0.12)" />
+                    <rect x="725" y="310" width="5" height="5" fill="rgba(201,168,76,0.15)" />
+                    <rect x="730" y="310" width="5" height="5" fill="rgba(201,168,76,0.15)" />
+                    <rect x="725" y="320" width="5" height="5" fill="rgba(201,168,76,0.15)" />
+                    <rect x="815" y="270" width="6" height="6" fill="rgba(201,168,76,0.12)" />
+                    <rect x="825" y="270" width="6" height="6" fill="rgba(201,168,76,0.12)" />
+                    <rect x="815" y="285" width="6" height="6" fill="rgba(201,168,76,0.12)" />
+                    <rect x="825" y="285" width="6" height="6" fill="rgba(201,168,76,0.12)" />
+                    {/* Orange building */}
+                    <rect x="900" y="310" width="45" height="70" fill="rgba(210,140,60,0.3)" rx="2" />
+                    <rect x="906" y="320" width="8" height="8" fill="rgba(0,0,0,0.3)" />
+                    <rect x="920" y="320" width="8" height="8" fill="rgba(0,0,0,0.3)" />
+                    <rect x="906" y="335" width="8" height="8" fill="rgba(0,0,0,0.3)" />
+                    <rect x="920" y="335" width="8" height="8" fill="rgba(0,0,0,0.3)" />
+                    <rect x="906" y="350" width="8" height="8" fill="rgba(0,0,0,0.3)" />
+                    <rect x="920" y="350" width="8" height="8" fill="rgba(0,0,0,0.3)" />
                   </g>
 
                   {/* Medical building */}
@@ -524,24 +529,6 @@ const AAMPage = () => {
                     <rect x="375" y="285" width="22" height="18" rx="3" fill="rgba(212,68,59,0.5)" />
                     <rect x="383" y="288" width="6" height="12" fill="rgba(255,255,255,0.7)" />
                     <rect x="379" y="292" width="14" height="4" fill="rgba(255,255,255,0.7)" />
-                  </g>
-
-                  {/* Construction / Industrial */}
-                  <g opacity={hoveredLs === 'industrial' ? 1 : 0.5} style={{ transition: 'opacity 0.3s' }}>
-                    {/* Crane 1 */}
-                    <line x1="300" y1="430" x2="300" y2="560" stroke="rgba(201,168,76,0.3)" strokeWidth="2" />
-                    <line x1="300" y1="430" x2="340" y2="430" stroke="rgba(201,168,76,0.3)" strokeWidth="1.5" />
-                    <line x1="300" y1="430" x2="288" y2="440" stroke="rgba(201,168,76,0.2)" strokeWidth="1" />
-                    <line x1="340" y1="430" x2="335" y2="460" stroke="rgba(201,168,76,0.15)" strokeWidth="0.5" />
-                    {/* Crane 2 */}
-                    <line x1="370" y1="450" x2="370" y2="560" stroke="rgba(201,168,76,0.25)" strokeWidth="1.5" />
-                    <line x1="370" y1="450" x2="405" y2="450" stroke="rgba(201,168,76,0.25)" strokeWidth="1" />
-                    {/* Construction buildings */}
-                    <rect x="250" y="510" width="20" height="50" fill="rgba(232,230,225,0.12)" />
-                    <rect x="280" y="490" width="25" height="70" fill="rgba(232,230,225,0.15)" />
-                    <rect x="320" y="500" width="18" height="60" fill="rgba(232,230,225,0.1)" />
-                    <rect x="350" y="520" width="22" height="40" fill="rgba(232,230,225,0.13)" />
-                    <rect x="385" y="505" width="30" height="55" fill="rgba(232,230,225,0.12)" />
                   </g>
 
                   {/* Rural farm */}
@@ -571,25 +558,6 @@ const AAMPage = () => {
                     <line x1="705" y1="120" x2="890" y2="120" stroke="rgba(232,230,225,0.1)" strokeWidth="1" />
                   </g>
 
-                  {/* Bridge + waterfront */}
-                  <g opacity={hoveredLs === 'waterfront' || hoveredLs === 'city-center' ? 1 : 0.4} style={{ transition: 'opacity 0.3s' }}>
-                    {/* Truss bridge */}
-                    <line x1="730" y1="430" x2="900" y2="430" stroke="rgba(232,230,225,0.2)" strokeWidth="2" />
-                    <path d="M740 430 Q760 415 780 430" fill="none" stroke="rgba(232,230,225,0.15)" strokeWidth="1.5" />
-                    <path d="M780 430 Q800 415 820 430" fill="none" stroke="rgba(232,230,225,0.15)" strokeWidth="1.5" />
-                    <path d="M820 430 Q840 415 860 430" fill="none" stroke="rgba(232,230,225,0.15)" strokeWidth="1.5" />
-                    <line x1="750" y1="430" x2="750" y2="460" stroke="rgba(232,230,225,0.18)" strokeWidth="2" />
-                    <line x1="820" y1="430" x2="820" y2="460" stroke="rgba(232,230,225,0.18)" strokeWidth="2" />
-                    <line x1="890" y1="430" x2="890" y2="460" stroke="rgba(232,230,225,0.18)" strokeWidth="2" />
-                    {/* Orange building */}
-                    <rect x="830" y="350" width="45" height="80" fill="rgba(210,140,60,0.3)" rx="2" />
-                    <rect x="836" y="360" width="8" height="8" fill="rgba(0,0,0,0.3)" />
-                    <rect x="850" y="360" width="8" height="8" fill="rgba(0,0,0,0.3)" />
-                    <rect x="836" y="375" width="8" height="8" fill="rgba(0,0,0,0.3)" />
-                    <rect x="850" y="375" width="8" height="8" fill="rgba(0,0,0,0.3)" />
-                    <rect x="836" y="390" width="8" height="8" fill="rgba(0,0,0,0.3)" />
-                    <rect x="850" y="390" width="8" height="8" fill="rgba(0,0,0,0.3)" />
-                  </g>
 
                   {/* ── FLIGHT PATHS ── */}
                   {landscapePaths.map((fp, i) => {
@@ -617,7 +585,7 @@ const AAMPage = () => {
                   })}
 
                   {/* ── Animated drones on some paths ── */}
-                  {[0, 3, 6, 9, 13].map(idx => {
+                  {[0, 2, 5, 7, 10].map(idx => {
                     const fp = landscapePaths[idx];
                     if (!fp) return null;
                     const c = fp.type === 'medical' ? '#d4443b' : '#c9a84c';
