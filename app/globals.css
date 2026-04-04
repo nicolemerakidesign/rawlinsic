@@ -5867,3 +5867,94 @@ color: #fff;
   .ins-cta { padding: 60px 24px 80px; }
 }
 
+/* ═══════════════════════════════════════════════════
+   CAREERS PAGE
+   ═══════════════════════════════════════════════════ */
+
+/* ── Values card grid ── */
+.careers-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: left;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.careers-value-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.careers-value-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201,168,76,0.35);
+  box-shadow: 0 12px 40px rgba(201,168,76,0.08);
+}
+.careers-value-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.careers-value-icon svg { stroke: #c9a84c; }
+.careers-value-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 12px;
+}
+.careers-value-desc {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.75); font-weight: 400;
+}
+
+/* ── How We Work grid ── */
+.careers-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+.careers-work-item {
+  padding: 28px 24px;
+  border-left: 2px solid rgba(201,168,76,0.3);
+  transition: border-color 0.3s ease;
+}
+.careers-work-item:hover { border-color: rgba(201,168,76,0.7); }
+.careers-work-keyword {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  background: linear-gradient(135deg, #c9a84c, #e8d5a0);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin-bottom: 8px;
+}
+.careers-work-desc {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.8); font-weight: 400;
+}
+
+/* ── Email line ── */
+.careers-email-line {
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-size: 15px; color: rgba(255,255,255,0.6); margin-top: 20px;
+}
+.careers-email-link {
+  color: #c9a84c; text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color 0.25s ease;
+}
+.careers-email-link:hover { border-color: #c9a84c; }
+
+/* ── Careers responsive ── */
+@media (max-width: 768px) {
+  .careers-values-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 24px; }
+  .careers-work-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+

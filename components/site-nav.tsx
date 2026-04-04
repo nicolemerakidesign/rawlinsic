@@ -106,7 +106,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
             </div>
           </div>
 
-          <a href="#" onClick={close} className="mobile-menu-link" style={{ marginTop: 12 }}>Careers</a>
+          <a href="/careers" onClick={close} className="mobile-menu-link" style={{ marginTop: 12 }}>Careers</a>
         </div>
 
         <Link href={ctaHref} onClick={close} className="mobile-menu-cta">Get In Touch</Link>
@@ -184,7 +184,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
             </div>
           </div>
 
-          <a className="nav-item" href="#">Careers</a>
+          <a className="nav-item" href="/careers">Careers</a>
         </div>
 
         <div className="nav-right">
