@@ -8,11 +8,10 @@ import SiteFooter from "@/components/site-footer";
 import PasswordGate from "@/components/password-gate";
 import { TEAM_MEMBERS, type TeamMember } from "@/lib/team-data";
 
-type FilterCategory = "all" | "leadership" | "strategy" | "operations" | "technology" | "brand-communication";
+type FilterCategory = "all" | "strategy" | "operations" | "technology" | "brand-communication";
 
 const FILTERS: { label: string; value: FilterCategory }[] = [
   { label: "All", value: "all" },
-  { label: "Leadership", value: "leadership" },
   { label: "Strategy", value: "strategy" },
   { label: "Operations", value: "operations" },
   { label: "Technology", value: "technology" },
@@ -272,6 +271,46 @@ export default function TeamPage() {
             <p className="hero-sub">
                Our team at Rawlins Infra Consult delivers innovative solutions in transportation infrastructure and leadership. Meet the professionals driving our success.
             </p>
+          </div>
+        </section>
+
+        {/* Divider */}
+        <div className="section-divider"><div className="gold-line" /></div>
+
+        {/* Scott Rawlins Featured Section */}
+        <section className="scott-featured-section reveal">
+          <div className="scott-featured-grid">
+            <div className="scott-featured-photo-col">
+              <div className="scott-featured-photo-wrap">
+                <Image
+                  src="/images/team/scott.webp"
+                  alt="Scott Rawlins, P.E."
+                  width={400}
+                  height={500}
+                  className="scott-featured-photo"
+                  sizes="(max-width: 768px) 90vw, 400px"
+                />
+              </div>
+              <div className="scott-featured-name-block">
+                <h2 className="scott-featured-name">Scott Rawlins, P.E.</h2>
+                <p className="scott-featured-title">Owner &amp; Principal</p>
+              </div>
+            </div>
+            <div className="scott-featured-quote-col">
+              <div className="scott-featured-quote-card">
+                <svg className="scott-quote-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="currentColor"/>
+                  <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="currentColor"/>
+                </svg>
+                <p className="scott-featured-quote-text">
+                  Quote coming soon.
+                </p>
+                <div className="scott-featured-quote-attribution">
+                  <span className="scott-featured-quote-dash">&mdash;</span>
+                  <span>Scott Rawlins, P.E.</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

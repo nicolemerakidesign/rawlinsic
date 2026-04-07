@@ -39,7 +39,7 @@ He had responsibility for the daily operations of the Department, as the Deputy 
 - Integrated Transportation Reliability Program focused on the proactive operation of the transportation system.
 
 From planning, design, construction, operations and maintenance, Scott maneuvered the department through federal, state, and local regulations and politics.`,
-    categories: ['leadership', 'strategy', 'operations'],
+    categories: ['strategy', 'operations'],
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ From planning, design, construction, operations and maintenance, Scott maneuvere
 As part of the consulting sector for the past five years, he has served as project manager for the NCDOT Strategic Services contract, providing leadership on the optimization of the preconstruction process for delivering the capital work program within North Carolina. Paul provided executive counsel to the Tennessee Department of Transportation and lead the initiative to complete an organizational optimization department-wide.
 
 The goal of this effort was to reduce middle management within TDOT, push decision making to the lowest appropriate level, and use the salary savings to provide market-based salary increases to department staff. Paul assisted the TDOT Executive Team in the development of a 5-Year Work Program that reimagined how TDOT could create a fiscally constrained capital work program with a focus on the stewardship of a project’s scope, schedule, budget, risk, and quality.`,
-    categories: ['leadership', 'strategy', 'operations'],
+    categories: ['strategy', 'operations'],
   },
   {
     id: 3,
@@ -73,7 +73,7 @@ Paul provided leadership and guidance to a professional staff responsible for st
     achievements: `Within the Division, Paul established an annual Strategic Planning Process that resulted in all levels of the Division identifying and completing actions that consistently and effectively contributed to achieving Division and FHWA corporate goals and objectives. Also, he led the development of a Caltrans’ Local Program risk-based oversight process that results in Caltrans identifying improvements to procedures manuals and policies, and training needs, and leads to the implementation of innovative processes and technologies throughout the State.
 
 During his tenure, Paul worked closely with Caltrans Executive Leadership to resolve high-profile issues related to Tunnel Critical Findings, Right-of-Way Acquisition, Bridge Load Ratings, Truck Size and Weight, Financial Management and Local Programs.`,
-    categories: ['leadership', 'strategy', 'operations'],
+    categories: ['strategy', 'operations'],
   },
   {
     id: 4,
