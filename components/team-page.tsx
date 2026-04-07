@@ -76,6 +76,8 @@ function RichText({ text }: { text: string }) {
   );
 }
 
+const SCOTT = TEAM_MEMBERS.find((m) => m.name.includes("Scott Rawlins"))!;
+
 export default function TeamPage() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
   const [displayedMembers, setDisplayedMembers] = useState<TeamMember[]>(TEAM_MEMBERS);
@@ -287,7 +289,7 @@ export default function TeamPage() {
             <div className="scott-featured-card-col">
               <button
                 className="team-card scott-featured-card"
-                onClick={() => setSelectedMember(TEAM_MEMBERS[0])}
+                onClick={() => setSelectedMember(SCOTT)}
                 aria-label="View profile of Scott Rawlins, P.E."
               >
                 <div className="team-card-photo-wrap">
