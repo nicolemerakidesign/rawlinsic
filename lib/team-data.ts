@@ -55,8 +55,8 @@ From planning, design, construction, operations and maintenance, Scott maneuvere
 
 As part of the consulting sector for the past five years, he has served as project manager for the NCDOT Strategic Services contract, providing leadership on the optimization of the preconstruction process for delivering the capital work program within North Carolina. Paul provided executive counsel to the Tennessee Department of Transportation and lead the initiative to complete an organizational optimization department-wide.
 
-The goal of this effort was to reduce middle management within TDOT, push decision making to the lowest appropriate level, and use the salary savings to provide market-based salary increases to department staff. Paul assisted the TDOT Executive Team in the development of a 5-Year Work Program that reimagined how TDOT could create a fiscally constrained capital work program with a focus on the stewardship of a project’s scope, schedule, budget, risk, and quality.`,
-    categories: [‘strategy’, ‘operations’],
+The goal of this effort was to reduce middle management within TDOT, push decision making to the lowest appropriate level, and use the salary savings to provide market-based salary increases to department staff. Paul assisted the TDOT Executive Team in the development of a 5-Year Work Program that reimagined how TDOT could create a fiscally constrained capital work program with a focus on the stewardship of a project's scope, schedule, budget, risk, and quality.`,
+    categories: ['strategy', 'operations'],
   },
   {
     id: 3,
