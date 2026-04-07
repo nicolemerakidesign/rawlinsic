@@ -281,26 +281,6 @@ export default function TeamPage() {
         {/* Divider */}
         <div className="section-divider"><div className="gold-line" /></div>
 
-        {/* Filter Tabs */}
-        <section className="team-filter-section reveal">
-          <div className="team-filter-tabs">
-            {FILTERS.map((f) => (
-              <button
-                key={f.value}
-                className={`team-filter-tab${activeFilter === f.value ? " active" : ""}`}
-                onClick={() => handleFilterChange(f.value)}
-              >
-                {f.label}
-                <span className="team-filter-count">
-                  {f.value === "all"
-                    ? TEAM_MEMBERS.length
-                    : TEAM_MEMBERS.filter((m) => m.categories.includes(f.value)).length}
-                </span>
-              </button>
-            ))}
-          </div>
-        </section>
-
         {/* Scott Rawlins Featured */}
         <section className="scott-featured-section reveal">
           <div className="scott-featured-grid">
@@ -342,10 +322,33 @@ export default function TeamPage() {
                 </p>
                 <div className="scott-featured-quote-attribution">
                   <span className="scott-featured-quote-dash">&mdash;</span>
-                  <span>Scott Rawlins, P.E.</span>
+                  <span>Founder, Scott Rawlins, P.E.</span>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Divider */}
+        <div className="section-divider"><div className="gold-line" /></div>
+
+        {/* Filter Tabs */}
+        <section className="team-filter-section reveal">
+          <div className="team-filter-tabs">
+            {FILTERS.map((f) => (
+              <button
+                key={f.value}
+                className={`team-filter-tab${activeFilter === f.value ? " active" : ""}`}
+                onClick={() => handleFilterChange(f.value)}
+              >
+                {f.label}
+                <span className="team-filter-count">
+                  {f.value === "all"
+                    ? TEAM_MEMBERS.length
+                    : TEAM_MEMBERS.filter((m) => m.categories.includes(f.value)).length}
+                </span>
+              </button>
+            ))}
           </div>
         </section>
 

@@ -1872,8 +1872,8 @@ body nextjs-portal { display: none; }
 
 /* Scott Rawlins Featured */
 .scott-featured-section {
-  padding: 0 40px 16px;
-  max-width: 960px;
+  padding: 0 40px 0;
+  max-width: 860px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -1883,6 +1883,7 @@ body nextjs-portal { display: none; }
   grid-template-columns: auto 1fr;
   gap: 48px;
   align-items: center;
+  justify-items: center;
 }
 .scott-featured-card-col {
   display: flex;
@@ -1897,9 +1898,9 @@ body nextjs-portal { display: none; }
   align-items: center;
 }
 .scott-featured-quote-card {
-  background: rgba(201,168,76,0.04);
-  border: 1px solid rgba(201,168,76,0.12);
-  border-radius: 10px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   padding: 40px 36px;
   position: relative;
 }
