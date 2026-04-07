@@ -725,7 +725,7 @@ The goal of this effort was to reduce middle management within TDOT, push decisi
     role: `Aerial Innovation Advisor`,
     location: `Utah`,
     phone: `(801) 232-9265`,
-    email: ``,
+    email: `paulw@rawlinsic.com`,
     linkedin: `https://www.linkedin.com/in/pcwheeler/`,
     background: `Paul has nearly 30 years of experience and is internationally known as an Uncrewed Aircraft System (UAS) / Advanced Air Mobility (AAM) subject matter expert. He was recognized by the Commercial UAV Expo and InterDrone as one of the world's top drone visionaries. His background in aviation, surface transportation, and technology gives him a unique perspective on innovative solutions across industries. He has developed first of their kind guidance manuals on UAS and AAM and currently serves on multiple national committees to help foster innovation through emerging technologies. He is passionate about the vision to enable a new revolution of aerial innovation and transportation.`,
     achievements: ``,
