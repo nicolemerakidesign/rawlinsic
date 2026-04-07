@@ -368,7 +368,7 @@ export default function HomePage() {
           <p className="hero-sub">
             We partner to strengthen the capabilities essential for high-performing enterprises and modern transportation systems.
           </p>
-          <a href="#pillars" className="auto-hero-btn"><span>Consider Our Solutions</span></a>
+          <a href="#pillars" className="auto-hero-btn"><span>Consider Our Approach</span></a>
         </div>
         <div className="hero-scroll">
           <span>Scroll</span>
