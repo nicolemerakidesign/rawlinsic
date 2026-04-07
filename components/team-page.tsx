@@ -305,7 +305,7 @@ export default function TeamPage() {
                 </div>
                 <div className="team-card-info">
                   <span className="team-card-name">Scott Rawlins, P.E.</span>
-                  <span className="team-card-title-label">Owner</span>
+                  <span className="team-card-title-label">Founder</span>
                   <span className="team-card-role">Transportation Programs</span>
                   <span className="team-card-location">Nevada</span>
                 </div>
@@ -322,7 +322,7 @@ export default function TeamPage() {
                 </p>
                 <div className="scott-featured-quote-attribution">
                   <span className="scott-featured-quote-dash">&mdash;</span>
-                  <span>Founder, Scott Rawlins, P.E.</span>
+                  <strong>Founder, Scott Rawlins, P.E.</strong>
                 </div>
               </div>
             </div>
