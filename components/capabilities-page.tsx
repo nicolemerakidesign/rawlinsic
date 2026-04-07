@@ -37,7 +37,7 @@ const capabilitySections: CapabilitySection[] = [
     tagline: "Decision systems · Planning · Organizational Design",
     focus: "Direction-setting, planning, organizational design, and high-level decision-making",
     description:
-      "We help leaders see clearly, decide wisely, and act with confidence. From governance frameworks to strategic program planning, we translate organizational priorities into actionable plans that drive sustainable transformation.",
+      "We help leaders see clearly, decide wisely, and act with confidence. From governance frameworks to strategic program planning, we translate organizational priorities into actionable plans that drive long-term value.",
     image: STRATEGY_IMG,
     services: [
       { title: "Strategic Planning", desc: "Translate leadership vision into measurable goals, developing roadmaps that balance short-term priorities with long-term organizational ambitions." },
@@ -299,7 +299,7 @@ export default function CapabilitiesPage() {
             Strategy. Operations.<br /><em>Technology.</em>
           </h1>
           <p className="hero-sub" style={{ opacity: 1, transform: 'none', animation: 'none' }}>
-            Three disciplines, one mission—navigating complexity to deliver measurable, lasting transformation for the organizations we serve.
+            Three areas of expertise, one mission—navigating complexity to deliver measurable, lasting transformation for the organizations we serve.
           </p>
         </div>
         <div className="hero-scroll"><span>Scroll</span><div className="scroll-line" /></div>
