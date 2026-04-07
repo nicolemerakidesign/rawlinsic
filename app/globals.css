@@ -1872,7 +1872,7 @@ body nextjs-portal { display: none; }
 
 /* Scott Rawlins Featured */
 .scott-featured-section {
-  padding: 0 40px 0;
+  padding: 0 40px 16px;
   max-width: 960px;
   margin: 0 auto;
   position: relative;
@@ -1880,48 +1880,17 @@ body nextjs-portal { display: none; }
 }
 .scott-featured-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 1fr;
   gap: 48px;
   align-items: center;
 }
-.scott-featured-photo-col {
+.scott-featured-card-col {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
-.scott-featured-photo-wrap {
+.scott-featured-card {
+  max-width: 280px;
   width: 100%;
-  max-width: 360px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(201,168,76,0.18);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-}
-.scott-featured-photo {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-.scott-featured-name-block {
-  text-align: center;
-  margin-top: 20px;
-}
-.scott-featured-name {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
-  margin: 0;
-}
-.scott-featured-title {
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  color: var(--rawlins-text-muted);
-  margin: 6px 0 0;
-  letter-spacing: 0.04em;
 }
 .scott-featured-quote-col {
   display: flex;
@@ -3297,8 +3266,10 @@ color: #fff;
   .team-popup-arrow { width: 36px; height: 36px; }
   .team-popup-arrow-prev { left: 8px; }
   .team-popup-arrow-next { right: 8px; }
-  .scott-featured-section { padding: 0 24px; }
-  .scott-featured-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .scott-featured-section { padding: 0 24px 16px; }
+  .scott-featured-grid { grid-template-columns: 1fr; gap: 32px; }
+  .scott-featured-card-col { justify-content: center; }
+  .scott-featured-card { max-width: 240px; }
   .scott-featured-quote-col { justify-content: center; }
   .scott-featured-quote-card { padding: 32px 24px; }
 }
@@ -3307,9 +3278,8 @@ color: #fff;
   .team-hero { padding: 130px 20px 60px; }
   .team-filter-tabs { gap: 8px; }
   .team-filter-tab { padding: 7px 14px; font-size: 0.78rem; }
-  .scott-featured-section { padding: 0 16px; }
-  .scott-featured-photo-wrap { max-width: 280px; }
-  .scott-featured-name { font-size: 1.3rem; }
+  .scott-featured-section { padding: 0 16px 12px; }
+  .scott-featured-card { max-width: 200px; }
   .scott-featured-quote-text { font-size: 1rem; }
 }
 
