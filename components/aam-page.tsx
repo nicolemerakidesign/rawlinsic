@@ -38,7 +38,7 @@ const pillarCards = [
   {
     title: "Drone Package Delivery",
     desc: "",
-    bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support"],
+    bullets: ["Urban Air Mobility", "Regional Air Mobility", "Multi-modal Facilities", "Cargo Transport", "Emergency Medical Transport", "Business Travel", "Tourism & Sightseeing"],
     img: LOGISTICS_IMG,
   },
   {
