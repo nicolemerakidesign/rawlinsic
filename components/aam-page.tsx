@@ -30,15 +30,15 @@ const DRONEMOUNTAINS_IMG = "/images/pages/aam-drone-mountains.jpg";
 
 const pillarCards = [
   {
-    title: "AAM (Air Taxis)",
+    title: "AAM",
     desc: "",
-    bullets: ["Urban mobility", "Business travel", "Emergency medical transport", "Regional Connectivity", "Tourism & sightseeing"],
+    bullets: ["Urban Air Mobility", "Regional Air Mobility", "Multi-modal Facilities", "Cargo Transport", "Emergency Medical Transport", "Business Travel", "Tourism & Sightseeing"],
     img: CITY_AERIAL_IMG,
   },
   {
-    title: "AAM Package Delivery",
+    title: "Drone Package Delivery",
     desc: "",
-    bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support", "Air Taxis (AAM)", "Urban mobility", "Business travel", "Emergency medical transport", "Regional connectivity", "Tourism & sightseeing"],
+    bullets: ["Last-mile delivery", "Medical supply delivery", "Rural & remote delivery", "Inter-community delivery", "Retail & e-commerce support"],
     img: LOGISTICS_IMG,
   },
   {
@@ -729,7 +729,7 @@ const AAMPage = () => {
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-          Strategic multimodal integration<br /><em>Built on real-world success</em>
+          Strategic multimodal integration<br /><em>Built on experience</em>
         </p>
       </div>
 

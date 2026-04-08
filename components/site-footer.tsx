@@ -66,7 +66,7 @@ export default function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <span>&copy; {new Date().getFullYear()} Rawlins. All rights reserved.</span>
-        <span>Privacy Policy &middot; Terms of Service</span>
+        <span><a href="/privacy-policy" style={{ color: "inherit", textDecoration: "none" }}>Privacy Policy</a> &middot; <a href="/terms-of-service" style={{ color: "inherit", textDecoration: "none" }}>Terms of Service</a></span>
       </div>
     </footer>
   );
