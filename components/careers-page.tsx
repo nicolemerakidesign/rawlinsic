@@ -134,16 +134,14 @@ export default function CareersPage() {
           {/* ── Hero ── */}
           <section className="cs-hero" id="top">
             <div className="cs-hero-content">
-              <span className="hero-label"><span className="gold-text">Join the Team</span></span>
+              <span className="hero-label"><span className="gold-text">Careers at Rawlins Infra Consult</span></span>
               <h1 className="hero-title">
-                Careers at <em>Rawlins Infra Consult</em>
+                Work With <em>Us</em>
               </h1>
               <p className="hero-sub" style={{ maxWidth: 720 }}>
-                We bring together professionals who thrive at the intersection of strategy, operations, and technology. If you&rsquo;re driven by meaningful work and want to help organizations navigate complex challenges, we&rsquo;d like to hear from you.
+                We&rsquo;re always interested in connecting with thoughtful, driven professionals who are passionate about solving complex challenges and creating meaningful impact. If our approach aligns with your interests, we welcome the opportunity to connect and learn more. Email us at <a href="mailto:info@rawlinsic.com" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>info@rawlinsic.com</a>.
               </p>
-              <p className="hero-sub" style={{ maxWidth: 720, marginTop: "16px" }}>
-                Tell us about yourself and what kind of work excites you. If you&rsquo;re interested in working with us, please fill out our <Link href="/contact" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>contact form</Link> or email us at <a href="mailto:info@rawlinsic.com" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>info@rawlinsic.com</a>.
-              </p>
+              <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}><span>Start a Conversation</span></Link>
             </div>
           </section>
 
