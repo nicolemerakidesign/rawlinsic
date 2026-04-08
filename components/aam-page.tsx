@@ -114,12 +114,12 @@ const lsIcons: Record<string, string> = {
 };
 
 const landscapeNodes = [
-  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 15, y: 8, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
-  { id: 'package-delivery', label: 'Package Delivery', x: 10, y: 52, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
-  { id: 'residential', label: 'Residential Areas', x: 44, y: 5, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
-  { id: 'medical', label: 'Medical Supplies', x: 38, y: 40, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
-  { id: 'rural', label: 'Rural & Agriculture', x: 72, y: 5, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
-  { id: 'city-center', label: 'City Center', x: 58, y: 40, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
+  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 17.5, y: 20.3, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
+  { id: 'package-delivery', label: 'Package Delivery', x: 19.3, y: 69.8, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
+  { id: 'residential', label: 'Residential Areas', x: 49.2, y: 24.5, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
+  { id: 'medical', label: 'Medical Supplies', x: 48.8, y: 60.5, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
+  { id: 'rural', label: 'Rural & Agriculture', x: 77.3, y: 22.1, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
+  { id: 'city-center', label: 'City Center', x: 70.2, y: 62.8, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
 ];
 
 const landscapePaths = [
