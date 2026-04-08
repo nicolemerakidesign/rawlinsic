@@ -65,23 +65,23 @@ const phaseData = [
 const frameworkCards = [
   {
     title: "Define",
-    tagline: "Vision & Scope",
+    tagline: "Vision & Planning",
     accent: "linear-gradient(90deg, #c9a84c, #e8d5a0)",
-    bullets: ["Community needs assessment", "Vision and goals definition", "Program scope and timeline", "Stakeholder identification"],
+    bullets: ["Community Needs Assessment", "Vision & Mission Definition", "Use Case & Infrastructure Evaluation", "Program Goals & Timeline", "Stakeholder Identification", "Grant Opportunities", "Legislative Support"],
     img: DEFINE_IMG,
   },
   {
     title: "Enable",
-    tagline: "Infrastructure & Policy",
+    tagline: "Policy & Program Support",
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
-    bullets: ["Policy framework development", "Stakeholder coordination", "Infrastructure planning", "Regulatory alignment"],
+    bullets: ["Policy Development", "Program Framework", "Stakeholder Engagement", "Infrastructure Planning", "Regulatory Compliance"],
     img: INFRASTRUCTURE_IMG,
   },
   {
     title: "Deliver",
     tagline: "Operations & Scale",
     accent: "linear-gradient(90deg, #e8d5a0, #c9a84c)",
-    bullets: ["Operational deployment", "Safety and compliance monitoring", "Performance optimization", "Continuous improvement"],
+    bullets: ["Operational Deployment", "Safety & Compliance Monitoring", "Performance Optimization", "Continuous Improvement"],
     img: CONTROL_ROOM_IMG,
   },
 ];
