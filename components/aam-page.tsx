@@ -440,40 +440,36 @@ const AAMPage = () => {
                   </g>
 
 
-                  {/* ── SCENE: Building silhouettes ── */}
-                  {/* Airport/Urban Air Taxi scene — centered on node (175, 122) */}
+                  {/* ── SCENE: Building silhouettes — positions from Illustrator SVG (Y offset -60) ── */}
+                  {/* Airport/Urban Air Taxi */}
                   <g opacity={hoveredLs === 'urban-air-taxi' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    {/* eVTOL drone — top left */}
-                    <g transform="translate(75,120)">
-                      <ellipse cx="0" cy="5" rx="18" ry="12" fill="#c0bcb6" />
-                      <line x1="-18" y1="0" x2="-34" y2="-8" stroke="#c0bcb6" strokeWidth="2.5" />
-                      <line x1="18" y1="0" x2="34" y2="-8" stroke="#c0bcb6" strokeWidth="2.5" />
-                      <ellipse cx="-34" cy="-10" rx="14" ry="4" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
-                      <ellipse cx="34" cy="-10" rx="14" ry="4" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
-                      <line x1="-12" y1="16" x2="-16" y2="22" stroke="#aaa6a0" strokeWidth="1.5" />
-                      <line x1="12" y1="16" x2="16" y2="22" stroke="#aaa6a0" strokeWidth="1.5" />
-                      <line x1="-20" y1="22" x2="20" y2="22" stroke="#9e9a94" strokeWidth="1.5" />
-                      <circle cx="0" cy="-2" r="4" fill="#c9a84c" />
-                      <path d="M-6 14 L-4 5 L4 5 L6 14Z" fill="rgba(201,168,76,0.8)" />
+                    <g transform="translate(93.49,165.83)">
+                      <ellipse cx="0" cy="0" rx="18" ry="12" fill="#c0bcb6" />
+                      <line x1="-18" y1="-5" x2="-34" y2="-13" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <line x1="18" y1="-5" x2="34" y2="-13" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <ellipse cx="-34" cy="-15" rx="14" ry="4" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <ellipse cx="34" cy="-15" rx="14" ry="4" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <line x1="-12" y1="11" x2="-16" y2="17" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <line x1="12" y1="11" x2="16" y2="17" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <line x1="-20" y1="17" x2="20" y2="17" stroke="#9e9a94" strokeWidth="1.5" />
+                      <circle cx="0" cy="-7" r="4" fill="#c9a84c" />
+                      <path d="M-6 9 L-4 0 L4 0 L6 9Z" fill="rgba(201,168,76,0.8)" />
                     </g>
-                    {/* Hangar */}
-                    <path d="M35 280 Q35 240 125 228 Q215 240 215 280 L215 310 L35 310Z" fill="#b8b4ae" stroke="#ccc8c2" strokeWidth="1" />
-                    <rect x="53" y="258" width="140" height="52" fill="#9e9a94" stroke="#b8b4ae" strokeWidth="0.5" />
-                    <rect x="70" y="268" width="28" height="14" fill="#87837d" />
-                    <rect x="110" y="268" width="28" height="14" fill="#87837d" />
-                    <rect x="150" y="268" width="28" height="14" fill="#87837d" />
-                    <rect x="87" y="290" width="14" height="20" fill="#7a766f" />
-                    <rect x="107" y="290" width="14" height="20" fill="#7a766f" />
-                    <rect x="127" y="290" width="14" height="20" fill="#7a766f" />
-                    {/* Tower */}
-                    <rect x="237" y="225" width="16" height="85" fill="#c0bcb6" />
-                    <rect x="229" y="210" width="32" height="20" rx="3" fill="#ccc8c2" stroke="#d8d4ce" strokeWidth="0.8" />
-                    <rect x="233" y="215" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="241" y="215" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="249" y="215" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="223" y="280" width="50" height="30" fill="#a8a49e" />
-                    {/* Airplane */}
-                    <g transform="translate(175,190) rotate(-10)">
+                    <path d="M79 250 Q79 210 169 198 Q259 210 259 250 L259 280 L79 280Z" fill="#b8b4ae" stroke="#ccc8c2" strokeWidth="1" />
+                    <rect x="97" y="228" width="140" height="52" fill="#9e9a94" stroke="#b8b4ae" strokeWidth="0.5" />
+                    <rect x="114" y="238" width="28" height="14" fill="#87837d" />
+                    <rect x="154" y="238" width="28" height="14" fill="#87837d" />
+                    <rect x="194" y="238" width="28" height="14" fill="#87837d" />
+                    <rect x="131" y="260" width="14" height="20" fill="#7a766f" />
+                    <rect x="151" y="260" width="14" height="20" fill="#7a766f" />
+                    <rect x="171" y="260" width="14" height="20" fill="#7a766f" />
+                    <rect x="281" y="195" width="16" height="85" fill="#c0bcb6" />
+                    <rect x="273" y="180" width="32" height="20" rx="3" fill="#ccc8c2" stroke="#d8d4ce" strokeWidth="0.8" />
+                    <rect x="277" y="185" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="285" y="185" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="293" y="185" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="267" y="250" width="50" height="30" fill="#a8a49e" />
+                    <g transform="translate(165,171) rotate(-10)">
                       <ellipse cx="30" cy="8" rx="32" ry="6" fill="#ccc8c2" />
                       <path d="M18 8 L28 -14 L36 -12 L26 8Z" fill="#b8b4ae" />
                       <path d="M18 8 L28 30 L36 28 L26 8Z" fill="#b8b4ae" />
@@ -482,15 +478,14 @@ const AAMPage = () => {
                     </g>
                   </g>
 
-                  {/* Package Delivery scene — centered on node (193, 419) */}
+                  {/* Package Delivery */}
                   <g opacity={hoveredLs === 'package-delivery' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="55" y="475" width="170" height="85" fill="#b0aca6" />
-                    <rect x="55" y="460" width="170" height="20" fill="#a8a49e" />
-                    <rect x="85" y="515" width="28" height="45" fill="#87837d" />
-                    <rect x="123" y="515" width="28" height="45" fill="#87837d" />
-                    <rect x="161" y="515" width="28" height="45" fill="#87837d" />
-                    {/* Delivery drone with package */}
-                    <g transform="translate(100,400)">
+                    <rect x="114.5" y="449" width="170" height="85" fill="#b0aca6" />
+                    <rect x="114.5" y="434" width="170" height="20" fill="#a8a49e" />
+                    <rect x="144.5" y="489" width="28" height="45" fill="#87837d" />
+                    <rect x="182.5" y="489" width="28" height="45" fill="#87837d" />
+                    <rect x="220.5" y="489" width="28" height="45" fill="#87837d" />
+                    <g transform="translate(121.49,342)">
                       <ellipse cx="0" cy="0" rx="16" ry="7" fill="#ccc8c2" />
                       <line x1="-16" y1="0" x2="-30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
                       <line x1="16" y1="0" x2="30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
@@ -505,105 +500,104 @@ const AAMPage = () => {
                     </g>
                   </g>
 
-                  {/* Residential scene — centered on node (492, 147) */}
+                  {/* Residential */}
                   <g opacity={hoveredLs === 'residential' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="408" y="200" width="38" height="28" fill="#b8b4ae" />
-                    <path d="M402 200 L427 177 L452 200Z" fill="#ada9a3" />
-                    <rect x="419" y="211" width="10" height="17" fill="#8a8680" />
-                    <rect x="458" y="187" width="50" height="41" fill="#c0bcb6" />
-                    <path d="M452 187 L483 160 L514 187Z" fill="#b0aca6" />
-                    <rect x="476" y="211" width="13" height="17" fill="#8a8680" />
-                    <rect x="463" y="195" width="9" height="9" fill="#7eb8d0" />
-                    <rect x="518" y="183" width="55" height="45" fill="#bcb8b2" />
-                    <path d="M512 183 L545 155 L579 183Z" fill="#ada9a3" />
-                    <rect x="524" y="191" width="9" height="9" fill="#7eb8d0" />
-                    <rect x="538" y="191" width="9" height="9" fill="#7eb8d0" />
-                    <rect x="554" y="191" width="9" height="9" fill="#7eb8d0" />
-                    <rect x="540" y="211" width="12" height="17" fill="#8a8680" />
-                    <circle cx="451" cy="213" r="10" fill="#5a945a" />
-                    <circle cx="513" cy="215" r="8" fill="#4f8a4f" />
-                    <circle cx="583" cy="213" r="11" fill="#558e55" />
-                    <line x1="398" y1="228" x2="598" y2="228" stroke="rgba(232,230,225,0.4)" strokeWidth="1" />
+                    <rect x="411.83" y="161.83" width="38" height="28" fill="#b8b4ae" />
+                    <path d="M405.83 161.83 L430.83 138.83 L455.83 161.83Z" fill="#ada9a3" />
+                    <rect x="422.83" y="172.83" width="10" height="17" fill="#8a8680" />
+                    <rect x="461.83" y="148.83" width="50" height="41" fill="#c0bcb6" />
+                    <path d="M455.83 148.83 L486.83 121.83 L517.83 148.83Z" fill="#b0aca6" />
+                    <rect x="479.83" y="172.83" width="13" height="17" fill="#8a8680" />
+                    <rect x="466.83" y="156.83" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="521.83" y="144.83" width="55" height="45" fill="#bcb8b2" />
+                    <path d="M515.83 144.83 L548.83 116.83 L582.83 144.83Z" fill="#ada9a3" />
+                    <rect x="527.83" y="152.83" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="541.83" y="152.83" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="557.83" y="152.83" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="543.83" y="172.83" width="12" height="17" fill="#8a8680" />
+                    <circle cx="454.83" cy="174.83" r="10" fill="#5a945a" />
+                    <circle cx="516.83" cy="176.83" r="8" fill="#4f8a4f" />
+                    <circle cx="586.83" cy="174.83" r="11" fill="#558e55" />
+                    <line x1="401.83" y1="189.83" x2="601.83" y2="189.83" stroke="rgba(232,230,225,0.4)" strokeWidth="1" />
                   </g>
 
-                  {/* City Center scene — centered on node (702, 377) */}
+                  {/* City Center */}
                   <g opacity={hoveredLs === 'city-center' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="650" y="400" width="32" height="120" fill="#b8b4ae" />
-                    <rect x="687" y="378" width="28" height="142" fill="#b0aca6" />
-                    <rect x="720" y="420" width="22" height="100" fill="#a8a49e" />
-                    <rect x="747" y="360" width="38" height="160" fill="#c0bcb6" />
-                    <rect x="790" y="400" width="24" height="120" fill="#aca8a2" />
-                    <rect x="819" y="430" width="20" height="90" fill="#9e9a94" />
-                    <rect x="655" y="410" width="6" height="6" fill="#c9a84c" />
-                    <rect x="663" y="410" width="6" height="6" fill="#c9a84c" />
-                    <rect x="655" y="422" width="6" height="6" fill="#c9a84c" />
-                    <rect x="752" y="370" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="763" y="370" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="752" y="386" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="763" y="386" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="752" y="402" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="844" y="400" width="48" height="120" fill="#c2872e" rx="2" />
-                    <rect x="850" y="410" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="865" y="410" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="850" y="426" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="865" y="426" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="850" y="442" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="865" y="442" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="712.49" y="360.09" width="32" height="120" fill="#b8b4ae" />
+                    <rect x="749.49" y="338.09" width="28" height="142" fill="#b0aca6" />
+                    <rect x="782.49" y="380.09" width="22" height="100" fill="#a8a49e" />
+                    <rect x="809.49" y="320.09" width="38" height="160" fill="#c0bcb6" />
+                    <rect x="852.49" y="360.09" width="24" height="120" fill="#aca8a2" />
+                    <rect x="881.49" y="390.09" width="20" height="90" fill="#9e9a94" />
+                    <rect x="717.49" y="370.09" width="6" height="6" fill="#c9a84c" />
+                    <rect x="725.49" y="370.09" width="6" height="6" fill="#c9a84c" />
+                    <rect x="717.49" y="382.09" width="6" height="6" fill="#c9a84c" />
+                    <rect x="814.49" y="330.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="825.49" y="330.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="814.49" y="346.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="825.49" y="346.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="814.49" y="362.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="906.49" y="360.09" width="48" height="120" fill="#c2872e" rx="2" />
+                    <rect x="912.49" y="370.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="927.49" y="370.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="912.49" y="386.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="927.49" y="386.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="912.49" y="402.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="927.49" y="402.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
                   </g>
 
-                  {/* Medical scene — centered on node (488, 363) */}
+                  {/* Medical */}
                   <g opacity={hoveredLs === 'medical' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="440" y="430" width="90" height="80" fill="#b8b4ae" />
-                    <rect x="440" y="420" width="90" height="14" fill="#c0bcb6" />
-                    <rect x="470" y="402" width="30" height="22" rx="3" fill="#d4443b" />
-                    <rect x="481" y="406" width="8" height="14" fill="#fff" />
-                    <rect x="474" y="411" width="22" height="4" fill="#fff" />
-                    <rect x="448" y="438" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="464" y="438" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="480" y="438" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="496" y="438" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="512" y="438" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="448" y="460" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="464" y="460" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="480" y="460" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="496" y="460" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="512" y="460" width="10" height="10" fill="#7eb8d0" />
-                    <rect x="472" y="480" width="26" height="30" fill="#8a8680" />
-                    {/* Medical drone with heart */}
-                    <g transform="translate(400,345)">
-                      <ellipse cx="0" cy="0" rx="16" ry="7" fill="#ccc8c2" />
-                      <line x1="-16" y1="0" x2="-30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
-                      <line x1="16" y1="0" x2="30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
-                      <ellipse cx="-30" cy="-9" rx="12" ry="3.5" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
-                      <ellipse cx="30" cy="-9" rx="12" ry="3.5" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
-                      <line x1="-9" y1="7" x2="-14" y2="16" stroke="#aaa6a0" strokeWidth="1.5" />
-                      <line x1="9" y1="7" x2="14" y2="16" stroke="#aaa6a0" strokeWidth="1.5" />
-                      <g transform="translate(0,24)">
-                        <path d="M0 4 C0 -3 -10 -5 -10 2 C-10 7 0 14 0 14 C0 14 10 7 10 2 C10 -5 0 -3 0 4Z" fill="#d4443b" stroke="#e04e47" strokeWidth="1" />
-                        <path d="M-6 5 L-3 5 L0 0 L3 10 L5 5 L7 5" fill="none" stroke="#fff" strokeWidth="1.2" />
+                    <rect x="489.68" y="415.05" width="112.25" height="99.78" fill="#b8b4ae" />
+                    <rect x="489.68" y="402.58" width="112.25" height="17.46" fill="#c0bcb6" />
+                    <rect x="527.1" y="380.13" width="37.42" height="27.44" rx="3.74" fill="#d4443b" />
+                    <rect x="540.82" y="385.12" width="9.98" height="17.46" fill="#fff" />
+                    <rect x="532.09" y="391.36" width="27.44" height="4.99" fill="#fff" />
+                    <rect x="499.66" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="519.62" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="539.57" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="559.53" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="579.48" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="499.66" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="519.62" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="539.57" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="559.53" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="579.48" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="529.59" y="477.42" width="32.43" height="37.42" fill="#8a8680" />
+                    <g transform="translate(446.46,399.18)">
+                      <ellipse cx="0" cy="0" rx="20" ry="8.73" fill="#ccc8c2" />
+                      <line x1="-20" y1="0" x2="-37.5" y2="-8.73" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <line x1="20" y1="0" x2="37.5" y2="-8.73" stroke="#c0bcb6" strokeWidth="2.5" />
+                      <ellipse cx="-37.5" cy="-11.23" rx="15" ry="4.37" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <ellipse cx="37.5" cy="-11.23" rx="15" ry="4.37" fill="none" stroke="#aaa6a0" strokeWidth="1.2" />
+                      <line x1="-11.23" y1="8.73" x2="-17.46" y2="19.96" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <line x1="11.23" y1="8.73" x2="17.46" y2="19.96" stroke="#aaa6a0" strokeWidth="1.5" />
+                      <g transform="translate(0,35)">
+                        <path d="M0 4 C0 -8.73 -12.47 -11.23 -12.47 -2.49 C-12.47 3.75 0 14.97 0 14.97 C0 14.97 12.47 3.75 12.47 -2.49 C12.47 -11.23 0 -8.73 0 4Z" fill="#d4443b" stroke="#e04e47" strokeWidth="1.25" />
+                        <path d="M-7.49 5.35 L-3.74 5.35 L0 -0.87 L3.74 6.24 L6.24 -0.87 L8.73 5.35" fill="none" stroke="#fff" strokeWidth="1.2" />
                       </g>
                     </g>
                   </g>
 
-                  {/* Rural scene — centered on node (773, 133) */}
+                  {/* Rural */}
                   <g opacity={hoveredLs === 'rural' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="730" y="180" width="55" height="45" fill="#bcb8b2" />
-                    <path d="M724 180 L757 153 L791 180Z" fill="#b09870" />
-                    <rect x="748" y="201" width="16" height="24" fill="#8a8680" />
-                    <rect x="795" y="163" width="20" height="62" rx="5" fill="#b8b4ae" />
-                    <ellipse cx="805" cy="163" rx="10" ry="6" fill="#ada9a3" />
-                    <line x1="835" y1="157" x2="835" y2="225" stroke="#c0bcb6" strokeWidth="2.5" />
-                    <g transform="translate(835,157)">
+                    <rect x="723.49" y="128.08" width="55" height="45" fill="#bcb8b2" />
+                    <path d="M717.49 128.08 L750.49 101.08 L784.49 128.08Z" fill="#b09870" />
+                    <rect x="741.49" y="149.08" width="16" height="24" fill="#8a8680" />
+                    <rect x="788.49" y="111.08" width="20" height="62" rx="5" fill="#b8b4ae" />
+                    <ellipse cx="798.49" cy="111.08" rx="10" ry="6" fill="#ada9a3" />
+                    <line x1="828.49" y1="105.08" x2="828.49" y2="173.08" stroke="#c0bcb6" strokeWidth="2.5" />
+                    <g transform="translate(828.49,105.08)">
                       <line x1="0" y1="0" x2="-16" y2="-20" stroke="#b8b4ae" strokeWidth="2" />
                       <line x1="0" y1="0" x2="20" y2="-12" stroke="#b8b4ae" strokeWidth="2" />
                       <line x1="0" y1="0" x2="10" y2="20" stroke="#b8b4ae" strokeWidth="2" />
                       <line x1="0" y1="0" x2="-20" y2="10" stroke="#b8b4ae" strokeWidth="2" />
                     </g>
-                    <path d="M710 205 L720 170 L730 205Z" fill="#5a945a" />
-                    <path d="M698 210 L705 183 L712 210Z" fill="#4f8a4f" />
-                    <circle cx="860" cy="207" r="10" fill="#558e55" />
-                    <circle cx="878" cy="211" r="7" fill="#4f8a4f" />
-                    <line x1="695" y1="225" x2="890" y2="225" stroke="rgba(232,230,225,0.35)" strokeWidth="1" />
+                    <path d="M703.49 153.08 L713.49 118.08 L723.49 153.08Z" fill="#5a945a" />
+                    <path d="M691.49 158.08 L698.49 131.08 L705.49 158.08Z" fill="#4f8a4f" />
+                    <circle cx="853.49" cy="155.08" r="10" fill="#558e55" />
+                    <circle cx="871.49" cy="159.08" r="7" fill="#4f8a4f" />
+                    <line x1="688.49" y1="173.08" x2="883.49" y2="173.08" stroke="rgba(232,230,225,0.35)" strokeWidth="1" />
                   </g>
 
 
@@ -702,8 +696,12 @@ const AAMPage = () => {
                     const ny = node.y * 6;
                     const hl = hoveredLs === node.id;
                     let lx = nx, ly = ny + 40, anchor: string = 'middle';
-                    if (node.id === 'residential') { ly = 155; }
-                    if (node.id === 'rural') { ly = 155; }
+                    if (node.id === 'urban-air-taxi') { ly = 110; }
+                    if (node.id === 'package-delivery') { ly = 418; }
+                    if (node.id === 'residential') { ly = 217; }
+                    if (node.id === 'medical') { ly = 354; }
+                    if (node.id === 'rural') { ly = 198; }
+                    if (node.id === 'city-center') { ly = 298; }
                     return (
                       <text
                         key={`label-${node.id}`}
