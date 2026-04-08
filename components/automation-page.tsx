@@ -170,9 +170,9 @@ export default function AutomationPage() {
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Smarter Systems. Empowered Teams.</span></span>
-          <h1 className="hero-title">Systems <em>Automation</em> &amp; AI</h1>
+          <h1 className="hero-title">Data governance, <em>Automation</em> &amp; AI</h1>
           <p className="hero-sub">
-            Partnering to reshape the way people work.
+            Partnering to reshape the way people work
           </p>
           <a href="#benefits" className="auto-hero-btn">
             <span>Explore Our Capabilities</span>
@@ -230,7 +230,7 @@ export default function AutomationPage() {
         <div className="aam-container" style={{ padding: "0 48px" }}>
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Organizational Impact</span></p>
-            <h2 className="section-title">How automation delivers <em>value</em></h2>
+            <h2 className="section-title">How automation delivers organizational <em>value</em></h2>
           </div>
         </div>
 
@@ -318,16 +318,16 @@ export default function AutomationPage() {
             <div className="reveal">
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "36px" }}>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
-                  We design and implement digital solutions that help people work smarter and more creatively.
+                  We establish effective <Link href="/capabilities#data-governance" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
                 </li>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
-                  We reduce manual effort, streamline and connect workflows, and establish effective <Link href="/capabilities#data-governance" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
+                  We streamline and connect workflows to reduce manual effort and improve efficiency.
                 </li>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
                   We develop high-value AI use cases and a roadmap for adoption and scaling.
                 </li>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
-                  We partner to guide <Link href="/capabilities#organizational-change-management" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>organizational change</Link> by cultivating the culture required for new ways of working.
+                  We guide <Link href="/capabilities#organizational-change-management" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>organizational change</Link> by cultivating the culture required for new ways of working.
                 </li>
               </ul>
             </div>
@@ -410,7 +410,7 @@ export default function AutomationPage() {
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center", marginBottom: "40px" }}>
             Let&rsquo;s discuss how automation and AI can elevate your team&rsquo;s capabilities.
           </p>
-          <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none" }}><span>Connect With Us</span></Link>
+          <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none", fontSize: "13px" }}><span>Connect With Us</span></Link>
         </div>
       </section>
 
