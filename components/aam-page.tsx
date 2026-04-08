@@ -728,11 +728,11 @@ const AAMPage = () => {
                     const hl = hoveredLs === node.id;
                     let lx = nx, ly = ny + 50, anchor: string = 'middle';
                     if (node.id === 'urban-air-taxi') { ly = 178; }
-                    if (node.id === 'package-delivery') { ly = 490; }
+                    if (node.id === 'package-delivery') { lx = nx + 20; ly = 480; }
                     if (node.id === 'residential') { ly = 285; }
                     if (node.id === 'medical') { ly = 422; }
                     if (node.id === 'rural') { ly = 266; }
-                    if (node.id === 'city-center') { lx = 780; ly = 366; }
+                    if (node.id === 'city-center') { lx = 830; ly = 366; }
                     return (
                       <text
                         key={`label-${node.id}`}
