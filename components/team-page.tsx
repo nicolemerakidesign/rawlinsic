@@ -306,7 +306,6 @@ export default function TeamPage() {
                 <div className="team-card-info">
                   <span className="team-card-name">Scott Rawlins, P.E.</span>
                   <span className="team-card-title-label">Founder</span>
-                  <span className="team-card-role">Transportation Programs</span>
                   <span className="team-card-location">Nevada</span>
                 </div>
               </button>
@@ -318,7 +317,7 @@ export default function TeamPage() {
                   <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="currentColor"/>
                 </svg>
                 <p className="scott-featured-quote-text">
-                  Quote coming soon.
+                  We&rsquo;ve built this firm on trust&mdash;working in close partnership with our clients to understand their reality and bring the right mix of perspectives, delivering outcomes that truly fit their needs.
                 </p>
                 <div className="scott-featured-quote-attribution">
                   <span className="scott-featured-quote-dash">&mdash;</span>

@@ -74,7 +74,7 @@ const journey = [
   },
   {
     phase: "Innovation",
-    title: "Automation, Integration, & AI",
+    title: "Data Governance, Automation, & AI",
     text: "We help agencies navigate governance structures, improve data practices, incorporate analytics, and use emerging tools such as AI. Our automation and integration specialists streamline workflows, enabling people to focus on the uniquely human work that matters most for organizational success.",
     bg: "/images/pages/journey-innovation.jpg",
   },
@@ -446,7 +446,7 @@ export default function HomePage() {
                 Like many organizations today, yours may be facing complex, interconnected challenges such as technology-driven transformation, resource constraints, and regulatory demands. While other organizations encounter similar pressures, unique priorities shape how you respond and the choices you make.
               </p>
               <p className="section-text" style={{ marginTop: "16px" }}>
-                This is where we add value—helping you navigate these challenges with practical solutions, established methods, and strategies designed for your organization.
+                This is where we add value—guiding you  through challenges with proven frameworks that enable confident decision-making.
               </p>
               <p style={{ marginTop: "20px", fontWeight: 600, color: "#d0b86c" }}>
                 We bring clarity to complexity to deliver measurable long-term outcomes.
