@@ -173,7 +173,7 @@ export default function InsightsPage() {
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Knowledge &amp; Perspective</span></span>
-          <h1 className="hero-title">Insights that <em>inform</em> action</h1>
+          <h1 className="hero-title">Insights that <em>Inform</em> Action</h1>
           <p className="hero-sub">
             Original research, practitioner perspectives, and real-world case studies from the front lines of organizational transformation.
           </p>
