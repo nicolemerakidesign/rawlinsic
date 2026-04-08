@@ -738,10 +738,10 @@ const AAMPage = () => {
                         key={`label-${node.id}`}
                         x={lx} y={ly}
                         textAnchor={anchor}
-                        fill={hl ? '#e8d5a0' : '#ffffff'}
+                        fill="#ffffff"
                         fontFamily="'DM Sans', sans-serif"
-                        fontSize={hl ? '20' : '18'}
-                        fontWeight={hl ? '700' : '600'}
+                        fontSize="14"
+                        fontWeight="600"
                         letterSpacing="1.5"
                         style={{ textTransform: 'uppercase', pointerEvents: 'none' } as React.CSSProperties}
                       >
