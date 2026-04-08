@@ -37,7 +37,7 @@ const pillars = [
     num: "",
     name: "Strategy",
     tags: "Decision systems · Planning · Organizational Design",
-    desc: "We help leaders see clearly, decide wisely, and act with confidence. From governance frameworks to strategic program planning, we translate organizational priorities into actionable plans that drive sustainable transformation.",
+    desc: "We help leaders see clearly, decide wisely, and act with confidence. From governance frameworks to strategic program planning, we translate organizational priorities into actionable plans that that drives long-term results.",
     href: "/capabilities#strategy",
     bg: "/images/pages/strategy-bg.webp",
   },
@@ -45,15 +45,15 @@ const pillars = [
     num: "",
     name: "Operations",
     tags: "people · process · culture · workforce",
-    desc: "We create sustainable high-performance strategies that foster collaboration, accountability, and organizational health. Our proficiency programs empower teams to deliver their best work.",
+    desc: "We create high-performance strategies that foster collaboration, accountability, and organizational health. Our proficiency programs empower teams to deliver their best work.",
     href: "/capabilities#operations",
     bg: "/images/pages/operations-bg.webp",
   },
   {
     num: "",
     name: "Technology",
-    tags: "human-centric AI integration · digital systems · analytics · data",
-    desc: "From establishing trustworthy data foundations to deploying intelligent automation, we help organizations harness the information layer. Our specialists streamline workflows so your people can focus on what machines can't do.",
+    tags: "human-centric AI integration · data governance · analytics",
+    desc: "From establishing a solid data foundation to deploying collaborative automation systems, we advance organizations' use of information, empowering people to work more efficiently and make better decisions.",
     href: "/capabilities#technology",
     bg: "/images/pages/technology-bg.webp",
   },
@@ -75,7 +75,7 @@ const journey = [
   {
     phase: "Innovation",
     title: "Automation, Integration, & AI",
-    text: "Today, we help agencies navigate governance structures, improve data practices, incorporate analytics, and use emerging tools such as AI. Our automation and integration specialists streamline workflows, enabling people to focus on the uniquely human work that matters most for organizational success.",
+    text: "We help agencies navigate governance structures, improve data practices, incorporate analytics, and use emerging tools such as AI. Our automation and integration specialists streamline workflows, enabling people to focus on the uniquely human work that matters most for organizational success.",
     bg: "/images/pages/journey-innovation.jpg",
   },
   {
@@ -96,7 +96,7 @@ const exploreBottomCards = [
   },
   {
       title: "Case Studies",
-    desc: "Discover how our work has transformed organizations across public and private sectors.",
+    desc: "Discover how our work has transformed organizations.",
     cta: "Explore our impact →",
     href: "/insights/case-studies",
     bg: "/images/pages/home-team-bg.webp",
@@ -120,7 +120,7 @@ const exploreTopCards = [
   },
   {
       title: "Case Studies",
-    desc: "Discover how our work has transformed organizations across public and private sectors.",
+    desc: "Discover how our work has transformed organizations.",
     cta: "discover our impact →",
     href: "/insights/case-studies",
     bg: "/images/pages/home-team-bg.webp",
@@ -465,7 +465,7 @@ export default function HomePage() {
               {/* Parallax Quote 1 */}
       <div className="parallax-panel">
         <p className="parallax-text reveal">
-          We translate your organizational and strategic priorities into <em>practical actions</em> to achieve your goals in a fast-changing world.
+          We convert your organizational and strategic priorities into <em>high-impact actions</em> to succeed in a fast-changing world.
         </p>
       </div>
 
