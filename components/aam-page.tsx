@@ -7,15 +7,20 @@ import SiteNav from '@/components/site-nav';
 import SiteFooter from '@/components/site-footer';
 
 const DRONE_IMG = "/images/pages/aam-drone.jpg";
-const CITY_AERIAL_IMG = "/images/pages/aam-city-aerial.jpg";
+const CITY_AERIAL_IMG = "/images/pages/aam-city-aerial.webp";
 const INFRASTRUCTURE_IMG = "/images/pages/aam-infrastructure.jpg";
 const TECH_NETWORK_IMG = "/images/pages/aam-tech-network.jpg";
-const LOGISTICS_IMG = "/images/pages/aam-logistics.jpg";
+const LOGISTICS_IMG = "/images/pages/aam-logistics.webp";
 const PLANNING_IMG = "/images/pages/aam-planning.jpg";
 const SKYLINE_IMG = "/images/pages/aam-skyline.jpg";
 const AERIAL_VIEW_IMG = "/images/pages/aam-aerial-view.jpg";
 const HELICOPTER_IMG = "/images/pages/aam-helicopter.jpg";
 const CONTROL_ROOM_IMG = "/images/pages/aam-control-room.jpg";
+const DEFINE_NEW_IMG = "/images/pages/aam-define.webp";
+const ENABLE_NEW_IMG = "/images/pages/aam-enable.webp";
+const DELIVER_NEW_IMG = "/images/pages/aam-deliver.webp";
+const PHASE3_IMG = "/images/pages/aam-phase3.webp";
+const PHASE4_IMG = "/images/pages/aam-phase4.webp";
 const DRONE_FLIGHT_IMG = "/images/pages/skylimit.webp";
 const BLUEPRINT_IMG = "/images/pages/aam-blueprint.jpg";
 const DATA_CENTER_IMG = "/images/pages/aam-data-center.jpg";
@@ -55,8 +60,8 @@ const pillarCards = [
 const phaseData = [
   { num: "01", label: "Policy & System Planning", body: "Develop policy, system plans, and standardized guidance for local implementation.", img: BLUEPRINT_IMG },
   { num: "02", label: "Regulatory Navigation", body: "Provide regulatory understanding for compliance and guide regulatory coordination.", img: PLANNING_IMG },
-  { num: "03", label: "Infrastructure Planning", body: "Plan for infrastructure, including vertiports, including technical research and validation.", img: INFRASTRUCTURE_IMG },
-  { num: "04", label: "Functional Frameworks", body: "Establish functional frameworks that support scalable program delivery and operational readiness.", img: TECH_NETWORK_IMG },
+  { num: "03", label: "Infrastructure Planning", body: "Plan for infrastructure, including vertiports, including technical research and validation.", img: PHASE3_IMG },
+  { num: "04", label: "Functional Frameworks", body: "Establish functional frameworks that support scalable program delivery and operational readiness.", img: PHASE4_IMG },
   { num: "05", label: "Data & Safety Integration", body: "Integrate data and safety policies into transportation systems.", img: DATA_CENTER_IMG },
   { num: "06", label: "Implementation & Scaling", body: "Support implementation, deployment, and the scaling of AAM and UAS services.", img: PLANNING2_IMG },
   { num: "07", label: "Community Engagement", body: "Facilitate ongoing community engagement and public trust-building.", img: TEAM_MEETING_IMG },
@@ -68,21 +73,21 @@ const frameworkCards = [
     tagline: "Vision & Planning",
     accent: "linear-gradient(90deg, #c9a84c, #e8d5a0)",
     bullets: ["Community needs assessment", "Vision & mission definition", "Use case & infrastructure evaluation", "Program goals & timeline", "Stakeholder identification", "Grant opportunities", "Legislative support"],
-    img: DEFINE_IMG,
+    img: DEFINE_NEW_IMG,
   },
   {
     title: "Enable",
     tagline: "Policy & Program Support",
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
     bullets: ["Policy development", "Program framework", "Stakeholder engagement", "Infrastructure planning", "Regulatory compliance"],
-    img: INFRASTRUCTURE_IMG,
+    img: ENABLE_NEW_IMG,
   },
   {
     title: "Deliver",
     tagline: "Operations & Scale",
     accent: "linear-gradient(90deg, #e8d5a0, #c9a84c)",
     bullets: ["Operational deployment", "Safety & compliance monitoring", "Performance optimization", "Continuous improvement"],
-    img: CONTROL_ROOM_IMG,
+    img: DELIVER_NEW_IMG,
   },
 ];
 
