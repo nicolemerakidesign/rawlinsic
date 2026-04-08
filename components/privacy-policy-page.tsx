@@ -38,6 +38,9 @@ export default function PrivacyPolicyPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const h2Style = { fontSize: 24, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" } as const;
+  const h3Style = { fontSize: 18, fontWeight: 600, color: "rgba(255,255,255,0.95)", marginBottom: 8, marginTop: 16 } as const;
+
   return (
     <>
       <div className="cursor-dot" ref={dotRef} />
@@ -50,66 +53,118 @@ export default function PrivacyPolicyPage() {
         <h1 className="hero-title" style={{ marginBottom: 40 }}>Privacy Policy</h1>
 
         <div style={{ color: "rgba(255,255,255,0.85)", fontSize: 16, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>Last updated: April 7, 2026</p>
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>Effective date: April 7, 2026</p>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>1. Introduction</h2>
-            <p>Rawlins Infra Consult (&ldquo;Rawlins,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at rawlinsic.com.</p>
+            <h2 style={h2Style}>1. Introduction</h2>
+            <p>Rawlins Infra Consult, LLC (&ldquo;Rawlins,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) is committed to protecting the privacy and security of your personal information. This Privacy Policy describes how we collect, use, disclose, store, and protect information obtained through our website at rawlinsic.com (the &ldquo;Site&rdquo;) and in connection with our consulting services.</p>
+            <p style={{ marginTop: 12 }}>By accessing or using our Site, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. If you do not agree, please discontinue use of the Site.</p>
           </div>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>2. Information We Collect</h2>
-            <p><strong style={{ color: "#fff" }}>Information you provide:</strong> When you fill out our contact form, subscribe to updates, or communicate with us, we may collect your name, email address, phone number, organization name, and the content of your message.</p>
-            <p style={{ marginTop: 12 }}><strong style={{ color: "#fff" }}>Automatically collected information:</strong> We may collect certain information automatically when you visit our website, including your IP address, browser type, operating system, referring URLs, and pages viewed. We use analytics tools to understand how visitors interact with our site.</p>
-          </div>
-
-          <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>3. How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
+            <h2 style={h2Style}>2. Information We Collect</h2>
+            <h3 style={h3Style}>2.1 Information You Provide Directly</h3>
+            <p>We collect information that you voluntarily provide when you:</p>
             <ul style={{ paddingLeft: 24, marginTop: 8 }}>
-              <li>Respond to your inquiries and provide requested services</li>
-              <li>Communicate with you about our services, events, and updates</li>
-              <li>Improve and optimize our website and user experience</li>
-              <li>Comply with legal obligations and protect our rights</li>
+              <li>Complete our contact or inquiry forms</li>
+              <li>Send us an email or correspond with us</li>
+              <li>Subscribe to newsletters or updates</li>
+              <li>Apply for employment or career opportunities</li>
+              <li>Engage with us as a client or business partner</li>
+            </ul>
+            <p style={{ marginTop: 12 }}>This information may include your name, email address, phone number, job title, organization name, and any other details you choose to share in your message.</p>
+
+            <h3 style={h3Style}>2.2 Information Collected Automatically</h3>
+            <p>When you visit our Site, we may automatically collect certain technical information, including:</p>
+            <ul style={{ paddingLeft: 24, marginTop: 8 }}>
+              <li>IP address and approximate geographic location</li>
+              <li>Browser type, version, and language preferences</li>
+              <li>Operating system and device information</li>
+              <li>Pages visited, time spent on pages, and navigation paths</li>
+              <li>Referring and exit URLs</li>
+              <li>Date and time of access</li>
+            </ul>
+
+            <h3 style={h3Style}>2.3 Cookies and Similar Technologies</h3>
+            <p>We use cookies, web beacons, and similar technologies to enhance your experience, analyze site usage, and support our marketing efforts. Cookies are small data files stored on your device. You may manage or disable cookies through your browser settings; however, doing so may affect certain site functionality.</p>
+          </div>
+
+          <div>
+            <h2 style={h2Style}>3. How We Use Your Information</h2>
+            <p>We use the information we collect for the following purposes:</p>
+            <ul style={{ paddingLeft: 24, marginTop: 8 }}>
+              <li>To respond to inquiries, requests, and communications</li>
+              <li>To deliver, manage, and improve our consulting services</li>
+              <li>To send relevant updates, newsletters, and service information (with your consent where required)</li>
+              <li>To analyze website usage and improve the Site&rsquo;s performance, content, and user experience</li>
+              <li>To comply with applicable laws, regulations, and legal processes</li>
+              <li>To protect the rights, safety, and property of Rawlins, our clients, and others</li>
+              <li>To evaluate employment applications and manage recruitment processes</li>
             </ul>
           </div>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>4. Information Sharing</h2>
-            <p>We do not sell, trade, or rent your personal information to third parties. We may share your information with trusted service providers who assist us in operating our website and conducting business, provided they agree to keep your information confidential. We may also disclose information when required by law or to protect our rights.</p>
+            <h2 style={h2Style}>4. Information Sharing and Disclosure</h2>
+            <p>We do not sell, rent, or trade your personal information to third parties for marketing purposes. We may share your information in the following limited circumstances:</p>
+            <ul style={{ paddingLeft: 24, marginTop: 8 }}>
+              <li><strong style={{ color: "#fff" }}>Service providers:</strong> We may share information with trusted third-party vendors who perform services on our behalf (e.g., website hosting, analytics, email delivery), subject to confidentiality obligations.</li>
+              <li><strong style={{ color: "#fff" }}>Legal requirements:</strong> We may disclose information when required by law, subpoena, court order, or governmental regulation, or when we believe disclosure is necessary to protect our rights, prevent fraud, or ensure the safety of our users.</li>
+              <li><strong style={{ color: "#fff" }}>Business transfers:</strong> In the event of a merger, acquisition, reorganization, or sale of assets, your information may be transferred as part of that transaction.</li>
+              <li><strong style={{ color: "#fff" }}>With your consent:</strong> We may share information for other purposes when you have provided explicit consent.</li>
+            </ul>
           </div>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>5. Cookies and Tracking</h2>
-            <p>Our website may use cookies and similar tracking technologies to enhance your browsing experience and gather analytics data. You can control cookie preferences through your browser settings. Disabling cookies may affect certain features of the website.</p>
+            <h2 style={h2Style}>5. Data Retention</h2>
+            <p>We retain personal information for as long as necessary to fulfill the purposes for which it was collected, comply with legal obligations, resolve disputes, and enforce our agreements. When personal information is no longer needed, we will securely delete or anonymize it.</p>
           </div>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>6. Data Security</h2>
-            <p>We implement reasonable administrative, technical, and physical safeguards to protect your personal information. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+            <h2 style={h2Style}>6. Data Security</h2>
+            <p>We implement reasonable administrative, technical, and physical safeguards designed to protect your personal information from unauthorized access, use, alteration, and disclosure. These measures include encryption, access controls, and secure hosting environments. However, no method of electronic transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
           </div>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>7. Third-Party Links</h2>
-            <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+            <h2 style={h2Style}>7. Your Rights and Choices</h2>
+            <p>Depending on your jurisdiction, you may have certain rights regarding your personal information, including:</p>
+            <ul style={{ paddingLeft: 24, marginTop: 8 }}>
+              <li><strong style={{ color: "#fff" }}>Access:</strong> Request a copy of the personal information we hold about you.</li>
+              <li><strong style={{ color: "#fff" }}>Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+              <li><strong style={{ color: "#fff" }}>Deletion:</strong> Request deletion of your personal information, subject to certain exceptions.</li>
+              <li><strong style={{ color: "#fff" }}>Opt-out:</strong> Unsubscribe from marketing communications at any time by following the instructions in the communication or contacting us directly.</li>
+              <li><strong style={{ color: "#fff" }}>Restriction:</strong> Request that we limit the processing of your personal information under certain circumstances.</li>
+            </ul>
+            <p style={{ marginTop: 12 }}>To exercise any of these rights, please contact us at <a href="mailto:info@rawlinsic.com" style={{ color: "#c9a84c" }}>info@rawlinsic.com</a>. We will respond to your request within a reasonable timeframe and in accordance with applicable law.</p>
           </div>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>8. Your Rights</h2>
-            <p>Depending on your jurisdiction, you may have the right to access, correct, delete, or restrict the processing of your personal data. To exercise these rights, please contact us using the information below.</p>
+            <h2 style={h2Style}>8. Third-Party Links</h2>
+            <p>Our Site may contain links to third-party websites, services, or platforms (e.g., LinkedIn, Google). We are not responsible for the privacy practices, content, or security of those third-party sites. We encourage you to review the privacy policies of any external sites you visit.</p>
           </div>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>9. Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. We encourage you to review this policy periodically.</p>
+            <h2 style={h2Style}>9. Children&rsquo;s Privacy</h2>
+            <p>Our Site and services are not directed to individuals under the age of 16. We do not knowingly collect personal information from children. If we become aware that we have inadvertently collected information from a child, we will take steps to delete it promptly.</p>
           </div>
 
           <div>
-            <h2 style={{ fontSize: 22, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" }}>10. Contact Us</h2>
-            <p>If you have questions about this Privacy Policy, please contact us at:</p>
-            <p style={{ marginTop: 8 }}>
-              Rawlins Infra Consult<br />
-              Email: <a href="mailto:info@rawlinsic.com" style={{ color: "#c9a84c" }}>info@rawlinsic.com</a>
+            <h2 style={h2Style}>10. International Users</h2>
+            <p>Our Site is operated from the United States. If you are accessing our Site from outside the United States, please be aware that your information may be transferred to, stored, and processed in the United States, where data protection laws may differ from those in your jurisdiction.</p>
+          </div>
+
+          <div>
+            <h2 style={h2Style}>11. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technologies, legal requirements, or other factors. The updated policy will be posted on this page with a revised effective date. We encourage you to review this policy periodically. Your continued use of the Site following any changes constitutes your acceptance of the updated policy.</p>
+          </div>
+
+          <div>
+            <h2 style={h2Style}>12. Contact Us</h2>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at:</p>
+            <p style={{ marginTop: 12 }}>
+              <strong style={{ color: "#fff" }}>Rawlins Infra Consult, LLC</strong><br />
+              Email: <a href="mailto:info@rawlinsic.com" style={{ color: "#c9a84c" }}>info@rawlinsic.com</a><br />
+              Phone: <a href="tel:+17758433822" style={{ color: "#c9a84c" }}>(775) 843-3822</a><br />
+              Website: <span style={{ color: "#c9a84c" }}>rawlinsic.com</span>
             </p>
           </div>
         </div>
