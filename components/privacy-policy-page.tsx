@@ -38,8 +38,8 @@ export default function PrivacyPolicyPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const h2Style = { fontSize: 24, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" } as const;
-  const h3Style = { fontSize: 18, fontWeight: 600, color: "rgba(255,255,255,0.95)", marginBottom: 8, marginTop: 16 } as const;
+  const h2Style = { fontSize: 28, fontWeight: 600, color: "#fff", marginBottom: 14, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" } as const;
+  const h3Style = { fontSize: 20, fontWeight: 600, color: "rgba(255,255,255,0.95)", marginBottom: 10, marginTop: 18 } as const;
 
   return (
     <>
@@ -48,12 +48,12 @@ export default function PrivacyPolicyPage() {
       <div className="ambient-bg" />
       <SiteNav />
 
-      <section style={{ padding: "180px 48px 100px", maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
+      <section style={{ padding: "180px 48px 100px", maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <span className="hero-label"><span className="gold-text">Legal</span></span>
         <h1 className="hero-title" style={{ marginBottom: 40 }}>Privacy Policy</h1>
 
-        <div style={{ color: "rgba(255,255,255,0.85)", fontSize: 16, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>Effective date: April 7, 2026</p>
+        <div style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, fontWeight: 500, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 16, fontWeight: 500 }}>Effective date: April 7, 2026</p>
 
           <div>
             <h2 style={h2Style}>1. Introduction</h2>
@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
 
           <div>
             <h2 style={h2Style}>2. Information We Collect</h2>
-            <h3 style={h3Style}>2.1 Information You Provide Directly</h3>
+            <h3 style={h3Style}>I. Information You Provide Directly</h3>
             <p>We collect information that you voluntarily provide when you:</p>
             <ul style={{ paddingLeft: 24, marginTop: 8 }}>
               <li>Complete our contact or inquiry forms</li>
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
             </ul>
             <p style={{ marginTop: 12 }}>This information may include your name, email address, phone number, job title, organization name, and any other details you choose to share in your message.</p>
 
-            <h3 style={h3Style}>2.2 Information Collected Automatically</h3>
+            <h3 style={h3Style}>II. Information Collected Automatically</h3>
             <p>When you visit our Site, we may automatically collect certain technical information, including:</p>
             <ul style={{ paddingLeft: 24, marginTop: 8 }}>
               <li>IP address and approximate geographic location</li>
@@ -85,7 +85,7 @@ export default function PrivacyPolicyPage() {
               <li>Date and time of access</li>
             </ul>
 
-            <h3 style={h3Style}>2.3 Cookies and Similar Technologies</h3>
+            <h3 style={h3Style}>III. Cookies and Similar Technologies</h3>
             <p>We use cookies, web beacons, and similar technologies to enhance your experience, analyze site usage, and support our marketing efforts. Cookies are small data files stored on your device. You may manage or disable cookies through your browser settings; however, doing so may affect certain site functionality.</p>
           </div>
 

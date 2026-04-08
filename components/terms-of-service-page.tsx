@@ -38,7 +38,7 @@ export default function TermsOfServicePage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const h2Style = { fontSize: 24, fontWeight: 600, color: "#fff", marginBottom: 12, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" } as const;
+  const h2Style = { fontSize: 28, fontWeight: 600, color: "#fff", marginBottom: 14, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" } as const;
 
   return (
     <>
@@ -47,12 +47,12 @@ export default function TermsOfServicePage() {
       <div className="ambient-bg" />
       <SiteNav />
 
-      <section style={{ padding: "180px 48px 100px", maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
+      <section style={{ padding: "180px 48px 100px", maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <span className="hero-label"><span className="gold-text">Legal</span></span>
         <h1 className="hero-title" style={{ marginBottom: 40 }}>Terms of Service</h1>
 
-        <div style={{ color: "rgba(255,255,255,0.85)", fontSize: 16, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>Effective date: April 7, 2026</p>
+        <div style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, fontWeight: 500, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 16, fontWeight: 500 }}>Effective date: April 7, 2026</p>
 
           <div>
             <h2 style={h2Style}>1. Acceptance of Terms</h2>
