@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
-import PasswordGate from "@/components/password-gate";
+
 
 export default function CareersPage() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -110,8 +110,7 @@ export default function CareersPage() {
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
 
-      <PasswordGate>
-        {/* Ambient Background */}
+      {/* Ambient Background */}
         <div className="ambient-bg" />
         <div className="ambient-orbs">
           <div className="orb orb-1" />
@@ -152,7 +151,6 @@ export default function CareersPage() {
         </div>
 
         <SiteFooter />
-      </PasswordGate>
     </>
   );
 }
