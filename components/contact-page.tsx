@@ -370,7 +370,7 @@ export default function ContactPage() {
                       id="interest"
                       name="interest"
                       type="text"
-                      placeholder="e.g., Strategy, Operations, Technology, Advanced Air Mobility"
+                      placeholder="e.g., Strategy, Operations, Technology, General Inquiry"
                       value={formData.interest}
                       onChange={handleChange}
                     />
