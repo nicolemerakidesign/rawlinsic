@@ -25,33 +25,104 @@ export interface CaseStudy {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    slug: "tennessee",
-    title: "Tennessee",
-    subtitle: "Program Delivery & Workforce",
-    image: "/images/pages/tnbig.webp",
-    heroImage: "/images/pages/cs-hero-1.jpg",
+    slug: "delaware",
+    title: "Delaware",
+    subtitle: "Technology Strategy",
+    image: "/images/pages/delaware.webp",
+    heroImage: "/images/pages/cs-hero-10.jpg",
     description:
-      "Tennessee has been a leader in modernizing transportation project delivery and organizational effectiveness. Our work with the Tennessee Department of Transportation (TDOT) has focused on enhancing program management, improving risk assessment, and fostering a culture of innovation and accountability.",
+      "DelDOT\u2019s Division of Technology and Innovation Services plays a critical role in advancing the agency\u2019s mission through modern, efficient, and future-ready technology solutions. With a focus on smart infrastructure, data-driven decision-making, and customer-centric services, the division is committed to enabling innovation across all areas of transportation.",
+    sectionHeading: "Key Projects & Initiatives",
+    clientInfo: {
+      client: "Delaware Department of Transportation",
+      location: "Dover, Delaware",
+      year: "2024\u201325",
+      services: "Strategic Planning, Stakeholder Engagement",
+    },
+    projects: [
+      {
+        title: "Technology Strategic Plan",
+        description:
+          "Rawlins Infra Consult partnered with DelDOT to shape a comprehensive Technology Strategic Plan that provides a clear roadmap for future innovation and IT investment.",
+        bullets: [
+          "Facilitated discovery through leadership interviews, stakeholder engagement, and SWOT analysis.",
+          "Developed a strategic plan aligned with agency goals and operational priorities.",
+          "Delivered a high-impact visual summary to distill strategic priorities and enhance executive alignment.",
+        ],
+      },
+    ],
+    impactNote:
+      "This effort ensures DelDOT\u2019s technology division is equipped with the vision, structure, and tools needed to lead confidently into the future.",
+  },
+  {
+    slug: "louisiana",
+    title: "Louisiana",
+    subtitle: "Organizational Transformation",
+    image: "/images/pages/louisiana.webp",
+    heroImage: "/images/pages/cs-hero-9.jpg",
+    description:
+      "Rawlins Infra Consult is actively supporting the Louisiana Department of Transportation and Development (DOTD) through a comprehensive transformation initiative that aims to enhance organizational efficiency, program delivery, workforce development, and accountability.",
     sectionHeading: "Key Projects & Initiatives",
     projects: [
       {
-        title: "Integrated Program Delivery (IPD)",
+        title: "Organizational Structure & Efficiency",
         description:
-          "Overhauled TDOT\u2019s project management lifecycle, from planning to maintenance.",
+          "Analyze DOTD\u2019s organizational structure, provide strategic recommendations, and support implementation for enhanced operational efficiency.",
         bullets: [
-          "Overhauled TDOT\u2019s project management lifecycle, from planning to maintenance.",
-          "Introduced risk management strategies to improve project scope, schedule, and budget control.",
-          "Resulted in increased on-time project completion and reduced budget variances.",
+          "Analyze DOTD\u2019s organizational structure, provide strategic recommendations, and support implementation for enhanced operational efficiency.",
+          "Streamline project selection, prioritization processes, and optimize district maintenance practices.",
+          "Develop human resources documentation to facilitate successful organizational restructuring.",
         ],
       },
       {
-        title: "Empowering People Influencing Culture (EPIC)",
+        title: "Program Delivery Improvements",
         description:
-          "Developed an organizational restructuring initiative to enhance workforce productivity.",
+          "Enhance project management methodologies to improve interdisciplinary coordination and accountability.",
         bullets: [
-          "Developed an organizational restructuring initiative to enhance workforce productivity.",
-          "Created multiple career pathways, improved compensation structures, and increased accountability.",
-          "Strengthened team-based culture, leading to higher employee retention and efficiency.",
+          "Enhance project management methodologies to improve interdisciplinary coordination and accountability.",
+          "Optimize the Local Public Agency (LPA) program delivery to strengthen technical support, ensure compliance, and enhance efficiency.",
+          "Establish an asset management strategy to optimize resource allocation and maintenance decision-making.",
+        ],
+      },
+      {
+        title: "Leadership, Staff Development & Performance Management",
+        description:
+          "Develop comprehensive leadership and technical training programs to cultivate talent, leadership skills, and career advancement opportunities.",
+        bullets: [
+          "Develop comprehensive leadership and technical training programs to cultivate talent, leadership skills, and career advancement opportunities.",
+          "Create and implement competency-based staff development initiatives to elevate overall departmental performance.",
+          "Design robust performance management frameworks and data-driven dashboards to reinforce departmental and individual accountability.",
+        ],
+      },
+      {
+        title: "Strategic Communication & Legislative Support",
+        description:
+          "Develop a strategic communications plan ensuring transparent and effective internal and external stakeholder engagement throughout the transformation process.",
+        bullets: [
+          "Develop a strategic communications plan ensuring transparent and effective internal and external stakeholder engagement throughout the transformation process.",
+          "Provide legislative analysis and support, enhancing DOTD\u2019s reputation and strengthening stakeholder relations to drive statewide economic development.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "michigan",
+    title: "Michigan",
+    subtitle: "Performance-Based Operations",
+    image: "/images/pages/michigan.webp",
+    heroImage: "/images/pages/cs-hero-5.jpg",
+    description:
+      "Michigan has been at the forefront of performance-based infrastructure operations, and we have supported the state in implementing innovative maintenance models and asset management solutions.",
+    sectionHeading: "Key Projects & Initiatives",
+    projects: [
+      {
+        title: "Performance-Based Operations Project",
+        description:
+          "Designed and implemented a statewide maintenance system based on performance outcomes.",
+        bullets: [
+          "Designed and implemented a statewide maintenance system based on performance outcomes.",
+          "Developed benchmarking and cost modeling tools to improve maintenance efficiency.",
+          "Resulted in cost savings, improved accountability, and enhanced roadway performance.",
         ],
       },
     ],
@@ -131,45 +202,33 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
   },
   {
-    slug: "virginia",
-    title: "Virginia",
-    subtitle: "Maintenance Contracts",
-    image: "/images/pages/virginia.webp",
-    heroImage: "/images/pages/cs-hero-4.jpg",
+    slug: "tennessee",
+    title: "Tennessee",
+    subtitle: "Program Delivery & Workforce",
+    image: "/images/pages/tnbig.webp",
+    heroImage: "/images/pages/cs-hero-1.jpg",
     description:
-      "Virginia\u2019s transportation infrastructure is a key component of economic growth and mobility. Our work has focused on enhancing highway maintenance programs, improving contractor performance, and refining asset management strategies.",
+      "Tennessee has been a leader in modernizing transportation project delivery and organizational effectiveness. Our work with the Tennessee Department of Transportation (TDOT) has focused on enhancing program management, improving risk assessment, and fostering a culture of innovation and accountability.",
     sectionHeading: "Key Projects & Initiatives",
     projects: [
       {
-        title: "Turnkey Asset Maintenance Services (TAMS) Review",
+        title: "Integrated Program Delivery (IPD)",
         description:
-          "Conducted a statewide review of VDOT\u2019s performance-based highway maintenance contracts.",
+          "Overhauled TDOT\u2019s project management lifecycle, from planning to maintenance.",
         bullets: [
-          "Conducted a statewide review of VDOT\u2019s performance-based highway maintenance contracts.",
-          "Developed improved contract procurement models and enhanced contractor accountability measures.",
-          "Increased cost efficiency and improved service quality on interstate maintenance projects.",
+          "Overhauled TDOT\u2019s project management lifecycle, from planning to maintenance.",
+          "Introduced risk management strategies to improve project scope, schedule, and budget control.",
+          "Resulted in increased on-time project completion and reduced budget variances.",
         ],
       },
-    ],
-  },
-  {
-    slug: "michigan",
-    title: "Michigan",
-    subtitle: "Performance-Based Operations",
-    image: "/images/pages/michigan.webp",
-    heroImage: "/images/pages/cs-hero-5.jpg",
-    description:
-      "Michigan has been at the forefront of performance-based infrastructure operations, and we have supported the state in implementing innovative maintenance models and asset management solutions.",
-    sectionHeading: "Key Projects & Initiatives",
-    projects: [
       {
-        title: "Performance-Based Operations Project",
+        title: "Empowering People Influencing Culture (EPIC)",
         description:
-          "Designed and implemented a statewide maintenance system based on performance outcomes.",
+          "Developed an organizational restructuring initiative to enhance workforce productivity.",
         bullets: [
-          "Designed and implemented a statewide maintenance system based on performance outcomes.",
-          "Developed benchmarking and cost modeling tools to improve maintenance efficiency.",
-          "Resulted in cost savings, improved accountability, and enhanced roadway performance.",
+          "Developed an organizational restructuring initiative to enhance workforce productivity.",
+          "Created multiple career pathways, improved compensation structures, and increased accountability.",
+          "Strengthened team-based culture, leading to higher employee retention and efficiency.",
         ],
       },
     ],
@@ -197,45 +256,23 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
   },
   {
-    slug: "other-states-major-projects",
-    title: "Other States & Major Projects",
-    subtitle: "Nationwide Impact",
-    image: "/images/pages/transportation.webp",
-    heroImage: "/images/pages/cs-hero-7.jpg",
+    slug: "virginia",
+    title: "Virginia",
+    subtitle: "Maintenance Contracts",
+    image: "/images/pages/virginia.webp",
+    heroImage: "/images/pages/cs-hero-4.jpg",
     description:
-      "Rawlins Infra Consult has provided strategic consulting services across multiple states, delivering tailored solutions for transportation agencies with diverse operational needs.",
+      "Virginia\u2019s transportation infrastructure is a key component of economic growth and mobility. Our work has focused on enhancing highway maintenance programs, improving contractor performance, and refining asset management strategies.",
     sectionHeading: "Key Projects & Initiatives",
     projects: [
       {
-        title: "Pennsylvania \u2014 Maintenance Budgeting Project",
+        title: "Turnkey Asset Maintenance Services (TAMS) Review",
         description:
-          "Developed a performance-based funding model to improve budget transparency and optimize maintenance spending.",
+          "Conducted a statewide review of VDOT\u2019s performance-based highway maintenance contracts.",
         bullets: [
-          "Developed a performance-based funding model to improve budget transparency and optimize maintenance spending.",
-        ],
-      },
-      {
-        title: "New York \u2014 NYC Parks & Recreation Asset Management",
-        description:
-          "Developed an investment strategy for 29,000 acres of parkland, creating a standardized asset tracking and capital project planning framework.",
-        bullets: [
-          "Developed an investment strategy for 29,000 acres of parkland, creating a standardized asset tracking and capital project planning framework.",
-        ],
-      },
-      {
-        title: "Riverside County, California \u2014 Facilities & Fleet Operations Review",
-        description:
-          "Conducted an operational review to identify cost-saving opportunities and efficiency improvements in fleet and facility management.",
-        bullets: [
-          "Conducted an operational review to identify cost-saving opportunities and efficiency improvements in fleet and facility management.",
-        ],
-      },
-      {
-        title: "AMOTIA Contracting Model Development",
-        description:
-          "Created a customized, performance-based outsourcing model for DOTs to enhance highway maintenance efficiency and cost-effectiveness.",
-        bullets: [
-          "Created a customized, performance-based outsourcing model for DOTs across Florida, Texas, Georgia, South Carolina, Utah, and Arizona to enhance highway maintenance efficiency and cost-effectiveness.",
+          "Conducted a statewide review of VDOT\u2019s performance-based highway maintenance contracts.",
+          "Developed improved contract procurement models and enhanced contractor accountability measures.",
+          "Increased cost efficiency and improved service quality on interstate maintenance projects.",
         ],
       },
     ],
@@ -283,84 +320,47 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
   },
   {
-    slug: "louisiana",
-    title: "Louisiana",
-    subtitle: "Organizational Transformation",
-    image: "/images/pages/louisiana.webp",
-    heroImage: "/images/pages/cs-hero-9.jpg",
+    slug: "other-states-major-projects",
+    title: "Other States & Major Projects",
+    subtitle: "Nationwide Impact",
+    image: "/images/pages/transportation.webp",
+    heroImage: "/images/pages/cs-hero-7.jpg",
     description:
-      "Rawlins Infra Consult is actively supporting the Louisiana Department of Transportation and Development (DOTD) through a comprehensive transformation initiative that aims to enhance organizational efficiency, program delivery, workforce development, and accountability.",
+      "Rawlins Infra Consult has provided strategic consulting services across multiple states, delivering tailored solutions for transportation agencies with diverse operational needs.",
     sectionHeading: "Key Projects & Initiatives",
     projects: [
       {
-        title: "Organizational Structure & Efficiency",
+        title: "Pennsylvania \u2014 Maintenance Budgeting Project",
         description:
-          "Analyze DOTD\u2019s organizational structure, provide strategic recommendations, and support implementation for enhanced operational efficiency.",
+          "Developed a performance-based funding model to improve budget transparency and optimize maintenance spending.",
         bullets: [
-          "Analyze DOTD\u2019s organizational structure, provide strategic recommendations, and support implementation for enhanced operational efficiency.",
-          "Streamline project selection, prioritization processes, and optimize district maintenance practices.",
-          "Develop human resources documentation to facilitate successful organizational restructuring.",
+          "Developed a performance-based funding model to improve budget transparency and optimize maintenance spending.",
         ],
       },
       {
-        title: "Program Delivery Improvements",
+        title: "New York \u2014 NYC Parks & Recreation Asset Management",
         description:
-          "Enhance project management methodologies to improve interdisciplinary coordination and accountability.",
+          "Developed an investment strategy for 29,000 acres of parkland, creating a standardized asset tracking and capital project planning framework.",
         bullets: [
-          "Enhance project management methodologies to improve interdisciplinary coordination and accountability.",
-          "Optimize the Local Public Agency (LPA) program delivery to strengthen technical support, ensure compliance, and enhance efficiency.",
-          "Establish an asset management strategy to optimize resource allocation and maintenance decision-making.",
+          "Developed an investment strategy for 29,000 acres of parkland, creating a standardized asset tracking and capital project planning framework.",
         ],
       },
       {
-        title: "Leadership, Staff Development & Performance Management",
+        title: "Riverside County, California \u2014 Facilities & Fleet Operations Review",
         description:
-          "Develop comprehensive leadership and technical training programs to cultivate talent, leadership skills, and career advancement opportunities.",
+          "Conducted an operational review to identify cost-saving opportunities and efficiency improvements in fleet and facility management.",
         bullets: [
-          "Develop comprehensive leadership and technical training programs to cultivate talent, leadership skills, and career advancement opportunities.",
-          "Create and implement competency-based staff development initiatives to elevate overall departmental performance.",
-          "Design robust performance management frameworks and data-driven dashboards to reinforce departmental and individual accountability.",
+          "Conducted an operational review to identify cost-saving opportunities and efficiency improvements in fleet and facility management.",
         ],
       },
       {
-        title: "Strategic Communication & Legislative Support",
+        title: "AMOTIA Contracting Model Development",
         description:
-          "Develop a strategic communications plan ensuring transparent and effective internal and external stakeholder engagement throughout the transformation process.",
+          "Created a customized, performance-based outsourcing model for DOTs to enhance highway maintenance efficiency and cost-effectiveness.",
         bullets: [
-          "Develop a strategic communications plan ensuring transparent and effective internal and external stakeholder engagement throughout the transformation process.",
-          "Provide legislative analysis and support, enhancing DOTD\u2019s reputation and strengthening stakeholder relations to drive statewide economic development.",
+          "Created a customized, performance-based outsourcing model for DOTs across Florida, Texas, Georgia, South Carolina, Utah, and Arizona to enhance highway maintenance efficiency and cost-effectiveness.",
         ],
       },
     ],
-  },
-  {
-    slug: "delaware",
-    title: "Delaware",
-    subtitle: "Technology Strategy",
-    image: "/images/pages/delaware.webp",
-    heroImage: "/images/pages/cs-hero-10.jpg",
-    description:
-      "DelDOT\u2019s Division of Technology and Innovation Services plays a critical role in advancing the agency\u2019s mission through modern, efficient, and future-ready technology solutions. With a focus on smart infrastructure, data-driven decision-making, and customer-centric services, the division is committed to enabling innovation across all areas of transportation.",
-    sectionHeading: "Key Projects & Initiatives",
-    clientInfo: {
-      client: "Delaware Department of Transportation",
-      location: "Dover, Delaware",
-      year: "2024\u201325",
-      services: "Strategic Planning, Stakeholder Engagement",
-    },
-    projects: [
-      {
-        title: "Technology Strategic Plan",
-        description:
-          "Rawlins Infra Consult partnered with DelDOT to shape a comprehensive Technology Strategic Plan that provides a clear roadmap for future innovation and IT investment.",
-        bullets: [
-          "Facilitated discovery through leadership interviews, stakeholder engagement, and SWOT analysis.",
-          "Developed a strategic plan aligned with agency goals and operational priorities.",
-          "Delivered a high-impact visual summary to distill strategic priorities and enhance executive alignment.",
-        ],
-      },
-    ],
-    impactNote:
-      "This effort ensures DelDOT\u2019s technology division is equipped with the vision, structure, and tools needed to lead confidently into the future.",
   },
 ];
