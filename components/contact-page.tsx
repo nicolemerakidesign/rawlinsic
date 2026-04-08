@@ -217,7 +217,7 @@ export default function ContactPage() {
                 <span className="gold-text">Get In Touch</span>
               </p>
               <h2 className="section-title">
-                Send us a message
+                Send us a <em>message</em>
               </h2>
               <p className="section-text" style={{ marginTop: "20px", marginBottom: "48px" }}>
                 Our team is here to listen, advise, and partner with you. Share a
