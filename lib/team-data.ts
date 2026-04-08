@@ -22,7 +22,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   title: `Founder`,
     role: `Transportation Programs`,
     location: `Nevada`,
-    phone: `+1 702-575-3472`,
+    phone: `(775) 843-3822`,
     email: `scott@rawlinsic.com`,
     linkedin: `https://www.linkedin.com/in/scott-rawlinsinfraconsult/`,
     background: `Scott has over 33 years in the Transportation industry experience. He has helped DOTs from around the country in improving their overall program delivery and organizational design. He also spent a career with the State of Nevada Department of Transportation.
