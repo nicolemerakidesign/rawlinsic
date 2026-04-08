@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
   }, []);
 
   const h2Style = { fontSize: 28, fontWeight: 600, color: "#fff", marginBottom: 14, fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif" } as const;
-  const h3Style = { fontSize: 20, fontWeight: 600, color: "rgba(255,255,255,0.95)", marginBottom: 10, marginTop: 18 } as const;
+  const h3Style = { fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 10, marginTop: 18 } as const;
 
   return (
     <>
@@ -52,8 +52,8 @@ export default function PrivacyPolicyPage() {
         <span className="hero-label"><span className="gold-text">Legal</span></span>
         <h1 className="hero-title" style={{ marginBottom: 40 }}>Privacy Policy</h1>
 
-        <div style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, fontWeight: 500, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 16, fontWeight: 500 }}>Effective date: April 7, 2026</p>
+        <div style={{ color: "#fff", fontSize: 15, fontWeight: 500, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
+          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 16, fontWeight: 500 }}>Effective date: April 7, 2026</p>
 
           <div>
             <h2 style={h2Style}>1. Introduction</h2>

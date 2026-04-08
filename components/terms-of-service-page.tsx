@@ -51,8 +51,8 @@ export default function TermsOfServicePage() {
         <span className="hero-label"><span className="gold-text">Legal</span></span>
         <h1 className="hero-title" style={{ marginBottom: 40 }}>Terms of Service</h1>
 
-        <div style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, fontWeight: 500, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 16, fontWeight: 500 }}>Effective date: April 7, 2026</p>
+        <div style={{ color: "#fff", fontSize: 15, fontWeight: 500, lineHeight: 1.9, display: "flex", flexDirection: "column", gap: 32 }}>
+          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 16, fontWeight: 500 }}>Effective date: April 7, 2026</p>
 
           <div>
             <h2 style={h2Style}>1. Acceptance of Terms</h2>
