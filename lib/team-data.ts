@@ -308,6 +308,24 @@ She is a certified Part 107 UAS pilot with significant experience in bridge insp
     categories: ['technology'],
   },
   {
+    id: 52,
+    name: `Steve Cook, P.E.`,
+    photo: `/images/team/stevecook.webp`,
+    role: `Operations Strategic Planning`,
+    location: `Michigan`,
+    phone: `+1 517-204-3099`,
+    email: `steve@rawlinsic.com`,
+    background: `Steve brings more than 40 years of Transportation Industry experience. Steve has led and sponsored numerous initiatives and projects over the span of his career.`,
+    achievements: `As the Engineer of Operations and Maintenance for MDOT, he chaired the MDOT/Industry (MITA) negotiations team resulting in the refinement of specifications/standard plans/construction practices and improved collaboration/communication for process improvement. He was the lead for the development of the MDOT Connected Vehicle and Transportation Systems Management and Operations (TSMO) Implementation and Strategic Plans (based on SHRP2 CMM model) and TSMO Community of Learning, which led to a large team effort to realign and reorganize MDOT for the TSMO Division (section areas: Operations/Maintenance, ITS Program Office, Safety Programs, and Fleet/Facilities). He was the chair of the MDOT $140 million Operations Steering Committee, which provided a dedicated funding source (separate funding from the Capital Road and Bridge Infrastructure Program) for TSMO projects.
+
+He was the lead and project manager for three Unmanned Aerial Systems (UAS) research & development projects that led the development of an NCHRP domestic scan, MDOT UAS Guidance Document and Training Manual, and the purchase of aerial data collection platforms that served various MDOT business models.
+
+He was a lead resource to regions for design/construction/maintenance on Federal-aid bridge and ancillary structure projects. Provided statewide/national training/problem-solving for bridges/structures. Served as AASHTO co-chair on regional/national alignment teams for policy/procedure and guidance documents.
+
+He was MDOT's voting member for both the AASHTO Committee on Transportation System Operations (CTSO) and Committee on Maintenance (MaC), was chair of the Community of Practice on Road Weather Management for CTSO, co-chaired the Bridge Technical Working Group for MaC, and served on the Steering Committee for the AASHTO Snow & Ice Cooperative Program. He developed several research problem statements/deliverables that resulted in NCHRP research projects of which he served on the technical advisory teams.`,
+    categories: ['operations'],
+  },
+  {
     id: 44,
     name: `Renee Barone`,
     photo: `/images/team/renee.webp`,
