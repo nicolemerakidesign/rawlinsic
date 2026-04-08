@@ -80,6 +80,7 @@ const SCOTT = TEAM_MEMBERS.find((m) => m.name.includes("Scott Rawlins"))!;
 
 export default function TeamPage() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [displayedMembers, setDisplayedMembers] = useState<TeamMember[]>(TEAM_MEMBERS);
   const [gridOpacity, setGridOpacity] = useState(1);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -178,17 +179,29 @@ export default function TeamPage() {
     return () => { clearTimeout(timer); if (ob) ob.disconnect(); };
   }, []);
 
+  const getFilteredMembers = useCallback((cat: FilterCategory, query: string) => {
+    let members = cat === "all" ? TEAM_MEMBERS : TEAM_MEMBERS.filter((m) => m.categories.includes(cat));
+    if (query.trim()) {
+      const q = query.toLowerCase().trim();
+      members = members.filter((m) => m.name.toLowerCase().includes(q));
+    }
+    return members;
+  }, []);
+
   const handleFilterChange = useCallback((cat: FilterCategory) => {
     if (cat === activeFilter) return;
     setGridOpacity(0);
     setTimeout(() => {
       setActiveFilter(cat);
-      setDisplayedMembers(
-        cat === "all" ? TEAM_MEMBERS : TEAM_MEMBERS.filter((m) => m.categories.includes(cat))
-      );
+      setDisplayedMembers(getFilteredMembers(cat, searchQuery));
       setGridOpacity(1);
     }, 220);
-  }, [activeFilter]);
+  }, [activeFilter, searchQuery, getFilteredMembers]);
+
+  const handleSearch = useCallback((query: string) => {
+    setSearchQuery(query);
+    setDisplayedMembers(getFilteredMembers(activeFilter, query));
+  }, [activeFilter, getFilteredMembers]);
 
   const navigateMember = useCallback((dir: "prev" | "next") => {
     if (!selectedMember) return;
@@ -330,8 +343,32 @@ export default function TeamPage() {
         {/* Divider */}
         <div className="section-divider"><div className="gold-line" /></div>
 
-        {/* Filter Tabs */}
+        {/* Search + Filter Tabs */}
         <section className="team-filter-section reveal">
+          <div className="team-search-wrap">
+            <svg className="team-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
+            </svg>
+            <input
+              type="text"
+              className="team-search-input"
+              placeholder="Search by name..."
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+              autoComplete="off"
+            />
+            {searchQuery && (
+              <button
+                className="team-search-clear"
+                onClick={() => handleSearch("")}
+                aria-label="Clear search"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
           <div className="team-filter-tabs">
             {FILTERS.map((f) => (
               <button
@@ -356,6 +393,11 @@ export default function TeamPage() {
             className="team-grid"
             style={{ opacity: gridOpacity, transition: "opacity 0.22s ease" }}
           >
+            {displayedMembers.length === 0 && (
+              <div className="team-no-results">
+                <p>No team members found{searchQuery ? ` for "${searchQuery}"` : ""}.</p>
+              </div>
+            )}
             {displayedMembers.map((member) => (
               <button
                 key={member.id}
