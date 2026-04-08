@@ -796,10 +796,10 @@ const AAMPage = () => {
             {/* Left: text */}
             <div className="eco-layout-text">
               <div className="aam-section-header reveal">
-                <p className="section-label"><span className="gold-text">who we partner with</span></p>
+                <p className="section-label"><span className="gold-text">Our Partners</span></p>
                 <h2 className="section-title">Stakeholders We <em>Engage</em></h2>
                 <p className="aam-section-lead" style={{ marginTop: '20px' }}>
-                  We engage multiple stakeholders in the public and private sectors across AAM and UAS to align policy, regulation, operations, and technology; integrate systems and infrastructure; implement/deploy and scale services.
+                  We engage with stakeholders in the public and private sectors across the aviation industry, to align policy, regulation, operations, and technology; integrate systems and infrastructure; and implement safe and scalable services.
                 </p>
                 <p className="aam-section-lead" style={{ fontStyle: 'italic' }}>
                   Click any stakeholder to learn more.
