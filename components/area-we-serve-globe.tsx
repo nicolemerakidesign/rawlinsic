@@ -121,41 +121,41 @@ export default function AreaWeServeGlobe() {
     const GOLD_DEEP = 0xb8963e;
 
     const currentLocations = [
-      { name: "Tennessee, USA", lat: 36.2, lng: -86.8 },
-      { name: "Nevada, USA", lat: 39.5, lng: -119.8 },
-      { name: "North Carolina, USA", lat: 35.8, lng: -78.6 },
-      { name: "Virginia, USA", lat: 37.5, lng: -77.4 },
-      { name: "Michigan, USA", lat: 42.7, lng: -84.6 },
-      { name: "Utah, USA", lat: 40.8, lng: -111.9 },
-      { name: "Louisiana, USA", lat: 30.5, lng: -91.1 },
-      { name: "Delaware, USA", lat: 39.2, lng: -75.5 },
-      { name: "California, USA", lat: 38.6, lng: -121.5 },
-      { name: "Idaho, USA", lat: 43.6, lng: -116.2 },
-      { name: "Washington, USA", lat: 47.0, lng: -122.9 },
-      { name: "Oregon, USA", lat: 44.9, lng: -123.0 },
-      { name: "Minnesota, USA", lat: 44.9, lng: -93.1 },
-      { name: "Wisconsin, USA", lat: 43.1, lng: -89.4 },
-      { name: "Iowa, USA", lat: 41.6, lng: -93.6 },
-      { name: "Illinois, USA", lat: 39.8, lng: -89.7 },
-      { name: "Indiana, USA", lat: 39.8, lng: -86.2 },
-      { name: "Ohio, USA", lat: 39.9, lng: -82.9 },
-      { name: "Pennsylvania, USA", lat: 40.3, lng: -76.9 },
-      { name: "New York, USA", lat: 42.7, lng: -73.8 },
-      { name: "Connecticut, USA", lat: 41.8, lng: -72.7 },
-      { name: "Massachusetts, USA", lat: 42.4, lng: -71.1 },
-      { name: "Maryland, USA", lat: 38.9, lng: -76.5 },
-      { name: "Florida, USA", lat: 30.4, lng: -84.3 },
-      { name: "Arkansas, USA", lat: 34.7, lng: -92.3 },
-      { name: "Colorado, USA", lat: 39.7, lng: -105.0 },
-      { name: "Vermont, USA", lat: 44.3, lng: -72.6 },
-      { name: "New Hampshire, USA", lat: 43.2, lng: -71.5 },
+      { name: "Tennessee, USA", lat: 36.2, lng: -86.8, slug: "tennessee" },
+      { name: "Nevada, USA", lat: 39.5, lng: -119.8, slug: "nevada" },
+      { name: "North Carolina, USA", lat: 35.8, lng: -78.6, slug: "north-carolina" },
+      { name: "Virginia, USA", lat: 37.5, lng: -77.4, slug: "virginia" },
+      { name: "Michigan, USA", lat: 42.7, lng: -84.6, slug: "michigan" },
+      { name: "Utah, USA", lat: 40.8, lng: -111.9, slug: "utah" },
+      { name: "Louisiana, USA", lat: 30.5, lng: -91.1, slug: "louisiana" },
+      { name: "Delaware, USA", lat: 39.2, lng: -75.5, slug: "delaware" },
+      { name: "California, USA", lat: 38.6, lng: -121.5, slug: "" },
+      { name: "Idaho, USA", lat: 43.6, lng: -116.2, slug: "" },
+      { name: "Washington, USA", lat: 47.0, lng: -122.9, slug: "" },
+      { name: "Oregon, USA", lat: 44.9, lng: -123.0, slug: "" },
+      { name: "Minnesota, USA", lat: 44.9, lng: -93.1, slug: "" },
+      { name: "Wisconsin, USA", lat: 43.1, lng: -89.4, slug: "" },
+      { name: "Iowa, USA", lat: 41.6, lng: -93.6, slug: "" },
+      { name: "Illinois, USA", lat: 39.8, lng: -89.7, slug: "" },
+      { name: "Indiana, USA", lat: 39.8, lng: -86.2, slug: "" },
+      { name: "Ohio, USA", lat: 39.9, lng: -82.9, slug: "" },
+      { name: "Pennsylvania, USA", lat: 40.3, lng: -76.9, slug: "" },
+      { name: "New York, USA", lat: 42.7, lng: -73.8, slug: "" },
+      { name: "Connecticut, USA", lat: 41.8, lng: -72.7, slug: "" },
+      { name: "Massachusetts, USA", lat: 42.4, lng: -71.1, slug: "" },
+      { name: "Maryland, USA", lat: 38.9, lng: -76.5, slug: "" },
+      { name: "Florida, USA", lat: 30.4, lng: -84.3, slug: "" },
+      { name: "Arkansas, USA", lat: 34.7, lng: -92.3, slug: "" },
+      { name: "Colorado, USA", lat: 39.7, lng: -105.0, slug: "" },
+      { name: "Vermont, USA", lat: 44.3, lng: -72.6, slug: "" },
+      { name: "New Hampshire, USA", lat: 43.2, lng: -71.5, slug: "" },
     ];
 
     const expansionLocations = [
-      { name: "Dubai, United Arab Emirates", lat: 25.2, lng: 55.3 },
-      { name: "Ottawa, Canada", lat: 45.4, lng: -75.7 },
-      { name: "Oman, Middle East", lat: 23.6, lng: 58.5 },
-      { name: "Barbados, Caribbean", lat: 13.2, lng: -59.5 },
+      { name: "Dubai, United Arab Emirates", lat: 25.2, lng: 55.3, slug: "" },
+      { name: "Ottawa, Canada", lat: 45.4, lng: -75.7, slug: "" },
+      { name: "Oman, Middle East", lat: 23.6, lng: 58.5, slug: "" },
+      { name: "Barbados, Caribbean", lat: 13.2, lng: -59.5, slug: "" },
     ];
 
     // Device check for performance tuning
@@ -387,6 +387,7 @@ export default function AreaWeServeGlobe() {
       g.position.copy(pos);
       g.userData.name = loc.name;
       g.userData.isCurrent = isCurrent;
+      g.userData.slug = loc.slug || "";
       globeGroup.add(g);
 
       const hit = new T.Mesh(new T.SphereGeometry(0.08,8,8), new T.MeshBasicMaterial({visible:false}));
@@ -400,12 +401,37 @@ export default function AreaWeServeGlobe() {
 
     // Interaction
     let isDragging=false, prevMouse={x:0,y:0}, dragVel=0, isOverPin=false, zoomTarget=ZOOM_DEFAULT;
+    let activePin: any = null; // track clicked pin
+    let dragDistance = 0; // track drag distance to distinguish click from drag
     // Track whether globe is at max zoom-out, to allow page scroll
     let atMaxZoomOut = false;
 
-    container.addEventListener("mousedown",(e: MouseEvent)=>{isDragging=true;prevMouse.x=e.clientX;prevMouse.y=e.clientY;dragVel=0;});
-    window.addEventListener("mouseup",()=>{isDragging=false;});
-    container.addEventListener("mouseleave",()=>{isDragging=false;isOverPin=false;tooltip.classList.remove("visible");});
+    container.addEventListener("mousedown",(e: MouseEvent)=>{isDragging=true;prevMouse.x=e.clientX;prevMouse.y=e.clientY;dragVel=0;dragDistance=0;});
+    window.addEventListener("mouseup",(e: MouseEvent)=>{
+      // If barely dragged, treat as click
+      if(isDragging && dragDistance < 5){
+        const rect=canvas.getBoundingClientRect();
+        mouse.x=((e.clientX-rect.left)/rect.width)*2-1;
+        mouse.y=-((e.clientY-rect.top)/rect.height)*2+1;
+        raycaster.setFromCamera(mouse,camera);
+        const hits=raycaster.intersectObjects(pinObjects);
+        if(hits.length>0){
+          const h=hits[0].object, d=h.userData;
+          activePin=d;
+          const wp=new T.Vector3(); h.getWorldPosition(wp); wp.project(camera);
+          const sx=(wp.x*0.5+0.5)*rect.width, sy=(-wp.y*0.5+0.5)*rect.height;
+          const linkHtml = d.slug ? '<a href="/insights/case-studies/'+d.slug+'" class="tooltip-link">View Case Study &rarr;</a>' : '';
+          tooltip.innerHTML='<div class="tooltip-header"><div><span class="tooltip-label">'+(d.isCurrent?"Active":"Expanding")+'</span><span class="tooltip-name">'+d.name+'</span></div><button class="tooltip-close" onclick="this.closest(\'.globe-tooltip\').classList.remove(\'visible\')">&times;</button></div>'+linkHtml;
+          tooltip.style.left=sx+"px"; tooltip.style.top=sy+"px";
+          tooltip.className="globe-tooltip visible "+(d.isCurrent?"active-location":"expansion-location");
+        } else {
+          activePin=null;
+          tooltip.classList.remove("visible");
+        }
+      }
+      isDragging=false;
+    });
+    container.addEventListener("mouseleave",()=>{isDragging=false;isOverPin=false;});
 
     window.addEventListener("mousemove",(e: MouseEvent)=>{
       const rect=canvas.getBoundingClientRect();
@@ -413,25 +439,29 @@ export default function AreaWeServeGlobe() {
       mouse.y=-((e.clientY-rect.top)/rect.height)*2+1;
       if(isDragging&&!isOverPin){
         const dx=e.clientX-prevMouse.x, dy=e.clientY-prevMouse.y;
+        dragDistance+=Math.abs(dx)+Math.abs(dy);
         globeGroup.rotation.y+=dx*DRAG_SENSITIVITY;
         globeGroup.rotation.x+=dy*DRAG_SENSITIVITY*0.5;
         globeGroup.rotation.x=Math.max(-0.8,Math.min(0.8,globeGroup.rotation.x));
         dragVel=dx*DRAG_SENSITIVITY;
         prevMouse.x=e.clientX;prevMouse.y=e.clientY;
       }
+      // Update cursor on hover
       raycaster.setFromCamera(mouse,camera);
       const hits=raycaster.intersectObjects(pinObjects);
       if(hits.length>0){
-        const h=hits[0].object, d=h.userData;
-        isOverPin=true; container.style.cursor="none";
-        const wp=new T.Vector3(); h.getWorldPosition(wp); wp.project(camera);
-        const sx=(wp.x*0.5+0.5)*rect.width, sy=(-wp.y*0.5+0.5)*rect.height;
-        tooltip.innerHTML='<span class="tooltip-label">'+(d.isCurrent?"Active":"Expanding")+'</span><span class="tooltip-name">'+d.name+"</span>";
-        tooltip.style.left=sx+"px"; tooltip.style.top=sy+"px";
-        tooltip.className="globe-tooltip visible "+(d.isCurrent?"active-location":"expansion-location");
+        isOverPin=true; container.style.cursor="pointer";
       } else {
         isOverPin=false; container.style.cursor="none";
-        tooltip.classList.remove("visible");
+      }
+      // Update active tooltip position as globe rotates
+      if(activePin && tooltip.classList.contains("visible")){
+        const pinHit = pinObjects.find((p: any)=>p.userData.name===activePin.name);
+        if(pinHit){
+          const wp=new T.Vector3(); pinHit.getWorldPosition(wp); wp.project(camera);
+          tooltip.style.left=(wp.x*0.5+0.5)*rect.width+"px";
+          tooltip.style.top=(-wp.y*0.5+0.5)*rect.height+"px";
+        }
       }
     });
 
@@ -626,22 +656,41 @@ export default function AreaWeServeGlobe() {
           50% { box-shadow: 0 0 16px rgba(201,168,76,0.7), inset 0 0 6px rgba(201,168,76,0.3); transform: scale(1.15); }
         }
         .globe-zoom-hint {
-          font-size: 15px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; font-style: italic;
+          font-size: 17px; color: rgba(255,255,255,0.75); letter-spacing: 0.5px; font-style: italic;
         }
 
         /* Tooltip */
         .globe-tooltip {
-          position: absolute; pointer-events: none; padding: 10px 16px; border-radius: 8px;
+          position: absolute; pointer-events: auto; padding: 14px 20px; border-radius: 10px;
           font-family: var(--font-dm-sans, 'DM Sans'), sans-serif;
           font-size: 13px; font-weight: 500;
-          white-space: nowrap; opacity: 0; transition: opacity 0.2s ease;
-          z-index: 10; transform: translate(-50%, -140%); line-height: 1.4;
+          white-space: nowrap; opacity: 0; transition: opacity 0.25s ease;
+          z-index: 10; transform: translate(-50%, -160%); line-height: 1.4;
+        }
+        .globe-tooltip .tooltip-header {
+          display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
         }
         .globe-tooltip .tooltip-label {
           font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
           opacity: 0.7; display: block; margin-bottom: 2px;
         }
-        .globe-tooltip .tooltip-name { font-size: 14px; font-weight: 600; display: block; }
+        .globe-tooltip .tooltip-name { font-size: 15px; font-weight: 600; display: block; }
+        .globe-tooltip .tooltip-close {
+          background: none; border: none; font-size: 20px; line-height: 1; cursor: pointer;
+          opacity: 0.6; transition: opacity 0.2s; padding: 0 0 0 4px; flex-shrink: 0;
+        }
+        .globe-tooltip .tooltip-close:hover { opacity: 1; }
+        .globe-tooltip.active-location .tooltip-close { color: #0a1628; }
+        .globe-tooltip.expansion-location .tooltip-close { color: #e8d5a0; }
+        .globe-tooltip .tooltip-link {
+          display: block; margin-top: 10px; padding-top: 10px;
+          border-top: 1px solid rgba(255,255,255,0.15);
+          font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+          text-decoration: none; transition: opacity 0.2s;
+        }
+        .globe-tooltip .tooltip-link:hover { opacity: 0.8; }
+        .globe-tooltip.active-location .tooltip-link { color: #0a1628; border-color: rgba(6,12,22,0.2); }
+        .globe-tooltip.expansion-location .tooltip-link { color: #e8d5a0; }
         .globe-tooltip.active-location {
           background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878); color: #0a1628;
           box-shadow: 0 4px 20px rgba(184,154,62,0.4);
@@ -723,7 +772,7 @@ export default function AreaWeServeGlobe() {
               <div className="globe-legend-item"><div className="globe-legend-dot current"></div><span>Current</span></div>
               <div className="globe-legend-item"><div className="globe-legend-dot expansion"></div><span>Expanding</span></div>
             </div>
-            <div className="globe-zoom-hint">Scroll to zoom · Drag to rotate · Hover pins for details</div>
+            <div className="globe-zoom-hint">Scroll to zoom · Drag to rotate · Click pins for details</div>
           </div>
         </section>
 
