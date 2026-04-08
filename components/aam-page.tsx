@@ -727,12 +727,12 @@ const AAMPage = () => {
                     const ny = node.y;
                     const hl = hoveredLs === node.id;
                     let lx = nx, ly = ny + 50, anchor: string = 'middle';
-                    if (node.id === 'urban-air-taxi') { ly = 170.08; }
-                    if (node.id === 'package-delivery') { ly = 478.04; }
-                    if (node.id === 'residential') { ly = 277.14; }
-                    if (node.id === 'medical') { ly = 413.78; }
-                    if (node.id === 'rural') { ly = 258.38; }
-                    if (node.id === 'city-center') { lx = 780; ly = 358.06; }
+                    if (node.id === 'urban-air-taxi') { ly = 178; }
+                    if (node.id === 'package-delivery') { ly = 490; }
+                    if (node.id === 'residential') { ly = 285; }
+                    if (node.id === 'medical') { ly = 422; }
+                    if (node.id === 'rural') { ly = 266; }
+                    if (node.id === 'city-center') { lx = 780; ly = 366; }
                     return (
                       <text
                         key={`label-${node.id}`}
@@ -740,7 +740,7 @@ const AAMPage = () => {
                         textAnchor={anchor}
                         fill="#ffffff"
                         fontFamily="'DM Sans', sans-serif"
-                        fontSize="13"
+                        fontSize="17"
                         fontWeight="600"
                         letterSpacing="1.5"
                         style={{ textTransform: 'uppercase', pointerEvents: 'none' } as React.CSSProperties}
