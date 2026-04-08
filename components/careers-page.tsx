@@ -134,35 +134,17 @@ export default function CareersPage() {
           {/* ── Hero ── */}
           <section className="cs-hero" id="top">
             <div className="cs-hero-content">
-              <span className="hero-label"><span className="gold-text">Careers at Rawlins</span></span>
+              <span className="hero-label"><span className="gold-text">Join the Team</span></span>
               <h1 className="hero-title">
-                Work With <em>Us</em>
+                Careers at <em>Rawlins Infra Consult</em>
               </h1>
-              <p className="hero-sub" style={{ maxWidth: 680 }}>
-                We&rsquo;re always looking for talented people who are passionate about solving complex challenges in strategy, operations, and technology. If that sounds like you, we&rsquo;d love to connect.
+              <p className="hero-sub" style={{ maxWidth: 720 }}>
+                We bring together professionals who thrive at the intersection of strategy, operations, and technology. If you&rsquo;re driven by meaningful work and want to help organizations navigate complex challenges, we&rsquo;d like to hear from you.
+              </p>
+              <p className="hero-sub" style={{ maxWidth: 720, marginTop: "16px" }}>
+                Tell us about yourself and what kind of work excites you. If you&rsquo;re interested in working with us, please fill out our <Link href="/contact" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>contact form</Link> or email us at <a href="mailto:info@rawlinsic.com" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>info@rawlinsic.com</a>.
               </p>
             </div>
-          </section>
-
-          {/* Divider */}
-          <div className="section-divider">
-            <div className="gold-line" />
-          </div>
-
-          {/* ── CTA ── */}
-          <section className="cs-cta-section reveal">
-            <p className="cs-cta-label">
-              <span className="gold-text">Join Our Team</span>
-            </p>
-            <h2 className="cs-cta-title">
-              Ready to make an <em>impact?</em>
-            </h2>
-            <p className="cs-cta-text">
-              Tell us about yourself and what kind of work excites you. No formal application needed&mdash;just reach out and start a conversation.
-            </p>
-            <Link href="/contact" className="cs-cta-btn">
-              <span>Get In Touch</span>
-            </Link>
           </section>
 
           {/* Divider */}
