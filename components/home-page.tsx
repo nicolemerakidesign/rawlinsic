@@ -368,7 +368,7 @@ export default function HomePage() {
           <p className="hero-sub">
             We partner to strengthen the capabilities essential for high-performing enterprises and modern transportation systems.
           </p>
-          <a href="#pillars" className="auto-hero-btn"><span>Consider Our Approach</span></a>
+          <a href="#pillars" className="auto-hero-btn" style={{ fontSize: "0.85rem", padding: "18px 52px" }}><span>Consider Our Approach</span></a>
         </div>
         <div className="hero-scroll">
           <span>Scroll</span>
@@ -676,7 +676,7 @@ export default function HomePage() {
           <p className="team-desc">
             Our team of professionals bring decades of combined experience working within and alongside complex organizations. We pride ourselves on establishing long-term relationships with our family of clients.
           </p>
-          <Link href="/about/our-people" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}><span>View Our Team</span></Link>
+          <Link href="/about/our-people" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", fontSize: "13px" }}><span>View Our Team</span></Link>
         </div>
       </section>
 
