@@ -401,12 +401,14 @@ export default function AreaWeServeGlobe() {
 
     // Interaction
     let isDragging=false, prevMouse={x:0,y:0}, dragVel=0, isOverPin=false, zoomTarget=ZOOM_DEFAULT;
-    let activePin: any = null; // track hovered/active pin
-    let tooltipLocked = false; // true when user clicked a pin with a case study link
+    let activePin: any = null;
+    let isOverTooltip = false; // mouse is inside the tooltip card
+    let hideTimer: any = null; // delay before hiding tooltip
     // Track whether globe is at max zoom-out, to allow page scroll
     let atMaxZoomOut = false;
 
     function showTooltip(d: any, sx: number, sy: number) {
+      if(hideTimer){ clearTimeout(hideTimer); hideTimer=null; }
       const linkHtml = d.slug ? '<a href="/insights/case-studies/'+d.slug+'" class="tooltip-link">View Case Study &rarr;</a>' : '';
       const closeBtn = d.slug ? '<button class="tooltip-close" id="tooltip-close-btn">&times;</button>' : '';
       tooltip.innerHTML='<div class="tooltip-header"><div><span class="tooltip-label">'+(d.isCurrent?"Active":"Expanding")+'</span><span class="tooltip-name">'+d.name+'</span></div>'+closeBtn+'</div>'+linkHtml;
@@ -414,35 +416,33 @@ export default function AreaWeServeGlobe() {
       tooltip.className="globe-tooltip visible active-location";
       // Attach close handler
       const closeEl = document.getElementById("tooltip-close-btn");
-      if(closeEl) closeEl.addEventListener("click",(e)=>{ e.stopPropagation(); tooltipLocked=false; activePin=null; tooltip.classList.remove("visible"); });
+      if(closeEl) closeEl.addEventListener("click",(e)=>{ e.stopPropagation(); dismissTooltip(); });
     }
+
+    function dismissTooltip() {
+      if(hideTimer){ clearTimeout(hideTimer); hideTimer=null; }
+      activePin=null; isOverTooltip=false;
+      tooltip.classList.remove("visible");
+    }
+
+    function scheduleHide() {
+      if(hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(()=>{
+        // Only hide if mouse is not over tooltip or pin
+        if(!isOverPin && !isOverTooltip){ dismissTooltip(); }
+        hideTimer=null;
+      }, 400);
+    }
+
+    // Tooltip hover: keep it open when mouse enters the card
+    tooltip.addEventListener("mouseenter",()=>{ isOverTooltip=true; if(hideTimer){ clearTimeout(hideTimer); hideTimer=null; } });
+    tooltip.addEventListener("mouseleave",()=>{ isOverTooltip=false; scheduleHide(); });
 
     container.addEventListener("mousedown",(e: MouseEvent)=>{isDragging=true;prevMouse.x=e.clientX;prevMouse.y=e.clientY;});
     window.addEventListener("mouseup",()=>{isDragging=false;});
     container.addEventListener("mouseleave",()=>{
       isDragging=false;isOverPin=false;
-      if(!tooltipLocked){ activePin=null; tooltip.classList.remove("visible"); }
-    });
-
-    // Click handler for locking tooltips with case study links
-    container.addEventListener("click",(e: MouseEvent)=>{
-      const rect=canvas.getBoundingClientRect();
-      mouse.x=((e.clientX-rect.left)/rect.width)*2-1;
-      mouse.y=-((e.clientY-rect.top)/rect.height)*2+1;
-      raycaster.setFromCamera(mouse,camera);
-      const hits=raycaster.intersectObjects(pinObjects);
-      if(hits.length>0){
-        const h=hits[0].object, d=h.userData;
-        if(d.slug){
-          // Lock the tooltip open so the link is clickable
-          activePin=d; tooltipLocked=true;
-          const wp=new T.Vector3(); h.getWorldPosition(wp); wp.project(camera);
-          showTooltip(d,(wp.x*0.5+0.5)*rect.width,(-wp.y*0.5+0.5)*rect.height);
-        }
-      } else {
-        // Clicked empty space — dismiss locked tooltip
-        tooltipLocked=false; activePin=null; tooltip.classList.remove("visible");
-      }
+      scheduleHide();
     });
 
     window.addEventListener("mousemove",(e: MouseEvent)=>{
@@ -457,25 +457,23 @@ export default function AreaWeServeGlobe() {
         dragVel=dx*DRAG_SENSITIVITY;
         prevMouse.x=e.clientX;prevMouse.y=e.clientY;
       }
-      // Hover detection
+      // Hover detection on pins
       raycaster.setFromCamera(mouse,camera);
       const hits=raycaster.intersectObjects(pinObjects);
       if(hits.length>0){
         const h=hits[0].object, d=h.userData;
         isOverPin=true; container.style.cursor="pointer";
-        // Show tooltip on hover (unless a different pin is locked)
-        if(!tooltipLocked || (activePin && activePin.name === d.name)){
-          activePin=d;
-          const wp=new T.Vector3(); h.getWorldPosition(wp); wp.project(camera);
-          showTooltip(d,(wp.x*0.5+0.5)*rect.width,(-wp.y*0.5+0.5)*rect.height);
-        }
+        if(hideTimer){ clearTimeout(hideTimer); hideTimer=null; }
+        activePin=d;
+        const wp=new T.Vector3(); h.getWorldPosition(wp); wp.project(camera);
+        showTooltip(d,(wp.x*0.5+0.5)*rect.width,(-wp.y*0.5+0.5)*rect.height);
       } else {
         isOverPin=false; container.style.cursor="none";
-        // Only hide if not locked
-        if(!tooltipLocked){ activePin=null; tooltip.classList.remove("visible"); }
+        // Start delayed hide — gives user time to move cursor to tooltip
+        if(activePin && !isOverTooltip){ scheduleHide(); }
       }
-      // Update locked tooltip position as globe rotates
-      if(tooltipLocked && activePin && tooltip.classList.contains("visible")){
+      // Keep tooltip positioned at its pin while visible
+      if(activePin && tooltip.classList.contains("visible")){
         const pinHit = pinObjects.find((p: any)=>p.userData.name===activePin.name);
         if(pinHit){
           const wp=new T.Vector3(); pinHit.getWorldPosition(wp); wp.project(camera);
@@ -538,7 +536,7 @@ export default function AreaWeServeGlobe() {
     function animate(){
       requestAnimationFrame(animate);
       const t=clock.getElapsedTime();
-      if(tooltipLocked||isOverPin){dragVel=0;}
+      if(isOverPin||isOverTooltip||activePin){dragVel=0;}
       else if(!isDragging){dragVel*=0.96;globeGroup.rotation.y+=AUTO_SPEED+dragVel;}
       camera.position.z+=(zoomTarget-camera.position.z)*0.08;
 
@@ -692,7 +690,7 @@ export default function AreaWeServeGlobe() {
         }
         .globe-tooltip .tooltip-label {
           font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
-          opacity: 0.7; display: block; margin-bottom: 2px;
+          opacity: 0.8; display: block; margin-bottom: 2px; font-weight: 700;
         }
         .globe-tooltip .tooltip-name { font-size: 15px; font-weight: 600; display: block; }
         .globe-tooltip .tooltip-close {
