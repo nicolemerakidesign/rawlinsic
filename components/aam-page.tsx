@@ -1124,12 +1124,12 @@ const AAMPage = () => {
           </div>
           <div className="aam-pillars-grid aam-portfolio-tiles">
             {[
-              { title: "AAM Services", img: DRONEMOUNTAINS_IMG, items: aamServices, idx: 0 },
-              { title: "UAS Services", img: PLANNING2_IMG, items: uasServices, idx: 1 },
+              { title: "AAM Services", img: DRONEMOUNTAINS_IMG, items: aamServices, idx: 0, imgPos: "center 25%" },
+              { title: "UAS Services", img: PLANNING2_IMG, items: uasServices, idx: 1, imgPos: "center 20%" },
             ].map((svc) => (
               <div className={`aam-pillar-card${openServices.has(svc.idx) ? " open" : ""}`} key={svc.title}>
                 <div className="aam-pillar-img-wrap">
-                  <Image src={svc.img} alt={svc.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="aam-pillar-img" />
+                  <Image src={svc.img} alt={svc.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="aam-pillar-img" style={{ objectPosition: svc.imgPos }} />
                   <div className="aam-pillar-img-overlay" />
                 </div>
                 <div className="aam-pillar-bar" />
