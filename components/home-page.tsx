@@ -68,21 +68,21 @@ const journey = [
   },
   {
     phase: "Evolution",
-    title: "Expanded Advisory Capabilities",
+    title: "Advisory Capabilities",
     text: "We partner with enterprises to modernize processes, empower team members, and embrace new technologies—coordinating these actions to achieve meaningful results. We pride ourselves on establishing long-term relationships with our family of clients.",
     bg: "/images/pages/journey-evolution.jpg",
   },
   {
     phase: "Innovation",
-    title: "Data Governance, Automation, & AI",
-    text: "We help agencies navigate governance structures, improve data practices, incorporate analytics, and use emerging tools such as AI. Our automation and integration specialists streamline workflows, enabling people to focus on the uniquely human work that matters most for organizational success.",
-    bg: "/images/pages/journey-innovation.jpg",
-  },
-  {
-    phase: "Frontier",
     title: "Advanced Air Mobility",
     text: "We guide the planning, implementation, and integration of advanced air mobility and uncrewed aircraft systems within existing transport networks, supporting the development of multimodal connected communities.",
     bg: "/images/pages/journey-frontier.jpg",
+  },
+  {
+    phase: "Frontier",
+    title: "Data Governance, Automation, & AI",
+    text: "We help agencies navigate governance structures, improve data practices, incorporate analytics, and use emerging tools such as AI. Our automation and integration specialists streamline workflows, enabling people to focus on the uniquely human work that matters most for organizational success.",
+    bg: "/images/pages/journey-innovation.jpg",
   },
 ];
 

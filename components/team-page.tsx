@@ -306,7 +306,6 @@ export default function TeamPage() {
                 <div className="team-card-info">
                   <span className="team-card-name">Scott Rawlins, P.E.</span>
                   <span className="team-card-title-label">Founder</span>
-                  <span className="team-card-location">Nevada</span>
                 </div>
               </button>
             </div>
@@ -317,7 +316,7 @@ export default function TeamPage() {
                   <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="currentColor"/>
                 </svg>
                 <p className="scott-featured-quote-text">
-                  We&rsquo;ve built this firm on trust&mdash;working in close partnership with our clients to understand their reality and bring the right mix of perspectives, delivering outcomes that truly fit their needs.
+                  We&rsquo;ve built this firm on trust&mdash;working in close partnership with our clients to understand your reality and bring the right mix of perspectives, delivering outcomes that truly fit your needs.&rdquo;
                 </p>
                 <div className="scott-featured-quote-attribution">
                   <span className="scott-featured-quote-dash">&mdash;</span>
@@ -381,7 +380,6 @@ export default function TeamPage() {
                   <span className="team-card-name">{member.name}</span>
                   {member.title && <span className="team-card-title-label">{member.title}</span>}
                   <span className="team-card-role">{member.role}</span>
-                  <span className="team-card-location">{member.location}</span>
                 </div>
               </button>
             ))}
@@ -447,7 +445,7 @@ export default function TeamPage() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline", marginRight: "4px", verticalAlign: "middle" }}>
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
                 </svg>
-                {selectedMember.location}
+                Located in {selectedMember.location}
               </p>
               <div className="team-popup-divider" />
               {selectedMember.phone && (
