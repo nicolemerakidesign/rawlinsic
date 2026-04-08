@@ -46,7 +46,7 @@ const pillarCards = [
   {
     title: "UAS Data Collection",
     desc: "",
-    bullets: ["Infrastructure inspection", "Construction inspection & monitoring", "Environmental monitoring", "Aerial surveying & mapping", "Disaster response", "Incident scene management"],
+    bullets: ["Infrastructure Inspection", "Construction Inspection & Monitoring", "Environmental Monitoring", "Aerial Surveying & Mapping", "Disaster Response", "Incident Scene Management"],
     img: DRONE_FLIGHT_IMG,
     imgPos: "",
   },
