@@ -32,7 +32,7 @@ const pillarCards = [
   {
     title: "AAM",
     desc: "",
-    bullets: ["Urban Air Mobility", "Regional Air Mobility", "Multi-modal Facilities", "Cargo Transport", "Emergency Medical Transport", "Business Travel", "Tourism & Sightseeing"],
+    bullets: ["Urban & Regional Connectivity", "Workforce Mobility", "Emergency Medical Transport", "Tourism & Sightseeing"],
     img: CITY_AERIAL_IMG,
   },
   {
@@ -44,7 +44,7 @@ const pillarCards = [
   {
     title: "UAS Data Collection",
     desc: "",
-    bullets: ["Infrastructure inspection", "Construction inspection & monitoring", "Environmental monitoring", "Aerial surveying & mapping", "Disaster response"],
+    bullets: ["Infrastructure inspection", "Construction inspection & monitoring", "Environmental monitoring", "Aerial surveying & mapping", "Disaster response", "Incident scene management"],
     img: DRONE_FLIGHT_IMG,
   },
 ];
@@ -738,7 +738,7 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Value Delivery</span></p>
-            <h2 className="section-title">Where we drive <em>impact</em> in AAM and UAS</h2>
+            <h2 className="section-title">Where we drive <em>impact</em> in aviation</h2>
             <button
               className={`intro-expand-btn${valueOpen ? " expanded" : ""}`}
               aria-label="Learn more"
