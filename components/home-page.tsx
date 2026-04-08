@@ -363,7 +363,7 @@ export default function HomePage() {
         <div className="hero-content">
           <span className="hero-label"><span className="gold-text">Trusted Advisor &bull; Global Consultancy</span></span>
           <h1 className="hero-title">
-            Providing trusted advice at the intersection of <em>strategy, operations,</em> and <em>technology</em>
+            Providing trusted advice at the intersection of <em>strategy, operations,</em> &amp; <em>technology</em>
           </h1>
           <p className="hero-sub">
             We partner to strengthen the capabilities essential for high-performing enterprises and modern transportation systems.
@@ -671,7 +671,7 @@ export default function HomePage() {
             <span className="gold-text">Our People</span>
           </p>
           <h2 className="section-title">
-            Meet the Team
+            Meet the <em>team</em>
           </h2>
           <p className="team-desc">
             Our team of professionals bring decades of combined experience working within and alongside complex organizations. We pride ourselves on establishing long-term relationships with our family of clients.
