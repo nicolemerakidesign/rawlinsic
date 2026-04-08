@@ -113,13 +113,15 @@ const lsIcons: Record<string, string> = {
   city: '<g><rect x="2" y="10" width="5" height="11" stroke="currentColor" stroke-width="1" fill="none"/><rect x="8" y="4" width="5" height="17" stroke="currentColor" stroke-width="1" fill="none"/><rect x="14" y="7" width="5" height="14" stroke="currentColor" stroke-width="1" fill="none"/><rect x="20" y="12" width="3" height="9" stroke="currentColor" stroke-width="0.8" fill="none"/></g>',
 };
 
+// Node positions: direct SVG pixel coords from Illustrator (viewBox 0 0 1000 660)
+// x/y are stored as raw pixels, used directly (no multiplier)
 const landscapeNodes = [
-  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 17.5, y: 20.3, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
-  { id: 'package-delivery', label: 'Package Delivery', x: 19.3, y: 69.8, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
-  { id: 'residential', label: 'Residential Areas', x: 49.2, y: 24.5, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
-  { id: 'medical', label: 'Medical Supplies', x: 48.8, y: 60.5, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
-  { id: 'rural', label: 'Rural & Agriculture', x: 77.3, y: 22.1, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
-  { id: 'city-center', label: 'City Center', x: 70.2, y: 62.8, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
+  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 174.83, y: 121.83, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
+  { id: 'package-delivery', label: 'Package Delivery', x: 192.74, y: 418.69, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
+  { id: 'residential', label: 'Residential Areas', x: 491.83, y: 146.83, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
+  { id: 'medical', label: 'Medical Supplies', x: 487.76, y: 362.72, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
+  { id: 'rural', label: 'Rural & Agriculture', x: 773.2, y: 132.58, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
+  { id: 'city-center', label: 'City Center', x: 702, y: 377.09, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
 ];
 
 const landscapePaths = [
@@ -393,7 +395,7 @@ const AAMPage = () => {
             </div>
             <div className="aam-overview-right reveal rd1">
               <div className="ls-vis-wrapper">
-                <svg viewBox="0 -60 1000 660" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', width: '110%', height: 'auto', marginLeft: '-5%' }}>
+                <svg viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', width: '110%', height: 'auto', marginLeft: '-5%' }}>
                   <defs>
                     <linearGradient id="lsGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stopColor="#c9a84c" />
@@ -440,10 +442,10 @@ const AAMPage = () => {
                   </g>
 
 
-                  {/* ── SCENE: Building silhouettes — positions from Illustrator SVG (Y offset -60) ── */}
+                  {/* ── SCENE: Building silhouettes — exact Illustrator coords ── */}
                   {/* Airport/Urban Air Taxi */}
                   <g opacity={hoveredLs === 'urban-air-taxi' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <g transform="translate(93.49,165.83)">
+                    <g transform="translate(93.49,225.83)">
                       <ellipse cx="0" cy="0" rx="18" ry="12" fill="#c0bcb6" />
                       <line x1="-18" y1="-5" x2="-34" y2="-13" stroke="#c0bcb6" strokeWidth="2.5" />
                       <line x1="18" y1="-5" x2="34" y2="-13" stroke="#c0bcb6" strokeWidth="2.5" />
@@ -455,21 +457,21 @@ const AAMPage = () => {
                       <circle cx="0" cy="-7" r="4" fill="#c9a84c" />
                       <path d="M-6 9 L-4 0 L4 0 L6 9Z" fill="rgba(201,168,76,0.8)" />
                     </g>
-                    <path d="M79 250 Q79 210 169 198 Q259 210 259 250 L259 280 L79 280Z" fill="#b8b4ae" stroke="#ccc8c2" strokeWidth="1" />
-                    <rect x="97" y="228" width="140" height="52" fill="#9e9a94" stroke="#b8b4ae" strokeWidth="0.5" />
-                    <rect x="114" y="238" width="28" height="14" fill="#87837d" />
-                    <rect x="154" y="238" width="28" height="14" fill="#87837d" />
-                    <rect x="194" y="238" width="28" height="14" fill="#87837d" />
-                    <rect x="131" y="260" width="14" height="20" fill="#7a766f" />
-                    <rect x="151" y="260" width="14" height="20" fill="#7a766f" />
-                    <rect x="171" y="260" width="14" height="20" fill="#7a766f" />
-                    <rect x="281" y="195" width="16" height="85" fill="#c0bcb6" />
-                    <rect x="273" y="180" width="32" height="20" rx="3" fill="#ccc8c2" stroke="#d8d4ce" strokeWidth="0.8" />
-                    <rect x="277" y="185" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="285" y="185" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="293" y="185" width="6" height="10" fill="#7eb8d0" />
-                    <rect x="267" y="250" width="50" height="30" fill="#a8a49e" />
-                    <g transform="translate(165,171) rotate(-10)">
+                    <path d="M79.04 309.94 Q79.04 270 169.04 258 Q259.04 270 259.04 309.94 L259.04 339.94 L79.04 339.94Z" fill="#b8b4ae" stroke="#ccc8c2" strokeWidth="1" />
+                    <rect x="97.04" y="287.94" width="140" height="52" fill="#9e9a94" stroke="#b8b4ae" strokeWidth="0.5" />
+                    <rect x="114.04" y="297.94" width="28" height="14" fill="#87837d" />
+                    <rect x="154.04" y="297.94" width="28" height="14" fill="#87837d" />
+                    <rect x="194.04" y="297.94" width="28" height="14" fill="#87837d" />
+                    <rect x="131.04" y="319.94" width="14" height="20" fill="#7a766f" />
+                    <rect x="151.04" y="319.94" width="14" height="20" fill="#7a766f" />
+                    <rect x="171.04" y="319.94" width="14" height="20" fill="#7a766f" />
+                    <rect x="281.04" y="254.94" width="16" height="85" fill="#c0bcb6" />
+                    <rect x="273.04" y="239.94" width="32" height="20" rx="3" fill="#ccc8c2" stroke="#d8d4ce" strokeWidth="0.8" />
+                    <rect x="277.04" y="244.94" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="285.04" y="244.94" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="293.04" y="244.94" width="6" height="10" fill="#7eb8d0" />
+                    <rect x="267.04" y="309.94" width="50" height="30" fill="#a8a49e" />
+                    <g transform="translate(165,230) rotate(-10)">
                       <ellipse cx="30" cy="8" rx="32" ry="6" fill="#ccc8c2" />
                       <path d="M18 8 L28 -14 L36 -12 L26 8Z" fill="#b8b4ae" />
                       <path d="M18 8 L28 30 L36 28 L26 8Z" fill="#b8b4ae" />
@@ -480,12 +482,12 @@ const AAMPage = () => {
 
                   {/* Package Delivery */}
                   <g opacity={hoveredLs === 'package-delivery' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="114.5" y="449" width="170" height="85" fill="#b0aca6" />
-                    <rect x="114.5" y="434" width="170" height="20" fill="#a8a49e" />
-                    <rect x="144.5" y="489" width="28" height="45" fill="#87837d" />
-                    <rect x="182.5" y="489" width="28" height="45" fill="#87837d" />
-                    <rect x="220.5" y="489" width="28" height="45" fill="#87837d" />
-                    <g transform="translate(121.49,342)">
+                    <rect x="114.5" y="509.11" width="170" height="85" fill="#b0aca6" />
+                    <rect x="114.5" y="494.11" width="170" height="20" fill="#a8a49e" />
+                    <rect x="144.5" y="549.11" width="28" height="45" fill="#87837d" />
+                    <rect x="182.5" y="549.11" width="28" height="45" fill="#87837d" />
+                    <rect x="220.5" y="549.11" width="28" height="45" fill="#87837d" />
+                    <g transform="translate(121.49,402.03)">
                       <ellipse cx="0" cy="0" rx="16" ry="7" fill="#ccc8c2" />
                       <line x1="-16" y1="0" x2="-30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
                       <line x1="16" y1="0" x2="30" y2="-7" stroke="#c0bcb6" strokeWidth="2.5" />
@@ -502,69 +504,69 @@ const AAMPage = () => {
 
                   {/* Residential */}
                   <g opacity={hoveredLs === 'residential' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="411.83" y="161.83" width="38" height="28" fill="#b8b4ae" />
-                    <path d="M405.83 161.83 L430.83 138.83 L455.83 161.83Z" fill="#ada9a3" />
-                    <rect x="422.83" y="172.83" width="10" height="17" fill="#8a8680" />
-                    <rect x="461.83" y="148.83" width="50" height="41" fill="#c0bcb6" />
-                    <path d="M455.83 148.83 L486.83 121.83 L517.83 148.83Z" fill="#b0aca6" />
-                    <rect x="479.83" y="172.83" width="13" height="17" fill="#8a8680" />
-                    <rect x="466.83" y="156.83" width="9" height="9" fill="#7eb8d0" />
-                    <rect x="521.83" y="144.83" width="55" height="45" fill="#bcb8b2" />
-                    <path d="M515.83 144.83 L548.83 116.83 L582.83 144.83Z" fill="#ada9a3" />
-                    <rect x="527.83" y="152.83" width="9" height="9" fill="#7eb8d0" />
-                    <rect x="541.83" y="152.83" width="9" height="9" fill="#7eb8d0" />
-                    <rect x="557.83" y="152.83" width="9" height="9" fill="#7eb8d0" />
-                    <rect x="543.83" y="172.83" width="12" height="17" fill="#8a8680" />
-                    <circle cx="454.83" cy="174.83" r="10" fill="#5a945a" />
-                    <circle cx="516.83" cy="176.83" r="8" fill="#4f8a4f" />
-                    <circle cx="586.83" cy="174.83" r="11" fill="#558e55" />
-                    <line x1="401.83" y1="189.83" x2="601.83" y2="189.83" stroke="rgba(232,230,225,0.4)" strokeWidth="1" />
+                    <rect x="411.83" y="221.83" width="38" height="28" fill="#b8b4ae" />
+                    <path d="M405.83 221.83 L430.83 198.83 L455.83 221.83Z" fill="#ada9a3" />
+                    <rect x="422.83" y="232.83" width="10" height="17" fill="#8a8680" />
+                    <rect x="461.83" y="208.83" width="50" height="41" fill="#c0bcb6" />
+                    <path d="M455.83 208.83 L486.83 181.83 L517.83 208.83Z" fill="#b0aca6" />
+                    <rect x="479.83" y="232.83" width="13" height="17" fill="#8a8680" />
+                    <rect x="466.83" y="216.83" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="521.83" y="204.83" width="55" height="45" fill="#bcb8b2" />
+                    <path d="M515.83 204.83 L548.83 176.83 L582.83 204.83Z" fill="#ada9a3" />
+                    <rect x="527.83" y="212.83" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="541.83" y="212.83" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="557.83" y="212.83" width="9" height="9" fill="#7eb8d0" />
+                    <rect x="543.83" y="232.83" width="12" height="17" fill="#8a8680" />
+                    <circle cx="454.83" cy="234.83" r="10" fill="#5a945a" />
+                    <circle cx="516.83" cy="236.83" r="8" fill="#4f8a4f" />
+                    <circle cx="586.83" cy="234.83" r="11" fill="#558e55" />
+                    <line x1="401.83" y1="249.83" x2="601.83" y2="249.83" stroke="rgba(232,230,225,0.4)" strokeWidth="1" />
                   </g>
 
                   {/* City Center */}
                   <g opacity={hoveredLs === 'city-center' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="712.49" y="360.09" width="32" height="120" fill="#b8b4ae" />
-                    <rect x="749.49" y="338.09" width="28" height="142" fill="#b0aca6" />
-                    <rect x="782.49" y="380.09" width="22" height="100" fill="#a8a49e" />
-                    <rect x="809.49" y="320.09" width="38" height="160" fill="#c0bcb6" />
-                    <rect x="852.49" y="360.09" width="24" height="120" fill="#aca8a2" />
-                    <rect x="881.49" y="390.09" width="20" height="90" fill="#9e9a94" />
-                    <rect x="717.49" y="370.09" width="6" height="6" fill="#c9a84c" />
-                    <rect x="725.49" y="370.09" width="6" height="6" fill="#c9a84c" />
-                    <rect x="717.49" y="382.09" width="6" height="6" fill="#c9a84c" />
-                    <rect x="814.49" y="330.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="825.49" y="330.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="814.49" y="346.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="825.49" y="346.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="814.49" y="362.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
-                    <rect x="906.49" y="360.09" width="48" height="120" fill="#c2872e" rx="2" />
-                    <rect x="912.49" y="370.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="927.49" y="370.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="912.49" y="386.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="927.49" y="386.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="912.49" y="402.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
-                    <rect x="927.49" y="402.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="712.49" y="420.09" width="32" height="120" fill="#b8b4ae" />
+                    <rect x="749.49" y="398.09" width="28" height="142" fill="#b0aca6" />
+                    <rect x="782.49" y="440.09" width="22" height="100" fill="#a8a49e" />
+                    <rect x="809.49" y="380.09" width="38" height="160" fill="#c0bcb6" />
+                    <rect x="852.49" y="420.09" width="24" height="120" fill="#aca8a2" />
+                    <rect x="881.49" y="450.09" width="20" height="90" fill="#9e9a94" />
+                    <rect x="717.49" y="430.09" width="6" height="6" fill="#c9a84c" />
+                    <rect x="725.49" y="430.09" width="6" height="6" fill="#c9a84c" />
+                    <rect x="717.49" y="442.09" width="6" height="6" fill="#c9a84c" />
+                    <rect x="814.49" y="390.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="825.49" y="390.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="814.49" y="406.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="825.49" y="406.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="814.49" y="422.09" width="7" height="7" fill="rgba(201,168,76,0.6)" />
+                    <rect x="906.49" y="420.09" width="48" height="120" fill="#c2872e" rx="2" />
+                    <rect x="912.49" y="430.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="927.49" y="430.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="912.49" y="446.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="927.49" y="446.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="912.49" y="462.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
+                    <rect x="927.49" y="462.09" width="9" height="9" fill="rgba(0,0,0,0.4)" />
                   </g>
 
                   {/* Medical */}
                   <g opacity={hoveredLs === 'medical' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="489.68" y="415.05" width="112.25" height="99.78" fill="#b8b4ae" />
-                    <rect x="489.68" y="402.58" width="112.25" height="17.46" fill="#c0bcb6" />
-                    <rect x="527.1" y="380.13" width="37.42" height="27.44" rx="3.74" fill="#d4443b" />
-                    <rect x="540.82" y="385.12" width="9.98" height="17.46" fill="#fff" />
-                    <rect x="532.09" y="391.36" width="27.44" height="4.99" fill="#fff" />
-                    <rect x="499.66" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="519.62" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="539.57" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="559.53" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="579.48" y="425.03" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="499.66" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="519.62" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="539.57" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="559.53" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="579.48" y="452.47" width="12.47" height="12.47" fill="#7eb8d0" />
-                    <rect x="529.59" y="477.42" width="32.43" height="37.42" fill="#8a8680" />
-                    <g transform="translate(446.46,399.18)">
+                    <rect x="489.68" y="475.05" width="112.25" height="99.78" fill="#b8b4ae" />
+                    <rect x="489.68" y="462.58" width="112.25" height="17.46" fill="#c0bcb6" />
+                    <rect x="527.1" y="440.13" width="37.42" height="27.44" rx="3.74" fill="#d4443b" />
+                    <rect x="540.82" y="445.12" width="9.98" height="17.46" fill="#fff" />
+                    <rect x="532.09" y="451.36" width="27.44" height="4.99" fill="#fff" />
+                    <rect x="499.66" y="485.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="519.62" y="485.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="539.57" y="485.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="559.53" y="485.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="579.48" y="485.03" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="499.66" y="512.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="519.62" y="512.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="539.57" y="512.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="559.53" y="512.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="579.48" y="512.47" width="12.47" height="12.47" fill="#7eb8d0" />
+                    <rect x="529.59" y="537.42" width="32.43" height="37.42" fill="#8a8680" />
+                    <g transform="translate(446.46,459.18)">
                       <ellipse cx="0" cy="0" rx="20" ry="8.73" fill="#ccc8c2" />
                       <line x1="-20" y1="0" x2="-37.5" y2="-8.73" stroke="#c0bcb6" strokeWidth="2.5" />
                       <line x1="20" y1="0" x2="37.5" y2="-8.73" stroke="#c0bcb6" strokeWidth="2.5" />
@@ -581,23 +583,23 @@ const AAMPage = () => {
 
                   {/* Rural */}
                   <g opacity={hoveredLs === 'rural' ? 1 : 0.85} style={{ transition: 'opacity 0.3s' }}>
-                    <rect x="723.49" y="128.08" width="55" height="45" fill="#bcb8b2" />
-                    <path d="M717.49 128.08 L750.49 101.08 L784.49 128.08Z" fill="#b09870" />
-                    <rect x="741.49" y="149.08" width="16" height="24" fill="#8a8680" />
-                    <rect x="788.49" y="111.08" width="20" height="62" rx="5" fill="#b8b4ae" />
-                    <ellipse cx="798.49" cy="111.08" rx="10" ry="6" fill="#ada9a3" />
-                    <line x1="828.49" y1="105.08" x2="828.49" y2="173.08" stroke="#c0bcb6" strokeWidth="2.5" />
-                    <g transform="translate(828.49,105.08)">
+                    <rect x="723.49" y="188.08" width="55" height="45" fill="#bcb8b2" />
+                    <path d="M717.49 188.08 L750.49 161.08 L784.49 188.08Z" fill="#b09870" />
+                    <rect x="741.49" y="209.08" width="16" height="24" fill="#8a8680" />
+                    <rect x="788.49" y="171.08" width="20" height="62" rx="5" fill="#b8b4ae" />
+                    <ellipse cx="798.49" cy="171.08" rx="10" ry="6" fill="#ada9a3" />
+                    <line x1="828.49" y1="165.08" x2="828.49" y2="233.08" stroke="#c0bcb6" strokeWidth="2.5" />
+                    <g transform="translate(828.49,165.08)">
                       <line x1="0" y1="0" x2="-16" y2="-20" stroke="#b8b4ae" strokeWidth="2" />
                       <line x1="0" y1="0" x2="20" y2="-12" stroke="#b8b4ae" strokeWidth="2" />
                       <line x1="0" y1="0" x2="10" y2="20" stroke="#b8b4ae" strokeWidth="2" />
                       <line x1="0" y1="0" x2="-20" y2="10" stroke="#b8b4ae" strokeWidth="2" />
                     </g>
-                    <path d="M703.49 153.08 L713.49 118.08 L723.49 153.08Z" fill="#5a945a" />
-                    <path d="M691.49 158.08 L698.49 131.08 L705.49 158.08Z" fill="#4f8a4f" />
-                    <circle cx="853.49" cy="155.08" r="10" fill="#558e55" />
-                    <circle cx="871.49" cy="159.08" r="7" fill="#4f8a4f" />
-                    <line x1="688.49" y1="173.08" x2="883.49" y2="173.08" stroke="rgba(232,230,225,0.35)" strokeWidth="1" />
+                    <path d="M703.49 213.08 L713.49 178.08 L723.49 213.08Z" fill="#5a945a" />
+                    <path d="M691.49 218.08 L698.49 191.08 L705.49 218.08Z" fill="#4f8a4f" />
+                    <circle cx="853.49" cy="215.08" r="10" fill="#558e55" />
+                    <circle cx="871.49" cy="219.08" r="7" fill="#4f8a4f" />
+                    <line x1="688.49" y1="233.08" x2="883.49" y2="233.08" stroke="rgba(232,230,225,0.35)" strokeWidth="1" />
                   </g>
 
 
@@ -605,8 +607,8 @@ const AAMPage = () => {
                   {landscapePaths.map((fp, i) => {
                     const from = landscapeNodes.find(n => n.id === fp.from)!;
                     const to = landscapeNodes.find(n => n.id === fp.to)!;
-                    const x1 = from.x * 10, y1 = from.y * 6;
-                    const x2 = to.x * 10, y2 = to.y * 6;
+                    const x1 = from.x, y1 = from.y;
+                    const x2 = to.x, y2 = to.y;
                     let d: string;
                     // Special case: urban-air-taxi → rural — arc ABOVE residential
                     if (fp.from === 'urban-air-taxi' && fp.to === 'rural') {
@@ -656,8 +658,8 @@ const AAMPage = () => {
 
                   {/* ── INTERACTIVE NODES ── */}
                   {landscapeNodes.map((node, ni) => {
-                    const nx = node.x * 10;
-                    const ny = node.y * 6;
+                    const nx = node.x;
+                    const ny = node.y;
                     const hl = hoveredLs === node.id;
                     const isMed = node.id === 'medical';
                     const sc = isMed && hl ? '#d4443b' : hl ? '#e8d5a0' : 'rgba(201,168,76,0.4)';
@@ -692,16 +694,16 @@ const AAMPage = () => {
 
                   {/* ── LABELS (rendered last = on top of everything) ── */}
                   {landscapeNodes.map((node) => {
-                    const nx = node.x * 10;
-                    const ny = node.y * 6;
+                    const nx = node.x;
+                    const ny = node.y;
                     const hl = hoveredLs === node.id;
-                    let lx = nx, ly = ny + 40, anchor: string = 'middle';
-                    if (node.id === 'urban-air-taxi') { ly = 110; }
-                    if (node.id === 'package-delivery') { ly = 418; }
-                    if (node.id === 'residential') { ly = 217; }
-                    if (node.id === 'medical') { ly = 354; }
-                    if (node.id === 'rural') { ly = 198; }
-                    if (node.id === 'city-center') { ly = 298; }
+                    let lx = nx, ly = ny + 50, anchor: string = 'middle';
+                    if (node.id === 'urban-air-taxi') { ly = 170.08; }
+                    if (node.id === 'package-delivery') { ly = 478.04; }
+                    if (node.id === 'residential') { ly = 277.14; }
+                    if (node.id === 'medical') { ly = 413.78; }
+                    if (node.id === 'rural') { ly = 258.38; }
+                    if (node.id === 'city-center') { lx = 780; ly = 358.06; }
                     return (
                       <text
                         key={`label-${node.id}`}
