@@ -30,7 +30,7 @@ const DRONEMOUNTAINS_IMG = "/images/pages/aam-drone-mountains.jpg";
 
 const pillarCards = [
   {
-    title: "AAM",
+    title: "Advanced Air Mobility",
     desc: "",
     bullets: ["Urban & Regional Connectivity", "Workforce Mobility", "Emergency Medical Transport", "Tourism & Sightseeing"],
     img: CITY_AERIAL_IMG,
