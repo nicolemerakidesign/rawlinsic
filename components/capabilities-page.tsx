@@ -296,7 +296,7 @@ export default function CapabilitiesPage() {
         <div className="cap-hero-content reveal">
           <span className="hero-label"><span className="gold-text">Integrated Advisory</span></span>
           <h1 className="cap-hero-title">
-            Strategy, Operations{'\u00A0'}&amp;{'\u00A0'}<em>Technology</em>
+            Strategy, Operations<br />&amp; <em>Technology</em>
           </h1>
           <p className="hero-sub" style={{ opacity: 1, transform: 'none', animation: 'none' }}>
             Three areas of expertise, one mission—navigating complexity to deliver measurable, lasting transformation for the organizations we serve.
