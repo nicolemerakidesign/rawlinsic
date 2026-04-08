@@ -638,18 +638,13 @@ const AAMPage = () => {
                       const my = (y1 + y2) / 2 + dx * 0.12;
                       d = `M${x1},${y1} Q${mx - dy * 0.12},${my} ${x2},${y2}`;
                     }
-                    // Highlight all paths of the same type when any connected node is hovered
+                    // Highlight: source node lights up all its paths; destination nodes only light up paths OF THEIR OWN type
                     const hoveredNode = hoveredLs;
-                    const isDirectConnection = hoveredNode === fp.from || hoveredNode === fp.to;
-                    // Also highlight entire type group: yellow lights up together, medical lights up together, package lights up together
-                    const typeNodes: Record<string, string[]> = {
-                      'air-taxi': ['urban-air-taxi', 'residential', 'rural', 'city-center'],
-                      'delivery': ['package-delivery', 'residential', 'medical', 'city-center', 'rural'],
-                      'medical': ['medical', 'residential', 'city-center', 'rural'],
-                    };
                     const sourceNodes: Record<string, string> = { 'air-taxi': 'urban-air-taxi', 'delivery': 'package-delivery', 'medical': 'medical' };
-                    const isTypeHighlighted = hoveredNode === sourceNodes[fp.type];
-                    const hl = isDirectConnection || isTypeHighlighted;
+                    const isSourceHighlighted = hoveredNode === sourceNodes[fp.type];
+                    // Only highlight a path from a destination hover if the hovered node is the source of this path type
+                    const isFromSource = hoveredNode === fp.from && hoveredNode === sourceNodes[fp.type];
+                    const hl = isSourceHighlighted || isFromSource;
                     const cls = fp.type === 'medical' ? 'ls-flight-path-med' : (i % 2 === 0 ? 'ls-flight-path' : 'ls-flight-path-reverse');
                     const hlColor = hl ? (fp.type === 'air-taxi' ? '#e8d5a0' : fp.type === 'medical' ? '#e8585a' : '#b8976a') : fp.color;
                     return (
