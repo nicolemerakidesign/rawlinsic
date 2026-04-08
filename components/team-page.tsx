@@ -183,7 +183,11 @@ export default function TeamPage() {
     let members = cat === "all" ? TEAM_MEMBERS : TEAM_MEMBERS.filter((m) => m.categories.includes(cat));
     if (query.trim()) {
       const q = query.toLowerCase().trim();
-      members = members.filter((m) => m.name.toLowerCase().includes(q));
+      members = members.filter((m) =>
+        m.name.toLowerCase().includes(q) ||
+        (m.title && m.title.toLowerCase().includes(q)) ||
+        m.role.toLowerCase().includes(q)
+      );
     }
     return members;
   }, []);
