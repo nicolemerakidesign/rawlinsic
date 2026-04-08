@@ -194,9 +194,7 @@ export default function PodcastPage() {
                 <line x1="8" y1="23" x2="16" y2="23" stroke="url(#iconGoldGrad)" />
               </svg>
             </div>
-            <p className="section-label" style={{ textAlign: "center" }}>
-              <span className="gold-text">Listen In. Learn More. Lead Better.</span>
-            </p>
+            <span className="hero-label"><span className="gold-text">Listen In. Learn More. Lead Better.</span></span>
             <h1 className="hero-title">The <em>Rawlins</em> Way</h1>
             {/* EQ bars under title in hero */}
             <div className="pod-hero-eq">
@@ -274,7 +272,7 @@ export default function PodcastPage() {
               <span className="gold-text">Ready to Take Your Organization to the Next Level?</span>
             </p>
             <h2 className="section-title" style={{ whiteSpace: "nowrap" }}>
-              Let&apos;s Build Something Together
+              Let&apos;s build something together
             </h2>
             <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginTop: 24 }}>
               <span>Connect With Us</span>

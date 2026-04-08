@@ -1152,7 +1152,7 @@ const AAMPage = () => {
         <div className="aam-container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="aam-cta-wrap reveal" style={{ textAlign: "center", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Get Started</span></p>
-            <h2 className="section-title">Ready to <em>Transform</em> Your Region?</h2>
+            <h2 className="section-title">Ready to <em>transform</em> your region?</h2>
             <p className="aam-cta-body">
               Whether you are just beginning or well along on your journey, we can provide guidance and support. To learn more about our service portfolio and how we can help you deliver successful AAM and UAS outcomes for your community, reach out.
             </p>

@@ -265,9 +265,7 @@ export default function TeamPage() {
         {/* Hero */}
         <section className="team-hero" id="top">
           <div className="team-hero-content">
-            <p className="section-label" style={{ textAlign: "center" }}>
-              <span className="gold-text">our people</span>
-            </p>
+            <span className="hero-label"><span className="gold-text">Our People</span></span>
             <h1 className="hero-title">
               Meet the <span className="gold-text"><em>Experts</em></span>
             </h1>

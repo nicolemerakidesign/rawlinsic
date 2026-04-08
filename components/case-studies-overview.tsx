@@ -134,9 +134,7 @@ export default function CaseStudiesOverview() {
         {/* ── Hero ── */}
         <section className="cs-hero" id="top">
           <div className="cs-hero-content">
-            <p className="section-label" style={{ textAlign: "center" }}>
-              <span className="gold-text">Solving Complex Challenges. Proven Impact.</span>
-            </p>
+            <span className="hero-label"><span className="gold-text">Solving Complex Challenges. Proven Impact.</span></span>
             <h1 className="hero-title">Case Studies</h1>
             <p className="hero-sub" style={{ maxWidth: 720 }}>
               Explore how we turn strategic initiatives into measurable results.
@@ -199,7 +197,7 @@ export default function CaseStudiesOverview() {
               approach help agencies improve performance
               and meet evolving challenges.
             </p>
-            <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none", fontSize: "13px" }}><span>Connect With Us Today</span></Link>
+            <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none" }}><span>Connect With Us Today</span></Link>
           </div>
         </section>
 

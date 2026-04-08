@@ -163,9 +163,7 @@ export default function CaseStudyDetail({ study }: Props) {
               </svg>
               All Case Studies
             </Link>
-            <p className="section-label">
-              <span className="gold-text">{study.subtitle || "Case Study"}</span>
-            </p>
+            <span className="hero-label"><span className="gold-text">{study.subtitle || "Case Study"}</span></span>
             <h1 className="hero-title">{study.title}</h1>
           </div>
         </section>

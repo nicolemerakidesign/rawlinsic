@@ -134,9 +134,7 @@ export default function CareersPage() {
           {/* ── Hero ── */}
           <section className="cs-hero" id="top">
             <div className="cs-hero-content">
-              <p className="section-label" style={{ textAlign: "center" }}>
-                <span className="gold-text">Careers at Rawlins</span>
-              </p>
+              <span className="hero-label"><span className="gold-text">Careers at Rawlins</span></span>
               <h1 className="hero-title">
                 Work With <em>Us</em>
               </h1>
@@ -157,7 +155,7 @@ export default function CareersPage() {
               <span className="gold-text">Join Our Team</span>
             </p>
             <h2 className="cs-cta-title">
-              Ready to Make an <em>Impact?</em>
+              Ready to make an <em>impact?</em>
             </h2>
             <p className="cs-cta-text">
               Tell us about yourself and what kind of work excites you. No formal application needed&mdash;just reach out and start a conversation.

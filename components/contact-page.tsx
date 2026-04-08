@@ -192,9 +192,7 @@ export default function ContactPage() {
         {/* ── Contact Hero ── */}
         <section className="contact-hero" id="top">
           <div className="contact-hero-content">
-            <p className="section-label" style={{ textAlign: "center" }}>
-              <span className="gold-text">contact rawlins</span>
-            </p>
+            <span className="hero-label"><span className="gold-text">Contact Rawlins</span></span>
             <h1 className="hero-title">
               Ready to <em>partner</em> with <em>purpose?</em>
             </h1>

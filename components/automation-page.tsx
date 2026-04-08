@@ -174,7 +174,7 @@ export default function AutomationPage() {
           <p className="hero-sub">
             Partnering to reshape the way people work
           </p>
-          <a href="#benefits" className="auto-hero-btn" style={{ fontSize: "13px" }}>
+          <a href="#benefits" className="auto-hero-btn">
             <span>Explore Our Capabilities</span>
           </a>
         </div>
@@ -413,7 +413,7 @@ export default function AutomationPage() {
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center", marginBottom: "40px" }}>
             Let&rsquo;s discuss how automation and AI can elevate your team&rsquo;s capabilities.
           </p>
-          <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none", fontSize: "13px" }}><span>Connect With Us</span></Link>
+          <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none" }}><span>Connect With Us</span></Link>
         </div>
       </section>
 

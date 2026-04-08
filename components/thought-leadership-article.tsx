@@ -257,9 +257,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               </svg>
               All Articles
             </Link>
-            <p className="section-label">
-              <span className="gold-text">{article.category} &middot; {article.dateLabel}</span>
-            </p>
+            <span className="hero-label"><span className="gold-text">{article.category} &middot; {article.dateLabel}</span></span>
             <h1 className="hero-title">{article.title}</h1>
             <p className="hero-sub" style={{ maxWidth: 680, marginTop: 8 }}>
               {article.subtitle}
