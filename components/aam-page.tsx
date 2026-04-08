@@ -1124,7 +1124,7 @@ const AAMPage = () => {
           </div>
           <div className="aam-pillars-grid aam-portfolio-tiles">
             {[
-              { title: "AAM Services", img: DRONEMOUNTAINS_IMG, items: aamServices, idx: 0, imgPos: "center 25%" },
+              { title: "AAM Services", img: DRONEMOUNTAINS_IMG, items: aamServices, idx: 0, imgPos: "center 35%" },
               { title: "UAS Services", img: PLANNING2_IMG, items: uasServices, idx: 1, imgPos: "center 20%" },
             ].map((svc) => (
               <div className={`aam-pillar-card${openServices.has(svc.idx) ? " open" : ""}`} key={svc.title}>
