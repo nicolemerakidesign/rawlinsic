@@ -740,7 +740,7 @@ const AAMPage = () => {
                         textAnchor={anchor}
                         fill={hl ? '#e8d5a0' : '#ffffff'}
                         fontFamily="'DM Sans', sans-serif"
-                        fontSize={hl ? '16' : '14'}
+                        fontSize={hl ? '20' : '18'}
                         fontWeight={hl ? '700' : '600'}
                         letterSpacing="1.5"
                         style={{ textTransform: 'uppercase', pointerEvents: 'none' } as React.CSSProperties}
