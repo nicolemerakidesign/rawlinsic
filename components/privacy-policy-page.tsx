@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
       <div className="ambient-bg" />
       <SiteNav />
 
-      <section style={{ padding: "180px 48px 100px", maxWidth: 900, margin: "0 auto" }}>
+      <section style={{ padding: "180px 48px 100px", maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <span className="hero-label"><span className="gold-text">Legal</span></span>
         <h1 className="hero-title" style={{ marginBottom: 40 }}>Privacy Policy</h1>
 
