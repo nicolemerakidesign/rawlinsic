@@ -34,18 +34,21 @@ const pillarCards = [
     desc: "",
     bullets: ["Urban & Regional Connectivity", "Workforce Mobility", "Emergency Medical Transport", "Tourism & Sightseeing"],
     img: CITY_AERIAL_IMG,
+    imgPos: "center 25%",
   },
   {
     title: "Drone Package Delivery",
     desc: "",
     bullets: ["Urban Air Mobility", "Regional Air Mobility", "Multi-modal Facilities", "Cargo Transport", "Emergency Medical Transport", "Business Travel", "Tourism & Sightseeing"],
     img: LOGISTICS_IMG,
+    imgPos: "center 30%",
   },
   {
     title: "UAS Data Collection",
     desc: "",
     bullets: ["Infrastructure inspection", "Construction inspection & monitoring", "Environmental monitoring", "Aerial surveying & mapping", "Disaster response", "Incident scene management"],
     img: DRONE_FLIGHT_IMG,
+    imgPos: "",
   },
 ];
 
@@ -760,7 +763,7 @@ const AAMPage = () => {
             {pillarCards.map((card, i) => (
               <div className={`aam-pillar-card${openPillars.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-pillar-img-wrap">
-                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-pillar-img" />
+                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-pillar-img" style={card.imgPos ? { objectPosition: card.imgPos } : undefined} />
                   <div className="aam-pillar-img-overlay" />
                 </div>
                 <div className="aam-pillar-bar" />
