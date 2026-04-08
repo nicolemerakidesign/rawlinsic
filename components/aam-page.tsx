@@ -1013,6 +1013,42 @@ const AAMPage = () => {
 
       <div className="section-divider"><div className="gold-line" /></div>
 
+      {/* ── Strategic Methodology: Define / Enable / Deliver ── */}
+      <section className="aam-section" id="methodology">
+        <div className="aam-container">
+          <div className="aam-section-header reveal">
+            <h2 className="section-title">Our <em>Approach</em></h2>
+          </div>
+          <div className="aam-framework-grid">
+            {frameworkCards.map((card, i) => (
+              <div className={`aam-framework-card${openFrameworks.has(i) ? " open" : ""}`} key={card.title}>
+                <div className="aam-framework-img-wrap">
+                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-framework-img" />
+                  <div className="aam-framework-img-overlay" />
+                </div>
+                <div className="aam-framework-accent" style={{ background: card.accent }} />
+                <div className="aam-framework-inner">
+                  <div className="aam-pillar-title-row">
+                    <h3 className="aam-framework-phase">{card.title}</h3>
+                    <button className="aam-expand-btn" onClick={() => toggleSet(setOpenFrameworks, i)}>
+                      {chevronSvg(openFrameworks.has(i))}
+                    </button>
+                  </div>
+                  <p className="aam-framework-tagline">{card.tagline}</p>
+                  <div className={`aam-framework-expand${openFrameworks.has(i) ? " open" : ""}`}>
+                    <ul className="aam-bullet-list">
+                      {card.bullets.map((b) => <li key={b}>{b}</li>)}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider"><div className="gold-line" /></div>
+
       {/* ── How we serve: Horizontal Scroll Cards ── */}
       <section className="aam-section aam-phases-alt-section" id="phases-alt">
         <div className="aam-container">
@@ -1063,42 +1099,6 @@ const AAMPage = () => {
                 <div className="aam-alt-card-divider" />
                 <h4 className="aam-alt-card-title">{phase.label}</h4>
                 <p className="aam-alt-card-body">{phase.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider"><div className="gold-line" /></div>
-
-      {/* ── Strategic Methodology: Define / Enable / Deliver ── */}
-      <section className="aam-section" id="methodology">
-        <div className="aam-container">
-          <div className="aam-section-header reveal">
-            <h2 className="section-title">Our <em>Approach</em></h2>
-          </div>
-          <div className="aam-framework-grid">
-            {frameworkCards.map((card, i) => (
-              <div className={`aam-framework-card${openFrameworks.has(i) ? " open" : ""}`} key={card.title}>
-                <div className="aam-framework-img-wrap">
-                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-framework-img" />
-                  <div className="aam-framework-img-overlay" />
-                </div>
-                <div className="aam-framework-accent" style={{ background: card.accent }} />
-                <div className="aam-framework-inner">
-                  <div className="aam-pillar-title-row">
-                    <h3 className="aam-framework-phase">{card.title}</h3>
-                    <button className="aam-expand-btn" onClick={() => toggleSet(setOpenFrameworks, i)}>
-                      {chevronSvg(openFrameworks.has(i))}
-                    </button>
-                  </div>
-                  <p className="aam-framework-tagline">{card.tagline}</p>
-                  <div className={`aam-framework-expand${openFrameworks.has(i) ? " open" : ""}`}>
-                    <ul className="aam-bullet-list">
-                      {card.bullets.map((b) => <li key={b}>{b}</li>)}
-                    </ul>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
