@@ -149,14 +149,14 @@ const ecoIcons: Record<string, string> = {
 };
 
 const ecosystemNodes = [
-  { id: 'aviation', label: 'Aviation\nAuthorities', short: 'FAA · ICAO · NASAO', desc: 'Federal and international aviation regulatory bodies shaping airspace policy and certification standards.', angle: 0 },
+  { id: 'aviation', label: 'Aviation\nAuthorities', short: 'FAA · ICAO · NASAO', desc: 'Interpreting U.S. federal and international aviation regulatory bodies shaping airspace policy and certification standards.', angle: 0 },
   { id: 'government', label: 'Government\nAgencies', short: 'DOTs · Security · Emergency', desc: 'State and federal departments of transportation, homeland security, and emergency management services.', angle: 45 },
-  { id: 'standards', label: 'Standards\nOrganizations', short: 'ACRA · AASHTO · NCHRP', desc: 'Industry standards bodies developing technical requirements, performance benchmarks, and interoperability frameworks.', angle: 90 },
-  { id: 'academic', label: 'Academic\nInstitutions', short: 'Research · Universities · Labs', desc: 'Research centers and universities advancing AAM technology, safety analysis, and workforce development.', angle: 135 },
-  { id: 'ansp', label: 'Air Navigation\nProviders', short: 'UTM · ATM · Traffic Mgmt', desc: 'Unmanned traffic management operators and air traffic management providers enabling safe airspace integration.', angle: 180 },
+  { id: 'standards', label: 'Standards\nOrganizations', short: 'ACRA · AASHTO · NCHRP', desc: 'Developing industry standards for technical requirements, performance benchmarks, and implementation frameworks.', angle: 90 },
+  { id: 'academic', label: 'Academic\nInstitutions', short: 'Research · Universities · Labs', desc: 'Steering research centers and universities advancing AAM technology, safety analysis, and workforce development.', angle: 135 },
+  { id: 'ansp', label: 'Air Navigation\nProviders', short: 'UTM · ATM · Traffic Mgmt', desc: 'Integrating UAS traffic management operators and air traffic management providers enabling safe airspace.', angle: 180 },
   { id: 'operators', label: 'Operators &\nServices', short: 'Drone Ops · Delivery · Providers', desc: 'Commercial drone operators, delivery service providers, and aerial operations companies.', angle: 225 },
-  { id: 'industry', label: 'Industries', short: 'OEMs · Tech · Integrators', desc: 'Aircraft manufacturers, technology providers, and systems integrators building the AAM ecosystem.', angle: 270 },
-  { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Metropolitan planning organizations, municipal governments, and transit agencies integrating AAM into community infrastructure.', angle: 315 },
+  { id: 'industry', label: 'Industry', short: 'OEMs · Tech · Integrators', desc: 'Aircraft manufacturers, technology providers, and systems integrators building the AAM ecosystem.', angle: 270 },
+  { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Integrating AAM solutions across rural and urban communities.', angle: 315 },
 ];
 
 
@@ -1019,7 +1019,7 @@ const AAMPage = () => {
           <div className="aam-section-header reveal">
             <h2 className="section-title">Our <em>Approach</em></h2>
             <p className="section-text" style={{ marginTop: "20px", maxWidth: "750px" }}>
-              By bringing each unique stakeholder to the table we can plan for aviation&rsquo;s future.
+              By bringing each unique stakeholder to the table, we can plan for aviation&rsquo;s future.
             </p>
           </div>
           <div className="aam-framework-grid">
