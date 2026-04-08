@@ -170,7 +170,7 @@ export default function AutomationPage() {
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Smarter Systems. Empowered Teams.</span></span>
-          <h1 className="hero-title" style={{ textTransform: "uppercase" }}>Data Governance,<br /><em>Automation</em> &amp; AI</h1>
+          <h1 className="hero-title">Data Governance,<br /><em>Automation</em> &amp; AI</h1>
           <p className="hero-sub">
             Partnering to reshape the way people work
           </p>
@@ -183,8 +183,39 @@ export default function AutomationPage() {
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── Benefits: AAM "Our Approach" style framework cards ── */}
+      {/* ── 1. The Ecosystem ── */}
       <section className="aam-section" id="benefits" style={{ padding: "100px 24px", scrollMarginTop: "80px" }}>
+        <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
+          <div className="aam-section-header reveal">
+            <p className="section-label"><span className="gold-text">The Ecosystem</span></p>
+            <h2 className="section-title">How data governance, automation, and <em>AI</em> work together</h2>
+          </div>
+          <div className="auto-ecosystem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px", marginTop: "60px" }}>
+            {pipeline.map((p, i) => (
+              <div key={i} className="reveal auto-eco-tile" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", position: "relative", transition: "all 0.3s" }}>
+                <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1.2 }}>
+                  {p.step}
+                </span>
+                <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginBottom: "4px", lineHeight: 1.2 }}>{p.label}</h3>
+                <p style={{ fontSize: "16px", color: "#fff", lineHeight: 1.8 }}>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 2. Parallax Quote ── */}
+      <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: "url(/images/pages/auto-parallax.jpg" }}>
+        <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
+        <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
+          The <em>future</em> of work requires designing systems where people, data, and AI work <em>together</em> with clarity, trust, and purpose.
+        </p>
+      </div>
+
+      <div className="section-divider"><div className="gold-line" /></div>
+
+      {/* ── 3. Human-Centered Automation ── */}
+      <section className="aam-section" style={{ padding: "100px 24px" }}>
         <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>
@@ -215,17 +246,9 @@ export default function AutomationPage() {
         </div>
       </section>
 
-      {/* Parallax Quote */}
-      <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: "url(/images/pages/auto-parallax.jpg" }}>
-        <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
-        <p className="parallax-text1 reveal" style={{ position: "relative", zIndex: 2 }}>
-          The <em>future</em> of work requires designing systems where people, data, and AI work <em>together</em> with clarity, trust, and purpose.
-        </p>
-      </div>
-
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── Organizational Value: Essential Phases style scroll cards ── */}
+      {/* ── 4. Organizational Value ── */}
       <section className="aam-section aam-phases-alt-section" style={{ padding: "100px 0" }}>
         <div className="aam-container" style={{ padding: "0 48px" }}>
           <div className="aam-section-header reveal">
@@ -268,29 +291,6 @@ export default function AutomationPage() {
         </div>
       </section>
 
-      <div className="section-divider"><div className="gold-line" /></div>
-
-      {/* ── Pipeline: same style as orgValues (numbered left-border list) ── */}
-      <section className="aam-section" style={{ padding: "100px 24px" }}>
-        <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
-          <div className="aam-section-header reveal">
-            <p className="section-label"><span className="gold-text">The Ecosystem</span></p>
-            <h2 className="section-title">How data governance, automation, and <em>AI</em> work together</h2>
-          </div>
-          <div className="auto-ecosystem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px", marginTop: "60px" }}>
-            {pipeline.map((p, i) => (
-              <div key={i} className="reveal auto-eco-tile" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", position: "relative", transition: "all 0.3s" }}>
-                <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1.2 }}>
-                  {p.step}
-                </span>
-                <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginBottom: "4px", lineHeight: 1.2 }}>{p.label}</h3>
-                <p style={{ fontSize: "16px", color: "#fff", lineHeight: 1.8 }}>{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Parallax Quote 2 */}
       <div className="parallax-panel aam-parallax-fixed" style={{ backgroundImage: `url(${WORKFLOW_IMG})` }}>
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
@@ -301,7 +301,7 @@ export default function AutomationPage() {
 
       <div className="section-divider"><div className="gold-line" /></div>
 
-      {/* ── Driving Transformation ── */}
+      {/* ── 5. What We Deliver ── */}
       <section className="aam-section" style={{ padding: "100px 48px" }}>
         <div className="aam-container">
           <div className="aam-section-header reveal">
