@@ -170,11 +170,11 @@ export default function AutomationPage() {
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Smarter Systems. Empowered Teams.</span></span>
-          <h1 className="hero-title">Data governance, <em>Automation</em> &amp; AI</h1>
+          <h1 className="hero-title" style={{ textTransform: "uppercase" }}>Data Governance,<br /><em>Automation</em> &amp; AI</h1>
           <p className="hero-sub">
             Partnering to reshape the way people work
           </p>
-          <a href="#benefits" className="auto-hero-btn">
+          <a href="#benefits" className="auto-hero-btn" style={{ fontSize: "13px" }}>
             <span>Explore Our Capabilities</span>
           </a>
         </div>
@@ -319,6 +319,9 @@ export default function AutomationPage() {
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "36px" }}>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
                   We establish effective <Link href="/capabilities#data-governance" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>data governance</Link> practices.
+                </li>
+                <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
+                  We design and implement digital solutions that help people work smarter and more creatively.
                 </li>
                 <li style={{ paddingLeft: "24px", borderLeft: "2px solid", borderImage: "linear-gradient(180deg, #c9a84c, #e8d5a0) 1", fontSize: "17px", color: "#fff", lineHeight: 1.8 }}>
                   We streamline and connect workflows to reduce manual effort and improve efficiency.

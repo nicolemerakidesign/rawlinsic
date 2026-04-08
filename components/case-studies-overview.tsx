@@ -191,7 +191,7 @@ export default function CaseStudiesOverview() {
           <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 32px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "800px", margin: "0 auto" }}>
             <p className="section-label"><span className="gold-text">Partner With Us</span></p>
             <h2 className="section-title auto-cta-title" style={{ color: "#fff", marginBottom: "20px", textAlign: "center" }}>
-              Ready to Take Your Organization<br />to the <em>Next Level?</em>
+              Ready to take your organization<br />to the <em>next level?</em>
             </h2>
             <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center", marginBottom: "40px" }}>
               Rawlins has the expertise and experience to drive your
@@ -199,7 +199,7 @@ export default function CaseStudiesOverview() {
               approach help agencies improve performance
               and meet evolving challenges.
             </p>
-            <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none" }}><span>Connect With Us Today</span></Link>
+            <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none", fontSize: "13px" }}><span>Connect With Us Today</span></Link>
           </div>
         </section>
 
