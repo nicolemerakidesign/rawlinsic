@@ -1018,7 +1018,7 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <h2 className="section-title">Our <em>Approach</em></h2>
-            <p className="section-text" style={{ marginTop: "20px" }}>
+            <p className="section-text" style={{ marginTop: "20px", maxWidth: "750px" }}>
               By bringing each unique stakeholder to the table we can plan for aviation&rsquo;s future.
             </p>
           </div>
