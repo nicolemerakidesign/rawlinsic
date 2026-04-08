@@ -125,21 +125,20 @@ const landscapeNodes = [
 ];
 
 const landscapePaths = [
-  // Urban Air Taxi → Medical, Residential, Rural
-  { from: 'urban-air-taxi', to: 'medical', color: '#c9a84c', type: 'air-taxi' },
+  // Yellow — Urban Air Taxi routes (big sweeping arcs)
   { from: 'urban-air-taxi', to: 'residential', color: '#c9a84c', type: 'air-taxi' },
   { from: 'urban-air-taxi', to: 'rural', color: '#c9a84c', type: 'air-taxi' },
-  // Residential → Rural, City Center
   { from: 'residential', to: 'rural', color: '#c9a84c', type: 'air-taxi' },
   { from: 'residential', to: 'city-center', color: '#c9a84c', type: 'air-taxi' },
-  // Rural → Medical
-  { from: 'rural', to: 'medical', color: '#d4443b', type: 'medical' },
-  // Package Delivery → Medical, Residential, Rural
-  { from: 'package-delivery', to: 'medical', color: '#e8d5a0', type: 'delivery' },
-  { from: 'package-delivery', to: 'residential', color: '#e8d5a0', type: 'delivery' },
-  { from: 'package-delivery', to: 'rural', color: '#e8d5a0', type: 'delivery' },
-  // Medical → Residential, Rural
+  { from: 'urban-air-taxi', to: 'city-center', color: '#c9a84c', type: 'air-taxi' },
+  // Brown — Package Delivery routes
+  { from: 'package-delivery', to: 'residential', color: '#8b6f47', type: 'delivery' },
+  { from: 'package-delivery', to: 'medical', color: '#8b6f47', type: 'delivery' },
+  { from: 'package-delivery', to: 'city-center', color: '#8b6f47', type: 'delivery' },
+  { from: 'package-delivery', to: 'rural', color: '#8b6f47', type: 'delivery' },
+  // Red — Medical Supply routes
   { from: 'medical', to: 'residential', color: '#d4443b', type: 'medical' },
+  { from: 'medical', to: 'city-center', color: '#d4443b', type: 'medical' },
   { from: 'medical', to: 'rural', color: '#d4443b', type: 'medical' },
 ];
 
@@ -610,24 +609,54 @@ const AAMPage = () => {
                     const x1 = from.x, y1 = from.y;
                     const x2 = to.x, y2 = to.y;
                     let d: string;
-                    // Special case: urban-air-taxi → rural — arc ABOVE residential
+                    const mx = (x1 + x2) / 2;
+                    // Sweeping arcs matching AI file routing
                     if (fp.from === 'urban-air-taxi' && fp.to === 'rural') {
-                      const mx = (x1 + x2) / 2;
-                      d = `M${x1},${y1} Q${mx},-40 ${x2},${y2}`;
+                      d = `M${x1},${y1} Q${mx},-50 ${x2},${y2}`;
+                    } else if (fp.from === 'urban-air-taxi' && fp.to === 'residential') {
+                      d = `M${x1},${y1} Q${mx},-20 ${x2},${y2}`;
+                    } else if (fp.from === 'urban-air-taxi' && fp.to === 'city-center') {
+                      const my = (y1 + y2) / 2;
+                      d = `M${x1},${y1} Q${mx - 40},${my - 60} ${x2},${y2}`;
+                    } else if (fp.from === 'residential' && fp.to === 'rural') {
+                      d = `M${x1},${y1} Q${mx},-30 ${x2},${y2}`;
+                    } else if (fp.from === 'residential' && fp.to === 'city-center') {
+                      const my = (y1 + y2) / 2;
+                      d = `M${x1},${y1} Q${mx + 20},${my - 30} ${x2},${y2}`;
+                    } else if (fp.from === 'package-delivery' && fp.to === 'residential') {
+                      d = `M${x1},${y1} Q${mx - 60},${(y1 + y2) / 2 - 40} ${x2},${y2}`;
+                    } else if (fp.from === 'package-delivery' && fp.to === 'rural') {
+                      d = `M${x1},${y1} Q${mx},${(y1 + y2) / 2 - 80} ${x2},${y2}`;
+                    } else if (fp.from === 'package-delivery' && fp.to === 'city-center') {
+                      d = `M${x1},${y1} Q${mx - 20},${(y1 + y2) / 2 + 30} ${x2},${y2}`;
+                    } else if (fp.from === 'medical' && fp.to === 'residential') {
+                      d = `M${x1},${y1} Q${mx - 30},${(y1 + y2) / 2 - 40} ${x2},${y2}`;
+                    } else if (fp.from === 'medical' && fp.to === 'rural') {
+                      d = `M${x1},${y1} Q${mx + 20},${(y1 + y2) / 2 - 50} ${x2},${y2}`;
                     } else {
-                      const mx = (x1 + x2) / 2;
                       const dx = x2 - x1, dy = y2 - y1;
-                      const my = (y1 + y2) / 2 + dx * 0.15;
-                      d = `M${x1},${y1} Q${mx - dy * 0.15},${my} ${x2},${y2}`;
+                      const my = (y1 + y2) / 2 + dx * 0.12;
+                      d = `M${x1},${y1} Q${mx - dy * 0.12},${my} ${x2},${y2}`;
                     }
-                    // Only highlight direct connections for the hovered node
-                    const hl = hoveredLs === fp.from || hoveredLs === fp.to;
+                    // Highlight all paths of the same type when any connected node is hovered
+                    const hoveredNode = hoveredLs;
+                    const isDirectConnection = hoveredNode === fp.from || hoveredNode === fp.to;
+                    // Also highlight entire type group: yellow lights up together, medical lights up together, package lights up together
+                    const typeNodes: Record<string, string[]> = {
+                      'air-taxi': ['urban-air-taxi', 'residential', 'rural', 'city-center'],
+                      'delivery': ['package-delivery', 'residential', 'medical', 'city-center', 'rural'],
+                      'medical': ['medical', 'residential', 'city-center', 'rural'],
+                    };
+                    const sourceNodes: Record<string, string> = { 'air-taxi': 'urban-air-taxi', 'delivery': 'package-delivery', 'medical': 'medical' };
+                    const isTypeHighlighted = hoveredNode === sourceNodes[fp.type];
+                    const hl = isDirectConnection || isTypeHighlighted;
                     const cls = fp.type === 'medical' ? 'ls-flight-path-med' : (i % 2 === 0 ? 'ls-flight-path' : 'ls-flight-path-reverse');
+                    const hlColor = hl ? (fp.type === 'air-taxi' ? '#e8d5a0' : fp.type === 'medical' ? '#e8585a' : '#b8976a') : fp.color;
                     return (
                       <React.Fragment key={`lsp-${i}`}>
-                        <path d={d} fill="none" stroke={fp.color} strokeWidth={hl ? 2.5 : 1.2} opacity={hl ? 0.85 : 0.3} className={cls} />
+                        <path d={d} fill="none" stroke={hlColor} strokeWidth={hl ? 2.5 : 1.2} opacity={hl ? 0.85 : 0.35} className={cls} />
                         <path id={`lspath-${i}`} d={d} fill="none" stroke="none" />
-                        <circle r={hl ? 4 : 3} fill={fp.color} className="ls-particle" style={{ animationDelay: `${i * 0.4}s`, animationDuration: `${2.5 + (i % 3) * 0.5}s` }}>
+                        <circle r={hl ? 4 : 3} fill={hlColor} className="ls-particle" style={{ animationDelay: `${i * 0.4}s`, animationDuration: `${2.5 + (i % 3) * 0.5}s` }}>
                           <animateMotion dur={`${3 + (i % 4) * 0.8}s`} repeatCount="indefinite">
                             <mpath href={`#lspath-${i}`} />
                           </animateMotion>
@@ -637,10 +666,10 @@ const AAMPage = () => {
                   })}
 
                   {/* ── Animated drones on some paths ── */}
-                  {[0, 2, 5, 7, 10].map(idx => {
+                  {[0, 1, 5, 7, 10].map(idx => {
                     const fp = landscapePaths[idx];
                     if (!fp) return null;
-                    const c = fp.type === 'medical' ? '#d4443b' : '#c9a84c';
+                    const c = fp.type === 'medical' ? '#d4443b' : fp.type === 'delivery' ? '#8b6f47' : '#c9a84c';
                     return (
                       <g key={`drone-${idx}`} opacity="0.8">
                         <g>
