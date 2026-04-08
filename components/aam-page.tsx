@@ -114,12 +114,12 @@ const lsIcons: Record<string, string> = {
 };
 
 const landscapeNodes = [
-  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 15, y: 8, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
-  { id: 'package-delivery', label: 'Package Delivery', x: 10, y: 52, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
-  { id: 'residential', label: 'Residential Areas', x: 44, y: 5, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
-  { id: 'medical', label: 'Medical Supplies', x: 38, y: 40, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
-  { id: 'rural', label: 'Rural & Agriculture', x: 72, y: 5, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
-  { id: 'city-center', label: 'City Center', x: 58, y: 40, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
+  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 18, y: 18, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
+  { id: 'package-delivery', label: 'Package Delivery', x: 18, y: 62, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
+  { id: 'residential', label: 'Residential Areas', x: 44, y: 18, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
+  { id: 'medical', label: 'Medical Supplies', x: 44, y: 55, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
+  { id: 'rural', label: 'Rural & Agriculture', x: 68, y: 18, icon: 'rural', desc: 'Agricultural monitoring, crop spraying, rural delivery services, and environmental data collection for remote areas.' },
+  { id: 'city-center', label: 'City Center', x: 68, y: 55, icon: 'city', desc: 'Dense urban cores integrating vertiport networks, drone corridors, and multimodal transit connections.' },
 ];
 
 const landscapePaths = [
@@ -425,7 +425,7 @@ const AAMPage = () => {
                       @keyframes lsDash { to { stroke-dashoffset: -60; } }
                       @keyframes lsDashReverse { to { stroke-dashoffset: 60; } }
                       @keyframes lsParticle { 0% { opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; } }
-                      @keyframes lsNodePulse { 0%,100% { r: 32; opacity: 0.12; } 50% { r: 40; opacity: 0.25; } }
+                      @keyframes lsNodePulse { 0%,100% { r: 42; opacity: 0.15; } 50% { r: 52; opacity: 0.3; } }
                     `}</style>
                   </defs>
 
@@ -632,7 +632,7 @@ const AAMPage = () => {
                     const cls = fp.type === 'medical' ? 'ls-flight-path-med' : (i % 2 === 0 ? 'ls-flight-path' : 'ls-flight-path-reverse');
                     return (
                       <React.Fragment key={`lsp-${i}`}>
-                        <path d={d} fill="none" stroke={fp.color} strokeWidth={hl ? 2.5 : 1.2} opacity={hl ? 0.85 : 0.3} className={cls} />
+                        <path d={d} fill="none" stroke={fp.color} strokeWidth={hl ? 3 : 1.5} opacity={hl ? 0.9 : 0.45} className={cls} />
                         <path id={`lspath-${i}`} d={d} fill="none" stroke="none" />
                         <circle r={hl ? 4 : 3} fill={fp.color} className="ls-particle" style={{ animationDelay: `${i * 0.4}s`, animationDuration: `${2.5 + (i % 3) * 0.5}s` }}>
                           <animateMotion dur={`${3 + (i % 4) * 0.8}s`} repeatCount="indefinite">
@@ -669,7 +669,7 @@ const AAMPage = () => {
                     const ny = node.y * 6;
                     const hl = hoveredLs === node.id;
                     const isMed = node.id === 'medical';
-                    const sc = isMed && hl ? '#d4443b' : hl ? '#e8d5a0' : 'rgba(201,168,76,0.4)';
+                    const sc = isMed && hl ? '#d4443b' : hl ? '#fff' : 'rgba(201,168,76,0.7)';
                     const flt = hl ? (isMed ? 'url(#lsGlowMed)' : 'url(#lsGlow)') : 'none';
                     return (
                       <g
@@ -679,22 +679,22 @@ const AAMPage = () => {
                         onMouseLeave={() => setHoveredLs(null)}
                       >
                         {/* Pulse ring */}
-                        <circle cx={nx} cy={ny} r={32} fill="none" stroke={isMed ? '#d4443b' : '#c9a84c'} strokeWidth="0.8" className="ls-node-pulse" style={{ animationDelay: `${ni * 0.5}s` }} />
+                        <circle cx={nx} cy={ny} r={42} fill="none" stroke={isMed ? '#d4443b' : '#c9a84c'} strokeWidth="1" className="ls-node-pulse" style={{ animationDelay: `${ni * 0.5}s` }} />
                         {/* Glow */}
-                        <circle cx={nx} cy={ny} r={hl ? 48 : 36} fill="url(#lsNodeGlow)" opacity={hl ? 1 : 0.6} />
+                        <circle cx={nx} cy={ny} r={hl ? 60 : 48} fill="url(#lsNodeGlow)" opacity={hl ? 1 : 0.7} />
                         {/* Circle bg */}
-                        <circle cx={nx} cy={ny} r={26} fill="rgba(6,12,22,0.92)" stroke={sc} strokeWidth={hl ? 2 : 1} />
+                        <circle cx={nx} cy={ny} r={34} fill="rgba(6,12,22,0.9)" stroke={sc} strokeWidth={hl ? 2.5 : 1.5} />
                         {/* Icon */}
                         <g
-                          transform={`translate(${nx - 13},${ny - 13})`}
+                          transform={`translate(${nx - 17},${ny - 17})`}
                           style={{ filter: flt }}
                         >
-                          <svg width="26" height="26" viewBox="0 0 24 24">
+                          <svg width="34" height="34" viewBox="0 0 24 24">
                             <g dangerouslySetInnerHTML={{ __html: lsIcons[node.icon].replace(/currentColor/g, isMed ? '#d4443b' : 'url(#lsGoldGrad)') }} />
                           </svg>
                         </g>
                         {/* Hit area */}
-                        <circle cx={nx} cy={ny} r={45} fill="transparent" />
+                        <circle cx={nx} cy={ny} r={50} fill="transparent" />
                       </g>
                     );
                   })}
@@ -704,17 +704,16 @@ const AAMPage = () => {
                     const nx = node.x * 10;
                     const ny = node.y * 6;
                     const hl = hoveredLs === node.id;
-                    let lx = nx, ly = ny + 40, anchor: string = 'middle';
-                    if (node.id === 'residential') { ly = 155; }
-                    if (node.id === 'rural') { ly = 155; }
+                    const lx = nx;
+                    const ly = ny + 52;
                     return (
                       <text
                         key={`label-${node.id}`}
                         x={lx} y={ly}
-                        textAnchor={anchor}
-                        fill={hl ? '#e8d5a0' : '#ffffff'}
+                        textAnchor="middle"
+                        fill={hl ? '#fff' : 'rgba(255,255,255,0.9)'}
                         fontFamily="'DM Sans', sans-serif"
-                        fontSize={hl ? '13' : '12'}
+                        fontSize={hl ? '15' : '14'}
                         fontWeight={hl ? '700' : '600'}
                         letterSpacing="1.5"
                         style={{ textTransform: 'uppercase', pointerEvents: 'none' } as React.CSSProperties}
