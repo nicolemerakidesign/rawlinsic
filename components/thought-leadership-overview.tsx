@@ -6,7 +6,7 @@ import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 import { THOUGHT_LEADERSHIP } from "@/components/thought-leadership-data";
-import PasswordGate from "@/components/password-gate";
+
 
 export default function ThoughtLeadershipOverview() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -140,10 +140,9 @@ export default function ThoughtLeadershipOverview() {
 
   return (
     <>
-      {/* Custom Cursor — outside PasswordGate so refs are available on mount */}
+      {/* Custom Cursor */}
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
-    <PasswordGate>
       {/* Ambient Background */}
       <div className="ambient-bg" />
       <div className="ambient-orbs">
@@ -329,7 +328,6 @@ export default function ThoughtLeadershipOverview() {
       </div>
 
       <SiteFooter />
-    </PasswordGate>
     </>
   );
 }
