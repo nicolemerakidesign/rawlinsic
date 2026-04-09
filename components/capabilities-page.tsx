@@ -395,7 +395,7 @@ export default function CapabilitiesPage() {
           </div>
 
           {sIdx < capabilitySections.length - 1 && (
-            <div className="section-divider" style={{ margin: "80px auto 0" }}>
+            <div className="section-divider cap-section-divider">
               <div className="gold-line" />
             </div>
           )}
