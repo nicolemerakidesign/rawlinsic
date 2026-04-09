@@ -3127,7 +3127,7 @@ color: #fff;
   .parallax-text1 { font-size: clamp(1.6rem, 6vw, 2.8rem); }
   .aam-hero { padding: 100px 24px 120px; min-height: 80vh; background-size: cover; background-position: center center; }
   .aam-hero-content { max-width: 100%; }
-  .aam-hero .hero-title { font-size: clamp(2rem, 7vw, 3rem); }
+  .aam-hero .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .aam-hero .hero-sub { font-size: 0.95rem; }
   .aam-stakeholders-layout { grid-template-columns: 1fr; gap: 32px; }
   .aam-stakeholders-layout svg { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block; }

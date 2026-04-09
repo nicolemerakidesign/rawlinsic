@@ -29,7 +29,7 @@ const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.jpg";
 const DEFINE_IMG = "/images/pages/connectingdots.webp";
 const PLANNING2_IMG = "/images/pages/aam-enable.webp";
 const DRONEMOUNTAINS_IMG = "/images/pages/aam-services-portfolio.webp";
-const IMPL_SCALING_IMG = "/images/pages/aam-implementation-scaling.webp";
+const IMPL_SCALING_IMG = "/images/pages/proficiency-1.webp";
 const REG_NAV_IMG = "/images/pages/aam-reg-navigation.webp";
 const COMMUNITY_IMG = "/images/pages/aam-community-engagement.webp";
 
@@ -84,6 +84,7 @@ const frameworkCards = [
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
     bullets: ["Policy development", "Program framework", "Stakeholder engagement", "Infrastructure planning", "Regulatory compliance"],
     img: ENABLE_NEW_IMG,
+    imgPos: "center 35%",
   },
   {
     title: "Deliver Operations",
@@ -1055,7 +1056,7 @@ const AAMPage = () => {
             {frameworkCards.map((card, i) => (
               <div className={`aam-framework-card${openFrameworks.has(i) ? " open" : ""}`} key={card.title}>
                 <div className="aam-framework-img-wrap">
-                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-framework-img" />
+                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="aam-framework-img" style={card.imgPos ? { objectPosition: card.imgPos } : undefined} />
                   <div className="aam-framework-img-overlay" />
                 </div>
                 <div className="aam-framework-accent" style={{ background: card.accent }} />
