@@ -2880,7 +2880,7 @@ color: #fff;
 
 /* Service Portfolio */
 .aam-portfolio-section .aam-section-header {
-  text-align: center;
+  text-align: left;
 }
 .aam-portfolio-tiles { grid-template-columns: repeat(2, 1fr); }
 .aam-portfolio-section .aam-pillar-card { background: #070d17; }
