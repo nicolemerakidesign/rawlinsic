@@ -477,7 +477,7 @@ export default function HomePage() {
             <p className="section-label">
               <span className="gold-text">areas of impact</span>
             </p>
-            <h2 className="section-title">Where We Deliver</h2>
+            <h2 className="section-title">Where We <em>Deliver</em></h2>
           </div>
         </div>
         {/* Progress bar + arrow controls above the cards */}
@@ -522,6 +522,11 @@ export default function HomePage() {
                 <span className="pillar-number">{p.num}</span>
                 <h3 className="pillar-name">{p.name}</h3>
                 <div className="pillar-tags">{p.tags}</div>
+                <button className="pillar-expand-btn" aria-label="Expand description">
+                  <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 1.5l7 7 7-7" />
+                  </svg>
+                </button>
                 <p className="pillar-desc">{p.desc}</p>
                 <Link
                   href={p.href}

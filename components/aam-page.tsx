@@ -84,7 +84,7 @@ const frameworkCards = [
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
     bullets: ["Policy development", "Program framework", "Stakeholder engagement", "Infrastructure planning", "Regulatory compliance"],
     img: ENABLE_NEW_IMG,
-    imgPos: "center 35%",
+    imgPos: "center 15%",
   },
   {
     title: "Deliver Operations",

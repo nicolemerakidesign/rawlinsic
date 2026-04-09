@@ -1414,6 +1414,20 @@ font-size: 11px;
   opacity: 0;
 }
 .pillar-card:hover .pillar-desc { max-height: 220px; opacity: 1; }
+.pillar-expand-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.4);
+  background: transparent;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: transform 0.3s;
+}
+.pillar-expand-btn svg { stroke: rgba(255,255,255,0.7); }
+.pillar-card.active .pillar-expand-btn { transform: rotate(180deg); }
 .pillar-link {
   font-size: 0.8rem; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
@@ -1810,7 +1824,7 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .explore-bottom .explore-card { height: 240px; }
 }
 @media (max-width: 768px) {
-  .hero-title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+  .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .hero-sub { font-size: 0.95rem; line-height: 1.7; }
   .new-intro { padding: 80px 0; }
   .new-intro-wrap { padding: 0 24px; gap: 40px; }
@@ -1834,7 +1848,9 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .explore-card-desc { opacity: 1; max-height: 140px; transform: translateY(0); }
   .explore-card-arrow { opacity: 1; transform: translateY(0); }
   .story-card-body-wrap { opacity: 1; max-height: 300px; transform: translateY(0); }
-  .pillar-desc { max-height: 220px; opacity: 1; }
+  .pillar-desc { max-height: 0; opacity: 0; }
+  .pillar-card.active .pillar-desc { max-height: 220px; opacity: 1; }
+  .pillar-expand-btn { display: flex; }
   .pillar-link { opacity: 1; transform: translateY(0); }
 }
 
@@ -5742,7 +5758,7 @@ color: #fff;
 @media (max-width: 768px) {
   .cap-hero { min-height: 85vh; }
   .cap-hero-content { padding: 0 24px; }
-  .cap-hero-title { font-size: 36px; }
+  .cap-hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .cap-hero-nav { flex-direction: column; align-items: stretch; }
   .cap-hero-nav-btn { justify-content: center; }
   .cap-section { padding: 60px 20px 20px; }
@@ -5903,7 +5919,7 @@ color: #fff;
 @media (max-width: 768px) {
   .ins-hero { min-height: 100vh; }
   .ins-hero-content { padding: 0 24px; }
-  .ins-hero-title { font-size: 32px; }
+  .ins-hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .ins-channel-desc { max-height: 300px; opacity: 1; }
   .ins-channel-cta { opacity: 1; transform: translateY(0); }
   .ins-channel-expand-hint { display: none; }
