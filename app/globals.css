@@ -5452,9 +5452,9 @@ color: #fff;
 }
 @keyframes capPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 .cap-hero-title {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: clamp(40px, 6vw, 72px); font-weight: 300; line-height: 1.1;
-  color: #fff; margin-bottom: 24px;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.7rem, 4vw, 4.5rem); font-weight: 400; line-height: 1.15;
+  color: #fff; margin-bottom: 28px; margin-top: 20px;
 }
 .cap-hero-title em {
   font-style: italic;
@@ -5463,7 +5463,8 @@ color: #fff;
 }
 .cap-hero-subtitle {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 17px; line-height: 1.75; color: #e8e6e1; max-width: 620px; margin: 0 auto 40px;
+  font-size: 1.1rem; line-height: 1.8; color: rgba(232,230,225,0.75); max-width: 560px; margin: 0 auto 40px;
+  font-weight: 300; letter-spacing: 0.3px;
 }
 .cap-hero-nav {
   display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
@@ -5821,7 +5822,7 @@ color: #fff;
   .cap-svc-card { flex: 0 0 300px; }
 }
 @media (max-width: 768px) {
-  .cap-hero { min-height: 85vh; }
+  .cap-hero { min-height: 85vh; background-attachment: scroll; background-position: center 30%; }
   .cap-hero-content { padding: 0 24px; }
   .cap-hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .cap-hero-nav { flex-direction: column; align-items: stretch; }
