@@ -351,7 +351,7 @@ const AAMPage = () => {
           <div className="aam-overview-grid">
             <div className="aam-overview-left reveal">
               <p className="section-label"><span className="gold-text">are you ready?</span></p>
-              <h2 className="section-title">Are you ready to integrate the next layer of your transportation <em>system?</em></h2>
+              <h2 className="section-title">Are you ready to <em>integrate</em> the <em>next layer</em> of your transportation system?</h2>
               <button
                 className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
                 aria-label="Learn more"
