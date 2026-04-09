@@ -116,7 +116,7 @@ const lsIcons: Record<string, string> = {
 // Node positions: direct SVG pixel coords from Illustrator (viewBox 0 0 1000 660)
 // x/y are stored as raw pixels, used directly (no multiplier)
 const landscapeNodes = [
-  { id: 'urban-air-taxi', label: 'Urban Air Taxi', x: 174.83, y: 121.83, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
+  { id: 'urban-air-taxi', label: 'Air Taxi', x: 174.83, y: 121.83, icon: 'helicopter', desc: 'Electric vertical takeoff and landing (eVTOL) aircraft providing on-demand urban and regional passenger transport.' },
   { id: 'package-delivery', label: 'Package Delivery', x: 192.74, y: 418.69, icon: 'package', desc: 'Automated drone logistics for last-mile and middle-mile package delivery across urban and suburban areas.' },
   { id: 'residential', label: 'Residential Areas', x: 491.83, y: 146.83, icon: 'residential', desc: 'Suburban and residential communities served by drone delivery, air taxi connections, and emergency response UAS.' },
   { id: 'medical', label: 'Medical Supplies', x: 487.76, y: 362.72, icon: 'medical', desc: 'Time-critical medical supply delivery including lab samples, medications, vaccines, and emergency equipment.' },
