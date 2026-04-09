@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
+import Script from "next/script";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 
 const dmSans = DM_Sans({
@@ -37,6 +38,12 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         {children}
+        {/* UserWay Accessibility Widget — sign up at https://userway.org for a free account ID and replace below */}
+        <Script
+          src="https://cdn.userway.org/widget.js"
+          data-account="REPLACE_WITH_YOUR_ACCOUNT_ID"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
