@@ -1824,11 +1824,13 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .explore-bottom .explore-card { height: 240px; }
 }
 @media (max-width: 768px) {
+  .hero { min-height: 100vh; min-height: 100dvh; }
   .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .hero-sub { font-size: 0.95rem; line-height: 1.7; }
   .auto-hero-btn { padding: 12px 28px; font-size: 11px; letter-spacing: 2px; }
-  .hero-scroll { bottom: 16px; padding-bottom: 16px; }
-  .hero-scroll span { font-size: 0.65rem; }
+  .hero-scroll { bottom: 12px; padding-bottom: 8px; gap: 6px; }
+  .hero-scroll span { font-size: 0.6rem; }
+  .scroll-line { height: 28px; }
   .new-intro { padding: 80px 0; }
   .new-intro-wrap { padding: 0 24px; gap: 40px; }
   .new-intro-images { height: 340px; }
