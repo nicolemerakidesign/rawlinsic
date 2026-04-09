@@ -3966,8 +3966,9 @@ color: #fff;
   max-width: 800px;
 }
 .csd-back-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 13px;
@@ -3977,6 +3978,7 @@ color: #fff;
   color: #fff;
   text-decoration: none;
   margin-bottom: 32px;
+  width: 100%;
   transition: color 0.3s;
 }
 .csd-back-link:hover {
@@ -5057,7 +5059,7 @@ color: #fff;
 .pod-hero {
   position: relative;
   min-height: auto;
-  padding: 140px 40px 60px;
+  padding: 180px 40px 60px;
   display: flex;
   align-items: center;
   justify-content: center;
