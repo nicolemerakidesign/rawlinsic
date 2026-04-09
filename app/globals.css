@@ -5908,9 +5908,12 @@ color: #fff;
   .cap-split-body-wrap.expanded { max-height: 400px; }
   .cap-svc-row-num { min-width: 31px; font-size: 24px; }
   .cap-svc-row-title { min-width: 193px; font-size: 25px; }
-  .cap-svc-row.expanded .cap-svc-row-body { max-height: 140px; padding: 0 27px 67px 35px; }
-  .cap-svc-toggle-btn { padding: 10px 18px; font-size: 11px; letter-spacing: 1.5px; }
-  .cap-svc-row-header { gap: 14px; padding: 18px 10px; }
+  .cap-svc-row.expanded .cap-svc-row-body { max-height: 500px; padding: 0 16px 40px 35px; }
+  .cap-svc-row-body { padding: 0 16px 0 35px; }
+  .cap-svc-toggle-btn { padding: 8px 14px; font-size: 10px; letter-spacing: 1px; flex-shrink: 0; }
+  .cap-services-header { gap: 12px; flex-wrap: wrap; }
+  .cap-svc-row-header { gap: 10px; padding: 16px 8px; }
+  .cap-svc-row-desc { font-size: 15px; }
 }
 
 
