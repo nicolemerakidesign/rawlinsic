@@ -622,7 +622,6 @@ export default function HomePage() {
       
         </div>
       </section>
-      <br></br><br></br>
 
          {/* Divider */}
       <div className="section-divider">
