@@ -1422,7 +1422,9 @@ font-size: 11px;
   transition: max-height 0.55s cubic-bezier(0.25,0.8,0.25,1), opacity 0.5s;
   opacity: 0;
 }
-.pillar-card:hover .pillar-desc { max-height: 220px; opacity: 1; }
+@media (hover: hover) {
+  .pillar-card:hover .pillar-desc { max-height: 220px; opacity: 1; }
+}
 .pillar-expand-btn {
   display: none;
   align-items: center;
@@ -1450,7 +1452,9 @@ font-size: 11px;
   transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
 }
 .pillar-link span { display: inline-block; }
-.pillar-card:hover .pillar-link { opacity: 1; transform: translateY(0); }
+@media (hover: hover) {
+  .pillar-card:hover .pillar-link { opacity: 1; transform: translateY(0); }
+}
 
 .about-us-link:hover { color: #c9a84c !important; }
 .about-us-link:hover span { text-decoration-color: #c9a84c; }
@@ -1864,14 +1868,10 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .explore-card-arrow { opacity: 1; transform: translateY(0); }
   .story-card-body-wrap { opacity: 1; max-height: 300px; transform: translateY(0); }
   .pillar-desc { max-height: 0; opacity: 0; }
-  .pillar-card:hover .pillar-desc { max-height: 0; opacity: 0; }
   .pillar-card.active .pillar-desc { max-height: 220px; opacity: 1; }
-  .pillar-card.active:hover .pillar-desc { max-height: 220px; opacity: 1; }
   .pillar-expand-btn { display: flex; }
   .pillar-link { opacity: 0; transform: translateY(8px); pointer-events: none; }
-  .pillar-card:hover .pillar-link { opacity: 0; transform: translateY(8px); pointer-events: none; }
   .pillar-card.active .pillar-link { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .pillar-card.active:hover .pillar-link { opacity: 1; transform: translateY(0); pointer-events: auto; }
 }
 
 /* Hide Next.js badge */
