@@ -825,7 +825,7 @@ const AAMPage = () => {
             <div className="eco-layout-text">
               <div className="aam-section-header reveal">
                 <p className="section-label"><span className="gold-text">Our Partners</span></p>
-                <h2 className="section-title">Stakeholders we <em>engage</em></h2>
+                <h2 className="section-title">Connecting the transportation <em>ecosystem</em></h2>
                 <p className="aam-section-lead" style={{ marginTop: '20px' }}>
                   We engage with stakeholders in the public and private sectors across the aviation industry, to align policy, regulation, operations, and technology; integrate systems and infrastructure; and implement safe and scalable services.
                 </p>
