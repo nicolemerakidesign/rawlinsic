@@ -436,7 +436,8 @@ color: #fff;
   display: flex; flex-direction: column; align-items: center;
 }
 
-  .hero-label {
+.hero-label {
+  display: block;
   font-size: 14px; letter-spacing: 5px;
   text-transform: uppercase;
   opacity: 0; transform: translateY(30px);
@@ -3966,9 +3967,8 @@ color: #fff;
   max-width: 800px;
 }
 .csd-back-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 13px;
@@ -3978,7 +3978,6 @@ color: #fff;
   color: #fff;
   text-decoration: none;
   margin-bottom: 32px;
-  width: 100%;
   transition: color 0.3s;
 }
 .csd-back-link:hover {
@@ -5094,9 +5093,11 @@ color: #fff;
   padding: 0 24px;
 }
 .pod-hero-icon {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   width: 72px;
   height: 72px;
   border-radius: 50%;
