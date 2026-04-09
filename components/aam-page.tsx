@@ -6,7 +6,7 @@ import Link from 'next/link';
 import SiteNav from '@/components/site-nav';
 import SiteFooter from '@/components/site-footer';
 
-const DRONE_IMG = "/images/pages/aam-drone.jpg";
+const DRONE_IMG = "/images/pages/aam-hero.webp";
 const CITY_AERIAL_IMG = "/images/pages/aam-city-aerial.webp";
 const INFRASTRUCTURE_IMG = "/images/pages/aam-infrastructure.jpg";
 const TECH_NETWORK_IMG = "/images/pages/aam-tech-network.jpg";
