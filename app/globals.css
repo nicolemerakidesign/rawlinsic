@@ -367,11 +367,12 @@
 
 /* ── Shared Section Styles ───────────────────── */
 .section-label {
-font-size: 14px;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 20px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 27px;
 }
 .section-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
@@ -5759,27 +5760,31 @@ color: #fff;
 .cap-svc-row.expanded .cap-svc-row-title { color: #e8d5a0; }
 .cap-svc-row-icon {
   flex-shrink: 0; width: 32px; height: 32px;
-  border: 1px solid rgba(201,168,76,0.25); border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.7); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   transition: border-color 0.25s, background 0.25s;
+  opacity: 1;
+  background: rgba(201,168,76,0.08);
 }
 .cap-svc-row:hover .cap-svc-row-icon,
 .cap-svc-row.expanded .cap-svc-row-icon {
   border-color: rgba(201,168,76,0.7);
   background: rgba(201,168,76,0.08);
 }
-.cap-svc-row-icon svg { stroke: rgba(201,168,76,0.5); transition: stroke 0.25s; }
+.cap-svc-row-icon svg { stroke: #c9a84c; transition: stroke 0.25s; }
 .cap-svc-row:hover .cap-svc-row-icon svg,
 .cap-svc-row.expanded .cap-svc-row-icon svg { stroke: #c9a84c; }
 .cap-svc-vline { transition: opacity 0.3s, transform 0.3s; transform-origin: center; }
 .cap-svc-row.expanded .cap-svc-vline { opacity: 0; transform: scaleY(0); }
+.cap-desc-expand-btn { display: none; }
+.cap-desc-expand-btn.rotated { transform: rotate(180deg); background: rgba(255,255,255,0.15); }
 .cap-svc-row-body {
   max-height: 0; overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
   padding: 0 16px 0 96px;
 }
 .cap-svc-row.expanded .cap-svc-row-body {
-  max-height: 140px; padding: 0 16px 20px 96px;
+  max-height: 300px; padding: 0 16px 20px 96px;
 }
 .cap-svc-row-desc {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
@@ -5839,6 +5844,14 @@ color: #fff;
   .cap-cta .cap-cta-title { font-size: clamp(1.8rem, 8vw, 2.4rem) !important; color: #fff !important; }
   .cap-cta .hero-sub,
   .cap-cta .cap-cta-text { color: #fff !important; opacity: 1 !important; }
+  .cap-desc-expand-btn { display: flex; }
+  .cap-split-body-wrap { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .cap-split-body-wrap.expanded { max-height: 400px; }
+  .cap-svc-row-num { min-width: 31px; font-size: 24px; }
+  .cap-svc-row-title { min-width: 193px; font-size: 25px; }
+  .cap-svc-row.expanded .cap-svc-row-body { max-height: 140px; padding: 0 27px 67px 35px; }
+  .cap-svc-toggle-btn { padding: 10px 18px; font-size: 11px; letter-spacing: 1.5px; }
+  .cap-svc-row-header { gap: 14px; padding: 18px 10px; }
 }
 
 

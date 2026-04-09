@@ -88,6 +88,7 @@ export default function CapabilitiesPage() {
   const [activeTab, setActiveTab] = useState("strategy");
   const [expandedService, setExpandedService] = useState<string | null>(null);
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [expandedDesc, setExpandedDesc] = useState<string | null>(null);
   const toggleSectionServices = (id: string) => {
     setExpandedSections(prev => {
       const next = new Set(prev);
@@ -331,7 +332,12 @@ export default function CapabilitiesPage() {
             <div className="cap-split-content">
               <p className="section-label"><span className="gold-text">{section.focus}</span></p>
               <h2 className="cap-split-title">{section.name}</h2>
-              <p className="cap-split-body">{section.description}</p>
+              <button className={`card-expand-btn cap-desc-expand-btn${expandedDesc === section.id ? " rotated" : ""}`} aria-label="Expand description" onClick={(e) => { e.stopPropagation(); setExpandedDesc((prev) => (prev === section.id ? null : section.id)); }}>
+                <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
+              </button>
+              <div className={`cap-split-body-wrap${expandedDesc === section.id ? " expanded" : ""}`}>
+                <p className="cap-split-body">{section.description}</p>
+              </div>
             </div>
           </div>
 
