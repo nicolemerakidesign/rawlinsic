@@ -511,6 +511,10 @@ color: #fff;
   font-weight: 900;
 }
 .hero-label-segment { white-space: nowrap; }
+.aam-title-segment { white-space: nowrap; }
+@media (max-width: 480px) {
+  .aam-title-segment { white-space: normal; }
+}
 
 .hero-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
