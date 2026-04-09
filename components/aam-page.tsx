@@ -29,6 +29,8 @@ const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.jpg";
 const DEFINE_IMG = "/images/pages/connectingdots.webp";
 const PLANNING2_IMG = "/images/pages/proficiency-1.webp";
 const DRONEMOUNTAINS_IMG = "/images/pages/aam-drone-mountains.jpg";
+const IMPL_SCALING_IMG = "/images/pages/aam-implementation-scaling.webp";
+const REG_NAV_IMG = "/images/pages/aam-regulatory-navigation.webp";
 
 
 /* ──── Data ──── */
@@ -59,11 +61,11 @@ const pillarCards = [
 
 const phaseData = [
   { num: "01", label: "Policy & System Planning", body: "Develop policy, system plans, and standardized guidance for local implementation.", img: BLUEPRINT_IMG },
-  { num: "02", label: "Regulatory Navigation", body: "Provide regulatory understanding for compliance and guide regulatory coordination.", img: PLANNING_IMG },
+  { num: "02", label: "Regulatory Navigation", body: "Provide regulatory understanding for compliance and guide regulatory coordination.", img: REG_NAV_IMG },
   { num: "03", label: "Infrastructure Planning", body: "Plan for infrastructure, including vertiports, including technical research and validation.", img: PHASE3_IMG },
   { num: "04", label: "Functional Frameworks", body: "Establish functional frameworks that support scalable program delivery and operational readiness.", img: PHASE4_IMG },
   { num: "05", label: "Data & Safety Integration", body: "Integrate data and safety policies into transportation systems.", img: DATA_CENTER_IMG },
-  { num: "06", label: "Implementation & Scaling", body: "Support implementation, deployment, and the scaling of AAM and UAS services.", img: PLANNING2_IMG },
+  { num: "06", label: "Implementation & Scaling", body: "Support implementation, deployment, and the scaling of AAM and UAS services.", img: IMPL_SCALING_IMG },
   { num: "07", label: "Community Engagement", body: "Facilitate ongoing community engagement and public trust-building.", img: TEAM_MEETING_IMG },
 ];
 
