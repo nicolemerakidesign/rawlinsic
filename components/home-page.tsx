@@ -132,6 +132,8 @@ export default function HomePage() {
   const [introOpen, setIntroOpen] = useState(false);
   const [openJourneys, setOpenJourneys] = useState<number[]>([]);
   const [activePillar, setActivePillar] = useState<string | null>(null);
+  const [activeStory, setActiveStory] = useState<number | null>(null);
+  const [activeExplore, setActiveExplore] = useState<string | null>(null);
   const [storyProgress, setStoryProgress] = useState(0);
   const [pillarsProgress, setPillarsProgress] = useState(0);
 
@@ -599,7 +601,7 @@ export default function HomePage() {
             onMouseLeave={onStoryMouseUp}
           >
             {journey.map((item, i) => (
-              <div className="story-card" key={item.phase}>
+              <div className={`story-card${activeStory === i ? " active" : ""}`} key={item.phase}>
                 <Image src={item.bg} alt={item.phase} fill sizes="(max-width: 768px) 80vw, 400px" className="story-card-bg" />
                 <div className="story-card-overlay" />
                 <div className="story-card-header">
@@ -608,6 +610,9 @@ export default function HomePage() {
                 </div>
                 <div className="story-card-divider" />
                 <h4 className="story-card-title">{item.title}</h4>
+                <button className="card-expand-btn" aria-label="Expand description" onClick={(e) => { e.stopPropagation(); setActiveStory((prev) => (prev === i ? null : i)); }}>
+                  <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
+                </button>
                 <div className="story-card-body-wrap">
                   <p className="story-card-body">{item.text}</p>
                 </div>
@@ -638,13 +643,16 @@ export default function HomePage() {
             {exploreTopCards.map((card, i) => (
               <Link
                 href={card.href}
-                className={`explore-card reveal${i > 0 ? ` rd${i}` : ""}`}
+                className={`explore-card reveal${i > 0 ? ` rd${i}` : ""}${activeExplore === card.title ? " active" : ""}`}
                 key={card.title}
               >
                 <Image src={card.bg} alt={card.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" className="explore-card-bg" />
                 <div className="explore-card-overlay" />
                 <div className="explore-card-inner">
                   <h3 className="explore-card-title">{card.title}</h3>
+                  <button className="card-expand-btn" aria-label="Expand description" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveExplore((prev) => (prev === card.title ? null : card.title)); }}>
+                    <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
+                  </button>
                   <p className="explore-card-desc">{card.desc}</p>
                   <span className="explore-card-arrow">{card.cta}</span>
                 </div>
@@ -655,13 +663,16 @@ export default function HomePage() {
             {exploreBottomCards.map((card, i) => (
               <Link
                 href={card.href}
-                className={`explore-card reveal${i > 0 ? " rd1" : ""}`}
+                className={`explore-card reveal${i > 0 ? " rd1" : ""}${activeExplore === card.title ? " active" : ""}`}
                 key={card.title}
               >
                 <Image src={card.bg} alt={card.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" className="explore-card-bg" />
                 <div className="explore-card-overlay" />
                 <div className="explore-card-inner">
                   <h3 className="explore-card-title">{card.title}</h3>
+                  <button className="card-expand-btn" aria-label="Expand description" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveExplore((prev) => (prev === card.title ? null : card.title)); }}>
+                    <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
+                  </button>
                   <p className="explore-card-desc">{card.desc}</p>
                   <span className="explore-card-arrow">{card.cta}</span>
                 </div>
