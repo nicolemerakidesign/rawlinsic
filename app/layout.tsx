@@ -37,13 +37,14 @@ export default function RootLayout({
         className={`${dmSans.variable} ${cormorant.variable} antialiased`}
         suppressHydrationWarning={true}
       >
+        <a href="#main-content" className="skip-to-content">Skip to main content</a>
+        <div id="main-content">
         {children}
-        {/* UserWay Accessibility Widget — sign up at https://userway.org for a free account ID and replace below */}
-        <Script
-          src="https://cdn.userway.org/widget.js"
-          data-account="REPLACE_WITH_YOUR_ACCOUNT_ID"
-          strategy="lazyOnload"
-        />
+        </div>
+        <Script id="keyboard-nav" strategy="afterInteractive">{`
+          document.addEventListener('keydown',function(e){if(e.key==='Tab')document.body.classList.add('keyboard-nav')});
+          document.addEventListener('mousedown',function(){document.body.classList.remove('keyboard-nav')});
+        `}</Script>
       </body>
     </html>
   );

@@ -527,6 +527,7 @@ export default function HomePage() {
                 <button
                   className="pillar-expand-btn"
                   aria-label="Expand description"
+                  aria-expanded={activePillar === p.name}
                   onClick={(e) => {
                     e.stopPropagation();
                     setActivePillar((prev) => (prev === p.name ? null : p.name));
@@ -610,7 +611,7 @@ export default function HomePage() {
                 </div>
                 <div className="story-card-divider" />
                 <h4 className="story-card-title">{item.title}</h4>
-                <button className="card-expand-btn" aria-label="Expand description" onClick={(e) => { e.stopPropagation(); setActiveStory((prev) => (prev === i ? null : i)); }}>
+                <button className="card-expand-btn" aria-label="Expand description" aria-expanded={activeStory === i} onClick={(e) => { e.stopPropagation(); setActiveStory((prev) => (prev === i ? null : i)); }}>
                   <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
                 </button>
                 <div className="story-card-body-wrap">
@@ -649,7 +650,7 @@ export default function HomePage() {
                 <div className="explore-card-overlay" />
                 <div className="explore-card-inner">
                   <h3 className="explore-card-title">{card.title}</h3>
-                  <button className="card-expand-btn" aria-label="Expand description" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveExplore((prev) => (prev === card.title ? null : card.title)); }}>
+                  <button className="card-expand-btn" aria-label="Expand description" aria-expanded={activeExplore === card.title} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveExplore((prev) => (prev === card.title ? null : card.title)); }}>
                     <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
                   </button>
                   <p className="explore-card-desc">{card.desc}</p>
@@ -669,7 +670,7 @@ export default function HomePage() {
                 <div className="explore-card-overlay" />
                 <div className="explore-card-inner">
                   <h3 className="explore-card-title">{card.title}</h3>
-                  <button className="card-expand-btn" aria-label="Expand description" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveExplore((prev) => (prev === card.title ? null : card.title)); }}>
+                  <button className="card-expand-btn" aria-label="Expand description" aria-expanded={activeExplore === card.title} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveExplore((prev) => (prev === card.title ? null : card.title)); }}>
                     <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
                   </button>
                   <p className="explore-card-desc">{card.desc}</p>

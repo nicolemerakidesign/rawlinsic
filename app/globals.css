@@ -72,6 +72,65 @@
   }
 }
 
+/* ── Accessibility ──────────────────────────── */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #c9a84c;
+  color: #060c16;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0 0 8px 8px;
+  z-index: 10000;
+  transition: top 0.2s;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Focus outlines — only for keyboard users */
+*:focus-visible {
+  outline: 2px solid rgba(201,168,76,0.7);
+  outline-offset: 2px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(201,168,76,0.7);
+  outline-offset: 2px;
+}
+
+/* Restore default cursor for keyboard users */
+body.keyboard-nav,
+body.keyboard-nav a,
+body.keyboard-nav button {
+  cursor: auto !important;
+}
+body.keyboard-nav .cursor-dot,
+body.keyboard-nav .cursor-ring {
+  display: none !important;
+}
+
+/* Reduced motion — disable animations for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-title, .hero-sub, .hero-label, .auto-hero-btn, .hero-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
 /* ── Ambient Background ──────────────────────── */
 .ambient-bg {
   position: fixed; inset: 0;
