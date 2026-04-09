@@ -351,7 +351,7 @@ const AAMPage = () => {
           <div className="aam-overview-grid">
             <div className="aam-overview-left reveal">
               <p className="section-label"><span className="gold-text">are you ready?</span></p>
-              <h2 className="section-title">The next major phase in transportation's <em>evolution</em></h2>
+              <h2 className="section-title">Are you ready to integrate the next layer of your transportation <em>system?</em></h2>
               <button
                 className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
                 aria-label="Learn more"
@@ -638,13 +638,12 @@ const AAMPage = () => {
                       const my = (y1 + y2) / 2 + dx * 0.12;
                       d = `M${x1},${y1} Q${mx - dy * 0.12},${my} ${x2},${y2}`;
                     }
-                    // Highlight: source node lights up all its paths; destination nodes only light up paths OF THEIR OWN type
+                    // Highlight: source node lights up all its paths; destination nodes light up all paths connected to them
                     const hoveredNode = hoveredLs;
                     const sourceNodes: Record<string, string> = { 'air-taxi': 'urban-air-taxi', 'delivery': 'package-delivery', 'medical': 'medical' };
                     const isSourceHighlighted = hoveredNode === sourceNodes[fp.type];
-                    // Only highlight a path from a destination hover if the hovered node is the source of this path type
-                    const isFromSource = hoveredNode === fp.from && hoveredNode === sourceNodes[fp.type];
-                    const hl = isSourceHighlighted || isFromSource;
+                    const isConnected = hoveredNode === fp.from || hoveredNode === fp.to;
+                    const hl = isSourceHighlighted || isConnected;
                     const cls = fp.type === 'medical' ? 'ls-flight-path-med' : (i % 2 === 0 ? 'ls-flight-path' : 'ls-flight-path-reverse');
                     const hlColor = hl ? (fp.type === 'air-taxi' ? '#e8d5a0' : fp.type === 'medical' ? '#e8585a' : '#b8976a') : fp.color;
                     return (
@@ -1083,7 +1082,7 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">how we serve our clients</span></p>
-            <h2 className="section-title">Essential <em>Phases</em></h2>
+            <h2 className="section-title">How we support the full program <em>lifecycle</em></h2>
             <p className="section-text" style={{ marginTop: "20px" }}>
               Our team brings together regulatory guidance, operational expertise, and program strategy to deliver real-world results. We support AAM and UAS initiatives throughout the program lifecycle.
             </p>
@@ -1121,11 +1120,6 @@ const AAMPage = () => {
               <div className="aam-alt-card" key={phase.num}>
                 <Image src={phase.img} alt={phase.label} fill sizes="(max-width: 768px) 80vw, 400px" className="aam-alt-card-bg" />
                 <div className="aam-alt-card-overlay" />
-                <div className="aam-alt-card-header">
-                  <span className="aam-alt-card-num">{phase.num}</span>
-                  <span className="aam-alt-card-phase">Phase {i + 1}</span>
-                </div>
-                <div className="aam-alt-card-divider" />
                 <h4 className="aam-alt-card-title">{phase.label}</h4>
                 <p className="aam-alt-card-body">{phase.body}</p>
               </div>
@@ -1140,7 +1134,7 @@ const AAMPage = () => {
       <section className="aam-section aam-portfolio-section" id="portfolio">
         <div className="aam-container">
           <div className="aam-section-header reveal" style={{ textAlign: 'center' }}>
-            <p className="section-label"><span className="gold-text">Services</span></p>
+            <p className="section-label"><span className="gold-text">Program Development</span></p>
             <h2 className="section-title">Our Service <em>Portfolio</em></h2>
           </div>
           <div className="aam-pillars-grid aam-portfolio-tiles">
@@ -1186,7 +1180,7 @@ const AAMPage = () => {
             <p className="section-label"><span className="gold-text">Get Started</span></p>
             <h2 className="section-title">Ready to <em>transform</em> your region?</h2>
             <p className="aam-cta-body">
-              Whether you are just beginning or well along on your journey, we can provide guidance and support. To learn more about our service portfolio and how we can help you deliver successful AAM and UAS outcomes for your program, reach out.
+              Whether you are just beginning or well along on your journey, we can provide guidance and support. To learn more about our service portfolio and how we can help you deliver successful AAM and UAS outcomes for your community, reach out.
             </p>
             <Link href="/contact" className="auto-hero-btn" style={{ marginTop: "20px", opacity: 1, transform: "none", animation: "none" }}>
               <span>Start a Conversation</span>
