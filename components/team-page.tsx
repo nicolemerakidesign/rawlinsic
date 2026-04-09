@@ -293,6 +293,10 @@ export default function TeamPage() {
                Collaboration is central to how we work. Team members have core areas of focus and work seamlessly across disciplines to support each engagement.
             </p>
           </div>
+          <div className="hero-scroll">
+            <span>Scroll down to view team</span>
+            <div className="scroll-line" />
+          </div>
         </section>
 
         {/* Divider */}
