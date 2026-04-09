@@ -66,9 +66,9 @@ const pipeline = [
 ];
 
 const challenges = [
-  { title: "Disconnected Tools", solution: "We enable your systems to work together efficiently.", img: CONNECT_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { title: "Duplicated Work", solution: "We design and implement platforms that streamline processes, eliminate manual mistakes in routine workflows, and move data where people need it.", img: DASHBOARD_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { title: "Fragmented Information Landscape", solution: "We integrate systems via a central hub to provide timely information in a unified view.", img: NETWORK_IMG, videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+  { title: "Disconnected Tools", solution: "We enable your systems to work together efficiently.", img: CONNECT_IMG, videoUrl: "/videos/disconnected-tools-video.mp4" },
+  { title: "Duplicated Work", solution: "We design and implement platforms that streamline processes, eliminate manual mistakes in routine workflows, and move data where people need it.", img: DASHBOARD_IMG, videoUrl: "/videos/duplicated-work-video.mp4" },
+  { title: "Fragmented Information Landscape", solution: "We integrate systems via a central hub to provide timely information in a unified view.", img: NETWORK_IMG, videoUrl: "/videos/fragmented-information-landscape-video.mp4" },
   { title: "Capability Gap", solution: "We equip teams in automation and help organizations apply AI effectively and responsibly. We guide leaders and organizations through the challenges of automation and AI, helping teams adapt to embrace new technologies and work practices.", img: TEAM_IMG, videoUrl: "" },
 ];
 
@@ -356,7 +356,15 @@ export default function AutomationPage() {
                 {/* Image/Video — always visible */}
                 {hasVideo && isPlaying ? (
                   <div style={{ position: "relative", paddingTop: "56.25%", background: "#000" }}>
-                    <iframe src={c.videoUrl + "?autoplay=1"} allow="autoplay; encrypted-media" allowFullScreen style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }} />
+                    <video
+                      autoPlay
+                      controls
+                      playsInline
+                      preload="none"
+                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                    >
+                      <source src={c.videoUrl} type="video/mp4" />
+                    </video>
                     <button onClick={() => setActiveVideo(null)} style={{ position: "absolute", top: "12px", right: "12px", width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.5)", background: "rgba(6,12,22,0.8)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", zIndex: 3 }}>
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
                     </button>
