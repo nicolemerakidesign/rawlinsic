@@ -822,7 +822,7 @@ const AAMPage = () => {
             <div className="eco-layout-text">
               <div className="aam-section-header reveal">
                 <p className="section-label"><span className="gold-text">Our Partners</span></p>
-                <h2 className="section-title">Stakeholders We <em>Engage</em></h2>
+                <h2 className="section-title">Stakeholders we <em>engage</em></h2>
                 <p className="aam-section-lead" style={{ marginTop: '20px' }}>
                   We engage with stakeholders in the public and private sectors across the aviation industry, to align policy, regulation, operations, and technology; integrate systems and infrastructure; and implement safe and scalable services.
                 </p>
@@ -1042,7 +1042,7 @@ const AAMPage = () => {
       <section className="aam-section" id="methodology">
         <div className="aam-container">
           <div className="aam-section-header reveal">
-            <h2 className="section-title">Our <em>Approach</em></h2>
+            <h2 className="section-title">Our <em>approach</em></h2>
             <p className="section-text" style={{ marginTop: "20px", maxWidth: "750px" }}>
               By bringing each unique stakeholder to the table, we can plan for aviation&rsquo;s future.
             </p>
@@ -1082,7 +1082,7 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">how we serve our clients</span></p>
-            <h2 className="section-title">How we support the full program <em>lifecycle</em></h2>
+            <h2 className="section-title">We support the full program <em>lifecycle</em></h2>
             <p className="section-text" style={{ marginTop: "20px" }}>
               Our team brings together regulatory guidance, operational expertise, and program strategy to deliver real-world results. We support AAM and UAS initiatives throughout the program lifecycle.
             </p>
@@ -1135,7 +1135,7 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-section-header reveal" style={{ textAlign: 'center' }}>
             <p className="section-label"><span className="gold-text">Program Development</span></p>
-            <h2 className="section-title">Our Service <em>Portfolio</em></h2>
+            <h2 className="section-title">Our service <em>portfolio</em></h2>
           </div>
           <div className="aam-pillars-grid aam-portfolio-tiles">
             {[
