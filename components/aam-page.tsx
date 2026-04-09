@@ -17,7 +17,7 @@ const AERIAL_VIEW_IMG = "/images/pages/aam-aerial-view.jpg";
 const HELICOPTER_IMG = "/images/pages/aam-helicopter.jpg";
 const CONTROL_ROOM_IMG = "/images/pages/aam-control-room.jpg";
 const DEFINE_NEW_IMG = "/images/pages/aam-define.webp";
-const ENABLE_NEW_IMG = "/images/pages/aam-enable.webp";
+const ENABLE_NEW_IMG = "/images/pages/aam-enable-system.webp";
 const DELIVER_NEW_IMG = "/images/pages/aam-deliver.webp";
 const PHASE3_IMG = "/images/pages/aam-phase3.webp";
 const PHASE4_IMG = "/images/pages/aam-phase4.webp";
@@ -27,8 +27,8 @@ const DATA_CENTER_IMG = "/images/pages/aam-data-center.jpg";
 const HIGHWAY_AERIAL_IMG = "/images/pages/aam-highway-aerial.jpg";
 const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.jpg";
 const DEFINE_IMG = "/images/pages/connectingdots.webp";
-const PLANNING2_IMG = "/images/pages/proficiency-1.webp";
-const DRONEMOUNTAINS_IMG = "/images/pages/aam-drone-mountains.jpg";
+const PLANNING2_IMG = "/images/pages/aam-enable.webp";
+const DRONEMOUNTAINS_IMG = "/images/pages/aam-services-portfolio.webp";
 const IMPL_SCALING_IMG = "/images/pages/aam-implementation-scaling.webp";
 const REG_NAV_IMG = "/images/pages/aam-regulatory-navigation.webp";
 const COMMUNITY_IMG = "/images/pages/aam-community-engagement.webp";
@@ -761,7 +761,7 @@ const AAMPage = () => {
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-          Led by a team that helped shape early AAM guidance—& <em>continues to support its evolution</em>
+          Led by a team that helped shape early AAM guidance—& <em>continues to guide its evolution</em>
         </p>
       </div>
 
