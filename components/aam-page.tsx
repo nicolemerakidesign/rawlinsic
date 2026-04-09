@@ -29,7 +29,7 @@ const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.jpg";
 const DEFINE_IMG = "/images/pages/connectingdots.webp";
 const PLANNING2_IMG = "/images/pages/aam-enable.webp";
 const DRONEMOUNTAINS_IMG = "/images/pages/aam-services-portfolio.webp";
-const IMPL_SCALING_IMG = "/images/pages/aam-blueprint.jpg";
+const IMPL_SCALING_IMG = "/images/pages/aam-implementation-scaling.webp";
 const REG_NAV_IMG = "/images/pages/aam-reg-navigation.webp";
 const COMMUNITY_IMG = "/images/pages/aam-community-engagement.webp";
 
