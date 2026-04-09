@@ -356,7 +356,7 @@ export default function TeamPage() {
             <input
               type="text"
               className="team-search-input"
-              placeholder="Search by name..."
+              placeholder="Search..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               autoComplete="off"
