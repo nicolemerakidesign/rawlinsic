@@ -82,7 +82,7 @@ export default function ThoughtLeadershipOverview() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ── Scroll reveal — delayed for PasswordGate ── */
+  /* ── Scroll reveal ── */
   useEffect(() => {
     let observer: IntersectionObserver;
     const raf = requestAnimationFrame(() => {

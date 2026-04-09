@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
-import PasswordGate from "@/components/password-gate";
 import { TEAM_MEMBERS, type TeamMember } from "@/lib/team-data";
 
 type FilterCategory = "all" | "strategy" | "operations" | "technology" | "communication-brand-design" | "administration";
@@ -163,7 +162,7 @@ export default function TeamPage() {
     return () => { document.body.style.overflow = ""; };
   }, [selectedMember]);
 
-  // Scroll reveal — delayed for PasswordGate
+  // Scroll reveal
   useEffect(() => {
     let ob: IntersectionObserver;
     const timer = setTimeout(() => {
@@ -256,7 +255,7 @@ export default function TeamPage() {
 
   return (
     <>
-      {/* Custom Cursor — outside PasswordGate */}
+      {/* Custom Cursor */}
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
     <>
@@ -292,10 +291,10 @@ export default function TeamPage() {
             <p className="hero-sub" style={{ marginTop: "16px", maxWidth: "1100px" }}>
                Collaboration is central to how we work. Team members have core areas of focus and work seamlessly across disciplines to support each engagement.
             </p>
-          </div>
-          <div className="hero-scroll">
-            <span>Scroll down to view team</span>
-            <div className="scroll-line" />
+            <div className="hero-scroll" style={{ position: "relative", bottom: "auto", marginTop: "32px" }}>
+              <span>Scroll down to view team</span>
+              <div className="scroll-line" />
+            </div>
           </div>
         </section>
 

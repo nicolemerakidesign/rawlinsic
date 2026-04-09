@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
-import PasswordGate from "@/components/password-gate";
 
 /* ─── Images ─── */
 const STRATEGY_IMG =

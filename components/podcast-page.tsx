@@ -4,9 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
-import PasswordGate from "@/components/password-gate";
-
-/* ── Cursor component — must live inside PasswordGate children so refs exist ── */
+/* ── Cursor component ── */
 function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -119,7 +117,7 @@ export default function PodcastPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ── Scroll reveal — delayed for PasswordGate ── */
+  /* ── Scroll reveal ── */
   useEffect(() => {
     let observer: IntersectionObserver;
     const raf = requestAnimationFrame(() => {
