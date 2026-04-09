@@ -52,7 +52,7 @@ const pillarCards = [
     imgPos: "center 30%",
   },
   {
-    title: "UAS Data Collection",
+    title: "UAS Operational Support",
     desc: "",
     bullets: ["Infrastructure Inspection", "Construction Inspection & Monitoring", "Environmental Monitoring", "Aerial Surveying & Mapping", "Disaster Response", "Incident Scene Management"],
     img: DRONE_FLIGHT_IMG,
