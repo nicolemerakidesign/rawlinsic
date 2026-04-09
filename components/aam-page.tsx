@@ -72,21 +72,21 @@ const phaseData = [
 
 const frameworkCards = [
   {
-    title: "Define",
+    title: "Define the Program",
     tagline: "Vision & Planning",
     accent: "linear-gradient(90deg, #c9a84c, #e8d5a0)",
     bullets: ["Community needs assessment", "Vision & mission definition", "Use case & infrastructure evaluation", "Program goals & timeline", "Stakeholder identification", "Grant opportunities", "Legislative support"],
     img: DEFINE_NEW_IMG,
   },
   {
-    title: "Enable",
+    title: "Enable the System",
     tagline: "Policy & Program Support",
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
     bullets: ["Policy development", "Program framework", "Stakeholder engagement", "Infrastructure planning", "Regulatory compliance"],
     img: ENABLE_NEW_IMG,
   },
   {
-    title: "Deliver",
+    title: "Deliver Operations",
     tagline: "Operations & Scale",
     accent: "linear-gradient(90deg, #e8d5a0, #c9a84c)",
     bullets: ["Operational deployment", "Safety & compliance monitoring", "Performance optimization", "Continuous improvement"],
@@ -1047,7 +1047,7 @@ const AAMPage = () => {
           <div className="aam-section-header reveal">
             <h2 className="section-title">Our <em>approach</em></h2>
             <p className="section-text" style={{ marginTop: "20px", maxWidth: "750px" }}>
-              By bringing each unique stakeholder to the table, we can plan for aviation&rsquo;s future.
+              From early guidance to operational deployment, we help agencies define, enable, and deliver AAM and UAS programs.
             </p>
           </div>
           <div className="aam-framework-grid">
