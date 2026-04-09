@@ -186,6 +186,7 @@ const AAMPage = () => {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [introOpen, setIntroOpen] = useState(false);
   const [valueOpen, setValueOpen] = useState(false);
+  const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [openServices, setOpenServices] = useState<Set<number>>(new Set());
   const [hoveredLs, setHoveredLs] = useState<string | null>(null);
 
@@ -1136,12 +1137,25 @@ const AAMPage = () => {
       {/* ── Service Portfolio ── */}
       <section className="aam-section aam-portfolio-section" id="portfolio">
         <div className="aam-container">
-          <div className="aam-section-header reveal" style={{ textAlign: 'center' }}>
+          <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Program Development</span></p>
             <h2 className="section-title">Our service <em>portfolio</em></h2>
-            <p className="aam-section-lead" style={{ marginTop: '20px', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
-              Our team serves as a trusted partner and extension of your team, collaborating to support the planning, integration, and execution of UAS and AAM programs. We work alongside your organization, bringing practical experience across policy, operations, and implementation, to help move from concept to scalable, defensible programs. Our role is to align technology, stakeholders, and infrastructure with regulations so you can deliver safe and reliable aviation outcomes.
-            </p>
+            <button
+              className={`intro-expand-btn${portfolioOpen ? " expanded" : ""}`}
+              aria-label="Learn more"
+              onClick={() => setPortfolioOpen(o => !o)}
+            >
+              <span className="intro-expand-icon">
+                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 1.5l7 7 7-7" />
+                </svg>
+              </span>
+            </button>
+            <div className={`intro-expandable${portfolioOpen ? " expanded" : ""}`}>
+              <p className="aam-section-lead">
+                Our team serves as a trusted partner and extension of your team, collaborating to support the planning, integration, and execution of UAS and AAM programs. We work alongside your organization, bringing practical experience across policy, operations, and implementation, to help move from concept to scalable, defensible programs. Our role is to align technology, stakeholders, and infrastructure with regulations so you can deliver safe and reliable aviation outcomes.
+              </p>
+            </div>
           </div>
           <div className="aam-pillars-grid aam-portfolio-tiles">
             {[
