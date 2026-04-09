@@ -1139,6 +1139,9 @@ const AAMPage = () => {
           <div className="aam-section-header reveal" style={{ textAlign: 'center' }}>
             <p className="section-label"><span className="gold-text">Program Development</span></p>
             <h2 className="section-title">Our service <em>portfolio</em></h2>
+            <p className="aam-section-lead" style={{ marginTop: '20px', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+              Our team serves as a trusted partner and extension of your team, collaborating to support the planning, integration, and execution of UAS and AAM programs. We work alongside your organization, bringing practical experience across policy, operations, and implementation, to help move from concept to scalable, defensible programs. Our role is to align technology, stakeholders, and infrastructure with regulations so you can deliver safe and reliable aviation outcomes.
+            </p>
           </div>
           <div className="aam-pillars-grid aam-portfolio-tiles">
             {[
