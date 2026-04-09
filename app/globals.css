@@ -2882,8 +2882,9 @@ color: #fff;
 .aam-portfolio-section .aam-section-header {
   text-align: left;
 }
-.aam-portfolio-tiles { grid-template-columns: repeat(2, 1fr); }
+.aam-portfolio-tiles { grid-template-columns: repeat(2, 1fr); max-width: 960px; }
 .aam-portfolio-section .aam-pillar-card { background: #070d17; }
+.aam-portfolio-section .aam-pillar-img-wrap { height: 300px; }
 .aam-portfolio-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
