@@ -1973,6 +1973,7 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .pillar-expand-btn { display: flex; }
   .pillar-link { opacity: 0; transform: translateY(8px); pointer-events: none; }
   .pillar-card.active .pillar-link { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .section-team .section-label { margin-bottom: 5px; }
 }
 @media (max-width: 380px) {
   .auto-hero-btn { padding: 10px 20px; font-size: 10px; letter-spacing: 1.5px; }
@@ -5903,6 +5904,7 @@ color: #fff;
   .cap-svc-card { flex: 0 0 280px; min-height: 160px; }
   .cap-tab { padding: 14px 12px; font-size: 11px; letter-spacing: 1.5px; }
   .cap-cta { padding: 60px 24px 80px; }
+  .cap-cta .section-label { margin-bottom: 5px; }
   .cap-cta .section-title,
   .cap-cta .cap-cta-title { color: #fff !important; word-wrap: break-word; overflow-wrap: break-word; }
   .cap-cta .hero-sub,
