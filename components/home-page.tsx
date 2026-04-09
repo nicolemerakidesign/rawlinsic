@@ -353,7 +353,7 @@ export default function HomePage() {
       {/* ── Hero ── */}
       <section className="hero" id="top">
         <div className="hero-video-wrap">
-          <video className="hero-video" autoPlay muted loop playsInline>
+          <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="/images/pages/hero-poster.webp">
             <source src={VIDEO_URL} type="video/mp4" />
           </video>
         </div>
