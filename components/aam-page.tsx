@@ -159,12 +159,12 @@ const ecoIcons: Record<string, string> = {
 
 const ecosystemNodes = [
   { id: 'aviation', label: 'Aviation\nAuthorities', short: 'FAA · ICAO · NASAO', desc: 'Interpreting U.S. federal and international aviation regulatory bodies shaping airspace policy and certification standards.', angle: 0 },
-  { id: 'government', label: 'Government\nAgencies', short: 'DOTs · Security · Emergency', desc: 'State and federal departments of transportation, homeland security, and emergency management services.', angle: 45 },
+  { id: 'government', label: 'Government\nAgencies', short: 'US DOTs · Security · Emergency', desc: 'Aligning State, Federal, and International transportation agencies, security forces, and emergency management services.', angle: 45 },
   { id: 'standards', label: 'Standards\nOrganizations', short: 'ACRA · AASHTO · NCHRP', desc: 'Developing industry standards for technical requirements, performance benchmarks, and implementation frameworks.', angle: 90 },
   { id: 'academic', label: 'Academic\nInstitutions', short: 'Research · Universities · Labs', desc: 'Steering research centers and universities advancing AAM technology, safety analysis, and workforce development.', angle: 135 },
-  { id: 'ansp', label: 'Air Navigation\nProviders', short: 'UTM · ATM · Traffic Mgmt', desc: 'Integrating UAS traffic management operators and air traffic management providers enabling safe airspace.', angle: 180 },
-  { id: 'operators', label: 'Operators &\nServices', short: 'Drone Ops · Delivery · Providers', desc: 'Commercial drone operators, delivery service providers, and aerial operations companies.', angle: 225 },
-  { id: 'industry', label: 'Industry', short: 'OEMs · Tech · Integrators', desc: 'Aircraft manufacturers, technology providers, and systems integrators building the AAM ecosystem.', angle: 270 },
+  { id: 'ansp', label: 'Air Navigation\nProviders', short: 'UTM · ATM · Traffic Management', desc: 'Integrating UAS traffic management operators and air traffic management providers to enable safe airspaces.', angle: 180 },
+  { id: 'operators', label: 'Operators &\nServices', short: 'Drone Operations · Delivery · Providers', desc: 'Informing commercial drone operators, delivery service providers, and aerial operations companies on industry best practices.', angle: 225 },
+  { id: 'industry', label: 'Industry', short: 'OEMs · Tech · Integrators', desc: 'Guiding aircraft manufacturers, technology providers and systems integrators building the vehicles for tomorrow\'s airspace.', angle: 270 },
   { id: 'cities', label: 'Cities &\nMPOs', short: 'Municipal · Planning · Transit', desc: 'Integrating AAM solutions across rural and urban communities.', angle: 315 },
 ];
 
