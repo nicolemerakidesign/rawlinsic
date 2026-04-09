@@ -5904,7 +5904,7 @@ color: #fff;
   .cap-tab { padding: 14px 12px; font-size: 11px; letter-spacing: 1.5px; }
   .cap-cta { padding: 60px 24px 80px; }
   .cap-cta .section-title,
-  .cap-cta .cap-cta-title { font-size: clamp(1.6rem, 6vw, 2.2rem) !important; color: #fff !important; }
+  .cap-cta .cap-cta-title { color: #fff !important; word-wrap: break-word; overflow-wrap: break-word; }
   .cap-cta .hero-sub,
   .cap-cta .cap-cta-text { color: #fff !important; opacity: 1 !important; }
   .cap-section-divider { margin: 37px auto 0; }
