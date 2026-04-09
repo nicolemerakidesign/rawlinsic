@@ -125,6 +125,17 @@ export default function AutomationPage() {
     return () => { clearTimeout(timer); if (ob) ob.disconnect(); };
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const nav = document.getElementById("mainNav");
+      if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+      const backToTop = document.getElementById("backToTop");
+      if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const onValuesScroll = () => {
     const el = valuesTrackRef.current;
     if (!el) return;
@@ -425,6 +436,9 @@ export default function AutomationPage() {
       </section>
 
       <div className="section-divider"><div className="gold-line" /></div>
+      <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+      </a>
       <SiteFooter />
     </>
     </>

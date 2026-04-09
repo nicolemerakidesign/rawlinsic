@@ -236,6 +236,8 @@ export default function CapabilitiesPage() {
     const nav = document.getElementById("mainNav");
     const onScroll = () => {
       if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+      const backToTop = document.getElementById("backToTop");
+      if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
       // Walk all sections and keep the last one whose top has passed the threshold.
       // This ensures whichever section the viewport is inside stays highlighted.
       // Only clears if we are above every section entirely.
@@ -413,6 +415,9 @@ export default function CapabilitiesPage() {
         </div>
       </section>
 
+      <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+      </a>
       <SiteFooter />
       </div>
     </>

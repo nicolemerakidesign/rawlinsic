@@ -114,6 +114,8 @@ export default function InsightsPage() {
     const nav = document.getElementById("mainNav");
     const onScroll = () => {
       if (nav) nav.classList.toggle("scrolled", window.scrollY > 60);
+      const backToTop = document.getElementById("backToTop");
+      if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -236,6 +238,9 @@ export default function InsightsPage() {
         </div>
       </section>
 
+      <a href="#top" className="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+      </a>
       <SiteFooter />
     </>
   );
