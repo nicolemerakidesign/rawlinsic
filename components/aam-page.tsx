@@ -22,15 +22,15 @@ const DELIVER_NEW_IMG = "/images/pages/aam-deliver.webp";
 const PHASE3_IMG = "/images/pages/aam-phase3.webp";
 const PHASE4_IMG = "/images/pages/aam-phase4.webp";
 const DRONE_FLIGHT_IMG = "/images/pages/skylimit.webp";
-const BLUEPRINT_IMG = "/images/pages/aam-blueprint.jpg";
+const BLUEPRINT_IMG = "/images/pages/aam-policy-planning.webp";
 const DATA_CENTER_IMG = "/images/pages/aam-data-center.jpg";
 const HIGHWAY_AERIAL_IMG = "/images/pages/aam-highway-aerial.jpg";
 const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.jpg";
 const DEFINE_IMG = "/images/pages/connectingdots.webp";
 const PLANNING2_IMG = "/images/pages/aam-enable.webp";
 const DRONEMOUNTAINS_IMG = "/images/pages/aam-services-portfolio.webp";
-const IMPL_SCALING_IMG = "/images/pages/aam-implementation-scaling.webp";
-const REG_NAV_IMG = "/images/pages/aam-regulatory-navigation.webp";
+const IMPL_SCALING_IMG = "/images/pages/aam-blueprint.jpg";
+const REG_NAV_IMG = "/images/pages/aam-reg-navigation.webp";
 const COMMUNITY_IMG = "/images/pages/aam-community-engagement.webp";
 
 
