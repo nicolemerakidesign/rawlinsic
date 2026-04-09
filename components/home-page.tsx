@@ -363,7 +363,7 @@ export default function HomePage() {
         <div className="hero-depth" />
         <div className="hero-grid" />
         <div className="hero-content">
-          <span className="hero-label"><span className="gold-text">Trusted Advisor &bull; Global Consultancy</span></span>
+          <span className="hero-label"><span className="gold-text"><span className="hero-label-segment">Trusted Advisor &bull;</span> <span className="hero-label-segment">Global Consultancy</span></span></span>
           <h1 className="hero-title">
             Providing trusted advice at the intersection of <em>strategy, operations,</em> &amp; <em>technology</em>
           </h1>
