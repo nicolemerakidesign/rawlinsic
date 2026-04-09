@@ -40,7 +40,7 @@ const pillarCards = [
   {
     title: "Advanced Air Mobility",
     desc: "",
-    bullets: ["Urban & Regional Connectivity", "Workforce Mobility", "Emergency Medical Transport", "Tourism & Sightseeing"],
+    bullets: ["Urban Air Mobility", "Regional Air Mobility", "Multi-modal Facilities", "Cargo Transport", "Emergency Medical Transport", "Business Travel", "Tourism & Sightseeing"],
     img: CITY_AERIAL_IMG,
     imgPos: "center 25%",
   },
