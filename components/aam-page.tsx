@@ -1035,7 +1035,7 @@ const AAMPage = () => {
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-          Guiding the <em>future</em> of aviation
+          <em>Leading</em> the integration of multi-modal solutions into <em>next generation</em> transportation networks
         </p>
       </div>
 
