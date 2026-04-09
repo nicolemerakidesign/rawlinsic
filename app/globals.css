@@ -1828,6 +1828,7 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .hero-sub { font-size: 0.95rem; line-height: 1.7; }
   .auto-hero-btn { padding: 12px 28px; font-size: 11px; letter-spacing: 2px; }
+  .hero-content { max-width: 900px; }
   .hero-scroll { bottom: 12px; padding-bottom: 8px; gap: 6px; }
   .hero-scroll span { font-size: 0.6rem; }
   .scroll-line { height: 28px; }
