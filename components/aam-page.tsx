@@ -769,7 +769,7 @@ const AAMPage = () => {
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Value Delivery</span></p>
-            <h2 className="section-title">Where we drive <em>impact</em> in aviation</h2>
+            <h2 className="section-title">Where we lead <em>implementation</em> in AAM and UAS</h2>
             <button
               className={`intro-expand-btn${valueOpen ? " expanded" : ""}`}
               aria-label="Learn more"
@@ -783,7 +783,7 @@ const AAMPage = () => {
             </button>
             <div className={`intro-expandable${valueOpen ? " expanded" : ""}`}>
               <p className="aam-section-lead">
-                The capabilities pioneered by UAS technologies underpin the development of AAM, which extends UAS applications into full-scale mobility solutions. UAS refers to all uncrewed aircraft, from small drones to larger remotely piloted systems. AAM represents a new vision of mobility, expanding transportation options for passengers, cargo, and emergency services across communities and regions.
+                Our team helped shape early AAM and UAS guidance and continues to support its evolution—working directly with transportation agencies and airports to turn strategy into deployable programs.
               </p>
             </div>
           </div>
