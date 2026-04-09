@@ -1977,6 +1977,9 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
 @media (max-width: 380px) {
   .auto-hero-btn { padding: 10px 20px; font-size: 10px; letter-spacing: 1.5px; }
   .hero-title { font-size: clamp(2rem, 7vw, 2.6rem); }
+  .cap-svc-toggle-btn { padding: 8px 12px; font-size: 9px; letter-spacing: 1px; }
+  .cap-svc-count-num { font-size: 42px; }
+  .cap-svc-count-word { font-size: 13px; }
 }
 
 /* Hide Next.js badge */
@@ -5910,8 +5913,9 @@ color: #fff;
   .cap-svc-row-title { min-width: 193px; font-size: 25px; }
   .cap-svc-row.expanded .cap-svc-row-body { max-height: 500px; padding: 0 16px 40px 35px; }
   .cap-svc-row-body { padding: 0 16px 0 35px; }
-  .cap-svc-toggle-btn { padding: 8px 14px; font-size: 10px; letter-spacing: 1px; flex-shrink: 0; }
-  .cap-services-header { gap: 12px; flex-wrap: wrap; }
+  .cap-svc-toggle-btn { padding: 10px 18px; font-size: 11px; letter-spacing: 1.5px; flex-shrink: 0; }
+  .cap-services-header { gap: 16px; }
+  .cap-svc-count-word { font-size: 15px; }
   .cap-svc-row-header { gap: 10px; padding: 16px 8px; }
   .cap-svc-row-desc { font-size: 15px; }
 }
