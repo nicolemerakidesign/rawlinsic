@@ -824,10 +824,10 @@ const AAMPage = () => {
             {/* Left: text */}
             <div className="eco-layout-text">
               <div className="aam-section-header reveal">
-                <p className="section-label"><span className="gold-text">Our Partners</span></p>
+                <p className="section-label"><span className="gold-text">Bridging Silos</span></p>
                 <h2 className="section-title">Connecting the transportation <em>ecosystem</em></h2>
                 <p className="aam-section-lead" style={{ marginTop: '20px' }}>
-                  We engage with stakeholders in the public and private sectors across the aviation industry, to align policy, regulation, operations, and technology; integrate systems and infrastructure; and implement safe and scalable services.
+                  We reside at the center of the transportation ecosystem, connecting public and private partners across both surface and air transportation to turn strategy into efficient, operational, coordinated action.
                 </p>
                 <p className="aam-section-lead" style={{ fontStyle: 'italic' }}>
                   Click any stakeholder to learn more.
