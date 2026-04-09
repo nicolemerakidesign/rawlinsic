@@ -285,10 +285,10 @@ export default function TeamPage() {
             <h1 className="hero-title">
               Meet the <span className="gold-text"><em>Experts</em></span>
             </h1>
-            <p className="hero-sub" style={{ maxWidth: "1100px" }}>
+            <p className="hero-sub" style={{ maxWidth: "1100px", fontSize: "16px" }}>
                Our team brings together expertise in strategy, operations, and technology to deliver practical, forward-thinking solutions to complex challenges. While rooted in transportation, we continue to expand our experience across sectors.
             </p>
-            <p className="hero-sub" style={{ marginTop: "16px", maxWidth: "1100px" }}>
+            <p className="hero-sub" style={{ marginTop: "8px", maxWidth: "1100px", fontSize: "16px" }}>
                Collaboration is central to how we work. Team members have core areas of focus and work seamlessly across disciplines to support each engagement.
             </p>
             <div className="hero-scroll" style={{ position: "relative", bottom: "auto", marginTop: "32px" }}>
