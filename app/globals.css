@@ -396,7 +396,7 @@ body.keyboard-nav .cursor-ring {
 .nav-right { display: flex; align-items: center; }
 .nav-cta {
   padding: 12px 34px;
-  background: linear-gradient(145deg, #d4be78, #c9a84c);
+  background: linear-gradient(135deg, #c9a84c 0%, #e8d5a0 50%, #c9a84c 100%);
   border: none;
   color: #0a0f1a;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
@@ -410,7 +410,7 @@ body.keyboard-nav .cursor-ring {
 .nav-cta:hover {
   box-shadow: 0 0 30px rgba(201,168,76,0.2);
   transform: translateY(-1px);
-  background: linear-gradient(145deg, #e8d5a0, #d4be78);
+  background: linear-gradient(135deg, #e8d5a0 0%, #c9a84c 50%, #e8d5a0 100%);
 }
 .menu-toggle {
   display: none; flex-direction: column; gap: 5px;
