@@ -292,15 +292,17 @@ export default function TeamPage() {
             <p className={`hero-sub team-hero-para${heroParaExpanded ? " expanded" : ""}`} style={{ maxWidth: "1100px" }}>
               <span>Our team brings together expertise in strategy, operations, and technology to deliver practical, forward-thinking solutions to complex challenges.</span>
               <span className="team-hero-para-rest"> While rooted in transportation, we continue to expand our experience across sectors. Collaboration is central to how we work. Team members have core areas of focus and work seamlessly across disciplines to support each engagement.</span>
-              <span className="team-hero-para-dots">...</span>
-              <button
-                className="team-hero-para-toggle"
-                aria-label={heroParaExpanded ? "Collapse" : "Expand"}
-                aria-expanded={heroParaExpanded}
-                onClick={() => setHeroParaExpanded(v => !v)}
-              >
-                <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
-              </button>
+              <span className="team-hero-para-more">
+                <span className="team-hero-para-dots">...</span>
+                <button
+                  className="team-hero-para-toggle"
+                  aria-label={heroParaExpanded ? "Collapse" : "Expand"}
+                  aria-expanded={heroParaExpanded}
+                  onClick={() => setHeroParaExpanded(v => !v)}
+                >
+                  <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
+                </button>
+              </span>
             </p>
             <div className="hero-scroll" style={{ position: "relative", bottom: "auto", marginTop: "32px" }}>
               <span>Scroll down to view team</span>

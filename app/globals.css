@@ -2163,6 +2163,8 @@ body nextjs-portal { display: none; }
 .team-filter-break { display: none; }
 .team-hero-para .team-hero-para-rest { display: none; }
 .team-hero-para .team-hero-para-dots { display: inline; }
+.team-hero-para-more { white-space: nowrap; display: inline; }
+.team-hero-para.expanded .team-hero-para-more { display: inline; }
 .team-hero-para-toggle {
   display: inline-block;
   width: 28px; height: 28px;
@@ -3585,7 +3587,6 @@ color: #fff;
   .team-popup-arrow-next { right: 8px; }
   .scott-featured-section { padding: 40px 24px 16px; }
   .team-search-wrap { max-width: 280px; }
-  .team-filter-break { flex-basis: 100%; width: 100%; height: 0; margin: 0; padding: 0; display: block; }
   .scott-featured-grid { grid-template-columns: 1fr; gap: 32px; }
   .scott-featured-card-col { justify-content: center; }
   .scott-featured-card { max-width: 240px; }
