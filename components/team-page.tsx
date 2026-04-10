@@ -303,7 +303,7 @@ export default function TeamPage() {
               </button>
             </div>
             <div className="hero-scroll" style={{ position: "relative", bottom: "auto", marginTop: "32px" }}>
-              <span>Scroll down to view team</span>
+              <span>Keep scrolling to view team</span>
               <div className="scroll-line" />
             </div>
           </div>
