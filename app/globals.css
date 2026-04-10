@@ -3289,6 +3289,7 @@ color: #fff;
   .aam-section { padding: 72px 0 0px 0px; }
   .aam-overview-right { margin-top: 0; }
   .ls-vis-wrapper svg text { font-size: 28px !important; }
+  .intro-expandable.expanded { max-height: 1500px; }
   .aam-hero .hero-sub { font-size: 0.95rem; }
   .aam-stakeholders-layout { grid-template-columns: 1fr; gap: 32px; }
   .aam-stakeholders-layout svg { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block; }
