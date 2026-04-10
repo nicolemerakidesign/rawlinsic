@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import SiteSearch from "@/components/site-search";
 
 const LOGO_URL =
   "/images/pages/hero-bg.webp";
@@ -14,6 +15,7 @@ interface SiteNavProps {
 
 export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
   const navRef = useRef<HTMLElement>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -23,6 +25,26 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  /* Global keyboard shortcut: Cmd/Ctrl + K opens search */
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+      if (e.key === "/" && !searchOpen) {
+        const target = e.target as HTMLElement | null;
+        const tag = target?.tagName;
+        if (tag !== "INPUT" && tag !== "TEXTAREA" && !(target as HTMLElement)?.isContentEditable) {
+          e.preventDefault();
+          setSearchOpen(true);
+        }
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [searchOpen]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState<Set<string>>(new Set());
@@ -54,6 +76,18 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
         </button>
 
         <div className="mobile-menu-items">
+          <button
+            type="button"
+            className="mobile-menu-search-trigger"
+            onClick={() => { close(); setSearchOpen(true); }}
+            aria-label="Open search"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+            <span>Search the site</span>
+          </button>
           <a href="/" onClick={close} className="mobile-menu-link">Home</a>
 
           {/* Capabilities */}
@@ -188,6 +222,17 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
         </div>
 
         <div className="nav-right">
+          <button
+            type="button"
+            className="nav-search-btn"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Open search"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+          </button>
           <Link href={ctaHref} className="nav-cta">Get In Touch</Link>
         </div>
 
@@ -203,6 +248,8 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
           <span />
         </div>
       </nav>
+
+      <SiteSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

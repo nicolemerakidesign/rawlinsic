@@ -141,7 +141,7 @@ export default function CareersPage() {
                 We&rsquo;re always interested in connecting with thoughtful, driven professionals who are passionate about solving complex challenges and creating meaningful impact. If our approach aligns with your interests, we welcome the opportunity to connect and learn more.
               </p>
               <p className="hero-sub" style={{ maxWidth: 720, marginTop: "12px" }}>
-                Email us at <a href="mailto:info@rawlinsic.com" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>info@rawlinsic.com</a>.
+                Email us at <a href="mailto:info@rawlinsic.com" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>info@rawlinsic.com</a>
               </p>
               <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginBottom: "60px" }}><span>Start a Conversation</span></Link>
             </div>

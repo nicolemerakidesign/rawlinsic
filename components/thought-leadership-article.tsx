@@ -268,7 +268,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
             </Link>
             <span className="hero-label">
               <span className="gold-text">
-                <span className="hero-label-segment">{article.category}&nbsp;&middot;</span>{" "}
+                <span className="hero-label-segment">{article.category}&nbsp;&bull;</span>{" "}
                 <span className="hero-label-segment">{article.dateLabel}</span>
               </span>
             </span>
