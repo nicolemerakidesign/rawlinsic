@@ -5492,7 +5492,7 @@ color: #fff;
     radial-gradient(ellipse 85% 70% at 50% 25%, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0) 55%),
     radial-gradient(ellipse 60% 55% at 20% 90%, rgba(14,30,60,0.6) 0%, rgba(6,12,22,0) 60%),
     radial-gradient(ellipse 60% 55% at 82% 88%, rgba(14,30,60,0.5) 0%, rgba(6,12,22,0) 60%),
-    linear-gradient(180deg, #08101e 0%, #060c18 40%, #03080f 100%);
+    linear-gradient(180deg, #091426 0%, #060c18 40%, #03080f 100%);
 }
 .pod-hero::before {
   content: '';
