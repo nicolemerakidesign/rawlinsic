@@ -3282,7 +3282,7 @@ color: #fff;
 @media (max-width: 768px) {
   .aam-parallax-fixed { background-attachment: scroll; }
   .aam-parallax-fixed.parallax-panel { min-height: 25vh; }
-  .parallax-text1 { font-size: clamp(1.6rem, 6vw, 2.8rem); }
+  .parallax-text1 { font-size: clamp(1.9rem, 7vw, 3rem); }
   .parallax-break { display: none; }
   .aam-hero { padding: 100px 24px 120px; min-height: 80vh; }
   .aam-hero-content { max-width: 100%; }
