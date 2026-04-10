@@ -187,19 +187,21 @@ export default function ThoughtLeadershipOverview() {
         {/* ── Featured Article ── */}
         <section className="tl-featured-section reveal">
           <div className="tl-featured">
-            <Link href={`/insights/thought-leadership/${articles[0].slug}`} className="tl-featured-img-wrap">
-              <Image
-                src={articles[0].image}
-                alt={articles[0].title}
-                fill
-                sizes="(max-width: 768px) 100vw, 55vw"
-                className="tl-featured-img"
-              />
-              <div className="tl-featured-img-overlay" />
+            <div className="tl-featured-media">
               <div className="tl-featured-badge">
                 <span>Latest</span>
               </div>
-            </Link>
+              <Link href={`/insights/thought-leadership/${articles[0].slug}`} className="tl-featured-img-wrap">
+                <Image
+                  src={articles[0].image}
+                  alt={articles[0].title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 55vw"
+                  className="tl-featured-img"
+                />
+                <div className="tl-featured-img-overlay" />
+              </Link>
+            </div>
             <div className="tl-featured-text">
               <div className="tl-featured-meta">
                 <span className="tl-tag">{articles[0].category}</span>

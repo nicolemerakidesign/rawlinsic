@@ -55,11 +55,20 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
   }
 
   const [openSections, setOpenSections] = useState<Set<number>>(() => new Set());
+  const accordionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggleSection = (i: number) => {
     setOpenSections((prev) => {
       if (prev.has(i)) return new Set();
       return new Set([i]);
+    });
+    /* After open animation starts, scroll the question into view so users land at the top of the answer */
+    requestAnimationFrame(() => {
+      const el = accordionRefs.current[i];
+      if (!el) return;
+      const navOffset = 90;
+      const top = el.getBoundingClientRect().top + window.scrollY - navOffset;
+      window.scrollTo({ top, behavior: "smooth" });
     });
   };
 
@@ -257,7 +266,12 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               </svg>
               All Articles
             </Link>
-            <span className="hero-label"><span className="gold-text">{article.category} &middot; {article.dateLabel}</span></span>
+            <span className="hero-label">
+              <span className="gold-text">
+                <span className="hero-label-segment">{article.category}&nbsp;&middot;</span>{" "}
+                <span className="hero-label-segment">{article.dateLabel}</span>
+              </span>
+            </span>
             <h1 className="hero-title">{article.title}</h1>
             <p className="hero-sub" style={{ maxWidth: 680, marginTop: 8 }}>
               {article.subtitle}
@@ -356,6 +370,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                   return (
                     <div
                       key={i}
+                      ref={(el) => { accordionRefs.current[i] = el; }}
                       className={`tla-accordion-item${isOpen ? " open" : ""}`}
                     >
                       <button

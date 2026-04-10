@@ -4284,9 +4284,9 @@ color: #fff;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(6,12,22,0.7) 0%,
-    rgba(6,12,22,0.82) 50%,
-    rgba(6,12,22,0.96) 100%
+    rgba(6,12,22,0.82) 0%,
+    rgba(6,12,22,0.92) 50%,
+    rgba(6,12,22,0.98) 100%
   );
 }
 .csd-hero-content {
@@ -4661,11 +4661,13 @@ color: #fff;
     rgba(6,12,22,0.35) 100%
   );
 }
+.tl-featured-media {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 .tl-featured-badge {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 2;
+  align-self: flex-start;
 }
 .tl-featured-badge span {
   display: inline-block;
