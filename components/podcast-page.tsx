@@ -280,10 +280,10 @@ export default function PodcastPage() {
         </div>
 
         {/* ── CTA Section ── */}
-        <section className="section-team pod-cta reveal">
-          <div className="team-content">
+        <section className="section-team pod-cta">
+          <div className="team-content reveal">
             <p className="section-label">
-              <span className="gold-text">Ready to Take Your Organization to the Next Level?</span>
+              <span className="gold-text">Tune In</span>
             </p>
             <h2 className="section-title">
               Let&apos;s build something <em>together</em>

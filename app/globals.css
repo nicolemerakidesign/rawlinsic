@@ -4352,15 +4352,20 @@ color: #fff;
   );
 }
 
-/* Careers email link: underlined on desktop, underline-on-tap on mobile */
+/* Careers email link: underline appears on hover (desktop) or tap (mobile) */
 .careers-email-link {
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.25s;
+}
+.careers-email-link:hover,
+.careers-email-link:focus-visible {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
-@media (max-width: 768px) {
-  .careers-email-link { text-decoration: none; }
-  .careers-email-link:active,
-  .careers-email-link:focus { text-decoration: underline; text-underline-offset: 4px; }
+.careers-email-link:active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* Contact form reCAPTCHA notice */
@@ -5771,14 +5776,18 @@ color: #fff;
   .pod-eq-section { padding: 24px 24px 0; }
 
   /* Mobile-only expand/collapse for the About paragraph */
-  .pod-about { text-align: center; }
+  .pod-about { text-align: left; }
+  .pod-about .section-label,
+  .pod-about .section-title,
+  .pod-about .pod-about-text { text-align: left; }
   .pod-about-expand {
     display: inline-flex;
     margin-top: 8px;
     margin-bottom: 8px;
+    margin-left: 0;
   }
   .pod-about-expandable { display: block; }
-  .pod-about-expandable .pod-about-text { margin: 0 auto; text-align: center; }
+  .pod-about-expandable .pod-about-text { margin: 0; text-align: left; }
   .pod-about-text-desktop { display: none; }
 }
 

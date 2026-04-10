@@ -148,7 +148,7 @@ export default function CareersPage() {
               <p className="hero-sub cs-hero-sub" style={{ marginTop: "12px" }}>
                 Email us at <a href="mailto:info@rawlinsic.com" className="gold-text careers-email-link">info@rawlinsic.com</a>
               </p>
-              <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginTop: "32px" }}><span>Start a Conversation</span></Link>
+              <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginTop: "32px", marginBottom: "72px" }}><span>Start a Conversation</span></Link>
             </div>
           </section>
 
