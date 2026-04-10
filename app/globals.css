@@ -2635,7 +2635,6 @@ color: #fff;
   align-items: start;
 }
 .aam-overview-left { padding-top: 8px; }
-.aam-section .section-title { font-size: clamp(2rem, 3vw, 2.8rem); }
 .aam-overview-right {
   position: relative;
   min-height: 420px;

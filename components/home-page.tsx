@@ -429,7 +429,7 @@ export default function HomePage() {
             <p className="section-label">
               <span className="gold-text">Why Rawlins</span>
             </p>
-            <h2 className="section-title" style={{ fontSize: "clamp(2rem, 3vw, 2.8rem)" }}>
+            <h2 className="section-title">
               Helping you navigate challenges with <em>proven methods</em> &amp; <em>practical strategies</em> designed for your organization
             </h2>
             <button
