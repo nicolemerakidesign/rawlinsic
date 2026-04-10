@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
@@ -152,23 +152,15 @@ export default function TeamPage() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  // Lock body scroll when popup open (iOS compatible)
+  // Lock body scroll when popup open
   useEffect(() => {
     if (selectedMember) {
-      const scrollY = window.scrollY;
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.left = "0";
-      document.body.style.right = "0";
+      const prev = document.body.style.overflow;
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       return () => {
-        const y = document.body.style.top;
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.left = "";
-        document.body.style.right = "";
-        document.body.style.overflow = "";
-        window.scrollTo(0, parseInt(y || "0") * -1);
+        document.body.style.overflow = prev;
+        document.documentElement.style.overflow = "";
       };
     }
   }, [selectedMember]);
@@ -385,19 +377,21 @@ export default function TeamPage() {
             )}
           </div>
           <div className="team-filter-tabs">
-            {FILTERS.map((f) => (
-              <button
-                key={f.value}
-                className={`team-filter-tab${activeFilter === f.value ? " active" : ""}`}
-                onClick={() => handleFilterChange(f.value)}
-              >
-                {f.label}
-                <span className="team-filter-count">
-                  {f.value === "all"
-                    ? TEAM_MEMBERS.length
-                    : TEAM_MEMBERS.filter((m) => m.categories.includes(f.value)).length}
-                </span>
-              </button>
+            {FILTERS.map((f, i) => (
+              <React.Fragment key={f.value}>
+                <button
+                  className={`team-filter-tab${activeFilter === f.value ? " active" : ""}`}
+                  onClick={() => handleFilterChange(f.value)}
+                >
+                  {f.label}
+                  <span className="team-filter-count">
+                    {f.value === "all"
+                      ? TEAM_MEMBERS.length
+                      : TEAM_MEMBERS.filter((m) => m.categories.includes(f.value)).length}
+                  </span>
+                </button>
+                {(i === 1 || i === 3 || i === 4) && <div className="team-filter-break" />}
+              </React.Fragment>
             ))}
           </div>
         </section>
