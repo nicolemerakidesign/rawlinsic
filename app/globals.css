@@ -426,10 +426,15 @@ body.keyboard-nav .cursor-ring {
 
 /* ── Shared Section Styles ───────────────────── */
 .section-label {
-  letter-spacing: 2px;
+  font-size: 14px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 20px;
-  font-size: 14px;
+  font-weight: 500;
+}
+.cap-section .section-label,
+.cap-cta .section-label {
+  letter-spacing: 2px;
   font-weight: 600;
   line-height: 27px;
 }
