@@ -2915,9 +2915,30 @@ color: #fff;
   content: ""; position: absolute; left: 0; top: 20%; bottom: 32px;
   width: 2px; background: rgba(201,168,76,0.4);
 }
-.auto-ecosystem-grid { grid-template-columns: repeat(4, 1fr); }
+.auto-ecosystem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 60px; }
 @media (max-width: 1100px) { .auto-ecosystem-grid { grid-template-columns: repeat(2, 1fr) !important; } }
-@media (max-width: 768px) { .auto-ecosystem-grid { grid-template-columns: 1fr !important; } }
+.auto-eco-mobile-controls { display: none; }
+@media (max-width: 768px) {
+  .auto-eco-mobile-controls { display: block; padding: 0 24px; }
+  .auto-ecosystem-scroll {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .auto-ecosystem-scroll::-webkit-scrollbar { display: none; }
+  .auto-ecosystem-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 16px;
+    padding: 24px;
+    margin-top: 0 !important;
+  }
+  .auto-eco-tile {
+    flex: 0 0 80vw;
+    scroll-snap-align: start;
+  }
+}
 .auto-deliver-grid { grid-template-columns: 1fr 1fr; }
 @media (max-width: 768px) { .auto-deliver-grid { grid-template-columns: 1fr; } }
 .aam-framework-card {

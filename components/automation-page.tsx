@@ -81,6 +81,8 @@ export default function AutomationPage() {
   const ringY = useRef(0);
   const valuesTrackRef = useRef<HTMLDivElement>(null);
   const [valuesProgress, setValuesProgress] = useState(0);
+  const ecoTrackRef = useRef<HTMLDivElement>(null);
+  const [ecoProgress, setEcoProgress] = useState(0);
   const [openBenefits, setOpenBenefits] = useState<Set<number>>(new Set());
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
   const [openChallenge, setOpenChallenge] = useState<number | null>(null);
@@ -155,6 +157,13 @@ export default function AutomationPage() {
     track.scrollBy({ left: w, behavior: "smooth" });
   };
 
+  const onEcoScroll = () => {
+    const el = ecoTrackRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setEcoProgress(max > 0 ? el.scrollLeft / max : 0);
+  };
+
   const toggleBenefit = (idx: number) => {
     setOpenBenefits((prev) => {
       const next = new Set(prev);
@@ -176,7 +185,8 @@ export default function AutomationPage() {
       <SiteNav />
 
       {/* ── Hero ── */}
-      <section className="aam-hero aam-parallax-fixed" style={{ backgroundImage: `url(${HERO_IMG})` }}>
+      <section className="aam-hero aam-parallax-fixed">
+        <Image src={HERO_IMG} alt="" fill priority sizes="100vw" className="aam-hero-img" />
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Smarter Systems. Empowered Teams.</span></span>
@@ -200,16 +210,23 @@ export default function AutomationPage() {
             <p className="section-label"><span className="gold-text">The Ecosystem</span></p>
             <h2 className="section-title">How data governance, automation, and <em>AI</em> work together</h2>
           </div>
-          <div className="auto-ecosystem-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px", marginTop: "60px" }}>
-            {pipeline.map((p, i) => (
-              <div key={i} className="reveal auto-eco-tile" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", position: "relative", transition: "all 0.3s" }}>
-                <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1.2 }}>
-                  {p.step}
-                </span>
-                <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginBottom: "4px", lineHeight: 1.2 }}>{p.label}</h3>
-                <p style={{ fontSize: "16px", color: "#fff", lineHeight: 1.8 }}>{p.desc}</p>
-              </div>
-            ))}
+          <div className="auto-eco-mobile-controls" style={{ marginTop: "40px" }}>
+            <div className="story-scroll-progress-bar">
+              <div className="story-scroll-progress-fill" style={{ width: `${ecoProgress * 100}%` }} />
+            </div>
+          </div>
+          <div className="auto-ecosystem-scroll" ref={ecoTrackRef} onScroll={onEcoScroll}>
+            <div className="auto-ecosystem-grid">
+              {pipeline.map((p, i) => (
+                <div key={i} className="reveal auto-eco-tile" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", position: "relative", transition: "all 0.3s" }}>
+                  <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1.2 }}>
+                    {p.step}
+                  </span>
+                  <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginBottom: "4px", lineHeight: 1.2 }}>{p.label}</h3>
+                  <p style={{ fontSize: "16px", color: "#fff", lineHeight: 1.8 }}>{p.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
