@@ -2917,27 +2917,63 @@ color: #fff;
 }
 .auto-ecosystem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 60px; }
 @media (max-width: 1100px) { .auto-ecosystem-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+.auto-eco-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 24px;
+  position: relative;
+  transition: all 0.3s;
+}
+.auto-eco-num {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: 36px;
+  font-weight: 300;
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
+}
+.auto-eco-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.auto-eco-desc { font-size: 16px; color: #fff; line-height: 1.8; }
 .auto-eco-mobile-controls { display: none; }
+.auto-ecosystem-scroll { overflow: visible; }
 @media (max-width: 768px) {
-  .auto-eco-mobile-controls { display: block; padding: 0 24px; }
+  .auto-eco-mobile-controls { display: flex; padding: 0 24px; }
   .auto-ecosystem-scroll {
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 24px 24px 16px;
+    touch-action: pan-x;
   }
   .auto-ecosystem-scroll::-webkit-scrollbar { display: none; }
   .auto-ecosystem-grid {
     display: flex !important;
     grid-template-columns: none !important;
     gap: 16px;
-    padding: 24px;
     margin-top: 0 !important;
+    min-width: min-content;
   }
   .auto-eco-tile {
-    flex: 0 0 80vw;
+    flex: 0 0 78vw;
     scroll-snap-align: start;
+    min-height: 280px;
   }
+  .auto-benefits-section { padding-bottom: 0 !important; }
 }
 .auto-deliver-grid { grid-template-columns: 1fr 1fr; }
 @media (max-width: 768px) { .auto-deliver-grid { grid-template-columns: 1fr; } }

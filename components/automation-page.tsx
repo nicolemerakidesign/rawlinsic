@@ -204,26 +204,32 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── 1. The Ecosystem ── */}
-      <section className="aam-section" id="benefits" style={{ padding: "100px 24px", scrollMarginTop: "80px" }}>
+      <section className="aam-section auto-benefits-section" id="benefits" style={{ padding: "100px 24px", scrollMarginTop: "80px" }}>
         <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">The Ecosystem</span></p>
             <h2 className="section-title">How data governance, automation, and <em>AI</em> work together</h2>
           </div>
-          <div className="auto-eco-mobile-controls" style={{ marginTop: "40px" }}>
+          <div className="story-scroll-controls auto-eco-mobile-controls" style={{ marginTop: "40px" }}>
             <div className="story-scroll-progress-bar">
               <div className="story-scroll-progress-fill" style={{ width: `${ecoProgress * 100}%` }} />
+            </div>
+            <div className="story-scroll-arrows">
+              <button className="story-arrow-btn" onClick={() => { const t = ecoTrackRef.current; if (t) { const c = t.querySelector('.auto-eco-tile') as HTMLElement; t.scrollBy({ left: -(c ? c.offsetWidth + 16 : 320), behavior: 'smooth' }); } }} aria-label="Previous">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+              </button>
+              <button className="story-arrow-btn" onClick={() => { const t = ecoTrackRef.current; if (t) { const c = t.querySelector('.auto-eco-tile') as HTMLElement; t.scrollBy({ left: (c ? c.offsetWidth + 16 : 320), behavior: 'smooth' }); } }} aria-label="Next">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
             </div>
           </div>
           <div className="auto-ecosystem-scroll" ref={ecoTrackRef} onScroll={onEcoScroll}>
             <div className="auto-ecosystem-grid">
               {pipeline.map((p, i) => (
-                <div key={i} className="reveal auto-eco-tile" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "32px 24px", position: "relative", transition: "all 0.3s" }}>
-                  <span style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "36px", fontWeight: 300, background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1.2 }}>
-                    {p.step}
-                  </span>
-                  <h3 style={{ fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif", fontSize: "28px", fontWeight: 400, color: "#fff", marginBottom: "4px", lineHeight: 1.2 }}>{p.label}</h3>
-                  <p style={{ fontSize: "16px", color: "#fff", lineHeight: 1.8 }}>{p.desc}</p>
+                <div key={i} className="reveal auto-eco-tile">
+                  <span className="auto-eco-num">{p.step}</span>
+                  <h3 className="auto-eco-title">{p.label}</h3>
+                  <p className="auto-eco-desc">{p.desc}</p>
                 </div>
               ))}
             </div>
