@@ -2185,10 +2185,15 @@ body nextjs-portal { display: none; }
   transform: none !important;
   animation: none !important;
 }
+.team-hero-para-wrap.expanded {
+  display: block;
+  text-align: center;
+}
 .team-hero-para-wrap.expanded .team-hero-para {
   display: block;
   -webkit-line-clamp: unset;
   overflow: visible;
+  margin-bottom: 16px;
 }
 .team-hero-para-toggle {
   display: inline-flex;
