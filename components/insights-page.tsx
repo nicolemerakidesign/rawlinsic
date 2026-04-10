@@ -172,8 +172,7 @@ export default function InsightsPage() {
       <SiteNav />
 
       {/* ── Hero — parallax fixed background ── */}
-      <section className="aam-hero aam-parallax-fixed">
-        <Image src={HERO_IMG} alt="" fill priority sizes="100vw" className="aam-hero-img" />
+      <section className="aam-hero aam-parallax-fixed" style={{ backgroundImage: `url(${HERO_IMG})` }}>
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Knowledge &amp; Perspective</span></span>
@@ -192,7 +191,7 @@ export default function InsightsPage() {
       <section className="ins-channels" id="channels">
         <div className="ins-channels-inner">
           {channels.map((ch, i) => (
-            <div key={ch.id} className={`ins-channel-card reveal rd${i}${activeChannel === ch.id ? " active" : ""}`}>
+            <div key={ch.id} className={`ins-channel-card${activeChannel === ch.id ? " active" : ""}`}>
               <div className="ins-channel-img-wrap">
                 <Image src={ch.image} alt={ch.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="ins-channel-img" />
                 <div className="ins-channel-img-overlay" />
