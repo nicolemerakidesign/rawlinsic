@@ -768,7 +768,7 @@ const AAMPage = () => {
       {/* Parallax Quote with Image */}
       <div
         className="parallax-panel aam-parallax-fixed"
-        style={{ backgroundImage: `url(${SKYLINE_IMG})` }}
+        style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }}
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
@@ -1043,7 +1043,7 @@ const AAMPage = () => {
       {/* Parallax Quote 2 */}
       <div
         className="parallax-panel aam-parallax-fixed"
-        style={{ backgroundImage: `url(${HIGHWAY_AERIAL_IMG})` }}
+        style={{ backgroundImage: `url(${SKYLINE_IMG})` }}
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
