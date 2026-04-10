@@ -17,13 +17,34 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://rawlinsic.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Home | Rawlins Infra Consult",
     template: "%s | Rawlins Infra Consult",
   },
   description:
     "Rawlins Infra Consult is a global consultancy at the intersection of strategy, operations, and technology — helping organizations translate ambitious priorities into measurable results.",
+  openGraph: {
+    title: "Rawlins Infra Consult",
+    description:
+      "Global consultancy at the intersection of strategy, operations, and technology.",
+    url: SITE_URL,
+    siteName: "Rawlins Infra Consult",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rawlins Infra Consult",
+    description:
+      "Global consultancy at the intersection of strategy, operations, and technology.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

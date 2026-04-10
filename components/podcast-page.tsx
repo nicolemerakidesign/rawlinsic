@@ -172,7 +172,6 @@ export default function PodcastPage() {
       <div className="content-wrapper">
         {/* ── Hero Section ── */}
         <section className="pod-hero" id="top">
-          <div className="pod-hero-overlay" />
           <div className="pod-hero-content">
             <div className="pod-hero-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" strokeWidth="1.5">
@@ -281,6 +280,18 @@ export default function PodcastPage() {
 
         {/* ── CTA Section ── */}
         <section className="section-team pod-cta">
+          <div className="pod-cta-waveform" aria-hidden="true">
+            {Array.from({ length: 40 }).map((_, i) => (
+              <div
+                key={i}
+                className="pod-wave-bar"
+                style={{
+                  animationDelay: `${i * 0.08}s`,
+                  height: `${20 + Math.sin(i * 0.5) * 30 + (i * 7 % 20)}%`,
+                }}
+              />
+            ))}
+          </div>
           <div className="team-content reveal">
             <p className="section-label">
               <span className="gold-text">Tune In</span>

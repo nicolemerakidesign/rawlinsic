@@ -102,13 +102,37 @@ export default function SiteSearch({ open, onClose }: Props) {
     return () => document.removeEventListener("keydown", onKey);
   }, [open, results, activeIdx, onClose]);
 
-  /* Lock body scroll while open */
+  /* Lock body scroll while open — use position:fixed so mobile Safari
+     can't swipe the page left/right behind the overlay */
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const body = document.body;
+    const scrollY = window.scrollY;
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+      overflow: body.style.overflow,
+      overflowX: body.style.overflowX,
+    };
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+    body.style.overflowX = "hidden";
     return () => {
-      document.body.style.overflow = prev;
+      body.style.position = prev.position;
+      body.style.top = prev.top;
+      body.style.left = prev.left;
+      body.style.right = prev.right;
+      body.style.width = prev.width;
+      body.style.overflow = prev.overflow;
+      body.style.overflowX = prev.overflowX;
+      window.scrollTo(0, scrollY);
     };
   }, [open]);
 
