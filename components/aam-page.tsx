@@ -190,6 +190,14 @@ const AAMPage = () => {
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [openServices, setOpenServices] = useState<Set<number>>(new Set());
   const [hoveredLs, setHoveredLs] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   // Phases horizontal scroll
   const [phasesProgress, setPhasesProgress] = useState(0);
@@ -941,7 +949,7 @@ const AAMPage = () => {
                     const isHovered = hoveredNode === node.id;
                     const highlighted = isActive || isHovered;
                     const iconPath = ecoIcons[node.id] || '';
-                    const iconSize = highlighted ? 56 : 48;
+                    const iconSize = isMobile ? (highlighted ? 80 : 72) : (highlighted ? 56 : 48);
 
                     return (
                       <g key={node.id} style={{ cursor: 'none' }} onClick={() => setActiveNode(activeNode === node.id ? null : node.id)} onMouseEnter={() => setHoveredNode(node.id)} onMouseLeave={() => setHoveredNode(null)}>
@@ -952,7 +960,7 @@ const AAMPage = () => {
                           </svg>
                         </g>
                         {node.label.split('\n').map((line, li) => (
-                          <text key={li} x={nx} y={ny + (highlighted ? 42 : 36) + li * 20} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,1)"} fontFamily="'DM Sans', sans-serif" fontSize="16" fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
+                          <text key={li} x={nx} y={ny + (isMobile ? (highlighted ? 70 : 64) : (highlighted ? 42 : 36)) + li * (isMobile ? 28 : 20)} textAnchor="middle" fill={highlighted ? "#e8d5a0" : "rgba(232,230,225,1)"} fontFamily="'DM Sans', sans-serif" fontSize={isMobile ? "22" : "16"} fontWeight={highlighted ? "600" : "500"} letterSpacing="1.5" style={{ textTransform: 'uppercase', transition: 'all 0.3s' }}>
                             {line}
                           </text>
                         ))}
