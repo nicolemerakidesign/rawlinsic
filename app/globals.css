@@ -6174,11 +6174,27 @@ color: #fff;
 .ins-channel-cta {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
-  font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
-  background: linear-gradient(145deg, #b89a3e, #d4be78, #c9a84c, #e0cfa0, #b89a3e);
+  font-size: 15px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+  background: linear-gradient(90deg, #d4be78, #c9a84c);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   opacity: 0; transform: translateY(6px);
   transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s;
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+}
+.ins-channel-cta::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: #c9a84c;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.ins-channel-cta:hover::after {
+  transform: scaleX(1);
 }
 .ins-channel-card:hover .ins-channel-cta,
 .ins-channel-card.active .ins-channel-cta {

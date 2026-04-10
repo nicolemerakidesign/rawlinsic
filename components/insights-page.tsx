@@ -189,7 +189,7 @@ export default function InsightsPage() {
       <section className="ins-channels">
         <div className="ins-channels-inner">
           {channels.map((ch, i) => (
-            <Link href={ch.href} key={ch.id} className={`ins-channel-card reveal rd${i}${activeChannel === ch.id ? " active" : ""}`}>
+            <div key={ch.id} className={`ins-channel-card reveal rd${i}${activeChannel === ch.id ? " active" : ""}`}>
               <div className="ins-channel-img-wrap">
                 <Image src={ch.image} alt={ch.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="ins-channel-img" />
                 <div className="ins-channel-img-overlay" />
@@ -202,7 +202,7 @@ export default function InsightsPage() {
                   className="ins-channel-expand-hint"
                   aria-label="Expand description"
                   aria-expanded={activeChannel === ch.id}
-                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveChannel(prev => (prev === ch.id ? null : ch.id)); }}
+                  onClick={() => setActiveChannel(prev => (prev === ch.id ? null : ch.id))}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19" />
@@ -210,15 +210,15 @@ export default function InsightsPage() {
                   </svg>
                 </button>
                 <p className="ins-channel-desc">{ch.desc}</p>
-                <span className="ins-channel-cta">
+                <Link href={ch.href} className="ins-channel-cta">
                   {ch.cta}
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M7 17L17 7M17 7H7M17 7v10" />
                   </svg>
-                </span>
+                </Link>
               </div>
               <div className="ins-channel-accent" style={{ background: `linear-gradient(180deg, ${ch.accent}, transparent)` }} />
-            </Link>
+            </div>
           ))}
         </div>
       </section>
