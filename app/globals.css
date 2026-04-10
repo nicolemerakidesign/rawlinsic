@@ -2163,7 +2163,7 @@ body nextjs-portal { display: none; }
 }
 .team-filter-break { display: none; }
 .team-hero-para-wrap {
-  max-width: 860px;
+  max-width: 620px;
   margin: 0 auto 40px;
   text-align: center;
   opacity: 0; transform: translateY(30px);
@@ -2171,7 +2171,7 @@ body nextjs-portal { display: none; }
 }
 .team-hero-para-wrap .team-hero-para {
   margin: 0 auto;
-  max-width: 860px;
+  max-width: 620px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
