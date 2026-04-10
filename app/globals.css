@@ -3396,15 +3396,21 @@ color: #fff;
   position: absolute; inset: 0; z-index: 1;
   background: rgba(6,12,22,0.7);
 }
+/* Desktop: true fixed background via CSS background-image; hide the <Image> fallback */
+@media (min-width: 769px) {
+  .aam-hero.aam-parallax-fixed .aam-hero-img { display: none; }
+}
+/* Mobile/iOS: background-attachment: fixed doesn't work, so drop the CSS bg and let the <Image> element render */
 .aam-cta-section.aam-parallax-fixed {
   background-attachment: fixed;
 }
-/* Mobile: background-attachment: fixed doesn't work on iOS, fallback to scroll */
 @supports (-webkit-touch-callout: none) {
   .aam-parallax-fixed { background-attachment: scroll; }
+  .aam-hero.aam-parallax-fixed { background-image: none !important; }
 }
 @media (max-width: 768px) {
   .aam-parallax-fixed { background-attachment: scroll; }
+  .aam-hero.aam-parallax-fixed { background-image: none !important; }
   .aam-parallax-fixed.parallax-panel { min-height: 25vh; }
   .parallax-text1 { font-size: clamp(1.9rem, 7vw, 3rem); }
   .parallax-break { display: none; }
