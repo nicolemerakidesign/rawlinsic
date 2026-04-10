@@ -192,7 +192,7 @@ export default function InsightsPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative", zIndex: 10 }}>
           <p className="section-label"><span className="gold-text">Start a Conversation</span></p>
           <h2 className="section-title" style={{ marginBottom: "20px", textAlign: "center" }}>
-            Have a <em>topic</em> you&rsquo;d like to discuss?
+            Have a topic you&rsquo;d like to <em>discuss</em>?
           </h2>
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center" }}>
             We&rsquo;re always exploring new questions and emerging needs shaping how organizations plan, deliver, and evolve.
