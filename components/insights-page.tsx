@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
@@ -43,6 +43,7 @@ const channels = [
 ];
 
 export default function InsightsPage() {
+  const [activeChannel, setActiveChannel] = useState<string | null>(null);
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const mouseX = useRef(0);
@@ -188,7 +189,7 @@ export default function InsightsPage() {
       <section className="ins-channels">
         <div className="ins-channels-inner">
           {channels.map((ch, i) => (
-            <Link href={ch.href} key={ch.id} className={`ins-channel-card reveal rd${i}`}>
+            <Link href={ch.href} key={ch.id} className={`ins-channel-card reveal rd${i}${activeChannel === ch.id ? " active" : ""}`}>
               <div className="ins-channel-img-wrap">
                 <Image src={ch.image} alt={ch.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="ins-channel-img" />
                 <div className="ins-channel-img-overlay" />
@@ -196,12 +197,18 @@ export default function InsightsPage() {
               <div className="ins-channel-body">
                 <span className="ins-channel-subtitle">{ch.subtitle}</span>
                 <h2 className="ins-channel-title">{ch.title}</h2>
-                <span className="ins-channel-expand-hint">
+                <button
+                  type="button"
+                  className="ins-channel-expand-hint"
+                  aria-label="Expand description"
+                  aria-expanded={activeChannel === ch.id}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveChannel(prev => (prev === ch.id ? null : ch.id)); }}
+                >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19" />
                     <line x1="5" y1="12" x2="19" y2="12" />
                   </svg>
-                </span>
+                </button>
                 <p className="ins-channel-desc">{ch.desc}</p>
                 <span className="ins-channel-cta">
                   {ch.cta}
@@ -219,7 +226,7 @@ export default function InsightsPage() {
       {/* ── Quote Panel ── */}
       <div className="parallax-panel">
         <p className="parallax-text reveal">
-          Organizations that thrive are the ones that never stop <em>learning</em>.
+          Organizations that <em>thrive</em> are the ones that never stop <em>learning</em>.
         </p>
       </div>
 
