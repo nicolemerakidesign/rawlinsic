@@ -2167,7 +2167,9 @@ body nextjs-portal { display: none; }
 .team-hero-para-more { white-space: nowrap; display: inline; }
 .team-hero-para.expanded .team-hero-para-more { display: inline; }
 .team-hero-para-toggle {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 28px; height: 28px;
   border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.8);
@@ -2178,10 +2180,8 @@ body nextjs-portal { display: none; }
   transition: transform 0.3s, background 0.3s;
   -webkit-tap-highlight-color: transparent;
   padding: 0;
-  line-height: 0;
-  text-align: center;
 }
-.team-hero-para-toggle svg { stroke: #fff; vertical-align: middle; }
+.team-hero-para-toggle svg { stroke: #fff; display: block; }
 .team-hero-para.expanded .team-hero-para-toggle { transform: rotate(180deg); background: rgba(255,255,255,0.15); }
 .team-hero-para.expanded .team-hero-para-rest { display: inline; }
 .team-hero-para.expanded .team-hero-para-dots { display: none; }
