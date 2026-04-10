@@ -189,7 +189,7 @@ export default function AutomationPage() {
         <Image src={HERO_IMG} alt="" fill priority sizes="100vw" className="aam-hero-img" />
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
-          <span className="hero-label"><span className="gold-text">Smarter Systems. Empowered Teams.</span></span>
+          <span className="hero-label"><span className="gold-text"><span className="hero-label-segment">Smarter Systems &bull;</span> <span className="hero-label-segment">Empowered Teams</span></span></span>
           <h1 className="hero-title">Data Governance,<br /><em>Automation</em> &amp; AI</h1>
           <p className="hero-sub">
             Partnering to reshape the way people work
