@@ -763,7 +763,7 @@ const AAMPage = () => {
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-          Led by a team that helped shape early AAM guidance—& <em>continues to guide its evolution</em>
+          Led by a team that helped shape early AAM guidance—<br className="parallax-break" />& <em>continues to guide its evolution</em>
         </p>
       </div>
 
@@ -1038,7 +1038,7 @@ const AAMPage = () => {
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-          <em>Leading</em> the integration of multi-modal solutions into <em>next generation</em> transportation networks
+          <em>Leading</em> the integration of multi-modal solutions into<br className="parallax-break" /> <em>next generation</em> transportation networks
         </p>
       </div>
 
