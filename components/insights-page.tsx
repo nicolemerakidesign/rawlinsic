@@ -78,38 +78,6 @@ export default function InsightsPage() {
     };
   }, []);
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const c = canvasRef.current;
-    if (!c) return;
-    const ctx = c.getContext("2d");
-    if (!ctx) return;
-    let raf: number;
-    const resize = () => { c.width = window.innerWidth; c.height = window.innerHeight; };
-    resize();
-    window.addEventListener("resize", resize);
-    const dots = Array.from({ length: 40 }, () => ({
-      x: Math.random() * c.width, y: Math.random() * c.height,
-      vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
-      r: Math.random() * 1.5 + 0.5,
-    }));
-    const draw = () => {
-      ctx.clearRect(0, 0, c.width, c.height);
-      dots.forEach((d) => {
-        d.x += d.vx; d.y += d.vy;
-        if (d.x < 0) d.x = c.width; if (d.x > c.width) d.x = 0;
-        if (d.y < 0) d.y = c.height; if (d.y > c.height) d.y = 0;
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(201,168,76,0.25)";
-        ctx.fill();
-      });
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
-  }, []);
-
   /* ── Scroll handler: sticky nav background ── */
   useEffect(() => {
     const nav = document.getElementById("mainNav");
@@ -166,9 +134,9 @@ export default function InsightsPage() {
         <div className="orb orb-3" />
         <div className="orb orb-4" />
       </div>
+      <div className="micro-particles" id="microParticles" />
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
-      <canvas className="particle-canvas" ref={canvasRef} />
       <SiteNav />
 
       {/* ── Hero — parallax fixed background ── */}
