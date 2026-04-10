@@ -140,8 +140,7 @@ export default function InsightsPage() {
       <SiteNav />
 
       {/* ── Hero — parallax fixed background ── */}
-      <section className="aam-hero aam-parallax-fixed">
-        <Image src={HERO_IMG} alt="" fill priority sizes="100vw" className="aam-hero-img" />
+      <section className="aam-hero aam-parallax-fixed" style={{ backgroundImage: `url(${HERO_IMG})` }}>
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Knowledge &amp; Perspective</span></span>

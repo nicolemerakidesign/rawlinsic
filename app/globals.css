@@ -6188,6 +6188,15 @@ color: #fff;
   position: relative;
   width: fit-content;
   margin-top: 12px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease;
+}
+.ins-channel-card.active .ins-channel-cta {
+  max-height: 40px;
+  opacity: 1;
+  margin-top: 12px;
 }
 .ins-channel-cta::after {
   content: "";
