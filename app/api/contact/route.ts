@@ -34,6 +34,37 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+/**
+ * Store the submission in Convex so there's a persistent, searchable
+ * record in the Convex dashboard. Fails silently if Convex isn't
+ * configured yet (site keeps working, just no storage).
+ */
+async function storeInConvex(data: {
+  name: string;
+  email: string;
+  organization?: string;
+  interest?: string;
+  message: string;
+  userAgent?: string;
+  referrer?: string;
+  ip?: string;
+}): Promise<void> {
+  const url = process.env.NEXT_PUBLIC_CONVEX_URL;
+  if (!url) return; // graceful no-op until Convex is wired up
+  try {
+    const mod = await import("convex/browser");
+    const client = new mod.ConvexHttpClient(url);
+    // Use the string form of the function reference so this file
+    // doesn't depend on convex/_generated existing at build time.
+    await client.mutation("contactSubmissions:create" as never, {
+      ...data,
+      submittedAt: Date.now(),
+    } as never);
+  } catch (err) {
+    console.error("Convex store failed (non-fatal):", err);
+  }
+}
+
 async function verifyRecaptcha(token: string | undefined): Promise<boolean> {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
   if (!secret) return true; // reCAPTCHA not configured — skip verification
@@ -114,6 +145,18 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    // Persist submission to Convex (fire-and-forget, non-blocking)
+    await storeInConvex({
+      name,
+      email,
+      organization,
+      interest,
+      message,
+      userAgent: request.headers.get("user-agent") || undefined,
+      referrer: request.headers.get("referer") || undefined,
+      ip,
+    });
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
 

@@ -208,22 +208,21 @@ export default function RootLayout({
         <div id="main-content">
         {children}
         </div>
-        <Script
-          id="schema-organization"
+        {/* JSON-LD is metadata, not JavaScript, so use plain script tags.
+            Next.js <Script> with beforeInteractive was forcing these
+            through its hydration pipeline and contributing to long
+            main-thread tasks in PSI. Plain <script type="application/ld+json">
+            is what Google recommends anyway. */}
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
         />
-        <Script
-          id="schema-website"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
         />
-        <Script
-          id="schema-local-business"
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }}
         />
         <Script id="keyboard-nav" strategy="afterInteractive">{`
