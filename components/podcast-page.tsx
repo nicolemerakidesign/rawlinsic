@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
@@ -65,6 +65,7 @@ function CustomCursor() {
 export default function PodcastPage() {
 
   const podPlayerRef = useRef<HTMLDivElement>(null);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   /* ── MyPodOps player script ── */
   useEffect(() => {
@@ -194,8 +195,7 @@ export default function PodcastPage() {
             </div>
             <span className="hero-label">
               <span className="gold-text">
-                <span className="hero-label-segment">Listen In&nbsp;&bull;</span>{" "}
-                <span className="hero-label-segment">Learn More&nbsp;&bull;</span>{" "}
+                <span className="hero-label-segment">Listen In&nbsp;&bull;&nbsp;Learn More&nbsp;&bull;</span>{" "}
                 <span className="hero-label-segment">Lead Better</span>
               </span>
             </span>
@@ -228,9 +228,31 @@ export default function PodcastPage() {
             <div className="pod-about">
               <p className="section-label"><span className="gold-text">about the podcast</span></p>
               <h2 className="section-title" style={{ color: "#fff", marginBottom: 24 }}>
-                Providing <em>value.</em><br />Consulting with <em>purpose.</em>
+                Providing <em>value</em><br />Consulting with <em>purpose</em>
               </h2>
-              <p className="pod-about-text">
+              <button
+                type="button"
+                className={`intro-expand-btn pod-about-expand${aboutOpen ? " expanded" : ""}`}
+                aria-label={aboutOpen ? "Collapse description" : "Expand description"}
+                aria-expanded={aboutOpen}
+                onClick={() => setAboutOpen((o) => !o)}
+              >
+                <span className="intro-expand-icon">
+                  <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 1.5l7 7 7-7" />
+                  </svg>
+                </span>
+              </button>
+              <div className={`intro-expandable pod-about-expandable${aboutOpen ? " expanded" : ""}`}>
+                <p className="pod-about-text">
+                  The Rawlins Way podcast offers an inside look at how Rawlins Infra
+                  Consult delivers value-driven infrastructure consulting. Through
+                  project deep dives, team insights, and industry discussions, discover
+                  our unique approach to creating exceptional client outcomes while
+                  fostering team success.
+                </p>
+              </div>
+              <p className="pod-about-text pod-about-text-desktop">
                 The Rawlins Way podcast offers an inside look at how Rawlins Infra
                 Consult delivers value-driven infrastructure consulting. Through
                 project deep dives, team insights, and industry discussions, discover
@@ -258,27 +280,19 @@ export default function PodcastPage() {
         </div>
 
         {/* ── CTA Section ── */}
-        <section className="cs-cta-section pod-cta-with-wave reveal">
-          <div className="pod-cta-waveform">
-            {Array.from({ length: 40 }).map((_, i) => (
-              <div
-                key={i}
-                className="pod-wave-bar"
-                style={{
-                  animationDelay: `${i * 0.08}s`,
-                  height: `${20 + Math.sin(i * 0.5) * 30 + Math.random() * 20}%`,
-                }}
-              />
-            ))}
-          </div>
-          <div style={{ position: "relative", zIndex: 2 }}>
+        <section className="section-team pod-cta reveal">
+          <div className="team-content">
             <p className="section-label">
               <span className="gold-text">Ready to Take Your Organization to the Next Level?</span>
             </p>
-            <h2 className="section-title" style={{ whiteSpace: "nowrap" }}>
-              Let&apos;s build something together
+            <h2 className="section-title">
+              Let&apos;s build something <em>together</em>
             </h2>
-            <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginTop: 24 }}>
+            <p className="team-desc">
+              Join the conversation, share your story, and explore how the Rawlins team
+              partners with agencies and enterprises to deliver lasting impact.
+            </p>
+            <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}>
               <span>Connect With Us</span>
             </Link>
           </div>

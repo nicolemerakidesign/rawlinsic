@@ -133,17 +133,22 @@ export default function CareersPage() {
           {/* ── Hero ── */}
           <section className="cs-hero" id="top">
             <div className="cs-hero-content">
-              <span className="hero-label"><span className="gold-text">Careers at Rawlins Infra Consult</span></span>
+              <span className="hero-label">
+                <span className="gold-text">
+                  <span className="hero-label-segment">Careers at</span>{" "}
+                  <span className="hero-label-segment">Rawlins Infra Consult</span>
+                </span>
+              </span>
               <h1 className="hero-title">
                 Work with <em>Us</em>
               </h1>
-              <p className="hero-sub" style={{ maxWidth: 720 }}>
+              <p className="hero-sub cs-hero-sub">
                 We&rsquo;re always interested in connecting with thoughtful, driven professionals who are passionate about solving complex challenges and creating meaningful impact. If our approach aligns with your interests, we welcome the opportunity to connect and learn more.
               </p>
-              <p className="hero-sub" style={{ maxWidth: 720, marginTop: "12px" }}>
-                Email us at <a href="mailto:info@rawlinsic.com" className="gold-text" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>info@rawlinsic.com</a>
+              <p className="hero-sub cs-hero-sub" style={{ marginTop: "12px" }}>
+                Email us at <a href="mailto:info@rawlinsic.com" className="gold-text careers-email-link">info@rawlinsic.com</a>
               </p>
-              <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginBottom: "60px" }}><span>Start a Conversation</span></Link>
+              <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none", marginTop: "32px" }}><span>Start a Conversation</span></Link>
             </div>
           </section>
 

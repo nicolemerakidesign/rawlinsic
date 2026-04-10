@@ -24,9 +24,9 @@ const STATIC_ENTRIES: SearchEntry[] = [
     href: "/capabilities",
     category: "Main",
     description:
-      "Explore our practice areas: strategy, operations, and technology solutions for complex organizations.",
+      "Explore our practice areas: strategy, operations, and technology — including advanced air mobility, UAS, data governance, automation and AI.",
     keywords:
-      "capabilities services strategy operations technology solutions practice areas consulting practice offerings",
+      "capabilities services strategy operations technology solutions practice areas consulting practice offerings aam uam uas advanced air mobility urban air mobility uncrewed data governance automation ai drones",
   },
   {
     title: "Strategy",
@@ -51,18 +51,36 @@ const STATIC_ENTRIES: SearchEntry[] = [
     href: "/capabilities#technology",
     category: "Capabilities",
     description:
-      "Human-centric AI integration, data governance, and analytics that advance how organizations use information.",
+      "Human-centric AI integration, data governance, analytics, and advanced air mobility & UAS.",
     keywords:
-      "technology ai artificial intelligence data governance analytics automation integration digital information systems",
+      "technology ai artificial intelligence data governance analytics automation integration digital information systems aam uam uas advanced air mobility urban air mobility uncrewed drones aviation",
   },
   {
     title: "Advanced Air Mobility & UAS",
     href: "/capabilities/technology/advanced-air-mobility",
     category: "Technology",
     description:
-      "Planning, implementation, and integration of advanced air mobility and uncrewed aircraft systems.",
+      "Planning, implementation, and integration of advanced air mobility, urban air mobility, and uncrewed aircraft systems.",
     keywords:
-      "advanced air mobility aam uas uncrewed aircraft systems drones evtol airspace multimodal transport aviation",
+      "advanced air mobility aam uam urban air mobility uas ua uav uncrewed unmanned aircraft systems drones evtol vtol airspace multimodal transport aviation airspace integration vertiports air taxi passenger cargo drone delivery",
+  },
+  {
+    title: "Urban Air Mobility (UAM)",
+    href: "/capabilities/technology/advanced-air-mobility#uam",
+    category: "Technology",
+    description:
+      "Urban air mobility planning and airspace integration — part of our Advanced Air Mobility practice.",
+    keywords:
+      "urban air mobility uam air taxi vertiport evtol passenger drone airspace integration city transport multimodal",
+  },
+  {
+    title: "UAS / Uncrewed Aircraft Systems",
+    href: "/capabilities/technology/advanced-air-mobility#uas",
+    category: "Technology",
+    description:
+      "Uncrewed aircraft systems (UAS/drones) planning, policy, and operations — part of our Advanced Air Mobility practice.",
+    keywords:
+      "uncrewed aircraft systems uas ua uav unmanned drone drones aerial surveying inspection delivery airspace integration part 107 beyond visual line of sight bvlos faa policy operations",
   },
   {
     title: "Data Governance, Automation & AI",

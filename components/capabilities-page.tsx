@@ -107,27 +107,26 @@ export default function CapabilitiesPage() {
 
   /* custom cursor */
   useEffect(() => {
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
     const move = (e: MouseEvent) => {
       mouseX.current = e.clientX;
       mouseY.current = e.clientY;
-      if (dotRef.current) {
-        dotRef.current.style.left = `${e.clientX}px`;
-        dotRef.current.style.top = `${e.clientY}px`;
-      }
+      dot.style.left = e.clientX - 4 + "px";
+      dot.style.top = e.clientY - 4 + "px";
     };
     const loop = () => {
-      ringX.current += (mouseX.current - ringX.current) * 0.15;
-      ringY.current += (mouseY.current - ringY.current) * 0.15;
-      if (ringRef.current) {
-        ringRef.current.style.left = `${ringX.current}px`;
-        ringRef.current.style.top = `${ringY.current}px`;
-      }
+      ringX.current += (mouseX.current - ringX.current) * 0.12;
+      ringY.current += (mouseY.current - ringY.current) * 0.12;
+      ring.style.left = ringX.current - 20 + "px";
+      ring.style.top = ringY.current - 20 + "px";
       animFrame.current = requestAnimationFrame(loop);
     };
-    window.addEventListener("mousemove", move);
+    document.addEventListener("mousemove", move);
     animFrame.current = requestAnimationFrame(loop);
     return () => {
-      window.removeEventListener("mousemove", move);
+      document.removeEventListener("mousemove", move);
       if (animFrame.current) cancelAnimationFrame(animFrame.current);
     };
   }, []);

@@ -13,6 +13,19 @@ interface FormData {
   message: string;
 }
 
+/* Public site key for Google reCAPTCHA v3. Set NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+   in the environment to enable; falls back to honeypot-only protection if unset. */
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, opts: { action: string }) => Promise<string>;
+    };
+  }
+}
+
 export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -21,8 +34,21 @@ export default function ContactPage() {
     interest: "",
     message: "",
   });
+  const [honeypot, setHoneypot] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  /* Load reCAPTCHA v3 script if a site key is configured */
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY) return;
+    if (document.querySelector("script[data-recaptcha]")) return;
+    const s = document.createElement("script");
+    s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    s.async = true;
+    s.defer = true;
+    s.setAttribute("data-recaptcha", "1");
+    document.head.appendChild(s);
+  }, []);
   // Cursor refs
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -142,16 +168,34 @@ export default function ContactPage() {
     e.preventDefault();
     setSubmitting(true);
     try {
+      let recaptchaToken: string | undefined;
+      if (RECAPTCHA_SITE_KEY && typeof window !== "undefined" && window.grecaptcha) {
+        try {
+          recaptchaToken = await new Promise<string>((resolve, reject) => {
+            window.grecaptcha!.ready(async () => {
+              try {
+                const token = await window.grecaptcha!.execute(RECAPTCHA_SITE_KEY!, { action: "contact" });
+                resolve(token);
+              } catch (err) {
+                reject(err);
+              }
+            });
+          });
+        } catch (err) {
+          console.error("reCAPTCHA execution error:", err);
+        }
+      }
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, honeypot, recaptchaToken }),
       });
       if (!res.ok) throw new Error("Failed to send");
       setSubmitted(true);
     } catch (err) {
       console.error("Form submission error:", err);
-      alert("Something went wrong. Please try again or email us directly at nicole@rawlinsic.com");
+      alert("Something went wrong. Please try again or email us directly at info@rawlinsic.com");
     } finally {
       setSubmitting(false);
     }
@@ -190,13 +234,13 @@ export default function ContactPage() {
       <div className="content-wrapper">
 
         {/* ── Contact Hero ── */}
-        <section className="contact-hero" id="top">
-          <div className="contact-hero-content">
+        <section className="cs-hero" id="top">
+          <div className="cs-hero-content">
             <span className="hero-label"><span className="gold-text">Contact Rawlins</span></span>
             <h1 className="hero-title">
               Ready to <em>partner</em> with <em>purpose?</em>
             </h1>
-            <p className="hero-sub">
+            <p className="hero-sub cs-hero-sub">
               Whether you&rsquo;re ready to engage or simply exploring what&rsquo;s
               possible, we&rsquo;d love to hear from you.
             </p>
@@ -310,6 +354,29 @@ export default function ContactPage() {
             <div className="contact-form-wrap reveal rd2">
               {!submitted ? (
                 <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                  {/* Honeypot: hidden from real users, bots fill it in */}
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      left: "-9999px",
+                      width: "1px",
+                      height: "1px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <label htmlFor="company-website">Company Website</label>
+                    <input
+                      id="company-website"
+                      name="company-website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
                   <div className="form-row">
                     <div className="form-group">
                       <label className="form-label" htmlFor="name">
@@ -418,6 +485,20 @@ export default function ContactPage() {
                       </span>
                     )}
                   </button>
+
+                  {RECAPTCHA_SITE_KEY && (
+                    <p className="form-recaptcha-notice">
+                      This site is protected by reCAPTCHA and the Google{" "}
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+                        Privacy Policy
+                      </a>{" "}
+                      and{" "}
+                      <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">
+                        Terms of Service
+                      </a>{" "}
+                      apply.
+                    </p>
+                  )}
                 </form>
               ) : (
                 <div className="form-success">
