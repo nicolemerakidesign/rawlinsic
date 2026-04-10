@@ -289,7 +289,7 @@ export default function TeamPage() {
             <h1 className="hero-title">
               Meet the <span className="gold-text"><em>Experts</em></span>
             </h1>
-            <p className={`hero-sub team-hero-para${heroParaExpanded ? " expanded" : ""}`} style={{ maxWidth: "1100px" }}>
+            <p className={`hero-sub team-hero-para${heroParaExpanded ? " expanded" : ""}`}>
               <span>Our team brings together expertise in strategy, operations, and technology to deliver practical, forward-thinking solutions to complex challenges.</span>
               <span className="team-hero-para-rest"> While rooted in transportation, we continue to expand our experience across sectors. Collaboration is central to how we work. Team members have core areas of focus and work seamlessly across disciplines to support each engagement.</span>
               <span className="team-hero-para-more">

@@ -1996,15 +1996,16 @@ body nextjs-portal { display: none; }
 
 /* Hero */
 .team-hero {
-  padding: 160px 24px 0px;
+  padding: 160px 32px 0px;
   text-align: center;
   position: relative;
   z-index: 2;
 }
 .team-hero-content {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
 }
+.team-hero .hero-sub { max-width: 620px; margin: 0 auto 40px; font-size: 17px; line-height: 1.75; color: #e8e6e1; }
 .team-hero-title {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
   font-size: clamp(3.2rem, 7vw, 5.5rem);
