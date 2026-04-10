@@ -2591,6 +2591,14 @@ font-size: 15px;
   transform: scale(1.2);
   will-change: transform;
 }
+.aam-hero-img {
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+@media (max-width: 768px) {
+  .aam-hero-img { object-position: center 30%; }
+}
 .aam-hero-overlay {
   position: absolute;
   inset: 0;
@@ -3275,8 +3283,7 @@ color: #fff;
   .aam-parallax-fixed { background-attachment: scroll; }
   .aam-parallax-fixed.parallax-panel { min-height: 25vh; }
   .parallax-text1 { font-size: clamp(1.6rem, 6vw, 2.8rem); }
-  .aam-hero { padding: 100px 24px 120px; min-height: 80vh; background-size: cover; background-position: center 30%; }
-  .aam-hero.aam-parallax-fixed { background-position: center 30%; }
+  .aam-hero { padding: 100px 24px 120px; min-height: 80vh; }
   .aam-hero-content { max-width: 100%; }
   .aam-hero .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .aam-hero .hero-sub { font-size: 0.95rem; }
