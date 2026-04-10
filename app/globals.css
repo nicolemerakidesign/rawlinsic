@@ -299,7 +299,7 @@ body.keyboard-nav .cursor-ring {
 }
 .nav-item {
   position: relative; padding: 10px 20px;
-  font-size: 12px; font-weight: 600;
+  font-size: 13px; font-weight: 700;
   letter-spacing: 2.5px; text-transform: uppercase;
   color: #fff;
   cursor: pointer;
