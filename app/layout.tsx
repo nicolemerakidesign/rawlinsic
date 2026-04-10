@@ -60,12 +60,15 @@ const ORGANIZATION_SCHEMA = {
   telephone: "+1-775-843-3822",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "500 Damonte Ranch Parkway #980",
     addressLocality: "Reno",
     addressRegion: "NV",
+    postalCode: "89521",
     addressCountry: "US",
   },
   sameAs: [
     "https://www.linkedin.com/company/107078508/",
+    "https://www.facebook.com/rawlinsic",
   ],
   areaServed: {
     "@type": "Place",
@@ -83,6 +86,57 @@ const WEBSITE_SCHEMA = {
     target: `${SITE_URL}/?q={search_term_string}`,
     "query-input": "required name=search_term_string",
   },
+};
+
+/* LocalBusiness / ProfessionalService schema — richer Google Maps /
+   local-pack representation linked to the Reno, NV Google Business
+   Profile. */
+const LOCAL_BUSINESS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${SITE_URL}#business`,
+  name: "Rawlins Infra Consult",
+  alternateName: "Rawlins IC",
+  url: SITE_URL,
+  image: `${SITE_URL}/images/pages/hero-bg.webp`,
+  logo: `${SITE_URL}/images/pages/hero-bg.webp`,
+  description:
+    "Global consultancy at the intersection of strategy, operations, and technology — helping public agencies and private organizations translate ambitious priorities into measurable results.",
+  email: "info@rawlinsic.com",
+  telephone: "+1-775-843-3822",
+  priceRange: "$$$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "500 Damonte Ranch Parkway #980",
+    addressLocality: "Reno",
+    addressRegion: "NV",
+    postalCode: "89521",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 39.4451,
+    longitude: -119.7517,
+  },
+  areaServed: {
+    "@type": "Place",
+    name: "Worldwide",
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/107078508/",
+    "https://www.facebook.com/rawlinsic",
+  ],
+  knowsAbout: [
+    "Strategy consulting",
+    "Operations consulting",
+    "Technology strategy",
+    "Data governance",
+    "Automation and AI",
+    "Advanced Air Mobility",
+    "Uncrewed Aircraft Systems",
+    "Transportation infrastructure",
+    "Organizational change management",
+  ],
 };
 
 export default function RootLayout({
@@ -111,6 +165,12 @@ export default function RootLayout({
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
+        />
+        <Script
+          id="schema-local-business"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }}
         />
         <Script id="keyboard-nav" strategy="afterInteractive">{`
           document.addEventListener('keydown',function(e){if(e.key==='Tab')document.body.classList.add('keyboard-nav')});

@@ -807,19 +807,27 @@ export default function AreaWeServeGlobe() {
         }
 
         /* ── Responsive ── */
-        /* Large desktop (> 1400): breathing room, sphere fully visible. */
-        @media (min-width: 1401px) {
+        /* Extra-large desktop (> 1500): sphere fully visible, no overlap. */
+        @media (min-width: 1501px) {
           #globe-container { left: -18vw; }
           .globe-content-section { padding: 180px 100px 60px 60px; }
           .globe-content-inner { max-width: 560px; }
+        }
+        /* Large desktop (1401 – 1500): sphere is big enough here to
+           reach the text column, so push globe further left and pull
+           the text right. */
+        @media (max-width: 1500px) and (min-width: 1401px) {
+          #globe-container { left: -26vw; }
+          .globe-content-section { padding: 180px 80px 60px 40px; }
+          .globe-content-inner { max-width: 520px; }
         }
         /* Medium desktop (1201 – 1400): just enough left offset that the
            text column stays clear, but not so much the sphere clips off
            the left edge. */
         @media (max-width: 1400px) and (min-width: 1201px) {
-          #globe-container { left: -20vw; }
+          #globe-container { left: -22vw; }
           .globe-content-section { padding: 170px 60px 50px 40px; }
-          .globe-content-inner { max-width: 500px; }
+          .globe-content-inner { max-width: 480px; }
         }
         /* Small desktop (1151 – 1200): tighter, text column narrower so
            we don't need an aggressive globe offset. */
