@@ -83,6 +83,7 @@ export default function AutomationPage() {
   const [valuesProgress, setValuesProgress] = useState(0);
   const ecoTrackRef = useRef<HTMLDivElement>(null);
   const [ecoProgress, setEcoProgress] = useState(0);
+  const [activeValue, setActiveValue] = useState<number | null>(null);
   const [openBenefits, setOpenBenefits] = useState<Set<number>>(new Set());
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
   const [openChallenge, setOpenChallenge] = useState<number | null>(null);
@@ -311,7 +312,7 @@ export default function AutomationPage() {
         <div className="aam-alt-scroll-outer" ref={valuesTrackRef} onScroll={onValuesScroll}>
           <div className="aam-alt-scroll-track">
             {orgValues.map((v, i) => (
-              <div className="aam-alt-card" key={v.num}>
+              <div className={`aam-alt-card${activeValue === i ? " active" : ""}`} key={v.num} onClick={() => setActiveValue(prev => (prev === i ? null : i))}>
                 <Image src={v.img} alt={v.label} fill sizes="(max-width: 768px) 80vw, 400px" className="aam-alt-card-bg" />
                 <div className="aam-alt-card-overlay" />
                 <div className="aam-alt-card-header">
@@ -319,6 +320,9 @@ export default function AutomationPage() {
                 </div>
                 <div className="aam-alt-card-divider" />
                 <h4 className="aam-alt-card-title">{v.label}</h4>
+                <button className="card-expand-btn aam-phase-expand-btn" aria-label="Expand description" aria-expanded={activeValue === i} onClick={(e) => { e.stopPropagation(); setActiveValue(prev => (prev === i ? null : i)); }}>
+                  <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
+                </button>
                 <p className="aam-alt-card-body">{v.body}</p>
               </div>
             ))}
