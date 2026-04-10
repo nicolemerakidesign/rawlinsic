@@ -112,25 +112,12 @@ export default function InsightsPage() {
     return () => { cancelAnimationFrame(raf); if (ob) ob.disconnect(); };
   }, []);
 
-  const orbRef1 = useRef<HTMLDivElement>(null);
-  const orbRef2 = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    let t = 0;
-    const run = () => {
-      t += 0.003;
-      if (orbRef1.current) orbRef1.current.style.transform = `translate(${Math.sin(t) * 60}px, ${Math.cos(t * 0.7) * 40}px)`;
-      if (orbRef2.current) orbRef2.current.style.transform = `translate(${Math.cos(t * 0.8) * 50}px, ${Math.sin(t * 1.1) * 35}px)`;
-      requestAnimationFrame(run);
-    };
-    run();
-  }, []);
-
   return (
     <>
       <div className="ambient-bg" />
       <div className="ambient-orbs">
-        <div className="orb orb-1" ref={orbRef1} />
-        <div className="orb orb-2" ref={orbRef2} />
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
         <div className="orb orb-3" />
         <div className="orb orb-4" />
       </div>

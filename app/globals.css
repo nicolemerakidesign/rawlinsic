@@ -3412,7 +3412,7 @@ color: #fff;
   .aam-stakeholders-layout svg { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block; }
   .aam-stakeholders-layout text { font-size: 18px !important; }
   .aam-cta-section { background-size: cover; background-position: center center; }
-  .aam-parallax-fixed { background-position: center center; }
+  .aam-parallax-fixed { background-position: center 30%; }
 }
 .aam-parallax-overlay {
   position: absolute;
@@ -6205,12 +6205,6 @@ color: #fff;
   max-height: 40px;
   opacity: 1;
   margin-top: 12px;
-}
-.ins-channel-cta:hover {
-  text-decoration: underline;
-  text-decoration-color: #c9a84c;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
 }
 .ins-channel-cta svg {
   stroke: #c9a84c; transition: transform 0.3s;
