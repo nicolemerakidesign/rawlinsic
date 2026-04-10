@@ -181,12 +181,15 @@ export default function InsightsPage() {
           <p className="hero-sub">
             Original research, practitioner perspectives, and real-world case studies from the front lines of organizational transformation.
           </p>
+          <a href="#channels" className="auto-hero-btn">
+            <span>Explore Our Insights</span>
+          </a>
         </div>
         <div className="hero-scroll"><span style={{ background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", fontSize: "0.6rem", letterSpacing: "3px", textTransform: "uppercase" as const }}>Scroll</span><div className="scroll-line" /></div>
       </section>
 
       {/* ── Channel Cards ── */}
-      <section className="ins-channels">
+      <section className="ins-channels" id="channels">
         <div className="ins-channels-inner">
           {channels.map((ch, i) => (
             <div key={ch.id} className={`ins-channel-card reveal rd${i}${activeChannel === ch.id ? " active" : ""}`}>
