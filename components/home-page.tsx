@@ -429,7 +429,7 @@ export default function HomePage() {
               <span className="gold-text">Why Rawlins</span>
             </p>
             <h2 className="section-title">
-              Helping you navigate challenges with <em>proven methods</em> &amp; <em>practical strategies</em> designed for your organization
+              Navigating challenges with <em>proven methods</em> &amp; <em>practical strategies</em> designed for your organization
             </h2>
             <button
               className={`intro-expand-btn${introOpen ? " expanded" : ""}`}

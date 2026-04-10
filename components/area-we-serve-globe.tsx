@@ -136,9 +136,10 @@ export default function AreaWeServeGlobe() {
 
     const expansionLocations = [
       { name: "Dubai, United Arab Emirates", lat: 25.2, lng: 55.3, slug: "" },
+      { name: "Saudi Arabia, Middle East", lat: 24.7, lng: 46.7, slug: "" },
       { name: "Ottawa, Canada", lat: 45.4, lng: -75.7, slug: "" },
-      { name: "Oman, Middle East", lat: 23.6, lng: 58.5, slug: "" },
       { name: "Barbados, Caribbean", lat: 13.2, lng: -59.5, slug: "" },
+      { name: "Réunion, East Africa", lat: -21.1, lng: 55.5, slug: "" },
     ];
 
     const pastLocations = [
@@ -427,7 +428,7 @@ export default function AreaWeServeGlobe() {
     function showTooltip(d: any, sx: number, sy: number) {
       const linkHtml = d.slug ? '<a href="/insights/case-studies/'+d.slug+'" class="tooltip-link">View Case Study &rarr;</a>' : '';
       const closeBtn = d.slug ? '<button class="tooltip-close" id="tooltip-close-btn">&times;</button>' : '';
-      const labelMap: Record<string,string> = { active: "Active", expanding: "Expanding", past: "Past" };
+      const labelMap: Record<string,string> = { active: "Active", expanding: "Expanding", past: "Areas We've Served" };
       const label = labelMap[d.type] || "Active";
       const themeClass = d.type === "past" ? "past-location" : "active-location";
       tooltip.innerHTML='<div class="tooltip-header"><div><span class="tooltip-label">'+label+'</span><span class="tooltip-name">'+d.name+'</span></div>'+closeBtn+'</div>'+linkHtml;
@@ -903,7 +904,7 @@ export default function AreaWeServeGlobe() {
             <div className="globe-legend">
               <div className="globe-legend-item"><div className="globe-legend-dot current"></div><span>Active</span></div>
               <div className="globe-legend-item"><div className="globe-legend-dot expansion"></div><span>Expanding</span></div>
-              <div className="globe-legend-item"><div className="globe-legend-dot past"></div><span>Past</span></div>
+              <div className="globe-legend-item"><div className="globe-legend-dot past"></div><span>Areas We&rsquo;ve Served</span></div>
             </div>
             <div className="globe-zoom-hint">Scroll/expand to zoom · Drag to rotate · Click or hover over pins for details</div>
 
@@ -928,11 +929,12 @@ export default function AreaWeServeGlobe() {
               <h2>Expanding into</h2>
               <ul>
                 <li>Dubai, United Arab Emirates</li>
+                <li>Saudi Arabia, Middle East</li>
                 <li>Ottawa, Canada</li>
-                <li>Oman, Middle East</li>
                 <li>Barbados, Caribbean</li>
+                <li>Réunion, East Africa</li>
               </ul>
-              <h2>Past engagements</h2>
+              <h2>Areas we&rsquo;ve served</h2>
               <ul>
                 <li>Georgia</li>
                 <li>North Carolina</li>

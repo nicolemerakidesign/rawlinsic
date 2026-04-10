@@ -77,8 +77,8 @@ const capabilitySections: CapabilitySection[] = [
     image: TECHNOLOGY_IMG,
     services: [
       { title: "Data Governance", desc: "Guide organizations in developing and implementing data governance policies, processes, and standards to ensure data is accurate, secure, consistent, and used responsibly across the enterprise." },
-      { title: "Advanced Air Mobility & Uncrewed Aircraft Systems", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
-      { title: "Automation & Integration", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." },
+      { title: "Advanced Air Mobility & Uncrewed Aircraft Systems", desc: "Deliver UAS and AAM solutions grounded in practical experience." },
+      { title: "Automation & Integration", desc: "Design systems where people, data, and AI work together with clarity, trust, and purpose." },
     ],
   },
 ];

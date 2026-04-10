@@ -17,7 +17,7 @@ const AERIAL_VIEW_IMG = "/images/pages/aam-aerial-view.jpg";
 const HELICOPTER_IMG = "/images/pages/aam-helicopter.jpg";
 const CONTROL_ROOM_IMG = "/images/pages/aam-control-room.jpg";
 const DEFINE_NEW_IMG = "/images/pages/aam-define.webp";
-const ENABLE_NEW_IMG = "/images/pages/aam-enable.webp";
+const ENABLE_NEW_IMG = "/images/pages/aam-enable-quadrocopter.webp";
 const DELIVER_NEW_IMG = "/images/pages/aam-deliver.webp";
 const PHASE3_IMG = "/images/pages/aam-phase3.webp";
 const PHASE4_IMG = "/images/pages/aam-phase4.webp";
@@ -63,7 +63,7 @@ const pillarCards = [
 const phaseData = [
   { num: "01", label: "Policy & System Planning", body: "Develop policy, system plans, and standardized guidance for local implementation.", img: BLUEPRINT_IMG },
   { num: "02", label: "Regulatory Navigation", body: "Provide regulatory understanding for compliance and guide regulatory coordination.", img: REG_NAV_IMG },
-  { num: "03", label: "Infrastructure Planning", body: "Plan for infrastructure, including vertiports, including technical research and validation.", img: PHASE3_IMG },
+  { num: "03", label: "Infrastructure Planning", body: "Plan for infrastructure, including vertiports, technical research, and validation.", img: PHASE3_IMG },
   { num: "04", label: "Functional Frameworks", body: "Establish functional frameworks that support scalable program delivery and operational readiness.", img: PHASE4_IMG },
   { num: "05", label: "Data & Safety Integration", body: "Integrate data and safety policies into transportation systems.", img: DATA_CENTER_IMG },
   { num: "06", label: "Implementation & Scaling", body: "Support implementation, deployment, and the scaling of AAM and UAS services.", img: IMPL_SCALING_IMG },
@@ -365,7 +365,7 @@ const AAMPage = () => {
           <div className="aam-overview-grid">
             <div className="aam-overview-left reveal">
               <p className="section-label"><span className="gold-text">are you ready?</span></p>
-              <h2 className="section-title">Are you ready to <em>integrate</em> the <em>next layer</em> of your transportation system?</h2>
+              <h2 className="section-title"><em>Integrate</em> the <em>next layer</em> of your transportation system</h2>
               <button
                 className={`intro-expand-btn${introOpen ? " expanded" : ""}`}
                 aria-label="Learn more"
@@ -836,9 +836,9 @@ const AAMPage = () => {
             <div className="eco-layout-text">
               <div className="aam-section-header reveal">
                 <p className="section-label"><span className="gold-text">Bridging Silos</span></p>
-                <h2 className="section-title">Connecting the transportation <em>ecosystem</em></h2>
+                <h2 className="section-title">Connecting partners across the transportation <em>ecosystem</em></h2>
                 <p className="aam-section-lead" style={{ marginTop: '20px' }}>
-                  We reside at the center of the transportation ecosystem, connecting public and private partners across both surface and air transportation to turn strategy into efficient, operational, coordinated action.
+                  We reside at the center of the transportation ecosystem, connecting public and private partners across both surface and air transportation to turn strategy into efficient, operational, and coordinated action.
                 </p>
                 <p className="aam-section-lead" style={{ fontStyle: 'italic' }}>
                   Click any stakeholder to learn more.
@@ -1046,7 +1046,7 @@ const AAMPage = () => {
       >
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <p className="parallax-text1 reveal" style={{ position: 'relative', zIndex: 2 }}>
-          <em>Leading</em> the integration of multi-modal solutions into<br className="parallax-break" /> <em>next generation</em> transportation networks
+          <em>Leading</em> the integration of multimodal solutions into<br className="parallax-break" /> <em>next-generation</em> transportation networks
         </p>
       </div>
 
