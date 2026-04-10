@@ -2936,7 +2936,7 @@ color: #fff;
 /* Automation hero button — gold filled, wipes to transparent on hover left-to-right */
 .auto-hero-btn {
   display: inline-block; padding: 16px 44px;
-  background: linear-gradient(90deg, #d4be78, #c9a84c);
+  background: linear-gradient(135deg, #c9a84c 0%, #e8d5a0 50%, #c9a84c 100%);
   background-size: 100% 100%;
   border: 1px solid transparent; color: #060c16;
   font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
@@ -6163,6 +6163,8 @@ color: #fff;
   transition: opacity 0.3s, transform 0.4s;
 }
 .ins-channel-expand-hint svg { stroke: #060c16; width: 20px; height: 20px; }
+.ins-channel-expand-hint svg .expand-vertical { transition: opacity 0.25s, transform 0.25s; transform-origin: center; }
+.ins-channel-card.active .ins-channel-expand-hint svg .expand-vertical { opacity: 0; transform: scaleY(0); }
 .ins-channel-card.active .ins-channel-expand-hint {
   margin-bottom: 20px;
 }
@@ -6208,6 +6210,7 @@ color: #fff;
   position: absolute; top: 0; left: 0; width: 3px; height: 0;
   transition: height 0.5s ease;
 }
+.ins-channel-card:hover .ins-channel-accent,
 .ins-channel-card.active .ins-channel-accent { height: 100%; }
 
 /* ── CTA ── */

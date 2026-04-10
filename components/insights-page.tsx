@@ -172,7 +172,8 @@ export default function InsightsPage() {
       <SiteNav />
 
       {/* ── Hero — parallax fixed background ── */}
-      <section className="aam-hero aam-parallax-fixed" style={{ backgroundImage: `url(${HERO_IMG})` }}>
+      <section className="aam-hero aam-parallax-fixed">
+        <Image src={HERO_IMG} alt="" fill priority sizes="100vw" className="aam-hero-img" />
         <div className="aam-hero-overlay" style={{ background: "rgba(6,12,22,0.82)" }} />
         <div className="aam-hero-content">
           <span className="hero-label"><span className="gold-text">Knowledge &amp; Perspective</span></span>
@@ -207,7 +208,7 @@ export default function InsightsPage() {
                   onClick={() => setActiveChannel(prev => (prev === ch.id ? null : ch.id))}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line className="expand-vertical" x1="12" y1="5" x2="12" y2="19" />
                     <line x1="5" y1="12" x2="19" y2="12" />
                   </svg>
                 </button>
