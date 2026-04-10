@@ -6112,7 +6112,7 @@ color: #fff;
 
 /* ── Channel Cards ── */
 .ins-channels { padding: 100px 48px 60px; max-width: 1300px; margin: 0 auto; }
-.ins-channels-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.ins-channels-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: start; }
 
 .ins-channel-card {
   position: relative; border-radius: 8px; overflow: hidden;
