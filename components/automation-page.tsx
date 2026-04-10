@@ -146,12 +146,14 @@ export default function AutomationPage() {
   };
   const valuesScrollPrev = () => {
     const track = valuesTrackRef.current; if (!track) return;
+    if (track.scrollLeft <= 0) return;
     const card = track.querySelector(".aam-alt-card") as HTMLElement;
     const w = card ? card.offsetWidth + 24 : 420;
     track.scrollBy({ left: -w, behavior: "smooth" });
   };
   const valuesScrollNext = () => {
     const track = valuesTrackRef.current; if (!track) return;
+    if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 1) return;
     const card = track.querySelector(".aam-alt-card") as HTMLElement;
     const w = card ? card.offsetWidth + 24 : 420;
     track.scrollBy({ left: w, behavior: "smooth" });
@@ -204,8 +206,8 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── 1. The Ecosystem ── */}
-      <section className="aam-section auto-benefits-section" id="benefits" style={{ padding: "100px 24px", scrollMarginTop: "80px" }}>
-        <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
+      <section className="aam-section auto-benefits-section" id="benefits" style={{ scrollMarginTop: "80px" }}>
+        <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">The Ecosystem</span></p>
             <h2 className="section-title">How data governance, automation, and <em>AI</em> work together</h2>
@@ -248,8 +250,8 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── 3. Human-Centered Automation ── */}
-      <section className="aam-section" style={{ padding: "100px 24px" }}>
-        <div style={{ maxWidth: "1500px", margin: "0 auto" }}>
+      <section className="aam-section">
+        <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Human-Centered Automation</span></p>
             <h2 className="section-title">How can automation help people <em>thrive</em> in a data-driven workplace?</h2>
@@ -335,7 +337,7 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── 5. What We Deliver ── */}
-      <section className="aam-section" style={{ padding: "100px 48px" }}>
+      <section className="aam-section">
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Driving Transformation</span></p>
@@ -374,7 +376,7 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── Addressing Key Challenges / Videos ── */}
-      <section className="aam-section" style={{ padding: "100px 48px" }}>
+      <section className="aam-section">
         <div className="aam-container">
           <div className="aam-section-header reveal">
             <p className="section-label"><span className="gold-text">Addressing Key Challenges</span></p>
