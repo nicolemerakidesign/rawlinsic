@@ -2166,7 +2166,7 @@ body nextjs-portal { display: none; }
   max-width: 720px;
   margin: 0 auto 40px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   gap: 12px;
   opacity: 0; transform: translateY(30px);
