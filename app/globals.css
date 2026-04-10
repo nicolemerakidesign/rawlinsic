@@ -1058,9 +1058,10 @@ text-align: center;
   padding-left: 16px !important;
 }
 .mobile-menu-sub-nested a {
-  font-size: 0.72rem !important;
-  letter-spacing: 2.5px !important;
-  opacity: 0.85;
+  font-size: 0.85rem !important;
+  letter-spacing: 2px !important;
+  opacity: 1;
+  color: #fff !important;
 }
 /* Social icons — reuse footer-social-btn style */
 .mobile-menu-social {
