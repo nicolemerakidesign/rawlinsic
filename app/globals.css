@@ -328,15 +328,21 @@ body.keyboard-nav .cursor-ring {
 .nav-dropdown-sub {
   position: relative;
   display: block; padding: 10px 24px;
-  font-size: 11px; font-weight: 500;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
   color: #fff;
   cursor: pointer;
   transition: all 0.25s;
 }
 .nav-dropdown-sub:hover {
-  color: #d4be78;
   background: rgba(255,255,255,0.04);
+}
+.nav-dropdown-sub:hover .nav-dropdown-sub-label {
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 .nav-dropdown-sub-label {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -391,15 +397,17 @@ body.keyboard-nav .cursor-ring {
 }
 .nav-dropdown a {
   display: block; padding: 10px 24px;
-  font-size: 11px; font-weight: 500;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
   color: #fff;
   transition: all 0.25s;
 }
 .nav-dropdown a:hover {
-  color: #d4be78;
-  padding-left: 30px;
-  background: rgba(255,255,255,0.04);
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 .nav-right { display: flex; align-items: center; }
 .nav-cta {
