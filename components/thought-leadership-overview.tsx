@@ -166,9 +166,14 @@ export default function ThoughtLeadershipOverview() {
         {/* ── Hero ── */}
         <section className="cs-hero" id="top">
           <div className="cs-hero-content">
-            <span className="hero-label"><span className="gold-text">Expert Perspectives. Practical Insights.</span></span>
+            <span className="hero-label">
+              <span className="gold-text">
+                <span className="hero-label-segment">Expert Perspectives&nbsp;&bull;</span>{" "}
+                <span className="hero-label-segment">Practical Insights</span>
+              </span>
+            </span>
             <h1 className="hero-title">Thought Leadership</h1>
-            <p className="hero-sub" style={{ maxWidth: 760 }}>
+            <p className="hero-sub cs-hero-sub">
               At Rawlins, our thought leadership reflects the depth of our experience advising organizations through complex challenges and change. We share practical insights and forward-looking perspectives to help you make informed decisions and move forward with confidence.
             </p>
           </div>
@@ -302,12 +307,12 @@ export default function ThoughtLeadershipOverview() {
         </div>
 
         {/* ── CTA Section ── */}
-        <section className="section-team reveal">
-          <div className="team-content">
+        <section className="section-team" id="contribute">
+          <div className="team-content reveal">
             <p className="section-label">
               <span className="gold-text">Share Your Expertise</span>
             </p>
-            <h2 className="section-title" style={{ textTransform: 'none' }}>
+            <h2 className="section-title">
               Have a perspective to <em>contribute?</em>
             </h2>
             <p className="team-desc">

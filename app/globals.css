@@ -357,7 +357,7 @@ body.keyboard-nav .cursor-ring {
 .nav-sub-dropdown {
   position: absolute; left: 100%; top: -12px;
   min-width: 220px; padding: 12px 0;
-  background: rgba(18,28,48,0.94);
+  background: rgba(10,18,34,0.96);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(229,203,135,0.1);
   border-radius: 10px;
@@ -389,7 +389,7 @@ body.keyboard-nav .cursor-ring {
 .nav-dropdown {
   position: absolute; top: calc(100% + 8px); left: 0;
   min-width: 240px; padding: 12px 0;
-  background: rgba(18,28,48,0.94);
+  background: rgba(10,18,34,0.96);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(229,203,135,0.1);
   border-radius: 10px;
@@ -4060,7 +4060,14 @@ color: #fff;
 }
 .cs-hero-content {
   position: relative; z-index: 2;
-  max-width: 800px;
+  max-width: 860px;
+}
+.cs-hero .hero-sub,
+.cs-hero .cs-hero-sub {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #e8e6e1;
+  max-width: 760px;
 }
 
 /* ── Card Grid (image cards, 3-col) ── */
@@ -4594,7 +4601,7 @@ color: #fff;
   .csd-nav-section { padding: 40px 24px 60px; }
 }
 @media (max-width: 768px) {
-  .cs-hero { min-height: 45vh; padding: 100px 24px 60px; }
+  .cs-hero { min-height: 45vh; padding: 100px 24px 0px; }
   .cs-grid { grid-template-columns: 1fr; gap: 20px; }
   .cs-card { aspect-ratio: 1; }
   .cs-card-title { font-size: 26px; }
