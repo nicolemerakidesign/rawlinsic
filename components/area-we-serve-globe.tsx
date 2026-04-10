@@ -120,35 +120,18 @@ export default function AreaWeServeGlobe() {
     const GOLD_MID = 0xc9a84c;
     const GOLD_DEEP = 0xb8963e;
 
-    const currentLocations = [
-      { name: "Tennessee, USA", lat: 36.2, lng: -86.8, slug: "tennessee" },
+    const activeLocations = [
+      { name: "Hawaii, USA", lat: 21.3, lng: -157.9, slug: "" },
+      { name: "Alaska, USA", lat: 63.5, lng: -154.5, slug: "" },
       { name: "Nevada, USA", lat: 39.5, lng: -119.8, slug: "nevada" },
-      { name: "North Carolina, USA", lat: 35.8, lng: -78.6, slug: "north-carolina" },
-      { name: "Virginia, USA", lat: 37.5, lng: -77.4, slug: "virginia" },
-      { name: "Michigan, USA", lat: 42.7, lng: -84.6, slug: "michigan" },
       { name: "Utah, USA", lat: 40.8, lng: -111.9, slug: "utah" },
-      { name: "Louisiana, USA", lat: 30.5, lng: -91.1, slug: "louisiana" },
-      { name: "Delaware, USA", lat: 39.2, lng: -75.5, slug: "delaware" },
-      { name: "California, USA", lat: 38.6, lng: -121.5, slug: "" },
-      { name: "Idaho, USA", lat: 43.6, lng: -116.2, slug: "" },
-      { name: "Washington, USA", lat: 47.0, lng: -122.9, slug: "" },
-      { name: "Oregon, USA", lat: 44.9, lng: -123.0, slug: "" },
-      { name: "Minnesota, USA", lat: 44.9, lng: -93.1, slug: "" },
-      { name: "Wisconsin, USA", lat: 43.1, lng: -89.4, slug: "" },
-      { name: "Iowa, USA", lat: 41.6, lng: -93.6, slug: "" },
-      { name: "Illinois, USA", lat: 39.8, lng: -89.7, slug: "" },
-      { name: "Indiana, USA", lat: 39.8, lng: -86.2, slug: "" },
-      { name: "Ohio, USA", lat: 39.9, lng: -82.9, slug: "" },
-      { name: "Pennsylvania, USA", lat: 40.3, lng: -76.9, slug: "" },
-      { name: "New York, USA", lat: 42.7, lng: -73.8, slug: "" },
-      { name: "Connecticut, USA", lat: 41.8, lng: -72.7, slug: "" },
-      { name: "Massachusetts, USA", lat: 42.4, lng: -71.1, slug: "" },
-      { name: "Maryland, USA", lat: 38.9, lng: -76.5, slug: "" },
-      { name: "Florida, USA", lat: 30.4, lng: -84.3, slug: "" },
+      { name: "Texas, USA", lat: 31.0, lng: -99.0, slug: "" },
       { name: "Arkansas, USA", lat: 34.7, lng: -92.3, slug: "" },
-      { name: "Colorado, USA", lat: 39.7, lng: -105.0, slug: "" },
-      { name: "Vermont, USA", lat: 44.3, lng: -72.6, slug: "" },
-      { name: "New Hampshire, USA", lat: 43.2, lng: -71.5, slug: "" },
+      { name: "Louisiana, USA", lat: 30.5, lng: -91.1, slug: "louisiana" },
+      { name: "Tennessee, USA", lat: 36.2, lng: -86.8, slug: "tennessee" },
+      { name: "Michigan, USA", lat: 42.7, lng: -84.6, slug: "michigan" },
+      { name: "Iowa, USA", lat: 41.6, lng: -93.6, slug: "" },
+      { name: "Florida, USA", lat: 30.4, lng: -84.3, slug: "" },
     ];
 
     const expansionLocations = [
@@ -156,6 +139,24 @@ export default function AreaWeServeGlobe() {
       { name: "Ottawa, Canada", lat: 45.4, lng: -75.7, slug: "" },
       { name: "Oman, Middle East", lat: 23.6, lng: 58.5, slug: "" },
       { name: "Barbados, Caribbean", lat: 13.2, lng: -59.5, slug: "" },
+    ];
+
+    const completedLocations = [
+      { name: "Georgia, USA", lat: 33.0, lng: -83.6, slug: "" },
+      { name: "North Carolina, USA", lat: 35.8, lng: -78.6, slug: "north-carolina" },
+      { name: "Virginia, USA", lat: 37.5, lng: -77.4, slug: "virginia" },
+      { name: "Maryland, USA", lat: 38.9, lng: -76.5, slug: "" },
+      { name: "Delaware, USA", lat: 39.2, lng: -75.5, slug: "delaware" },
+      { name: "Pennsylvania, USA", lat: 40.3, lng: -76.9, slug: "" },
+      { name: "New York, USA", lat: 42.7, lng: -73.8, slug: "" },
+      { name: "Ohio, USA", lat: 39.9, lng: -82.9, slug: "" },
+      { name: "Indiana, USA", lat: 39.8, lng: -86.2, slug: "" },
+      { name: "Wisconsin, USA", lat: 43.1, lng: -89.4, slug: "" },
+      { name: "Illinois, USA", lat: 39.8, lng: -89.7, slug: "" },
+      { name: "Missouri, USA", lat: 38.6, lng: -92.2, slug: "" },
+      { name: "Idaho, USA", lat: 43.6, lng: -116.2, slug: "" },
+      { name: "Washington, USA", lat: 47.0, lng: -122.9, slug: "" },
+      { name: "Oregon, USA", lat: 44.9, lng: -123.0, slug: "" },
     ];
 
     // Device check for performance tuning
@@ -350,8 +351,8 @@ export default function AreaWeServeGlobe() {
         new T.LineBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.08})
       );
     }
-    [[0,1],[0,3],[1,5],[2,3],[4,13],[7,18],[9,11],[20,21],[14,15],[5,25],[23,6],[16,17],[19,20],[12,13]].forEach(([a,b])=>{
-      if(currentLocations[a]&&currentLocations[b]) globeGroup.add(makeArc(currentLocations[a],currentLocations[b]));
+    [[2,3],[3,4],[5,6],[6,7],[7,8],[8,9],[9,6],[10,7]].forEach(([a,b])=>{
+      if(activeLocations[a]&&activeLocations[b]) globeGroup.add(makeArc(activeLocations[a],activeLocations[b]));
     });
 
     // Pins
@@ -359,11 +360,14 @@ export default function AreaWeServeGlobe() {
     const raycaster = new T.Raycaster();
     const mouse = new T.Vector2();
 
-    function createPin(loc: any, isCurrent: boolean) {
+    const COMPLETED_BLUE = 0x6fb0e0;
+    const COMPLETED_DEEP = 0x4a98cc;
+
+    function createPin(loc: any, type: "active" | "expanding" | "completed") {
       const pos = ll2v(loc.lat, loc.lng, GLOBE_RADIUS);
       const g = new T.Group();
 
-      if (isCurrent) {
+      if (type === "active") {
         g.add(new T.Mesh(new T.SphereGeometry(0.025,32,32), new T.MeshBasicMaterial({color:GOLD_LIGHT})));
         const glow = new T.Mesh(new T.SphereGeometry(0.055,32,32), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.2}));
         g.add(glow); g.userData.glow = glow;
@@ -372,8 +376,8 @@ export default function AreaWeServeGlobe() {
         const beam = new T.Mesh(new T.CylinderGeometry(0.002,0.002,0.1,4), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.35}));
         beam.lookAt(pos.clone().multiplyScalar(2)); beam.rotateX(Math.PI/2);
         beam.position.copy(pos.clone().normalize().multiplyScalar(0.05)); g.add(beam);
-      } else {
-        // Expanding pins: hollow ring style (no solid center) to differentiate from current
+      } else if (type === "expanding") {
+        // Expanding pins: hollow ring style
         const innerRing = new T.Mesh(new T.RingGeometry(0.018,0.025,48), new T.MeshBasicMaterial({color:GOLD_LIGHT,transparent:true,opacity:0.7,side:T.DoubleSide}));
         innerRing.lookAt(pos.clone().multiplyScalar(2)); g.add(innerRing);
         const midRing = new T.Mesh(new T.RingGeometry(0.04,0.048,48), new T.MeshBasicMaterial({color:GOLD_MID,transparent:true,opacity:0.35,side:T.DoubleSide}));
@@ -382,11 +386,17 @@ export default function AreaWeServeGlobe() {
         outer.lookAt(pos.clone().multiplyScalar(2)); g.add(outer); g.userData.outerRing = outer;
         const glow = new T.Mesh(new T.SphereGeometry(0.08,32,32), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.08}));
         g.add(glow); g.userData.glow = glow;
+      } else {
+        // Completed pins: small, quiet blue dot — visually "past" but still present
+        g.add(new T.Mesh(new T.SphereGeometry(0.016,24,24), new T.MeshBasicMaterial({color:COMPLETED_BLUE,transparent:true,opacity:0.9})));
+        const glow = new T.Mesh(new T.SphereGeometry(0.035,24,24), new T.MeshBasicMaterial({color:COMPLETED_DEEP,transparent:true,opacity:0.22}));
+        g.add(glow); g.userData.glow = glow;
       }
 
       g.position.copy(pos);
       g.userData.name = loc.name;
-      g.userData.isCurrent = isCurrent;
+      g.userData.type = type;
+      g.userData.isCurrent = type === "active";
       g.userData.slug = loc.slug || "";
       globeGroup.add(g);
 
@@ -396,8 +406,9 @@ export default function AreaWeServeGlobe() {
       return g;
     }
 
-    const cPins = currentLocations.map(l=>createPin(l,true));
-    const ePins = expansionLocations.map(l=>createPin(l,false));
+    const cPins = activeLocations.map(l=>createPin(l,"active"));
+    const ePins = expansionLocations.map(l=>createPin(l,"expanding"));
+    const pPins = completedLocations.map(l=>createPin(l,"completed"));
 
     // Interaction
     let isDragging=false, prevMouse={x:0,y:0}, dragVel=0, isOverPin=false, zoomTarget=ZOOM_DEFAULT;
@@ -409,9 +420,12 @@ export default function AreaWeServeGlobe() {
     function showTooltip(d: any, sx: number, sy: number) {
       const linkHtml = d.slug ? '<a href="/insights/case-studies/'+d.slug+'" class="tooltip-link">View Case Study &rarr;</a>' : '';
       const closeBtn = d.slug ? '<button class="tooltip-close" id="tooltip-close-btn">&times;</button>' : '';
-      tooltip.innerHTML='<div class="tooltip-header"><div><span class="tooltip-label">'+(d.isCurrent?"Active":"Expanding")+'</span><span class="tooltip-name">'+d.name+'</span></div>'+closeBtn+'</div>'+linkHtml;
+      const labelMap: Record<string,string> = { active: "Active", expanding: "Expanding", completed: "Completed" };
+      const label = labelMap[d.type] || "Active";
+      const themeClass = d.type === "completed" ? "completed-location" : "active-location";
+      tooltip.innerHTML='<div class="tooltip-header"><div><span class="tooltip-label">'+label+'</span><span class="tooltip-name">'+d.name+'</span></div>'+closeBtn+'</div>'+linkHtml;
       tooltip.style.left=sx+"px"; tooltip.style.top=sy+"px";
-      tooltip.className="globe-tooltip visible active-location";
+      tooltip.className="globe-tooltip visible "+themeClass;
       const closeEl = document.getElementById("tooltip-close-btn");
       if(closeEl) closeEl.addEventListener("click",(e)=>{ e.stopPropagation(); dismiss(); });
     }
@@ -542,6 +556,10 @@ export default function AreaWeServeGlobe() {
         if(p.userData.pulse){const s=1+Math.sin(t*1.5+i*0.5)*0.3;p.userData.pulse.scale.set(s,s,s);p.userData.pulse.material.opacity=0.35-Math.sin(t*1.5+i*0.5)*0.15;}
         if(p.userData.glow) p.userData.glow.material.opacity=0.08+Math.sin(t*1.0+i*0.4)*0.05;
       });
+      pPins.forEach((p: any,i: number)=>{
+        // Quiet pulse for completed/past pins
+        if(p.userData.glow) p.userData.glow.material.opacity=0.18+Math.sin(t*0.8+i*0.4)*0.05;
+      });
 
       particles.rotation.y+=0.0001; particles.rotation.x+=0.00005;
       ring1.rotation.z+=0.0002; ring2.rotation.z-=0.00015; ring3.rotation.z+=0.0001; ring4.rotation.z-=0.00008;
@@ -662,6 +680,11 @@ export default function AreaWeServeGlobe() {
           box-shadow: 0 0 10px rgba(201,168,76,0.5), inset 0 0 4px rgba(201,168,76,0.2);
           animation: expansionPulse 2.5s ease-in-out infinite;
         }
+        .globe-legend-dot.completed {
+          width: 8px; height: 8px;
+          background: #6fb0e0;
+          box-shadow: 0 0 8px rgba(111,176,224,0.5);
+        }
         @keyframes expansionPulse {
           0%, 100% { box-shadow: 0 0 10px rgba(201,168,76,0.5), inset 0 0 4px rgba(201,168,76,0.2); transform: scale(1); }
           50% { box-shadow: 0 0 16px rgba(201,168,76,0.7), inset 0 0 6px rgba(201,168,76,0.3); transform: scale(1.15); }
@@ -704,7 +727,18 @@ export default function AreaWeServeGlobe() {
           background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878); color: #0a1628;
           box-shadow: 0 4px 20px rgba(184,154,62,0.4);
         }
+        .globe-tooltip.completed-location {
+          background: linear-gradient(145deg, #4a98cc, #6fb0e0, #3f87b8); color: #fff;
+          box-shadow: 0 4px 20px rgba(74,152,204,0.35);
+        }
+        .globe-tooltip.completed-location .tooltip-close { color: #fff; }
         .globe-tooltip.visible { opacity: 1; }
+
+        /* Segments on the heading: stay together but wrap cleanly */
+        .globe-heading-segment { display: inline; }
+        @media (max-width: 768px) {
+          .globe-heading-segment { display: block; }
+        }
 
         /* Spacer: enough height so user can scroll past globe to footer */
         .globe-scroll-spacer {
@@ -747,7 +781,32 @@ export default function AreaWeServeGlobe() {
             text-align: center;
             padding-right: 0;
           }
-          .globe-subtext { margin-left: auto; margin-right: auto; }
+          /* Mobile: match hero label/title/paragraph styling from other pages */
+          .globe-eyebrow {
+            font-size: 14px;
+            letter-spacing: 5px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+          }
+          .globe-heading {
+            font-family: var(--font-cormorant), Georgia, serif;
+            font-size: clamp(2.4rem, 7vw, 3rem);
+            line-height: 1.15;
+            font-weight: 400;
+            margin-top: 20px;
+            margin-bottom: 28px;
+          }
+          .globe-subtext {
+            font-size: 17px;
+            line-height: 1.75;
+            color: #fff;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 28px;
+            font-weight: 400;
+          }
           .globe-legend { gap: 20px; flex-wrap: wrap; justify-content: center; }
           .globe-zoom-hint { text-align: center; }
           #globe-container {
@@ -767,14 +826,18 @@ export default function AreaWeServeGlobe() {
         <section className="globe-content-section">
           <div className="globe-content-inner">
             <div className="globe-eyebrow">Areas We Serve</div>
-            <h2 className="globe-heading">Global Reach, Local <em>Impact</em></h2>
+            <h1 className="globe-heading">
+              <span className="globe-heading-segment">Global Reach,</span>{" "}
+              <span className="globe-heading-segment">Local <em>Impact</em></span>
+            </h1>
             <p className="globe-subtext">
               Delivering solutions throughout the United States and expanding our footprint across
               industries and borders.
             </p>
             <div className="globe-legend">
-              <div className="globe-legend-item"><div className="globe-legend-dot current"></div><span>Current</span></div>
+              <div className="globe-legend-item"><div className="globe-legend-dot current"></div><span>Active</span></div>
               <div className="globe-legend-item"><div className="globe-legend-dot expansion"></div><span>Expanding</span></div>
+              <div className="globe-legend-item"><div className="globe-legend-dot completed"></div><span>Completed</span></div>
             </div>
             <div className="globe-zoom-hint">Scroll to zoom · Drag to rotate · Hover pins for details</div>
           </div>

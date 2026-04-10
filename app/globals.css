@@ -5738,27 +5738,34 @@ color: #fff;
 }
 /* Waveform bars as CTA background */
 .pod-cta-with-wave { position: relative; overflow: hidden; }
-.pod-cta { position: relative; overflow: hidden; }
+.pod-cta {
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 70px;
+}
 .pod-cta > .team-content { position: relative; z-index: 2; }
 .pod-cta-waveform {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: 5px;
-  padding: 0 0;
-  opacity: 0.55;
+  opacity: 0.22;
   pointer-events: none;
   z-index: 0;
 }
 .pod-cta-waveform .pod-wave-bar {
   flex: 1 1 0;
   min-width: 0;
-  max-width: 16px;
-  background: linear-gradient(180deg, rgba(201,168,76,0.55), rgba(201,168,76,0.08));
+  max-width: 12px;
+  background: linear-gradient(180deg, rgba(20,36,66,1), rgba(10,20,40,0.55));
   border-radius: 3px 3px 0 0;
-  animation: podCtaBarPulse 3s ease-in-out infinite alternate;
+  animation: podCtaBarPulse 3.2s ease-in-out infinite alternate;
   transform-origin: bottom;
 }
 @keyframes podCtaBarPulse {
@@ -5766,8 +5773,9 @@ color: #fff;
   100% { transform: scaleY(1); }
 }
 @media (max-width: 768px) {
-  .pod-cta-waveform { gap: 3px; opacity: 0.45; }
-  .pod-cta-waveform .pod-wave-bar { max-width: 8px; }
+  .pod-cta { padding-top: 72px; padding-bottom: 48px; }
+  .pod-cta-waveform { gap: 3px; opacity: 0.2; height: 38%; }
+  .pod-cta-waveform .pod-wave-bar { max-width: 7px; }
 }
 
 /* ── Podcast Responsive ── */
