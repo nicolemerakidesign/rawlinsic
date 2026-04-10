@@ -1,20 +1,45 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 
-const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/capabilities", label: "Capabilities" },
-  { href: "/about/our-people", label: "Our People" },
-  { href: "/insights", label: "Insights" },
-  { href: "/contact", label: "Contact" },
-];
-
 export default function NotFoundPage() {
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    let rafId: number;
+    const onMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = mouseX - 4 + "px";
+      dot.style.top = mouseY - 4 + "px";
+    };
+    const animate = () => {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX - 20 + "px";
+      ring.style.top = ringY - 20 + "px";
+      rafId = requestAnimationFrame(animate);
+    };
+    document.addEventListener("mousemove", onMove);
+    rafId = requestAnimationFrame(animate);
+    return () => {
+      document.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
     <>
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
       <div className="ambient-bg" />
       <div className="ambient-orbs">
         <div className="orb orb-1" />
@@ -45,17 +70,6 @@ export default function NotFoundPage() {
             <Link href="/contact" className="nf-secondary-btn">
               <span>Contact Us</span>
             </Link>
-          </div>
-
-          <div className="nf-links">
-            <p className="nf-links-label">Or explore:</p>
-            <ul className="nf-links-list">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </main>

@@ -346,7 +346,7 @@ const AAMPage = () => {
       <SiteNav ctaHref="/contact" />
 
       {/* ── Hero ── */}
-      <section className="aam-hero aam-parallax-fixed" id="top">
+      <section className="aam-hero aam-parallax-fixed" id="top" style={{ backgroundImage: `url(${DRONE_IMG})` }}>
         <Image src={DRONE_IMG} alt="" fill priority sizes="100vw" className="aam-hero-img" />
         <div className="aam-hero-overlay" />
         <div className="aam-hero-content">

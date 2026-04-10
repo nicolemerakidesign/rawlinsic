@@ -146,7 +146,7 @@ export default function CaseStudyDetail({ study }: Props) {
 
       <div className="content-wrapper">
         {/* ── Hero with image ── */}
-        <section className="csd-hero" id="top">
+        <section className="csd-hero csd-hero-case-study" id="top">
           <Image
             src={study.heroImage}
             alt={study.title}

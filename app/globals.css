@@ -4068,6 +4068,20 @@ color: #fff;
   line-height: 1.75;
   color: #fff;
   max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Case studies hero label: bullet between segments on wide viewports,
+   stacks vertically (no bullet) below 900px */
+.cs-hero-label .cs-hero-label-bullet { display: inline; }
+@media (max-width: 900px) {
+  .cs-hero-label .gold-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.6;
+  }
+  .cs-hero-label .cs-hero-label-bullet { display: none; }
 }
 
 /* ── Card Grid (image cards, 3-col) ── */
@@ -4155,7 +4169,7 @@ color: #fff;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.75;
-  color: rgba(255,255,255,0.85);
+  color: #fff;
   margin: 0;
   max-height: 0;
   overflow: hidden;
@@ -4287,6 +4301,16 @@ color: #fff;
     rgba(6,12,22,0.82) 0%,
     rgba(6,12,22,0.92) 50%,
     rgba(6,12,22,0.98) 100%
+  );
+}
+/* Case study detail pages want the hero image to still be readable,
+   so use a lighter gradient that preserves the underlying photo. */
+.csd-hero-case-study .csd-hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(6,12,22,0.35) 0%,
+    rgba(6,12,22,0.5) 50%,
+    rgba(6,12,22,0.85) 100%
   );
 }
 .csd-hero-content {
@@ -4615,9 +4639,16 @@ color: #fff;
   .csd-nav-inner { flex-direction: column; }
   .csd-nav-link { width: 100%; }
   .csd-nav-next { text-align: left; margin-left: 0; }
-  .csd-client-info { flex-wrap: wrap; }
-  .csd-info-item { flex: 1 1 45%; min-width: 140px; padding: 16px 20px; }
-  .csd-info-item:first-child { padding-left: 0; }
+  .csd-client-info { flex-direction: column; gap: 0; }
+  .csd-info-item {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    padding: 16px 0 16px 20px;
+    border-left: 2px solid;
+    border-image: linear-gradient(180deg, #c9a84c, #e8d5a0, #c9a84c) 1;
+  }
+  .csd-info-item:first-child { padding-left: 20px; border-left: 2px solid; border-image: linear-gradient(180deg, #c9a84c, #e8d5a0, #c9a84c) 1; }
 }
 
 
@@ -5392,6 +5423,21 @@ color: #fff;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background:
+    radial-gradient(ellipse 85% 70% at 50% 18%, rgba(201,168,76,0.14) 0%, rgba(201,168,76,0) 55%),
+    radial-gradient(ellipse 60% 55% at 20% 85%, rgba(14,30,60,0.65) 0%, rgba(6,12,22,0) 60%),
+    radial-gradient(ellipse 60% 55% at 82% 80%, rgba(14,30,60,0.55) 0%, rgba(6,12,22,0) 60%),
+    linear-gradient(180deg, #06101f 0%, #040a16 45%, #03080f 100%);
+}
+.pod-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 30%, rgba(201,168,76,0.08) 0%, transparent 22%),
+    radial-gradient(circle at 80% 40%, rgba(212,184,120,0.07) 0%, transparent 25%),
+    radial-gradient(circle at 50% 110%, rgba(201,168,76,0.12) 0%, transparent 55%);
+  pointer-events: none;
 }
 .pod-hero-waveform {
   display: none;
@@ -5634,7 +5680,8 @@ color: #fff;
   .pod-main-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 768px) {
-  .pod-hero { min-height: 55vh; }
+  .pod-hero { min-height: 55vh; padding: 100px 24px 40px; }
+  .pod-hero-icon { margin-top: 0; margin-bottom: 18px; }
   .pod-main { padding: 60px 24px; }
   .pod-about-title { font-size: 28px; }
   .pod-hero-tagline { font-size: 17px; }
@@ -6311,7 +6358,7 @@ color: #fff;
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 56px;
+  margin-bottom: 0;
 }
 .nf-secondary-btn {
   display: inline-flex;

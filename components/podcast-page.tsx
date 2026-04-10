@@ -192,7 +192,13 @@ export default function PodcastPage() {
                 <line x1="8" y1="23" x2="16" y2="23" stroke="url(#iconGoldGrad)" />
               </svg>
             </div>
-            <span className="hero-label"><span className="gold-text">Listen In. Learn More. Lead Better.</span></span>
+            <span className="hero-label">
+              <span className="gold-text">
+                <span className="hero-label-segment">Listen In&nbsp;&bull;</span>{" "}
+                <span className="hero-label-segment">Learn More&nbsp;&bull;</span>{" "}
+                <span className="hero-label-segment">Lead Better</span>
+              </span>
+            </span>
             <h1 className="hero-title">The <em>Rawlins</em> Way</h1>
             {/* EQ bars under title in hero */}
             <div className="pod-hero-eq">

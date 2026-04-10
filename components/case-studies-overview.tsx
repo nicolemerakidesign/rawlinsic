@@ -134,9 +134,15 @@ export default function CaseStudiesOverview() {
         {/* ── Hero ── */}
         <section className="cs-hero" id="top">
           <div className="cs-hero-content">
-            <span className="hero-label"><span className="gold-text">Solving Complex Challenges. Proven Impact.</span></span>
+            <span className="hero-label cs-hero-label">
+              <span className="gold-text">
+                <span className="hero-label-segment">Solving Complex Challenges</span>
+                <span className="cs-hero-label-bullet" aria-hidden="true">&nbsp;&bull;&nbsp;</span>
+                <span className="hero-label-segment">Proven Impact</span>
+              </span>
+            </span>
             <h1 className="hero-title">Case Studies</h1>
-            <p className="hero-sub" style={{ maxWidth: 720 }}>
+            <p className="hero-sub cs-hero-sub">
               Explore how we turn strategic initiatives into measurable results.
             </p>
           </div>
