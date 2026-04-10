@@ -2635,6 +2635,7 @@ color: #fff;
   align-items: start;
 }
 .aam-overview-left { padding-top: 8px; }
+.aam-section .section-title { font-size: clamp(2rem, 3vw, 2.8rem); }
 .aam-overview-right {
   position: relative;
   min-height: 420px;
@@ -3286,6 +3287,9 @@ color: #fff;
   .aam-hero { padding: 100px 24px 120px; min-height: 80vh; }
   .aam-hero-content { max-width: 100%; }
   .aam-hero .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
+  .aam-section { padding: 72px 0 0px 0px; }
+  .aam-overview-right { margin-top: 0; }
+  .ls-vis-wrapper svg text { font-size: 28px !important; }
   .aam-hero .hero-sub { font-size: 0.95rem; }
   .aam-stakeholders-layout { grid-template-columns: 1fr; gap: 32px; }
   .aam-stakeholders-layout svg { width: 100%; max-width: 360px; height: auto; margin: 0 auto; display: block; }
@@ -3447,8 +3451,7 @@ color: #fff;
   .aam-framework-grid { grid-template-columns: 1fr 1fr; }
   .aam-serve-grid { grid-template-columns: 1fr; gap: 40px; }
   .aam-overview-grid { grid-template-columns: 1fr; gap: 48px; }
-  .aam-overview-right { min-height: 320px; }
-  .aam-overview-right .intro-cinematic-wrap { min-height: 320px; }
+  .aam-overview-right, .aam-overview-right .intro-cinematic-wrap { min-height: 275px; }
   .aam-serve-img-col { position: static; }
   .aam-serve-img-wrap { max-height: 320px; }
 }

@@ -393,9 +393,6 @@ const AAMPage = () => {
                   </div>
                 );
               })()}
-              <p className="aam-section-lead" style={{ fontStyle: 'italic', marginTop: 16, opacity: 0.6 }}>
-                Hover over any location to explore.
-              </p>
               </div>
             </div>
             <div className="aam-overview-right reveal rd1">
@@ -751,6 +748,9 @@ const AAMPage = () => {
                   })}
                 </svg>
               </div>
+              <p className="aam-section-lead aam-overview-caption" style={{ fontStyle: 'italic', marginTop: 16, opacity: 0.6, textAlign: 'center' }}>
+                Hover over any location to explore.
+              </p>
             </div>
           </div>
         </div>
