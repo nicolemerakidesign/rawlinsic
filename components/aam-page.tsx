@@ -190,6 +190,7 @@ const AAMPage = () => {
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [openServices, setOpenServices] = useState<Set<number>>(new Set());
   const [hoveredLs, setHoveredLs] = useState<string | null>(null);
+  const [activePhase, setActivePhase] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -1131,10 +1132,13 @@ const AAMPage = () => {
             className="aam-alt-scroll-track"
           >
             {phaseData.map((phase, i) => (
-              <div className="aam-alt-card" key={phase.num}>
+              <div className={`aam-alt-card${activePhase === i ? " active" : ""}`} key={phase.num} onClick={() => setActivePhase(prev => (prev === i ? null : i))}>
                 <Image src={phase.img} alt={phase.label} fill sizes="(max-width: 768px) 80vw, 400px" className="aam-alt-card-bg" />
                 <div className="aam-alt-card-overlay" />
                 <h4 className="aam-alt-card-title">{phase.label}</h4>
+                <button className="card-expand-btn aam-phase-expand-btn" aria-label="Expand description" aria-expanded={activePhase === i} onClick={(e) => { e.stopPropagation(); setActivePhase(prev => (prev === i ? null : i)); }}>
+                  <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
+                </button>
                 <p className="aam-alt-card-body">{phase.body}</p>
               </div>
             ))}
@@ -1202,8 +1206,8 @@ const AAMPage = () => {
       {/* ── CTA ── */}
       <section
         className="aam-section aam-cta-section aam-parallax-fixed"
-        style={{ backgroundImage: `url(${HELICOPTER_IMG})` }}
       >
+        <Image src={HELICOPTER_IMG} alt="" fill priority sizes="100vw" className="aam-cta-bg-img" />
         <div className="aam-cta-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <div className="aam-container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="aam-cta-wrap reveal" style={{ textAlign: "center", margin: "0 auto" }}>

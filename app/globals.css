@@ -2593,13 +2593,15 @@ font-size: 15px;
   transform: scale(1.2);
   will-change: transform;
 }
-.aam-hero-img {
+.aam-hero-img,
+.aam-cta-bg-img {
   object-fit: cover;
   object-position: center;
   z-index: 0;
 }
 @media (max-width: 768px) {
   .aam-hero-img { object-position: center 30%; }
+  .aam-cta-bg-img { object-position: center 40%; }
 }
 .aam-hero-overlay {
   position: absolute;
@@ -3733,12 +3735,16 @@ color: #fff;
   cursor: default;
   transition: transform 0.35s;
 }
-.aam-alt-card:hover { transform: translateY(-4px); }
+@media (hover: hover) {
+  .aam-alt-card:hover { transform: translateY(-4px); }
+}
 .aam-alt-card-bg {
   object-fit: cover; object-position: center;
   transition: transform 0.6s;
 }
-.aam-alt-card:hover .aam-alt-card-bg { transform: scale(1.05); }
+@media (hover: hover) {
+  .aam-alt-card:hover .aam-alt-card-bg { transform: scale(1.05); }
+}
 .aam-alt-card-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(6,12,22,0.2) 0%, rgba(6,12,22,0.85) 60%, rgba(6,12,22,0.95) 100%);
@@ -3787,12 +3793,22 @@ color: #fff;
   transform: translateY(6px);
   transition: opacity 0.35s ease, max-height 0.4s ease, transform 0.35s ease;
 }
-.aam-alt-card:hover .aam-alt-card-body {
+@media (hover: hover) {
+  .aam-alt-card:hover .aam-alt-card-body {
+    opacity: 1;
+    max-height: 300px;
+    transform: translateY(0);
+  }
+  .aam-alt-card:hover .aam-alt-card-divider { width: 88px; }
+}
+.aam-alt-card.active .aam-alt-card-body {
   opacity: 1;
   max-height: 300px;
   transform: translateY(0);
 }
-.aam-alt-card:hover .aam-alt-card-divider { width: 88px; }
+.aam-alt-card.active .aam-alt-card-divider { width: 88px; }
+.aam-phase-expand-btn { display: flex; }
+.aam-alt-card.active .aam-phase-expand-btn { transform: rotate(180deg); background: rgba(255,255,255,0.15); }
 
 /* ── Service Portfolio: Tabbed Showcase ──────────────────── */
 .aam-svc-tabs {
