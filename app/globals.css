@@ -426,11 +426,11 @@ body.keyboard-nav .cursor-ring {
 
 /* ── Shared Section Styles ───────────────────── */
 .section-label {
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 20px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .cap-section .section-label,
 .cap-cta .section-label {
@@ -6201,9 +6201,9 @@ color: #fff;
 .ins-channel-cta::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: -2px;
-  height: 1px;
-  background: #c9a84c;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #e8d5a0, #d4b878);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
