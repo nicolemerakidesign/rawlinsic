@@ -452,11 +452,12 @@ export default function AutomationPage() {
       <div className="section-divider"><div className="gold-line" /></div>
 
       {/* ── CTA ── */}
-      <section className="aam-section aam-cta-section aam-parallax-fixed" style={{ backgroundImage: `url(${TEAM_IMG})` }}>
+      <section className="aam-section aam-cta-section aam-parallax-fixed">
+        <Image src={TEAM_IMG} alt="" fill priority sizes="100vw" className="aam-cta-bg-img" />
         <div className="aam-parallax-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 32px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "800px", margin: "0 auto" }}>
           <p className="section-label"><span className="gold-text">Let&rsquo;s Connect</span></p>
-          <h2 className="section-title auto-cta-title" style={{ color: "#fff", marginBottom: "20px", textAlign: "center" }}>Ready to reshape how your <em>organization</em> works?</h2>
+          <h2 className="section-title auto-cta-title" style={{ color: "#fff", marginBottom: "20px", textAlign: "center" }}>Ready to <em>reshape</em> how your organization works?</h2>
           <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center", marginBottom: "40px" }}>
             Let&rsquo;s discuss how automation and AI can elevate your team&rsquo;s capabilities.
           </p>
