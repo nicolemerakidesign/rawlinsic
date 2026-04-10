@@ -748,8 +748,8 @@ const AAMPage = () => {
                   })}
                 </svg>
               </div>
-              <p className="aam-section-lead aam-overview-caption" style={{ fontStyle: 'italic', marginTop: 16, opacity: 0.6, textAlign: 'center' }}>
-                Hover over any location to explore.
+              <p className="aam-section-lead aam-overview-caption" style={{ fontStyle: 'italic', marginTop: 16, opacity: 0.6, textAlign: 'left' }}>
+                Click on icons to explore.
               </p>
             </div>
           </div>
