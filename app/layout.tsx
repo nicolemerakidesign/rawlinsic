@@ -47,6 +47,44 @@ export const metadata: Metadata = {
   },
 };
 
+const ORGANIZATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Rawlins Infra Consult",
+  alternateName: "Rawlins IC",
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/pages/hero-bg.webp`,
+  description:
+    "Global consultancy at the intersection of strategy, operations, and technology — helping organizations translate ambitious priorities into measurable results.",
+  email: "info@rawlinsic.com",
+  telephone: "+1-775-843-3822",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Reno",
+    addressRegion: "NV",
+    addressCountry: "US",
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/107078508/",
+  ],
+  areaServed: {
+    "@type": "Place",
+    name: "Worldwide",
+  },
+};
+
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Rawlins Infra Consult",
+  url: SITE_URL,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE_URL}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -62,6 +100,18 @@ export default function RootLayout({
         <div id="main-content">
         {children}
         </div>
+        <Script
+          id="schema-organization"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
+        />
+        <Script
+          id="schema-website"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
+        />
         <Script id="keyboard-nav" strategy="afterInteractive">{`
           document.addEventListener('keydown',function(e){if(e.key==='Tab')document.body.classList.add('keyboard-nav')});
           document.addEventListener('mousedown',function(){document.body.classList.remove('keyboard-nav')});

@@ -15,6 +15,51 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 year — images are static assets
     remotePatterns: [],
   },
+  compress: true,
+  poweredByHeader: false,
+  async headers() {
+    return [
+      // Static assets in /public get immutable caching
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/videos/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/:path*\\.(webp|jpg|jpeg|png|gif|svg|webm|mp4|woff|woff2|ttf|otf|pdf)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Global security headers applied to every response
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+        ],
+      },
+    ];
+  },
   devIndicators: false,
   allowedDevOrigins: [
     "*.macaly.dev",

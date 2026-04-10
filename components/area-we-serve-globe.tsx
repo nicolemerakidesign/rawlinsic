@@ -141,7 +141,7 @@ export default function AreaWeServeGlobe() {
       { name: "Barbados, Caribbean", lat: 13.2, lng: -59.5, slug: "" },
     ];
 
-    const completedLocations = [
+    const pastLocations = [
       { name: "Georgia, USA", lat: 33.0, lng: -83.6, slug: "" },
       { name: "North Carolina, USA", lat: 35.8, lng: -78.6, slug: "north-carolina" },
       { name: "Virginia, USA", lat: 37.5, lng: -77.4, slug: "virginia" },
@@ -360,10 +360,11 @@ export default function AreaWeServeGlobe() {
     const raycaster = new T.Raycaster();
     const mouse = new T.Vector2();
 
-    const COMPLETED_BLUE = 0x6fb0e0;
-    const COMPLETED_DEEP = 0x4a98cc;
+    const PAST_BLUE_LIGHT = 0x9fc8e8;
+    const PAST_BLUE_MID = 0x5ea3d4;
+    const PAST_BLUE_DEEP = 0x3b7ba6;
 
-    function createPin(loc: any, type: "active" | "expanding" | "completed") {
+    function createPin(loc: any, type: "active" | "expanding" | "past") {
       const pos = ll2v(loc.lat, loc.lng, GLOBE_RADIUS);
       const g = new T.Group();
 
@@ -387,10 +388,16 @@ export default function AreaWeServeGlobe() {
         const glow = new T.Mesh(new T.SphereGeometry(0.08,32,32), new T.MeshBasicMaterial({color:GOLD_DEEP,transparent:true,opacity:0.08}));
         g.add(glow); g.userData.glow = glow;
       } else {
-        // Completed pins: small, quiet blue dot — visually "past" but still present
-        g.add(new T.Mesh(new T.SphereGeometry(0.016,24,24), new T.MeshBasicMaterial({color:COMPLETED_BLUE,transparent:true,opacity:0.9})));
-        const glow = new T.Mesh(new T.SphereGeometry(0.035,24,24), new T.MeshBasicMaterial({color:COMPLETED_DEEP,transparent:true,opacity:0.22}));
+        // Past pins: same size/shape as active gold pins but in blue, with a
+        // quieter (non-pulsing) ring so they read as completed engagements.
+        g.add(new T.Mesh(new T.SphereGeometry(0.025,32,32), new T.MeshBasicMaterial({color:PAST_BLUE_LIGHT})));
+        const glow = new T.Mesh(new T.SphereGeometry(0.055,32,32), new T.MeshBasicMaterial({color:PAST_BLUE_MID,transparent:true,opacity:0.22}));
         g.add(glow); g.userData.glow = glow;
+        const ring = new T.Mesh(new T.RingGeometry(0.06,0.08,48), new T.MeshBasicMaterial({color:PAST_BLUE_LIGHT,transparent:true,opacity:0.18,side:T.DoubleSide}));
+        ring.lookAt(pos.clone().multiplyScalar(2)); g.add(ring); g.userData.pulse = ring;
+        const beam = new T.Mesh(new T.CylinderGeometry(0.002,0.002,0.1,4), new T.MeshBasicMaterial({color:PAST_BLUE_MID,transparent:true,opacity:0.3}));
+        beam.lookAt(pos.clone().multiplyScalar(2)); beam.rotateX(Math.PI/2);
+        beam.position.copy(pos.clone().normalize().multiplyScalar(0.05)); g.add(beam);
       }
 
       g.position.copy(pos);
@@ -408,7 +415,7 @@ export default function AreaWeServeGlobe() {
 
     const cPins = activeLocations.map(l=>createPin(l,"active"));
     const ePins = expansionLocations.map(l=>createPin(l,"expanding"));
-    const pPins = completedLocations.map(l=>createPin(l,"completed"));
+    const pPins = pastLocations.map(l=>createPin(l,"past"));
 
     // Interaction
     let isDragging=false, prevMouse={x:0,y:0}, dragVel=0, isOverPin=false, zoomTarget=ZOOM_DEFAULT;
@@ -420,9 +427,9 @@ export default function AreaWeServeGlobe() {
     function showTooltip(d: any, sx: number, sy: number) {
       const linkHtml = d.slug ? '<a href="/insights/case-studies/'+d.slug+'" class="tooltip-link">View Case Study &rarr;</a>' : '';
       const closeBtn = d.slug ? '<button class="tooltip-close" id="tooltip-close-btn">&times;</button>' : '';
-      const labelMap: Record<string,string> = { active: "Active", expanding: "Expanding", completed: "Completed" };
+      const labelMap: Record<string,string> = { active: "Active", expanding: "Expanding", past: "Past" };
       const label = labelMap[d.type] || "Active";
-      const themeClass = d.type === "completed" ? "completed-location" : "active-location";
+      const themeClass = d.type === "past" ? "past-location" : "active-location";
       tooltip.innerHTML='<div class="tooltip-header"><div><span class="tooltip-label">'+label+'</span><span class="tooltip-name">'+d.name+'</span></div>'+closeBtn+'</div>'+linkHtml;
       tooltip.style.left=sx+"px"; tooltip.style.top=sy+"px";
       tooltip.className="globe-tooltip visible "+themeClass;
@@ -557,8 +564,10 @@ export default function AreaWeServeGlobe() {
         if(p.userData.glow) p.userData.glow.material.opacity=0.08+Math.sin(t*1.0+i*0.4)*0.05;
       });
       pPins.forEach((p: any,i: number)=>{
-        // Quiet pulse for completed/past pins
-        if(p.userData.glow) p.userData.glow.material.opacity=0.18+Math.sin(t*0.8+i*0.4)*0.05;
+        // Past pins have the same animation shape as active gold pins but
+        // quieter so they still read as secondary.
+        if(p.userData.glow) p.userData.glow.material.opacity=0.16+Math.sin(t*1.4+i*0.5)*0.06;
+        if(p.userData.pulse){const s=1+Math.sin(t*1.4+i*0.3)*0.22;p.userData.pulse.scale.set(s,s,s);p.userData.pulse.material.opacity=0.16-Math.sin(t*1.4+i*0.3)*0.05;}
       });
 
       particles.rotation.y+=0.0001; particles.rotation.x+=0.00005;
@@ -632,16 +641,28 @@ export default function AreaWeServeGlobe() {
           text-align: left;
           padding-right:48px;
         }
+        /* Match hero-label styling used on other pages */
         .globe-eyebrow {
-          font-size: 13px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
+          display: block;
+          font-size: 14px;
+          font-weight: 900;
+          letter-spacing: 5px;
+          text-transform: uppercase;
           background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-          margin-bottom: 16px;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 20px;
         }
+        /* Match hero-title styling used on other pages */
         .globe-heading {
-          font-family: var(--font-cormorant, 'Cormorant Garamond'), serif;
-          font-size: clamp(32px, 5vw, 52px);
-          font-weight: 300; color: #fff; margin-bottom: 16px; line-height: 1.15;
+          font-family: var(--font-cormorant, 'Cormorant Garamond'), Georgia, serif;
+          font-size: clamp(2.7rem, 4vw, 4.5rem);
+          line-height: 1.15;
+          font-weight: 400;
+          color: #fff;
+          margin-top: 20px;
+          margin-bottom: 28px;
         }
         .globe-heading em {
           font-style: italic;
@@ -650,14 +671,15 @@ export default function AreaWeServeGlobe() {
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
+        /* Match cs-hero .hero-sub styling used on other pages */
         .globe-subtext {
-         font-size: 17px;
-  color: #fff;
-  max-width: 440px;
-  line-height: 1.85;
-  margin-bottom: 28px;
-  font-weight: 400;
-}
+          font-size: 17px;
+          line-height: 1.75;
+          color: #fff;
+          max-width: 560px;
+          margin-bottom: 28px;
+          font-weight: 400;
+        }
         .globe-legend {
   display: flex;
   gap: 28px;
@@ -680,10 +702,10 @@ export default function AreaWeServeGlobe() {
           box-shadow: 0 0 10px rgba(201,168,76,0.5), inset 0 0 4px rgba(201,168,76,0.2);
           animation: expansionPulse 2.5s ease-in-out infinite;
         }
-        .globe-legend-dot.completed {
-          width: 8px; height: 8px;
+        .globe-legend-dot.past {
+          width: 12px; height: 12px;
           background: #6fb0e0;
-          box-shadow: 0 0 8px rgba(111,176,224,0.5);
+          box-shadow: 0 0 14px rgba(111,176,224,0.85);
         }
         @keyframes expansionPulse {
           0%, 100% { box-shadow: 0 0 10px rgba(201,168,76,0.5), inset 0 0 4px rgba(201,168,76,0.2); transform: scale(1); }
@@ -727,17 +749,31 @@ export default function AreaWeServeGlobe() {
           background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878); color: #0a1628;
           box-shadow: 0 4px 20px rgba(184,154,62,0.4);
         }
-        .globe-tooltip.completed-location {
-          background: linear-gradient(145deg, #4a98cc, #6fb0e0, #3f87b8); color: #fff;
-          box-shadow: 0 4px 20px rgba(74,152,204,0.35);
+        .globe-tooltip.past-location {
+          background: linear-gradient(145deg, #0e2340, #122c4f, #0a1c36);
+          color: #ffffff;
+          border: 1px solid rgba(111,176,224,0.45);
+          box-shadow: 0 6px 24px rgba(6,12,22,0.6);
         }
-        .globe-tooltip.completed-location .tooltip-close { color: #fff; }
+        .globe-tooltip.past-location .tooltip-label {
+          color: #9fc8e8;
+          opacity: 1;
+        }
+        .globe-tooltip.past-location .tooltip-name { color: #ffffff; }
+        .globe-tooltip.past-location .tooltip-close { color: #ffffff; }
+        .globe-tooltip.past-location .tooltip-link {
+          color: #9fc8e8;
+          border-top-color: rgba(159,200,232,0.3);
+        }
         .globe-tooltip.visible { opacity: 1; }
 
-        /* Segments on the heading: stay together but wrap cleanly */
-        .globe-heading-segment { display: inline; }
-        @media (max-width: 768px) {
-          .globe-heading-segment { display: block; }
+        /* Segments on the heading: each segment is an inline-block unit
+           with nowrap so "Global Reach," and "Local Impact" never split
+           mid-phrase. When the container is too narrow for both on one
+           line, they stack automatically. */
+        .globe-heading-segment {
+          display: inline-block;
+          white-space: nowrap;
         }
 
         /* Spacer: enough height so user can scroll past globe to footer */
@@ -748,26 +784,46 @@ export default function AreaWeServeGlobe() {
           pointer-events: none;
         }
 
-        /* Footer wrapper: solid bg above globe */
+        /* Footer wrapper: solid bg above globe, with a subtle ambient
+           gradient so it visually matches the rest of the site's footer
+           (which normally sits over the page-wide ambient-bg + orbs). */
         .globe-footer-wrapper {
           position: relative;
           z-index: 5;
           background: var(--rawlins-bg, #060c16);
+          overflow: hidden;
+        }
+        .globe-footer-wrapper::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background:
+            radial-gradient(ellipse 60% 50% at 18% 25%, rgba(229,203,135,0.04) 0%, transparent 60%),
+            radial-gradient(ellipse 55% 45% at 82% 75%, rgba(14,30,60,0.55) 0%, transparent 55%),
+            linear-gradient(180deg, #091528 0%, #060c16 55%, #060c16 100%);
+        }
+        .globe-footer-wrapper > * {
+          position: relative;
+          z-index: 1;
         }
 
         /* ── Responsive ── */
         @media (max-width: 1400px) {
-          .globe-content-inner { max-width: 480px; padding-right: 24px; }
+          .globe-content-inner { max-width: 500px; padding-right: 32px; }
         }
         @media (max-width: 1200px) {
           .globe-content-section { padding: 160px 40px 40px; }
-          .globe-content-inner { max-width: 420px; padding-right: 16px; }
-          #globe-container { left: -25vw; }
+          .globe-content-inner { max-width: 460px; padding-right: 16px; }
+          /* Push the globe further left so it clears the text column */
+          #globe-container { left: -32vw; }
         }
         @media (max-width: 1024px) {
           .globe-content-section { padding: 140px 32px 32px; }
-          .globe-content-inner { max-width: 380px; padding-right: 8px; }
-          #globe-container { left: -30vw; }
+          .globe-content-inner { max-width: 420px; padding-right: 8px; }
+          /* Globe drifts even further left so text stays off the sphere */
+          #globe-container { left: -42vw; }
+          .globe-heading { font-size: clamp(2.4rem, 4vw, 3.5rem); }
         }
         @media (max-width: 768px) {
           .globe-content-section {
@@ -781,30 +837,13 @@ export default function AreaWeServeGlobe() {
             text-align: center;
             padding-right: 0;
           }
-          /* Mobile: match hero label/title/paragraph styling from other pages */
-          .globe-eyebrow {
-            font-size: 14px;
-            letter-spacing: 5px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-          }
           .globe-heading {
-            font-family: var(--font-cormorant), Georgia, serif;
             font-size: clamp(2.4rem, 7vw, 3rem);
-            line-height: 1.15;
-            font-weight: 400;
-            margin-top: 20px;
-            margin-bottom: 28px;
           }
           .globe-subtext {
-            font-size: 17px;
-            line-height: 1.75;
-            color: #fff;
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 28px;
             font-weight: 400;
           }
           .globe-legend { gap: 20px; flex-wrap: wrap; justify-content: center; }
@@ -837,9 +876,9 @@ export default function AreaWeServeGlobe() {
             <div className="globe-legend">
               <div className="globe-legend-item"><div className="globe-legend-dot current"></div><span>Active</span></div>
               <div className="globe-legend-item"><div className="globe-legend-dot expansion"></div><span>Expanding</span></div>
-              <div className="globe-legend-item"><div className="globe-legend-dot completed"></div><span>Completed</span></div>
+              <div className="globe-legend-item"><div className="globe-legend-dot past"></div><span>Past</span></div>
             </div>
-            <div className="globe-zoom-hint">Scroll to zoom · Drag to rotate · Hover pins for details</div>
+            <div className="globe-zoom-hint">Scroll/expand to zoom · Drag to rotate · Click or hover over pins for details</div>
           </div>
         </section>
 
