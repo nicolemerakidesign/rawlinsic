@@ -17,7 +17,7 @@ const AERIAL_VIEW_IMG = "/images/pages/aam-aerial-view.jpg";
 const HELICOPTER_IMG = "/images/pages/aam-helicopter.jpg";
 const CONTROL_ROOM_IMG = "/images/pages/aam-control-room.jpg";
 const DEFINE_NEW_IMG = "/images/pages/aam-define.webp";
-const ENABLE_NEW_IMG = "/images/pages/aam-enable-system.webp";
+const ENABLE_NEW_IMG = "/images/pages/aam-enable.webp";
 const DELIVER_NEW_IMG = "/images/pages/aam-deliver.webp";
 const PHASE3_IMG = "/images/pages/aam-phase3.webp";
 const PHASE4_IMG = "/images/pages/aam-phase4.webp";
@@ -29,7 +29,7 @@ const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.jpg";
 const DEFINE_IMG = "/images/pages/connectingdots.webp";
 const PLANNING2_IMG = "/images/pages/aam-enable.webp";
 const DRONEMOUNTAINS_IMG = "/images/pages/aam-services-portfolio.webp";
-const IMPL_SCALING_IMG = "/images/pages/proficiency-1.webp";
+const IMPL_SCALING_IMG = "/images/pages/aam-lifecycle-drone.webp";
 const REG_NAV_IMG = "/images/pages/aam-reg-navigation.webp";
 const COMMUNITY_IMG = "/images/pages/aam-community-engagement.webp";
 
@@ -1205,6 +1205,7 @@ const AAMPage = () => {
       {/* ── CTA ── */}
       <section
         className="aam-section aam-cta-section aam-parallax-fixed"
+        style={{ backgroundImage: `url(${HELICOPTER_IMG})` }}
       >
         <Image src={HELICOPTER_IMG} alt="" fill priority sizes="100vw" className="aam-cta-bg-img" />
         <div className="aam-cta-overlay" style={{ background: "rgba(6,12,22,0.8)" }} />

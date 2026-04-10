@@ -1200,6 +1200,10 @@ text-align: center;
   height: 100vh; min-height: 700px;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
+  /* Reserve space at the bottom so when the hero copy wraps to more
+     lines on narrow viewports, the flex-centered .hero-content never
+     grows down into the .hero-scroll indicator area. */
+  padding: 100px 0 180px;
 }
 .hero-video-wrap {
   position: absolute; inset: 0; z-index: 0; overflow: hidden;
@@ -3430,18 +3434,24 @@ color: #fff;
 /* Desktop: true fixed background via CSS background-image; hide the <Image> fallback */
 @media (min-width: 769px) {
   .aam-hero.aam-parallax-fixed .aam-hero-img { display: none; }
+  .aam-cta-section.aam-parallax-fixed .aam-cta-bg-img { display: none; }
 }
 /* Mobile/iOS: background-attachment: fixed doesn't work, so drop the CSS bg and let the <Image> element render */
 .aam-cta-section.aam-parallax-fixed {
   background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 @supports (-webkit-touch-callout: none) {
   .aam-parallax-fixed { background-attachment: scroll; }
   .aam-hero.aam-parallax-fixed { background-image: none !important; }
+  .aam-cta-section.aam-parallax-fixed { background-image: none !important; }
 }
 @media (max-width: 768px) {
   .aam-parallax-fixed { background-attachment: scroll; }
   .aam-hero.aam-parallax-fixed { background-image: none !important; }
+  .aam-cta-section.aam-parallax-fixed { background-image: none !important; }
   .aam-parallax-fixed.parallax-panel { min-height: 25vh; }
   .parallax-text1 { font-size: clamp(1.9rem, 7vw, 3rem); }
   .parallax-break { display: none; }
