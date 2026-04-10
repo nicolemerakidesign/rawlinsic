@@ -2179,7 +2179,7 @@ body nextjs-portal { display: none; }
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-align: center;
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
   opacity: 1 !important;
   transform: none !important;
@@ -2193,6 +2193,8 @@ body nextjs-portal { display: none; }
   display: block;
   -webkit-line-clamp: unset;
   overflow: visible;
+  flex: none;
+  width: 100%;
   margin-bottom: 16px;
 }
 .team-hero-para-toggle {
