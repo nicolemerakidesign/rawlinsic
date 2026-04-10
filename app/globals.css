@@ -1979,6 +1979,7 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .pillar-link { opacity: 0; transform: translateY(8px); pointer-events: none; }
   .pillar-card.active .pillar-link { opacity: 1; transform: translateY(0); pointer-events: auto; }
   .section-team .section-label { margin-bottom: 5px; }
+  .section-label { margin-bottom: 15px; }
 }
 @media (max-width: 380px) {
   .auto-hero-btn { padding: 10px 20px; font-size: 10px; letter-spacing: 1.5px; }
@@ -5669,18 +5670,18 @@ color: #fff;
   background: rgba(6,12,22,0.4);
 }
 .cap-split-title {
-  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4vw, 52px);
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.6rem, 3.5vw, 3.5rem);
   font-weight: 300;
   color: #fff;
   margin-bottom: 20px;
-  line-height: 1.15;
+  line-height: 1.25;
 }
 .cap-split-body {
-  font-size: 17px;
-  line-height: 1.85;
   color: #fff;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.85;
   margin-bottom: 28px;
 }
 @media (max-width: 768px) {
