@@ -28,7 +28,7 @@ const BUILDINGSCONNECT_VIDEO_URL =
   "/images/pages/buildingsconnect-video.mp4";
 
 const TRANSPORTATIONROADS_URL =
-  "/images/pages/rawlins-logo.png";
+  "/images/pages/rawlins-logo.webp";
 
 
 
@@ -610,7 +610,7 @@ export default function HomePage() {
                   <span className="timeline-phase">{item.phase}</span>
                 </div>
                 <div className="story-card-divider" />
-                <h4 className="story-card-title">{item.title}</h4>
+                <h3 className="story-card-title">{item.title}</h3>
                 <button className="card-expand-btn" aria-label="Expand description" aria-expanded={activeStory === i} onClick={(e) => { e.stopPropagation(); setActiveStory((prev) => (prev === i ? null : i)); }}>
                   <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
                 </button>

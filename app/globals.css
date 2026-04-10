@@ -620,11 +620,18 @@ color: #fff;
 }
 .scroll-line::after {
   content: ''; position: absolute;
-  top: -100%; left: 0; width: 100%; height: 50%;
+  top: 0; left: 0; width: 100%; height: 50%;
   background: linear-gradient(180deg, #d4b878, #e8d5a0);
+  transform: translateY(-100%);
+  will-change: transform;
   animation: scrollDown 2s ease-in-out infinite;
 }
-@keyframes scrollDown { 0% { top: -50%; } 100% { top: 100%; } }
+/* Animate via transform instead of "top" so the animation runs on
+   the compositor thread (fixes PSI non-composited animation audit) */
+@keyframes scrollDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
 @keyframes heroFade { to { opacity: 1; transform: translateY(0); } }
 
 /* ── Contact Section ─────────────────────────── */

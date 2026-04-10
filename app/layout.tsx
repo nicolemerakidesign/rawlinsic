@@ -137,6 +137,60 @@ const LOCAL_BUSINESS_SCHEMA = {
     "Transportation infrastructure",
     "Organizational change management",
   ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Consulting Services",
+    itemListElement: [
+      /* ── Strategy ── */
+      {
+        "@type": "OfferCatalog",
+        name: "Strategy",
+        url: `${SITE_URL}/capabilities#strategy`,
+        description:
+          "Decision systems, planning, and organizational design that turn priorities into measurable results.",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Strategic Planning", description: "Translate leadership vision into measurable goals, developing roadmaps that balance short-term priorities with long-term organizational ambitions." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Organizational IT Strategy", description: "Define how technology investments, platforms, and capabilities will enable business goals, translating priorities into a pragmatic roadmap for modernization, security, and measurable outcomes." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Organizational Analysis", description: "Assess structures, processes, and culture to identify inefficiencies and surface opportunities for meaningful, data-informed improvement." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Organizational Change Management", description: "Guide organizations through transformation with frameworks that earn buy-in, reduce friction, and sustain momentum across every level." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Performance Management", description: "Establish clear goals, measures, and feedback loops that tie individual and team performance to strategic outcomes." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Program Effectiveness", description: "Evaluate whether programs are delivering intended outcomes, identify performance gaps, and optimize execution." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Asset Management", description: "Manage assets across their lifecycle to maximize value and performance while controlling cost and risk." } },
+        ],
+      },
+      /* ── Operations ── */
+      {
+        "@type": "OfferCatalog",
+        name: "Operations",
+        url: `${SITE_URL}/capabilities#operations`,
+        description:
+          "People, process, culture, and workforce programs that foster accountability and high performance.",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Process & Procedure Improvements", description: "Analyze and streamline end-to-end processes and procedures to reduce waste and risk, improve consistency, and strengthen operational performance." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Program and Project Leadership", description: "Guide senior leaders in leading complex, multistakeholder programs and projects on schedule, within scope, and aligned with organizational goals." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Project Delivery", description: "Support project teams from kickoff to close-out to deliver on time and within budget, managing risk, coordinating stakeholders, and ensuring quality deliverables." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Maintenance & Operations Improvements", description: "Optimize day-to-day operations and maintenance to reduce downtime, improve service reliability, and increase work execution efficiency." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Program Quality Assurance", description: "Embed quality governance, reviews, and feedback loops to ensure program deliverables meet defined standards and stakeholder expectations." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Administration Program Services", description: "Streamline administrative functions by improving processes, controls, and reporting to increase efficiency, compliance, and operational performance." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Owner's Representative", description: "Serve as the owner's trusted on-site representative, protecting your interests, coordinating contractors, and ensuring scope, quality, schedule, and standards are met." } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Finance, Budget & Procurement", description: "Provide finance, budgeting, and procurement management to help organizations allocate resources effectively, maintain fiscal responsibility, and ensure compliance." } },
+        ],
+      },
+      /* ── Technology ── */
+      {
+        "@type": "OfferCatalog",
+        name: "Technology",
+        url: `${SITE_URL}/capabilities#technology`,
+        description:
+          "Human-centric AI integration, data governance, analytics, and advanced air mobility.",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Data Governance", description: "Develop and implement data governance policies, processes, and standards so data is accurate, secure, consistent, and used responsibly across the enterprise.", url: `${SITE_URL}/capabilities/technology/automation-integration` } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Automation & Integration", description: "Connect systems, automate workflows, and integrate AI so people can focus on high-value work and decisions rather than repetitive tasks.", url: `${SITE_URL}/capabilities/technology/automation-integration` } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Advanced Air Mobility & Uncrewed Aircraft Systems", description: "Planning, implementation, and integration of advanced air mobility and uncrewed aircraft systems within existing transportation networks.", url: `${SITE_URL}/capabilities/technology/advanced-air-mobility` } },
+        ],
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

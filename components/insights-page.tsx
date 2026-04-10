@@ -7,7 +7,7 @@ import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 
 
-const HERO_IMG = "/images/pages/insights-hero.jpg";
+const HERO_IMG = "/images/pages/insights-hero.webp";
 
 const channels = [
   {

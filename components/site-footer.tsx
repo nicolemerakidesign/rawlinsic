@@ -17,7 +17,7 @@ export default function SiteFooter() {
           </p>
         </div>
         <div>
-          <h4 className="footer-heading">Capabilities</h4>
+          <h3 className="footer-heading">Capabilities</h3>
           <ul className="footer-links">
             <li><Link href="/capabilities">View All</Link></li>
             <li><Link href="/capabilities#strategy">Strategy</Link></li>
@@ -26,7 +26,7 @@ export default function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h4 className="footer-heading">Company</h4>
+          <h3 className="footer-heading">Company</h3>
           <ul className="footer-links">
             <li><Link href="/#story">About</Link></li>
             <li><Link href="/about/our-people">Our People</Link></li>
@@ -35,7 +35,7 @@ export default function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h4 className="footer-heading">Insights</h4>
+          <h3 className="footer-heading">Insights</h3>
           <ul className="footer-links">
             <li><Link href="/insights">View All</Link></li>
             <li><Link href="/insights/thought-leadership">Thought Leadership</Link></li>
@@ -44,7 +44,7 @@ export default function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h4 className="footer-heading">Connect</h4>
+          <h3 className="footer-heading">Connect</h3>
           <ul className="footer-links">
             <li><Link href="/contact">Contact Us</Link></li>
             <li>

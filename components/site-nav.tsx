@@ -159,7 +159,7 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
       {/* Navigation */}
       <nav className="nav" id="mainNav" ref={navRef}>
         <a href="/" className="nav-logo" aria-label="Rawlins home">
-          <Image src={LOGO_URL} alt="Rawlins" width={160} height={40} className="nav-logo-img" priority />
+          <Image src={LOGO_URL} alt="Rawlins" width={160} height={40} className="nav-logo-img" priority fetchPriority="high" />
         </a>
 
         <div className="nav-center">
