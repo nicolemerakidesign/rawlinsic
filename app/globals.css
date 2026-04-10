@@ -1078,7 +1078,7 @@ text-align: center;
   margin-top: 32px;
   margin-bottom: 24px;
   padding: 16px 36px !important;
-  background: linear-gradient(145deg, #d4be78, #c9a84c) !important;
+  background: linear-gradient(135deg, #c9a84c 0%, #e8d5a0 50%, #c9a84c 100%) !important;
   border: none !important;
   color: #060c16 !important;
   font-size: 0.82rem !important;
