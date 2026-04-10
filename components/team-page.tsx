@@ -172,7 +172,6 @@ export default function TeamPage() {
     const timer = setTimeout(() => {
       const els = document.querySelectorAll(".reveal");
       if (els.length === 0) return;
-      els.forEach((el) => { void (el as HTMLElement).offsetHeight; });
       ob = new IntersectionObserver(
         (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
         { threshold: 0.08 }

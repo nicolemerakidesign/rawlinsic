@@ -88,7 +88,6 @@ export default function ThoughtLeadershipOverview() {
     const raf = requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const reveals = document.querySelectorAll(".reveal");
-        reveals.forEach((el) => { void (el as HTMLElement).offsetHeight; });
         observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {

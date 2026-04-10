@@ -94,7 +94,6 @@ export default function InsightsPage() {
     const raf = requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const els = document.querySelectorAll(".reveal");
-        els.forEach((el) => { void (el as HTMLElement).offsetHeight; });
         ob = new IntersectionObserver(
           (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
           { threshold: 0.08 }

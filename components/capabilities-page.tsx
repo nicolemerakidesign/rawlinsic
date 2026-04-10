@@ -172,7 +172,6 @@ export default function CapabilitiesPage() {
       requestAnimationFrame(() => {
         const els = document.querySelectorAll(".reveal");
         /* Force reflow so the browser has computed opacity:0 before we add visible */
-        els.forEach((el) => { void (el as HTMLElement).offsetHeight; });
         ob = new IntersectionObserver(
           (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
           { threshold: 0.08 }
