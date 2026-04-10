@@ -610,11 +610,12 @@ export default function AreaWeServeGlobe() {
           font-family: var(--font-dm-sans, 'DM Sans'), sans-serif;
         }
 
-        /* Globe fills the viewport, fixed behind content — nudged down */
+        /* Globe fills the viewport, fixed behind content — sits to the
+           left so the text column on the right stays off the sphere */
         #globe-container {
           position: fixed;
           top: 40px;
-          left: -15vw;
+          left: -22vw;
           width: 100vw;
           height: 100vh;
           z-index: 0;
@@ -633,13 +634,13 @@ export default function AreaWeServeGlobe() {
           flex-direction: column;
           align-items: flex-end;
           justify-content: flex-start;
-          padding: 180px 60px 60px;
+          padding: 180px 80px 60px 60px;
           pointer-events: none;
         }
         .globe-content-inner {
-          max-width: 596px;
+          max-width: 540px;
           text-align: left;
-          padding-right:48px;
+          padding-right: 0;
         }
         /* Match hero-label styling used on other pages */
         .globe-eyebrow {
@@ -755,15 +756,12 @@ export default function AreaWeServeGlobe() {
           border: 1px solid rgba(111,176,224,0.45);
           box-shadow: 0 6px 24px rgba(6,12,22,0.6);
         }
-        .globe-tooltip.past-location .tooltip-label {
-          color: #9fc8e8;
-          opacity: 1;
-        }
+        .globe-tooltip.past-location .tooltip-label { color: #ffffff; opacity: 1; }
         .globe-tooltip.past-location .tooltip-name { color: #ffffff; }
         .globe-tooltip.past-location .tooltip-close { color: #ffffff; }
         .globe-tooltip.past-location .tooltip-link {
-          color: #9fc8e8;
-          border-top-color: rgba(159,200,232,0.3);
+          color: #ffffff;
+          border-top-color: rgba(255,255,255,0.25);
         }
         .globe-tooltip.visible { opacity: 1; }
 
@@ -809,23 +807,31 @@ export default function AreaWeServeGlobe() {
         }
 
         /* ── Responsive ── */
-        @media (max-width: 1400px) {
-          .globe-content-inner { max-width: 500px; padding-right: 32px; }
+        /* Large desktop (> 1400): keep breathing room but push globe a
+           little further off-screen so nothing touches. */
+        @media (min-width: 1401px) {
+          #globe-container { left: -18vw; }
+          .globe-content-section { padding: 180px 100px 60px 60px; }
+          .globe-content-inner { max-width: 560px; }
         }
-        @media (max-width: 1200px) {
-          .globe-content-section { padding: 160px 40px 40px; }
-          .globe-content-inner { max-width: 460px; padding-right: 16px; }
-          /* Push the globe further left so it clears the text column */
-          #globe-container { left: -32vw; }
+        /* Medium desktop (1201 – 1400): globe drifts further left,
+           text column stays tight against the right edge. */
+        @media (max-width: 1400px) and (min-width: 1201px) {
+          #globe-container { left: -30vw; }
+          .globe-content-section { padding: 170px 60px 50px 40px; }
+          .globe-content-inner { max-width: 500px; }
         }
-        @media (max-width: 1024px) {
-          .globe-content-section { padding: 140px 32px 32px; }
-          .globe-content-inner { max-width: 420px; padding-right: 8px; }
-          /* Globe drifts even further left so text stays off the sphere */
+        /* Small desktop (1151 – 1200): aggressive globe offset so the
+           sphere doesn't creep into the text column. */
+        @media (max-width: 1200px) and (min-width: 1151px) {
           #globe-container { left: -42vw; }
-          .globe-heading { font-size: clamp(2.4rem, 4vw, 3.5rem); }
+          .globe-content-section { padding: 160px 48px 40px 32px; }
+          .globe-content-inner { max-width: 460px; }
+          .globe-heading { font-size: clamp(2.4rem, 4vw, 3.8rem); }
         }
-        @media (max-width: 768px) {
+        /* 1150 and below: stack like mobile — globe sits below the
+           text block, text centers. */
+        @media (max-width: 1150px) {
           .globe-content-section {
             padding: 120px 24px 24px;
             align-items: center;
@@ -833,15 +839,16 @@ export default function AreaWeServeGlobe() {
             min-height: auto;
           }
           .globe-content-inner {
-            max-width: 100%;
+            max-width: 620px;
             text-align: center;
             padding-right: 0;
+            margin: 0 auto;
           }
           .globe-heading {
-            font-size: clamp(2.4rem, 7vw, 3rem);
+            font-size: clamp(2.4rem, 6vw, 3.2rem);
           }
           .globe-subtext {
-            max-width: 100%;
+            max-width: 560px;
             margin-left: auto;
             margin-right: auto;
             font-weight: 400;
@@ -857,6 +864,10 @@ export default function AreaWeServeGlobe() {
             touch-action: none;
           }
           .globe-scroll-spacer { height: 0; }
+        }
+        @media (max-width: 768px) {
+          .globe-content-section { padding: 110px 24px 20px; }
+          .globe-content-inner { max-width: 100%; }
         }
       `}</style>
 
@@ -879,6 +890,51 @@ export default function AreaWeServeGlobe() {
               <div className="globe-legend-item"><div className="globe-legend-dot past"></div><span>Past</span></div>
             </div>
             <div className="globe-zoom-hint">Scroll/expand to zoom · Drag to rotate · Click or hover over pins for details</div>
+
+            {/* Visually-hidden, screen-reader-only list of every state
+                we're tracking on the globe. Provides an equivalent
+                accessible text version of the 3D map for assistive tech. */}
+            <div className="sr-only" aria-label="Areas we serve — text list">
+              <h2>Active engagements</h2>
+              <ul>
+                <li>Hawaii</li>
+                <li>Alaska</li>
+                <li>Nevada</li>
+                <li>Utah</li>
+                <li>Texas</li>
+                <li>Arkansas</li>
+                <li>Louisiana</li>
+                <li>Tennessee</li>
+                <li>Michigan</li>
+                <li>Iowa</li>
+                <li>Florida</li>
+              </ul>
+              <h2>Expanding into</h2>
+              <ul>
+                <li>Dubai, United Arab Emirates</li>
+                <li>Ottawa, Canada</li>
+                <li>Oman, Middle East</li>
+                <li>Barbados, Caribbean</li>
+              </ul>
+              <h2>Past engagements</h2>
+              <ul>
+                <li>Georgia</li>
+                <li>North Carolina</li>
+                <li>Virginia</li>
+                <li>Maryland</li>
+                <li>Delaware</li>
+                <li>Pennsylvania</li>
+                <li>New York</li>
+                <li>Ohio</li>
+                <li>Indiana</li>
+                <li>Wisconsin</li>
+                <li>Illinois</li>
+                <li>Missouri</li>
+                <li>Idaho</li>
+                <li>Washington</li>
+                <li>Oregon</li>
+              </ul>
+            </div>
           </div>
         </section>
 
