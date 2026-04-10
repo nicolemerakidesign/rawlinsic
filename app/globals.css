@@ -2109,8 +2109,8 @@ body nextjs-portal { display: none; }
 .team-search-input {
   width: 100%;
   padding: 12px 40px 12px 44px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(201,168,76,0.35);
   border-radius: 8px;
   color: #fff;
   font-size: 15px;
@@ -2119,7 +2119,7 @@ body nextjs-portal { display: none; }
   transition: border-color 0.2s, background 0.2s;
 }
 .team-search-input::placeholder {
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.55);
 }
 .team-search-input:focus {
   border-color: rgba(201,168,76,0.4);
@@ -3571,8 +3571,16 @@ color: #fff;
 @media (max-width: 480px) {
   .team-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
   .team-hero { padding: 130px 20px 60px; }
-  .team-filter-tabs { gap: 8px; }
+  .team-filter-tabs { gap: 8px; flex-wrap: wrap; justify-content: center; }
   .team-filter-tab { padding: 7px 14px; font-size: 0.78rem; }
+  /* Force specific line layout: All + Strategy / Operations + Technology / Communication / Administration */
+  .team-filter-tab:nth-child(1),
+  .team-filter-tab:nth-child(2),
+  .team-filter-tab:nth-child(3),
+  .team-filter-tab:nth-child(4) { flex: 0 0 calc(50% - 4px); justify-content: center; }
+  .team-filter-tab:nth-child(5),
+  .team-filter-tab:nth-child(6) { flex: 0 0 100%; justify-content: center; }
+  .scott-featured-quote-card { padding: 0px 24px 32px; }
   .scott-featured-section { padding: 0 16px 12px; }
   .scott-featured-card { max-width: 200px; }
   .scott-featured-quote-text { font-size: 1rem; }

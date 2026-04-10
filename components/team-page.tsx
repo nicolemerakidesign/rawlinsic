@@ -152,14 +152,25 @@ export default function TeamPage() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  // Lock body scroll when popup open
+  // Lock body scroll when popup open (iOS compatible)
   useEffect(() => {
     if (selectedMember) {
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      return () => {
+        const y = document.body.style.top;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.overflow = "";
+        window.scrollTo(0, parseInt(y || "0") * -1);
+      };
     }
-    return () => { document.body.style.overflow = ""; };
   }, [selectedMember]);
 
   // Scroll reveal
@@ -285,7 +296,7 @@ export default function TeamPage() {
             <h1 className="hero-title">
               Meet the <span className="gold-text"><em>Experts</em></span>
             </h1>
-            <p className="hero-sub" style={{ maxWidth: "1100px", fontSize: "16px" }}>
+            <p className="hero-sub" style={{ maxWidth: "1100px" }}>
                Our team brings together expertise in strategy, operations, and technology to deliver practical, forward-thinking solutions to complex challenges. While rooted in transportation, we continue to expand our experience across sectors. Collaboration is central to how we work. Team members have core areas of focus and work seamlessly across disciplines to support each engagement.
             </p>
             <div className="hero-scroll" style={{ position: "relative", bottom: "auto", marginTop: "32px" }}>
@@ -337,7 +348,7 @@ export default function TeamPage() {
                 </p>
                 <div className="scott-featured-quote-attribution">
                   <span className="scott-featured-quote-dash">&mdash;</span>
-                  <strong>Founder, Scott Rawlins, P.E.</strong>
+                  <strong><span className="gold-text">Founder</span>, Scott Rawlins, P.E.</strong>
                 </div>
               </div>
             </div>
