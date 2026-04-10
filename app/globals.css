@@ -444,6 +444,8 @@ body.keyboard-nav .cursor-ring {
   transition: all 0.35s;
   cursor: pointer;
   display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .nav-cta:hover {
   box-shadow: 0 0 30px rgba(201,168,76,0.2);

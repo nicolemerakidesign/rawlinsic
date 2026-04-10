@@ -807,27 +807,27 @@ export default function AreaWeServeGlobe() {
         }
 
         /* ── Responsive ── */
-        /* Large desktop (> 1400): keep breathing room but push globe a
-           little further off-screen so nothing touches. */
+        /* Large desktop (> 1400): breathing room, sphere fully visible. */
         @media (min-width: 1401px) {
           #globe-container { left: -18vw; }
           .globe-content-section { padding: 180px 100px 60px 60px; }
           .globe-content-inner { max-width: 560px; }
         }
-        /* Medium desktop (1201 – 1400): globe drifts further left,
-           text column stays tight against the right edge. */
+        /* Medium desktop (1201 – 1400): just enough left offset that the
+           text column stays clear, but not so much the sphere clips off
+           the left edge. */
         @media (max-width: 1400px) and (min-width: 1201px) {
-          #globe-container { left: -30vw; }
+          #globe-container { left: -20vw; }
           .globe-content-section { padding: 170px 60px 50px 40px; }
           .globe-content-inner { max-width: 500px; }
         }
-        /* Small desktop (1151 – 1200): aggressive globe offset so the
-           sphere doesn't creep into the text column. */
+        /* Small desktop (1151 – 1200): tighter, text column narrower so
+           we don't need an aggressive globe offset. */
         @media (max-width: 1200px) and (min-width: 1151px) {
-          #globe-container { left: -42vw; }
+          #globe-container { left: -22vw; }
           .globe-content-section { padding: 160px 48px 40px 32px; }
-          .globe-content-inner { max-width: 460px; }
-          .globe-heading { font-size: clamp(2.4rem, 4vw, 3.8rem); }
+          .globe-content-inner { max-width: 440px; }
+          .globe-heading { font-size: clamp(2.4rem, 4vw, 3.6rem); }
         }
         /* 1150 and below: stack like mobile — globe sits below the
            text block, text centers. */
@@ -860,10 +860,18 @@ export default function AreaWeServeGlobe() {
             top: 0 !important;
             left: 0 !important;
             width: 100vw;
-            height: 60vh;
+            height: 85vh;
+            min-height: 620px;
             touch-action: none;
           }
           .globe-scroll-spacer { height: 0; }
+        }
+        /* Tablet portrait (iPad) + below keep their proven sizing */
+        @media (max-width: 820px) {
+          #globe-container {
+            height: 60vh;
+            min-height: 0;
+          }
         }
         @media (max-width: 768px) {
           .globe-content-section { padding: 110px 24px 20px; }
