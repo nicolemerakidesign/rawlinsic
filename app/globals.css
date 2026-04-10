@@ -2950,7 +2950,7 @@ color: #fff;
   .auto-eco-mobile-controls { display: flex; padding: 0 24px; }
   .auto-ecosystem-scroll {
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -2958,7 +2958,7 @@ color: #fff;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     padding: 24px 24px 16px;
-    touch-action: pan-x;
+    touch-action: pan-y pinch-zoom;
   }
   .auto-ecosystem-scroll::-webkit-scrollbar { display: none; }
   .auto-ecosystem-grid {
@@ -2967,11 +2967,13 @@ color: #fff;
     gap: 16px;
     margin-top: 0 !important;
     min-width: min-content;
+    padding-left: 8px;
   }
   .auto-eco-tile {
     flex: 0 0 78vw;
     scroll-snap-align: start;
     min-height: 280px;
+    padding-left: 28px;
   }
   .auto-benefits-section { padding-bottom: 0 !important; }
 }
