@@ -88,17 +88,31 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
   };
 
   const toggleSection = (i: number) => {
+    /* Anchor the user's view to the trigger row so the page does not
+     * visually jump as the panel expands above the viewport bottom.
+     * We measure the trigger's position *before* the state update, let
+     * React reflow, then restore the delta. */
+    const triggerEl = accordionRefs.current[i]?.querySelector(
+      ".tla-accordion-trigger"
+    ) as HTMLElement | null;
+    const prevTop = triggerEl?.getBoundingClientRect().top ?? 0;
+
     setOpenSections((prev) => {
       if (prev.has(i)) return new Set();
       return new Set([i]);
     });
-    /* After open animation starts, scroll the question into view so users land at the top of the answer */
+
+    /* After React commits the DOM change, compensate any shift so the
+     * clicked row stays put. Uses two rAFs to wait for the next paint. */
     requestAnimationFrame(() => {
-      const el = accordionRefs.current[i];
-      if (!el) return;
-      const navOffset = 90;
-      const top = el.getBoundingClientRect().top + window.scrollY - navOffset;
-      window.scrollTo({ top, behavior: "smooth" });
+      requestAnimationFrame(() => {
+        if (!triggerEl) return;
+        const nextTop = triggerEl.getBoundingClientRect().top;
+        const delta = nextTop - prevTop;
+        if (Math.abs(delta) > 1) {
+          window.scrollBy({ top: delta, behavior: "auto" });
+        }
+      });
     });
   };
 

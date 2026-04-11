@@ -19,6 +19,7 @@ export default function ThoughtLeadershipOverview() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [heroParaExpanded, setHeroParaExpanded] = useState(false);
 
   /* ── Custom cursor ── */
   useEffect(() => {
@@ -172,9 +173,22 @@ export default function ThoughtLeadershipOverview() {
               </span>
             </span>
             <h1 className="hero-title">Thought Leadership</h1>
-            <p className="hero-sub cs-hero-sub">
-              At Rawlins, our thought leadership reflects the depth of our experience advising organizations through complex challenges and change. We share practical insights and forward-looking perspectives to help you make informed decisions and move forward with confidence. We share perspectives on the challenges shaping our clients&rsquo; work and will add more insights over time.
-            </p>
+            <div className={`tl-hero-para-wrap${heroParaExpanded ? " expanded" : ""}`}>
+              <p className="hero-sub cs-hero-sub tl-hero-para">
+                At Rawlins, our thought leadership reflects the depth of our experience advising organizations through complex challenges and change. We share practical insights and forward-looking perspectives to help you make informed decisions and move forward with confidence. We share perspectives on the challenges shaping our clients&rsquo; work and will add more insights over time.
+              </p>
+              <button
+                type="button"
+                className="tl-hero-para-toggle"
+                aria-label={heroParaExpanded ? "Collapse" : "Expand"}
+                aria-expanded={heroParaExpanded}
+                onClick={() => setHeroParaExpanded((v) => !v)}
+              >
+                <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 1.5l7 7 7-7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </section>
 
@@ -190,13 +204,24 @@ export default function ThoughtLeadershipOverview() {
               <div className="tl-featured-badge">
                 <span>Latest</span>
               </div>
-              <Link href={`/insights/thought-leadership/${articles[0].slug}`} className="tl-featured-img-wrap">
+              <Link
+                href={`/insights/thought-leadership/${articles[0].slug}`}
+                className="tl-featured-img-wrap"
+                style={
+                  articles[0].imageWidth && articles[0].imageHeight
+                    ? {
+                        aspectRatio: `${articles[0].imageWidth} / ${articles[0].imageHeight}`,
+                      }
+                    : undefined
+                }
+              >
                 <Image
                   src={articles[0].image}
                   alt={articles[0].title}
                   fill
                   sizes="(max-width: 768px) 100vw, 55vw"
                   className="tl-featured-img"
+                  style={{ objectFit: "contain" }}
                 />
                 <div className="tl-featured-img-overlay" />
               </Link>

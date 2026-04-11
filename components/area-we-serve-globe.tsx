@@ -137,7 +137,6 @@ export default function AreaWeServeGlobe() {
     const expansionLocations = [
       { name: "Dubai, United Arab Emirates", lat: 25.2, lng: 55.3, slug: "" },
       { name: "Saudi Arabia, Middle East", lat: 24.7, lng: 46.7, slug: "" },
-      { name: "Ottawa, Canada", lat: 45.4, lng: -75.7, slug: "" },
       { name: "Barbados, Caribbean", lat: 13.2, lng: -59.5, slug: "" },
       { name: "Réunion, East Africa", lat: -21.1, lng: 55.5, slug: "" },
     ];
@@ -930,7 +929,6 @@ export default function AreaWeServeGlobe() {
               <ul>
                 <li>Dubai, United Arab Emirates</li>
                 <li>Saudi Arabia, Middle East</li>
-                <li>Ottawa, Canada</li>
                 <li>Barbados, Caribbean</li>
                 <li>Réunion, East Africa</li>
               </ul>

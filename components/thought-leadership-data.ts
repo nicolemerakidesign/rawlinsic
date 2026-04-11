@@ -69,8 +69,6 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     authorRole: "Infrastructure Advisor",
     authorEmail: "Ron@RawlinsIC.com",
     authorPhone: "(727) 348-5136",
-    // TODO: replace with Ron's actual LinkedIn URL once provided.
-    authorLinkedIn: "https://www.linkedin.com/in/ron-crew/",
     date: "2026-04-01",
     dateLabel: "April 2026",
     category: "Leadership",

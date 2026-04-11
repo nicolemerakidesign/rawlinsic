@@ -557,7 +557,11 @@ color: #fff;
 }
 .hero-label-segment { white-space: nowrap; }
 .aam-title-segment { white-space: nowrap; }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  /* Let hero-label segments wrap on small phones so the hero content
+     doesn't push the page wider than the viewport and the subtitle
+     paragraph has real horizontal padding. */
+  .hero-label-segment { white-space: normal; display: inline-block; }
   .aam-title-segment { white-space: normal; }
 }
 
@@ -4818,6 +4822,48 @@ color: #fff;
    THOUGHT LEADERSHIP — LANDING PAGE
    ═══════════════════════════════════════════════════════════ */
 
+/* ── Thought Leadership hero intro (expandable on mobile) ── */
+.tl-hero-para-wrap { position: relative; }
+.tl-hero-para-toggle { display: none; }
+@media (max-width: 768px) {
+  .tl-hero-para-wrap { text-align: center; }
+  .tl-hero-para-wrap .tl-hero-para {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .tl-hero-para-wrap.expanded .tl-hero-para {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+  .tl-hero-para-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.08);
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0;
+    margin-top: 14px;
+  }
+  .tl-hero-para-toggle svg { stroke: #fff; display: block; }
+  .tl-hero-para-wrap.expanded .tl-hero-para-toggle {
+    transform: rotate(180deg);
+    background: rgba(255,255,255,0.15);
+  }
+}
+
 /* ── Featured Article (side-by-side) ── */
 .tl-featured-section {
   padding: 80px 40px;
@@ -5332,17 +5378,28 @@ color: #fff;
 
 /* ── "One Final Thought" feature section ── */
 .tla-final-thought {
-  /* Pull up over the preceding .tla-content section's bottom padding
-     so there's no dead space above the title. */
-  margin-top: -60px;
+  /* Match the .tla-content width + horizontal padding so the inner
+     content aligns with the article grid above. The inner wrapper
+     mirrors the 1fr / 2fr grid so the final thought sits under the
+     right column (the accordion), not full-width center. */
+  margin: -60px auto 0;
+  max-width: 1280px;
   padding: 0 40px 24px;
   position: relative;
 }
 .tla-final-thought-inner {
-  max-width: 860px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 48px;
   text-align: left;
   position: relative;
+}
+/* Title + quote box sit in the right column (column 2), matching
+   the accordion/intro placement above. */
+.tla-final-thought-title,
+.tla-final-thought-quote,
+.tla-final-thought-body-wrap {
+  grid-column: 2;
 }
 .tla-final-thought-title {
   font-family: var(--font-cormorant), serif;
@@ -5425,6 +5482,14 @@ color: #fff;
   color: rgba(255,255,255,0.82);
   margin: 0;
   font-style: normal;
+}
+@media (max-width: 900px) {
+  /* Match the .tla-two-col single-column collapse so the final thought
+     goes full width on narrow screens. */
+  .tla-final-thought-inner { grid-template-columns: 1fr; }
+  .tla-final-thought-title,
+  .tla-final-thought-quote,
+  .tla-final-thought-body-wrap { grid-column: 1; }
 }
 @media (max-width: 768px) {
   .tla-final-thought { margin-top: -40px; padding: 0 24px 16px; }
