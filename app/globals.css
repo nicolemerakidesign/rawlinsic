@@ -131,6 +131,33 @@ body.keyboard-nav .cursor-ring {
   .reveal { opacity: 1 !important; transform: none !important; }
 }
 
+/* Mobile/tablet — hero content should render IMMEDIATELY at full
+   opacity with no entrance animation. The heroFade delays (0.3s to
+   1.2s) combined with any CSS-load or JS-hydration lag made some
+   subtitles appear "missing" on mobile. Content-first on small
+   screens: always visible, no animation to rely on. */
+@media (max-width: 1024px) {
+  .hero-title,
+  .hero-sub,
+  .hero-label,
+  .hero-label-segment,
+  .auto-hero-btn,
+  .hero-cta-btn,
+  .hero-scroll,
+  .cs-hero-sub,
+  .cap-hero-title,
+  .cap-hero-subtitle,
+  .aam-hero .hero-title,
+  .aam-hero .hero-sub,
+  .tl-hero-para,
+  .csd-hero-content .hero-label,
+  .csd-hero-content .hero-title {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
 /* Screen-reader-only utility — visually hidden but exposed to AT */
 .sr-only {
   position: absolute !important;
