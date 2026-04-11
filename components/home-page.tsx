@@ -28,7 +28,7 @@ const BUILDINGSCONNECT_VIDEO_URL =
   "/images/pages/buildingsconnect-video.mp4";
 
 const TRANSPORTATIONROADS_URL =
-  "/images/pages/rawlins-logo.webp";
+  "/images/pages/transportation-aerial.webp";
 
 
 
