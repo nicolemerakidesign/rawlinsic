@@ -268,11 +268,17 @@ body.keyboard-nav .cursor-ring {
 
 /* ── Gold Utilities ──────────────────────────── */
 /* `.gold-text` paints a gold gradient on the text via background-clip.
-   Critical: set `color` to a solid gold FIRST as a fallback, then use
-   `-webkit-text-fill-color: transparent` so the gradient shows
-   through in WebKit. If background-clip fails on any device/browser,
-   the text stays visible in solid gold instead of disappearing. */
-.gold-text {
+   CRITICAL: `-webkit-background-clip: text` only clips text that is a
+   DIRECT child of the element — text nested inside child spans
+   (e.g. `.hero-label > .gold-text > .hero-label-segment`) does NOT
+   get the clipped gradient and renders transparent because
+   `-webkit-text-fill-color: transparent` is not inherited.
+   Solution: apply the gradient + clip to every descendant element
+   as well, so each nested span gets its own clipped gradient paint.
+   Also set `color: #c9a84c` as a solid-gold fallback so text stays
+   visible if background-clip fails for any reason. */
+.gold-text,
+.gold-text * {
   color: #c9a84c;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   -webkit-background-clip: text;
@@ -280,7 +286,8 @@ body.keyboard-nav .cursor-ring {
   -webkit-text-fill-color: transparent;
 }
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-  .gold-text {
+  .gold-text,
+  .gold-text * {
     background: none;
     color: #c9a84c;
     -webkit-text-fill-color: #c9a84c;
@@ -2141,7 +2148,42 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .explore-card-desc { opacity: 0; max-height: 0; transform: translateY(6px); }
   .explore-card.active .explore-card-desc { opacity: 1; max-height: 140px; transform: translateY(0); }
   .explore-card-arrow { opacity: 0; transform: translateY(6px); pointer-events: none; }
-  .explore-card.active .explore-card-arrow { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .explore-card.active .explore-card-arrow {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    /* Bigger tap target on mobile so the CTA feels like the button
+       it is — it's the only way to navigate from the card. */
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 16px;
+    border: 1.5px solid rgba(201, 168, 76, 0.7);
+    border-radius: 4px;
+  }
+  /* On mobile, the cards currently have a fixed height that doesn't
+     have room for the expanded description + bordered CTA button.
+     Switch to min-height so the card grows smoothly when active
+     instead of the inner content jumping upward out of the frame. */
+  .explore-grid .explore-card,
+  .explore-bottom .explore-card {
+    height: auto;
+    min-height: 280px;
+  }
+  .explore-grid .explore-card.active,
+  .explore-bottom .explore-card.active {
+    min-height: 440px;
+  }
+  .explore-card-inner {
+    position: relative;
+    bottom: auto;
+  }
+  /* Let the inner fill the card so the title sits at the bottom when
+     not active, and flows naturally when expanded. */
+  .explore-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
   .story-card-body-wrap { opacity: 0; max-height: 0; transform: translateY(6px); }
   .story-card.active .story-card-body-wrap { opacity: 1; max-height: 300px; transform: translateY(0); }
   .card-expand-btn { display: flex; }

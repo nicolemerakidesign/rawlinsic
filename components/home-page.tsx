@@ -644,6 +644,26 @@ export default function HomePage() {
                 href={card.href}
                 className={`explore-card reveal${i > 0 ? ` rd${i}` : ""}${activeExplore === card.title ? " active" : ""}`}
                 key={card.title}
+                onClick={(e) => {
+                  /* On mobile, the whole card should NOT navigate.
+                     Tapping anywhere outside the gold CTA arrow
+                     toggles the expanded description (same as
+                     tapping the small chevron), so users can read
+                     the full blurb, and only tapping the gold
+                     "EXPLORE …" CTA triggers navigation. */
+                  if (
+                    typeof window !== "undefined" &&
+                    window.matchMedia("(max-width: 768px)").matches
+                  ) {
+                    const target = e.target as HTMLElement | null;
+                    if (!target?.closest(".explore-card-arrow")) {
+                      e.preventDefault();
+                      setActiveExplore((prev) =>
+                        prev === card.title ? null : card.title
+                      );
+                    }
+                  }
+                }}
               >
                 <Image src={card.bg} alt={card.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" className="explore-card-bg" />
                 <div className="explore-card-overlay" />
@@ -664,6 +684,17 @@ export default function HomePage() {
                 href={card.href}
                 className={`explore-card reveal${i > 0 ? " rd1" : ""}${activeExplore === card.title ? " active" : ""}`}
                 key={card.title}
+                onClick={(e) => {
+                  if (
+                    typeof window !== "undefined" &&
+                    window.matchMedia("(max-width: 768px)").matches
+                  ) {
+                    const target = e.target as HTMLElement | null;
+                    if (!target?.closest(".explore-card-arrow")) {
+                      e.preventDefault();
+                    }
+                  }
+                }}
               >
                 <Image src={card.bg} alt={card.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" className="explore-card-bg" />
                 <div className="explore-card-overlay" />
