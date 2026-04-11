@@ -2716,13 +2716,35 @@ font-size: 15px;
 .aam-hero {
   position: relative;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* CSS grid with two rows: content in row 1 (vertically centered),
+     scroll indicator in row 2 at the bottom. Using a grid instead of
+     flex + absolute-positioned .hero-scroll guarantees the scroll
+     indicator never collides with the CTA button on short viewports
+     (previously the absolute-positioned scroll sat right under the
+     button when the viewport was short). This mirrors the pattern
+     used on the homepage `.hero`. */
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   text-align: center;
-  padding: 120px 60px 160px;
+  padding: 120px 60px 60px;
   overflow: hidden;
+  row-gap: 24px;
+}
+/* Scroll indicator becomes a normal flow child in grid row 2 instead
+   of the default absolute positioning, so it always gets clean space
+   below the content regardless of viewport height. */
+.aam-hero > .hero-scroll {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  padding-bottom: 0;
+  grid-row: 2;
+  grid-column: 1;
+  margin-top: 0;
 }
 .aam-hero-bg {
   object-fit: cover; object-position: center;
@@ -2751,6 +2773,8 @@ font-size: 15px;
   position: relative;
   z-index: 2;
   max-width: 900px;
+  grid-row: 1;
+  grid-column: 1;
 }
 
 /* Section header block */
@@ -3519,7 +3543,7 @@ color: #fff;
   .aam-parallax-fixed.parallax-panel { min-height: 25vh; }
   .parallax-text1 { font-size: clamp(1.9rem, 7vw, 3rem); }
   .parallax-break { display: none; }
-  .aam-hero { padding: 100px 24px 120px; min-height: 80vh; }
+  .aam-hero { padding: 100px 24px 40px; min-height: 80vh; }
   .aam-hero-content { max-width: 100%; }
   .aam-hero .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .aam-section { padding: 72px 0 0px 0px; }
@@ -3707,7 +3731,7 @@ color: #fff;
 @media (max-width: 768px) {
   .aam-section { padding: 72px 0; }
   .aam-container { padding: 0 24px; }
-  .aam-hero { padding: 120px 24px 140px; }
+  .aam-hero { padding: 120px 24px 40px; }
   .aam-pillars-grid { grid-template-columns: 1fr; gap: 20px; }
   .aam-portfolio-tiles { grid-template-columns: 1fr; }
   .aam-framework-grid { grid-template-columns: 1fr; gap: 20px; }
