@@ -2,10 +2,9 @@ import { NextResponse } from "next/server";
 
 /* Primary recipients for contact form submissions. Add/remove here. */
 const RECIPIENTS = [
-  "nicole@meraki-design.co",
-  "dara@rawlinsic.com",
-  "nicole@rawlinsic.com",
   "info@rawlinsic.com",
+  "nicole@rawlinsic.com",
+  "dara@rawlinsic.com",
 ];
 
 /* In-memory rate limit (per-IP) for the API route. Persists across
@@ -184,7 +183,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Rawlins IC Website <onboarding@resend.dev>",
+        from: "Rawlins IC Website <contact@send.rawlinsic.com>",
         to: RECIPIENTS,
         subject: `New Contact Form: ${escape(name)}`,
         reply_to: email,
