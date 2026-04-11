@@ -88,32 +88,29 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
   };
 
   const toggleSection = (i: number) => {
-    /* Anchor the user's view to the trigger row so the page does not
-     * visually jump as the panel expands above the viewport bottom.
-     * We measure the trigger's position *before* the state update, let
-     * React reflow, then restore the delta. */
-    const triggerEl = accordionRefs.current[i]?.querySelector(
-      ".tla-accordion-trigger"
-    ) as HTMLElement | null;
-    const prevTop = triggerEl?.getBoundingClientRect().top ?? 0;
+    const wasOpen = openSections.has(i);
 
     setOpenSections((prev) => {
       if (prev.has(i)) return new Set();
       return new Set([i]);
     });
 
-    /* After React commits the DOM change, compensate any shift so the
-     * clicked row stays put. Uses two rAFs to wait for the next paint. */
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        if (!triggerEl) return;
-        const nextTop = triggerEl.getBoundingClientRect().top;
-        const delta = nextTop - prevTop;
-        if (Math.abs(delta) > 1) {
-          window.scrollBy({ top: delta, behavior: "auto" });
+    /* When opening a question, scroll the question header to the top
+     * of the viewport (under the fixed nav, courtesy of scroll-margin-top
+     * on .tla-accordion-item). When closing, leave the scroll position
+     * alone — collapsing in place feels natural.
+     *
+     * The accordion body has a 500ms max-height transition, so we wait
+     * for that to finish before scrollIntoView; otherwise the layout is
+     * still moving and the scroll lands in the wrong place. */
+    if (!wasOpen) {
+      window.setTimeout(() => {
+        const itemEl = accordionRefs.current[i];
+        if (itemEl) {
+          itemEl.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      });
-    });
+      }, 520);
+    }
   };
 
   const expandAll = () => setOpenSections(new Set(sections.map((_, i) => i)));
