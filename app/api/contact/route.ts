@@ -161,10 +161,10 @@ export async function POST(request: Request) {
 
     if (!RESEND_API_KEY) {
       console.error("RESEND_API_KEY is not set");
-      console.log("=== CONTACT FORM (no API key) ===");
-      console.log(`Name: ${name}, Email: ${email}, Org: ${organization}, Interest: ${interest}`);
-      console.log(`Message: ${message}`);
-      return NextResponse.json({ success: true });
+      return NextResponse.json(
+        { error: "Email service not configured (RESEND_API_KEY missing on server)." },
+        { status: 500 }
+      );
     }
 
     // Escape user input for HTML email body
@@ -204,12 +204,36 @@ export async function POST(request: Request) {
 
     if (!res.ok) {
       console.error("Resend API error:", JSON.stringify(data));
-      return NextResponse.json({ success: true });
+      const message =
+        (data && (data.message || data.error || data.name)) ||
+        `Resend returned status ${res.status}`;
+      return NextResponse.json(
+        { error: `Email send failed: ${message}` },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Contact form error:", error);
-    return NextResponse.json({ success: true });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json(
+      { error: `Server error: ${message}` },
+      { status: 500 }
+    );
   }
+}
+
+/**
+ * Diagnostic GET endpoint. Hit /api/contact in a browser to verify
+ * the server-side configuration without exposing any secret values.
+ * Returns: API key presence, recipient count, and from address.
+ */
+export async function GET() {
+  return NextResponse.json({
+    resendKeyPresent: Boolean(process.env.RESEND_API_KEY),
+    convexUrlPresent: Boolean(process.env.NEXT_PUBLIC_CONVEX_URL),
+    recipientCount: RECIPIENTS.length,
+    fromAddress: "Rawlins IC Website <contact@send.rawlinsic.com>",
+  });
 }

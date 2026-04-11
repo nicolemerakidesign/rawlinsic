@@ -190,11 +190,21 @@ export default function ContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, honeypot, recaptchaToken }),
       });
-      if (!res.ok) throw new Error("Failed to send");
+      if (!res.ok) {
+        let serverMessage = `HTTP ${res.status}`;
+        try {
+          const data = await res.json();
+          if (data && data.error) serverMessage = data.error;
+        } catch {}
+        throw new Error(serverMessage);
+      }
       setSubmitted(true);
     } catch (err) {
       console.error("Form submission error:", err);
-      alert("Something went wrong. Please try again or email us directly at info@rawlinsic.com");
+      const detail = err instanceof Error ? err.message : "Unknown error";
+      alert(
+        `Something went wrong sending your message.\n\n${detail}\n\nPlease try again, or email us directly at info@rawlinsic.com.`
+      );
     } finally {
       setSubmitting(false);
     }
