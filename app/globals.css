@@ -267,11 +267,24 @@ body.keyboard-nav .cursor-ring {
 }
 
 /* ── Gold Utilities ──────────────────────────── */
+/* `.gold-text` paints a gold gradient on the text via background-clip.
+   Critical: set `color` to a solid gold FIRST as a fallback, then use
+   `-webkit-text-fill-color: transparent` so the gradient shows
+   through in WebKit. If background-clip fails on any device/browser,
+   the text stays visible in solid gold instead of disappearing. */
 .gold-text {
+  color: #c9a84c;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .gold-text {
+    background: none;
+    color: #c9a84c;
+    -webkit-text-fill-color: #c9a84c;
+  }
 }
 .gold-flat { color: #c9a84c; }
 .gold-line {
@@ -1156,6 +1169,40 @@ text-align: center;
   display: flex !important; align-items: center; justify-content: space-between;
   width: 100%; background: none; border-left: none; border-right: none; border-top: none;
   cursor: pointer;
+}
+/* Split Technology row: label is a link (navigates) + small chevron
+   button (toggles sub-menu). Inherits .mobile-menu-parent-nested
+   padding/border/typography from the wrapper div. */
+.mobile-menu-split {
+  padding: 0 !important;
+  gap: 8px;
+}
+.mobile-menu-split-link {
+  flex: 1;
+  display: block;
+  padding: 14px 0 !important;
+  color: #fff !important;
+  text-decoration: none;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+}
+.mobile-menu-split-link:hover,
+.mobile-menu-split-link:active {
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+.mobile-menu-split-toggle {
+  flex-shrink: 0;
+  padding: 14px 8px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
 }
 .mobile-menu-sub-nested {
   padding-left: 16px !important;
@@ -3570,10 +3617,10 @@ color: #fff;
   .aam-parallax-fixed { background-attachment: scroll; }
   .aam-hero.aam-parallax-fixed { background-image: none !important; }
   .aam-cta-section.aam-parallax-fixed { background-image: none !important; }
-  .aam-parallax-fixed.parallax-panel { min-height: 25vh; }
+  .aam-parallax-fixed.parallax-panel { min-height: 25svh; }
   .parallax-text1 { font-size: clamp(1.9rem, 7vw, 3rem); }
   .parallax-break { display: none; }
-  .aam-hero { padding: 100px 24px 40px; min-height: 80vh; }
+  .aam-hero { padding: 100px 24px 40px; min-height: 80svh; }
   .aam-hero-content { max-width: 100%; }
   .aam-hero .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .aam-section { padding: 72px 0 0px 0px; }
@@ -4880,7 +4927,7 @@ color: #fff;
   .csd-nav-section { padding: 40px 24px 60px; }
 }
 @media (max-width: 768px) {
-  .cs-hero { min-height: 45vh; padding: 100px 24px 0px; }
+  .cs-hero { min-height: 45svh; padding: 100px 24px 0px; }
   .cs-grid { grid-template-columns: 1fr; gap: 20px; }
   .cs-card { aspect-ratio: 1; }
   .cs-card-title { font-size: 26px; }
@@ -4888,7 +4935,7 @@ color: #fff;
   .cs-card-arrow { opacity: 1; transform: none; }
   .cs-cta-section { padding: 80px 24px; }
   .cs-cta-title { font-size: 32px; }
-  .csd-hero { min-height: 45vh; padding: 100px 24px 40px; }
+  .csd-hero { min-height: 45svh; padding: 100px 24px 40px; }
   .csd-projects-grid { grid-template-columns: 1fr; }
   .csd-project-tile { padding: 24px 20px; }
   .csd-nav-inner { flex-direction: column; }
@@ -6255,7 +6302,7 @@ color: #fff;
 .pod-about-text-desktop { display: block; }
 
 @media (max-width: 768px) {
-  .pod-hero { min-height: 55vh; padding: 100px 24px 40px; }
+  .pod-hero { min-height: 55svh; padding: 100px 24px 40px; }
   .pod-hero-icon { margin-top: 0; margin-bottom: 18px; }
   .pod-hero-eq { max-width: 88vw; gap: 2px; }
   .pod-hero-eq .pod-eq-bar { max-width: 4px; }
@@ -6719,7 +6766,7 @@ color: #fff;
   .cap-svc-card { flex: 0 0 300px; }
 }
 @media (max-width: 768px) {
-  .cap-hero { min-height: 85vh; background-attachment: scroll; background-position: center 30%; }
+  .cap-hero { min-height: 85svh; background-attachment: scroll; background-position: center 30%; }
   .cap-hero-content { padding: 0 24px; }
   .cap-hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .cap-hero-nav { flex-direction: column; align-items: stretch; }
@@ -6915,7 +6962,7 @@ color: #fff;
   .ins-channels { padding: 80px 32px 40px; }
 }
 @media (max-width: 768px) {
-  .ins-hero { min-height: 100vh; }
+  .ins-hero { min-height: 100svh; }
   .ins-hero-content { padding: 0 24px; }
   .ins-hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .ins-channel-desc { max-height: 0; opacity: 0; }
@@ -7020,7 +7067,7 @@ color: #fff;
   color: transparent;
 }
 @media (max-width: 768px) {
-  .nf-main { padding: 130px 24px 80px; min-height: 80vh; }
+  .nf-main { padding: 130px 24px 80px; min-height: 80svh; }
   .nf-actions { flex-direction: column; align-items: center; gap: 12px; }
   .nf-links-list { gap: 10px 20px; }
 }

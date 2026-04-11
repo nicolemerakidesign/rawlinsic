@@ -101,10 +101,24 @@ export default function SiteNav({ ctaHref = "/contact" }: SiteNavProps) {
               <a href="/capabilities#strategy" onClick={close}>Strategy</a>
               <a href="/capabilities#operations" onClick={close}>Operations</a>
               <div className="mobile-menu-group mobile-menu-group-nested">
-                <button className="mobile-menu-parent mobile-menu-parent-nested" onClick={() => toggleSub("tech")}>
-                  Technology
-                  <svg className={`mobile-menu-chevron${mobileSubOpen.has("tech") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
-                </button>
+                <div className="mobile-menu-parent mobile-menu-parent-nested mobile-menu-split">
+                  <a
+                    href="/capabilities#technology"
+                    onClick={close}
+                    className="mobile-menu-split-link"
+                  >
+                    Technology
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => toggleSub("tech")}
+                    className="mobile-menu-split-toggle"
+                    aria-label={mobileSubOpen.has("tech") ? "Collapse Technology menu" : "Expand Technology menu"}
+                    aria-expanded={mobileSubOpen.has("tech")}
+                  >
+                    <svg className={`mobile-menu-chevron${mobileSubOpen.has("tech") ? " open" : ""}`} width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l5 5 5-5"/></svg>
+                  </button>
+                </div>
                 <div className={`mobile-menu-sub mobile-menu-sub-nested${mobileSubOpen.has("tech") ? " open" : ""}`}>
                   <a href="/capabilities/technology/advanced-air-mobility" onClick={close}>Advanced Air Mobility &amp; UAS</a>
                   <a href="/capabilities/technology/automation-integration" onClick={close}>Data, Automation, &amp; AI</a>
