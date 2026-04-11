@@ -3614,9 +3614,15 @@ color: #fff;
   .aam-cta-section.aam-parallax-fixed { background-image: none !important; }
 }
 @media (max-width: 768px) {
-  .aam-parallax-fixed { background-attachment: scroll; }
-  .aam-hero.aam-parallax-fixed { background-image: none !important; }
-  .aam-cta-section.aam-parallax-fixed { background-image: none !important; }
+  .aam-parallax-fixed { background-attachment: scroll !important; }
+  .aam-hero.aam-parallax-fixed {
+    background-attachment: scroll !important;
+    background-image: none !important;
+  }
+  .aam-cta-section.aam-parallax-fixed {
+    background-attachment: scroll !important;
+    background-image: none !important;
+  }
   .aam-parallax-fixed.parallax-panel { min-height: 25svh; }
   .parallax-text1 { font-size: clamp(1.9rem, 7vw, 3rem); }
   .parallax-break { display: none; }
