@@ -543,7 +543,9 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                         onClick={() => toggleSection(i)}
                         aria-expanded={isOpen}
                       >
-                        {article.showQBadge !== false && <div className="tla-q-icon">Q</div>}
+                        <div className="tla-q-icon">
+                          {article.showQBadge === false ? String(i + 1) : "Q"}
+                        </div>
                         <h2 className="tla-q-text">{section.question}</h2>
                         <div className={`tla-accordion-chevron${isOpen ? " open" : ""}`}>
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

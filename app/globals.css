@@ -4396,10 +4396,20 @@ color: #fff;
   text-align: center;
   padding: 140px 40px 60px;
   overflow: hidden;
+  /* Dark brand background as the pre-image state so the hero doesn't
+     flash white/empty before the hero photo has decoded. */
+  background-color: #060c16;
 }
 .csd-hero-img {
   object-fit: cover;
   object-position: center;
+  /* Fade the image in once it's decoded, instead of popping it in
+     against whatever is underneath. */
+  animation: csdHeroFade 0.5s ease-out both;
+}
+@keyframes csdHeroFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .csd-hero-overlay {
   position: absolute;
@@ -5108,11 +5118,15 @@ color: #fff;
 }
 .tl-card-img-wrap {
   position: relative;
+  /* Default aspect ratio — may be overridden inline per article to
+     honor the banner's real proportions so wide TL banners aren't
+     cropped. */
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  background-color: #0b1428;
 }
 .tl-card-img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.6s ease;
 }
@@ -5427,15 +5441,15 @@ color: #fff;
 }
 .tla-final-thought-title {
   font-family: var(--font-cormorant), serif;
-  font-size: 40px;
-  line-height: 1.15;
+  font-size: 32px;
+  line-height: 1.2;
   font-weight: 500;
   background: linear-gradient(135deg, #c9a84c, #e8d5a0, #d4b878);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
 }
 .tla-final-thought-quote {
   position: relative;
@@ -5517,7 +5531,7 @@ color: #fff;
 }
 @media (max-width: 768px) {
   .tla-final-thought { margin-top: -40px; padding: 0 24px 16px; }
-  .tla-final-thought-title { font-size: 30px; margin-bottom: 16px; }
+  .tla-final-thought-title { font-size: 24px; margin-bottom: 14px; }
   .tla-final-thought-quote { padding: 24px; }
   .tla-final-thought-quote > p { font-size: 21px; }
   .tla-final-thought-body { font-size: 15px; }
@@ -5686,24 +5700,10 @@ color: #fff;
 .tla-accordion-trigger:hover {
   background: rgba(255,255,255,0.02);
 }
-/* Variant without the Q badge — replace the badge with a slim vertical
-   gold bar flush beside each title so the row doesn't feel empty. */
-.tla-accordion-noq .tla-accordion-trigger { padding-left: 28px; }
-.tla-accordion-noq .tla-q-text {
-  padding-left: 24px;
-  position: relative;
-}
-.tla-accordion-noq .tla-q-text::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: -6px;
-  bottom: -6px;
-  width: 2px;
-  border-radius: 0;
-  background: linear-gradient(180deg, #c9a84c 0%, #e8d5a0 50%, #d4b878 100%);
-  box-shadow: 0 0 12px rgba(201, 168, 76, 0.35);
-}
+/* Variant without the "Q" label — the badge shows a numbered step
+   (1, 2, 3…) instead of "Q". Visual structure is otherwise identical
+   to the Q&A variant so Ron's accordion functions like April's. */
+.tla-accordion-noq .tla-q-icon { font-size: 26px; }
 
 /* Q icon — gold gradient text */
 .tla-q-icon {

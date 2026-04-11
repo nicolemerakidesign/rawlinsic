@@ -296,13 +296,21 @@ export default function ThoughtLeadershipOverview() {
                 href={`/insights/thought-leadership/${article.slug}`}
                 className={`tl-card reveal rd${(i % 4) + 1}`}
               >
-                <div className="tl-card-img-wrap">
+                <div
+                  className="tl-card-img-wrap"
+                  style={
+                    article.imageWidth && article.imageHeight
+                      ? { aspectRatio: `${article.imageWidth} / ${article.imageHeight}` }
+                      : undefined
+                  }
+                >
                   <Image
                     src={article.image}
                     alt={article.title}
                     fill
                     sizes="(max-width: 768px) 85vw, (max-width: 1100px) 45vw, 380px"
                     className="tl-card-img"
+                    style={{ objectFit: "contain" }}
                   />
                   <div className="tl-card-img-overlay" />
                 </div>

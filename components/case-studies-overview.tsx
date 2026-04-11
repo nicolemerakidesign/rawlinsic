@@ -133,11 +133,8 @@ export default function CaseStudiesOverview() {
         {/* ── Hero ── */}
         <section className="cs-hero" id="top">
           <div className="cs-hero-content">
-            <span className="hero-label">
-              <span className="gold-text">
-                <span className="hero-label-segment">Solving Complex Challenges&nbsp;&bull;</span>{" "}
-                <span className="hero-label-segment">Proven Impact</span>
-              </span>
+            <span className="hero-label gold-text">
+              Solving Complex Challenges &bull; Proven Impact
             </span>
             <h1 className="hero-title">Case Studies</h1>
             <p className="hero-sub cs-hero-sub">
