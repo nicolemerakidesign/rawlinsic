@@ -3,7 +3,7 @@ import ThoughtLeadershipArticlePage from "@/components/thought-leadership-articl
 import { THOUGHT_LEADERSHIP } from "@/components/thought-leadership-data";
 
 const article = THOUGHT_LEADERSHIP.find(
-  (a) => a.slug === "minimizing-data-governance-fatigue-2"
+  (a) => a.slug === "strengthening-your-team"
 )!;
 
 export const metadata: Metadata = {
