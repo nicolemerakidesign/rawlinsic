@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
@@ -11,6 +11,8 @@ import {
   type ThoughtLeadershipArticle,
   type ArticleSection,
 } from "@/components/thought-leadership-data";
+import { TEAM_MEMBERS, type TeamMember } from "@/lib/team-data";
+import TeamMemberPopup from "@/components/team-member-popup";
 
 interface Props {
   article: ThoughtLeadershipArticle;
@@ -55,7 +57,35 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
   }
 
   const [openSections, setOpenSections] = useState<Set<number>>(() => new Set());
+  const [finalThoughtOpen, setFinalThoughtOpen] = useState(false);
   const accordionRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  /** Render a CTA title with inline `{gold}…{/gold}` markers as a
+   *  gold-gradient italic <em>. */
+  const renderCtaTitle = (raw: string) => {
+    const parts = raw.split(/(\{gold\}.*?\{\/gold\})/g);
+    return parts.map((part, i) => {
+      const m = part.match(/^\{gold\}(.*?)\{\/gold\}$/);
+      if (m) {
+        return (
+          <em
+            key={i}
+            className="tla-cta-gold"
+            style={{
+              fontStyle: "italic",
+              background: "linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            {m[1]}
+          </em>
+        );
+      }
+      return <React.Fragment key={i}>{part}</React.Fragment>;
+    });
+  };
 
   const toggleSection = (i: number) => {
     setOpenSections((prev) => {
@@ -173,12 +203,77 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
 
   const isComingSoon = article.author === "Coming Soon";
 
+  /** Resolve the matching team member (names may differ in credentials
+   *  like "April Blackburn, PMP" vs just "April Blackburn"). */
+  const teamMember: TeamMember | undefined = TEAM_MEMBERS.find(
+    (m) =>
+      m.name === article.author ||
+      m.name.startsWith(article.author + ",") ||
+      m.name.startsWith(article.author + " ")
+  );
+  const [profileOpen, setProfileOpen] = useState(false);
+  const openProfile = () => { if (teamMember) setProfileOpen(true); };
+  const closeProfile = () => setProfileOpen(false);
+
+  /* ── JSON-LD Article schema for SEO ── */
+  const siteUrl = "https://rawlinsic.com";
+  const articleUrl = `${siteUrl}/insights/thought-leadership/${article.slug}`;
+  const articleBodyText = article.content
+    .map((b) => b.text || (b.items ? b.items.join(" ") : ""))
+    .filter(Boolean)
+    .join(" ");
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.subtitle || article.excerpt,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      "@type": "Person",
+      name: article.author,
+      jobTitle: article.authorRole,
+      ...(article.authorLinkedIn ? { sameAs: [article.authorLinkedIn] } : {}),
+      worksFor: {
+        "@type": "Organization",
+        name: "Rawlins Infra Consult",
+        url: siteUrl,
+      },
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Rawlins Infra Consult",
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/images/pages/rawlins-logo.webp`,
+      },
+    },
+    image: article.image?.startsWith("http")
+      ? article.image
+      : `${siteUrl}${article.image}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+    url: articleUrl,
+    articleSection: article.category,
+    inLanguage: "en-US",
+    articleBody: articleBodyText.slice(0, 5000),
+  };
+
   /* ── Render a content block ── */
   const renderBlock = (block: ArticleSection, i: number) => {
     switch (block.type) {
       case "intro":
         return (
           <p key={i} className="tla-intro">
+            {block.text}
+            {block.footnote && (
+              <sup className="tla-footnote-marker">{block.footnote}</sup>
+            )}
+          </p>
+        );
+      case "citation":
+        return (
+          <p key={i} className="tla-citation">
             {block.text}
           </p>
         );
@@ -224,6 +319,11 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
 
   return (
     <>
+      {/* JSON-LD Article schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Custom Cursor */}
       <div className="cursor-dot" ref={dotRef} />
       <div className="cursor-ring" ref={ringRef} />
@@ -287,14 +387,14 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
         <section className="tla-content tla-two-col">
           {/* LEFT COLUMN: image, PDF download, intro text */}
           <div className="tla-col-left">
-            {/* Article banner image */}
+            {/* Article banner image — preserve intrinsic aspect ratio */}
             {article.image && (
               <div className="tla-article-img-wrap">
                 <Image
                   src={article.image}
                   alt={article.title}
-                  width={1200}
-                  height={675}
+                  width={article.imageWidth ?? 1600}
+                  height={article.imageHeight ?? 900}
                   sizes="(max-width: 768px) 100vw, 600px"
                   className="tla-article-img"
                   style={{ width: '100%', height: 'auto' }}
@@ -322,25 +422,63 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               <div className="tla-sidebar-author">
                 <div className="tla-author-info">
                   {article.authorImage && (
-                    <Image
-                      src={article.authorImage}
-                      alt={article.author}
-                      width={56}
-                      height={56}
-                      className="tl-author-avatar tla-avatar-lg"
-                    />
+                    teamMember ? (
+                      <button
+                        type="button"
+                        onClick={openProfile}
+                        className="tla-author-avatar-btn"
+                        aria-label={`View ${article.author}'s profile`}
+                      >
+                        <Image
+                          src={article.authorImage}
+                          alt={article.author}
+                          width={56}
+                          height={56}
+                          className="tl-author-avatar tla-avatar-lg"
+                        />
+                      </button>
+                    ) : (
+                      <Image
+                        src={article.authorImage}
+                        alt={article.author}
+                        width={56}
+                        height={56}
+                        className="tl-author-avatar tla-avatar-lg"
+                      />
+                    )
                   )}
                   <div>
-                    <span className="tla-author-name">{article.author}</span>
+                    {teamMember ? (
+                      <button
+                        type="button"
+                        onClick={openProfile}
+                        className="tla-author-name-btn"
+                      >
+                        <span className="tla-author-name">{article.author}</span>
+                      </button>
+                    ) : (
+                      <span className="tla-author-name">{article.author}</span>
+                    )}
                     <span className="tla-author-role">{article.authorRole}</span>
+                    {article.authorLinkedIn && (
+                      <a
+                        href={article.authorLinkedIn}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="tla-author-linkedin"
+                        aria-label={`${article.author} on LinkedIn`}
+                      >
+                        <span>in</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
             )}
 
-            {/* First intro block only (left column) */}
+            {/* First intro block + any trailing citation (left column) */}
             <div className="tla-body">
-              {introBlocks.filter(b => b.type === "intro").map((block, i) => renderBlock(block, i))}
+              {introBlocks.filter(b => b.type === "intro" || b.type === "citation").map((block, i) => renderBlock(block, i))}
             </div>
           </div>
 
@@ -351,7 +489,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                  accordion, no Q badge — just a continuous reading flow. */
               <div className="tla-body">
                 {introBlocks
-                  .filter(b => b.type !== "intro")
+                  .filter(b => b.type !== "intro" && b.type !== "citation")
                   .map((block, i) => renderBlock(block, i))}
               </div>
             ) : (
@@ -361,12 +499,16 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               </div>
             )}
 
-            {/* Accordion Q&A sections (only for qa format) */}
+            {/* Accordion sections (only for qa format) */}
             {article.format !== "essay" && sections.length > 0 && (
-              <div className="tla-accordion">
+              <div className={`tla-accordion${article.showQBadge === false ? " tla-accordion-noq" : ""}`}>
                 {/* Expand/Collapse controls */}
                 <div className="tla-accordion-controls">
-                  <span className="tla-accordion-controls-label">Q&A</span>
+                  {(article.accordionLabel ?? "Q&A") !== "" ? (
+                    <span className="tla-accordion-controls-label">{article.accordionLabel ?? "Q&A"}</span>
+                  ) : (
+                    <span />
+                  )}
                   <div className="tla-accordion-controls-btns">
                     <button onClick={expandAll} className="tla-expand-btn">Expand All</button>
                     <span className="tla-controls-sep">/</span>
@@ -387,7 +529,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                         onClick={() => toggleSection(i)}
                         aria-expanded={isOpen}
                       >
-                        <div className="tla-q-icon">Q</div>
+                        {article.showQBadge !== false && <div className="tla-q-icon">Q</div>}
                         <h2 className="tla-q-text">{section.question}</h2>
                         <div className={`tla-accordion-chevron${isOpen ? " open" : ""}`}>
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -415,10 +557,71 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
           </div>
         </section>
 
+        {/* ── "One Final Thought" feature callout ── */}
+        {article.finalThought && (
+          <section className="tla-final-thought reveal">
+            <div className="tla-final-thought-inner">
+              <h2 className="tla-final-thought-title">
+                {article.finalThought.label}
+              </h2>
+              <button
+                type="button"
+                className={`tla-final-thought-quote${finalThoughtOpen ? " open" : ""}`}
+                onClick={() => article.finalThought?.body && setFinalThoughtOpen((v) => !v)}
+                aria-expanded={finalThoughtOpen}
+                aria-controls="tla-final-thought-body"
+                disabled={!article.finalThought.body}
+              >
+                <p>{article.finalThought.text}</p>
+                {article.finalThought.body && (
+                  <span className={`tla-final-thought-chevron${finalThoughtOpen ? " open" : ""}`}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </span>
+                )}
+              </button>
+              {article.finalThought.body && (
+                <div
+                  id="tla-final-thought-body"
+                  className={`tla-final-thought-body-wrap${finalThoughtOpen ? " open" : ""}`}
+                >
+                  <p className="tla-final-thought-body">{article.finalThought.body}</p>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
         {/* Divider */}
         <div className="section-divider">
           <div className="gold-line" />
         </div>
+
+        {/* ── Article CTA (same gold-accent style as other pages) ── */}
+        {article.cta && (
+          <section className="tla-cta reveal">
+            <div className="tla-cta-inner">
+              <h2 className="section-title tla-cta-title">
+                {renderCtaTitle(article.cta.title)}
+              </h2>
+              <p className="hero-sub tla-cta-body">{article.cta.body}</p>
+              <Link
+                href={article.cta.buttonHref ?? "/contact"}
+                className="auto-hero-btn tla-cta-btn"
+              >
+                <span>{article.cta.buttonLabel ?? "Get In Touch"}</span>
+              </Link>
+            </div>
+          </section>
+        )}
+
+        {/* Divider */}
+        {article.cta && (
+          <div className="section-divider">
+            <div className="gold-line" />
+          </div>
+        )}
 
         {/* ── Navigation between articles ── */}
         <section className="csd-nav-section">
@@ -465,6 +668,14 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
       </div>
 
       <SiteFooter />
+
+      {/* Team member popup — opens when author avatar/name is clicked */}
+      {teamMember && (
+        <TeamMemberPopup
+          member={profileOpen ? teamMember : null}
+          onClose={closeProfile}
+        />
+      )}
     </>
   );
 }

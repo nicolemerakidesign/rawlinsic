@@ -77,6 +77,18 @@ function RichText({ text }: { text: string }) {
 
 const SCOTT = TEAM_MEMBERS.find((m) => m.name.includes("Scott Rawlins"))!;
 
+/** Convert a team member name into a stable URL-friendly slug so other
+ *  pages (e.g. thought-leadership articles) can deep-link to a specific
+ *  profile via `/about/our-people#{slug}`. */
+export function memberSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[.,]/g, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export default function TeamPage() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -151,6 +163,21 @@ export default function TeamPage() {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  // Deep-link: open a member's popup when the URL hash matches their
+  // slug (e.g. /about/our-people#april-blackburn-pmp). Runs on mount
+  // and again whenever the hash changes.
+  useEffect(() => {
+    const openFromHash = () => {
+      const raw = window.location.hash.replace(/^#/, "").trim();
+      if (!raw) return;
+      const target = TEAM_MEMBERS.find((m) => memberSlug(m.name) === raw);
+      if (target) setSelectedMember(target);
+    };
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
   }, []);
 
   // Lock body scroll when popup open
@@ -301,7 +328,7 @@ export default function TeamPage() {
                 <svg width="14" height="8" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1.5l7 7 7-7" /></svg>
               </button>
             </div>
-            <div className="hero-scroll" style={{ position: "relative", bottom: "auto", marginTop: "32px" }}>
+            <div className="hero-scroll team-hero-scroll" style={{ position: "relative", bottom: "auto", marginTop: "32px" }}>
               <span>Keep scrolling to view team</span>
               <div className="scroll-line" />
             </div>
@@ -346,7 +373,7 @@ export default function TeamPage() {
                   <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="currentColor"/>
                 </svg>
                 <p className="scott-featured-quote-text">
-                  We&rsquo;ve built this firm on trust&mdash;working in close partnership with our clients to understand your reality and bring the right mix of perspectives, delivering outcomes that truly fit your needs.&rdquo;
+                  We&rsquo;ve built this firm on trust&mdash;working in close partnership with our clients to understand their reality and bring the right mix of perspectives, delivering outcomes that truly fit their needs.&rdquo;
                 </p>
                 <div className="scott-featured-quote-attribution">
                   <span className="scott-featured-quote-dash">&mdash;</span>

@@ -64,25 +64,25 @@ const journey = [
     phase: "Foundation",
     title: "Deep Transportation Agency Expertise",
     text: "Having worked successfully within complex public agencies for many years, our team applies deep insights gained from overcoming project and program constraints, navigating decision-making dynamics, and fostering organizational cultures that support collaboration and accountability.",
-    bg: "/images/pages/journey-foundation.jpg",
+    bg: "/images/pages/journey-foundation.webp",
   },
   {
     phase: "Evolution",
     title: "Advisory Capabilities",
     text: "We partner with enterprises to modernize processes, empower team members, and embrace new technologies—coordinating these actions to achieve meaningful results. We pride ourselves on establishing long-term relationships with our family of clients.",
-    bg: "/images/pages/journey-evolution.jpg",
+    bg: "/images/pages/journey-evolution.webp",
   },
   {
     phase: "Innovation",
     title: "Advanced Air Mobility",
     text: "We guide the planning, implementation, and integration of advanced air mobility and uncrewed aircraft systems within existing transport networks, supporting the development of multimodal connected communities.",
-    bg: "/images/pages/journey-frontier.jpg",
+    bg: "/images/pages/journey-frontier.webp",
   },
   {
     phase: "Frontier",
     title: "Data Governance, Automation, & AI",
     text: "We help agencies navigate governance structures, improve data practices, incorporate analytics, and use emerging tools such as AI. Our automation and integration specialists streamline workflows, enabling people to focus on the uniquely human work that matters most for organizational success.",
-    bg: "/images/pages/journey-innovation.jpg",
+    bg: "/images/pages/journey-innovation.webp",
   },
 ];
 
@@ -92,7 +92,7 @@ const exploreBottomCards = [
     desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
     cta: "See how we transform →",
     href: "/insights",
-    bg: "/images/pages/insights-card.jpg",
+    bg: "/images/pages/insights-card.webp",
   },
   {
       title: "Case Studies",
@@ -116,7 +116,7 @@ const exploreTopCards = [
     desc: "Access thought leadership, podcasts, and news from our team of advisors and specialists.",
     cta: "Explore insights →",
     href: "/insights",
-    bg: "/images/pages/insights-card.jpg",
+    bg: "/images/pages/insights-card.webp",
   },
   {
       title: "Case Studies",

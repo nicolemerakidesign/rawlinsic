@@ -16,7 +16,7 @@ const channels = [
     title: "Thought Leadership",
     subtitle: "Expert perspectives",
     desc: "In-depth Q&As, analysis, and practitioner insights from our advisory team—covering data governance, workforce transformation, strategic planning, and the evolving landscape of public infrastructure.",
-    image: "/images/pages/insights-card-2.jpg",
+    image: "/images/pages/insights-card-2.webp",
     cta: "Read Articles",
     accent: "#c9a84c",
   },
@@ -26,7 +26,7 @@ const channels = [
     title: "The Rawlins Way",
     subtitle: "Podcast",
     desc: "Candid conversations about the real challenges facing transportation agencies and complex organizations. Our team and guests break down what it actually takes to lead change.",
-    image: "/images/pages/insights-card-3.jpg",
+    image: "/images/pages/insights-card-3.webp",
     cta: "Listen Now",
     accent: "#d4be78",
   },
@@ -36,7 +36,7 @@ const channels = [
     title: "Case Studies",
     subtitle: "Impact in action",
     desc: "Detailed accounts of how we've helped agencies and enterprises overcome operational hurdles, modernize systems, and deliver measurable results across complex programs.",
-    image: "/images/pages/auto-optimize.jpg",
+    image: "/images/pages/auto-optimize.webp",
     cta: "Explore Cases",
     accent: "#e0cfa0",
   },
@@ -132,7 +132,7 @@ export default function InsightsPage() {
           <span className="hero-label"><span className="gold-text">Knowledge &amp; Perspective</span></span>
           <h1 className="hero-title">Insights that <em>Inform</em> Action</h1>
           <p className="hero-sub">
-            Original research, practitioner perspectives, and real-world case studies from the front lines of organizational transformation.
+            Ideas, experiences, and stories shaping better decisions.
           </p>
           <a href="#channels" className="auto-hero-btn">
             <span>Explore Our Insights</span>

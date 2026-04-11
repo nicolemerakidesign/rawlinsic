@@ -7,14 +7,14 @@ import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 
 const HERO_IMG = "/images/pages/auto-hero.webp";
-const DATA_IMG = "/images/pages/auto-data.jpg";
-const WORKFLOW_IMG = "/images/pages/auto-workflow.jpg";
-const AI_IMG = "/images/pages/auto-ai.jpg";
-const TEAM_IMG = "/images/pages/auto-team.jpg";
-const CONNECT_IMG = "/images/pages/auto-connect.jpg";
-const DASHBOARD_IMG = "/images/pages/auto-dashboard.jpg";
-const NETWORK_IMG = "/images/pages/auto-network.jpg";
-const CAPABILITY_IMG = "/images/pages/auto-capability.jpg";
+const DATA_IMG = "/images/pages/auto-data.webp";
+const WORKFLOW_IMG = "/images/pages/auto-workflow.webp";
+const AI_IMG = "/images/pages/auto-ai.webp";
+const TEAM_IMG = "/images/pages/auto-team.webp";
+const CONNECT_IMG = "/images/pages/auto-connect.webp";
+const DASHBOARD_IMG = "/images/pages/auto-dashboard.webp";
+const NETWORK_IMG = "/images/pages/auto-network.webp";
+const CAPABILITY_IMG = "/images/pages/auto-capability.webp";
 
 /* ── Editable Data ── */
 
@@ -50,12 +50,12 @@ const benefits = [
 ];
 
 const orgValues = [
-  { num: "01", label: "Optimize Resources", body: "Optimize the use of diverse resources across your organization.", img: "/images/pages/auto-optimize.jpg" },
-  { num: "02", label: "Boost Efficiency", body: "Routine processes that take hours or days can be done in seconds, reducing errors.", img: "/images/pages/auto-data.jpg" },
-  { num: "03", label: "Scale Team Impact", body: "Scale the impact of teams beyond what manual processes allow.", img: "/images/pages/auto-team.jpg" },
-  { num: "04", label: "Enhance Responsiveness", body: "React faster to changing conditions and stakeholder needs.", img: "/images/pages/auto-workflow.jpg" },
-  { num: "05", label: "Support Resilience", body: "Standardized tasks support continuity of operations and enable faster response when needs evolve.", img: "/images/pages/auto-capability.jpg" },
-  { num: "06", label: "Foster Human Talent", body: "Free people to focus on high-value work that requires human judgment.", img: "/images/pages/auto-human.jpg" },
+  { num: "01", label: "Optimize Resources", body: "Optimize the use of diverse resources across your organization.", img: "/images/pages/auto-optimize.webp" },
+  { num: "02", label: "Boost Efficiency", body: "Routine processes that take hours or days can be done in seconds, reducing errors.", img: "/images/pages/auto-data.webp" },
+  { num: "03", label: "Scale Team Impact", body: "Scale the impact of teams beyond what manual processes allow.", img: "/images/pages/auto-team.webp" },
+  { num: "04", label: "Enhance Responsiveness", body: "React faster to changing conditions and stakeholder needs.", img: "/images/pages/auto-workflow.webp" },
+  { num: "05", label: "Support Resilience", body: "Standardized tasks support continuity of operations and enable faster response when needs evolve.", img: "/images/pages/auto-capability.webp" },
+  { num: "06", label: "Foster Human Talent", body: "Free people to focus on high-value work that requires human judgment.", img: "/images/pages/auto-human.webp" },
 ];
 
 const pipeline = [
@@ -349,7 +349,7 @@ export default function AutomationPage() {
           <div className="auto-deliver-grid" style={{ display: "grid", gap: "60px", marginTop: "60px", alignItems: "center" }}>
             <div className="reveal">
               <div style={{ position: "relative", borderRadius: "12px", overflow: "hidden", aspectRatio: "4/3" }}>
-                <Image src="/images/pages/auto-collab.jpg" alt="Team collaborating on digital transformation" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+                <Image src="/images/pages/auto-collab.webp" alt="Team collaborating on digital transformation" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: "cover" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(6,12,22,0.15), rgba(6,12,22,0.45))" }} />
               </div>
             </div>

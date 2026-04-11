@@ -197,9 +197,9 @@ export default function CaseStudiesOverview() {
             </h2>
             <p className="hero-sub" style={{ opacity: 1, transform: "none", animation: "none", textAlign: "center", marginBottom: "40px" }}>
               Rawlins has the expertise and experience to drive your
-              organization&rsquo;s success. Our tailored solutions and strategic
-              approach help agencies improve performance
-              and meet evolving challenges.
+              organization&rsquo;s success. Our tailored solutions, grounded in
+              clear strategy, help agencies improve performance and proactively
+              address evolving challenges.
             </p>
             <Link href="/contact" className="auto-hero-btn" style={{ animation: "none", opacity: 1, transform: "none" }}><span>Connect With Us Today</span></Link>
           </div>

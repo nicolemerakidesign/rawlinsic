@@ -6,11 +6,16 @@ export interface ThoughtLeadershipArticle {
   authorRole: string;
   authorEmail: string;
   authorPhone: string;
+  authorLinkedIn?: string;
   date: string;
   dateLabel: string;
   category: string;
   excerpt: string;
   image: string;
+  /** Intrinsic dimensions of `image` so Next.js Image preserves the
+   * actual aspect ratio instead of distorting it. */
+  imageWidth?: number;
+  imageHeight?: number;
   heroImage: string;
   authorImage: string;
   pdfUrl: string;
@@ -22,16 +27,132 @@ export interface ThoughtLeadershipArticle {
    *          accordion, no Q badge.
    */
   format?: "qa" | "essay";
+  /** When false, hide the "Q" badge + rename the "Q&A" label on the
+   * accordion (used for articles where the accordion sections are not
+   * questions, e.g. a key-actions list). Defaults to true. */
+  showQBadge?: boolean;
+  /** Label shown above the accordion — overrides the default "Q&A". */
+  accordionLabel?: string;
+  /** Optional "one final thought" call-out rendered directly under the
+   * accordion, styled more prominently than an inline callout. */
+  finalThought?: {
+    label: string;
+    text: string;
+    body?: string;
+  };
+  /** Optional CTA section rendered at the very bottom of the article,
+   * matching the standard gold-accent CTA style used elsewhere on the
+   * site. No `section-label` is shown above the title (per design). */
+  cta?: {
+    title: string;
+    body: string;
+    buttonLabel?: string;
+    buttonHref?: string;
+  };
   content: ArticleSection[];
 }
 
 export interface ArticleSection {
-  type: "intro" | "question" | "answer" | "heading" | "paragraph" | "list" | "callout" | "divider";
+  type: "intro" | "question" | "answer" | "heading" | "paragraph" | "list" | "callout" | "divider" | "citation";
   text?: string;
   items?: string[];
+  /** Optional footnote marker (e.g. "1") appended at the end of an "intro" block. */
+  footnote?: string;
 }
 
 export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
+  {
+    slug: "strengthening-your-team",
+    title: "Strengthening Your Team",
+    subtitle: "Key actions to cultivate high performance",
+    author: "Ron Crew",
+    authorRole: "Infrastructure Advisor",
+    authorEmail: "Ron@RawlinsIC.com",
+    authorPhone: "(727) 348-5136",
+    // TODO: replace with Ron's actual LinkedIn URL once provided.
+    authorLinkedIn: "https://www.linkedin.com/in/ron-crew/",
+    date: "2026-04-01",
+    dateLabel: "April 2026",
+    category: "Leadership",
+    excerpt:
+      "Over the course of his career, Ron Crew has built and led strong teams that have successfully delivered complex right-of-way projects. He shares key actions to pave the way for a high-performing team through the Rawlins lens.",
+    image: "/images/tl-ron-crew-strengthening-your-team.webp",
+    imageWidth: 1600,
+    imageHeight: 539,
+    heroImage: "/images/pages/tl-ron-hero.webp",
+    authorImage: "/images/team/ron.webp",
+    pdfUrl: "/thought-leadership-ron-crew-strengthening-your-team.pdf",
+    format: "qa",
+    showQBadge: false,
+    accordionLabel: "",
+    finalThought: {
+      label: "One Final Thought",
+      text: "Strong teams not only benefit your organization, they also create value for employees, clients, partners, and communities.",
+      body: "Across departments of transportation, other government agencies, and the broader transportation industry, strong teams consistently achieve key goals that support operational excellence\u2014improving efficiency, reducing costs, communicating more clearly across roles and disciplines, strengthening engagement, and adapting more effectively to emergencies, shifting priorities, and the unexpected.",
+    },
+    cta: {
+      title: "Ready to build a {gold}stronger{/gold} team?",
+      body: "Over the course of his career, Ron Crew has built and led strong teams that have successfully delivered complex right-of-way projects. He fosters collaboration among diverse professionals and aligns them around clear project goals.",
+      buttonLabel: "Connect With Us Today",
+      buttonHref: "/contact",
+    },
+    content: [
+      {
+        type: "intro",
+        text: "Is a strong team important to your organization? Is a strong team possible in your organization? Can you strengthen your team as a manager, team leader, or supervisor? You likely answered yes to all three questions\u2014now, let\u2019s explore key actions to pave the way for a high-performing team through the Rawlins lens.",
+      },
+      {
+        type: "paragraph",
+        text: "Over the course of his career, Ron Crew has built and led strong teams that have successfully delivered complex right-of-way projects across the Florida Department of Transportation. He shares the key actions he has relied on to cultivate high-performing teams through the Rawlins lens.",
+      },
+      { type: "divider" },
+      { type: "question", text: "Set the Standard" },
+      {
+        type: "paragraph",
+        text: "We\u2019ve all heard this saying before\u2014lead by example. Still, the concept is valid as all eyes are on the team leader. Effective leaders set the tone for behavior, performance, and culture. Team members watch how you handle decisions, how you react to setbacks, and how you treat others. Leading by example requires sincerity, fairness, decisiveness, consistency, clarity, and a determination to uphold the values you expect from your team.",
+      },
+      { type: "divider" },
+      { type: "question", text: "Build Team Trust and Respect" },
+      {
+        type: "paragraph",
+        text: "Strong teams emerge in a culture of mutual trust. Effective leaders build trust over time through consistent actions (explored below), creating a virtuous cycle. Trust between team members stems from clear expectations and shared goals communicated by leaders. When people feel trusted and respected, they bring out the best in each other. From there, cohesion and motivation\u2014also essential to building high-performing teams\u2014develop and reinforce each other, setting the stage for additional capabilities.",
+      },
+      { type: "divider" },
+      { type: "question", text: "Communicate Clearly" },
+      {
+        type: "paragraph",
+        text: "Leaders provide the context for clear communication by articulating a clear vision for the team. Clear communication enables teams to align with a shared purpose and solve problems efficiently\u2014freeing up time and mental space to innovate and improve outcomes. Across transportation and infrastructure projects, clear communication underpins safety, reliability, and productivity. Whether you lead a division within an organization, manage project teams, or supervise field crews, you\u2019ve likely felt the challenges of communication gaps, which can lead to uneven performance and diminished morale, especially as teams function under constant pressure to deliver more with less.",
+      },
+      { type: "divider" },
+      { type: "question", text: "Empower Team Members" },
+      {
+        type: "paragraph",
+        text: "Leaders who communicate expectations, priorities, and goals clearly empower team members to take ownership confidently. Empowering team members to act and lead demonstrates trust in them and, in turn, strengthens trust in leaders. Delegation builds ownership and commitment, resulting in increased confidence and improved performance. Make sure team members understand how their work contributes to achieving shared goals.",
+      },
+      {
+        type: "callout",
+        text: "The ultimate measure of leadership is the ability to inspire others to succeed collectively. Through consistent trust-building and empowerment, leaders create environments where individuals and organizations thrive together. Knowing each team member as an individual and recognizing the value they bring has a highly positive impact on your team.",
+      },
+      { type: "divider" },
+      { type: "question", text: "Engage with Your Team" },
+      {
+        type: "paragraph",
+        text: "Empathy and emotional intelligence are essential for developing strong leadership. Proactively gaining a deeper understanding of each team member\u2019s strengths, drivers, personal goals, and challenges will yield significant dividends as people will feel valued and motivated to consistently bring their best to the team. Encourage open dialogue and develop a culture of psychological safety while promoting active listening. An atmosphere of transparency fosters accountability. Effective leaders inspire through autonomy and creativity rather than control.",
+      },
+      { type: "divider" },
+      { type: "question", text: "Set Realistic Goals" },
+      {
+        type: "paragraph",
+        text: "Establishing an achievable path to success requires setting realistic goals, timelines, and deadlines while maintaining team members\u2019 motivation, focus, and well-being. When the team achieves a great outcome, they thrive, cohesion increases, and growth results both professionally and personally. Seek opinions and input from team members to make informed decisions. Your team will go out on a limb for you if individuals trust that their opinions matter. Team members must also know that you will back them, especially as they step outside of their comfort zones.",
+      },
+      { type: "divider" },
+      { type: "question", text: "Create Forward Momentum" },
+      {
+        type: "paragraph",
+        text: "High-performing teams value learning and change. Embrace errors as learning opportunities. Foster flexibility, curiosity, and feedback. These actions enhance resilience, encourage forward thinking, and help teams adapt to new challenges. Shared purpose and alignment support motivation and cohesiveness, while diverse skill sets bring a variety of perspectives and approaches to attain strategic goals. Continue to build strength in your team by regularly celebrating achievements, reflecting on lessons learned, and renewing collective team commitment to growth and excellence.",
+      },
+    ],
+  },
   {
     slug: "minimizing-data-governance-fatigue",
     title: "Minimizing Data Governance Fatigue to Maximize Value",
@@ -40,12 +161,15 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     authorRole: "Infrastructure Advisor",
     authorEmail: "April@RawlinsIC.com",
     authorPhone: "(850) 228-1453",
+    authorLinkedIn: "https://www.linkedin.com/in/april-blackburn-a2104b144/",
     date: "2026-04-01",
     dateLabel: "April 2026",
     category: "Technology Strategy",
     excerpt:
       "Many companies struggle to establish effective data governance. In this Q&A, April Blackburn discusses implementing effective data governance and the essential elements of a solid governance foundation.",
     image: "/images/tl-april-blackburn-banner.webp",
+    imageWidth: 1600,
+    imageHeight: 652,
     heroImage: "/images/pages/tl-hero.webp",
     authorImage: "/images/team/april.webp",
     pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",
@@ -54,6 +178,11 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
       {
         type: "intro",
         text: "Many companies struggle to establish effective data governance. Research shows widespread adoption of data governance practices, yet maturity levels remain low.",
+        footnote: "1",
+      },
+      {
+        type: "citation",
+        text: "Michelle Knight, \u201CData Management Trends in 2026: Moving Beyond Awareness to Action,\u201D Dataversity, December 17, 2025.",
       },
       {
         type: "paragraph",
@@ -179,79 +308,5 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
       },
     ],
   },
-  {
-    slug: "strengthening-your-team",
-    title: "Strengthening Your Team",
-    subtitle: "Key actions to cultivate high performance",
-    author: "Ron Crew",
-    authorRole: "Infrastructure Advisor",
-    authorEmail: "Ron@RawlinsIC.com",
-    authorPhone: "(727) 348-5136",
-    date: "2026-04-01",
-    dateLabel: "April 2026",
-    category: "Leadership",
-    excerpt:
-      "Over the course of his career, Ron Crew has built and led strong teams that have successfully delivered complex right-of-way projects. He shares key actions to pave the way for a high-performing team through the Rawlins lens.",
-    image: "/images/pages/auto-team.jpg",
-    heroImage: "/images/pages/home-team-bg.webp",
-    authorImage: "/images/team/ron.webp",
-    pdfUrl: "/thought-leadership-ron-crew-strengthening-your-team.pdf",
-    format: "essay",
-    content: [
-      {
-        type: "intro",
-        text: "Is a strong team important to your organization? Is a strong team possible in your organization? Can you strengthen your team as a manager, team leader, or supervisor? You likely answered yes to all three questions\u2014now, let\u2019s explore key actions to pave the way for a high-performing team through the Rawlins lens.",
-      },
-      { type: "heading", text: "Key Actions" },
-      { type: "heading", text: "Set the Standard" },
-      {
-        type: "paragraph",
-        text: "We\u2019ve all heard this saying before\u2014lead by example. Still, the concept is valid as all eyes are on the team leader. Effective leaders set the tone for behavior, performance, and culture. Team members watch how you handle decisions, how you react to setbacks, and how you treat others. Leading by example requires sincerity, fairness, decisiveness, consistency, clarity, and a determination to uphold the values you expect from your team.",
-      },
-      { type: "heading", text: "Build Team Trust and Respect" },
-      {
-        type: "paragraph",
-        text: "Strong teams emerge in a culture of mutual trust. Effective leaders build trust over time through consistent actions (explored below), creating a virtuous cycle. Trust between team members stems from clear expectations and shared goals communicated by leaders. When people feel trusted and respected, they bring out the best in each other. From there, cohesion and motivation\u2014also essential to building high-performing teams\u2014develop and reinforce each other, setting the stage for additional capabilities.",
-      },
-      { type: "heading", text: "Communicate Clearly" },
-      {
-        type: "paragraph",
-        text: "Leaders provide the context for clear communication by articulating a clear vision for the team. Clear communication enables teams to align with a shared purpose and solve problems efficiently\u2014freeing up time and mental space to innovate and improve outcomes. Across transportation and infrastructure projects, clear communication underpins safety, reliability, and productivity. Whether you lead a division within an organization, manage project teams, or supervise field crews, you\u2019ve likely felt the challenges of communication gaps, which can lead to uneven performance and diminished morale, especially as teams function under constant pressure to deliver more with less.",
-      },
-      { type: "heading", text: "Empower Team Members" },
-      {
-        type: "paragraph",
-        text: "Leaders who communicate expectations, priorities, and goals clearly empower team members to take ownership confidently. Empowering team members to act and lead demonstrates trust in them and, in turn, strengthens trust in leaders. Delegation builds ownership and commitment, resulting in increased confidence and improved performance. Make sure team members understand how their work contributes to achieving shared goals.",
-      },
-      {
-        type: "callout",
-        text: "The ultimate measure of leadership is the ability to inspire others to succeed collectively. Through consistent trust-building and empowerment, leaders create environments where individuals and organizations thrive together. Knowing each team member as an individual and recognizing the value they bring has a highly positive impact on your team.",
-      },
-      { type: "heading", text: "Engage with Your Team" },
-      {
-        type: "paragraph",
-        text: "Empathy and emotional intelligence are essential for developing strong leadership. Proactively gaining a deeper understanding of each team member\u2019s strengths, drivers, personal goals, and challenges will yield significant dividends as people will feel valued and motivated to consistently bring their best to the team. Encourage open dialogue and develop a culture of psychological safety while promoting active listening. An atmosphere of transparency fosters accountability. Effective leaders inspire through autonomy and creativity rather than control.",
-      },
-      { type: "heading", text: "Set Realistic Goals" },
-      {
-        type: "paragraph",
-        text: "Establishing an achievable path to success requires setting realistic goals, timelines, and deadlines while maintaining team members\u2019 motivation, focus, and well-being. When the team achieves a great outcome, they thrive, cohesion increases, and growth results both professionally and personally. Seek opinions and input from team members to make informed decisions. Your team will go out on a limb for you if individuals trust that their opinions matter. Team members must also know that you will back them, especially as they step outside of their comfort zones.",
-      },
-      { type: "heading", text: "Create Forward Momentum" },
-      {
-        type: "paragraph",
-        text: "High-performing teams value learning and change. Embrace errors as learning opportunities. Foster flexibility, curiosity, and feedback. These actions enhance resilience, encourage forward thinking, and help teams adapt to new challenges. Shared purpose and alignment support motivation and cohesiveness, while diverse skill sets bring a variety of perspectives and approaches to attain strategic goals. Continue to build strength in your team by regularly celebrating achievements, reflecting on lessons learned, and renewing collective team commitment to growth and excellence.",
-      },
-      { type: "divider" },
-      { type: "heading", text: "One final thought" },
-      {
-        type: "callout",
-        text: "Strong teams not only benefit your organization, they also create value for employees, clients, partners, and communities.",
-      },
-      {
-        type: "paragraph",
-        text: "Across departments of transportation, other government agencies, and the broader transportation industry, strong teams consistently achieve key goals that support operational excellence: improve efficiency, reduce costs, and minimize delays; communicate more clearly across roles and disciplines; strengthen engagement; and adapt more effectively to emergencies, shifting priorities, and the unexpected.",
-      },
-    ],
-  },
+
 ];

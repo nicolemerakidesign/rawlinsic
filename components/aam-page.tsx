@@ -8,24 +8,24 @@ import SiteFooter from '@/components/site-footer';
 
 const DRONE_IMG = "/images/pages/aam-hero.webp";
 const CITY_AERIAL_IMG = "/images/pages/aam-city-aerial.webp";
-const INFRASTRUCTURE_IMG = "/images/pages/aam-infrastructure.jpg";
-const TECH_NETWORK_IMG = "/images/pages/aam-tech-network.jpg";
+const INFRASTRUCTURE_IMG = "/images/pages/aam-infrastructure.webp";
+const TECH_NETWORK_IMG = "/images/pages/aam-tech-network.webp";
 const LOGISTICS_IMG = "/images/pages/aam-logistics.webp";
-const PLANNING_IMG = "/images/pages/aam-planning.jpg";
-const SKYLINE_IMG = "/images/pages/aam-skyline.jpg";
-const AERIAL_VIEW_IMG = "/images/pages/aam-aerial-view.jpg";
-const HELICOPTER_IMG = "/images/pages/aam-helicopter.jpg";
-const CONTROL_ROOM_IMG = "/images/pages/aam-control-room.jpg";
+const PLANNING_IMG = "/images/pages/aam-planning.webp";
+const SKYLINE_IMG = "/images/pages/aam-skyline.webp";
+const AERIAL_VIEW_IMG = "/images/pages/aam-aerial-view.webp";
+const HELICOPTER_IMG = "/images/pages/aam-helicopter.webp";
+const CONTROL_ROOM_IMG = "/images/pages/aam-control-room.webp";
 const DEFINE_NEW_IMG = "/images/pages/aam-define.webp";
-const ENABLE_NEW_IMG = "/images/pages/aam-enable-quadrocopter.webp";
+const ENABLE_NEW_IMG = "/images/pages/engineersoperatingdrones.webp";
 const DELIVER_NEW_IMG = "/images/pages/aam-deliver.webp";
 const PHASE3_IMG = "/images/pages/aam-phase3.webp";
 const PHASE4_IMG = "/images/pages/aam-phase4.webp";
 const DRONE_FLIGHT_IMG = "/images/pages/skylimit.webp";
 const BLUEPRINT_IMG = "/images/pages/aam-policy-planning.webp";
-const DATA_CENTER_IMG = "/images/pages/aam-data-center.jpg";
-const HIGHWAY_AERIAL_IMG = "/images/pages/aam-highway-aerial.jpg";
-const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.jpg";
+const DATA_CENTER_IMG = "/images/pages/aam-data-center.webp";
+const HIGHWAY_AERIAL_IMG = "/images/pages/aam-highway-aerial.webp";
+const TEAM_MEETING_IMG = "/images/pages/aam-team-meeting.webp";
 const DEFINE_IMG = "/images/pages/connectingdots.webp";
 const PLANNING2_IMG = "/images/pages/aam-enable.webp";
 const DRONEMOUNTAINS_IMG = "/images/pages/aam-services-portfolio.webp";
@@ -84,7 +84,7 @@ const frameworkCards = [
     accent: "linear-gradient(90deg, #d4b878, #c9a84c)",
     bullets: ["Policy development", "Program framework", "Stakeholder engagement", "Infrastructure planning", "Regulatory compliance"],
     img: ENABLE_NEW_IMG,
-    imgPos: "center 75%",
+    imgPos: "center 60%",
   },
   {
     title: "Deliver Operations",

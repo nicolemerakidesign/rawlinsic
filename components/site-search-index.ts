@@ -24,9 +24,9 @@ const STATIC_ENTRIES: SearchEntry[] = [
     href: "/capabilities",
     category: "Main",
     description:
-      "Explore our practice areas: strategy, operations, and technology — including advanced air mobility, UAS, data governance, automation and AI.",
+      "Three areas of expertise, one mission—to navigate complexity and deliver measurable, lasting outcomes. Strategy, operations, and technology across transportation and infrastructure.",
     keywords:
-      "capabilities services strategy operations technology solutions practice areas consulting practice offerings aam uam uas advanced air mobility urban air mobility uncrewed data governance automation ai drones",
+      "capabilities services strategy operations technology solutions practice areas consulting practice offerings aam uam uas advanced air mobility urban air mobility uncrewed data governance automation ai drones rethink how organization works",
   },
   {
     title: "Strategy",
@@ -122,18 +122,18 @@ const STATIC_ENTRIES: SearchEntry[] = [
     href: "/insights",
     category: "Main",
     description:
-      "Thought leadership, podcasts, and case studies from the Rawlins team.",
+      "Ideas, experiences, and stories shaping better decisions from the Rawlins team.",
     keywords:
-      "insights research perspectives thought leadership podcast case studies articles content library",
+      "insights ideas experiences stories decisions thought leadership podcast case studies articles content library perspectives",
   },
   {
     title: "Thought Leadership",
     href: "/insights/thought-leadership",
     category: "Insights",
     description:
-      "Expert perspectives and practical insights from Rawlins advisors on complex challenges.",
+      "Expert perspectives and practical insights from Rawlins advisors on complex challenges. Latest: Ron Crew on strengthening your team and April Blackburn on data governance.",
     keywords:
-      "thought leadership articles expert perspectives practical insights research advisors writing essays",
+      "thought leadership articles expert perspectives practical insights research advisors writing essays ron crew april blackburn strengthening your team data governance fatigue leadership team building high performance",
   },
   {
     title: "The Rawlins Way — Podcast",

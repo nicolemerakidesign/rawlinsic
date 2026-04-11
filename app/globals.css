@@ -619,6 +619,11 @@ color: #fff;
   grid-column: 1;
   margin-top: 24px;
 }
+/* Team page hero — add extra breathing room between "Keep scrolling"
+   label and the gold scroll-line on desktop. */
+@media (min-width: 769px) {
+  .team-hero-scroll { gap: 28px; }
+}
 .hero-scroll span {
   font-size: 0.75rem; letter-spacing: 3px;
   text-transform: uppercase;
@@ -3031,6 +3036,31 @@ color: #fff;
   background-size: 0% 100%;
   color: #fff; border-color: #fff; font-weight: 800;
 }
+/* Mobile scaling — these live AFTER the base rule so the cascade
+   picks them up. Earlier @media rules up-file were shadowed by the
+   base rule because of source order. */
+@media (max-width: 768px) {
+  .auto-hero-btn {
+    padding: 12px 28px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 420px) {
+  .auto-hero-btn {
+    padding: 11px 22px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+}
+@media (max-width: 360px) {
+  .auto-hero-btn {
+    padding: 10px 18px;
+    font-size: 9.5px;
+    letter-spacing: 1.2px;
+  }
+}
 
 .auto-challenges-grid { grid-template-columns: 1fr 1fr; }
 @media (max-width: 768px) { .auto-challenges-grid { grid-template-columns: 1fr !important; } }
@@ -5199,6 +5229,61 @@ color: #fff;
   color: #fff;
   margin-top: 2px;
 }
+/* Clickable author avatar + name — opens the team member popup */
+.tla-author-avatar-btn {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tla-author-avatar-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.55);
+}
+.tla-author-name-btn {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+}
+.tla-author-name-btn:hover .tla-author-name {
+  background: linear-gradient(135deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tla-author-linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  margin-top: 8px;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+.tla-author-linkedin span {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0e1e3a;
+  line-height: 1;
+  letter-spacing: -0.3px;
+}
+.tla-author-linkedin:hover {
+  transform: scale(1.08);
+  filter: brightness(1.05);
+}
 .tla-author-contact {
   display: block;
   font-family: var(--font-dm-sans), sans-serif;
@@ -5206,20 +5291,21 @@ color: #fff;
   color: #fff;
 }
 
-/* ── PDF Download Button (gold gradient fill on hover) ── */
+/* ── PDF Download Button — gold filled by default, wipes to
+   transparent outline on hover (inverted from previous behavior) ── */
 .tla-pdf-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 12px 24px;
-  border: 1px solid rgba(201,168,76,0.5);
+  border: 1px solid #c9a84c;
   border-radius: 6px;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #fff;
+  color: #060c16;
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -5230,18 +5316,154 @@ color: #fff;
   position: absolute;
   inset: 0;
   background: linear-gradient(145deg, #e8d5a0, #c9a84c);
-  transform: scaleX(0);
-  transform-origin: left;
+  transform: scaleX(1);
+  transform-origin: right;
   transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.tla-pdf-btn:hover::before { transform: scaleX(1); }
-.tla-pdf-btn:hover { color: #060c16; border-color: #c9a84c; }
+.tla-pdf-btn:hover::before { transform: scaleX(0); }
+.tla-pdf-btn:hover { color: #fff; border-color: rgba(201,168,76,0.5); }
 .tla-pdf-btn svg, .tla-pdf-btn span {
   position: relative;
   z-index: 1;
 }
 .tla-pdf-btn svg {
   stroke: currentColor;
+}
+
+/* ── "One Final Thought" feature section ── */
+.tla-final-thought {
+  /* Pull up over the preceding .tla-content section's bottom padding
+     so there's no dead space above the title. */
+  margin-top: -60px;
+  padding: 0 40px 24px;
+  position: relative;
+}
+.tla-final-thought-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+}
+.tla-final-thought-title {
+  font-family: var(--font-cormorant), serif;
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 500;
+  background: linear-gradient(135deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 20px;
+}
+.tla-final-thought-quote {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  margin: 0;
+  padding: 28px 32px;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, #c9a84c, #e8d5a0, #d4b878) 1;
+  background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.02) 100%);
+  border-radius: 0 10px 10px 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: background 0.25s ease;
+}
+.tla-final-thought-quote:hover {
+  background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%);
+}
+.tla-final-thought-quote:disabled {
+  cursor: default;
+}
+.tla-final-thought-quote > p {
+  flex: 1;
+  font-family: var(--font-cormorant), serif;
+  font-size: 26px;
+  line-height: 1.5;
+  font-weight: 500;
+  font-style: italic;
+  color: #fff;
+  margin: 0;
+}
+.tla-final-thought-chevron {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  transition: transform 0.35s ease;
+}
+.tla-final-thought-chevron.open {
+  transform: rotate(180deg);
+}
+.tla-final-thought-body-wrap {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.35s ease,
+              padding 0.35s ease;
+  padding: 0 32px;
+}
+.tla-final-thought-body-wrap.open {
+  max-height: 600px;
+  opacity: 1;
+  padding: 22px 32px 4px;
+}
+.tla-final-thought-body {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.82);
+  margin: 0;
+  font-style: normal;
+}
+@media (max-width: 768px) {
+  .tla-final-thought { margin-top: -40px; padding: 0 24px 16px; }
+  .tla-final-thought-title { font-size: 30px; margin-bottom: 16px; }
+  .tla-final-thought-quote { padding: 24px; }
+  .tla-final-thought-quote > p { font-size: 21px; }
+  .tla-final-thought-body { font-size: 15px; }
+}
+
+/* ── Article CTA section (gold-accent, no top label) ── */
+.tla-cta {
+  padding: 100px 40px;
+  position: relative;
+}
+.tla-cta-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.tla-cta-title {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+}
+.tla-cta-body {
+  opacity: 1;
+  transform: none;
+  animation: none;
+  text-align: center;
+  margin: 0 auto 36px;
+  max-width: 680px;
+}
+.tla-cta-btn {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+@media (max-width: 768px) {
+  .tla-cta { padding: 72px 24px; }
 }
 
 /* ── Inline Article Image ── */
@@ -5256,7 +5478,7 @@ color: #fff;
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* ── Article Body ── */
@@ -5274,6 +5496,32 @@ color: #fff;
   padding-left: 20px;
   border-left: 3px solid transparent;
   border-image: linear-gradient(180deg, #c9a84c, #e8d5a0, #d4b878) 1;
+}
+.tla-footnote-marker {
+  font-size: 0.6em;
+  font-weight: 600;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 2px;
+  color: #d4b878;
+}
+.tla-citation {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 11px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.65);
+  margin: -16px 0 32px;
+  padding-left: 20px;
+  font-style: italic;
+}
+.tla-citation::before {
+  content: "1 ";
+  font-weight: 600;
+  color: #d4b878;
+  font-style: normal;
+  vertical-align: super;
+  font-size: 0.85em;
+  margin-right: 2px;
 }
 
 /* ── Accordion ── */
@@ -5348,6 +5596,24 @@ color: #fff;
 }
 .tla-accordion-trigger:hover {
   background: rgba(255,255,255,0.02);
+}
+/* Variant without the Q badge — replace the badge with a slim vertical
+   gold bar flush beside each title so the row doesn't feel empty. */
+.tla-accordion-noq .tla-accordion-trigger { padding-left: 28px; }
+.tla-accordion-noq .tla-q-text {
+  padding-left: 24px;
+  position: relative;
+}
+.tla-accordion-noq .tla-q-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -6px;
+  bottom: -6px;
+  width: 2px;
+  border-radius: 0;
+  background: linear-gradient(180deg, #c9a84c 0%, #e8d5a0 50%, #d4b878 100%);
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.35);
 }
 
 /* Q icon — gold gradient text */
@@ -5893,7 +6159,7 @@ color: #fff;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url('/images/pages/cap-hero.webp');
+  background-image: url('/images/pages/cap-hero-icons.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
