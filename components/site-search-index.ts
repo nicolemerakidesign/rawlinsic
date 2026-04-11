@@ -1,5 +1,17 @@
 import { CASE_STUDIES } from "@/components/case-studies-data";
 import { THOUGHT_LEADERSHIP } from "@/components/thought-leadership-data";
+import { TEAM_MEMBERS } from "@/lib/team-data";
+
+/** Mirror of memberSlug() in team-page.tsx. Inlined here so this index
+ *  module stays free of client-component imports. Keep these in sync. */
+function memberSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[.,]/g, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 export type SearchEntry = {
   title: string;
@@ -220,8 +232,36 @@ const TL_ENTRIES: SearchEntry[] = THOUGHT_LEADERSHIP.map((a) => {
   };
 });
 
+const TEAM_ENTRIES: SearchEntry[] = TEAM_MEMBERS.map((m) => {
+  const descParts = [m.title, m.role, m.location].filter(Boolean);
+  const description = descParts.join(" · ");
+  const keywordParts = [
+    "team",
+    "people",
+    "person",
+    "bio",
+    "biography",
+    m.name,
+    m.title || "",
+    m.role,
+    m.location,
+    m.email,
+    (m.categories || []).join(" "),
+    m.background,
+    m.achievements,
+  ];
+  return {
+    title: m.name,
+    href: `/about/our-people#${memberSlug(m.name)}`,
+    category: "Team",
+    description,
+    keywords: keywordParts.join(" ").toLowerCase().slice(0, 2000),
+  };
+});
+
 export const SEARCH_INDEX: SearchEntry[] = [
   ...STATIC_ENTRIES,
   ...CASE_STUDY_ENTRIES,
   ...TL_ENTRIES,
+  ...TEAM_ENTRIES,
 ];
