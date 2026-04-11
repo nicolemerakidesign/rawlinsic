@@ -34,12 +34,21 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Rawlins Infra Consult",
     type: "website",
+    images: [
+      {
+        url: "/images/pages/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Rawlins Infra Consult",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Rawlins Infra Consult",
     description:
       "Global consultancy at the intersection of strategy, operations, and technology.",
+    images: ["/images/pages/og-image.png"],
   },
   robots: {
     index: true,
@@ -53,7 +62,7 @@ const ORGANIZATION_SCHEMA = {
   name: "Rawlins Infra Consult",
   alternateName: "Rawlins IC",
   url: SITE_URL,
-  logo: `${SITE_URL}/images/pages/hero-bg.webp`,
+  logo: `${SITE_URL}/images/pages/rawlins-logo.png`,
   description:
     "Global consultancy at the intersection of strategy, operations, and technology — helping organizations translate ambitious priorities into measurable results.",
   email: "info@rawlinsic.com",
@@ -98,8 +107,8 @@ const LOCAL_BUSINESS_SCHEMA = {
   name: "Rawlins Infra Consult",
   alternateName: "Rawlins IC",
   url: SITE_URL,
-  image: `${SITE_URL}/images/pages/hero-bg.webp`,
-  logo: `${SITE_URL}/images/pages/hero-bg.webp`,
+  image: `${SITE_URL}/images/pages/og-image.png`,
+  logo: `${SITE_URL}/images/pages/rawlins-logo.png`,
   description:
     "Global consultancy at the intersection of strategy, operations, and technology — helping public agencies and private organizations translate ambitious priorities into measurable results.",
   email: "info@rawlinsic.com",
