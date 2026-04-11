@@ -229,6 +229,16 @@ export default function RootLayout({
           document.addEventListener('keydown',function(e){if(e.key==='Tab')document.body.classList.add('keyboard-nav')});
           document.addEventListener('mousedown',function(){document.body.classList.remove('keyboard-nav')});
         `}</Script>
+        {/* Reveal the custom cursor only after a real mousemove so it
+            never flashes stuck in the top-left on page load. Touch
+            devices never fire mousemove, so the cursor stays hidden
+            on phones and tablets. */}
+        <Script id="custom-cursor-reveal" strategy="afterInteractive">{`
+          (function(){
+            function reveal(){document.body.classList.add('has-custom-cursor');document.removeEventListener('mousemove',reveal);}
+            document.addEventListener('mousemove',reveal,{passive:true});
+          })();
+        `}</Script>
       </body>
     </html>
   );

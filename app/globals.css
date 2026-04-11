@@ -268,17 +268,18 @@ body.keyboard-nav .cursor-ring {
 
 /* ── Gold Utilities ──────────────────────────── */
 /* `.gold-text` paints a gold gradient on the text via background-clip.
-   CRITICAL: `-webkit-background-clip: text` only clips text that is a
-   DIRECT child of the element — text nested inside child spans
-   (e.g. `.hero-label > .gold-text > .hero-label-segment`) does NOT
-   get the clipped gradient and renders transparent because
-   `-webkit-text-fill-color: transparent` is not inherited.
-   Solution: apply the gradient + clip to every descendant element
-   as well, so each nested span gets its own clipped gradient paint.
-   Also set `color: #c9a84c` as a solid-gold fallback so text stays
-   visible if background-clip fails for any reason. */
+   `-webkit-background-clip: text` only clips text that is a DIRECT
+   child of the element. When `.gold-text` wraps nested spans (e.g.
+   `.hero-label > .gold-text > .hero-label-segment`) the grandchild
+   text never gets clipped. Solution: apply the same gold paint to
+   `.hero-label-segment` specifically (the one pattern that nests)
+   instead of a universal `.gold-text *` selector — universal
+   descendant selectors blow up paint cost during scroll because
+   every child repaints its own gradient + background-clip layer.
+   Solid `color: #c9a84c` stays as a fallback so text is always
+   visible even if the gradient clipping fails for any reason. */
 .gold-text,
-.gold-text * {
+.gold-text .hero-label-segment {
   color: #c9a84c;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   -webkit-background-clip: text;
@@ -287,7 +288,7 @@ body.keyboard-nav .cursor-ring {
 }
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
   .gold-text,
-  .gold-text * {
+  .gold-text .hero-label-segment {
     background: none;
     color: #c9a84c;
     -webkit-text-fill-color: #c9a84c;
@@ -314,14 +315,23 @@ body.keyboard-nav .cursor-ring {
 .section-divider .gold-line { opacity: 0.4; }
 
 /* ── Custom Cursor ───────────────────────────── */
+/* Both elements start OFFSCREEN and INVISIBLE. The cursor JS adds
+   `body.has-custom-cursor` on the first real mousemove and sets
+   their position. Before that they'd otherwise render at (0,0)
+   — stuck in the upper-left of the viewport — because `position:
+   fixed` with no explicit coords defaults to the containing block
+   origin. On touch devices no mousemove ever fires, so they stay
+   hidden entirely. */
 .cursor-dot {
   width: 8px; height: 8px;
   background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
   border-radius: 50%;
   position: fixed;
+  top: -100px; left: -100px;
+  opacity: 0;
   pointer-events: none;
   z-index: 10000;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
 .cursor-ring {
   width: 40px; height: 40px;
@@ -329,9 +339,15 @@ body.keyboard-nav .cursor-ring {
   border-radius: 50%;
   background: transparent;
   position: fixed;
+  top: -100px; left: -100px;
+  opacity: 0;
   pointer-events: none;
   z-index: 10000;
-  transition: width 0.3s, height 0.3s;
+  transition: width 0.3s, height 0.3s, opacity 0.15s ease;
+}
+body.has-custom-cursor .cursor-dot,
+body.has-custom-cursor .cursor-ring {
+  opacity: 1;
 }
 .cursor-ring.hover {
   width: 60px; height: 60px;
