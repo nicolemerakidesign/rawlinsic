@@ -2035,7 +2035,10 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .explore-bottom .explore-card { height: 240px; }
 }
 @media (max-width: 768px) {
-  .hero { height: 100vh; height: 100dvh; min-height: 600px; }
+  /* Use `svh` (small viewport height) so the hero doesn't resize
+     and visually "zoom" as the iOS/Android URL bar hides when
+     scrolling. `svh` is constant; `dvh` changes with chrome. */
+  .hero { height: 100svh; min-height: 600px; }
   .hero-title { font-size: clamp(2.4rem, 7vw, 3rem); }
   .hero-sub { font-size: 0.95rem; line-height: 1.7; }
   .auto-hero-btn { padding: 12px 28px; font-size: 11px; letter-spacing: 2px; white-space: nowrap; }
@@ -3920,6 +3923,24 @@ color: #fff;
   background-attachment: fixed;
   opacity: 0.12;
 }
+/* Mobile + iOS: `background-attachment: fixed` causes scroll jank
+   and doesn't work on iOS Safari anyway. Drop it globally so pages
+   stop jumping/zooming as the viewport height changes with the
+   URL bar. */
+@media (max-width: 900px) {
+  .hero-parallax-bg,
+  .parallax-panel-img,
+  .cta-parallax-bg {
+    background-attachment: scroll;
+  }
+}
+@supports (-webkit-touch-callout: none) {
+  .hero-parallax-bg,
+  .parallax-panel-img,
+  .cta-parallax-bg {
+    background-attachment: scroll;
+  }
+}
 .section-team { position: relative; overflow: hidden; }
 
 /* ── Responsive ───────────────────────────────────────── */
@@ -4182,6 +4203,16 @@ color: #fff;
   position: relative; z-index: 2;
   max-width: 860px;
 }
+/* Case Studies hero label — each segment wraps as a whole unit so
+   "Proven Impact" never splits across lines. Both segments are
+   inline-block with white-space: nowrap, and the parent wraps
+   between them when needed (mobile). */
+.cs-hero-label { display: block; }
+.cs-hero-label-seg {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .cs-hero .hero-sub,
 .cs-hero .cs-hero-sub {
   font-size: 17px;
@@ -4257,9 +4288,10 @@ color: #fff;
 .cs-card-title {
   font-family: var(--font-cormorant), serif;
   font-size: 34px;
-  font-weight: 500;
+  font-weight: 700;
   color: #fff;
   margin: 0;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 }
 .cs-card-divider {
   width: 40px;
@@ -4275,7 +4307,7 @@ color: #fff;
 .cs-card-desc {
   font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.75;
   color: #fff;
   margin: 0;
@@ -4286,6 +4318,7 @@ color: #fff;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
 }
 .cs-card:hover .cs-card-desc {
   max-height: 120px;
@@ -4396,20 +4429,15 @@ color: #fff;
   text-align: center;
   padding: 140px 40px 60px;
   overflow: hidden;
-  /* Dark brand background as the pre-image state so the hero doesn't
-     flash white/empty before the hero photo has decoded. */
-  background-color: #060c16;
+  /* Dark-blue brand gradient as the pre-image state so the hero
+     never flashes black/white before the hero photo has decoded —
+     matches the overlay colors so the transition is invisible. */
+  background:
+    linear-gradient(180deg, #0a1628 0%, #0e1e3a 50%, #060c16 100%);
 }
 .csd-hero-img {
   object-fit: cover;
   object-position: center;
-  /* Fade the image in once it's decoded, instead of popping it in
-     against whatever is underneath. */
-  animation: csdHeroFade 0.5s ease-out both;
-}
-@keyframes csdHeroFade {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 .csd-hero-overlay {
   position: absolute;
@@ -4890,6 +4918,7 @@ color: #fff;
     -webkit-tap-highlight-color: transparent;
     padding: 0;
     margin-top: 14px;
+    margin-bottom: 32px;
   }
   .tl-hero-para-toggle svg { stroke: #fff; display: block; }
   .tl-hero-para-wrap.expanded .tl-hero-para-toggle {
@@ -5503,7 +5532,7 @@ color: #fff;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+  transition: max-height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
               opacity 0.35s ease,
               padding 0.35s ease;
   padding: 0 32px;
@@ -5513,11 +5542,15 @@ color: #fff;
   opacity: 1;
   padding: 22px 32px 4px;
 }
+/* Match .tla-paragraph (the answer/body text inside Q&A accordion
+   panels) so the "One Final Thought" expanded text feels like any
+   other expanded accordion section. */
 .tla-final-thought-body {
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 16px;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.82);
+  font-weight: 500;
+  line-height: 1.9;
+  color: #fff;
   margin: 0;
   font-style: normal;
 }
@@ -6251,6 +6284,7 @@ color: #fff;
   background-image: url('/images/pages/cap-hero-icons.webp');
   background-size: cover;
   background-position: center;
+  /* Fixed on desktop only — mobile override added below in media query. */
   background-attachment: fixed;
   /* Reserve space at the top for the fixed nav and at the bottom for
      .hero-scroll. When the viewport is narrow and the hero title wraps
