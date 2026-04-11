@@ -37,6 +37,17 @@ export default function ContactPage() {
   const [honeypot, setHoneypot] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const successRef = useRef<HTMLDivElement>(null);
+
+  /* When the form transitions to the success state, scroll the success
+     panel into view. On mobile the success state is shorter than the
+     form so the page collapses upward and the message can end up out
+     of view. */
+  useEffect(() => {
+    if (submitted && successRef.current) {
+      successRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [submitted]);
 
   /* Load reCAPTCHA v3 script if a site key is configured */
   useEffect(() => {
@@ -510,7 +521,7 @@ export default function ContactPage() {
                   )}
                 </form>
               ) : (
-                <div className="form-success">
+                <div className="form-success" ref={successRef}>
                   <div className="form-success-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <polyline points="20 6 9 17 4 12" />
