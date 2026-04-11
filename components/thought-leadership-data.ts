@@ -14,6 +14,14 @@ export interface ThoughtLeadershipArticle {
   heroImage: string;
   authorImage: string;
   pdfUrl: string;
+  /**
+   * "qa"   — the Q&A accordion layout (default). Use "question" blocks
+   *          to start accordion sections.
+   * "essay"— linear reading flow. All blocks (intro, heading, paragraph,
+   *          callout, list) render in order in the right column. No
+   *          accordion, no Q badge.
+   */
+  format?: "qa" | "essay";
   content: ArticleSection[];
 }
 
@@ -32,24 +40,24 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     authorRole: "Infrastructure Advisor",
     authorEmail: "April@RawlinsIC.com",
     authorPhone: "(850) 228-1453",
-    date: "2026-03-01",
-    dateLabel: "March 2026",
+    date: "2026-04-01",
+    dateLabel: "April 2026",
     category: "Technology Strategy",
     excerpt:
-      "Many companies struggle to implement effective data governance. In this Q&A, April Blackburn discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies.",
+      "Many companies struggle to establish effective data governance. In this Q&A, April Blackburn discusses implementing effective data governance and the essential elements of a solid governance foundation.",
     image: "/images/tl-april-blackburn-banner.webp",
     heroImage: "/images/pages/tl-hero.webp",
-    authorImage:
-      "/images/team/april.webp",
+    authorImage: "/images/team/april.webp",
     pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",
+    format: "qa",
     content: [
       {
         type: "intro",
-        text: "Many companies struggle to implement effective data governance. Research shows widespread adoption of data governance practices, yet maturity levels remain low.",
+        text: "Many companies struggle to establish effective data governance. Research shows widespread adoption of data governance practices, yet maturity levels remain low.",
       },
       {
         type: "paragraph",
-        text: "In the following Q&A, April Blackburn, who specializes in technology strategy at Rawlins, discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies, and the essential elements of a solid governance foundation. Over her career, April has led major enterprise-level initiatives, from modernizing legacy systems to transforming agency operations.",
+        text: "We sat down with April Blackburn, who specializes in technology strategy at Rawlins, to discuss implementing effective data governance and the essential elements of a solid governance foundation. Over her career, April has led major enterprise-level initiatives, from modernizing legacy systems to transforming transportation agency operations.",
       },
       { type: "divider" },
       {
@@ -62,11 +70,11 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
       },
       {
         type: "paragraph",
-        text: "A formalized data governance framework, rather than ad hoc, case-by-case practices, builds trust and helps the organization stay resilient as circumstances change. It also enables people to carry out mission-critical functions. Performance management, federal reporting, and predictive maintenance, for example, can only work well when the underlying data is consistent and trusted. Strong governance turns individual wins into repeatable, scalable practices.",
+        text: "A formalized data governance framework, as opposed to case-by-case practices, builds trust and helps the organization stay resilient as circumstances change. It also enables people to carry out mission-critical functions. Performance management, federal reporting, and predictive maintenance, for example, can only work well when the underlying data is consistent and trusted. Strong governance turns individual wins into repeatable, scalable practices.",
       },
       {
         type: "paragraph",
-        text: "Data affects operations, asset management, planning, and finance\u2014every part of an organization. When taking an enterprise view of data and governance, you are really asking, How do we manage this foundational asset so people throughout the organization can rely on it?",
+        text: "Data affects operations, asset management, planning, finance\u2014every part of an organization. When taking an enterprise view of data and governance, you are really asking how to manage this foundational asset so people throughout the organization can rely on it.",
       },
       { type: "divider" },
       {
@@ -79,15 +87,15 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
       },
       {
         type: "paragraph",
-        text: "We have found that silos\u2014driven by legacy technology, organizational structures predating enterprise-wide data strategy, high integration costs, and unclear data ownership\u2014often foster territorial behavior that impedes cross-functional data governance. Data managed strictly by departments or trapped in older systems becomes fragmented and hard to use consistently. DOTs make more progress when they focus on high-value, mission-critical data and organize governance around data domains, such as assets or finance, rather than organizational charts.",
+        text: "We have found that silos\u2014driven by legacy technology, organizational structures predating an enterprise-wide data strategy, high integration costs, and unclear data ownership\u2014often foster territorial behavior that impedes cross-functional data governance. Data managed strictly by departments or trapped in older systems becomes fragmented and hard to use consistently. DOTs make more progress when they focus on high-value, mission-critical data and organize governance around data domains, such as assets or finance, instead of organizational charts.",
       },
       {
         type: "paragraph",
-        text: "Another challenge is that people often resist governance because they perceive it as an IT-driven compliance task rather than recognizing it as a critical business capability across the organization; they also see governance as extra work on top of their regular responsibilities. However, when people\u2019s experience shows that well-designed governance reduces rework, improves data quality, and makes their jobs easier, excitement builds. Small wins create momentum because the value is visible.",
+        text: "Another challenge is that people often resist governance because they perceive it as an IT-driven compliance task rather than recognizing it as a foundational business capability across the organization; they also see governance as extra work on top of their regular responsibilities. However, when experience shows that well-designed governance reduces rework, improves data quality, and makes their jobs easier, excitement builds. Small wins create momentum because the value is visible.",
       },
       {
         type: "callout",
-        text: "In reality, governance matters because it supports what leaders already care about\u2014funding, safety, performance, and defensible decisions. When that connection is clear, governance feels practical, rather than theoretical.",
+        text: "In reality, governance matters because it supports what leaders already care about\u2014funding, safety, performance, and defensible decisions. When that connection is clear, governance feels practical, not theoretical.",
       },
       {
         type: "paragraph",
@@ -133,44 +141,33 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
       },
       {
         type: "answer",
-        text: "If we are serious about modern transportation, we have to be serious about our data. Technology will only become more integral to everything we do. That means the foundation has to be solid. There are five elements we consider when building a strong data governance foundation.",
+        text: "If we are serious about modern transportation, we have to be serious about our data. Technology will only become more integral to everything we do. That means the foundation has to be solid.",
       },
       {
-        type: "heading",
-        text: "Ownership and Accountability",
+        type: "paragraph",
+        text: "There are five elements we consider when building a strong data governance foundation:",
       },
+      { type: "heading", text: "Ownership and Accountability" },
       {
         type: "paragraph",
         text: "Every major data domain needs a clearly defined owner and steward. Governance does not work without accountability. When ownership is unclear, issues sit unresolved and trust declines. When it is clear, decisions get made and standards hold.",
       },
-      {
-        type: "heading",
-        text: "Policies and Standards",
-      },
+      { type: "heading", text: "Policies and Standards" },
       {
         type: "paragraph",
         text: "Organizations need consistent definitions and agreed-upon rules for how data is created, used, and shared. These should support how the agency actually operates. Consistency is what allows leaders to rely on reports across divisions without second-guessing the results.",
       },
-      {
-        type: "heading",
-        text: "Data Quality and Security",
-      },
+      { type: "heading", text: "Data Quality and Security" },
       {
         type: "paragraph",
         text: "Data must be accurate, complete, and protected. Quality cannot be assumed. It has to be monitored and reinforced. When leaders connect data quality to funding decisions, safety outcomes, and performance measures, governance becomes part of the business conversation, rather than an IT task.",
       },
-      {
-        type: "heading",
-        text: "Lifecycle and Traceability",
-      },
+      { type: "heading", text: "Lifecycle and Traceability" },
       {
         type: "paragraph",
         text: "Data does not just appear in a dashboard. It originates somewhere; it moves; it is transformed; and it is reported. People must be able to trace that path. They need to see where a number came from and reproduce it using the same data and logic. If results cannot be recreated, confidence drops quickly. Leaders cannot make sound decisions if they doubt the numbers.",
       },
-      {
-        type: "heading",
-        text: "Culture and Leadership",
-      },
+      { type: "heading", text: "Culture and Leadership" },
       {
         type: "paragraph",
         text: "Governance is sustained by culture. Tools and policies matter, but leadership behavior matters more. Leaders set expectations by asking thoughtful questions about the data behind the information they receive. They remove organizational barriers and reinforce that stewardship is part of each role. When governance is reflected in performance discussions and leadership KPIs, it becomes embedded in how the organization operates.",
@@ -183,65 +180,77 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     ],
   },
   {
-    slug: "minimizing-data-governance-fatigue-2",
-    title: "Minimizing Data Governance Fatigue to Maximize Value",
-    subtitle: "Overcoming obstacles to achieve enterprise-wide impact",
-    author: "April Blackburn",
+    slug: "strengthening-your-team",
+    title: "Strengthening Your Team",
+    subtitle: "Key actions to cultivate high performance",
+    author: "Ron Crew",
     authorRole: "Infrastructure Advisor",
-    authorEmail: "April@RawlinsIC.com",
-    authorPhone: "(850) 228-1453",
-    date: "2026-03-01",
-    dateLabel: "March 2026",
-    category: "Technology Strategy",
+    authorEmail: "Ron@RawlinsIC.com",
+    authorPhone: "(727) 348-5136",
+    date: "2026-04-01",
+    dateLabel: "April 2026",
+    category: "Leadership",
     excerpt:
-      "Many companies struggle to implement effective data governance. In this Q&A, April Blackburn discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies.",
-    image: "/images/tl-april-blackburn-banner.webp",
-    heroImage: "/images/pages/tl-hero.webp",
-    authorImage:
-      "/images/team/april.webp",
-    pdfUrl: "/thought-leadership-april-blackburn-data-governance.pdf",
+      "Over the course of his career, Ron Crew has built and led strong teams that have successfully delivered complex right-of-way projects. He shares key actions to pave the way for a high-performing team through the Rawlins lens.",
+    image: "/images/pages/auto-team.jpg",
+    heroImage: "/images/pages/home-team-bg.webp",
+    authorImage: "/images/team/ron.webp",
+    pdfUrl: "/thought-leadership-ron-crew-strengthening-your-team.pdf",
+    format: "essay",
     content: [
       {
         type: "intro",
-        text: "Many companies struggle to implement effective data governance. Research shows widespread adoption of data governance practices, yet maturity levels remain low.",
+        text: "Is a strong team important to your organization? Is a strong team possible in your organization? Can you strengthen your team as a manager, team leader, or supervisor? You likely answered yes to all three questions\u2014now, let\u2019s explore key actions to pave the way for a high-performing team through the Rawlins lens.",
       },
+      { type: "heading", text: "Key Actions" },
+      { type: "heading", text: "Set the Standard" },
       {
         type: "paragraph",
-        text: "In the following Q&A, April Blackburn, who specializes in technology strategy at Rawlins, discusses overcoming obstacles to implementing effective data governance for organizations, including transportation public agencies, and the essential elements of a solid governance foundation. Over her career, April has led major enterprise-level initiatives, from modernizing legacy systems to transforming agency operations.",
+        text: "We\u2019ve all heard this saying before\u2014lead by example. Still, the concept is valid as all eyes are on the team leader. Effective leaders set the tone for behavior, performance, and culture. Team members watch how you handle decisions, how you react to setbacks, and how you treat others. Leading by example requires sincerity, fairness, decisiveness, consistency, clarity, and a determination to uphold the values you expect from your team.",
       },
-      { type: "divider" },
-      {
-        type: "question",
-        text: "What is data governance, and why does it matter for transportation agencies and other organizations?",
-      },
-      {
-        type: "answer",
-        text: "You really cannot talk about modern transportation without talking about data. It touches everything. Data governance sets out the conditions for effective decision-making based on trustworthy information; it is the framework of policies, roles, and processes that defines how data is owned, managed, and used across an organization. Simply put, data governance is about making sure data actually works for you rather than against you.",
-      },
+      { type: "heading", text: "Build Team Trust and Respect" },
       {
         type: "paragraph",
-        text: "A formalized data governance framework, rather than ad hoc, case-by-case practices, builds trust and helps the organization stay resilient as circumstances change. It also enables people to carry out mission-critical functions. Performance management, federal reporting, and predictive maintenance, for example, can only work well when the underlying data is consistent and trusted. Strong governance turns individual wins into repeatable, scalable practices.",
+        text: "Strong teams emerge in a culture of mutual trust. Effective leaders build trust over time through consistent actions (explored below), creating a virtuous cycle. Trust between team members stems from clear expectations and shared goals communicated by leaders. When people feel trusted and respected, they bring out the best in each other. From there, cohesion and motivation\u2014also essential to building high-performing teams\u2014develop and reinforce each other, setting the stage for additional capabilities.",
       },
+      { type: "heading", text: "Communicate Clearly" },
       {
         type: "paragraph",
-        text: "Data affects operations, asset management, planning, and finance\u2014every part of an organization. When taking an enterprise view of data and governance, you are really asking, How do we manage this foundational asset so people throughout the organization can rely on it?",
+        text: "Leaders provide the context for clear communication by articulating a clear vision for the team. Clear communication enables teams to align with a shared purpose and solve problems efficiently\u2014freeing up time and mental space to innovate and improve outcomes. Across transportation and infrastructure projects, clear communication underpins safety, reliability, and productivity. Whether you lead a division within an organization, manage project teams, or supervise field crews, you\u2019ve likely felt the challenges of communication gaps, which can lead to uneven performance and diminished morale, especially as teams function under constant pressure to deliver more with less.",
       },
-      { type: "divider" },
-      {
-        type: "question",
-        text: "What are a few of the main barriers to good data governance, and how can they be overcome?",
-      },
-      {
-        type: "answer",
-        text: "One of the biggest barriers is data fatigue. Departments of Transportation (DOTs) and other organizations have long struggled to implement effective data governance, despite ongoing efforts. So, they are now asking fair questions: Haven\u2019t we already done this work? Why do we have to do more? Likely, in such cases, the work was limited or uneven, with governance addressing a system, a project, or a reporting need but not extending across the organization. When that happens, reporting becomes inconsistent, confidence in the data drops, and trust erodes. This situation leads to another barrier: silos.",
-      },
+      { type: "heading", text: "Empower Team Members" },
       {
         type: "paragraph",
-        text: "Overcoming these barriers takes a practical, phased approach that meets DOTs and other organizations where they are. Governance works best when it starts with clear priorities, grows over time, and becomes part of how people already work. That approach builds trust, supports mission-critical functions, and helps all organizations move forward.",
+        text: "Leaders who communicate expectations, priorities, and goals clearly empower team members to take ownership confidently. Empowering team members to act and lead demonstrates trust in them and, in turn, strengthens trust in leaders. Delegation builds ownership and commitment, resulting in increased confidence and improved performance. Make sure team members understand how their work contributes to achieving shared goals.",
       },
       {
         type: "callout",
-        text: "At the end of the day, governance is about trust. When people trust the data, they can justify investments, defend priorities, and move forward with confidence. Without that trust, progress slows. With it, agencies are positioned to use technology effectively and improve transportation outcomes.",
+        text: "The ultimate measure of leadership is the ability to inspire others to succeed collectively. Through consistent trust-building and empowerment, leaders create environments where individuals and organizations thrive together. Knowing each team member as an individual and recognizing the value they bring has a highly positive impact on your team.",
+      },
+      { type: "heading", text: "Engage with Your Team" },
+      {
+        type: "paragraph",
+        text: "Empathy and emotional intelligence are essential for developing strong leadership. Proactively gaining a deeper understanding of each team member\u2019s strengths, drivers, personal goals, and challenges will yield significant dividends as people will feel valued and motivated to consistently bring their best to the team. Encourage open dialogue and develop a culture of psychological safety while promoting active listening. An atmosphere of transparency fosters accountability. Effective leaders inspire through autonomy and creativity rather than control.",
+      },
+      { type: "heading", text: "Set Realistic Goals" },
+      {
+        type: "paragraph",
+        text: "Establishing an achievable path to success requires setting realistic goals, timelines, and deadlines while maintaining team members\u2019 motivation, focus, and well-being. When the team achieves a great outcome, they thrive, cohesion increases, and growth results both professionally and personally. Seek opinions and input from team members to make informed decisions. Your team will go out on a limb for you if individuals trust that their opinions matter. Team members must also know that you will back them, especially as they step outside of their comfort zones.",
+      },
+      { type: "heading", text: "Create Forward Momentum" },
+      {
+        type: "paragraph",
+        text: "High-performing teams value learning and change. Embrace errors as learning opportunities. Foster flexibility, curiosity, and feedback. These actions enhance resilience, encourage forward thinking, and help teams adapt to new challenges. Shared purpose and alignment support motivation and cohesiveness, while diverse skill sets bring a variety of perspectives and approaches to attain strategic goals. Continue to build strength in your team by regularly celebrating achievements, reflecting on lessons learned, and renewing collective team commitment to growth and excellence.",
+      },
+      { type: "divider" },
+      { type: "heading", text: "One final thought" },
+      {
+        type: "callout",
+        text: "Strong teams not only benefit your organization, they also create value for employees, clients, partners, and communities.",
+      },
+      {
+        type: "paragraph",
+        text: "Across departments of transportation, other government agencies, and the broader transportation industry, strong teams consistently achieve key goals that support operational excellence: improve efficiency, reduce costs, and minimize delays; communicate more clearly across roles and disciplines; strengthen engagement; and adapt more effectively to emergencies, shifting priorities, and the unexpected.",
       },
     ],
   },

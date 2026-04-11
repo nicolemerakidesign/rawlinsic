@@ -173,7 +173,7 @@ export default function ThoughtLeadershipOverview() {
             </span>
             <h1 className="hero-title">Thought Leadership</h1>
             <p className="hero-sub cs-hero-sub">
-              At Rawlins, our thought leadership reflects the depth of our experience advising organizations through complex challenges and change. We share practical insights and forward-looking perspectives to help you make informed decisions and move forward with confidence.
+              At Rawlins, our thought leadership reflects the depth of our experience advising organizations through complex challenges and change. We share practical insights and forward-looking perspectives to help you make informed decisions and move forward with confidence. We share perspectives on the challenges shaping our clients&rsquo; work and will add more insights over time.
             </p>
           </div>
         </section>
@@ -302,33 +302,6 @@ export default function ThoughtLeadershipOverview() {
           </div>
         </section>
 
-        {/* Divider */}
-        <div className="section-divider">
-          <div className="gold-line" />
-        </div>
-
-        {/* ── CTA Section ── */}
-        <section className="section-team" id="contribute">
-          <div className="team-content reveal">
-            <p className="section-label">
-              <span className="gold-text">Share Your Expertise</span>
-            </p>
-            <h2 className="section-title">
-              Have a perspective to <em>contribute?</em>
-            </h2>
-            <p className="team-desc">
-              Rawlins is always looking to amplify expert voices across the
-              transportation and infrastructure community. If you&rsquo;re interested in
-              contributing thought leadership, we&rsquo;d love to hear from you.
-            </p>
-            <Link href="/contact" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}><span>Get In Touch</span></Link>
-          </div>
-        </section>
-
-        {/* Divider */}
-        <div className="section-divider">
-          <div className="gold-line" />
-        </div>
       </div>
 
       <SiteFooter />

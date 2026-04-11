@@ -142,7 +142,7 @@ export default function CareersPage() {
                 Work with <em>Us</em>
               </h1>
               <p className="hero-sub cs-hero-sub">
-                We&rsquo;re always interested in connecting with thoughtful, driven professionals who are passionate about solving complex challenges and creating meaningful impact. If our approach aligns with your interests, we welcome the opportunity to connect and learn more.
+                We&rsquo;re always interested in connecting with thoughtful, driven professionals who are passionate about solving complex challenges and creating meaningful impact. If our approach aligns with your interests, we invite you to connect and discuss opportunities.
               </p>
               <p className="hero-sub cs-hero-sub" style={{ marginTop: "12px" }}>
                 Email us at <a href="mailto:info@rawlinsic.com" className="gold-text careers-email-link">info@rawlinsic.com</a>

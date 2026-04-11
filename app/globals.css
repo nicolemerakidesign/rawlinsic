@@ -592,11 +592,9 @@ color: #fff;
 
 /* Hero scroll indicator */
 .hero-scroll {
-  /* Lives in row 2 of the hero grid — no absolute positioning needed,
-     so it can never overlap .hero-content in row 1. */
-  position: relative;
-  grid-row: 2;
-  grid-column: 1;
+  position: absolute;
+  bottom: 40px;
+  left: 0; right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -604,6 +602,21 @@ color: #fff;
   opacity: 0;
   animation: heroFade 1s 1.2s forwards;
   z-index: 3;
+  padding-bottom: 40px;
+}
+/* Home hero (.hero) is a CSS grid — its scroll indicator lives in
+   row 2 as a normal flow item rather than absolute-positioned. This
+   override is scoped so the rest of the site's .hero-scroll usage
+   (capabilities, insights, etc.) keeps working with its original
+   absolute positioning. */
+.hero > .hero-scroll {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  padding-bottom: 0;
+  grid-row: 2;
+  grid-column: 1;
   margin-top: 24px;
 }
 .hero-scroll span {
@@ -1202,9 +1215,14 @@ text-align: center;
   height: 100vh; min-height: 700px;
   /* CSS grid with two rows: content in the top row, scroll indicator
      in its own row at the bottom. This makes overlap physically
-     impossible regardless of how tall the wrapped hero copy gets. */
+     impossible regardless of how tall the wrapped hero copy gets.
+     minmax(0, 1fr) on the column is the idiomatic fix that prevents
+     a wide child (e.g. a title word that's longer than the viewport
+     on iPhone SE) from expanding the grid column beyond the viewport
+     and pushing content off-center. */
   display: grid;
   grid-template-rows: 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   justify-items: center;
   overflow: hidden;
@@ -1239,7 +1257,10 @@ text-align: center;
   position: relative; z-index: 5;
   grid-row: 1;
   grid-column: 1;
-  text-align: center; max-width: 790px;
+  text-align: center;
+  max-width: 790px;
+  width: 100%;
+  min-width: 0;
   padding: 0 40px;
 }
 @media (min-width: 1368px) {
@@ -2010,7 +2031,8 @@ background: linear-gradient(to top, rgba(6,12,22,0.96) 20%, rgba(6,12,22,0.78) 6
   .hero-sub { font-size: 0.95rem; line-height: 1.7; }
   .auto-hero-btn { padding: 12px 28px; font-size: 11px; letter-spacing: 2px; white-space: nowrap; }
   .hero-content { max-width: 900px; }
-  .hero-scroll { margin-top: 16px; }
+  .hero-scroll { bottom: 20px; padding-bottom: 16px; }
+  .hero > .hero-scroll { bottom: auto; padding-bottom: 0; margin-top: 16px; }
   .new-intro { padding: 80px 0; }
   .new-intro-wrap { padding: 0 24px; gap: 40px; }
   .new-intro-images { height: 340px; }
@@ -5875,6 +5897,11 @@ color: #fff;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  /* Reserve space at the top for the fixed nav and at the bottom for
+     .hero-scroll. When the viewport is narrow and the hero title wraps
+     to extra lines, the flex-centered .cap-hero-content can't extend
+     behind the nav or into the scroll indicator. */
+  padding: 120px 0 180px;
 }
 .cap-hero-img { object-fit: cover; object-position: center 30%; }
 .cap-hero-overlay {
@@ -6320,6 +6347,9 @@ color: #fff;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
   background: #060c16;
+  /* Reserve nav + scroll indicator space so content can't extend
+     behind either when the viewport is narrow. */
+  padding: 120px 0 180px;
 }
 .ins-hero-img { object-fit: cover; }
 .ins-hero-overlay {

@@ -44,9 +44,9 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
 
   const { introBlocks, sections } = groupIntoAccordion(article.content);
 
-  /* ── Pull trailing callout out of last accordion section ── */
+  /* ── Pull trailing callout out of last accordion section (Q&A only) ── */
   let trailingCallout: ArticleSection | null = null;
-  if (sections.length > 0) {
+  if (article.format !== "essay" && sections.length > 0) {
     const lastSection = sections[sections.length - 1];
     const lastBlock = lastSection.blocks[lastSection.blocks.length - 1];
     if (lastBlock && lastBlock.type === "callout") {
@@ -344,15 +344,25 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: context paragraph + accordion Q&A */}
+          {/* RIGHT COLUMN: context paragraph + accordion Q&A (or full essay) */}
           <div className="tla-col-right">
-            {/* "In the following Q&A..." paragraph above accordion */}
-            <div className="tla-body" style={{ marginBottom: 32 }}>
-              {introBlocks.filter(b => b.type === "paragraph").map((block, i) => renderBlock(block, i))}
-            </div>
+            {article.format === "essay" ? (
+              /* Essay layout: render every non-intro block in order. No
+                 accordion, no Q badge — just a continuous reading flow. */
+              <div className="tla-body">
+                {introBlocks
+                  .filter(b => b.type !== "intro")
+                  .map((block, i) => renderBlock(block, i))}
+              </div>
+            ) : (
+              /* Q&A layout: the intro paragraphs above, accordion below. */
+              <div className="tla-body" style={{ marginBottom: 32 }}>
+                {introBlocks.filter(b => b.type === "paragraph").map((block, i) => renderBlock(block, i))}
+              </div>
+            )}
 
-            {/* Accordion Q&A sections */}
-            {sections.length > 0 && (
+            {/* Accordion Q&A sections (only for qa format) */}
+            {article.format !== "essay" && sections.length > 0 && (
               <div className="tla-accordion">
                 {/* Expand/Collapse controls */}
                 <div className="tla-accordion-controls">
@@ -396,8 +406,8 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               </div>
             )}
 
-            {/* Trailing callout (outside accordion) */}
-            {trailingCallout && (
+            {/* Trailing callout (outside accordion, Q&A only) */}
+            {article.format !== "essay" && trailingCallout && (
               <div className="tla-body" style={{ marginTop: 40 }}>
                 {renderBlock(trailingCallout, 9999)}
               </div>

@@ -141,7 +141,7 @@ export default function CaseStudiesOverview() {
             </span>
             <h1 className="hero-title">Case Studies</h1>
             <p className="hero-sub cs-hero-sub">
-              Explore how we turn strategic initiatives into measurable results.
+              Explore how we turn strategic initiatives into measurable results. We are refining how we present our case studies and will continue to expand this collection over time to reflect the breadth of our work.
             </p>
           </div>
         </section>
