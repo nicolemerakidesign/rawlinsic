@@ -384,23 +384,6 @@ const AAMPage = () => {
                 <p className="aam-section-lead">
                   Next-generation aerial capabilities, integrated into existing mobility systems, complement ground, rail, and maritime transport networks. They strengthen multimodal transportation and enable urban, rural, and regional areas to benefit from a more connected, resilient, and adaptable mobility ecosystem.
                 </p>
-              {/* Landscape info panel */}
-              {hoveredLs && (() => {
-                const node = landscapeNodes.find(n => n.id === hoveredLs);
-                if (!node) return null;
-                const isMed = node.id === 'medical';
-                return (
-                  <div className="ls-info-panel">
-                    <div className="ls-info-header">
-                      <div className="ls-info-icon" style={isMed ? { borderColor: 'rgba(212,68,59,0.3)', background: 'rgba(212,68,59,0.08)' } : undefined}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" style={{ color: isMed ? '#d4443b' : '#c9a84c' }} dangerouslySetInnerHTML={{ __html: lsIcons[node.icon] }} />
-                      </div>
-                      <span className="ls-info-title">{node.label}</span>
-                    </div>
-                    <p className="ls-info-desc">{node.desc}</p>
-                  </div>
-                );
-              })()}
               </div>
             </div>
             <div className="aam-overview-right reveal rd1">
