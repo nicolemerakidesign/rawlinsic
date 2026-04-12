@@ -175,7 +175,7 @@ export default function ThoughtLeadershipOverview() {
             <h1 className="hero-title">Thought Leadership</h1>
             <div className={`tl-hero-para-wrap${heroParaExpanded ? " expanded" : ""}`}>
               <p className="hero-sub cs-hero-sub tl-hero-para">
-                At Rawlins, our thought leadership reflects the depth of our experience advising organizations through complex challenges and change. We share practical insights and forward-looking perspectives to help you make informed decisions and move forward with confidence. We share perspectives on the challenges shaping our clients&rsquo; work and will add more insights over time.
+                At Rawlins, our thought leadership reflects deep experience advising organizations on complex challenges and change. We share practical insights and perspectives to support informed decision-making and progress. Additional insights will be shared over time.
               </p>
               <button
                 type="button"

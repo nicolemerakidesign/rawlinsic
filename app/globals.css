@@ -367,8 +367,15 @@ body.has-custom-cursor .cursor-ring {
   backdrop-filter: blur(20px);
   box-shadow: 0 1px 0 rgba(229,203,135,0.08);
 }
-.nav-logo { display: flex; align-items: center; }
-.nav-logo-img { height: auto; width: 157px; }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  margin: -8px -10px;
+  position: relative;
+  z-index: 2;
+}
+.nav-logo-img { height: auto; width: 157px; display: block; pointer-events: none; }
 .footer-logo-img { height: auto; width: 190px; margin-bottom: 16px; }
 .nav-center {
   display: flex; align-items: center; gap: 12px;

@@ -727,7 +727,7 @@ export default function HomePage() {
             Meet the <em>team</em>
           </h2>
           <p className="team-desc">
-            Our team of professionals bring decades of combined experience working within and alongside complex organizations. We pride ourselves on establishing long-term relationships with our family of clients.
+            Our team brings decades of combined professional experience working within and alongside complex organizations. We pride ourselves on establishing long-term relationships with our family of clients.
           </p>
           <Link href="/about/our-people" className="auto-hero-btn" style={{ opacity: 1, transform: "none", animation: "none" }}><span>View Our Team</span></Link>
         </div>
