@@ -15,7 +15,7 @@ const channels = [
     href: "/insights/thought-leadership",
     title: "Thought Leadership",
     subtitle: "Expert perspectives",
-    desc: "In-depth Q&As, analysis, and practitioner insights from our advisory team—covering data governance, workforce transformation, strategic planning, and the evolving landscape of public infrastructure.",
+    desc: "Insights and perspectives from our advisory team.",
     image: "/images/pages/insights-card-2.webp",
     cta: "Read Articles",
     accent: "#c9a84c",
