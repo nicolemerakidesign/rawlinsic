@@ -86,7 +86,14 @@ export default function PrivacyPolicyPage() {
             </ul>
 
             <h3 style={h3Style}>III. Cookies and Similar Technologies</h3>
-            <p>We use cookies, web beacons, and similar technologies to enhance your experience, analyze site usage, and support our marketing efforts. Cookies are small data files stored on your device. You may manage or disable cookies through your browser settings; however, doing so may affect certain site functionality.</p>
+            <p>We use cookies, web beacons, and similar technologies to enhance your experience, analyze site usage, and support our marketing efforts. Cookies are small data files stored on your device.</p>
+            <p style={{ marginTop: 12 }}>When you first visit our Site, a cookie consent banner will ask for your permission before any non-essential cookies are set. You may accept or decline at any time. To change your preference later, clear your browser&rsquo;s local storage for this site and the banner will reappear on your next visit.</p>
+            <p style={{ marginTop: 12 }}>We currently use the following analytics services:</p>
+            <ul style={{ paddingLeft: 24, marginTop: 8 }}>
+              <li><strong style={{ color: "#fff" }}>Vercel Web Analytics:</strong> A privacy-friendly, cookieless analytics service that collects aggregated page-view data without setting cookies or tracking individual users across sessions.</li>
+              <li><strong style={{ color: "#fff" }}>Google Analytics (GA4):</strong> When enabled, GA4 uses cookies to collect information about how visitors use our Site, including pages visited, session duration, and traffic sources. GA4 data is processed by Google in accordance with its privacy policy. This service is only loaded if you accept cookies via our consent banner.</li>
+            </ul>
+            <p style={{ marginTop: 12 }}>You may also manage or disable cookies through your browser settings; however, doing so may affect certain site functionality.</p>
           </div>
 
           <div>

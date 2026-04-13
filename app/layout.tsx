@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
+import CookieBanner from '@/components/cookie-banner';
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -250,6 +251,7 @@ export default function RootLayout({
           })();
         `}</Script>
         <Analytics />
+        <CookieBanner />
       </body>
     </html>
   );
