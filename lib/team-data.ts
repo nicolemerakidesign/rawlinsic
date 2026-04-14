@@ -881,4 +881,18 @@ Alexandra's approach emphasizes simplicity, clarity, and impact—ensuring that 
 She continues to expand her expertise in AI and automation, consistently adopting new tools and approaches to improve outcomes. Alexandra is recognized for her adaptability, problem-solving mindset, and ability to turn complex challenges into streamlined, efficient processes.`,
     categories: ['technology'],
   },
+  {
+    id: 54,
+    name: `Ian Cain`,
+    photo: `/images/team/ian.webp`,
+    title: `VP of Finance`,
+    role: `VP of Finance`,
+    location: `New York`,
+    phone: `775-250-1965`,
+    email: `ian@rawlinsic.com`,
+    linkedin: `https://www.linkedin.com/in/ian-noller-cain/`,
+    background: `Ian has 10 years of experience as a Franchisee and Financial Controller of multiple national brands. His responsibilities spanned multi–unit ownership, financial leadership, and operational scale. He specializes in building systems that support sustainable growth.`,
+    achievements: `Throughout his career, Ian spent several years as a franchise owner and operator, leading performance optimization, financial strategy, and team development across multiple locations. He transitioned into senior financial leadership, partnering closely with executive teams to streamline operations, improve profitability, and support expansion initiatives.`,
+    categories: ['operations'],
+  },
 ];
