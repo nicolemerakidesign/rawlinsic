@@ -885,7 +885,6 @@ She continues to expand her expertise in AI and automation, consistently adoptin
     id: 54,
     name: `Ian Cain`,
     photo: `/images/team/ian.webp`,
-    title: `VP of Finance`,
     role: `VP of Finance`,
     location: `New York`,
     phone: `775-250-1965`,
