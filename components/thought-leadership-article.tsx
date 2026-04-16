@@ -606,6 +606,11 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
           </section>
         )}
 
+        {/* Acknowledgment */}
+        {article.acknowledgment && (
+          <p className="tla-acknowledgment reveal">{article.acknowledgment}</p>
+        )}
+
         {/* Divider */}
         <div className="section-divider">
           <div className="gold-line" />

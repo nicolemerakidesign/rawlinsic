@@ -40,6 +40,9 @@ export interface ThoughtLeadershipArticle {
     text: string;
     body?: string;
   };
+  /** Optional acknowledgment line rendered between the final thought
+   * and the CTA section. */
+  acknowledgment?: string;
   /** Optional CTA section rendered at the very bottom of the article,
    * matching the standard gold-accent CTA style used elsewhere on the
    * site. No `section-label` is shown above the title (per design). */
@@ -241,8 +244,9 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
     finalThought: {
       label: "One Final Thought",
       text: "Strong teams not only benefit your organization, they also create value for employees, clients, partners, and communities.",
-      body: "Across departments of transportation, other government agencies, and the broader transportation industry, strong teams consistently achieve key goals that support operational excellence\u2014improving efficiency, reducing costs, communicating more clearly across roles and disciplines, strengthening engagement, and adapting more effectively to emergencies, shifting priorities, and the unexpected.",
+      body: "Across departments of transportation, other government agencies, and the broader transportation industry, strong teams consistently achieve key goals that support operational excellence: improve efficiency, reduce costs, and minimize delays; communicate more clearly across roles and disciplines; strengthen engagement; and adapt more effectively to emergencies, shifting priorities, and the unexpected.",
     },
+    acknowledgment: "With thanks to April Blackburn and David Douglas for their contributions to this article.",
     cta: {
       title: "Ready to build a {gold}stronger{/gold} team?",
       body: "Over the course of his career, Ron Crew has built and led strong teams that have successfully delivered complex right-of-way projects. He fosters collaboration among diverse professionals and aligns them around clear project goals.",
@@ -253,10 +257,6 @@ export const THOUGHT_LEADERSHIP: ThoughtLeadershipArticle[] = [
       {
         type: "intro",
         text: "Is a strong team important to your organization? Is a strong team possible in your organization? Can you strengthen your team as a manager, team leader, or supervisor? You likely answered yes to all three questions\u2014now, let\u2019s explore key actions to pave the way for a high-performing team through the Rawlins lens.",
-      },
-      {
-        type: "paragraph",
-        text: "Over the course of his career, Ron Crew has built and led strong teams that have successfully delivered complex right-of-way projects across the Florida Department of Transportation. He shares the key actions he has relied on to cultivate high-performing teams through the Rawlins lens.",
       },
       { type: "divider" },
       { type: "question", text: "Set the Standard" },
