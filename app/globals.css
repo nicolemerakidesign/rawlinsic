@@ -5709,21 +5709,42 @@ color: #fff;
   .tla-final-thought-body { font-size: 15px; }
 }
 
-/* ── Acknowledgment line ── */
-.tla-acknowledgment {
-  text-align: center;
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: 15px;
-  font-style: italic;
-  font-weight: 500;
-  color: #c9a227;
-  margin: 0 auto 20px;
+/* ── Acknowledgment line ──
+   Wrapper mirrors .tla-final-thought's 1fr/2fr grid so the text sits
+   under the accordion's right column (in line with the Q sections
+   above) instead of centered. */
+.tla-acknowledgment-wrap {
+  max-width: 1280px;
+  margin: 0 auto 24px;
   padding: 0 40px;
-  max-width: 820px;
-  line-height: 1.7;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 48px;
+}
+.tla-acknowledgment {
+  grid-column: 2;
+  text-align: left;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 600;
+  color: #c9a84c;
+  background: linear-gradient(145deg, #c9a84c, #e8d5a0, #d4b878);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  line-height: 1.6;
 }
 @media (max-width: 768px) {
-  .tla-acknowledgment { font-size: 14px; padding: 0 24px; }
+  .tla-acknowledgment-wrap {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+  }
+  .tla-acknowledgment {
+    grid-column: 1;
+    font-size: 16px;
+  }
 }
 
 /* ── Article CTA section (gold-accent, no top label) ── */
