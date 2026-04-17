@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
-import { Analytics } from '@vercel/analytics/next';
+import AnalyticsWrapper from '@/components/analytics-wrapper';
 import CookieBanner from '@/components/cookie-banner';
 
 const dmSans = DM_Sans({
@@ -250,7 +250,18 @@ export default function RootLayout({
             document.addEventListener('mousemove',reveal,{passive:true});
           })();
         `}</Script>
-        <Analytics />
+        <AnalyticsWrapper />
+        {/* Microsoft Clarity — heat maps & session recordings
+             Skip loading for internal traffic (rawlins_internal cookie). */}
+        <Script id="microsoft-clarity" strategy="afterInteractive">{`
+          if(document.cookie.indexOf("rawlins_internal=")<0){
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window,document,"clarity","script","wcupxc9qmn");
+          }
+        `}</Script>
         <CookieBanner />
       </body>
     </html>

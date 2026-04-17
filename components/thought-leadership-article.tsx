@@ -6,6 +6,12 @@ import Link from "next/link";
 import SiteNav from "@/components/site-nav";
 import SiteFooter from "@/components/site-footer";
 import { track } from "@vercel/analytics";
+import { isInternalTraffic } from "@/lib/internal-filter";
+
+/** Fire a Vercel Analytics custom event, but only for external visitors. */
+function trackEvent(name: string, props: Record<string, string>) {
+  if (!isInternalTraffic()) track(name, props);
+}
 
 import {
   THOUGHT_LEADERSHIP,
@@ -93,7 +99,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
 
     /* ── Analytics: track accordion section open ── */
     if (!wasOpen && sections[i]) {
-      track("accordion_open", {
+      trackEvent("accordion_open", {
         article: article.title,
         section: sections[i].question,
       });
@@ -429,7 +435,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="tla-pdf-btn"
-                onClick={() => track("pdf_download", { article: article.title, author: article.author })}
+                onClick={() => trackEvent("pdf_download", { article: article.title, author: article.author })}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
@@ -593,7 +599,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
                 onClick={() => {
                   if (article.finalThought?.body) {
                     if (!finalThoughtOpen) {
-                      track("final_thought_expand", { article: article.title });
+                      trackEvent("final_thought_expand", { article: article.title });
                     }
                     setFinalThoughtOpen((v) => !v);
                   }
@@ -646,7 +652,7 @@ export default function ThoughtLeadershipArticlePage({ article }: Props) {
               <Link
                 href={article.cta.buttonHref ?? "/contact"}
                 className="auto-hero-btn tla-cta-btn"
-                onClick={() => track("cta_click", { article: article.title, author: article.author })}
+                onClick={() => trackEvent("cta_click", { article: article.title, author: article.author })}
               >
                 <span>{article.cta.buttonLabel ?? "Get In Touch"}</span>
               </Link>
